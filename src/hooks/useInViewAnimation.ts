@@ -1,23 +1,56 @@
-import { useEffect } from 'react'
+import { type RefObject, useEffect } from 'react'
 import { gsap } from 'gsap'
 
-export function useInViewAnimation(selector = '[data-w-id]') {
+function isInViewport(el: HTMLElement) {
+  const rect = el.getBoundingClientRect()
+  return rect.top < window.innerHeight * 0.92 && rect.bottom > 0
+}
+
+export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>) {
   useEffect(() => {
-    const targets = Array.from(document.querySelectorAll<HTMLElement>(selector))
-    if (!targets.length) return
+    let observer: IntersectionObserver | null = null
+    let frame = 0
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          gsap.to(entry.target, { opacity: 1, y: 0, duration: 0.5, ease: 'power1.out' })
-          observer.unobserve(entry.target)
-        })
-      },
-      { threshold: 0.15 },
-    )
+    const reveal = (el: HTMLElement) => {
+      if (el.dataset.fadeDone === 'true') return
+      el.dataset.fadeDone = 'true'
+      gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+    }
 
-    targets.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [selector])
+    frame = requestAnimationFrame(() => {
+      const scope = containerRef?.current
+      if (!scope) return
+
+      const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-w-id]')).filter(
+        (el) => el.dataset.fadeDone !== 'true',
+      )
+
+      if (!targets.length) return
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+            reveal(entry.target as HTMLElement)
+            observer?.unobserve(entry.target)
+          })
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
+      )
+
+      targets.forEach((el) => {
+        gsap.set(el, { opacity: 0, y: 24 })
+        if (isInViewport(el)) {
+          reveal(el)
+        } else {
+          observer?.observe(el)
+        }
+      })
+    })
+
+    return () => {
+      cancelAnimationFrame(frame)
+      observer?.disconnect()
+    }
+  }, [containerRef])
 }

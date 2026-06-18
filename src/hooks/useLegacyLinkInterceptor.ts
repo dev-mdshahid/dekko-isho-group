@@ -1,0 +1,33 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLElement | null>) {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const onClick = (event: MouseEvent) => {
+      const target = (event.target as HTMLElement).closest('a')
+      if (!target || !container.contains(target)) return
+
+      const href = target.getAttribute('href')
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+        return
+      }
+
+      if (href.startsWith('#')) return
+
+      if (href.startsWith('/legacy/') || target.hasAttribute('target')) return
+
+      if (href.startsWith('/')) {
+        event.preventDefault()
+        navigate(href)
+      }
+    }
+
+    container.addEventListener('click', onClick)
+    return () => container.removeEventListener('click', onClick)
+  }, [containerRef, navigate])
+}

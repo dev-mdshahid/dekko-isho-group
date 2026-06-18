@@ -8,7 +8,6 @@ export type LegacyRoute = {
 }
 
 export const legacyRoutes: LegacyRoute[] = [
-  { path: '/', file: 'index.html', title: 'Manufactt- Webflow HTML website template', layout: 'main' },
   { path: '/home-2', file: 'home-2.html', title: 'Home 2 | Manufactt - Webflow HTML website template', layout: 'home2' },
   { path: '/about', file: 'about.html', title: 'About | Manufactt - Webflow HTML website template', layout: 'main' },
   { path: '/services', file: 'services.html', title: 'Services | Manufactt - Webflow HTML website template', layout: 'main' },

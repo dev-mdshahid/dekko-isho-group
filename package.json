@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "extract:home": "node scripts/extract-home-body.mjs",
+    "convert:home": "node scripts/extract-home-body.mjs && node scripts/convert-home-to-tsx.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

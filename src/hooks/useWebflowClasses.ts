@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export function useWebflowClasses() {
   useEffect(() => {
     const html = document.documentElement
-    html.classList.add('w-mod-js')
+    html.classList.add('w-mod-js', 'w-mod-ix')
 
     const isTouch =
       'ontouchstart' in window ||
@@ -14,8 +14,7 @@ export function useWebflowClasses() {
     }
 
     return () => {
-      html.classList.remove('w-mod-js')
-      html.classList.remove('w-mod-touch')
+      html.classList.remove('w-mod-js', 'w-mod-ix', 'w-mod-touch')
     }
   }, [])
 }
