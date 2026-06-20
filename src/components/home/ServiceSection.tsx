@@ -5,7 +5,7 @@ export function ServiceSection() {
     <section className="service-section section-spacing-top">
         <div className="container-full">
           <div className="service-details-main">
-            <div data-w-id="238c3f25-28e9-d07e-772d-22cc173e9e24"  className="service-details-wrap">
+            <div data-w-id="238c3f25-28e9-d07e-772d-22cc173e9e24" data-fade-in className="service-details-wrap">
               <div data-wf--pre-section-title--variant="base" className="pre-section-title-wrap">
                 <div className="pre-section-title-inner">
                   <div className="pre-section-title-square"></div>
@@ -15,7 +15,7 @@ export function ServiceSection() {
               <div className="section-title-wrap">
                 <h2 className="section-title">Scalable <span className="text-linear-gradient">capabilities</span> for every challenge</h2>
                 <div id="w-node-e23adfcb-92aa-cd61-ca12-ef84ce0764ac-ae320c59" className="section-button-wrap">
-                  <a data-wf--button-arrow--variant="base" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="/services" className="primary-button w-inline-block">
+                  <a data-wf--button-arrow--variant="base" href="/services" className="primary-button w-inline-block">
                     <div className="button-primary-inner">
                       <div className="button-text-wrap">
                         <div className="button-text-inner">
@@ -189,11 +189,11 @@ export function ServiceSection() {
               <div className="service-box-height"></div>
             </div>
             <div className="cta-wrap">
-              <div data-w-id="2a6fecb6-c324-2a47-4e56-63bf9666fe76"  className="cta-info-wrapper">
+              <div data-w-id="2a6fecb6-c324-2a47-4e56-63bf9666fe76" data-fade-in className="cta-info-wrapper">
                 <div className="cta-info-inner">
                   <h2 className="cta-text">Ready to start your <br />next project?</h2>
                   <div className="cta-button">
-                    <a data-wf--button-arrow--variant="button-white-bg" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="/contact" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
+                    <a data-wf--button-arrow--variant="button-white-bg" href="/contact" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
                       <div className="button-primary-inner">
                         <div className="button-text-wrap">
                           <div className="button-text-inner">

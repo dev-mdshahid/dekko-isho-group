@@ -3,13 +3,9 @@ import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 
-const marqueeStyle = {
-  transform: 'translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-}
-
 function ClientMarqueeList() {
   return (
-    <div style={marqueeStyle} className="client-marquee-list">
+    <div className="client-marquee-list">
       {clientLogos.map((logo) => (
         <div key={logo} className="client-marquee-item">
           <img src={legacyImage(logo)} loading="lazy" alt="Client Image" className="client-image" />
@@ -23,9 +19,11 @@ export function WhyChooseSection() {
   return (
     <section className="why-choose-section">
       <div data-w-id="8b9c8801-a35a-405a-c54c-28f8a68a688b" className="client-marquee">
-        <ClientMarqueeList />
-        <ClientMarqueeList />
-        <ClientMarqueeList />
+        <div className="client-marquee-track">
+          <ClientMarqueeList />
+          <ClientMarqueeList />
+          <ClientMarqueeList />
+        </div>
       </div>
       <div className="why-choose-info">
         <div className="container">

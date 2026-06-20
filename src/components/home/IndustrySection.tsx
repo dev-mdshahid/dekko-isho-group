@@ -89,6 +89,7 @@ export function IndustrySection() {
           src={legacyImage(bg.image)}
           loading="lazy"
           data-w-id={bg.id}
+          data-fade-in
           alt="Industry image BG"
           className={`industry-image-bg ${bg.className}`}
         />

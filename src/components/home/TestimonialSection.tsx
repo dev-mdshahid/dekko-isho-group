@@ -17,52 +17,53 @@ export function TestimonialSection() {
             </h2>
           </FadeIn>
           <div className="w-layout-grid grid-testimonial">
-            <div
-              data-w-id="5b9d076c-a381-6e6a-9705-5ca5cc1c9344"
-              data-current="Tab 1"
-              data-easing="ease"
-              data-duration-in="300"
-              data-duration-out="100"
-              className="testimonial-tabs w-tabs"
-            >
-              <div className="testimonial-tabs-menu w-tab-menu">
-                {homeTestimonials.map((item, index) => (
-                  <a
-                    key={item.tab}
-                    data-w-tab={item.tab}
-                    className={`testimonial-tabs-link w-inline-block w-tab-link${index === 0 ? ' w--current' : ''}`}
-                  >
-                    <img loading="lazy" src={legacyImage(item.image)} alt="Testimonial Image" className="testimonial-image" />
-                  </a>
-                ))}
-              </div>
-              <div className="testimonial-tabs-content w-tab-content">
-                {homeTestimonials.map((item, index) => (
-                  <div
-                    key={item.tab}
-                    data-w-tab={item.tab}
-                    className={`testimonial-tabs-pane w-tab-pane${index === 0 ? ' w--tab-active' : ''}`}
-                  >
-                    <div className="testimonial-info">
-                      <div className="testimonial-info-inner">
-                        <img
-                          loading="lazy"
-                          src={legacyImage('Testimonial-Star.svg')}
-                          alt="Testimonial Star"
-                          className="testimonial-star"
-                        />
-                        <p className="testimonial-description">{item.quote}</p>
+            <FadeIn id="5b9d076c-a381-6e6a-9705-5ca5cc1c9344">
+              <div
+                data-current="Tab 1"
+                data-easing="ease"
+                data-duration-in="300"
+                data-duration-out="100"
+                className="testimonial-tabs w-tabs"
+              >
+                <div className="testimonial-tabs-menu w-tab-menu">
+                  {homeTestimonials.map((item, index) => (
+                    <a
+                      key={item.tab}
+                      data-w-tab={item.tab}
+                      className={`testimonial-tabs-link w-inline-block w-tab-link${index === 0 ? ' w--current' : ''}`}
+                    >
+                      <img loading="lazy" src={legacyImage(item.image)} alt="Testimonial Image" className="testimonial-image" />
+                    </a>
+                  ))}
+                </div>
+                <div className="testimonial-tabs-content w-tab-content">
+                  {homeTestimonials.map((item, index) => (
+                    <div
+                      key={item.tab}
+                      data-w-tab={item.tab}
+                      className={`testimonial-tabs-pane w-tab-pane${index === 0 ? ' w--tab-active' : ''}`}
+                    >
+                      <div className="testimonial-info">
+                        <div className="testimonial-info-inner">
+                          <img
+                            loading="lazy"
+                            src={legacyImage('Testimonial-Star.svg')}
+                            alt="Testimonial Star"
+                            className="testimonial-star"
+                          />
+                          <p className="testimonial-description">{item.quote}</p>
+                        </div>
+                        <div className="author-details">
+                          <h3 className="author-name">{item.name}</h3>
+                          <div className="author-job-title">{item.title}</div>
+                        </div>
                       </div>
-                      <div className="author-details">
-                        <h3 className="author-name">{item.name}</h3>
-                        <div className="author-job-title">{item.title}</div>
-                      </div>
+                      {index === 2 && <NoiseOverlay />}
                     </div>
-                    {index === 2 && <NoiseOverlay />}
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
             <div className="testimonial-more-info">
               <FadeIn id="3c0ff7e9-dac1-81ef-d189-54acdf24a6e9" className="testimonial-inner">
                 <div className="testimonial-image-wrap">

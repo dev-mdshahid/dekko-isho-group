@@ -36,6 +36,7 @@ export function ProductSection() {
               src={legacyImage('Products-Icon.svg')}
               loading="lazy"
               data-w-id="af52d740-e50f-ce19-4cc3-814bbe0cdac6"
+              data-fade-in
               alt="Product Info Image"
               className="product-info-image"
             />

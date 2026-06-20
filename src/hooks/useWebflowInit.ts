@@ -1,44 +1,33 @@
-import { useEffect } from 'react'
+import { type RefObject, useEffect } from 'react'
+import { reinitWebflow } from '../lib/webflow'
 
-function loadScript(src: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if (document.querySelector(`script[src="${src}"]`)) {
-      resolve()
-      return
-    }
-    const script = document.createElement('script')
-    script.src = src
-    script.async = true
-    script.onload = () => resolve()
-    script.onerror = () => reject(new Error(`Failed to load ${src}`))
-    document.body.appendChild(script)
-  })
-}
-
-export function useWebflowInit(enabled = true) {
+/** Load Webflow scripts and re-init IX2/tabs/slider after React content is in the DOM. */
+export function useWebflowInit(containerRef?: RefObject<HTMLElement | null>, enabled = true) {
   useEffect(() => {
     if (!enabled) return
 
     let cancelled = false
+    let frame = 0
 
-    async function init() {
-      try {
-        await loadScript(
-          'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6a26a190936d1b3aae320bc8',
-        )
-        if (cancelled) return
-        await loadScript('/legacy/js/webflow.js')
-        if (cancelled) return
-        const win = window as Window & { Webflow?: { ready: () => void } }
-        win.Webflow?.ready()
-      } catch (err) {
-        console.error(err)
-      }
-    }
+    frame = requestAnimationFrame(() => {
+      void (async () => {
+        try {
+          await reinitWebflow()
+          if (!cancelled && containerRef?.current) {
+            // Second pass after layout settles (StrictMode-safe)
+            requestAnimationFrame(() => {
+              if (!cancelled) void reinitWebflow()
+            })
+          }
+        } catch (err) {
+          console.error(err)
+        }
+      })()
+    })
 
-    void init()
     return () => {
       cancelled = true
+      cancelAnimationFrame(frame)
     }
-  }, [enabled])
+  }, [containerRef, enabled])
 }

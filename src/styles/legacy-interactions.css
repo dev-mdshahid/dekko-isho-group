@@ -1,0 +1,104 @@
+/* CSS fallbacks for Webflow IX2 interactions in the React SPA */
+
+/* Primary button — matches Webflow IX action lists a-21 (hover in) / a-22 (hover out) */
+.button-text,
+.button-hover-text,
+.button-icon,
+.button-icon-hover {
+  transition: transform 0.3s ease;
+}
+
+/* Initial state (Webflow useFirstGroupAsInitialState) */
+.button-text {
+  transform: translateY(0%);
+}
+
+.button-hover-text {
+  transform: translateY(100%);
+}
+
+.button-icon {
+  transform: translateX(0);
+}
+
+.button-icon-hover {
+  transform: translateX(-30px);
+}
+
+/* Hover state */
+.primary-button:hover .button-text {
+  transform: translateY(-100%);
+}
+
+.primary-button:hover .button-hover-text {
+  transform: translateY(-100%);
+}
+
+.primary-button:hover .button-icon {
+  transform: translateX(30px);
+}
+
+.primary-button:hover .button-icon-hover {
+  transform: translateX(0);
+}
+
+/* Service cards — image scale + arrow swap on hover */
+@media (min-width: 992px) {
+  .service-image {
+    transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  .service-info-link:hover .service-image {
+    transform: scale3d(1.05, 1.05, 1);
+  }
+
+  .service-icon-01,
+  .service-hover-icon {
+    transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  .service-hover-icon {
+    transform: translate3d(-30px, 0, 0);
+  }
+
+  .service-info-link:hover .service-icon-01 {
+    transform: translate3d(30px, 0, 0);
+  }
+
+  .service-info-link:hover .service-hover-icon {
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Case study + blog image scale on hover */
+  .case-study-image,
+  .blog-image {
+    transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  .case-study-link:hover .case-study-image,
+  .blog-link:hover .blog-image {
+    transform: scale3d(1.05, 1.05, 1);
+  }
+}
+
+/* Client logo marquee — infinite horizontal scroll */
+.client-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: client-marquee-scroll 35s linear infinite;
+}
+
+@keyframes client-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+/* Scroll-reveal elements start hidden (matches legacy inline opacity:0) */
+[data-fade-in] {
+  opacity: 0;
+}

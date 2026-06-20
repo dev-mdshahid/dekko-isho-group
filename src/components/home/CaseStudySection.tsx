@@ -5,7 +5,7 @@ export function CaseStudySection() {
     <section className="case-study-section section-spacing">
         <div className="container">
           <div className="case-study-main">
-            <div data-w-id="07cc8b02-829c-0744-9683-1d2336d4de7f"  className="case-study-title">
+            <div data-w-id="07cc8b02-829c-0744-9683-1d2336d4de7f" data-fade-in className="case-study-title">
               <div data-wf--pre-section-title--variant="base" className="pre-section-title-wrap">
                 <div className="pre-section-title-inner">
                   <div className="pre-section-title-square"></div>
@@ -13,13 +13,13 @@ export function CaseStudySection() {
                 </div>
               </div>
               <div className="section-title-wrap one">
-                <h2 data-w-id="9d872462-3a61-1c11-5760-a0f5066f94a7"  className="section-title">Real <span className="text-linear-gradient">results</span> from real projects</h2>
+                <h2 data-w-id="9d872462-3a61-1c11-5760-a0f5066f94a7" data-fade-in className="section-title">Real <span className="text-linear-gradient">results</span> from real projects</h2>
               </div>
             </div>
             <div className="case-study-info">
               <div data-delay="4000" data-animation="fade" className="case-study-slider w-slider" data-autoplay="false" data-easing="ease-in-out" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
                 <div className="case-study-slider-mask w-slider-mask">
-                  <div data-w-id="b5c4663c-31cd-207d-58f8-818a01e9e39a"  className="case-study-slide w-slide">
+                  <div data-w-id="b5c4663c-31cd-207d-58f8-818a01e9e39a" data-fade-in className="case-study-slide w-slide">
                     <div className="case-study-list-wrapper w-dyn-list">
                       <div role="list" className="case-study-list w-dyn-items">
                         <div role="listitem" className="case-study-list-item w-dyn-item">
@@ -36,7 +36,7 @@ export function CaseStudySection() {
                                     <div className="case-study-score-text w-dyn-bind-empty"></div>
                                   </div>
                                   <div className="case-study-button">
-                                    <a data-wf--button-arrow--variant="button-white-bg" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
+                                    <a data-wf--button-arrow--variant="button-white-bg" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
                                       <div className="button-primary-inner">
                                         <div className="button-text-wrap">
                                           <div className="button-text-inner">
@@ -83,7 +83,7 @@ export function CaseStudySection() {
                                     <div className="case-study-score-text w-dyn-bind-empty"></div>
                                   </div>
                                   <div className="case-study-button">
-                                    <a data-wf--button-arrow--variant="button-white-bg" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
+                                    <a data-wf--button-arrow--variant="button-white-bg" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
                                       <div className="button-primary-inner">
                                         <div className="button-text-wrap">
                                           <div className="button-text-inner">
@@ -130,7 +130,7 @@ export function CaseStudySection() {
                                     <div className="case-study-score-text w-dyn-bind-empty"></div>
                                   </div>
                                   <div className="case-study-button">
-                                    <a data-wf--button-arrow--variant="button-white-bg" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
+                                    <a data-wf--button-arrow--variant="button-white-bg" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
                                       <div className="button-primary-inner">
                                         <div className="button-text-wrap">
                                           <div className="button-text-inner">
@@ -177,7 +177,7 @@ export function CaseStudySection() {
                                     <div className="case-study-score-text w-dyn-bind-empty"></div>
                                   </div>
                                   <div className="case-study-button">
-                                    <a data-wf--button-arrow--variant="button-white-bg" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
+                                    <a data-wf--button-arrow--variant="button-white-bg" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
                                       <div className="button-primary-inner">
                                         <div className="button-text-wrap">
                                           <div className="button-text-inner">
@@ -224,7 +224,7 @@ export function CaseStudySection() {
                                     <div className="case-study-score-text w-dyn-bind-empty"></div>
                                   </div>
                                   <div className="case-study-button">
-                                    <a data-wf--button-arrow--variant="button-white-bg" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
+                                    <a data-wf--button-arrow--variant="button-white-bg" href="#" className="primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block">
                                       <div className="button-primary-inner">
                                         <div className="button-text-wrap">
                                           <div className="button-text-inner">
@@ -260,7 +260,7 @@ export function CaseStudySection() {
                 <div className="slide-nav w-slider-nav w-round w-num"></div>
               </div>
               <div className="info-help-wrap">
-                <div data-w-id="6db9d72d-320a-8c44-bd97-18e1a89657ba"  className="w-layout-grid grid-help-line">
+                <div data-w-id="6db9d72d-320a-8c44-bd97-18e1a89657ba" data-fade-in className="w-layout-grid grid-help-line">
                   <div className="help-info-left">
                     <div className="help-info-inner">
                       <div className="help-line-image-wrap"><img src={legacyImage('testimonial-images-3_1testimonial-images-3.png')} loading="lazy" alt="Help Line Image" className="help-line-image" /><img src={legacyImage('testimonial-images-1_1testimonial-images-1.png')} loading="lazy" alt="Help Line Image" className="help-line-image one" /></div>
@@ -271,7 +271,7 @@ export function CaseStudySection() {
                     </div>
                   </div>
                   <div id="w-node-a89d5963-17c9-fd1f-c13a-f4715b752d09-ae320c59" className="help-line-button">
-                    <a data-wf--button-arrow--variant="base" data-w-id="d102baf6-0bbf-4311-9c79-6b424f8fe8a7" href="/contact" className="primary-button w-inline-block">
+                    <a data-wf--button-arrow--variant="base" href="/contact" className="primary-button w-inline-block">
                       <div className="button-primary-inner">
                         <div className="button-text-wrap">
                           <div className="button-text-inner">

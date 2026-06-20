@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 
+/** Adds Webflow JS detection classes. `w-mod-ix` is added by webflow.js after IX2 init. */
 export function useWebflowClasses() {
   useEffect(() => {
     const html = document.documentElement
-    html.classList.add('w-mod-js', 'w-mod-ix')
+    html.classList.add('w-mod-js')
 
     const isTouch =
       'ontouchstart' in window ||
@@ -14,7 +15,7 @@ export function useWebflowClasses() {
     }
 
     return () => {
-      html.classList.remove('w-mod-js', 'w-mod-ix', 'w-mod-touch')
+      html.classList.remove('w-mod-js', 'w-mod-touch')
     }
   }, [])
 }

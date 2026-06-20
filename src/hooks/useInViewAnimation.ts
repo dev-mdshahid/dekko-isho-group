@@ -6,6 +6,7 @@ function isInViewport(el: HTMLElement) {
   return rect.top < window.innerHeight * 0.92 && rect.bottom > 0
 }
 
+/** Scroll-reveal for `[data-fade-in]` only — does not touch Webflow IX2 `data-w-id` targets. */
 export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>) {
   useEffect(() => {
     let observer: IntersectionObserver | null = null
@@ -14,14 +15,15 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
     const reveal = (el: HTMLElement) => {
       if (el.dataset.fadeDone === 'true') return
       el.dataset.fadeDone = 'true'
-      gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+      const targetOpacity = el.classList.contains('industry-image-bg') ? 0.7 : 1
+      gsap.to(el, { opacity: targetOpacity, y: 0, duration: 0.6, ease: 'power2.out' })
     }
 
     frame = requestAnimationFrame(() => {
       const scope = containerRef?.current
       if (!scope) return
 
-      const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-w-id]')).filter(
+      const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]')).filter(
         (el) => el.dataset.fadeDone !== 'true',
       )
 

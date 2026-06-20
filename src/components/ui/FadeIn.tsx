@@ -6,10 +6,10 @@ type Props = PropsWithChildren<{
   style?: CSSProperties
 }>
 
-/** Wrapper that marks elements for scroll-reveal via `useInViewAnimation`. */
+/** Wrapper for scroll-reveal animations via `useInViewAnimation`. */
 export function FadeIn({ id, className, style, children }: Props) {
   return (
-    <div data-w-id={id} className={className} style={style}>
+    <div data-w-id={id} data-fade-in className={className} style={style}>
       {children}
     </div>
   )

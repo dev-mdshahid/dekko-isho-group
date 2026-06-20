@@ -4,6 +4,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import './styles/normalize.css'
 import './styles/webflow.css'
 import './styles/site.css'
+import './styles/legacy-fouc.css'
+import './styles/legacy-interactions.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

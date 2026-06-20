@@ -92,6 +92,7 @@ export function AboutSection() {
               src={legacyImage('about-image.webp')}
               loading="lazy"
               data-w-id="2b6ca78d-f30a-dcb3-72dd-ee239194fdde"
+              data-fade-in
               alt="About Image Box"
               className="about-image-box"
             />
