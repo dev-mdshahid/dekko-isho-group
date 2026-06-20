@@ -101,12 +101,6 @@ export function AboutSection() {
                   generations of excellence.
                 </p>
               </FadeIn>
-              {/* <FadeIn id="5a23ee6f-035d-2255-fd4f-73aa8e89689a" className="about-button-wrap">
-                <ButtonArrow to="/about" label="Learn More About Us" />
-                <a href={legacyDoc('PDF.pdf')} target="_blank" rel="noreferrer" className="download-link">
-                  Download Brochure
-                </a>
-              </FadeIn> */}
             </div>
           </div>
         </div>
