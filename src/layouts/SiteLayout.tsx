@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'react'
 import { Footer } from '../components/layout/Footer'
+import { MoreTemplates } from '../components/layout/MoreTemplates'
 import { Navbar } from '../components/layout/Navbar'
 
 export function SiteLayout({ children }: PropsWithChildren) {
@@ -8,6 +9,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
       <Navbar />
       {children}
       <Footer />
+      <MoreTemplates />
     </>
   )
 }

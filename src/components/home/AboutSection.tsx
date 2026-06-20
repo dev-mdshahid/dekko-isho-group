@@ -1,5 +1,3 @@
-import { legacyDoc } from '../../lib/assets'
-import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 

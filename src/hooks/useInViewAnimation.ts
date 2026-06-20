@@ -16,7 +16,9 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       if (el.dataset.fadeDone === 'true') return
       el.dataset.fadeDone = 'true'
       const targetOpacity = el.classList.contains('industry-image-bg') ? 0.7 : 1
-      gsap.to(el, { opacity: targetOpacity, y: 0, duration: 0.6, ease: 'power2.out' })
+      const delayMs = Number.parseInt(el.dataset.fadeDelay ?? '0', 10)
+      const delay = Number.isFinite(delayMs) ? delayMs / 1000 : 0
+      gsap.to(el, { opacity: targetOpacity, y: 0, duration: 0.6, ease: 'power2.out', delay })
     }
 
     frame = requestAnimationFrame(() => {
