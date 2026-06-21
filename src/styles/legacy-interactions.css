@@ -98,6 +98,23 @@
   }
 }
 
+/* Company partner logos — infinite horizontal scroll */
+.company-logos-track {
+  display: flex;
+  width: max-content;
+  animation: company-logos-marquee-scroll 40s linear infinite;
+}
+
+@keyframes company-logos-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
 /* Scroll-reveal elements start hidden (matches legacy inline opacity:0) */
 [data-fade-in] {
   opacity: 0;

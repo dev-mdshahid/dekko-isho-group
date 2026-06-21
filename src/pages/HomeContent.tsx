@@ -18,6 +18,8 @@ import {
 
   CompanySection,
 
+  CompanyLogosSection,
+
   HeroSection,
 
   HeroVideo,
@@ -63,6 +65,8 @@ export function HomeContent() {
       <SectionGradient />
 
       <CompanySection />
+
+      <CompanyLogosSection />
 
       <ProductSection />
 

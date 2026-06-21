@@ -10301,3 +10301,70 @@ figcaption {
     margin-top: 2rem;
   }
 }
+
+.company-logos-section {
+  background-color: var(--color--white);
+  padding-top: 3.125rem;
+  padding-bottom: 3.125rem;
+}
+
+.company-logos-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.company-logos-list {
+  grid-column-gap: 4.5rem;
+  grid-row-gap: 4.5rem;
+  flex: none;
+  align-items: center;
+  display: flex;
+}
+
+.company-logos-item {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-logos-image {
+  max-height: 2.5rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0);
+  opacity: 0.45;
+}
+
+@media screen and (max-width: 991px) {
+  .company-logos-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .company-logos-list {
+    grid-column-gap: 3.5rem;
+    grid-row-gap: 3.5rem;
+  }
+
+  .company-logos-image {
+    max-height: 2.25rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .company-logos-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .company-logos-list {
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 2.5rem;
+  }
+
+  .company-logos-image {
+    max-height: 2rem;
+  }
+}
