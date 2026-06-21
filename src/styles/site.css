@@ -5125,6 +5125,214 @@ figcaption {
   line-height: var(--_typography---body--line-height-0);
 }
 
+.about-integrity-section {
+  --about-integrity-accent: #d62d51;
+  --about-integrity-divider: #333333;
+  background-color: var(--color--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-integrity-main {
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+}
+
+.about-integrity-container {
+  max-width: 82.5rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-integrity-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.about-integrity-grid {
+  grid-column-gap: 4.5rem;
+  grid-row-gap: 3.125rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  display: grid;
+}
+
+.about-integrity-intro {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.about-integrity-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.375rem;
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.15em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.about-integrity-description {
+  color: var(--color--gray-3);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.5em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-bottom: 0;
+}
+
+.about-integrity-details {
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
+  flex-flow: column;
+  display: flex;
+  width: 100%;
+}
+
+.about-integrity-card {
+  border-radius: .5rem;
+  background-color: var(--about-integrity-accent);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-integrity-card-stripes {
+  pointer-events: none;
+  opacity: .18;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #ffffff26 0,
+    #ffffff26 2px,
+    #0000 2px,
+    #0000 10px
+  );
+  width: 7.5rem;
+  height: 7.5rem;
+  position: absolute;
+}
+
+.about-integrity-card-stripes--top {
+  top: 0;
+  left: 0;
+}
+
+.about-integrity-card-stripes--bottom {
+  bottom: 0;
+  right: 0;
+}
+
+.about-integrity-year {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 3rem;
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  position: relative;
+  z-index: 1;
+}
+
+.about-integrity-card-text {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.5em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  max-width: 30rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.about-integrity-principles {
+  flex-flow: column;
+  display: flex;
+  width: 100%;
+}
+
+.about-integrity-principle {
+  border-bottom: 1px solid var(--about-integrity-divider);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.about-integrity-principle:first-child {
+  padding-top: 0;
+}
+
+.about-integrity-principle:last-child {
+  border-bottom-style: none;
+  padding-bottom: 0;
+}
+
+.about-integrity-principle-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1.3em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+.about-integrity-principle-text {
+  color: var(--color--gray-3);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.5em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .about-integrity-main {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .about-integrity-grid {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+    align-items: start;
+  }
+
+  .about-integrity-intro {
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-integrity-main {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .about-integrity-container {
+    padding-left: .9375rem;
+    padding-right: .9375rem;
+  }
+
+  .about-integrity-title {
+    font-size: 2rem;
+  }
+
+  .about-integrity-year {
+    font-size: 2.5rem;
+  }
+
+  .about-integrity-details {
+    grid-row-gap: 2.5rem;
+  }
+}
+
 .client-section {
   position: relative;
   overflow: hidden;

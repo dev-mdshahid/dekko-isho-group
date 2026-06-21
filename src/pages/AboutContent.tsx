@@ -4,6 +4,7 @@ import {
   AboutClientsSection,
   AboutHeroSection,
   AboutImageInfoSection,
+  AboutIntegritySection,
   AboutJourneySection,
   AboutTeamSection,
   AboutVideoSection,
@@ -24,6 +25,7 @@ export function AboutContent() {
       <AboutHeroSection />
       <AboutImageInfoSection />
       <AboutJourneySection />
+      <AboutIntegritySection />
       <AboutClientsSection />
       <AboutVideoSection />
       <AboutTeamSection />
