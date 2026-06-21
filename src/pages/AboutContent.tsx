@@ -2,7 +2,6 @@ import { useRef } from 'react'
 
 import {
   AboutChairmanSection,
-  AboutClientsSection,
   AboutHeroSection,
   AboutImageInfoSection,
   AboutIntegritySection,

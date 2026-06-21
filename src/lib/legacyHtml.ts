@@ -5,7 +5,7 @@ const htmlToRoute: Record<string, string> = {
   'services.html': '/services',
   'products.html': '/products',
   'case-studies.html': '/case-studies',
-  'blog.html': '/blog',
+  'blog.html': '/press',
   'faqs.html': '/faqs',
   'contact.html': '/contact',
   'privacy-policy.html': '/privacy-policy',

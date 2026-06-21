@@ -14,7 +14,7 @@ const mainLinks = [
   { to: '/products', label: 'Products' },
   { to: '/services', label: 'Services' },
   { to: '/case-studies', label: 'Case Studies' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/press', label: 'Press' },
   { to: '/contact', label: 'Contact' },
 ]
 

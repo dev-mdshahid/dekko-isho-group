@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 694 398" fill="none" role="img" aria-hidden="true">
+  <rect width="694" height="398" fill="#ECE8E2"/>
+  <rect x="520" y="0" width="174" height="398" fill="#CFE7F7"/>
+  <rect x="0" y="126" width="694" height="20" fill="#FFFFFF"/>
+  <rect x="0" y="228" width="694" height="14" fill="#FFFFFF"/>
+  <rect x="160" y="0" width="16" height="398" fill="#FFFFFF"/>
+  <rect x="334" y="0" width="22" height="398" fill="#FFFFFF"/>
+  <rect x="0" y="78" width="694" height="10" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="0" y="286" width="694" height="10" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M96 0L236 398H188L48 0H96Z" fill="#FFFFFF" opacity="0.8"/>
+  <path d="M410 0L548 398H500L362 0H410Z" fill="#FFFFFF" opacity="0.75"/>
+  <rect x="42" y="36" width="118" height="78" rx="4" fill="#C8D8B8" opacity="0.78"/>
+  <rect x="250" y="250" width="136" height="84" rx="4" fill="#C8D8B8" opacity="0.62"/>
+  <path d="M286 122C252.9 122 226 148.9 226 182C226 224 286 272 286 272C286 272 346 224 346 182C346 148.9 319.1 122 286 122Z" fill="#EA4335"/>
+  <circle cx="286" cy="182" r="19" fill="#EA4335"/>
+  <circle cx="286" cy="182" r="7.5" fill="#FFFFFF"/>
+</svg>

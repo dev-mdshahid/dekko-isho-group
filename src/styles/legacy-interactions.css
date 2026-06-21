@@ -71,12 +71,16 @@
 
   /* Case study + blog image scale on hover */
   .case-study-image,
-  .blog-image {
+  .blog-image,
+  .blog-image-one,
+  .blog-image-01 {
     transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   .case-study-link:hover .case-study-image,
-  .blog-link:hover .blog-image {
+  .blog-link:hover .blog-image,
+  .feature-blog-item:hover .blog-image-one,
+  .blog-link-one:hover .blog-image-01 {
     transform: scale3d(1.05, 1.05, 1);
   }
 }

@@ -9,33 +9,13 @@ import { useWebflowInit } from '../hooks/useWebflowInit'
 import { SectionGradient } from '../components/ui/SectionDecor'
 
 import {
-
   AboutSection,
-
-  BlogSection,
-
-  CaseStudySection,
-
   CompanySection,
-
   CompanyLogosSection,
-
   ContactUsSection,
-
   HeroSection,
-
   HeroVideo,
-
-  IndustrySection,
-
-  ProductSection,
-
   ServiceSection,
-
-  TestimonialSection,
-
-  WhyChooseSection,
-
 } from '../components/home'
 
 

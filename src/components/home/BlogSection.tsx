@@ -15,7 +15,7 @@ export function BlogSection() {
                 </div>
                 <h2 className="section-title">Latest from our <span className="text-linear-gradient">blog</span></h2>
                 <div className="blog-button">
-                  <a data-wf--button-arrow--variant="base" href="/blog" className="primary-button w-inline-block">
+                  <a data-wf--button-arrow--variant="base" href="/press" className="primary-button w-inline-block">
                     <div className="button-primary-inner">
                       <div className="button-text-wrap">
                         <div className="button-text-inner">

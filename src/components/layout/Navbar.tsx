@@ -9,7 +9,7 @@ const pageLinks = [
   { to: '/services', label: 'Services' },
   { to: '/case-studies', label: 'Case Studies' },
   { to: '/products', label: 'Products' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/press', label: 'Press' },
   { to: '/faqs', label: 'FAQs' },
   { to: '/contact', label: 'Contact' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
