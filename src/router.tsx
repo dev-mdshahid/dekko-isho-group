@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { legacyRoutes } from './data/legacyRoutes'
+import { AboutPage } from './pages/AboutPage'
 import { HomePage } from './pages/HomePage'
 import { LegacyRoutePage } from './pages/LegacyRoutePage'
 
@@ -10,6 +11,7 @@ const legacyRouteElements = legacyRoutes.map((route) => ({
 
 export const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
+  { path: '/about', element: <AboutPage /> },
   ...legacyRouteElements,
   {
     path: '*',

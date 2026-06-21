@@ -1,0 +1,6 @@
+export { AboutClientsSection } from './AboutClientsSection'
+export { AboutHeroSection } from './AboutHeroSection'
+export { AboutImageInfoSection } from './AboutImageInfoSection'
+export { AboutJourneySection } from './AboutJourneySection'
+export { AboutTeamSection } from './AboutTeamSection'
+export { AboutVideoSection } from './AboutVideoSection'

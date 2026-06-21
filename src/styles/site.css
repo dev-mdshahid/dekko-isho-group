@@ -27,14 +27,14 @@
   --_typography---h6--font-weight-600: 600;
   --color--grey-1: #191919;
   --border-radius--xs: .188rem;
-  --color--primary-2: #c8370b;
+  --color--primary-2: #b81a47;
   --color--white: white;
   --font-size--1-25rem\<deleted\|variable-b2732499-df66-bb36-957f-2199c8ae882a\>: 1.25rem;
   --_layout---container-max-width: 1360px;
   --_layout---container-gutter: 1.875rem;
   --border-radius--form-input: .313rem;
   --color--dark: #151515;
-  --color--primary-1: #f66234;
+  --color--primary-1: #f3215d;
   --border-radius--md: .625rem;
   --color--gray-3: #a7a3a2;
   --color--gray-4: #d1d1d1;
@@ -61,7 +61,7 @@
   --color--transparent: #0000;
   --_typography---body--line-height-0: 0em;
   --gap--gap-3: 7px;
-  --color--primary-4\<deleted\|variable-917853d5-c2ef-9176-78b8-ac7e2841dc8e\>: #f66234;
+  --color--primary-4\<deleted\|variable-917853d5-c2ef-9176-78b8-ac7e2841dc8e\>: #f3215d;
   --_layout---spacing--section-spacing: 12.5rem;
   --_layout---spacing--section-spacing-bottom: 12.5rem;
   --gap--gap-7: 24px;
@@ -73,7 +73,7 @@
   --font-size--3rem\<deleted\|variable-79b50ef5-8767-cd91-ee36-06003ff765fe\>: 3rem;
   --font-size--2-125rem\<deleted\|variable-76401e84-c0c5-8355-64d0-16402f07f279\>: 2.125rem;
   --font-size--0-875rem\<deleted\|variable-35b1c6f2-40df-6c53-2320-b2146748d199\>: .875rem;
-  --color--primary-3: #9e3211;
+  --color--primary-3: #901438;
   --_layout---container-full-max-width: 100%;
   --_layout---container-full-gutter: 3.125rem;
   --gap--gap-6: 20px;
@@ -4630,7 +4630,7 @@ figcaption {
 }
 
 .step-info {
-  background-image: linear-gradient(-45deg, #c8370b, #f66234);
+  background-image: linear-gradient(-45deg, #b81a47, #f3215d);
   justify-content: space-between;
   align-items: center;
   padding: 1.875rem 3rem;
@@ -4639,15 +4639,15 @@ figcaption {
 }
 
 .step-info.one {
-  background-image: linear-gradient(-45deg, #c8370b4d, #f662344d);
+  background-image: linear-gradient(-45deg, #b81a474d, #f3215d4d);
 }
 
 .step-info.two {
-  background-image: linear-gradient(-45deg, #c8370b80, #f6623480);
+  background-image: linear-gradient(-45deg, #b81a4780, #f3215d80);
 }
 
 .step-info.three {
-  background-image: linear-gradient(-45deg, #c8370bbf, #f66234bf);
+  background-image: linear-gradient(-45deg, #b81a47bf, #f3215dbf);
 }
 
 .step-text {

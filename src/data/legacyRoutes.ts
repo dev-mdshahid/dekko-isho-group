@@ -9,7 +9,6 @@ export type LegacyRoute = {
 
 export const legacyRoutes: LegacyRoute[] = [
   { path: '/home-2', file: 'home-2.html', title: 'Home 2 | Manufactt - Webflow HTML website template', layout: 'home2' },
-  { path: '/about', file: 'about.html', title: 'About | Manufactt - Webflow HTML website template', layout: 'main' },
   { path: '/services', file: 'services.html', title: 'Services | Manufactt - Webflow HTML website template', layout: 'main' },
   { path: '/products', file: 'products.html', title: 'product | Manufactt - Webflow HTML website template', layout: 'main' },
   { path: '/case-studies', file: 'case-studies.html', title: 'Case Study| Manufactt - Webflow HTML website template', layout: 'main' },
