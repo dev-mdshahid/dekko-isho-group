@@ -5531,6 +5531,175 @@ figcaption {
   }
 }
 
+.about-strength-section {
+  --about-strength-card-padding-y: 31px;
+  --about-strength-card-padding-x: 23px;
+  --about-strength-title-size: var(--font-size--2-625rem\<deleted\|variable-1f7bf3c7-5041-ffc6-5ca5-d260ad55a339\>);
+  --about-strength-subtitle-size: var(--base-font-size--base-small);
+  --about-strength-number-content-gap: var(--_typography---h5--h5);
+  --about-strength-card-text-gap: var(--base-font-size--base-small);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-strength-bg {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.about-strength-overlay {
+  pointer-events: none;
+  background-color: #151515b3;
+  position: absolute;
+  inset: 0;
+}
+
+.about-strength-container {
+  z-index: 1;
+  position: relative;
+  max-width: 81.25rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-strength-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.about-strength-main {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-12);
+  width: 100%;
+}
+
+.about-strength-header {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-5);
+  width: 100%;
+}
+
+.about-strength-title-row {
+  display: flex;
+  align-items: stretch;
+  gap: var(--gap--gap-5);
+  width: 100%;
+}
+
+.about-strength-accent {
+  background-color: var(--color--primary-1);
+  width: 2px;
+  flex: none;
+}
+
+.about-strength-title {
+  font-size: var(--about-strength-title-size);
+  line-height: var(--_typography---h2--line-height);
+  margin-bottom: 0;
+  width: 100%;
+  max-width: none;
+}
+
+.about-strength-description {
+  color: var(--color--gray-3);
+  font-size: var(--about-strength-subtitle-size);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+  width: 100%;
+  max-width: none;
+}
+
+.about-strength-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap--gap-6);
+  width: 100%;
+}
+
+.about-strength-card {
+  border-radius: var(--border-radius--md);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: #15151580;
+  border: 1px solid #ffffff1a;
+  padding: var(--about-strength-card-padding-y) var(--about-strength-card-padding-x);
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--about-strength-number-content-gap);
+  width: 100%;
+}
+
+.about-strength-card-content {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--about-strength-card-text-gap);
+  width: 100%;
+}
+
+.about-strength-card-number {
+  background-color: var(--color--white);
+  border-radius: 50%;
+  color: var(--color--dark);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-strength-card-title {
+  color: var(--color--white);
+  font-size: var(--base-font-size--base);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+}
+
+.about-strength-card-description {
+  color: var(--color--gray-3);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .about-strength-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-strength-main {
+    gap: var(--gap--gap-8);
+  }
+
+  .about-strength-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .client-section {
   position: relative;
   overflow: hidden;

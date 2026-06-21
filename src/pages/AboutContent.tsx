@@ -7,6 +7,7 @@ import {
   AboutIntegritySection,
   AboutJourneySection,
   AboutOverviewSection,
+  AboutStrengthSection,
   AboutTeamSection,
   AboutVideoSection,
 } from '../components/about'
@@ -29,6 +30,7 @@ export function AboutContent() {
       <AboutIntegritySection />
       <AboutVideoSection />
       <AboutJourneySection />
+      <AboutStrengthSection />
       <AboutClientsSection />
       <AboutTeamSection />
     </div>
