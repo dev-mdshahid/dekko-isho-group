@@ -2393,15 +2393,26 @@ figcaption {
   flex-flow: column;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
   display: flex;
 }
 
 .service-list-wrapper {
+  width: 100%;
   position: sticky;
+}
+
+.service-list,
+.service-list-item {
+  width: 100%;
 }
 
 .service-list-wrapper.one {
   top: 100px;
+}
+
+.service-list-wrapper.two {
+  top: 200px;
 }
 
 .service-list-wrapper.three {
@@ -2412,8 +2423,8 @@ figcaption {
   top: 400px;
 }
 
-.service-list-wrapper.two {
-  top: 200px;
+.service-list-wrapper.five {
+  top: 500px;
 }
 
 .service-info-link {
@@ -2437,7 +2448,14 @@ figcaption {
   grid-template-rows: auto;
   grid-template-columns: auto 1fr;
   grid-auto-columns: 1fr;
+  width: 100%;
+  min-width: 0;
   display: grid;
+}
+
+.service-image-main:has(> .service-image-wrap:only-child) {
+  grid-template-columns: 1fr;
+  width: 100%;
 }
 
 .service-icon {
@@ -2449,6 +2467,8 @@ figcaption {
   border-radius: var(--border-radius--sm);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 530 / 300;
 }
 
 .service-image {
@@ -2465,6 +2485,7 @@ figcaption {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr;
   grid-auto-columns: 1fr;
+  min-width: 0;
   display: grid;
 }
 
@@ -2539,6 +2560,8 @@ figcaption {
   grid-template-rows: auto;
   grid-template-columns: .7fr 1fr;
   grid-auto-columns: 1fr;
+  width: 100%;
+  min-width: 0;
   display: grid;
 }
 
@@ -2549,7 +2572,12 @@ figcaption {
   height: 200px;
   display: flex;
   position: sticky;
-  top: 550px;
+  top: 650px;
+}
+
+.service-details-wrap .service-description {
+  margin-top: 1.25rem;
+  max-width: 36rem;
 }
 
 .cta-info-wrapper {
@@ -7506,11 +7534,14 @@ figcaption {
     position: static;
   }
 
+  .service-box-height {
+    display: none;
+  }
+
   .service-info-link {
     grid-column-gap: var(--gap--gap-8);
     grid-row-gap: var(--gap--gap-8);
-    padding-top: 1.875rem;
-    padding-bottom: 1.875rem;
+    padding: 1.875rem 0;
   }
 
   .service-image-main {
@@ -7548,10 +7579,6 @@ figcaption {
   .service-info-inner {
     grid-column-gap: var(--gap--gap-8);
     grid-row-gap: var(--gap--gap-8);
-  }
-
-  .service-box-height {
-    display: none;
   }
 
   .cta-info-wrapper {
@@ -8633,12 +8660,22 @@ figcaption {
   }
 
   .service-info-link {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    padding: 1.25rem 0;
   }
 
   .service-image-main {
     grid-template-columns: auto;
+  }
+
+  .service-image-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 530 / 300;
+  }
+
+  .service-image {
+    width: 100%;
+    height: 100%;
   }
 
   .service-info-inner {
