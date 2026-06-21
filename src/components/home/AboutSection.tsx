@@ -1,3 +1,6 @@
+import { useRef } from 'react'
+
+import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
@@ -6,6 +9,9 @@ const INDUSTRY_DESCRIPTION =
 
 const MANUFACTURING_IMAGE = '/images/about/manufacturing.jpg'
 const LAUNDRY_IMAGE = '/images/about/laundry.jpg'
+const COMPLIANCE_IMAGE = '/images/about/compliance.jpg'
+const DESIGN_IMAGE = '/images/about/design.jpg'
+const INTEGRATION_IMAGE = '/images/about/integration.jpg'
 
 type IndustryTextItem = {
   type: 'text'
@@ -40,7 +46,7 @@ const industries: IndustryItem[] = [
     title: 'Industrial Laundry',
     variant: 'dark',
   },
-  { type: 'image', alt: 'Compliance and sustainability' },
+  { type: 'image', src: COMPLIANCE_IMAGE, alt: 'Compliance and sustainability' },
   {
     type: 'text',
     id: 'e0a0517f-1ee8-9dfc-bba2-14c8a6a448da',
@@ -48,9 +54,9 @@ const industries: IndustryItem[] = [
     title: 'Compliance & Sustainability',
     variant: 'light',
   },
-  { type: 'image', alt: 'Design and product development' },
+  { type: 'image', src: DESIGN_IMAGE, alt: 'Design and product development' },
   { type: 'text', id: 'about-industry-04', number: '04', title: 'Design & Product Development', variant: 'light' },
-  { type: 'image', alt: 'Technology integration' },
+  { type: 'image', src: INTEGRATION_IMAGE, alt: 'Technology integration' },
   { type: 'text', id: 'about-industry-05', number: '05', title: 'Technology Integration', variant: 'dark' },
 ]
 
@@ -72,13 +78,24 @@ function IndustryTextCircle({ id, number, title, variant }: IndustryTextItem) {
 
 function IndustryImageCircle({ src, alt }: IndustryImageItem) {
   if (src) {
-    return <img src={src} loading="lazy" alt={alt} className="about-image-box" />
+    return (
+      <img
+        src={src}
+        loading="lazy"
+        alt={alt}
+        draggable={false}
+        className="about-image-box"
+      />
+    )
   }
 
   return <div className="about-image-box about-image-placeholder" role="img" aria-label={alt} />
 }
 
 export function AboutSection() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  useHorizontalScroll(scrollRef)
+
   return (
     <section id="About-Section" className="about-section">
       <div className="about-main section-spacing">
@@ -102,7 +119,7 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="about-scroll-viewport">
+        <div ref={scrollRef} className="about-scroll-viewport">
           <div className="about-info-inner is-scroll">
             {industries.map((item, index) =>
               item.type === 'text' ? (
