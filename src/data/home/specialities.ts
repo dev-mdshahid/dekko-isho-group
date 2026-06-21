@@ -61,11 +61,11 @@ export const serviceSpecialities: ServiceSpeciality[] = [
       {
         group: 'Environmental Excellence',
         items: [
-          'Solar Capacity - 1.731 MWp',
+          'Solar Capacity - 1.761 MWp',
           '100 m³/hr Effluent Treatment Capacity',
           '25.5 m³/hr Wastewater Reuse Capacity',
-          '8% Improvement in Treatment Efficiency (2023)',
-          '77% reduction of Scope 2 emissions (2023)',
+          '8% Improvement in Treatment Efficiency (2025)',
+          '77% reduction of Scope 2 emissions (2025)',
         ],
       },
       {
@@ -74,7 +74,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
       },
       {
         group: 'Sustainable Consumption and Production',
-        items: ['402 Tons of Textile Waste Recycled', '50% reduction in GHG emissions'],
+        items: ['402 Tons of Textile Waste Recycled', '80% reduction in GHG emissions'],
       },
     ],
   },

@@ -5,22 +5,43 @@ import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
+function ServiceArrow({
+  arrowWIds,
+  className = 'service-arrow',
+}: {
+  arrowWIds: [string, string]
+  className?: string
+}) {
+  return (
+    <div className={className}>
+      <img
+        src={legacyImage('testimonial-Slide-Arrow-1.svg')}
+        loading="lazy"
+        data-w-id={arrowWIds[0]}
+        alt=""
+        className="service-icon-01"
+      />
+      <img
+        src={legacyImage('testimonial-Slide-Arrow-1.svg')}
+        loading="lazy"
+        data-w-id={arrowWIds[1]}
+        alt=""
+        className="service-hover-icon"
+      />
+    </div>
+  )
+}
+
 function ServiceFeatures({ features }: { features: string[] | ServiceFeatureGroup[] }) {
   if (features.length === 0) return null
 
   if (typeof features[0] === 'string') {
     return (
       <div className="service-feature-list">
-        <div className="feature-list-item">
+        <div className="service-feature-group-items">
           {(features as string[]).map((item) => (
-            <div key={item} className="feature-item-inner">
-              <img
-                src={legacyImage('list-icon.svg')}
-                loading="lazy"
-                alt=""
-                className="feature-item-icon"
-              />
-              <div className="feature-item">{item}</div>
+            <div key={item} className="service-feature-group-item">
+              {item}
             </div>
           ))}
         </div>
@@ -29,20 +50,14 @@ function ServiceFeatures({ features }: { features: string[] | ServiceFeatureGrou
   }
 
   return (
-    <div className="service-feature-list">
+    <div className="service-feature-list service-feature-list--grouped">
       {(features as ServiceFeatureGroup[]).map((group) => (
-        <div key={group.group}>
+        <div key={group.group} className="service-feature-group">
           <div className="service-feature-text text-linear-gradient">{group.group}</div>
-          <div className="feature-list-item">
+          <div className="service-feature-group-items">
             {group.items.map((item) => (
-              <div key={item} className="feature-item-inner">
-                <img
-                  src={legacyImage('list-icon.svg')}
-                  loading="lazy"
-                  alt=""
-                  className="feature-item-icon"
-                />
-                <div className="feature-item">{item}</div>
+              <div key={item} className="service-feature-group-item">
+                {item}
               </div>
             ))}
           </div>
@@ -60,7 +75,7 @@ export function ServiceSection() {
           <FadeIn id="238c3f25-28e9-d07e-772d-22cc173e9e24" className="service-details-wrap">
             <PreSectionTitle title="What Makes Us Special" />
             <div className="section-title-wrap">
-              <div>
+              <div className="section-title-intro">
                 <h2 className="section-title">
                   Weaving the <span className="text-linear-gradient">Future</span> of Fashion
                 </h2>
@@ -92,6 +107,8 @@ export function ServiceSection() {
                             <img
                               src={speciality.image}
                               loading="lazy"
+                              decoding="async"
+                              sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, 530px"
                               data-w-id={speciality.imageWId}
                               alt={speciality.title}
                               className="service-image"
@@ -101,26 +118,18 @@ export function ServiceSection() {
                         <div className="service-content-wrap">
                           <div className="service-name-wrapper">
                             <h2 className="service-name">{speciality.title}</h2>
+                            <ServiceArrow
+                              arrowWIds={speciality.arrowWIds}
+                              className="service-arrow service-arrow-mobile"
+                            />
                           </div>
                           <ServiceFeatures features={speciality.features} />
                         </div>
                       </div>
-                      <div className="service-arrow">
-                        <img
-                          src={legacyImage('testimonial-Slide-Arrow-1.svg')}
-                          loading="lazy"
-                          data-w-id={speciality.arrowWIds[0]}
-                          alt=""
-                          className="service-icon-01"
-                        />
-                        <img
-                          src={legacyImage('testimonial-Slide-Arrow-1.svg')}
-                          loading="lazy"
-                          data-w-id={speciality.arrowWIds[1]}
-                          alt=""
-                          className="service-hover-icon"
-                        />
-                      </div>
+                      <ServiceArrow
+                        arrowWIds={speciality.arrowWIds}
+                        className="service-arrow service-arrow-desktop"
+                      />
                     </Link>
                   </div>
                 </div>
