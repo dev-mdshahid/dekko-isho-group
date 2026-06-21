@@ -1,3 +1,4 @@
+export { AboutChairmanSection } from './AboutChairmanSection'
 export { AboutClientsSection } from './AboutClientsSection'
 export { AboutHeroSection } from './AboutHeroSection'
 export { AboutImageInfoSection } from './AboutImageInfoSection'

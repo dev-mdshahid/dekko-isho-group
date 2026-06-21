@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 
 import {
+  AboutChairmanSection,
   AboutClientsSection,
   AboutHeroSection,
   AboutImageInfoSection,
@@ -31,6 +32,7 @@ export function AboutContent() {
       <AboutVideoSection />
       <AboutJourneySection />
       <AboutStrengthSection />
+      <AboutChairmanSection />
       <AboutClientsSection />
       <AboutTeamSection />
     </div>

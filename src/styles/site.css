@@ -5700,6 +5700,172 @@ figcaption {
   }
 }
 
+.about-chairman-section {
+  background-color: var(--color--white);
+}
+
+.about-chairman-container {
+  max-width: 81.25rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-chairman-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.about-chairman-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 28.125rem) minmax(0, 1fr);
+  column-gap: 4.5rem;
+  row-gap: 3rem;
+  align-items: start;
+  width: 100%;
+}
+
+.about-chairman-profile {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 1.875rem;
+  width: 100%;
+}
+
+.about-chairman-identity {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  width: 100%;
+}
+
+.about-chairman-portrait {
+  border-radius: var(--border-radius--md);
+  object-fit: cover;
+  object-position: center top;
+  width: 100%;
+  aspect-ratio: 400 / 500;
+}
+
+.about-chairman-name {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 3.375rem;
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.about-chairman-role {
+  color: var(--color--primary-1);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.about-chairman-message {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.about-chairman-label {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.about-chairman-label-text {
+  color: var(--color--gray-2);
+  font-family: var(--_typography---font-family--body);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.about-chairman-quote {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.35;
+  margin: 0 0 2rem;
+  max-width: 46rem;
+  text-align: left;
+  width: 100%;
+}
+
+.about-chairman-divider {
+  background-color: var(--color--gray-4);
+  height: 1px;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.about-chairman-body {
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.about-chairman-paragraph {
+  color: var(--color--gray-2);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .about-chairman-grid {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .about-chairman-portrait {
+    max-width: 28.125rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-chairman-name {
+    font-size: 2.625rem;
+  }
+
+  .about-chairman-quote {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-chairman-label {
+    margin-bottom: 1.75rem;
+  }
+
+  .about-chairman-divider {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .client-section {
   position: relative;
   overflow: hidden;
