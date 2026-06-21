@@ -7,9 +7,10 @@ import {
   AboutImageInfoSection,
   AboutIntegritySection,
   AboutJourneySection,
+  AboutLeadershipSection,
   AboutOverviewSection,
+  AboutRoadmapSection,
   AboutStrengthSection,
-  AboutTeamSection,
   AboutVideoSection,
 } from '../components/about'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -33,8 +34,9 @@ export function AboutContent() {
       <AboutJourneySection />
       <AboutStrengthSection />
       <AboutChairmanSection />
-      <AboutClientsSection />
-      <AboutTeamSection />
+      <AboutLeadershipSection />
+      <AboutRoadmapSection />
+      {/* <AboutClientsSection /> */}
     </div>
   )
 }

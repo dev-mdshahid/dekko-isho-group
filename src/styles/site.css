@@ -5866,6 +5866,270 @@ figcaption {
   }
 }
 
+.about-leadership-section {
+  --about-leadership-bg: var(--color--grey-1);
+  --about-leadership-card-bg: var(--color--dark);
+  background-color: var(--about-leadership-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-leadership-container {
+  z-index: 1;
+  position: relative;
+  max-width: 81.25rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-leadership-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.about-leadership-header {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-5);
+  margin-bottom: var(--gap--gap-10);
+  width: 100%;
+}
+
+.about-leadership-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+.about-leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap--gap-7);
+  align-items: stretch;
+  width: 100%;
+}
+
+.about-leadership-card-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.about-leadership-card {
+  background-color: var(--about-leadership-card-bg);
+  border-radius: var(--border-radius--md);
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.about-leadership-card-image {
+  object-fit: cover;
+  object-position: center top;
+  width: 100%;
+  height: 22.5rem;
+}
+
+.about-leadership-card-body {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  flex: 1;
+  gap: 0.625rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.about-leadership-card-name {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.5rem;
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.about-leadership-card-role {
+  color: var(--color--primary-1);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.about-leadership-card-description {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.5;
+  margin-top: 0.375rem;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .about-leadership-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-leadership-header {
+    margin-bottom: var(--gap--gap-8);
+  }
+
+  .about-leadership-title {
+    font-size: 1.875rem;
+  }
+
+  .about-leadership-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-leadership-card-image {
+    height: 18.75rem;
+  }
+}
+
+.about-roadmap-section.service-category-section {
+  --about-roadmap-bg: var(--color--grey-1);
+  --about-roadmap-category-width: 18.75rem;
+  --about-roadmap-column-gap: 5rem;
+  --about-roadmap-divider: color-mix(in srgb, var(--color--gray-5) 5%, transparent);
+  background-color: var(--about-roadmap-bg);
+  background-image: none;
+  border-top: 1px dashed var(--about-roadmap-divider);
+  padding-bottom: 0;
+}
+
+.about-roadmap-container {
+  z-index: 1;
+  position: relative;
+  max-width: 81.25rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-roadmap-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.about-roadmap-section .grid-category-title,
+.about-roadmap-section .grid-category-inner,
+.about-roadmap-section .grid-category-info {
+  grid-template-columns:
+    minmax(0, var(--about-roadmap-category-width))
+    minmax(0, var(--about-roadmap-column-gap))
+    minmax(0, 1fr);
+  column-gap: 0;
+  align-items: start;
+}
+
+.about-roadmap-section .service-category-inner {
+  gap: var(--gap--gap-10);
+}
+
+.about-roadmap-section .category-content-wrap {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-10);
+}
+
+.about-roadmap-section .about-roadmap-title {
+  font-family: var(--_typography---font-family--heading);
+  font-size: 3.625rem;
+  font-weight: 600;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.1;
+  max-width: none;
+}
+
+.about-roadmap-section .category-text {
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.about-roadmap-section .category-name {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.4;
+}
+
+.about-roadmap-section .category-details {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.5;
+}
+
+.about-roadmap-section .grid-category-inner,
+.about-roadmap-section .grid-category-info {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .about-roadmap-section {
+    --about-roadmap-category-width: 1fr;
+    --about-roadmap-column-gap: 0;
+  }
+
+  .about-roadmap-section .grid-category-title,
+  .about-roadmap-section .grid-category-inner,
+  .about-roadmap-section .grid-category-info {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--gap--gap-7);
+  }
+
+  .about-roadmap-section .about-roadmap-spacer {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-roadmap-section .about-roadmap-title {
+    font-size: 2.25rem;
+  }
+
+  .about-roadmap-section .category-inner-right {
+    display: block;
+  }
+}
+
 .client-section {
   position: relative;
   overflow: hidden;
