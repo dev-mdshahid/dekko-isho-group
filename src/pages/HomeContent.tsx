@@ -20,6 +20,8 @@ import {
 
   CompanyLogosSection,
 
+  ContactUsSection,
+
   HeroSection,
 
   HeroVideo,
@@ -67,6 +69,8 @@ export function HomeContent() {
       <CompanySection />
 
       <CompanyLogosSection />
+
+      <ContactUsSection />
 
       <ProductSection />
 
