@@ -72,7 +72,7 @@ export function HomeContent() {
 
       <ContactUsSection />
 
-      <ProductSection />
+      {/* <ProductSection />
 
       <IndustrySection />
 
@@ -82,7 +82,7 @@ export function HomeContent() {
 
       <TestimonialSection />
 
-      <BlogSection />
+      <BlogSection /> */}
 
     </div>
 
