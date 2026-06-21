@@ -1,6 +1,7 @@
 export { AboutSection } from './AboutSection'
 export { BlogSection } from './BlogSection'
 export { CaseStudySection } from './CaseStudySection'
+export { CompanySection } from './CompanySection'
 export { HeroSection } from './HeroSection'
 export { HeroVideo } from './HeroVideo'
 export { IndustrySection } from './IndustrySection'

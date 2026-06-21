@@ -18,3 +18,11 @@ export function SectionLines({ border = 'grey' }: Props) {
 export function NoiseOverlay() {
   return <div className="noise-overlay" />
 }
+
+export function SectionGradient() {
+  return (
+    <div className="bg-shadow">
+      <div className="bg-vector" />
+    </div>
+  )
+}

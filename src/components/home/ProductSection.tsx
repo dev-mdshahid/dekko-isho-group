@@ -8,9 +8,6 @@ import { SectionLines } from '../ui/SectionDecor'
 export function ProductSection() {
   return (
     <section className="product-section">
-      <div className="bg-shadow">
-        <div className="bg-vector" />
-      </div>
       <div className="product-main section-spacing">
         <div className="container">
           <div className="products-counter-main">

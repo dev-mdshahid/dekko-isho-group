@@ -619,7 +619,7 @@ figcaption {
 .checkbox.w--redirected-checked {
   border: 1px solid var(--color--primary-1);
   background-color: var(--color--primary-1);
-  background-image: url('../images/check-white.svg');
+  background-image: url('/legacy/images/check-white.svg');
   background-position: 50%;
   background-size: auto;
   border-radius: 3px;
@@ -1060,7 +1060,7 @@ figcaption {
   font-size: var(--base-font-size--base-small);
   font-weight: var(--_typography---body--font-weight-500);
   text-transform: capitalize;
-  background-image: url('../images/Nav-Hover-Dot.svg');
+  background-image: url('/legacy/images/Nav-Hover-Dot.svg');
   background-position: 0%;
   background-repeat: no-repeat;
   background-size: 0 0;
@@ -1734,7 +1734,7 @@ figcaption {
   border: 1px solid var(--color--transparent);
   border-radius: var(--border-radius--sm);
   background-color: var(--color--white);
-  background-image: url('../images/button-dark-arrow.svg');
+  background-image: url('/legacy/images/button-dark-arrow.svg');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 12px 10px;
@@ -2091,7 +2091,7 @@ figcaption {
   text-decoration: underline;
   -webkit-text-decoration-color: var(--color--primary-2);
   text-decoration-color: var(--color--primary-2);
-  background-image: url('../images/Vector.svg');
+  background-image: url('/legacy/images/Vector.svg');
   background-position: 100%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -2111,7 +2111,7 @@ figcaption {
   color: var(--color--white);
   -webkit-text-decoration-color: var(--color--white);
   text-decoration-color: var(--color--white);
-  background-image: url('../images/Download-icon.svg');
+  background-image: url('/legacy/images/Download-icon.svg');
 }
 
 .download-link.text-white:hover {
@@ -2122,7 +2122,7 @@ figcaption {
 .download-link.text-dark {
   -webkit-text-decoration-color: var(--color--grey-1);
   text-decoration-color: var(--color--grey-1);
-  background-image: url('../images/Download-Icon-Dark.svg');
+  background-image: url('/legacy/images/Download-Icon-Dark.svg');
   background-position: 100%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -2632,7 +2632,7 @@ figcaption {
 .cta-info-wrapper {
   border-radius: var(--border-radius--sm);
   background-color: var(--color--dark);
-  background-image: url('../images/CTA-BG_1CTA BG.webp');
+  background-image: url('/legacy/images/CTA-BG_1CTA BG.webp');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -3049,7 +3049,7 @@ figcaption {
 }
 
 .why-choose-info {
-  background-image: url('../images/Why-choose-image.webp');
+  background-image: url('/legacy/images/Why-choose-image.webp');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3467,7 +3467,7 @@ figcaption {
 
 .about-image-info {
   border-radius: var(--border-radius--sm);
-  background-image: linear-gradient(180deg, var(--color--transparent), var(--color--dark)), url('../images/about.webp');
+  background-image: linear-gradient(180deg, var(--color--transparent), var(--color--dark)), url('/legacy/images/about.webp');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -3797,7 +3797,7 @@ figcaption {
 }
 
 .cta-section {
-  background-image: linear-gradient(#151515d9, #151515d9), url('../images/CTA-bg-2.webp');
+  background-image: linear-gradient(#151515d9, #151515d9), url('/legacy/images/CTA-bg-2.webp');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -4419,7 +4419,7 @@ figcaption {
 }
 
 .product-two-section {
-  background-image: linear-gradient(#15151599, #15151599), url('../images/Product-BG-Image_1Product BG Image.webp');
+  background-image: linear-gradient(#15151599, #15151599), url('/legacy/images/Product-BG-Image_1Product BG Image.webp');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -5903,7 +5903,7 @@ figcaption {
 
 .cta-more-info {
   border-radius: var(--border-radius--sm);
-  background-image: linear-gradient(103deg, var(--color--grey-1) 20%, #1919194d), url('../images/CTA-Image_1CTA Image.webp');
+  background-image: linear-gradient(103deg, var(--color--grey-1) 20%, #1919194d), url('/legacy/images/CTA-Image_1CTA Image.webp');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -6290,7 +6290,7 @@ figcaption {
 }
 
 .hero-two-bg-image {
-  background-image: url('../images/Hero-Image-2.webp');
+  background-image: url('/legacy/images/Hero-Image-2.webp');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -6436,7 +6436,7 @@ figcaption {
   border-radius: var(--border-radius--sm);
   opacity: .04;
   object-fit: cover;
-  background-image: url('../images/bg-noice.gif');
+  background-image: url('/legacy/images/bg-noice.gif');
   background-position: 50%;
   background-repeat: repeat;
   background-size: auto;
@@ -6589,7 +6589,7 @@ figcaption {
 
 .bg-vector {
   filter: blur(30px);
-  background-image: url('../images/01-vector_101 vector.webp');
+  background-image: url('/images/backgrounds/product-section-vector.webp');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -6610,7 +6610,7 @@ figcaption {
 
 .bg-gradient {
   filter: blur(30px);
-  background-image: url('../images/002_1002.avif');
+  background-image: url('/legacy/images/002_1002.avif');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10206,5 +10206,98 @@ figcaption {
   .service-section .cta-info-wrapper {
     padding-top: .625rem;
     padding-bottom: .625rem;
+  }
+}
+
+.company-section {
+  background-color: #151515;
+  position: relative;
+  overflow: hidden;
+}
+
+.company-section-main {
+  padding-top: var(--_layout---spacing--section-spacing-top);
+  padding-bottom: var(--_layout---spacing--section-spacing);
+  position: relative;
+}
+
+.company-section-inner {
+  max-width: 82.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+}
+
+.company-section-content {
+  max-width: 82.5rem;
+}
+
+.company-section-title {
+  font-size: var(--_typography---h2--h2);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight-600);
+  margin-bottom: 0;
+}
+
+.company-section-description {
+  color: var(--color--gray-3);
+  font-size: var(--_typography---body--body-sm);
+  line-height: var(--_typography---body--line-height);
+  max-width: 42rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.company-section-image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  max-width: 82.5rem;
+  height: auto;
+  aspect-ratio: 1320 / 486;
+  margin-top: 3.125rem;
+  display: block;
+}
+
+@media screen and (min-width: 992px) {
+  .company-section-image {
+    width: 82.5rem;
+    max-width: 100%;
+    height: 30.375rem;
+    aspect-ratio: auto;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .company-section-main {
+    padding-top: var(--_layout---spacing--section-spacing-top);
+    padding-bottom: var(--_layout---spacing--section-spacing-bottom);
+  }
+
+  .company-section-title {
+    font-size: var(--font-size--2-125rem\<deleted\|variable-76401e84-c0c5-8355-64d0-16402f07f279\>);
+  }
+
+  .company-section-description {
+    margin-top: 1.25rem;
+  }
+
+  .company-section-image {
+    margin-top: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .company-section-main {
+    padding-top: var(--_layout---spacing--section-spacing-top);
+  }
+
+  .company-section-title {
+    font-size: var(--font-size--1-75rem\<deleted\|variable-718b8370-7cf2-f6e7-6026-168fa1cd6d00\>);
+  }
+
+  .company-section-image {
+    margin-top: 2rem;
   }
 }
