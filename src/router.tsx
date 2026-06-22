@@ -2,8 +2,10 @@ import { createBrowserRouter, Navigate, useParams } from 'react-router-dom'
 import { legacyRoutes } from './data/legacyRoutes'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
+import { GalleryPage } from './pages/GalleryPage'
 import { HomePage } from './pages/HomePage'
 import { LegacyRoutePage } from './pages/LegacyRoutePage'
+import { AwardsPage } from './pages/AwardsPage'
 import { PressDetailPage } from './pages/PressDetailPage'
 import { PressPage } from './pages/PressPage'
 
@@ -21,8 +23,10 @@ export const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
   { path: '/about', element: <AboutPage /> },
   { path: '/contact', element: <ContactPage /> },
+  { path: '/gallery', element: <GalleryPage /> },
   { path: '/press', element: <PressPage /> },
   { path: '/press/:slug', element: <PressDetailPage /> },
+  { path: '/awards', element: <AwardsPage /> },
   { path: '/blog', element: <Navigate to="/press" replace /> },
   { path: '/blog/:slug', element: <LegacyBlogRedirect /> },
   ...legacyRouteElements,
