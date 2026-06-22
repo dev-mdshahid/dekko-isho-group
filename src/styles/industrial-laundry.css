@@ -1,0 +1,599 @@
+/* Industrial Laundry page — Figma deltas only. Uses legacy site.css classes. */
+
+.industrial-laundry-page {
+  --il-brand-start: #2595d5;
+  --il-brand-end: #1c72a3;
+  --il-brand: var(--il-brand-start);
+  --il-brand-gradient: linear-gradient(180deg, var(--il-brand-start) 0%, var(--il-brand-end) 100%);
+}
+
+.industrial-laundry-page .il-brand-gradient-bg {
+  background-color: var(--il-brand-start);
+  background-image: var(--il-brand-gradient);
+}
+
+/* ── Hero ── */
+.industrial-laundry-page .il-hero-section .service-details-top {
+  margin-bottom: 2.5rem;
+}
+
+.industrial-laundry-page .il-hero-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: var(--_typography---h1--font-weight-700);
+  line-height: 1.02;
+  margin-top: 0;
+}
+
+.industrial-laundry-page .il-hero-subtitle {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body);
+  font-weight: var(--_typography---body--font-weight-500);
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.industrial-laundry-page .service-detail-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.industrial-laundry-page .il-hero-video-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.industrial-laundry-page .il-hero-video {
+  width: 100%;
+  height: 650px;
+  position: relative;
+}
+
+.industrial-laundry-page .il-hero-video-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background-color: var(--color--dark);
+}
+
+.industrial-laundry-page .il-hero-video-control {
+  z-index: 2;
+}
+
+/* ── Innovation (feature cards) ── */
+.industrial-laundry-page .il-innovation-section {
+  background-color: var(--color--white);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.industrial-laundry-page .il-innovation-section .container {
+  max-width: 75rem;
+}
+
+.industrial-laundry-page .il-innovation-inner {
+  align-items: center;
+  width: 100%;
+  gap: 3.5rem;
+}
+
+.industrial-laundry-page .il-innovation-block {
+  width: 100%;
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.industrial-laundry-page .il-innovation-title {
+  text-align: left;
+  font-size: clamp(1.875rem, 2.8vw, 2.5rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.25;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin: 0;
+}
+
+.industrial-laundry-page .il-innovation-copy {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.industrial-laundry-page .il-innovation-description {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.65;
+  margin: 0;
+  text-align: left;
+}
+
+.industrial-laundry-page .il-feature-info {
+  width: 100%;
+}
+
+.industrial-laundry-page .il-feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+}
+
+.industrial-laundry-page .il-feature-grid .feature-main {
+  height: 100%;
+  text-align: left;
+  background-color: #f7f7f7;
+  border-radius: var(--border-radius--sm);
+  padding: 1.75rem 1.5rem;
+}
+
+.industrial-laundry-page .il-feature-grid .feature-icon-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.industrial-laundry-page .il-feature-grid .feature-icon {
+  width: 22px;
+  height: auto;
+  max-height: 24px;
+  display: block;
+}
+
+.industrial-laundry-page .il-feature-grid .feature-name {
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.industrial-laundry-page .il-feature-grid .feature-description {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Development (3-column) ── */
+.industrial-laundry-page .il-development-section {
+  background-color: var(--color--white);
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.industrial-laundry-page .il-development-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+.industrial-laundry-page .il-development-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  font-weight: var(--_typography---h2--font-weight-700);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.industrial-laundry-page .il-development-image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius--sm);
+  aspect-ratio: 3 / 4;
+}
+
+.industrial-laundry-page .il-development-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(100%);
+}
+
+.industrial-laundry-page .il-development-image-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.25rem 1.5rem;
+  color: var(--color--white);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: var(--_typography---h3--font-weight-700);
+  line-height: 1.1;
+  background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 72%) 100%);
+}
+
+.industrial-laundry-page .il-development-description {
+  margin: 0;
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  line-height: 1.65;
+}
+
+/* ── Industrial Washing / Process (Figma) ── */
+.industrial-laundry-page .il-washing-section.service-category-section {
+  background-color: #000;
+  background-image: radial-gradient(
+    ellipse 80% 55% at 50% 100%,
+    rgb(37 149 213 / 22%) 0%,
+    transparent 68%
+  );
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.industrial-laundry-page .il-washing-intro .pre-section-title-square {
+  background-color: var(--il-brand-start);
+  background-image: var(--il-brand-gradient);
+}
+
+.industrial-laundry-page .il-washing-container {
+  position: relative;
+  z-index: 1;
+  max-width: 81.25rem;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .il-washing-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+  padding-top: clamp(5rem, 9vw, 7.5rem);
+  padding-bottom: clamp(5rem, 9vw, 7.5rem);
+}
+
+.industrial-laundry-page .il-washing-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: none;
+}
+
+.industrial-laundry-page .il-washing-title {
+  margin: 0;
+  color: var(--color--white);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.industrial-laundry-page .il-washing-description {
+  margin: 0;
+  color: #a1a1aa;
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.65;
+}
+
+.industrial-laundry-page .il-washing-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.industrial-laundry-page .il-washing-row {
+  display: grid;
+  grid-template-columns: minmax(0, 11.5rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  padding: 1.875rem 0;
+  border-bottom: 1px solid #ffffff1a;
+}
+
+.industrial-laundry-page .il-washing-row.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.industrial-laundry-page .il-washing-row:first-child {
+  padding-top: 0;
+}
+
+.industrial-laundry-page .il-washing-row-title {
+  margin: 0;
+  color: var(--color--white);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.4;
+}
+
+.industrial-laundry-page .il-washing-row-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: il-process;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.industrial-laundry-page .il-washing-row-item {
+  counter-increment: il-process;
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: 0.25rem;
+  color: #a1a1aa;
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.55;
+}
+
+.industrial-laundry-page .il-washing-row-item::before {
+  content: counter(il-process) '.';
+  color: #a1a1aa;
+}
+
+@media screen and (min-width: 992px) {
+  .industrial-laundry-page .il-washing-container {
+    padding-inline: 0;
+  }
+}
+
+/* ── Washing QA Process (Figma) ── */
+.industrial-laundry-page .il-quality-section {
+  background-color: #0a0a0a;
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
+}
+
+.industrial-laundry-page .il-quality-container {
+  max-width: 81.25rem;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .il-quality-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 52rem;
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+.industrial-laundry-page .il-quality-section .pre-section-title-square {
+  background-color: var(--il-brand-start);
+  background-image: var(--il-brand-gradient);
+}
+
+.industrial-laundry-page .il-quality-title {
+  margin: 0;
+  color: var(--color--white);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.industrial-laundry-page .il-quality-description {
+  margin: 0;
+  color: #a1a1aa;
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.65;
+}
+
+.industrial-laundry-page .il-quality-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  width: 100%;
+}
+
+.industrial-laundry-page .il-quality-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 13.5rem;
+  border-radius: var(--border-radius--sm);
+  overflow: hidden;
+  background-color: #161616;
+}
+
+.industrial-laundry-page .il-quality-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.industrial-laundry-page .il-quality-card-number {
+  color: #71717a;
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1;
+}
+
+.industrial-laundry-page .il-quality-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.industrial-laundry-page .il-quality-card-title {
+  margin: 0;
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+}
+
+.industrial-laundry-page .il-quality-card-description {
+  margin: 0;
+  color: #a1a1aa;
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.6;
+}
+
+.industrial-laundry-page .il-quality-card-media {
+  position: relative;
+  min-height: 100%;
+}
+
+.industrial-laundry-page .il-quality-card-image {
+  width: 100%;
+  height: 100%;
+  min-height: 13.5rem;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media screen and (min-width: 992px) {
+  .industrial-laundry-page .il-quality-container {
+    padding-inline: 0;
+  }
+}
+
+/* ── CTA ── */
+.industrial-laundry-page .il-cta-section {
+  background-color: var(--color--gray-5);
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
+}
+
+.industrial-laundry-page .il-cta-card {
+  border-radius: 1.5rem;
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(37 149 213 / 22%) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(28 114 163 / 14%) 0%, transparent 62%);
+  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.industrial-laundry-page .il-cta-eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--color--white);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.4;
+}
+
+.industrial-laundry-page .il-cta-heading {
+  margin: 0 0 1.5rem;
+  color: var(--color--white);
+  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.1;
+  max-width: 18ch;
+}
+
+.industrial-laundry-page .il-cta-description {
+  margin: 0 0 2.5rem;
+  color: #a1a1aa;
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.5;
+  max-width: min(100%, 36rem);
+}
+
+.industrial-laundry-page .il-cta-actions {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.industrial-laundry-page .il-cta-card .button-icon-bg {
+  background-color: var(--il-brand-start);
+  background-image: var(--il-brand-gradient);
+}
+
+.industrial-laundry-page .il-cta-email {
+  color: var(--color--white);
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.industrial-laundry-page .il-cta-email:hover {
+  opacity: 0.8;
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .il-hero-video {
+    height: clamp(16rem, 50vw, 28rem);
+  }
+
+  .industrial-laundry-page .il-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .il-development-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .il-development-image-wrap {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+
+  .industrial-laundry-page .il-washing-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .industrial-laundry-page .il-washing-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .industrial-laundry-page .il-quality-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .il-quality-card {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .il-quality-card-image {
+    min-height: 11rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .il-hero-title {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .industrial-laundry-page .il-hero-video {
+    height: clamp(16rem, 50vw, 28rem);
+  }
+
+  .industrial-laundry-page .il-innovation-block {
+    max-width: 100%;
+  }
+
+  .industrial-laundry-page .il-cta-card {
+    padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .industrial-laundry-page .il-cta-description {
+    max-width: 100%;
+  }
+
+  .industrial-laundry-page .il-cta-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
