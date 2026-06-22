@@ -1,5 +1,6 @@
 import { type FormEvent, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { solutions, solutionPath } from '../../data/solutions/solutions'
 import { useFooterAnimations, useFooterShadowAnimation } from '../../hooks/useFooterAnimations'
 import { submitSubscribeForm } from '../../lib/forms'
 import { legacyImage } from '../../lib/assets'
@@ -125,10 +126,29 @@ export function Footer() {
             <div id="w-node-_9807520c-65b7-e828-71bd-909a6cfe1805-6cfe1801" className="footer-item">
               <div className="w-layout-grid grid-footer-menu">
                 <FadeIn
-                  id="66876f43-9ec4-1dbd-0ca0-ca548397b94e"
+                  id="footer-solutions-links"
                   className="footer-link-item"
                   variant="slide-in-bottom"
                   delay={200}
+                >
+                  <h2 className="footer-title">Solutions</h2>
+                  <div className="footer-links">
+                    {solutions.map((solution) => (
+                      <Link
+                        key={solution.slug}
+                        to={solutionPath(solution.slug)}
+                        className={footerLinkClass(pathname, solutionPath(solution.slug))}
+                      >
+                        {solution.title}
+                      </Link>
+                    ))}
+                  </div>
+                </FadeIn>
+                <FadeIn
+                  id="66876f43-9ec4-1dbd-0ca0-ca548397b94e"
+                  className="footer-link-item"
+                  variant="slide-in-bottom"
+                  delay={250}
                 >
                   <h2 className="footer-title">Main links</h2>
                   <div className="footer-links">
@@ -143,7 +163,7 @@ export function Footer() {
                   id="c3c71fa1-678a-c8f3-2483-91e8980a3ade"
                   className="footer-link-item"
                   variant="slide-in-bottom"
-                  delay={300}
+                  delay={350}
                 >
                   <h2 className="footer-title">Utility links</h2>
                   <div className="footer-links">
@@ -158,7 +178,7 @@ export function Footer() {
                   id="64c645f9-8fac-49b8-f082-3f384284032e"
                   className="footer-contact-list"
                   variant="slide-in-bottom"
-                  delay={400}
+                  delay={450}
                 >
                   <h2 className="footer-title">Contact info</h2>
                   <div className="footer-contact-item">
@@ -177,7 +197,7 @@ export function Footer() {
                   id="2421dafb-c91b-f351-19c3-69d4e8192796"
                   className="footer-contact-list"
                   variant="slide-in-bottom"
-                  delay={500}
+                  delay={550}
                 >
                   <h2 className="footer-title">Working hours</h2>
                   <div className="footer-contact-item">

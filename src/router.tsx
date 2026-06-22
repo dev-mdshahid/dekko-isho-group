@@ -9,6 +9,7 @@ import { AwardsPage } from './pages/AwardsPage'
 import { SustainabilityPage } from './pages/SustainabilityPage'
 import { PressDetailPage } from './pages/PressDetailPage'
 import { PressPage } from './pages/PressPage'
+import { SolutionPage } from './pages/SolutionPage'
 
 const legacyRouteElements = legacyRoutes.map((route) => ({
   path: route.path,
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
   { path: '/press/:slug', element: <PressDetailPage /> },
   { path: '/awards', element: <AwardsPage /> },
   { path: '/sustainability', element: <SustainabilityPage /> },
+  { path: '/solutions/:slug', element: <SolutionPage /> },
   { path: '/blog', element: <Navigate to="/press" replace /> },
   { path: '/blog/:slug', element: <LegacyBlogRedirect /> },
   ...legacyRouteElements,
