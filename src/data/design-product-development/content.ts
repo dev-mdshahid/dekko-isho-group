@@ -17,24 +17,24 @@ export const designProductDevelopmentTeam = {
   features: [
     {
       id: 'research',
-      icon: '/images/manufacturing/feature-icon-fashion.svg',
-      title: 'Trend Research',
+      icon: '/images/design-product-development/feature-icon-trend.svg',
+      title: 'Trend & Market Understanding',
       description:
-        'Seasonal research, colour direction and silhouette studies aligned with your brand positioning and target customer.',
+        'Design inputs are shaped by lifestyle direction, customer positioning, global market signals and category-specific product needs.',
     },
     {
       id: 'technical',
-      icon: '/images/manufacturing/feature-icon-quality.svg',
-      title: 'Technical Design',
+      icon: '/images/design-product-development/feature-icon-design.svg',
+      title: 'Design & Development',
       description:
-        'Pattern development, fit sessions and construction detailing that translate creative ideas into manufacturable garments.',
+        'Fabric, trims, construction and wash possibilities are considered early to improve feasibility, cost control and final product quality.',
     },
     {
       id: 'sampling',
-      icon: '/images/manufacturing/feature-icon-sustainable.svg',
-      title: 'Sample Development',
+      icon: '/images/design-product-development/feature-icon-sample.svg',
+      title: 'Sample Creation',
       description:
-        'Proto and salesman samples produced with clear documentation for faster approvals and smoother bulk handover.',
+        'Design, merchandising, sampling and production teams work together so creative ideas can move smoothly into scalable execution.',
     },
   ],
 }

@@ -18,21 +18,21 @@ export const complianceSustainabilityInitiatives = {
   features: [
     {
       id: 'certified',
-      icon: '/images/manufacturing/feature-icon-quality.svg',
+      icon: '/images/compliance-sustainability/feature-icon-certified.svg',
       title: 'Certified Compliance',
       description:
         'REACH-compliant raw materials and ISO-certified sourcing support responsible production standards.',
     },
     {
       id: 'safety',
-      icon: '/images/manufacturing/feature-icon-sustainable.svg',
+      icon: '/images/compliance-sustainability/feature-icon-safety.svg',
       title: 'Workplace Safety',
       description:
         'Firefighting equipment, exits, first aid boxes, filtered water and safety systems are maintained.',
     },
     {
       id: 'protection',
-      icon: '/images/manufacturing/feature-icon-fashion.svg',
+      icon: '/images/compliance-sustainability/feature-icon-protection.svg',
       title: 'Employee Protection',
       description:
         'Group insurance, provident fund facilities and protective gear support workforce wellbeing.',
@@ -45,8 +45,8 @@ export const complianceSustainabilitySafety = {
   title: 'Safe factories, prepared teams, and protected workers',
   aside:
     'Training, supervision and facility standards help ensure teams are prepared for daily production while maintaining safe, compliant working environments.',
-  imageSrc: '/legacy/images/industry-2-3.webp',
-  imageAlt: 'Worker in an industrial factory environment',
+  imageSrc: '/images/compliance-sustainability/safety-section.png',
+  imageAlt: 'Worker inspecting safety equipment in an industrial facility',
   imageNumber: '01',
   imageLabel: 'Safety',
 }

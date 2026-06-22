@@ -129,12 +129,12 @@
 
 .compliance-sustainability-page .cs-feature-grid .feature-icon-wrap {
   margin-bottom: 1.5rem;
+  line-height: 0;
 }
 
 .compliance-sustainability-page .cs-feature-grid .feature-icon {
-  width: 22px;
-  height: auto;
-  max-height: 24px;
+  width: 40px;
+  height: 40px;
   display: block;
 }
 
