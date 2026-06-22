@@ -937,3 +937,372 @@
     font-size: 2.5rem;
   }
 }
+
+/* Dekko Fashions — core capability section */
+
+.dekko-fashions-capability {
+  background-color: #121212;
+  overflow: hidden;
+  padding-bottom: 6.25rem;
+  padding-top: 5rem;
+  position: relative;
+  width: 100%;
+}
+
+.dekko-fashions-capability-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.dekko-fashions-capability-layout {
+  align-items: center;
+  display: grid;
+  gap: var(--gap--gap-11);
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  width: 100%;
+}
+
+.dekko-fashions-capability-intro {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-5);
+  width: 100%;
+}
+
+.dekko-fashions-capability-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.dekko-fashions-capability-description {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.dekko-fashions-capability-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+}
+
+.dekko-fashions-capability-card {
+  align-items: flex-start;
+  background-color: #1a1a1a;
+  border: 1px solid #ffffff14;
+  border-radius: var(--border-radius--md);
+  display: flex;
+  flex-flow: column;
+  padding: 1.75rem 1.25rem;
+  text-align: left;
+  width: 100%;
+}
+
+.dekko-fashions-capability-number {
+  align-items: center;
+  align-self: flex-start;
+  background-color: #151515;
+  border-radius: var(--border-radius--sm);
+  color: var(--color--white);
+  display: inline-flex;
+  flex: none;
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  justify-content: flex-start;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1;
+  min-height: 1.75rem;
+  min-width: 1.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.dekko-fashions-capability-card-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.25rem;
+  font-weight: var(--_typography---h6--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-top: 0.75rem;
+}
+
+.dekko-fashions-capability-card-description {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 991px) {
+  .dekko-fashions-capability {
+    padding-bottom: 5rem;
+    padding-top: 3.75rem;
+  }
+
+  .dekko-fashions-capability-layout {
+    align-items: start;
+    gap: var(--gap--gap-10);
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dekko-fashions-capability {
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+  }
+
+  .dekko-fashions-capability-title {
+    font-size: var(--_typography---h4--h4);
+  }
+
+  .dekko-fashions-capability-description,
+  .dekko-fashions-capability-card-description {
+    font-size: 1rem;
+  }
+
+  .dekko-fashions-capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dekko-fashions-capability-card-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Dekko Fashions — categories section */
+
+.dekko-fashions-categories {
+  background-color: #121212;
+  overflow: hidden;
+  padding-bottom: 6.25rem;
+  padding-top: 5rem;
+  position: relative;
+  width: 100%;
+}
+
+.dekko-fashions-categories-container {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-12);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.dekko-fashions-categories-header {
+  align-items: center;
+  display: grid;
+  gap: var(--gap--gap-8);
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  width: 100%;
+}
+
+.dekko-fashions-categories-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: 48rem;
+  width: 100%;
+}
+
+.dekko-fashions-categories-actions {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--gap--gap-8);
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.dekko-fashions-categories-download {
+  flex: none;
+}
+
+.dekko-fashions-categories-button.primary-button {
+  background-color: #2595d5;
+  flex: none;
+}
+
+.dekko-fashions-categories-button .button-icon-bg {
+  background-color: var(--color--dark);
+  background-image: none;
+}
+
+.dekko-fashions-categories-button .button-text,
+.dekko-fashions-categories-button .button-hover-text {
+  color: var(--color--white);
+}
+
+.dekko-fashions-categories-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+}
+
+.dekko-fashions-categories-card {
+  background-color: #1a1a1a;
+  border: 1px solid #ffffff14;
+  border-radius: var(--border-radius--md);
+  display: flex;
+  flex-flow: column;
+  padding: 1.75rem 1.25rem;
+  width: 100%;
+}
+
+.dekko-fashions-categories-card-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.25rem;
+  font-weight: var(--_typography---h6--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.dekko-fashions-categories-card-media {
+  border-radius: var(--border-radius--sm);
+  margin-top: 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dekko-fashions-categories-card-image {
+  aspect-ratio: 16 / 10;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.dekko-fashions-categories-card-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap--gap-4);
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.dekko-fashions-categories-card-material {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--body);
+  font-size: 0.875rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+}
+
+.dekko-fashions-categories-card-meta {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 0.875rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  text-align: right;
+}
+
+.dekko-fashions-categories-description {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: 52rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .dekko-fashions-categories {
+    padding-bottom: 5rem;
+    padding-top: 3.75rem;
+  }
+
+  .dekko-fashions-categories-container {
+    gap: var(--gap--gap-11);
+  }
+
+  .dekko-fashions-categories-header {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .dekko-fashions-categories-actions {
+    justify-content: flex-start;
+  }
+
+  .dekko-fashions-categories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dekko-fashions-categories {
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+  }
+
+  .dekko-fashions-categories-title {
+    font-size: var(--_typography---h4--h4);
+  }
+
+  .dekko-fashions-categories-card-material,
+  .dekko-fashions-categories-card-meta {
+    font-size: 0.875rem;
+  }
+
+  .dekko-fashions-categories-description {
+    font-size: 1rem;
+  }
+
+  .dekko-fashions-categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dekko-fashions-categories-card-title {
+    font-size: 1.125rem;
+  }
+}
