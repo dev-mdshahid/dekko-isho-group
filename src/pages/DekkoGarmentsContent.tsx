@@ -4,6 +4,7 @@ import { IndustryFeatures, IndustryHero, IndustryImageSection } from '../compone
 import { dekkoGarmentsHero } from '../data/industry/dekkoGarments'
 import { dekkoGarmentsFeatures } from '../data/industry/dekkoGarmentsFeatures'
 import { dekkoGarmentsImage } from '../data/industry/dekkoGarmentsImage'
+import { DekkoGarmentsFeaturedSection } from './DekkoGarmentsFeaturedSection'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -20,6 +21,7 @@ export function DekkoGarmentsContent() {
       <IndustryHero {...dekkoGarmentsHero} />
       <IndustryFeatures {...dekkoGarmentsFeatures} />
       <IndustryImageSection {...dekkoGarmentsImage} />
+      <DekkoGarmentsFeaturedSection />
     </div>
   )
 }

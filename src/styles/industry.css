@@ -447,3 +447,128 @@
     font-size: 1rem;
   }
 }
+
+/* Dekko Garments — featured image section */
+
+.dekko-garments-featured {
+  background-color: var(--color--gray-5);
+  padding-bottom: 6.25rem;
+  padding-top: 5rem;
+  width: 100%;
+}
+
+.dekko-garments-featured-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+  width: 100%;
+}
+
+.dekko-garments-featured-header {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-5);
+  margin-bottom: var(--gap--gap-9);
+  width: 100%;
+}
+
+.dekko-garments-featured-title {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--font-size--2-625rem\<deleted\|variable-1f7bf3c7-5041-ffc6-5ca5-d260ad55a339\>);
+  font-weight: var(--_typography---h3--font-weight-600);
+  letter-spacing: 0;
+  line-height: var(--_typography---h3--line-height);
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.dekko-garments-featured-media {
+  border-radius: var(--border-radius--lg);
+  height: 43.25rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.dekko-garments-featured-photo {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.dekko-garments-featured-overlay {
+  background-image: linear-gradient(180deg, var(--color--transparent) 45%, #151515b3 100%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.dekko-garments-featured-caption {
+  bottom: 2.5rem;
+  color: var(--color--white);
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-4);
+  left: 2.5rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.dekko-garments-featured-caption-label {
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1;
+}
+
+.dekko-garments-featured-caption-title {
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--font-size--1-75rem\<deleted\|variable-718b8370-7cf2-f6e7-6026-168fa1cd6d00\>);
+  font-weight: var(--_typography---h5--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.1;
+}
+
+@media screen and (max-width: 991px) {
+  .dekko-garments-featured {
+    padding-bottom: 5rem;
+    padding-top: 3.75rem;
+  }
+
+  .dekko-garments-featured-header {
+    margin-bottom: var(--gap--gap-8);
+  }
+
+  .dekko-garments-featured-media {
+    aspect-ratio: 1320 / 486;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dekko-garments-featured {
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+  }
+
+  .dekko-garments-featured-title {
+    font-size: var(--_typography---h4--h4);
+  }
+
+  .dekko-garments-featured-caption {
+    bottom: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .dekko-garments-featured-caption-title {
+    font-size: var(--_typography---h6--h6);
+  }
+}
