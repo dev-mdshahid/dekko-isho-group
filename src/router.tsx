@@ -6,6 +6,7 @@ import { GalleryPage } from './pages/GalleryPage'
 import { HomePage } from './pages/HomePage'
 import { LegacyRoutePage } from './pages/LegacyRoutePage'
 import { AwardsPage } from './pages/AwardsPage'
+import { SustainabilityPage } from './pages/SustainabilityPage'
 import { PressDetailPage } from './pages/PressDetailPage'
 import { PressPage } from './pages/PressPage'
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
   { path: '/press', element: <PressPage /> },
   { path: '/press/:slug', element: <PressDetailPage /> },
   { path: '/awards', element: <AwardsPage /> },
+  { path: '/sustainability', element: <SustainabilityPage /> },
   { path: '/blog', element: <Navigate to="/press" replace /> },
   { path: '/blog/:slug', element: <LegacyBlogRedirect /> },
   ...legacyRouteElements,

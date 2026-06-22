@@ -1,0 +1,1282 @@
+/* Sustainability page — ESG green accent theme */
+
+:root {
+  --sustain-green: #2d9a5b;
+  --sustain-green-dark: #1f7a47;
+  --sustain-green-light: #e8f5ee;
+  --sustain-green-muted: #4caf7a;
+}
+
+/* ── Hero ── */
+.sustain-hero-section {
+  background-color: var(--color--white);
+}
+
+.sustain-hero-wrap {
+  grid-column-gap: var(--gap--gap-6);
+  grid-row-gap: var(--gap--gap-6);
+  max-width: 44rem;
+}
+
+.sustain-hero-title {
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-hero-description {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.6em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  max-width: 44rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* ── Badge ── */
+.sustain-badge {
+  border: 1px solid var(--color--gray-4);
+  border-radius: var(--border-radius--xl);
+  background-color: var(--color--white);
+  padding: 0.313rem 0.875rem;
+  display: inline-block;
+}
+
+.sustain-badge--dark {
+  background-color: #ffffff12;
+  border-color: #ffffff1a;
+}
+
+.sustain-badge-inner {
+  grid-column-gap: var(--gap--gap-3);
+  grid-row-gap: var(--gap--gap-3);
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+}
+
+.sustain-badge-square {
+  background-color: var(--color--primary-1);
+  width: 8px;
+  height: 8px;
+  flex: none;
+}
+
+.sustain-badge-text {
+  color: var(--color--dark);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  text-transform: capitalize;
+}
+
+.sustain-badge--dark .sustain-badge-text {
+  color: var(--color--white);
+}
+
+/* ── Button ── */
+.sustain-button {
+  border-radius: var(--border-radius--sm) var(--border-radius--sm) var(--border-radius--lg);
+  font-family: var(--_typography---font-family--body);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: var(--_typography---body--line-height);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap--gap-7);
+  padding: 0.313rem 0.313rem 0.313rem 1.5rem;
+  transition: opacity 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.sustain-button:hover {
+  opacity: 0.88;
+}
+
+.sustain-button--dark {
+  background-color: var(--color--dark);
+  color: var(--color--white);
+}
+
+.sustain-button--light {
+  background-color: var(--color--white);
+  color: var(--color--dark);
+}
+
+.sustain-button-text {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.sustain-button-icon {
+  background-color: var(--sustain-green);
+  border-radius: var(--border-radius--xs) var(--border-radius--xs) var(--border-radius--md);
+  color: var(--color--white);
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sustain-button--light .sustain-button-icon {
+  background-color: var(--sustain-green);
+  color: var(--color--white);
+}
+
+/* ── Hero image ── */
+.sustain-hero-image-section {
+  position: relative;
+  width: 100%;
+  min-height: 28rem;
+  overflow: hidden;
+}
+
+.sustain-hero-image-bg {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.sustain-hero-image-overlay {
+  pointer-events: none;
+  background: linear-gradient(180deg, #15151566 0%, #15151533 40%, #15151580 100%);
+  position: absolute;
+  inset: 0;
+}
+
+.sustain-hero-image-content {
+  z-index: 1;
+  position: relative;
+  min-height: 28rem;
+  padding: 3.75rem var(--_layout---container-medium-gutter);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  max-width: var(--_layout---container-medium-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sustain-accent-line {
+  background-color: var(--sustain-green);
+  width: 3px;
+  flex: none;
+  align-self: stretch;
+}
+
+.sustain-hero-image-quote-row {
+  display: flex;
+  align-items: stretch;
+  gap: var(--gap--gap-5);
+  max-width: 32rem;
+}
+
+.sustain-hero-image-quote {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.75rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.35em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sustain-hero-image-brand {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.sustain-hero-image-company {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-bottom: 0.25rem;
+}
+
+.sustain-hero-image-strategy {
+  color: var(--sustain-green-muted);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+/* ── Shared section typography ── */
+.sustain-section-title {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: var(--_typography---h3--line-height);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 36rem;
+}
+
+.sustain-section-description {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  line-height: 1.6em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 42rem;
+}
+
+.sustain-section-description--dark {
+  color: #a0a0a0;
+}
+
+/* ── Strategy ── */
+.sustain-strategy-section {
+  background-color: var(--color--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.sustain-strategy-container {
+  z-index: 2;
+  position: relative;
+}
+
+.sustain-strategy-header {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-6);
+  max-width: 46rem;
+  margin-bottom: var(--gap--gap-13);
+}
+
+.sustain-strategy-title {
+  font-weight: var(--_typography---h1--font-weight-700);
+  max-width: 36rem;
+}
+
+.sustain-strategy-description {
+  max-width: 46rem;
+}
+
+.sustain-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--gap--gap-8);
+  justify-content: space-between;
+}
+
+.sustain-metric-item {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-2);
+}
+
+.sustain-metric-value {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h1--font-weight-700);
+  line-height: var(--_typography---h3--line-height);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-metric-label {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.4em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-metric-deadline {
+  color: var(--sustain-green);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.4em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+/* ── Pillar sections ── */
+.sustain-pillar-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+}
+
+.sustain-pillar-section--light {
+  background-color: var(--color--white);
+}
+
+.sustain-pillar-section--dark {
+  background-color: var(--color--dark);
+}
+
+.sustain-pillar-section--bordered {
+  border-top: 1px solid var(--color--gray-4);
+}
+
+.sustain-pillar-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--gap--gap-8);
+  margin-bottom: 3.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-pillar-number {
+  pointer-events: none;
+  user-select: none;
+  color: #e5e5e5;
+  font-family: var(--_typography---font-family--heading);
+  font-size: 12rem;
+  font-weight: var(--_typography---h1--font-weight-700);
+  line-height: 1;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  display: block;
+  flex: none;
+}
+
+.sustain-pillar-number--dark {
+  color: #ffffff1a;
+}
+
+.sustain-pillar-header-content {
+  min-width: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-5);
+}
+
+.sustain-pillar-header .sustain-section-title,
+.sustain-pillar-header .sustain-section-description {
+  max-width: none;
+  width: 100%;
+}
+
+.sustain-pillar-header .sustain-section-title,
+.sustain-pillar-header .sustain-section-description,
+.sustain-pillar-header .sustain-badge {
+  min-width: 0;
+}
+
+/* ── Initiative cards (Pillar 01) ── */
+.sustain-initiatives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap--gap-6);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.75rem;
+}
+
+.sustain-initiative-card,
+.sustain-social-card {
+  border-radius: var(--border-radius--md);
+  background-color: var(--color--gray-5);
+  padding: 1.5rem;
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-5);
+  min-height: 100%;
+}
+
+.sustain-initiative-number {
+  background-color: var(--color--white);
+  border: 1px solid var(--color--gray-4);
+  border-radius: var(--border-radius--xs);
+  color: var(--color--primary-1);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sustain-initiative-content {
+  display: flex;
+  flex-flow: column;
+  gap: 0;
+  flex: 1;
+}
+
+.sustain-initiative-title {
+  color: var(--color--dark);
+  font-size: 28px;
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: var(--_typography---body--line-height);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0.625rem;
+}
+
+.sustain-initiative-description {
+  color: var(--color--gray-2);
+  font-size: 18px;
+  line-height: 1.5em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 60px;
+}
+
+.sustain-initiative-metric {
+  border-top: 1px solid var(--color--gray-4);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.sustain-initiative-metric-value {
+  color: var(--color--primary-1);
+  font-weight: var(--_typography---body--font-weight-600);
+}
+
+.sustain-initiative-metric-label {
+  color: var(--color--gray-2);
+  font-weight: var(--_typography---body--font-weight-500);
+}
+
+/* ── Performance snapshot ── */
+.sustain-snapshot-banner {
+  border-radius: var(--border-radius--md);
+  background-color: var(--color--dark);
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-snapshot-header {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-6);
+  margin-bottom: 2.5rem;
+}
+
+.sustain-snapshot-headline {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.5rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.3em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 28rem;
+}
+
+.sustain-snapshot-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.sustain-snapshot-kpi {
+  padding-right: var(--gap--gap-8);
+  padding-left: var(--gap--gap-8);
+}
+
+.sustain-snapshot-kpi:first-child {
+  padding-left: 0;
+}
+
+.sustain-snapshot-kpi:last-child {
+  padding-right: 0;
+}
+
+.sustain-snapshot-kpi:not(:last-child) {
+  border-right: 1px solid #ffffff1a;
+}
+
+.sustain-snapshot-kpi-value {
+  color: var(--color--primary-1);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.75rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.2em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-bottom: 0.375rem;
+}
+
+.sustain-snapshot-kpi-label {
+  color: var(--color--gray-3);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.4em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+/* ── Social cards (Pillar 02) ── */
+.sustain-social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap--gap-6);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.75rem;
+}
+
+/* ── Governance banner ── */
+.sustain-governance-banner {
+  border-radius: var(--border-radius--md);
+  background-color: var(--color--dark);
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-governance-header {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-6);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ffffff1a;
+  margin-bottom: 0;
+}
+
+.sustain-governance-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.5rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.3em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 28rem;
+}
+
+.sustain-governance-rows {
+  display: flex;
+  flex-flow: column;
+}
+
+.sustain-governance-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) minmax(0, 1fr);
+  column-gap: var(--gap--gap-12);
+  row-gap: var(--gap--gap-6);
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #ffffff1a;
+}
+
+.sustain-governance-row:first-child {
+  border-top: none;
+  padding-top: 2rem;
+}
+
+.sustain-governance-row:last-child {
+  padding-bottom: 0;
+}
+
+.sustain-governance-row-label {
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  min-width: 7rem;
+  align-self: center;
+}
+
+.sustain-governance-row-title {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-governance-row-count {
+  color: var(--color--primary-1);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-governance-row-policies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap--gap-8);
+  min-width: 0;
+  width: 100%;
+}
+
+.sustain-governance-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column;
+  gap: 0.625rem;
+}
+
+.sustain-governance-item {
+  color: var(--color--gray-3);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.45em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.sustain-governance-check {
+  color: var(--color--primary-1);
+  flex: none;
+  margin-top: 0.15em;
+}
+
+/* ── Material sustainability (Pillar 03) ── */
+.sustain-pillar-section--dark .sustain-section-title {
+  color: var(--color--white);
+}
+
+.sustain-materials-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--gap--gap-6);
+  margin-bottom: 3.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-materials-progress-card,
+.sustain-materials-chart-card {
+  border: 1px solid #ffffff1a;
+  border-radius: var(--border-radius--md);
+  background-color: #ffffff0a;
+  padding: 2rem 1.75rem;
+}
+
+.sustain-materials-progress-header {
+  display: flex;
+  flex-flow: column;
+  gap: 0.375rem;
+  margin-bottom: 1.5rem;
+}
+
+.sustain-materials-progress-value {
+  color: var(--color--primary-1);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 3.5rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-materials-progress-label {
+  color: #a0a0a0;
+  font-size: var(--_typography---body--body-sm);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-progress-bar {
+  background-color: #ffffff1a;
+  border-radius: 999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.sustain-progress-bar-fill {
+  background-color: var(--color--primary-1);
+  border-radius: 999px;
+  height: 100%;
+  transition: width 0.6s ease;
+}
+
+.sustain-progress-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap--gap-7);
+  margin-top: 1.25rem;
+}
+
+.sustain-progress-legend-item {
+  color: #a0a0a0;
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sustain-progress-legend-swatch {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: var(--border-radius--xs);
+  flex: none;
+}
+
+.sustain-progress-legend-swatch--primary {
+  background-color: var(--color--primary-1);
+}
+
+.sustain-progress-legend-swatch--muted {
+  background-color: #ffffff1a;
+}
+
+.sustain-materials-chart-title {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.sustain-materials-bars {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+.sustain-material-bar-row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr 3.5rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sustain-material-bar-label {
+  color: #a0a0a0;
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-material-bar-track {
+  background-color: #ffffff1a;
+  border-radius: 999px;
+  height: 0.375rem;
+  overflow: hidden;
+}
+
+.sustain-material-bar-fill {
+  background-color: var(--color--primary-1);
+  border-radius: 999px;
+  height: 100%;
+}
+
+.sustain-material-bar-value {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-600);
+  text-align: right;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-badges-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2.5rem;
+}
+
+.sustain-badges-section:last-child {
+  margin-bottom: 0;
+}
+
+.sustain-badges-title {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.sustain-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.sustain-platform-badge,
+.sustain-standard-badge {
+  border: 1px solid #ffffff33;
+  border-radius: var(--border-radius--xl);
+  background-color: transparent;
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  padding: 0.5rem 1rem;
+}
+
+/* ── ESG Reports (Pillar 04) ── */
+.sustain-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap--gap-6);
+  margin-bottom: 3.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-report-card {
+  border-radius: var(--border-radius--md);
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}
+
+.sustain-report-card--light {
+  border: 1px solid var(--color--gray-4);
+  background-color: var(--color--gray-5);
+}
+
+.sustain-report-card--dark {
+  border: 1px solid var(--color--dark);
+  background-color: var(--color--dark);
+}
+
+.sustain-report-cover {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sustain-report-cover--light {
+  background: linear-gradient(135deg, #e8436a 0%, #4a6fa5 55%, #2d8fa8 100%);
+}
+
+.sustain-report-cover--dark {
+  background: linear-gradient(135deg, #1a6b45 0%, #1a4a6b 55%, var(--color--dark) 100%);
+}
+
+.sustain-report-cover-content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 0.375rem;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.sustain-report-cover-brand {
+  color: var(--color--white);
+  font-size: 0.625rem;
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.sustain-report-cover-subtitle {
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  opacity: 0.85;
+}
+
+.sustain-report-cover-tag {
+  color: var(--color--white);
+  font-size: 0.625rem;
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+.sustain-report-year {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 3.5rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0.5rem;
+}
+
+.sustain-report-cover--light .sustain-report-year {
+  color: var(--color--white);
+}
+
+.sustain-report-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-flow: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.sustain-report-card--dark .sustain-report-body {
+  background-color: var(--color--dark);
+}
+
+.sustain-report-title {
+  font-size: var(--base-font-size--base);
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: var(--_typography---body--line-height);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sustain-report-card--light .sustain-report-title {
+  color: var(--color--dark);
+}
+
+.sustain-report-card--dark .sustain-report-title {
+  color: var(--color--white);
+}
+
+.sustain-report-description {
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.5em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.sustain-report-card--light .sustain-report-description {
+  color: var(--color--gray-2);
+}
+
+.sustain-report-card--dark .sustain-report-description {
+  color: var(--color--gray-3);
+}
+
+.sustain-report-download {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap--gap-5);
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color--gray-4);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.sustain-report-download:hover {
+  opacity: 0.85;
+}
+
+.sustain-report-download--dark {
+  border-top-color: #ffffff1a;
+}
+
+.sustain-report-download-label {
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-report-download--light .sustain-report-download-label {
+  color: var(--color--dark);
+}
+
+.sustain-report-download--dark .sustain-report-download-label {
+  color: var(--color--white);
+}
+
+.sustain-report-download-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--border-radius--xs);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+}
+
+.sustain-report-download--light .sustain-report-download-icon {
+  background-color: var(--color--gray-4);
+  color: var(--color--dark);
+}
+
+.sustain-report-download--dark .sustain-report-download-icon {
+  background-color: var(--color--primary-1);
+  color: var(--color--white);
+}
+
+.sustain-esg-cta-bar {
+  border-radius: var(--border-radius--md);
+  background-color: var(--color--gray-5);
+  border: 1px solid var(--color--gray-4);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap--gap-8);
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-esg-cta-text {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  line-height: 1.5em;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 36rem;
+}
+
+/* ── CTA section ── */
+.sustain-cta-section {
+  background-color: var(--color--white);
+}
+
+.sustain-cta-card {
+  border-radius: 1.5rem;
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(20 184 166 / 18%) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(59 130 246 / 10%) 0%, transparent 62%);
+  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.sustain-cta-eyebrow {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.4;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.sustain-cta-heading {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.1;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  max-width: 18ch;
+}
+
+.sustain-cta-description {
+  color: #a1a1aa;
+  font-family: var(--_typography---font-family--body);
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.5;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  max-width: 50%;
+}
+
+.sustain-cta-actions {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.sustain-cta-email {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--body);
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.sustain-cta-email:hover {
+  opacity: 0.8;
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 991px) {
+  .sustain-pillar-header {
+    column-gap: var(--gap--gap-6);
+  }
+
+  .sustain-pillar-number {
+    font-size: clamp(6rem, 14vw, 9rem);
+  }
+
+  .sustain-metrics-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sustain-initiatives-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sustain-snapshot-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sustain-social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sustain-materials-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sustain-reports-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sustain-esg-cta-bar {
+    flex-flow: column;
+    align-items: flex-start;
+  }
+
+  .sustain-cta-card {
+    padding: 2.5rem 2rem;
+  }
+
+  .sustain-cta-description {
+    max-width: 100%;
+  }
+
+  .sustain-section-title {
+    font-size: 2.25rem;
+  }
+
+  .sustain-strategy-header {
+    margin-bottom: var(--gap--gap-11);
+  }
+
+  .sustain-metric-value {
+    font-size: 2.25rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sustain-pillar-header {
+    grid-template-columns: 1fr;
+    row-gap: var(--gap--gap-4);
+  }
+
+  .sustain-pillar-number {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .sustain-pillar-header-content {
+    gap: var(--gap--gap-4);
+  }
+
+  .sustain-hero-description {
+    font-size: 1rem;
+    line-height: 1.5em;
+  }
+
+  .sustain-hero-image-content {
+    min-height: 22rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .sustain-hero-image-quote {
+    font-size: 1.375rem;
+  }
+
+  .sustain-metrics-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sustain-initiatives-grid,
+  .sustain-social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sustain-governance-row {
+    grid-template-columns: 1fr;
+    gap: var(--gap--gap-6);
+    align-items: start;
+  }
+
+  .sustain-governance-row-label {
+    align-self: start;
+  }
+
+  .sustain-governance-row-policies {
+    grid-template-columns: 1fr;
+  }
+
+  .sustain-snapshot-kpi {
+    padding-left: 0;
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ffffff1a;
+  }
+
+  .sustain-snapshot-kpi:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .sustain-pillar-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .sustain-material-bar-row {
+    grid-template-columns: 1fr;
+    gap: 0.375rem;
+  }
+
+  .sustain-material-bar-value {
+    text-align: left;
+  }
+
+  .sustain-section-title {
+    font-size: 2rem;
+  }
+
+  .sustain-strategy-header {
+    margin-bottom: var(--gap--gap-10);
+    gap: var(--gap--gap-5);
+  }
+
+  .sustain-metric-value {
+    font-size: 2rem;
+  }
+
+  .sustain-cta-actions {
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .sustain-metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .sustain-snapshot-kpis {
+    grid-template-columns: 1fr;
+  }
+}

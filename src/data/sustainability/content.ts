@@ -1,7 +1,7 @@
 export const sustainabilityHero = {
   title: 'Sustainability',
   description:
-    'Our ESG strategy integrates environmental stewardship, social empowerment and transparent governance across every stage of the value chain — from raw materials to finished garments.',
+    'Driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — embedding Sustainable Consumption & Production into everything we make.',
   ctaLabel: 'Read 2025 Report',
   ctaHref: '#esg-reports',
 }
@@ -18,7 +18,7 @@ export const strategySection = {
   badge: 'Our strategy',
   title: 'A 2030 commitment across the value chain',
   description:
-    'We have set measurable targets across energy, emissions, water, waste and supply-chain transparency — aligned with global standards and verified through independent audits.',
+    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance. This commitment extends far beyond our own operations — fully embracing our entire value chain and supply network to foster sustainable excellence at every link.',
 }
 
 export type StrategyMetric = {
@@ -40,7 +40,8 @@ export type InitiativeCard = {
   number: string
   title: string
   description: string
-  metric: string
+  metricValue: string
+  metricLabel: string
 }
 
 export const pillar01 = {
@@ -48,55 +49,64 @@ export const pillar01 = {
   badge: 'Pillar 01',
   title: 'Environmental Excellence',
   description:
-    'Driving measurable impact across energy, emissions, water, waste and chemical management — with transparent reporting and continuous improvement across all manufacturing sites.',
+    'The Earth is our only home. We account for every environment-related impact and take proper measures to mitigate it – powering efficiency and driving the transition to clean energy.',
   initiatives: [
     {
       id: 'energy',
       number: '01',
       title: 'Energy Management & Climate Action',
-      description: 'Solar installations and I-REC procurement to decarbonise operations.',
-      metric: '1.76 MWp Solar capacity installed',
+      description:
+        'Solar installations, I-REC procurement and energy-efficiency programmes across all manufacturing sites.',
+      metricValue: '1.76 MWp',
+      metricLabel: 'Solar capacity installed',
     },
     {
       id: 'ghg',
       number: '02',
       title: 'GHG Emissions Performance',
-      description: 'Scope-2 emissions reduction through renewable energy transition.',
-      metric: '80% Scope-2 reduction (2025)',
+      description: 'Scope-2 emissions reduction through renewable energy transition and efficiency gains.',
+      metricValue: '80%',
+      metricLabel: 'Scope-2 reduction (2025)',
     },
     {
       id: 'water',
       number: '03',
       title: 'Water Stewardship',
-      description: 'Comprehensive water withdrawal tracking and conservation programmes.',
-      metric: '766k m³ withdrawal tracked (2025)',
+      description: 'Comprehensive water withdrawal tracking and conservation programmes at every facility.',
+      metricValue: '766k m³',
+      metricLabel: 'withdrawal tracked (2025)',
     },
     {
       id: 'effluent',
       number: '04',
       title: 'Effluent & Wastewater Management',
-      description: 'Advanced ETP capacity with zero liquid discharge roadmap.',
-      metric: '130 m³/hr ETP capacity & ZLD by 2030',
+      description: 'Advanced ETP capacity with zero liquid discharge roadmap by 2030.',
+      metricValue: '130 m³/hr',
+      metricLabel: 'ETP capacity & ZLD by 2030',
     },
     {
       id: 'waste',
       number: '05',
       title: 'Waste Management & Circularity',
-      description: 'Textile waste diversion and recycling across production lines.',
-      metric: '650T Textile waste recycled',
+      description: 'Textile waste diversion and recycling across production lines and supply partners.',
+      metricValue: '650T',
+      metricLabel: 'Textile waste recycled',
     },
     {
       id: 'chemical',
       number: '06',
-      title: 'Chemical Management & Compliance',
-      description: 'Full ZDHC compliance across chemical inputs and processes.',
-      metric: '100% ZDHC Level 3 compliant',
+      title: 'Energy Management & Climate Action',
+      description:
+        'Higg FEM, BHive and CleanChain verified chemical management with full ZDHC Level 3 compliance.',
+      metricValue: '100%',
+      metricLabel: 'ZDHC Level 3 compliant',
     },
   ] satisfies InitiativeCard[],
-  snapshotTitle: 'Performance snapshot',
+  snapshotBadge: 'Performance snapshot',
+  snapshotHeadline: 'Measuring what matters, reducing what counts',
   snapshotKpis: [
-    { id: 'irec', value: '13,421 MWh', label: 'I-REC' },
-    { id: 'scope2', value: '80%', label: 'Scope-2 GHG reduced' },
+    { id: 'irec', value: '13,421 MWh', label: 'I-REC purchased for 2025' },
+    { id: 'scope2', value: '80%', label: 'Scope-2 GHG emissions reduced' },
     { id: 'textile', value: '40%', label: 'Textile waste recycling rate' },
     { id: 'chemistry', value: '65%', label: 'Chemistry screen-certified inputs' },
   ],
@@ -107,7 +117,15 @@ export type SocialCard = {
   number: string
   title: string
   description: string
-  metric: string
+  metricValue: string
+  metricLabel: string
+}
+
+export type GovernanceRow = {
+  id: string
+  title: string
+  count: number
+  policies: [string[], string[]]
 }
 
 export const pillar02 = {
@@ -115,60 +133,70 @@ export const pillar02 = {
   badge: 'Pillar 02',
   title: 'Social Empowerment',
   description:
-    'Investing in people, communities and ethical governance — ensuring every employee and partner across our supply chain is treated with dignity, safety and opportunity.',
+    'We place our people at the centre of everything we do – nurturing wellbeing, safety and growth, then extending that responsibility outward through CSR for the communities where we operate.',
   cards: [
     {
       id: 'employees',
       number: '01',
       title: 'Empowering Employees',
-      description: 'A diverse workforce powering global apparel production.',
-      metric: '16,815 People behind every stitch',
+      description:
+        'Meaningful benefits and continuous support – performance & festival bonuses, maternity benefits, loan facilities and the Aastha fair-price shop.',
+      metricValue: '16,815',
+      metricLabel: 'People behind every stitch',
     },
     {
       id: 'wellness',
       number: '02',
       title: 'Employee Wellness',
-      description: 'Comprehensive welfare and wellbeing programmes for all staff.',
-      metric: '9+ Welfare & wellbeing programs',
+      description:
+        'Childcare facilities, nutritional support for children & pregnant employees, on-site medical care, free eye-test campaigns and celebration days.',
+      metricValue: '9+',
+      metricLabel: 'Welfare & wellbeing programs',
     },
     {
       id: 'upskilling',
       number: '03',
       title: 'Upskilling',
-      description: 'Continuous learning and skills development for career growth.',
-      metric: '20 hrs Avg. training / person target',
+      description:
+        'P.A.C.E, WE Women, Mothers@Work and a structured orientation + refreshment → advanced training framework with green-skills and 5S.',
+      metricValue: '20 hrs',
+      metricLabel: 'Avg. training / person target',
     },
     {
       id: 'community',
       number: '04',
       title: 'Community Care',
-      description: 'Supporting communities through disaster relief and local initiatives.',
-      metric: '৳5M Flood relief to government',
+      description:
+        'Nutrition, education, healthcare and disaster support — 510 family food packages, 150,000 vegetable seeds, and aid for single mothers and children.',
+      metricValue: '৳5M',
+      metricLabel: 'Flood relief to government',
     },
     {
       id: 'governance',
       number: '05',
       title: 'Governance',
-      description: 'Comprehensive policy framework covering E, S and G dimensions.',
-      metric: '23 Policies across E, S & G',
+      description:
+        'Strong governance is the foundation — codes of ethics, anti-corruption, risk management, supply-chain governance and grievance policies guide every decision.',
+      metricValue: '23',
+      metricLabel: 'Policies across E, S & G',
     },
   ] satisfies SocialCard[],
-  governanceTitle: 'Governance Framework',
-  governanceColumns: [
+  governanceBadge: 'Governance',
+  governanceTitle: 'A framework for every decision',
+  governanceRows: [
     {
       id: 'environmental',
       title: 'Environmental',
       count: 9,
       policies: [
-        'Environmental Policy',
-        'Energy Management Policy',
-        'GHG Emissions & Climate Action Policy',
-        'Water Stewardship Policy',
-        'Effluent & Wastewater Management Policy',
-        'Waste Management & Circularity Policy',
-        'Chemical Management Policy',
-        'Biodiversity Protection Policy',
-        'Environmental Compliance Policy',
+        [
+          'Environmental Management System',
+          'Water Policy',
+          'Waste Management',
+          'Chemical Purchase',
+          'MRSL & RSL Management',
+        ],
+        ['Energy Policy', 'Air Policy', 'Chemical Management', 'GHG Management'],
       ],
     },
     {
@@ -176,13 +204,13 @@ export const pillar02 = {
       title: 'Social',
       count: 7,
       policies: [
-        'Human Rights Policy',
-        'Labour Standards Policy',
-        'Health & Safety Policy',
-        'Employee Welfare Policy',
-        'Training & Development Policy',
-        'Community Engagement Policy',
-        'Diversity & Inclusion Policy',
+        [
+          'Human Rights Policy',
+          'Diversity, Equity & Inclusion',
+          'Training & Development',
+          'Child & Forced Labor',
+        ],
+        ['Labor Practices & Welfare', 'Health & Safety Policy', 'Talent Acquisition'],
       ],
     },
     {
@@ -190,16 +218,16 @@ export const pillar02 = {
       title: 'Governance',
       count: 7,
       policies: [
-        'Corporate Governance Policy',
-        'Business Ethics Policy',
-        'ESG Disclosure Policy',
-        'Supply Chain Due Diligence Policy',
-        'Data Privacy Policy',
-        'Risk Management Policy',
-        'Stakeholder Engagement Policy',
+        [
+          'Code of Ethics & Conduct',
+          'Compliance & Engagement',
+          'Grievance Policy',
+          'Anti-Corruption',
+        ],
+        ['Risk Management', 'Supply Chain Governance', 'Quality Policy'],
       ],
     },
-  ],
+  ] satisfies GovernanceRow[],
 }
 
 export type MaterialBar = {
@@ -213,12 +241,14 @@ export const pillar03 = {
   badge: 'Pillar 03',
   title: 'Material Sustainability',
   description:
-    'Transitioning to certified sustainable materials with full traceability — from farm and fibre to finished garment.',
+    'Responsible sourcing, environmental stewardship and full supply-chain transparency – every garment powered by verified, end-to-end traceable data, from fibre to retail.',
   sustainablePercentage: 61,
-  sustainableLabel: 'sustainable materials',
+  sustainableLabel:
+    'of our material mix is now sustainably sourced – up across cotton, flax and circular fibres.',
+  materialsChartTitle: 'Top 5 Sustainable Materials Uptake',
   materials: [
     { id: 'bci', name: 'BCI Cotton', percentage: 17.23 },
-    { id: 'flax', name: 'European Flax', percentage: 16.51 },
+    { id: 'flax', name: 'European Flax (Linen)', percentage: 16.51 },
     { id: 'organic', name: 'Organic Cotton', percentage: 13.33 },
     { id: 'us-cotton', name: 'US Cotton', percentage: 5.05 },
     { id: 'poly', name: 'Recycled Polyester', percentage: 1.78 },
@@ -232,7 +262,7 @@ export const pillar03 = {
     'Reverse Resources',
     'Chain of Custody',
   ],
-  standardsTitle: 'Certified standards',
+  standardsTitle: 'Certified to global standards',
   standards: ['GOTS', '13,421 MWh', 'OEKO-TEX Standard 100', 'REACH', 'Regenagri'],
 }
 
@@ -241,7 +271,7 @@ export const pillar04 = {
   badge: 'Pillar 04',
   title: 'ESG Disclosure',
   description:
-    'Transparent reporting on our environmental, social and governance performance — published annually and aligned with international frameworks.',
+    'In accordance with Global Reporting Initiative (GRI) standards, our sustainability reports communicate our goals, progress, challenges and impact across every ESG area.',
   reports: [
     {
       id: '2024',
@@ -260,14 +290,16 @@ export const pillar04 = {
       pdfHref: '#',
     },
   ],
-  ctaTitle: 'Talk to our ESG team',
-  ctaDescription: 'Connect with our sustainability team for partnership enquiries, audits or reporting.',
+  ctaText: 'Reporting since 2024 — aligned to GRI standards, with continuous year-on-year disclosure.',
+  ctaButtonLabel: 'Talk to our ESG team',
   ctaHref: '/contact',
 }
 
 export const sustainabilityCta = {
-  title: "Let's Connect",
-  subtitle: "And build what's next, together",
+  eyebrow: "Let's Connect",
+  heading: "And build what's next, together",
+  description:
+    "Get in touch with our team for partnership, sourcing, careers or general inquiries - we'll get back to you with answers.",
   buttonLabel: 'Schedule consultation',
   buttonHref: '/contact',
   email: 'hello@dekkoisho.com',
