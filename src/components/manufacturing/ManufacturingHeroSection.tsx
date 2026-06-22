@@ -72,7 +72,7 @@ export function ManufacturingHeroSection() {
         </div>
       </FadeIn>
 
-      <div id={expertiseId} className="service-more-info section-spacing-bottom">
+      <div id={expertiseId} className="service-more-info section-spacing mfg-expertise-section">
         <div className="container">
           <div className="more-info-inner mfg-expertise-inner">
             <div className="mfg-expertise-block">

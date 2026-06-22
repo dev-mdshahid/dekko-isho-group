@@ -17,25 +17,25 @@ export const industrialLaundryInnovation = {
     'From wash recipe development to bulk production, our teams combine technical expertise with modern equipment to deliver repeatable, brand-aligned finishes at scale.',
   features: [
     {
-      id: 'wash',
-      icon: '/images/manufacturing/feature-icon-quality.svg',
-      title: 'Wash Development',
+      id: 'capacity',
+      icon: '/images/industrial-laundry/feature-icon-capacity.svg',
+      title: 'Denim Washing Capacity',
       description:
-        'Custom wash programs developed and tested to match brand standards, fabric behaviour and hand-feel requirements.',
+        'Around 70 thousand pieces of denim washing capacity supported by modern laundry setup and technical expertise.',
     },
     {
-      id: 'dry',
-      icon: '/images/manufacturing/feature-icon-sustainable.svg',
-      title: 'Dry Development',
+      id: 'technology',
+      icon: '/images/industrial-laundry/feature-icon-technology.svg',
+      title: 'Advanced Laundry Technology',
       description:
-        'Controlled drying processes that protect garment shape, colour and performance across bulk production runs.',
+        'Equipped with OZONE fading, nano bubble technology, front loading machines, sample machines and high-tech dryers.',
     },
     {
-      id: 'finish',
-      icon: '/images/manufacturing/feature-icon-fashion.svg',
-      title: 'Finish & Specialty',
+      id: 'processes',
+      icon: '/images/industrial-laundry/feature-icon-processes.svg',
+      title: 'Wet & Dry Wash Processes',
       description:
-        'Specialty finishes, softening and value-added treatments applied with consistent quality and traceability.',
+        'Supports garment wash, enzyme wash, dip dye, snow wash, hand scraping, whisker, destroy, PP spray and 3D effects.',
     },
   ],
 }
@@ -44,8 +44,8 @@ export const industrialLaundryDevelopment = {
   title: 'From idea reference to sample-ready fashion development.',
   description:
     'Our development workflow translates brand references into approved wash standards — supporting faster sampling, clearer communication and smoother transition into bulk production.',
-  image: '/legacy/images/industry-2-3.webp',
-  imageAlt: 'Industrial washing machinery',
+  image: '/images/industrial-laundry/development-section.png',
+  imageAlt: 'Industrial washing machines in a laundry facility',
   imageLabel: 'Design',
 }
 
@@ -100,36 +100,36 @@ export const industrialLaundryQuality = {
       number: '01',
       title: 'Before wash Inspection & sorting',
       description:
-        'Garments are inspected and sorted before washing to ensure batch accuracy, shade grouping and process readiness.',
-      image: '/legacy/images/industry-2-1.webp',
-      imageAlt: 'Before wash inspection and sorting',
+        'Inspect garments for conformity to specifications (stitching, cleanliness & appearance). Random inspection of critical spec points, before processing.',
+      image: '/images/industrial-laundry/quality/01-sorting.png',
+      imageAlt: 'Before wash inspection and sorting on the factory floor',
     },
     {
       id: 'bulk-review',
       number: '02',
       title: 'First Bulk wash Review',
       description:
-        'The first bulk lot is reviewed against approved standards to confirm shade, hand-feel and finish before full production continues.',
-      image: '/legacy/images/industry-2-2.webp',
-      imageAlt: 'First bulk wash review',
+        'Color wise review of first output garments for conformity to fine tune the bulk recipe. Having Pre-Production Meeting to discuss technical points for consistency in bulk.',
+      image: '/images/industrial-laundry/quality/02-bulk-review.png',
+      imageAlt: 'First bulk wash review at inspection tables',
     },
     {
       id: 'in-process',
       number: '03',
       title: 'In-Process Inspection & Testing',
       description:
-        'Inline inspection and testing during washing supports consistency across bulk output and early correction when needed.',
-      image: '/legacy/images/industry-2-4.webp',
-      imageAlt: 'In-process quality inspection and testing',
+        'Evaluate the shade consistency, dry process effects etc., (if applicable).',
+      image: '/images/industrial-laundry/quality/03-in-process.png',
+      imageAlt: 'In-process quality inspection and testing area',
     },
     {
       id: 'final',
       number: '04',
       title: 'Final Inspection / Audit prior to dispatch',
       description:
-        'Finished garments are audited against specifications before packing and dispatch to customers.',
-      image: '/legacy/images/industry-2-5.webp',
-      imageAlt: 'Final inspection before dispatch',
+        'Ensure garments are inspected / audited (AQL 1.5 std) for wash standards.',
+      image: '/images/industrial-laundry/quality/04-final-inspection.png',
+      imageAlt: 'Final inspection area with industrial washing machines',
     },
   ],
 }
