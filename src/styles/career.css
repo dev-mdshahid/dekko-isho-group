@@ -434,15 +434,15 @@
   flex-flow: column;
   align-items: flex-start;
   gap: var(--gap--gap-6);
-  max-width: 52rem;
+  max-width: 54rem;
 }
 
 .career-voices-headline {
   color: var(--color--white);
   font-family: var(--_typography---font-family--heading);
-  font-size: clamp(2rem, 4.5vw, var(--_typography---h2--h2));
-  font-weight: var(--_typography---h2--font-weight-600);
-  line-height: var(--_typography---h2--line-height);
+  font-size: 28px;
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.5;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin: 0;
 }
@@ -460,15 +460,14 @@
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  gap: var(--gap--gap-8);
-  min-height: 280px;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  gap: 2rem;
+  padding: 32px;
 }
 
 .career-voice-quote {
-  color: rgb(255 255 255 / 88%);
+  color: var(--color--white);
   font-family: var(--_typography---font-family--body);
-  font-size: var(--base-font-size--base-small);
+  font-size: 15px;
   font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.6;
   letter-spacing: var(--_typography---body--letter-spacing);
@@ -477,14 +476,30 @@
 
 .career-voice-author {
   display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.career-voice-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #5c5c5c;
+  flex: none;
+}
+
+.career-voice-author-text {
+  display: flex;
   flex-flow: column;
-  gap: 0.25rem;
+  gap: 0.125rem;
+  min-width: 0;
 }
 
 .career-voice-name {
   color: var(--color--white);
   font-family: var(--_typography---font-family--heading);
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: var(--_typography---h6--font-weight-600);
   line-height: 1.3;
   letter-spacing: var(--_typography---body--letter-spacing);
@@ -492,12 +507,13 @@
 }
 
 .career-voice-role {
-  color: var(--color--primary-1);
+  color: var(--color--gray-3);
   font-family: var(--_typography---font-family--body);
   font-size: var(--_typography---body--body-xs);
   font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.4;
   letter-spacing: var(--_typography---body--letter-spacing);
+  margin: 0;
 }
 
 /* ── Apply CTA ── */
@@ -506,39 +522,49 @@
 }
 
 .career-cta-card {
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   background-color: #0a0a0a;
   background-image:
-    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(243 33 93 / 18%) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(184 26 71 / 12%) 0%, transparent 62%);
-  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
+    radial-gradient(ellipse 90% 140% at 0% 50%, rgb(184 26 71 / 35%) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 140% at 100% 50%, rgb(184 26 71 / 35%) 0%, transparent 55%);
+  padding: clamp(3rem, 5vw, 4rem);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap--gap-8);
+  overflow: hidden;
+}
+
+.career-cta-content {
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   gap: var(--gap--gap-5);
-  overflow: hidden;
+  min-width: 0;
+  flex: 1 1 20rem;
 }
 
 .career-cta-heading {
   color: var(--color--white);
   font-family: var(--_typography---font-family--heading);
-  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: var(--_typography---h3--font-weight-600);
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin: 0;
-  max-width: 18ch;
+  max-width: none;
 }
 
 .career-cta-description {
-  color: #a1a1aa;
+  color: rgb(255 255 255 / 72%);
   font-family: var(--_typography---font-family--body);
   font-size: 1rem;
   font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.5;
   letter-spacing: var(--_typography---body--letter-spacing);
-  margin: 0 0 1rem;
-  max-width: 50%;
+  margin: 0;
+  max-width: 36rem;
 }
 
 .career-cta-actions {
@@ -546,6 +572,7 @@
   flex-flow: row wrap;
   align-items: center;
   gap: 1.875rem;
+  flex: none;
 }
 
 /* ── Responsive ── */
@@ -585,6 +612,11 @@
 
   .career-voices-grid {
     grid-template-columns: 1fr;
+  }
+
+  .career-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .career-cta-description {
