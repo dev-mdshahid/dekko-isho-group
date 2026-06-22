@@ -1,0 +1,6 @@
+export { IndustrialLaundryHeroSection } from './IndustrialLaundryHeroSection'
+export { IndustrialLaundryInnovationSection } from './IndustrialLaundryInnovationSection'
+export { IndustrialLaundryDevelopmentSection } from './IndustrialLaundryDevelopmentSection'
+export { IndustrialLaundryWashingSection } from './IndustrialLaundryWashingSection'
+export { IndustrialLaundryQualitySection } from './IndustrialLaundryQualitySection'
+export { IndustrialLaundryCTASection } from './IndustrialLaundryCTASection'
