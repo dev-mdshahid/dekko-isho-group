@@ -12,6 +12,7 @@ const pageLinks = [
   { to: '/gallery', label: 'Gallery' },
   { to: '/press', label: 'Press' },
   { to: '/awards', label: 'Awards' },
+  { to: '/career', label: 'Career' },
   { to: '/sustainability', label: 'Sustainability' },
   { to: '/faqs', label: 'FAQs' },
   { to: '/contact', label: 'Contact' },
