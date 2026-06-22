@@ -127,4 +127,47 @@ export const industryFeatureIcons = {
       />
     </IndustryFeatureIcon>
   ),
+  factory: (
+    <IndustryFeatureIcon>
+      <path
+        d="M2.667 13.333h10.666M4 13.333V6.667l2.667-2 2.666 2V13.333M9.333 13.333V8l2.667-2V13.333"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </IndustryFeatureIcon>
+  ),
+  processGrid: (
+    <IndustryFeatureIcon>
+      <path
+        d="M2.667 2.667h4v4h-4v-4ZM9.333 2.667h4v4h-4v-4ZM2.667 9.333h4v4h-4v-4ZM9.333 9.333h4v4h-4v-4Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+    </IndustryFeatureIcon>
+  ),
+  washing: (
+    <IndustryFeatureIcon>
+      <path
+        d="M4 3.333h8v2.5H4V3.333Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.333 8.333h5.334M5.333 11h5.334M8 5.833v9.167"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M6 5.833h4l.667 1.667H5.333L6 5.833Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+    </IndustryFeatureIcon>
+  ),
 } as const
