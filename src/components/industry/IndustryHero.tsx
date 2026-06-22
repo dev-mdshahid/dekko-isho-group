@@ -6,7 +6,9 @@ export type IndustryHeroProps = {
   description: string
   ctaLabel: string
   ctaHref: string
-  videoSrc: string
+  videoSrc?: string
+  imageSrc?: string
+  imageAlt?: string
 }
 
 export function IndustryHero({
@@ -15,6 +17,8 @@ export function IndustryHero({
   ctaLabel,
   ctaHref,
   videoSrc,
+  imageSrc,
+  imageAlt,
 }: IndustryHeroProps) {
   return (
     <section className="industry-hero">
@@ -33,14 +37,18 @@ export function IndustryHero({
       </div>
 
       <div className="industry-hero-media-wrap">
-        <video
-          src={videoSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="industry-hero-video"
-        />
+        {imageSrc ? (
+          <img src={imageSrc} alt={imageAlt ?? ''} className="industry-hero-image" />
+        ) : (
+          <video
+            src={videoSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="industry-hero-video"
+          />
+        )}
       </div>
     </section>
   )

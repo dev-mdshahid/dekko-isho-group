@@ -7,6 +7,7 @@ import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
 import { ManufacturingContent } from './ManufacturingContent'
 import { IndustrialLaundryContent } from './IndustrialLaundryContent'
+import { ComplianceSustainabilityContent } from './ComplianceSustainabilityContent'
 
 type SolutionPlaceholderContentProps = {
   solution: Solution
@@ -37,6 +38,10 @@ export function SolutionContent({ solution }: SolutionContentProps) {
 
   if (solution.slug === 'industrial-laundry') {
     return <IndustrialLaundryContent />
+  }
+
+  if (solution.slug === 'compliance-sustainability') {
+    return <ComplianceSustainabilityContent />
   }
 
   return <SolutionPlaceholderContent solution={solution} />
