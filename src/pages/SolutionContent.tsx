@@ -5,12 +5,13 @@ import type { Solution } from '../data/solutions/solutions'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+import { ManufacturingContent } from './ManufacturingContent'
 
-type SolutionContentProps = {
+type SolutionPlaceholderContentProps = {
   solution: Solution
 }
 
-export function SolutionContent({ solution }: SolutionContentProps) {
+function SolutionPlaceholderContent({ solution }: SolutionPlaceholderContentProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   useLegacyLinkInterceptor(ref)
@@ -22,4 +23,16 @@ export function SolutionContent({ solution }: SolutionContentProps) {
       <SolutionHeroSection solution={solution} />
     </div>
   )
+}
+
+type SolutionContentProps = {
+  solution: Solution
+}
+
+export function SolutionContent({ solution }: SolutionContentProps) {
+  if (solution.slug === 'manufacturing') {
+    return <ManufacturingContent />
+  }
+
+  return <SolutionPlaceholderContent solution={solution} />
 }
