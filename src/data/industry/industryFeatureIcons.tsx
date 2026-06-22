@@ -170,4 +170,20 @@ export const industryFeatureIcons = {
       />
     </IndustryFeatureIcon>
   ),
+  lab: (
+    <IndustryFeatureIcon>
+      <path
+        d="M6 2.667h4l1.333 4-3.333 6.666L4.667 6.667 6 2.667Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.333 10h1.334M8 6.667v3.333"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </IndustryFeatureIcon>
+  ),
 } as const

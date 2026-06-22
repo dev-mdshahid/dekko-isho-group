@@ -2,9 +2,11 @@ import { createBrowserRouter, Navigate, useParams } from 'react-router-dom'
 import { legacyRoutes } from './data/legacyRoutes'
 import { AboutPage } from './pages/AboutPage'
 import { AgamiFashionsPage } from './pages/AgamiFashionsPage'
+import { AgamiWashingPage } from './pages/AgamiWashingPage'
 import { ContactPage } from './pages/ContactPage'
 import { GalleryPage } from './pages/GalleryPage'
 import { HomePage } from './pages/HomePage'
+import { IshoLtdPage } from './pages/IshoLtdPage'
 import { LegacyRoutePage } from './pages/LegacyRoutePage'
 import { AwardsPage } from './pages/AwardsPage'
 import { CareerPage } from './pages/CareerPage'
@@ -43,6 +45,8 @@ export const router = createBrowserRouter([
   { path: '/dekko-fashions', element: <DekkoFashionsPage /> },
   { path: '/globus-garments', element: <GlobusGarmentsPage /> },
   { path: '/agami-fashions', element: <AgamiFashionsPage /> },
+  { path: '/agami-washing', element: <AgamiWashingPage /> },
+  { path: '/isho-ltd', element: <IshoLtdPage /> },
   { path: '/blog', element: <Navigate to="/press" replace /> },
   { path: '/blog/:slug', element: <LegacyBlogRedirect /> },
   ...legacyRouteElements,
