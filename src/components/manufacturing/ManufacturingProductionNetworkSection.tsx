@@ -30,13 +30,15 @@ export function ManufacturingProductionNetworkSection() {
                   className="mfg-network-card"
                   delay={index * 60}
                 >
-                  <img
-                    src={unit.image}
-                    loading="lazy"
-                    alt=""
-                    className="mfg-network-card-bg"
-                    aria-hidden="true"
-                  />
+                  <div className="mfg-network-card-media" aria-hidden="true">
+                    <img
+                      src={unit.image}
+                      loading="lazy"
+                      alt=""
+                      className="mfg-network-card-bg"
+                    />
+                    <div className="mfg-network-card-shade" />
+                  </div>
                   <div className="mfg-network-card-glass">
                     <h3 className="mfg-network-card-title">{unit.title}</h3>
 

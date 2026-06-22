@@ -335,6 +335,9 @@ export const manufacturingEmbroidery = {
   ],
 }
 
+const mfgProductNetworkImage = (file: string) =>
+  `/images/manufacturing/product network/${file}`
+
 export const manufacturingProductionNetwork = {
   badge: 'Unit-Wise Capacity',
   title: 'Production Network',
@@ -344,7 +347,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-garments',
       title: 'Dekko Garments Ltd.',
-      image: '/images/fashion-outlet.png',
+      image: mfgProductNetworkImage('pn.png'),
       imageAlt: 'Garment production floor',
       productionLines: '46',
       monthlyCapacity: '14,40,000',
@@ -357,7 +360,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-readywears',
       title: 'DEKKO READYWEARS LTD.',
-      image: '/images/skyview-company.png',
+      image: mfgProductNetworkImage('pn1.png'),
       imageAlt: 'Readywear production facility',
       productionLines: '24',
       monthlyCapacity: '7,50,000',
@@ -369,7 +372,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-fashions',
       title: 'DEKKO FASHIONS LTD.',
-      image: '/images/corporate-building.png',
+      image: mfgProductNetworkImage('pn2.png'),
       imageAlt: 'Dekko Fashions production unit',
       productionLines: '10',
       monthlyCapacity: '3,00,000',
@@ -381,7 +384,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'agami-fashions',
       title: 'AGAMI FASHIONS LTD.',
-      image: '/legacy/images/industry-2-1.webp',
+      image: mfgProductNetworkImage('pn3.jpg'),
       imageAlt: 'Agami Fashions production floor',
       productionLines: '08',
       monthlyCapacity: '300,000',
