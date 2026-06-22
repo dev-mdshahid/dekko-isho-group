@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage'
 import { LegacyRoutePage } from './pages/LegacyRoutePage'
 import { AwardsPage } from './pages/AwardsPage'
 import { CareerPage } from './pages/CareerPage'
+import { DekkoGarmentsPage } from './pages/DekkoGarmentsPage'
 import { SustainabilityPage } from './pages/SustainabilityPage'
 import { PressDetailPage } from './pages/PressDetailPage'
 import { PressPage } from './pages/PressPage'
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
   { path: '/awards', element: <AwardsPage /> },
   { path: '/career', element: <CareerPage /> },
   { path: '/sustainability', element: <SustainabilityPage /> },
+  { path: '/dekko-garments', element: <DekkoGarmentsPage /> },
   { path: '/blog', element: <Navigate to="/press" replace /> },
   { path: '/blog/:slug', element: <LegacyBlogRedirect /> },
   ...legacyRouteElements,
