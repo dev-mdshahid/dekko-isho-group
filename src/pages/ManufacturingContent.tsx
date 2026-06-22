@@ -4,11 +4,11 @@ import {
   ManufacturingCapacityDetailsSection,
   ManufacturingCapacitySection,
   ManufacturingCTASection,
-  ManufacturingFactoriesSection,
+  ManufacturingCuttingPreparationSection,
+  ManufacturingEmbroiderySection,
   ManufacturingHeroSection,
-  ManufacturingProcessSection,
-  ManufacturingProjectsSection,
-  ManufacturingQualitySection,
+  ManufacturingHowItWorksSection,
+  ManufacturingProductionNetworkSection,
   ManufacturingSewingSection,
 } from '../components/manufacturing'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -25,13 +25,13 @@ export function ManufacturingContent() {
   return (
     <div ref={ref} className="manufacturing-page">
       <ManufacturingHeroSection />
-      <ManufacturingProcessSection />
+      <ManufacturingHowItWorksSection />
       <ManufacturingCapacitySection />
       <ManufacturingCapacityDetailsSection />
-      <ManufacturingQualitySection />
+      <ManufacturingCuttingPreparationSection />
       <ManufacturingSewingSection />
-      <ManufacturingFactoriesSection />
-      <ManufacturingProjectsSection />
+      <ManufacturingEmbroiderySection />
+      <ManufacturingProductionNetworkSection />
       <ManufacturingCTASection />
     </div>
   )

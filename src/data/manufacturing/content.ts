@@ -43,39 +43,108 @@ export const manufacturingExpertise = {
   ],
 }
 
-export const manufacturingProcess = {
-  badge: 'How It Works',
-  title: 'From concept to finished garment',
-  steps: [
+export const manufacturingHowItWorks = {
+  badge: 'Process',
+  title: 'How It Works',
+  columnLabels: { category: 'Category', details: 'Details' },
+  items: [
     {
-      id: 'design',
-      title: 'Design',
-      description:
-        'Collaborative design development with trend research, tech packs and sampling to align every collection with brand vision and market demand.',
+      id: 'idea',
+      category: 'Idea & Strategy',
+      details:
+        'We help define ideas and plan a strategic journey so brands can begin creating great quality garments.',
     },
     {
-      id: 'sourcing',
-      title: 'Sourcing',
-      description:
-        'Ethical material sourcing with full traceability — fabrics, trims and accessories procured through audited suppliers across our global network.',
+      id: 'design',
+      category: 'Design',
+      details: 'The fashion design team helps bring a vision to life through technical design.',
+    },
+    {
+      id: 'fabric',
+      category: 'Fabric',
+      details:
+        'Sourcing teams and textile engineers help choose the right fabric, trims, and findings for garments.',
+    },
+    {
+      id: 'pattern',
+      category: 'Pattern Making',
+      details:
+        'Award-winning pattern makers help turn designs into production-ready garment structures.',
+    },
+    {
+      id: 'sampling',
+      category: 'Sampling',
+      details:
+        'Samples are created and reviewed so garments can be refined until the result meets your expectations.',
     },
     {
       id: 'production',
-      title: 'Production',
+      category: 'Production',
+      details:
+        'Large quantities are produced in eco-friendly factories once the product is ready for scale.',
+    },
+  ],
+}
+
+export const manufacturingCuttingPreparation = {
+  badge: 'Production Floor Process',
+  title: 'Cutting & Preparation',
+  description:
+    'Cutting and preparation form the technical foundation of bulk manufacturing. Each stage is executed with close process control to protect fabric behavior, marker accuracy, component quality and organized line input.',
+  items: [
+    {
+      id: 'fabric-relaxation',
+      number: '01',
+      title: 'Fabric Relaxation & Preparation',
       description:
-        'High-volume cut-and-sew, knitting and finishing across our Gazipur facilities — optimised lines, lean workflows and real-time production tracking.',
+        'Before spreading, fabrics are prepared according to material behavior, technical requirements and production standards. This helps stabilize shrinkage, reduce distortion and ensure that the cutting process begins with properly conditioned raw material.',
+      image: '/legacy/images/service-image-1.webp',
+      imageAlt: 'Worker preparing fabric on a spreading table',
     },
     {
-      id: 'quality',
-      title: 'Quality Control',
+      id: 'spreading',
+      number: '02',
+      title: 'Spreading Accuracy',
       description:
-        'Inline and end-line inspection at every stage. AQL standards, lab testing and third-party audits ensure consistent quality on every shipment.',
+        'Fabric spreading is carried out with close attention to ply alignment, grain direction, shade control and marker requirements. Consistent spreading helps improve measurement accuracy and supports better garment balance during assembly.',
+      image: '/legacy/images/3-3.jpg',
+      imageAlt: 'Industrial fabric spreading machine',
     },
     {
-      id: 'logistics',
-      title: 'Logistics',
+      id: 'marker',
+      number: '03',
+      title: 'Marker & Pattern Control',
       description:
-        'On-time delivery through integrated logistics — from factory floor to port, with full documentation and shipment visibility for every order.',
+        'Approved markers and patterns are followed to optimize fabric usage while maintaining product specifications. The process supports efficient material consumption, accurate component shape and consistent size execution.',
+      image: '/legacy/images/access-image.jpg',
+      imageAlt: 'Cutting tables in a production facility',
+    },
+    {
+      id: 'cutting',
+      number: '04',
+      title: 'Cutting Precision',
+      description:
+        'Cutting is performed with controlled handling to maintain panel accuracy across sizes and styles. Cut parts are checked against technical specifications to reduce defects before sewing begins.',
+      image: '/legacy/images/3930.jpg',
+      imageAlt: 'Workers handling cut fabric panels',
+    },
+    {
+      id: 'fusing',
+      number: '05',
+      title: 'Fusing Stage',
+      description:
+        'Fusing is applied where required to strengthen garment components such as collars, cuffs, plackets, waistbands and other structured areas. Temperature, pressure and timing are monitored to ensure bonding quality and long-term product durability.',
+      image: '/legacy/images/3-2.jpg',
+      imageAlt: 'Industrial fusing machine on the production floor',
+    },
+    {
+      id: 'bundling',
+      number: '06',
+      title: 'Cut-Part Bundling',
+      description:
+        'Cut components are numbered, bundled and prepared for line input with clear identification. This improves traceability, reduces mixing risk and allows sewing teams to begin assembly with organized production inputs.',
+      image: '/legacy/images/002_1-p-1080.avif',
+      imageAlt: 'Cut-part bundling equipment',
     },
   ],
 }
@@ -110,64 +179,48 @@ export const manufacturingCapacity = {
 }
 
 export const manufacturingCapacityDetails = {
-  badge: 'Capabilities & Features',
+  badge: 'Detailed Insight',
   title: 'Full Capacity Details',
-  columnLabels: { left: 'Category', right: 'Details' },
   items: [
     {
-      id: 'knitwear',
-      category: 'Knitwear',
-      details: [
-        'Circular knitting, flat knitting and seamless production',
-        'Jerseys, polos, sweaters and performance wear',
-        'In-house dyeing and finishing programmes',
-      ],
+      id: 'sms',
+      number: '01',
+      title: 'Salesman Sample Production',
+      description: '3 dedicated SMS lines to support SMS production',
     },
     {
-      id: 'woven',
-      category: 'Woven Garments',
-      details: [
-        'Shirts, trousers, jackets and formal wear',
-        'Precision cutting, fusing and assembly at scale',
-        'Export-ready finishing and packing',
-      ],
+      id: 'laundry',
+      number: '04',
+      title: 'Industrial Laundry Facility',
+      description:
+        'Specializes in versatile types of washes for woven tops. Equipped with sustainable washing technology, including E-Flow machines, laser processes, and ozone wash facilities. Uses EIM software to measure and score sustainability.',
     },
     {
-      id: 'denim',
-      category: 'Denim & Casual',
-      details: [
-        'Full denim wash and distressing programmes',
-        'Jeans, jackets and casual collections',
-        'Consistent shade and fit across bulk runs',
-      ],
+      id: 'embroidery',
+      number: '02',
+      title: 'State-of-the-Art Embroidery Unit',
+      description:
+        'Equipped with advanced embroidery machines from Barudan and Maya, known for their precision and durability. High stitch capacity supports efficient daily production. In-house printing, embroidery, and finishing enhance quality control.',
+    },
+    {
+      id: 'testing',
+      number: '05',
+      title: 'Physical Testing Lab',
+      description: 'Fully equipped with advanced European machinery for rigorous testing',
     },
     {
       id: 'accessories',
-      category: 'Accessories & Trims',
-      details: [
-        'Embroidery, printing, labelling and packaging',
-        'Complete product finishing under one roof',
-        'Brand-aligned trim and packaging solutions',
-      ],
+      number: '03',
+      title: 'Accessories Unit',
+      description:
+        'Capable of producing buttons, labeling, and packaging materials in-house. Ensures better control over production with in-house printing and embroidery facilities.',
     },
     {
-      id: 'finishing',
-      category: 'Finishing & Packing',
-      details: [
-        'Steam pressing and quality finishing',
-        'Barcoding and export-ready packing',
-        'Global distribution documentation',
-      ],
-    },
-    {
-      id: 'sampling',
-      category: 'Sampling & Development',
-      details: [
-        'Rapid proto sampling and fit sessions',
-        'Bulk approval workflows',
-        'Accelerated time-to-market support',
-      ],
-      last: true,
+      id: 'versatile',
+      number: '06',
+      title: 'Versatile Manufacturing Capability',
+      description:
+        'Capable of producing a wide range of products, including both formal and casual shirts, pants, ladies\' blouses, dresses, denim and twill jackets, shackets, quilted shirts and jackets.',
     },
   ],
 }
@@ -230,15 +283,113 @@ export const manufacturingQuality = {
 }
 
 export const manufacturingSewing = {
-  badge: 'Sewing & Assembly',
-  title: 'Precision at every station',
+  badge: 'Manufacturing Excellence',
+  title: 'Sewing & Assembly Process',
   description:
-    'Our sewing floors combine skilled craftsmanship with modern equipment — automated cutting, intelligent line balancing and real-time efficiency monitoring keep production flowing at scale without compromising quality.',
+    "The sewing and assembly stage brings design, material and technical planning together on the production floor. Dekko ISHO's sewing operations are structured to maintain construction accuracy, line efficiency and consistent workmanship across product categories. Each garment moves through a controlled workflow supported by operator skill, inline supervision and quality checkpoints.",
   images: [
-    { src: '/images/about/manufacturing.jpg', alt: 'Sewing line production' },
-    { src: '/images/fashion-outlet.png', alt: 'Garment assembly floor' },
-    { src: '/images/about/design.jpg', alt: 'Quality inspection station' },
-    { src: '/images/about/compliance.jpg', alt: 'Finishing and pressing' },
+    {
+      src: '/legacy/images/industry-2-1.webp',
+      alt: 'Wide view of sewing production lines in the factory',
+    },
+    {
+      src: '/legacy/images/industry-2-2.webp',
+      alt: 'Individual sewing workstation with digital display',
+    },
+    {
+      src: '/legacy/images/industry-2-3.webp',
+      alt: 'Workers at sewing stations with floor safety markings',
+    },
+    {
+      src: '/legacy/images/industry-2-4.webp',
+      alt: 'Organized sewing workstation with storage bins',
+    },
+  ],
+}
+
+export const manufacturingEmbroidery = {
+  badge: 'Value Addition',
+  title: 'In-House Embroidery Capability',
+  cards: [
+    {
+      id: 'quality-control',
+      title: 'In-Process Quality Control',
+      image: '/legacy/images/industry-2-5.webp',
+      imageAlt: 'Embroidery factory floor with industrial machines',
+      points: [
+        'Set the standard for placement and color and design accuracy before starting the bulk.',
+        'Assess stitching consistency in all heads and design finishes.',
+        'Ensure the quality of Emb panels by checking 100%, before sending to production floor.',
+      ],
+    },
+    {
+      id: 'defect-management',
+      title: 'Defect Management',
+      image: '/legacy/images/industry-2-2.webp',
+      imageAlt: 'Workers operating embroidery machines',
+      points: [
+        'Record and classify defects immediately.',
+        'Implement corrective actions to address recurring issues.',
+      ],
+    },
+  ],
+}
+
+export const manufacturingProductionNetwork = {
+  badge: 'Unit-Wise Capacity',
+  title: 'Production Network',
+  description:
+    'Key production units across Dekko ISHO Group with lines, capacity, manpower, product mix, and compliance progress.',
+  units: [
+    {
+      id: 'dekko-garments',
+      title: 'Dekko Garments Ltd.',
+      image: '/images/fashion-outlet.png',
+      imageAlt: 'Garment production floor',
+      productionLines: '46',
+      monthlyCapacity: '14,40,000',
+      manpower: '6,800',
+      products:
+        'Formal and Casual shirt, Casual bottom for both men & Ladies. (60% capacity for tops and 40% for bottom)',
+      higgFfm: '83%',
+      rscProgress: '92%',
+    },
+    {
+      id: 'dekko-readywears',
+      title: 'DEKKO READYWEARS LTD.',
+      image: '/images/skyview-company.png',
+      imageAlt: 'Readywear production facility',
+      productionLines: '24',
+      monthlyCapacity: '7,50,000',
+      manpower: '3,150',
+      products: "70% men's casual, 20% ladies' and 10% kids'",
+      higgFfm: '75%',
+      rscProgress: '100%',
+    },
+    {
+      id: 'dekko-fashions',
+      title: 'DEKKO FASHIONS LTD.',
+      image: '/images/corporate-building.png',
+      imageAlt: 'Dekko Fashions production unit',
+      productionLines: '10',
+      monthlyCapacity: '3,00,000',
+      manpower: '1,450',
+      products: "80% men's & Ladies' casual products, 15% formal men's, 5% kids'",
+      higgFfm: '68%',
+      rscProgress: '100%',
+    },
+    {
+      id: 'agami-fashions',
+      title: 'AGAMI FASHIONS LTD.',
+      image: '/legacy/images/industry-2-1.webp',
+      imageAlt: 'Agami Fashions production floor',
+      productionLines: '08',
+      monthlyCapacity: '300,000',
+      manpower: '1,200(AP.)',
+      products: '70% bottom for Kids, Men & Ladies, 30% Jackets and overshirts',
+      higgFfm: '81%',
+      rscProgress: '97%',
+    },
   ],
 }
 
@@ -303,8 +454,12 @@ export const manufacturingProjects = {
 }
 
 export const manufacturingCta = {
-  badge: 'Get in touch',
-  heading: "Let's build what's next, together.",
-  buttonLabel: 'Get in Touch',
+  eyebrow: "Let's Connect",
+  heading: "And build what's next, together",
+  description:
+    "Get in touch with our team for partnership, sourcing, careers or general inquiries - we'll get back to you with answers.",
+  buttonLabel: 'Schedule consultation',
   buttonHref: '/contact',
+  email: 'hello@dekkoisho.com',
+  emailHref: 'mailto:hello@dekkoisho.com',
 }

@@ -1,19 +1,23 @@
 import { manufacturingCta } from '../../data/manufacturing/content'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
-import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export function ManufacturingCTASection() {
-  const { badge, heading, buttonLabel, buttonHref } = manufacturingCta
+  const { eyebrow, heading, description, buttonLabel, buttonHref, email, emailHref } =
+    manufacturingCta
 
   return (
-    <section className="cta-section mfg-cta-section">
-      <div className="cta-info">
-        <FadeIn id="mfg-cta-content" className="section-title-center _02">
-          <PreSectionTitle title={badge} variant="bg-dark" />
-          <h2 className="section-title title-center text-white">{heading}</h2>
-          <div className="mfg-cta-button">
+    <section className="mfg-cta-section">
+      <div className="container">
+        <FadeIn id="mfg-cta-card" className="mfg-cta-card">
+          <p className="mfg-cta-eyebrow">{eyebrow}</p>
+          <h2 className="mfg-cta-heading">{heading}</h2>
+          <p className="mfg-cta-description">{description}</p>
+          <div className="mfg-cta-actions">
             <ButtonArrow to={buttonHref} label={buttonLabel} variant="button-white-bg" />
+            <a href={emailHref} className="mfg-cta-email">
+              {email}
+            </a>
           </div>
         </FadeIn>
       </div>
