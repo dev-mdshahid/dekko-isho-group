@@ -5,7 +5,7 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 export function CareerEmployeeVoicesSection() {
   return (
     <section className="career-voices-section section-spacing">
-      <div className="container-full">
+      <div className="career-content-container">
         <div className="career-voices-main">
           <FadeIn id="career-voices-header" className="career-voices-header">
             <PreSectionTitle title={careerEmployeeVoices.badge} variant="bg-dark" />
@@ -20,10 +20,13 @@ export function CareerEmployeeVoicesSection() {
                 className="career-voice-card"
                 delay={index * 80}
               >
-                <p className="career-voice-quote">&ldquo;{item.quote}&rdquo;</p>
+                <p className="career-voice-quote">{item.quote}</p>
                 <div className="career-voice-author">
-                  <h3 className="career-voice-name">{item.name}</h3>
-                  <div className="career-voice-role">{item.role}</div>
+                  <span className="career-voice-avatar" aria-hidden="true" />
+                  <div className="career-voice-author-text">
+                    <h3 className="career-voice-name">{item.name}</h3>
+                    <p className="career-voice-role">{item.role}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
