@@ -29,7 +29,7 @@ export function IndustryImageSection({
   className,
 }: IndustryImageSectionProps) {
   const hasAside = Boolean(aside)
-  const hasCaption = showCaption && imageNumber && imageLabel
+  const hasCaption = showCaption && Boolean(imageLabel)
 
   return (
     <section className={`industry-image-section${hasAside ? '' : ' industry-image-section--split'}${className ? ` ${className}` : ''}`}>
@@ -54,7 +54,9 @@ export function IndustryImageSection({
               <>
                 <div className="industry-image-section-overlay" aria-hidden="true" />
                 <div className="industry-image-section-caption">
-                  <span className="industry-image-section-number">{imageNumber}</span>
+                  {imageNumber ? (
+                    <span className="industry-image-section-number">{imageNumber}</span>
+                  ) : null}
                   <span className="industry-image-section-label">{imageLabel}</span>
                 </div>
               </>
