@@ -57,4 +57,30 @@ export const industryFeatureIcons = {
       />
     </IndustryFeatureIcon>
   ),
+  airplane: (
+    <IndustryFeatureIcon>
+      <path
+        d="M2.667 8h4.666L8 13.333 10.667 8h2.666L13.333 4 8 5.333 2.667 4 5.333 8Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+    </IndustryFeatureIcon>
+  ),
+  document: (
+    <IndustryFeatureIcon>
+      <path
+        d="M4.667 2.667h4l2.666 2.666V13.333H4.667V2.667Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.667 2.667V5.333H11.333M6 8h4M6 10.667h4"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </IndustryFeatureIcon>
+  ),
 } as const

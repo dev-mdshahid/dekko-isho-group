@@ -572,3 +572,368 @@
     font-size: var(--_typography---h6--h6);
   }
 }
+
+/* Dekko Readywares — photo gallery section */
+
+.dekko-readywares-gallery {
+  background-color: #121212;
+  overflow: hidden;
+  padding-bottom: 6.25rem;
+  padding-top: 5rem;
+  position: relative;
+  width: 100%;
+}
+
+.dekko-readywares-gallery-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.dekko-readywares-gallery-header {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-5);
+  margin-bottom: var(--gap--gap-12);
+  width: 100%;
+}
+
+.dekko-readywares-gallery-title {
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.dekko-readywares-gallery-description {
+  color: var(--color--gray-3);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: 52rem;
+  width: 100%;
+}
+
+.dekko-readywares-gallery-grid {
+  align-items: stretch;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+}
+
+.dekko-readywares-gallery-item {
+  min-width: 0;
+  width: 100%;
+}
+
+.dekko-readywares-gallery-item-inner {
+  border-radius: var(--border-radius--md);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dekko-readywares-gallery-image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.dekko-readywares-gallery-item--tall {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.dekko-readywares-gallery-item--stripes {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.dekko-readywares-gallery-item--rack {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.dekko-readywares-gallery-item--sewing {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.dekko-readywares-gallery-item--production {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.dekko-readywares-gallery-item--floor {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.dekko-readywares-gallery-item--jeans {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+}
+
+.dekko-readywares-gallery-item--stripes .dekko-readywares-gallery-item-inner,
+.dekko-readywares-gallery-item--rack .dekko-readywares-gallery-item-inner,
+.dekko-readywares-gallery-item--sewing .dekko-readywares-gallery-item-inner,
+.dekko-readywares-gallery-item--production .dekko-readywares-gallery-item-inner {
+  aspect-ratio: 1 / 1;
+}
+
+.dekko-readywares-gallery-item--jeans .dekko-readywares-gallery-item-inner {
+  aspect-ratio: 2 / 1;
+}
+
+.dekko-readywares-gallery-item--grayscale .dekko-readywares-gallery-image {
+  filter: grayscale(100%);
+}
+
+.dekko-readywares-gallery-glow {
+  background-image: radial-gradient(ellipse at center bottom, #f3215d33 0%, #f3215d00 72%);
+  bottom: 0;
+  height: 12.5rem;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%);
+  width: min(100%, 82.5rem);
+  z-index: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .dekko-readywares-gallery {
+    padding-bottom: 5rem;
+    padding-top: 3.75rem;
+  }
+
+  .dekko-readywares-gallery-header {
+    margin-bottom: var(--gap--gap-11);
+  }
+
+  .dekko-readywares-gallery-grid {
+    gap: var(--gap--gap-6);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dekko-readywares-gallery-item--tall,
+  .dekko-readywares-gallery-item--stripes,
+  .dekko-readywares-gallery-item--rack,
+  .dekko-readywares-gallery-item--sewing,
+  .dekko-readywares-gallery-item--production,
+  .dekko-readywares-gallery-item--floor,
+  .dekko-readywares-gallery-item--jeans {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .dekko-readywares-gallery-item--jeans .dekko-readywares-gallery-item-inner {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dekko-readywares-gallery {
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+  }
+
+  .dekko-readywares-gallery-title {
+    font-size: var(--_typography---h4--h4);
+  }
+
+  .dekko-readywares-gallery-description {
+    font-size: 1rem;
+  }
+
+  .dekko-readywares-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dekko Readywares — capacity snapshot section */
+
+.dekko-readywares-capacity {
+  --dekko-readywares-capacity-blue: #2595d5;
+  background-color: var(--color--gray-5);
+  overflow: hidden;
+  padding-bottom: 6.25rem;
+  padding-top: 5rem;
+  position: relative;
+  width: 100%;
+}
+
+.dekko-readywares-capacity-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.dekko-readywares-capacity-header {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-5);
+  margin-bottom: var(--gap--gap-12);
+  width: 100%;
+}
+
+.dekko-readywares-capacity-title {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  letter-spacing: 0;
+  line-height: var(--_typography---h3--line-height);
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: 40rem;
+  width: 100%;
+}
+
+.dekko-readywares-capacity-title-accent {
+  color: var(--dekko-readywares-capacity-blue);
+}
+
+.dekko-readywares-capacity-circles {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.dekko-readywares-capacity-circle {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  flex: none;
+  flex-flow: column;
+  gap: var(--gap--gap-4);
+  height: 20.625rem;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  width: 20.625rem;
+}
+
+.dekko-readywares-capacity-circle:not(:first-child) {
+  margin-left: -2.5rem;
+}
+
+.dekko-readywares-capacity-circle--dark {
+  background-color: var(--color--dark);
+  color: var(--color--white);
+}
+
+.dekko-readywares-capacity-circle--white {
+  background-color: var(--color--white);
+  color: var(--dekko-readywares-capacity-blue);
+}
+
+.dekko-readywares-capacity-circle--pink {
+  background-color: var(--color--primary-1);
+  color: var(--color--white);
+}
+
+.dekko-readywares-capacity-circle--blue {
+  background-color: var(--dekko-readywares-capacity-blue);
+  color: var(--color--white);
+}
+
+.dekko-readywares-capacity-value {
+  font-family: var(--_typography---font-family--heading);
+  font-size: 4rem;
+  font-weight: var(--_typography---h2--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1;
+}
+
+.dekko-readywares-capacity-label {
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 991px) {
+  .dekko-readywares-capacity {
+    padding-bottom: 5rem;
+    padding-top: 3.75rem;
+  }
+
+  .dekko-readywares-capacity-header {
+    margin-bottom: var(--gap--gap-11);
+  }
+
+  .dekko-readywares-capacity-circles {
+    flex-flow: row wrap;
+    gap: var(--gap--gap-6);
+    justify-content: center;
+  }
+
+  .dekko-readywares-capacity-circle:not(:first-child) {
+    margin-left: 0;
+  }
+
+  .dekko-readywares-capacity-circle {
+    height: 16rem;
+    width: 16rem;
+  }
+
+  .dekko-readywares-capacity-value {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dekko-readywares-capacity {
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+  }
+
+  .dekko-readywares-capacity-title {
+    font-size: var(--_typography---h4--h4);
+  }
+
+  .dekko-readywares-capacity-label {
+    font-size: 1rem;
+  }
+
+  .dekko-readywares-capacity-circles {
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .dekko-readywares-capacity-circle {
+    height: 14rem;
+    width: 14rem;
+  }
+
+  .dekko-readywares-capacity-value {
+    font-size: 2.5rem;
+  }
+}
