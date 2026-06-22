@@ -83,4 +83,48 @@ export const industryFeatureIcons = {
       />
     </IndustryFeatureIcon>
   ),
+  woven: (
+    <IndustryFeatureIcon>
+      <path
+        d="M5.333 5.333c0-1.473 1.194-2.666 2.667-2.666s2.667 1.193 2.667 2.666c0 1.474-1.194 2.667-2.667 2.667M5.333 10.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </IndustryFeatureIcon>
+  ),
+  designProduction: (
+    <IndustryFeatureIcon>
+      <path
+        d="M4.667 2.667h4l2.666 2.666V13.333H4.667V2.667Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.667 2.667V5.333H11.333M10 11.333 12.667 8.667"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </IndustryFeatureIcon>
+  ),
+  shieldCheck: (
+    <IndustryFeatureIcon>
+      <path
+        d="M8 2.667 12 4.667V8c0 2.2-1.6 4.267-4 5.333-2.4-1.066-4-3.133-4-5.333V4.667L8 2.667Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.333 8 7.333 9 9.667 6.667"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </IndustryFeatureIcon>
+  ),
 } as const
