@@ -1,8 +1,4 @@
-import {
-  FACTORY_DUMMY_MAP_IMAGE,
-  factoryLocations,
-  getGoogleMapsEmbedUrl,
-} from '../../data/contact/factoryLocations'
+import { factoryLocations, getGoogleMapsEmbedFromCoords } from '../../data/contact/factoryLocations'
 import { FadeIn } from '../ui/FadeIn'
 
 export function ContactFactoryLocationsSection() {
@@ -28,24 +24,14 @@ export function ContactFactoryLocationsSection() {
               delay={index * 60}
             >
               <div className="page-contact-factory-map-wrap">
-                {factory.mapsUrl ? (
-                  <iframe
-                    title={`${factory.name} location map`}
-                    src={getGoogleMapsEmbedUrl(factory.mapsUrl)}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                    className="page-contact-factory-map"
-                  />
-                ) : (
-                  <img
-                    src={FACTORY_DUMMY_MAP_IMAGE}
-                    loading="lazy"
-                    decoding="async"
-                    alt=""
-                    className="page-contact-factory-map"
-                  />
-                )}
+                <iframe
+                  title={`${factory.name} location map`}
+                  src={getGoogleMapsEmbedFromCoords(factory.lat, factory.lng, factory.zoom)}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="page-contact-factory-map"
+                />
               </div>
               <div className="page-contact-factory-body">
                 <h3 className="page-contact-factory-name">{factory.name}</h3>
