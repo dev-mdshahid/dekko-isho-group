@@ -1810,6 +1810,7 @@ figcaption {
   position: absolute;
   inset: 0%;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .section-line {
@@ -2336,9 +2337,9 @@ figcaption {
 
 .about-scroll-viewport {
   z-index: 2;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
