@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { solutionPath } from '../../data/solutions/solutions'
 import { resetScrollPosition } from '../../lib/resetRouteScroll'
-import { useStickyHorizontalScroll } from '../../hooks/useStickyHorizontalScroll'
+import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
@@ -120,14 +120,13 @@ function IndustryImageCircle({ src, alt }: IndustryImageItem) {
 }
 
 export function AboutSection() {
-  const panelRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-  useStickyHorizontalScroll({ panelRef, trackRef })
+  useHorizontalScroll(scrollRef, { enableWheel: false })
 
   return (
     <section id="About-Section" className="about-section">
-      <div ref={panelRef} className="about-main">
+      <div className="about-main">
         <div className="about-info">
           <div className="about-info-content">
             <div className="about-right-wrap">
@@ -148,8 +147,8 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="about-scroll-viewport">
-          <div ref={trackRef} className="about-info-inner is-scroll">
+        <div ref={scrollRef} className="about-scroll-viewport">
+          <div className="about-info-inner is-scroll">
             {industries.map((item, index) =>
               item.type === 'text' ? (
                 <IndustryTextCircle key={item.id} {...item} />
