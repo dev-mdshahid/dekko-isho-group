@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import { solutionPath } from '../../data/solutions/solutions'
-import { resetRouteScroll } from '../../lib/resetRouteScroll'
+import { resetScrollPosition } from '../../lib/resetRouteScroll'
 import { useStickyHorizontalScroll } from '../../hooks/useStickyHorizontalScroll'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
@@ -91,7 +91,7 @@ function IndustryTextCircle({ id, number, title, slug, variant }: IndustryTextIt
       <Link
         to={solutionPath(slug)}
         className={boxClass}
-        onClick={() => resetRouteScroll()}
+        onClick={() => resetScrollPosition()}
       >
         <div className="about-info-inner-wrap">
           <div className="about-content">{number}</div>

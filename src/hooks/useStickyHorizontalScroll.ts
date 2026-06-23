@@ -1,4 +1,4 @@
-import { type RefObject, useLayoutEffect } from 'react'
+import { type RefObject, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -14,7 +14,7 @@ export function useStickyHorizontalScroll({
   panelRef,
   trackRef,
 }: StickyHorizontalScrollOptions) {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const panel = panelRef.current
     const track = trackRef.current
     const viewport = track?.parentElement
@@ -24,28 +24,44 @@ export function useStickyHorizontalScroll({
 
     gsap.registerPlugin(ScrollTrigger)
 
+    let tween: gsap.core.Tween | undefined
+    let initFrame = 0
+    let cancelled = false
+
     const getMaxScroll = () => Math.max(0, track.scrollWidth - viewport.clientWidth)
 
-    const maxScroll = getMaxScroll()
-    if (maxScroll <= 0) return
-
-    const tween = gsap.to(track, {
-      x: () => -getMaxScroll(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: panel,
-        pin: true,
-        start: 'top top',
-        end: () => `+=${getMaxScroll()}`,
-        scrub: true,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-      },
-    })
-
     const refresh = () => {
+      if (!cancelled) ScrollTrigger.refresh()
+    }
+
+    const init = () => {
+      if (cancelled) return
+
+      ScrollTrigger.refresh()
+      const maxScroll = getMaxScroll()
+      if (maxScroll <= 0) return
+
+      tween = gsap.to(track, {
+        x: () => -getMaxScroll(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: panel,
+          pin: true,
+          start: 'top top',
+          end: () => `+=${getMaxScroll()}`,
+          scrub: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 0,
+        },
+      })
+
       ScrollTrigger.refresh()
     }
+
+    // Defer until route scroll reset + first layout pass have settled.
+    initFrame = requestAnimationFrame(() => {
+      initFrame = requestAnimationFrame(init)
+    })
 
     const images = Array.from(track.querySelectorAll('img'))
     images.forEach((image) => {
@@ -57,9 +73,11 @@ export function useStickyHorizontalScroll({
     window.addEventListener('resize', refresh)
 
     return () => {
+      cancelled = true
+      if (initFrame) cancelAnimationFrame(initFrame)
       window.removeEventListener('resize', refresh)
-      tween.scrollTrigger?.kill(true)
-      tween.kill()
+      tween?.scrollTrigger?.kill(true)
+      tween?.kill()
       gsap.set(track, { clearProps: 'transform' })
     }
   }, [panelRef, trackRef])

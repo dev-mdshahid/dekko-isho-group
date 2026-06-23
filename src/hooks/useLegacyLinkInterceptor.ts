@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { resetRouteScroll } from '../lib/resetRouteScroll'
+import { resetScrollPosition } from '../lib/resetRouteScroll'
 
 export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLElement | null>) {
   const navigate = useNavigate()
@@ -34,7 +34,7 @@ export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLEleme
 
       if (href.startsWith('/')) {
         event.preventDefault()
-        resetRouteScroll()
+        resetScrollPosition()
         navigate(href)
       }
     }
