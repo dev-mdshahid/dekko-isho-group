@@ -62,5 +62,4 @@ export async function reinitWebflow() {
   }
 
   Webflow.ready()
-  window.dispatchEvent(new Event('dekko:webflow-ready'))
 }
