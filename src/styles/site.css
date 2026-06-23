@@ -2589,8 +2589,29 @@ a.about-info-box:hover {
 }
 
 .service-section {
-  padding-bottom: 3.125rem;
+  padding-bottom: 0;
   position: relative;
+}
+
+.service-section-gradient {
+  position: relative;
+  width: 100%;
+  height: clamp(14rem, 22vw, 20rem);
+  overflow: hidden;
+  background-color: #151515;
+  background-image: url('/images/service-section-gradient.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.service-section-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 14%, transparent 42%);
+  pointer-events: none;
 }
 
 .service-details-wrap {
@@ -11449,16 +11470,11 @@ a.about-info-box:hover {
   overflow-wrap: break-word;
 }
 
-.service-section .cta-wrap {
-  width: 100%;
-}
-
-.service-section .cta-info-wrapper {
-  width: 100%;
-  max-width: 1078px;
-}
-
 @media screen and (max-width: 991px) {
+  .service-section-gradient {
+    height: clamp(12rem, 34vw, 18rem);
+  }
+
   .service-section {
     overflow-x: clip;
   }
@@ -11509,37 +11525,6 @@ a.about-info-box:hover {
   .service-section .service-name {
     flex: 1;
   }
-
-  .service-section .cta-info-wrapper {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    min-height: 9rem;
-    background-size: cover;
-  }
-
-  .service-section .cta-info-inner {
-    display: flex;
-    flex-flow: column;
-    align-items: stretch;
-    row-gap: var(--gap--gap-6);
-    padding: 1.25rem;
-  }
-
-  .service-section .cta-button,
-  .service-section .cta-button .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .service-section .cta-button .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .service-section .cta-button .button-text-wrap {
-    flex: 1;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -11556,10 +11541,6 @@ a.about-info-box:hover {
   .service-section .service-name-wrapper {
     margin-bottom: .625rem;
   }
-
-  .service-section .cta-text br {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 479px) {
@@ -11568,19 +11549,6 @@ a.about-info-box:hover {
     grid-row-gap: var(--gap--gap-4);
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
-  }
-
-  .service-section .cta-text {
-    text-align: center;
-  }
-
-  .service-section .cta-info-inner {
-    padding: 1rem .9375rem;
-  }
-
-  .service-section .cta-info-wrapper {
-    padding-top: .625rem;
-    padding-bottom: .625rem;
   }
 }
 

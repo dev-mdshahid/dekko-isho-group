@@ -145,25 +145,9 @@ export function ServiceSection() {
             ))}
             <div className="service-box-height" aria-hidden="true" />
           </div>
-          <div className="cta-wrap">
-            <FadeIn id="2a6fecb6-c324-2a47-4e56-63bf9666fe76" className="cta-info-wrapper">
-              <div className="cta-info-inner">
-                <h2 className="cta-text">
-                  Ready to start your <br />
-                  next project?
-                </h2>
-                <div className="cta-button">
-                  <ButtonArrow
-                    to="/contact"
-                    label="Schedule consultation"
-                    variant="button-white-bg"
-                  />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
         </div>
       </div>
+      <div className="service-section-gradient" aria-hidden="true" />
     </section>
   )
 }
