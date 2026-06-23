@@ -227,7 +227,7 @@ export function Navbar() {
               loading="eager"
               alt="Dekko Isho Group"
               className="logo"
-              style={{ width: 'auto', maxHeight: '35px', objectFit: 'contain' }}
+              style={{ width: 'auto', height: '50px', objectFit: 'contain' }}
             />
           </Link>
           <nav

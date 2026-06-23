@@ -1,25 +1,12 @@
 import { type RefObject, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import { revealFadeIns } from '../lib/fadeInReveal'
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
-
-function getScrollPositionForTarget(target: HTMLElement): number | HTMLElement {
-  const trigger = ScrollTrigger.getAll().find((st) => {
-    const el = st.trigger as HTMLElement | undefined
-    return el && (el === target || el.contains(target) || target.contains(el))
-  })
-
-  if (trigger) return trigger.start
-  return target
-}
+gsap.registerPlugin(ScrollToPlugin)
 
 function afterAnchorScroll(target: HTMLElement) {
-  ScrollTrigger.refresh()
-
   const reveal = () => {
     revealFadeIns(target)
     const header = target.querySelector('.about-info')
@@ -32,7 +19,7 @@ function afterAnchorScroll(target: HTMLElement) {
   })
 }
 
-/** Smooth in-page anchor scrolling that cooperates with ScrollTrigger pin sections. */
+/** Smooth in-page anchor scrolling for hash links. */
 export function useAnchorScroll(containerRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const container = containerRef.current
@@ -51,13 +38,12 @@ export function useAnchorScroll(containerRef: RefObject<HTMLElement | null>) {
       event.preventDefault()
 
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      const scrollTarget = getScrollPositionForTarget(target)
 
       gsap.killTweensOf(window)
 
       if (reducedMotion) {
         gsap.to(window, {
-          scrollTo: { y: scrollTarget, autoKill: false },
+          scrollTo: { y: target, autoKill: false },
           duration: 0,
           onComplete: () => {
             history.pushState(null, '', href)
@@ -68,7 +54,7 @@ export function useAnchorScroll(containerRef: RefObject<HTMLElement | null>) {
       }
 
       gsap.to(window, {
-        scrollTo: { y: scrollTarget, autoKill: true },
+        scrollTo: { y: target, autoKill: true },
         duration: 1.1,
         ease: 'power2.inOut',
         onComplete: () => {
