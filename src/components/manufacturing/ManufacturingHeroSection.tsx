@@ -7,7 +7,7 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 const MFG_HERO_VIDEO_ID = 'mfg-hero-video'
 
 export function ManufacturingHeroSection() {
-  const { title, description, ctaLabel, ctaHref, video, videoPoster, videoAlt } = manufacturingHero
+  const { title, description, ctaLabel, ctaHref, video, videoAlt } = manufacturingHero
   const { id: expertiseId, badge, title: expertiseTitle, paragraphs, features } = manufacturingExpertise
 
   return (
@@ -36,10 +36,11 @@ export function ManufacturingHeroSection() {
             loop
             muted
             playsInline
+            preload="auto"
+            fetchPriority="high"
             aria-label={videoAlt}
             data-wf-ignore="true"
             data-object-fit="cover"
-            poster={videoPoster}
             className="mfg-hero-video-media"
           >
             <source src={video} type="video/mp4" data-wf-ignore="true" />
