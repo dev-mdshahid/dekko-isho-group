@@ -4,7 +4,7 @@ import { SustainabilityBadge } from './SustainabilityBadge'
 
 export function SustainabilityPillar01Section() {
   return (
-    <section className="sustain-pillar-section sustain-pillar-section--light">
+    <section className="sustain-pillar-section sustain-pillar-section--light sustain-pillar-section--environment">
       <div className="container-medium">
         <FadeIn id="sustain-pillar01-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">
