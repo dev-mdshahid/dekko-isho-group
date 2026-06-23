@@ -2344,6 +2344,8 @@ figcaption {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
+  padding-block: 1.5rem;
+  margin-block: -1.5rem;
 }
 
 .about-scroll-viewport.is-dragging {
@@ -2379,6 +2381,11 @@ figcaption {
   padding-left: var(--about-inset-left);
   padding-right: var(--about-inset-left);
   overflow: visible;
+}
+
+.about-info-inner.is-scroll [data-fade-in] {
+  flex-shrink: 0;
+  display: flex;
 }
 
 .about-info-inner.is-scroll .about-info-box,
@@ -2450,6 +2457,8 @@ a.about-info-box {
 a.about-info-box:hover {
   transform: scale(1.03);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 2;
 }
 
 .about-info-box.box-bg-white {
