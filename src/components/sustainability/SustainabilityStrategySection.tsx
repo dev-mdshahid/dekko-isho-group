@@ -1,6 +1,5 @@
 import { strategyMetrics, strategySection } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
-import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 import { SustainabilityBadge } from './SustainabilityBadge'
 
 export function SustainabilityStrategySection() {
@@ -20,18 +19,27 @@ export function SustainabilityStrategySection() {
             <FadeIn
               key={metric.id}
               id={`sustain-metric-${metric.id}`}
-              className="sustain-metric-item"
+              className={`sustain-metric-card sustain-metric-card--${metric.id}`}
               delay={index * 60}
             >
-              <div className="sustain-metric-value">{metric.value}</div>
-              <div className="sustain-metric-label">{metric.label}</div>
-              <div className="sustain-metric-deadline">By 2030</div>
+              <div className="sustain-metric-card-media">
+                <img
+                  src={metric.image}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="sustain-metric-card-bg"
+                />
+                <div className="sustain-metric-card-body">
+                  <div className="sustain-metric-value">{metric.value}</div>
+                  <div className="sustain-metric-label">{metric.label}</div>
+                </div>
+              </div>
+              <div className="sustain-metric-card-footer">by 2030</div>
             </FadeIn>
           ))}
         </div>
       </div>
-      <SectionLines border="grey" />
-      <NoiseOverlay />
     </section>
   )
 }

@@ -7,7 +7,7 @@ export const sustainabilityHero = {
 }
 
 export const sustainabilityHeroImage = {
-  src: '/images/sustainability/forest-hero.jpg',
+  src: '/images/sustainability/sus.png',
   fallbackSrc: '/images/about/compliance.jpg',
   quote: 'The Earth is our only home – it is our responsibility to protect it.',
   company: 'Dekko Isho Group',
@@ -25,14 +25,42 @@ export type StrategyMetric = {
   id: string
   value: string
   label: string
+  image: string
 }
 
+const strategyImage = (file: string) => `/images/sustainability/${file}`
+
 export const strategyMetrics: StrategyMetric[] = [
-  { id: 'renewable', value: '80%', label: 'Renewable Energy' },
-  { id: 'ghg', value: '50%', label: 'GHG Scope-3 reduction' },
-  { id: 'wastewater', value: '70%', label: 'Wastewater recycled' },
-  { id: 'waste', value: '50%', label: 'Waste recycled' },
-  { id: 'traceability', value: '100%', label: 'Supply-chain traceability' },
+  {
+    id: 'renewable',
+    value: '80%',
+    label: 'Renewable Energy',
+    image: strategyImage('strategy-renewable.png'),
+  },
+  {
+    id: 'ghg',
+    value: '50%',
+    label: 'GHG Scope-3 reduction',
+    image: strategyImage('strategy-ghg.png'),
+  },
+  {
+    id: 'wastewater',
+    value: '70%',
+    label: 'Wastewater recycled',
+    image: strategyImage('strategy-wastewater.png'),
+  },
+  {
+    id: 'waste',
+    value: '50%',
+    label: 'Waste recycled',
+    image: strategyImage('strategy-waste.png'),
+  },
+  {
+    id: 'traceability',
+    value: '100%',
+    label: 'Supply-chain traceability',
+    image: strategyImage('strategy-traceability.png'),
+  },
 ]
 
 export type InitiativeCard = {
