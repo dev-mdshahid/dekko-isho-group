@@ -2,10 +2,9 @@ export const technologyIntegrationHero = {
   title: 'Technology Integration',
   description:
     'Connect factory systems, business platforms and data workflows into one reliable technology stack built for scale, visibility and operational control.',
-  ctaLabel: 'Get Started',
+  ctaLabel: 'Get free quote',
   ctaHref: '#ti-intro',
   video: '/videos/technology-integration-hero.mp4',
-  videoPoster: '/legacy/images/industry-2-5.webp',
   videoAlt: 'Code and digital systems on screen',
 }
 

@@ -2,10 +2,9 @@ export const designProductDevelopmentHero = {
   title: 'Design & Product Development',
   description:
     'From trend research to sample-ready garments, our design teams translate brand vision into production-ready collections with speed, precision and creative confidence.',
-  ctaLabel: "Let's Talk",
+  ctaLabel: 'Learn More',
   ctaHref: '#dpd-team',
   video: '/videos/design%20and%20product%20dev.mp4',
-  videoPoster: '/legacy/images/service-image-1-p-2000.webp',
   videoAlt: 'Design team collaborating in a modern studio',
 }
 

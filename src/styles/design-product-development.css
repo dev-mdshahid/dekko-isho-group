@@ -52,7 +52,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  background-color: var(--color--dark);
+  background-color: transparent;
 }
 
 /* ── Team features (industrial-laundry innovation) ── */

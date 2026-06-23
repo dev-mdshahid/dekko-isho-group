@@ -72,7 +72,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  background-color: var(--color--dark);
+  background-color: transparent;
 }
 
 .manufacturing-page .mfg-hero-video-control {

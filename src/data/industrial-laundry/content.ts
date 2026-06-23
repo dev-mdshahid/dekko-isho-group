@@ -5,7 +5,6 @@ export const industrialLaundryHero = {
   ctaLabel: 'Learn More',
   ctaHref: '#il-innovation',
   video: '/videos/industry%20laundry.mp4',
-  videoPoster: '/legacy/images/service-image-1-p-2000.webp',
   videoAlt: 'Industrial laundry facility with large washing machines',
 }
 

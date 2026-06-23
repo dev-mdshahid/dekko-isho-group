@@ -4,7 +4,6 @@ export const manufacturingHero = {
   ctaLabel: 'Learn More',
   ctaHref: '#mfg-expertise',
   video: '/videos/Person_People_1280x720.mp4',
-  videoPoster: '/images/manufacturing/hero-fabric.webp',
   videoAlt: 'Apparel manufacturing — person working with fabric',
 }
 
