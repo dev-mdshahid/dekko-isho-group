@@ -1,3 +1,4 @@
+export { SolutionsExpertiseSection } from './SolutionsExpertiseSection'
 export { AboutSection } from './AboutSection'
 export { BlogSection } from './BlogSection'
 export { CaseStudySection } from './CaseStudySection'
