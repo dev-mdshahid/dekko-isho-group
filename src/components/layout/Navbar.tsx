@@ -1,26 +1,183 @@
-import { Link, NavLink } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import {
+  businessNavGroups,
+  flattenNavLinks,
+  isNavGroupActive,
+  isNavLinkActive,
+  mediaNavLinks,
+  solutionNavLinks,
+  type NavLink as NavMenuLink,
+  type NavLinkGroup,
+} from '../../data/navigation/navLinks'
+import { useClickOutside } from '../../hooks/useClickOutside'
 import { useNavMenu } from '../../hooks/useNavMenu'
 import { ButtonArrow } from '../ui/ButtonArrow'
 
-const pageLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/home-2', label: 'Home 2' },
-  { to: '/about', label: 'About' },
-  { to: '/services', label: 'Services' },
-  { to: '/case-studies', label: 'Case Studies' },
-  { to: '/products', label: 'Products' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/press', label: 'Press' },
-  { to: '/awards', label: 'Awards' },
-  { to: '/career', label: 'Career' },
-  { to: '/sustainability', label: 'Sustainability' },
-  { to: '/faqs', label: 'FAQs' },
-  { to: '/contact', label: 'Contact' },
-  { to: '/privacy-policy', label: 'Privacy Policy' },
-]
+type NavDropdownProps = {
+  id: string
+  label: string
+  links: readonly NavMenuLink[]
+  isOpen: boolean
+  onToggle: () => void
+  onClose: () => void
+  closeMenu: () => void
+}
+
+function NavDropdown({ id, label, links, isOpen, onToggle, onClose, closeMenu }: NavDropdownProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { pathname } = useLocation()
+  const isActive = isNavGroupActive(pathname, links)
+
+  useClickOutside(ref, onClose, isOpen)
+
+  function handleLinkClick() {
+    onClose()
+    closeMenu()
+  }
+
+  return (
+    <div ref={ref} className={`dropdown w-dropdown${isOpen ? ' w--open' : ''}`}>
+      <button
+        type="button"
+        id={`${id}-toggle`}
+        aria-expanded={isOpen}
+        aria-controls={`${id}-menu`}
+        className={`dropdown-toggle nav-link w-dropdown-toggle${isActive ? ' w--current' : ''}`}
+        onClick={onToggle}
+      >
+        <div>{label}</div>
+        <div className="dropdown-icon w-icon-dropdown-toggle" />
+      </button>
+      <nav
+        id={`${id}-menu`}
+        aria-labelledby={`${id}-toggle`}
+        className={`dropdown-list w-dropdown-list${isOpen ? ' w--open' : ''}`}
+      >
+        <div className="dropdown-list-inner">
+          <div className="dropdown-link-list">
+            <div className="grid-dropdown">
+              <div>
+                {links.map((link) => (
+                  <Link
+                    key={link.to + link.label}
+                    to={link.to}
+                    className={`dropdown-link w-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
+                    onClick={handleLinkClick}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  )
+}
+
+type BusinessesNavDropdownProps = {
+  isOpen: boolean
+  onToggle: () => void
+  onClose: () => void
+  closeMenu: () => void
+}
+
+function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: BusinessesNavDropdownProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { pathname } = useLocation()
+  const [activeGroupId, setActiveGroupId] = useState<NavLinkGroup['id']>(businessNavGroups[0].id)
+  const activeGroup =
+    businessNavGroups.find((group) => group.id === activeGroupId) ?? businessNavGroups[0]
+  const isActive = isNavGroupActive(pathname, flattenNavLinks(businessNavGroups))
+
+  useClickOutside(ref, onClose, isOpen)
+
+  function handleLinkClick() {
+    onClose()
+    closeMenu()
+  }
+
+  return (
+    <div ref={ref} className={`dropdown w-dropdown nav-dropdown nav-dropdown--nested${isOpen ? ' w--open' : ''}`}>
+      <button
+        type="button"
+        id="businesses-toggle"
+        aria-expanded={isOpen}
+        aria-controls="businesses-menu"
+        className={`dropdown-toggle nav-link w-dropdown-toggle${isActive ? ' w--current' : ''}`}
+        onClick={onToggle}
+      >
+        <div>Businesses</div>
+        <div className="dropdown-icon w-icon-dropdown-toggle" />
+      </button>
+      <nav
+        id="businesses-menu"
+        aria-labelledby="businesses-toggle"
+        className={`dropdown-list w-dropdown-list nav-dropdown-panel${isOpen ? ' w--open' : ''}`}
+      >
+        <div className="dropdown-list-inner nav-dropdown-panel-inner">
+          <div className="nav-nested-dropdown">
+            <div className="nav-nested-dropdown-categories" role="tablist" aria-label="Business categories">
+              {businessNavGroups.map((group) => (
+                <button
+                  key={group.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeGroupId === group.id}
+                  className={`nav-nested-dropdown-category${activeGroupId === group.id ? ' is-active' : ''}`}
+                  onMouseEnter={() => setActiveGroupId(group.id)}
+                  onFocus={() => setActiveGroupId(group.id)}
+                  onClick={() => setActiveGroupId(group.id)}
+                >
+                  <span>{group.label}</span>
+                  <span className="nav-nested-dropdown-chevron" aria-hidden="true">
+                    ›
+                  </span>
+                </button>
+              ))}
+            </div>
+            <div className="nav-nested-dropdown-links" role="tabpanel">
+              {activeGroup.links.map((link) => (
+                <Link
+                  key={`${activeGroup.id}-${link.label}`}
+                  to={link.to}
+                  className={`dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
+                  onClick={handleLinkClick}
+                >
+                  <span>{link.label}</span>
+                  {link.showExternalIcon ? (
+                    <span className="nav-nested-dropdown-external" aria-hidden="true">
+                      ↗
+                    </span>
+                  ) : null}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  )
+}
 
 export function Navbar() {
   const { isOpen, toggleMenu, closeMenu } = useNavMenu()
+  const { pathname } = useLocation()
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
+
+  useEffect(() => {
+    setOpenDropdownId(null)
+  }, [pathname])
+
+  function closeDropdown() {
+    setOpenDropdownId(null)
+  }
+
+  function toggleDropdown(id: string) {
+    setOpenDropdownId((current) => (current === id ? null : id))
+  }
 
   return (
     <div
@@ -56,63 +213,61 @@ export function Navbar() {
             style={isOpen ? { display: 'block' } : undefined}
           >
             <NavLink
-              to="/"
-              className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
-              onClick={closeMenu}
-            >
-              Home
-            </NavLink>
-            <NavLink
               to="/about"
               className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
               onClick={closeMenu}
             >
               About
             </NavLink>
-            <div data-hover="true" data-delay="0" className="dropdown w-dropdown">
-              <div className="dropdown-toggle nav-link w-dropdown-toggle">
-                <div>Pages</div>
-                <div className="dropdown-icon w-icon-dropdown-toggle" />
-              </div>
-              <nav className="dropdown-list w-dropdown-list">
-                <div className="dropdown-list-inner">
-                  <div className="dropdown-link-list">
-                    <div className="grid-dropdown">
-                      <div>
-                        {pageLinks.map((link) => (
-                          <Link
-                            key={link.to}
-                            to={link.to}
-                            className="dropdown-link w-dropdown-link"
-                            onClick={closeMenu}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
+            <NavDropdown
+              id="solutions"
+              label="Solutions"
+              links={solutionNavLinks}
+              isOpen={openDropdownId === 'solutions'}
+              onToggle={() => toggleDropdown('solutions')}
+              onClose={closeDropdown}
+              closeMenu={closeMenu}
+            />
+            <BusinessesNavDropdown
+              isOpen={openDropdownId === 'businesses'}
+              onToggle={() => toggleDropdown('businesses')}
+              onClose={closeDropdown}
+              closeMenu={closeMenu}
+            />
             <NavLink
-              to="/services"
+              to="/sustainability"
               className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
               onClick={closeMenu}
             >
-              Services
+              Sustainability
             </NavLink>
             <NavLink
-              to="/contact"
+              to="/awards"
               className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
               onClick={closeMenu}
             >
-              Contact
+              Recognition
+            </NavLink>
+            <NavDropdown
+              id="media"
+              label="Media"
+              links={mediaNavLinks}
+              isOpen={openDropdownId === 'media'}
+              onToggle={() => toggleDropdown('media')}
+              onClose={closeDropdown}
+              closeMenu={closeMenu}
+            />
+            <NavLink
+              to="/career"
+              className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
+              onClick={closeMenu}
+            >
+              Career
             </NavLink>
           </nav>
           <div id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef64-18a8ef3c" className="right-nav">
             <div className="nav-button-wrap">
-              <ButtonArrow to="/contact" label="Get a Quote" variant="button-primary-bg" />
+              <ButtonArrow to="/contact" label="Contact" variant="button-primary-bg" />
             </div>
             <button
               type="button"

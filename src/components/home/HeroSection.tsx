@@ -26,7 +26,7 @@ export function HeroSection() {
                 industries.
               </p>
               <div className="hero-button">
-                <ButtonArrow to="/services" label="Explore our capabilities" />
+                <ButtonArrow to="#About-Section" label="Explore our capabilities" />
               </div>
             </FadeIn>
           </div>

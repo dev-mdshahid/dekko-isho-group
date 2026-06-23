@@ -6,8 +6,6 @@ import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 
 import { useWebflowInit } from '../hooks/useWebflowInit'
 
-import { SectionGradient } from '../components/ui/SectionDecor'
-
 import {
   AboutSection,
   CompanySection,
@@ -43,8 +41,6 @@ export function HomeContent() {
       <AboutSection />
 
       <ServiceSection />
-
-      <SectionGradient />
 
       <CompanySection />
 

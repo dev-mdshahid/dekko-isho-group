@@ -63,7 +63,7 @@ export const complianceSustainabilityRisk = {
     },
     {
       id: 'compliance-reviews',
-      accent: '#e91e8c',
+      accent: '#1c72a3',
       title: 'Compliance reviews',
       description:
         'Periodic review of buyer requirements, certification scopes and internal controls against current standards.',
@@ -118,7 +118,7 @@ export const complianceSustainabilityQuality = {
     {
       id: 'metal',
       number: '02',
-      accent: '#e91e8c',
+      accent: '#1c72a3',
       title: 'Metal Contamination Control',
       items: ['Garments pass through metal detection machine before packing'],
     },

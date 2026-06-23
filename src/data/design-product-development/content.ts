@@ -103,7 +103,7 @@ export const designProductDevelopmentFactoryAssurance = {
     {
       id: 'size-set',
       number: '02',
-      accent: '#e91e8c',
+      accent: '#1c72a3',
       title: 'Size Set samples review by color',
       description:
         'Finalize designs/patterns and specifications to create an approved sample.',

@@ -1254,7 +1254,7 @@
 }
 
 .dekko-readywares-gallery-glow {
-  background-image: radial-gradient(ellipse at center bottom, #f3215d33 0%, #f3215d00 72%);
+  background-image: radial-gradient(ellipse at center bottom, #1c72a333 0%, #1c72a300 72%);
   bottom: 0;
   height: 12.5rem;
   left: 50%;
@@ -1868,7 +1868,7 @@
 }
 
 .globus-garments-process-glow {
-  background-image: radial-gradient(ellipse 80% 55% at 50% 42%, #f3215d2e 0%, #f3215d00 72%);
+  background-image: radial-gradient(ellipse 80% 55% at 50% 42%, #1c72a32e 0%, #1c72a300 72%);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -2588,7 +2588,7 @@
 }
 
 .agami-washing-types-glow {
-  background-image: radial-gradient(ellipse 70% 50% at 50% 55%, #f3215d24 0%, #f3215d00 72%);
+  background-image: radial-gradient(ellipse 70% 50% at 50% 55%, #1c72a324 0%, #1c72a300 72%);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -2647,7 +2647,7 @@
 }
 
 .agami-washing-types-grid-glow {
-  background-image: radial-gradient(ellipse 55% 70% at 50% 50%, #f3215d38 0%, #f3215d00 70%);
+  background-image: radial-gradient(ellipse 55% 70% at 50% 50%, #1c72a338 0%, #1c72a300 70%);
   inset: 10% 5%;
   pointer-events: none;
   position: absolute;

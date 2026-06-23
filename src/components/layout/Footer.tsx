@@ -1,5 +1,11 @@
 import { type FormEvent, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import {
+  footerBusinessLinks,
+  footerContact,
+  footerMainLinks,
+  footerSocialLinks,
+} from '../../data/footer/footerContent'
 import { solutions, solutionPath } from '../../data/solutions/solutions'
 import { useFooterAnimations, useFooterShadowAnimation } from '../../hooks/useFooterAnimations'
 import { submitSubscribeForm } from '../../lib/forms'
@@ -7,26 +13,6 @@ import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
 
 const HOME_PAGE_ID = '6a26a196936d1b3aae320c59'
-
-const mainLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/home-2', label: 'Home 2' },
-  { to: '/about', label: 'About' },
-  { to: '/products', label: 'Products' },
-  { to: '/services', label: 'Services' },
-  { to: '/case-studies', label: 'Case Studies' },
-  { to: '/press', label: 'Press' },
-  { to: '/contact', label: 'Contact' },
-]
-
-const utilityLinks = [
-  { to: '/utility/style-guide', label: 'Style Guide' },
-  { to: '/utility/instructions', label: 'Instructions' },
-  { to: '/utility/licenses', label: 'Licenses' },
-  { to: '/utility/changelog', label: 'Changelog' },
-  { to: '/404', label: 'Error 404' },
-  { to: '/401', label: 'Password Protected' },
-]
 
 function footerLinkClass(pathname: string, to: string) {
   const isActive = to === '/' ? pathname === '/' : pathname === to || pathname.startsWith(`${to}/`)
@@ -126,10 +112,25 @@ export function Footer() {
             <div id="w-node-_9807520c-65b7-e828-71bd-909a6cfe1805-6cfe1801" className="footer-item">
               <div className="w-layout-grid grid-footer-menu">
                 <FadeIn
-                  id="footer-solutions-links"
+                  id="footer-main-links"
                   className="footer-link-item"
                   variant="slide-in-bottom"
                   delay={200}
+                >
+                  <h2 className="footer-title">Links</h2>
+                  <div className="footer-links">
+                    {footerMainLinks.map((link) => (
+                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </FadeIn>
+                <FadeIn
+                  id="footer-solutions-links"
+                  className="footer-link-item"
+                  variant="slide-in-bottom"
+                  delay={250}
                 >
                   <h2 className="footer-title">Solutions</h2>
                   <div className="footer-links">
@@ -145,65 +146,35 @@ export function Footer() {
                   </div>
                 </FadeIn>
                 <FadeIn
-                  id="66876f43-9ec4-1dbd-0ca0-ca548397b94e"
-                  className="footer-link-item"
-                  variant="slide-in-bottom"
-                  delay={250}
-                >
-                  <h2 className="footer-title">Main links</h2>
-                  <div className="footer-links">
-                    {mainLinks.map((link) => (
-                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </FadeIn>
-                <FadeIn
-                  id="c3c71fa1-678a-c8f3-2483-91e8980a3ade"
-                  className="footer-link-item"
-                  variant="slide-in-bottom"
-                  delay={350}
-                >
-                  <h2 className="footer-title">Utility links</h2>
-                  <div className="footer-links">
-                    {utilityLinks.map((link) => (
-                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </FadeIn>
-                <FadeIn
                   id="64c645f9-8fac-49b8-f082-3f384284032e"
                   className="footer-contact-list"
                   variant="slide-in-bottom"
-                  delay={450}
+                  delay={350}
                 >
-                  <h2 className="footer-title">Contact info</h2>
+                  <h2 className="footer-title">Contact info.</h2>
                   <div className="footer-contact-item">
-                    <div className="footer-address">
-                      1238 echo ridge blvd, suite 400, san francisco, CA 94103
-                    </div>
-                    <a href="tel:+1(415)555-0167" className="footer-link">
-                      +1 (415) 555-0167
+                    <div className="footer-address">{footerContact.address}</div>
+                    <a href={footerContact.phone.href} className="footer-link">
+                      {footerContact.phone.label}
                     </a>
-                    <a href="mailto:example@gmail.com" className="footer-link">
-                      example@gmail.com
+                    <a href={footerContact.email.href} className="footer-link">
+                      {footerContact.email.label}
                     </a>
                   </div>
                 </FadeIn>
                 <FadeIn
-                  id="2421dafb-c91b-f351-19c3-69d4e8192796"
-                  className="footer-contact-list"
+                  id="footer-business-links"
+                  className="footer-link-item"
                   variant="slide-in-bottom"
-                  delay={550}
+                  delay={450}
                 >
-                  <h2 className="footer-title">Working hours</h2>
-                  <div className="footer-contact-item">
-                    <div className="working-text">Mon to Fri: 8:00am - 4:00pm</div>
-                    <div className="working-text">Saturday: 8:00am - 1:00pm</div>
-                    <div className="working-text">Sunday: Closed</div>
+                  <h2 className="footer-title">Businesses</h2>
+                  <div className="footer-links">
+                    {footerBusinessLinks.map((link) => (
+                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
+                        {link.label}
+                      </Link>
+                    ))}
                   </div>
                 </FadeIn>
               </div>
@@ -217,16 +188,7 @@ export function Footer() {
               variant="slide-in-bottom"
               delay={600}
             >
-              <p className="footer-copyright">
-                Designed by{' '}
-                <a href="https://webestica.com/" target="_blank" className="footer-copyright-link">
-                  Webestica
-                </a>
-                , Powered by{' '}
-                <a href="https://webflow.com/" target="_blank" className="footer-copyright-link">
-                  Webflow
-                </a>
-              </p>
+              <p className="footer-copyright">© 2026 Dekko Isho Group</p>
             </FadeIn>
             <FadeIn
               id="9807520c-65b7-e828-71bd-909a6cfe1841"
@@ -234,18 +196,23 @@ export function Footer() {
               variant="slide-in-bottom"
               delay={700}
             >
-              <a href="https://www.facebook.com/" target="_blank" className="footer-social-link w-inline-block">
-                <img src={legacyImage('facebook.svg')} loading="eager" alt="social-icon" className="footer-social-icon" />
-                <div>Facebook</div>
-              </a>
-              <a href="https://twitter.com/" target="_blank" className="footer-social-link w-inline-block">
-                <img src={legacyImage('twitter-x.svg')} loading="eager" alt="" className="footer-social-icon" />
-                <div>Twitter</div>
-              </a>
-              <a href="https://www.instagram.com/" target="_blank" className="footer-social-link w-inline-block">
-                <img src={legacyImage('instagram.svg')} loading="eager" alt="social-icon" className="footer-social-icon" />
-                <div>Instagram</div>
-              </a>
+              {footerSocialLinks.map((social) => (
+                <a
+                  key={social.href}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-social-link w-inline-block"
+                >
+                  <img
+                    src={legacyImage(social.icon)}
+                    loading="eager"
+                    alt=""
+                    className="footer-social-icon"
+                  />
+                  <div>{social.label}</div>
+                </a>
+              ))}
             </FadeIn>
           </div>
           <div className="footer-logo-info">
@@ -262,8 +229,8 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <img src={legacyImage('blur.svg')} loading="lazy" alt="Footer Shadow" className="footer-shadow _01" />
-      <img src={legacyImage('blur.svg')} loading="lazy" alt="Footer Shadow" className="footer-shadow _02" />
+      <div className="footer-shadow _01" aria-hidden="true" />
+      <div className="footer-shadow _02" aria-hidden="true" />
       <div className="line-wrapper">
         <div className="section-line" />
         <div className="section-line" />

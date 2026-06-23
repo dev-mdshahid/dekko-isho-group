@@ -733,12 +733,12 @@
   padding: clamp(1.5rem, 2.5vw, 2rem);
   border-radius: var(--border-radius--sm);
   background: linear-gradient(145deg, rgb(22 16 20 / 88%) 0%, rgb(14 12 14 / 72%) 100%);
-  border: 1px solid rgb(233 30 140 / 10%);
+  border: 1px solid rgb(28 114 163 / 10%);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 4%);
 }
 
 .design-product-development-page .dpd-experience-card-number {
-  color: #e91e8c;
+  color: var(--color--primary-2);
   font-size: var(--_typography---body--body-sm);
   font-weight: var(--_typography---h6--font-weight-600);
   line-height: 1;
@@ -915,7 +915,7 @@
 }
 
 .design-product-development-page .dpd-showroom-map-link {
-  color: #e91e8c;
+  color: var(--color--primary-2);
   font-size: var(--_typography---body--body-sm);
   font-weight: var(--_typography---body--font-weight-500);
   text-decoration: none;

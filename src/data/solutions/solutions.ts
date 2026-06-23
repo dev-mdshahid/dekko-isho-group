@@ -41,7 +41,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: 'technology-integration',
-    title: 'Technology integration',
+    title: 'Technology Integration',
     description:
       'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.',
     image: '/images/about/integration.jpg',

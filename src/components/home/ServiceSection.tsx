@@ -84,7 +84,7 @@ export function ServiceSection() {
                 </p>
               </div>
               <div id="w-node-e23adfcb-92aa-cd61-ca12-ef84ce0764ac-ae320c59" className="section-button-wrap">
-                <ButtonArrow to="/services" label="Explore all capabilities" />
+                <ButtonArrow to="#About-Section" label="Explore all capabilities" />
               </div>
             </div>
           </FadeIn>
