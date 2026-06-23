@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { serviceSpecialities, type ServiceFeatureGroup } from '../../data/home/specialities'
 import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
@@ -96,9 +95,8 @@ export function ServiceSection() {
               >
                 <div role="list" className="service-list w-dyn-items">
                   <div role="listitem" className="service-list-item w-dyn-item">
-                    <Link
+                    <div
                       data-w-id={speciality.linkId}
-                      to="/services"
                       className="service-info-link w-inline-block"
                     >
                       <div className="service-info-inner">
@@ -130,7 +128,7 @@ export function ServiceSection() {
                         arrowWIds={speciality.arrowWIds}
                         className="service-arrow service-arrow-desktop"
                       />
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
