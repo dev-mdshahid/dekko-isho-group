@@ -5,6 +5,8 @@
   --sustain-green-dark: #1f7a47;
   --sustain-green-light: #e8f5ee;
   --sustain-green-muted: #4caf7a;
+  --sustain-blue: #2595d5;
+  --sustain-blue-light: #e3f3fa;
 }
 
 /* ── Hero ── */
@@ -441,6 +443,35 @@
 .sustain-pillar-header .sustain-section-description,
 .sustain-pillar-header .sustain-badge {
   min-width: 0;
+}
+
+/* ── Pillar numbers ── */
+.sustain-pillar-section--environment .sustain-pillar-number {
+  color: var(--sustain-green-light);
+}
+
+.sustain-pillar-section--social .sustain-pillar-number {
+  color: var(--sustain-blue-light);
+}
+
+.sustain-pillar-section--environment .sustain-initiative-number {
+  background-color: var(--sustain-green-dark);
+  border-color: var(--sustain-green-dark);
+  color: var(--color--white);
+}
+
+.sustain-pillar-section--environment .sustain-initiative-metric-value {
+  color: var(--sustain-green);
+}
+
+.sustain-pillar-section--social .sustain-initiative-number {
+  background-color: var(--sustain-blue);
+  border-color: var(--sustain-blue);
+  color: var(--color--white);
+}
+
+.sustain-pillar-section--social .sustain-initiative-metric-value {
+  color: var(--sustain-blue);
 }
 
 /* ── Initiative cards (Pillar 01) ── */
