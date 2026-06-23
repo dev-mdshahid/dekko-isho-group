@@ -29,21 +29,9 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-          <div className="hero-bottom-wrap">
-            <div className="hero-bottom-text">
-              Corporate HQ, Dhaka: West Tower, Level 16-19, 187, 188/B, Tejgaon Gulshan Link Road
-            </div>
-            <div>
-              <a href="#Footer" className="hero-bottom-link">
-                SCROLL DOWN
-              </a>
-            </div>
-            <div className="hero-bottom-text">
-              23.76994° N, 90.40694° E
-            </div>
-          </div>
         </div>
       </div>
+      <div className="hero-section-overlay" aria-hidden="true" />
       <SectionLines />
       <NoiseOverlay />
     </section>

@@ -7,7 +7,7 @@ import {
   footerSocialLinks,
 } from '../../data/footer/footerContent'
 import { solutions, solutionPath } from '../../data/solutions/solutions'
-import { useFooterAnimations, useFooterShadowAnimation } from '../../hooks/useFooterAnimations'
+import { useFooterAnimations } from '../../hooks/useFooterAnimations'
 import { submitSubscribeForm } from '../../lib/forms'
 import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
@@ -27,7 +27,6 @@ export function Footer() {
   const [errorMessage, setErrorMessage] = useState('')
 
   useFooterAnimations(ref)
-  useFooterShadowAnimation(ref)
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault()

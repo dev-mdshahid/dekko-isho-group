@@ -1,4 +1,4 @@
-import { galleryItems, GALLERY_PLACEHOLDER_IMAGE } from '../../data/gallery/galleryItems'
+import { galleryItems } from '../../data/gallery/galleryItems'
 import { FadeIn } from '../ui/FadeIn'
 
 export function GalleryGridSection() {
@@ -10,7 +10,7 @@ export function GalleryGridSection() {
             <FadeIn key={item.id} id={`gallery-item-${index}`}>
               <div className="gallery-item" role="listitem">
                 <img
-                  src={GALLERY_PLACEHOLDER_IMAGE}
+                  src={item.src}
                   loading="lazy"
                   alt={item.alt}
                   className="gallery-image"
