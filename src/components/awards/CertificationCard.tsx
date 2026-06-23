@@ -58,7 +58,7 @@ function PreviewButton({ previewUrl }: { previewUrl?: string }) {
   }
 
   return (
-    <button type="button" className="awards-card-preview">
+    <button type="button" className="awards-card-preview awards-card-preview--disabled" disabled aria-disabled="true">
       {content}
     </button>
   )
