@@ -5254,7 +5254,7 @@ figcaption {
 }
 
 .about-integrity-section {
-  --about-integrity-accent: #d62d51;
+  --about-integrity-accent: var(--color--primary-2);
   --about-integrity-divider: #333333;
   background-color: var(--color--dark);
   position: relative;
