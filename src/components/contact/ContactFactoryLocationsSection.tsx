@@ -24,14 +24,16 @@ export function ContactFactoryLocationsSection() {
               delay={index * 60}
             >
               <div className="page-contact-factory-map-wrap">
-                <iframe
-                  title={`${factory.name} location map`}
-                  src={getGoogleMapsEmbedFromCoords(factory.lat, factory.lng, factory.zoom)}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                  className="page-contact-factory-map"
-                />
+                <div className="page-contact-factory-map-crop">
+                  <iframe
+                    title={`${factory.name} location map`}
+                    src={getGoogleMapsEmbedFromCoords(factory.lat, factory.lng, factory.zoom)}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                    className="page-contact-factory-map"
+                  />
+                </div>
               </div>
               <div className="page-contact-factory-body">
                 <h3 className="page-contact-factory-name">{factory.name}</h3>

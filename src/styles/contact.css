@@ -1,0 +1,26 @@
+/* Factory map embeds — crop Google UI (tabs, satellite thumb, footer) */
+.page-contact-factory-map-wrap {
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.page-contact-factory-map-crop {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1.74 / 1;
+  border-radius: 0.75rem;
+}
+
+.page-contact-factory-map {
+  position: absolute;
+  top: -3.25rem;
+  left: -5.5rem;
+  width: calc(100% + 5.5rem);
+  height: calc(100% + 5rem);
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: unset;
+  min-height: unset;
+  margin: 0;
+  display: block;
+}
