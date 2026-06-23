@@ -5,8 +5,7 @@ import { FadeIn } from '../ui/FadeIn'
 const DPD_HERO_VIDEO_ID = 'dpd-hero-video'
 
 export function DesignHeroSection() {
-  const { title, description, ctaLabel, ctaHref, video, videoPoster, videoAlt } =
-    designProductDevelopmentHero
+  const { title, description, ctaLabel, ctaHref, video, videoAlt } = designProductDevelopmentHero
 
   return (
     <section className="service-details-section section-spacing-top dpd-hero-section">
@@ -34,10 +33,10 @@ export function DesignHeroSection() {
             loop
             muted
             playsInline
+            preload="auto"
             aria-label={videoAlt}
             data-wf-ignore="true"
             data-object-fit="cover"
-            poster={videoPoster}
             className="dpd-hero-video-media"
           >
             <source src={video} type="video/mp4" data-wf-ignore="true" />

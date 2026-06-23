@@ -6,8 +6,7 @@ import { FadeIn } from '../ui/FadeIn'
 const IL_HERO_VIDEO_ID = 'il-hero-video'
 
 export function IndustrialLaundryHeroSection() {
-  const { title, description, ctaLabel, ctaHref, video, videoPoster, videoAlt } =
-    industrialLaundryHero
+  const { title, description, ctaLabel, ctaHref, video, videoAlt } = industrialLaundryHero
 
   return (
     <section className="service-details-section section-spacing-top il-hero-section">
@@ -35,10 +34,10 @@ export function IndustrialLaundryHeroSection() {
             loop
             muted
             playsInline
+            preload="auto"
             aria-label={videoAlt}
             data-wf-ignore="true"
             data-object-fit="cover"
-            poster={videoPoster}
             className="il-hero-video-media"
           >
             <source src={video} type="video/mp4" data-wf-ignore="true" />
