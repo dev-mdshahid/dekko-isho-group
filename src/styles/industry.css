@@ -77,10 +77,6 @@
   font-weight: var(--_typography---body--font-weight-500);
 }
 
-.industry-hero-button .button-icon-bg {
-  background-image: linear-gradient(0deg, #2595d5 0%, #1c72a3 100%);
-}
-
 .industry-hero-media-wrap {
   height: 40.625rem;
   overflow: hidden;
@@ -635,6 +631,178 @@
   .isho-ltd-store-description,
   .isho-ltd-store-address-lines {
     font-size: 1rem;
+  }
+}
+
+/* Industry pages — location section */
+
+.industry-location {
+  background-color: var(--color--white);
+  overflow: hidden;
+  padding-bottom: 6.25rem;
+  padding-top: 0;
+  width: 100%;
+}
+
+.industry-location-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-left: var(--_layout---container-full-gutter);
+  padding-right: var(--_layout---container-full-gutter);
+  width: 100%;
+}
+
+.industry-location-card {
+  align-items: center;
+  background-color: var(--color--gray-5);
+  border-radius: 1.625rem;
+  display: grid;
+  gap: var(--gap--gap-11);
+  grid-template-columns: minmax(0, 45%) minmax(0, 55%);
+  padding: 3.75rem;
+  width: 100%;
+}
+
+.industry-location-copy {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap--gap-5);
+  width: 100%;
+}
+
+.industry-location-title {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 2.625rem;
+  font-weight: var(--_typography---h3--font-weight-600);
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.industry-location-description {
+  color: var(--color--gray-2);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.industry-location-list {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.industry-location-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.industry-location-item:first-child {
+  padding-top: 0;
+}
+
+.industry-location-item:last-child {
+  padding-bottom: 0;
+}
+
+.industry-location-item--bordered {
+  border-top: 1px solid var(--color--gray-4);
+}
+
+.industry-location-number {
+  color: var(--color--primary-1);
+  flex-shrink: 0;
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  min-width: 1.75rem;
+}
+
+.industry-location-item-content {
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.industry-location-item-title {
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---h6--font-weight-600);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.industry-location-item-subtitle {
+  color: var(--color--gray-2);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 0.875rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-top: 0;
+  white-space: pre-line;
+  width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .industry-location {
+    padding-bottom: 5rem;
+  }
+
+  .industry-location-card {
+    gap: var(--gap--gap-10);
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industry-location {
+    padding-bottom: 4rem;
+  }
+
+  .industry-location-card {
+    padding: 1.75rem;
+  }
+
+  .industry-location-title {
+    font-size: var(--_typography---h4--h4);
+  }
+
+  .industry-location-description {
+    font-size: 1rem;
+  }
+
+  .industry-location-number,
+  .industry-location-item-title {
+    font-size: 1rem;
+  }
+
+  .industry-location-item-subtitle {
+    font-size: 0.8125rem;
   }
 }
 

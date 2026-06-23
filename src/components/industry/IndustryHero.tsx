@@ -26,7 +26,12 @@ export function IndustryHero({
               <p className="industry-hero-description">{description}</p>
             </FadeIn>
             <FadeIn id="industry-hero-cta" delay={80}>
-              <ButtonArrow to={ctaHref} label={ctaLabel} className="industry-hero-button primary-button w-inline-block" />
+              <ButtonArrow
+                to={ctaHref}
+                label={ctaLabel}
+                variant="button-primary-bg"
+                className="industry-hero-button primary-button w-variant-5ae0b7d1-2e18-9989-4375-c73c98041680 w-inline-block"
+              />
             </FadeIn>
           </div>
         </div>
