@@ -1,14 +1,11 @@
-<svg width="401" height="401" viewBox="0 0 401 401" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="200.72" cy="200.702" r="200" transform="rotate(-10.4762 200.72 200.702)" fill="url(#paint0_radial_542_134)"/>
-<defs>
-<radialGradient id="paint0_radial_542_134" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200.72 200.702) rotate(76.0311) scale(194.583 199.518)">
-<stop stop-color="#F54475"/>
-<stop offset="0.25" stop-color="#F33262"/>
-<stop offset="0.5" stop-color="#F3215D" stop-opacity="0.8"/>
-<stop offset="0.6" stop-color="#D61E52" stop-opacity="0.5"/>
-<stop offset="0.7" stop-color="#C41949" stop-opacity="0.1"/>
-<stop offset="0.8" stop-color="#B81A47" stop-opacity="0.05"/>
-<stop offset="0.9992" stop-color="#B81A47" stop-opacity="0"/>
-</radialGradient>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" fill="none" aria-hidden="true">
+  <defs>
+    <radialGradient id="footer-blur" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1c72a3" />
+      <stop offset="40%" stop-color="#1c72a3" stop-opacity="0.6" />
+      <stop offset="70%" stop-color="#2595d5" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#2595d5" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#footer-blur)" />
 </svg>

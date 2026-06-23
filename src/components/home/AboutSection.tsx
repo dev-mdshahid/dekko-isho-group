@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
+import { useStickyHorizontalScroll } from '../../hooks/useStickyHorizontalScroll'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
@@ -93,12 +93,15 @@ function IndustryImageCircle({ src, alt }: IndustryImageItem) {
 }
 
 export function AboutSection() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-  useHorizontalScroll(scrollRef)
+  const triggerRef = useRef<HTMLDivElement>(null)
+  const pinRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  useStickyHorizontalScroll({ triggerRef, pinRef, trackRef })
 
   return (
-    <section id="About-Section" className="about-section">
-      <div className="about-main section-spacing">
+    <section id="About-Section" ref={triggerRef} className="about-section">
+      <div ref={pinRef} className="about-main">
         <div className="about-info">
           <div className="about-info-content">
             <div className="about-right-wrap">
@@ -119,8 +122,8 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-        <div ref={scrollRef} className="about-scroll-viewport">
-          <div className="about-info-inner is-scroll">
+        <div className="about-scroll-viewport">
+          <div ref={trackRef} className="about-info-inner is-scroll">
             {industries.map((item, index) =>
               item.type === 'text' ? (
                 <IndustryTextCircle key={item.id} {...item} />

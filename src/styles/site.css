@@ -1748,21 +1748,43 @@ figcaption {
 }
 
 .footer-shadow {
+  z-index: 1;
   opacity: .35;
-  filter: blur(80px);
-  width: 100%;
-  height: 1000px;
   position: absolute;
   pointer-events: none;
-  background: radial-gradient(circle at center, var(--color--primary-2) 0%, transparent 65%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .footer-shadow._01 {
-  inset: -50% -40% auto auto;
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 0% 0%,
+      rgb(28 114 163 / 0.18) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 130% 90% at 88% 8%,
+      var(--color--primary-2) 0%,
+      rgb(28 114 163 / 0.35) 38%,
+      transparent 72%
+    );
 }
 
 .footer-shadow._02 {
-  inset: 30% auto auto -40%;
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 100% 100%,
+      rgb(37 149 213 / 0.16) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 120% 85% at 10% 92%,
+      var(--color--primary-1) 0%,
+      rgb(28 114 163 / 0.3) 40%,
+      transparent 72%
+    );
 }
 
 .footer-main {
@@ -1886,6 +1908,17 @@ figcaption {
   height: 100%;
   position: relative;
   overflow: hidden;
+  background-image: url('/images/fabric-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-section-overlay {
+  pointer-events: none;
+  background-color: color-mix(in srgb, var(--color--white) 50%, transparent);
+  position: absolute;
+  inset: 0;
 }
 
 .hero-wrap {
@@ -2008,8 +2041,25 @@ figcaption {
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   --about-inset-left: 200px;
+  --about-section-padding-top: clamp(5.5rem, 9vh, 8rem);
+  --about-section-padding-bottom: clamp(3.75rem, 6vh, 6.25rem);
+  --about-header-gap: clamp(2rem, 3vh, 3rem);
+}
+
+.about-main {
+  z-index: 2;
+  background-color: var(--color--gray-5);
+  box-sizing: border-box;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-height: 100svh;
+  padding-top: var(--about-section-padding-top);
+  padding-bottom: var(--about-section-padding-bottom);
+  display: flex;
+  position: relative;
 }
 
 .hero-video-wrap {
@@ -2199,8 +2249,12 @@ figcaption {
   letter-spacing: var(--_typography---body--letter-spacing);
 }
 
-.about-section-title, .about-description {
-  margin-bottom: 1.875rem;
+.about-section-title {
+  margin-bottom: 1.25rem;
+}
+
+.about-section .about-description {
+  margin-bottom: 0;
 }
 
 .about-button-wrap {
@@ -2265,7 +2319,7 @@ figcaption {
   z-index: 1;
   grid-column-gap: var(--gap--gap-13);
   grid-row-gap: var(--gap--gap-13);
-  margin-bottom: 6.25rem;
+  margin-bottom: var(--about-header-gap);
   position: relative;
 }
 
@@ -2287,20 +2341,8 @@ figcaption {
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  cursor: grab;
-}
-
-.about-scroll-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.about-scroll-viewport.is-dragging {
-  cursor: grabbing;
-  user-select: none;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .about-info-inner {
@@ -7026,11 +7068,6 @@ figcaption {
   overflow: hidden;
 }
 
-.about-main {
-  z-index: 2;
-  position: relative;
-}
-
 .cta-left {
   width: 100%;
   height: 100%;
@@ -8735,11 +8772,13 @@ figcaption {
   .about-info {
     grid-column-gap: var(--gap--gap-10);
     grid-row-gap: var(--gap--gap-10);
-    margin-bottom: 3.75rem;
+    margin-bottom: clamp(1.75rem, 2.5vh, 2.5rem);
   }
 
   .about-section {
     --about-inset-left: 80px;
+    --about-section-padding-top: clamp(4.5rem, 7vh, 6.5rem);
+    --about-section-padding-bottom: clamp(3rem, 5vh, 5rem);
   }
 
   .about-info-inner {
@@ -9875,10 +9914,13 @@ figcaption {
   .about-info {
     grid-column-gap: var(--gap--gap-8);
     grid-row-gap: var(--gap--gap-8);
+    margin-bottom: 1.75rem;
   }
 
   .about-section {
     --about-inset-left: .9375rem;
+    --about-section-padding-top: clamp(3.5rem, 6vh, 5rem);
+    --about-section-padding-bottom: clamp(2.5rem, 4vh, 3.75rem);
   }
 
   .about-info-box {
