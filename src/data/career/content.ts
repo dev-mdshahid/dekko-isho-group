@@ -83,6 +83,7 @@ export const careerOpenPositions = {
   heading: 'Open Positions',
   ctaLabel: 'All Roles',
   ctaHref: '#open-positions',
+  applicationFormUrl: 'https://forms.gle/7v7Xybpjd5wboKi9A',
   jobs: [
     {
       id: 'career-job-01',

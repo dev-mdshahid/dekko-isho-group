@@ -223,7 +223,7 @@ export function Navbar() {
             onClick={closeMenu}
           >
             <img
-              src="/dekko-logo.png"
+              src="/dekko-logo.svg"
               loading="eager"
               alt="Dekko Isho Group"
               className="logo"
