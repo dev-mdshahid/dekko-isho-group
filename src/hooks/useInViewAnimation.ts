@@ -1,9 +1,19 @@
 import { type RefObject, useEffect } from 'react'
 import { gsap } from 'gsap'
 
+import { registerFadeInReveal, unregisterFadeInReveal } from '../lib/fadeInReveal'
+import type { RevealOptions } from '../lib/fadeInReveal'
+
 function isInViewport(el: HTMLElement) {
   const rect = el.getBoundingClientRect()
   return rect.top < window.innerHeight && rect.bottom > 0
+}
+
+/** Generous bounds for elements that pass through view quickly (anchor jumps, fast scroll). */
+function isNearViewport(el: HTMLElement) {
+  const rect = el.getBoundingClientRect()
+  const margin = Math.max(120, window.innerHeight * 0.25)
+  return rect.top < window.innerHeight + margin && rect.bottom > -margin
 }
 
 /** Scroll-reveal for `[data-fade-in]` only — does not touch Webflow IX2 `data-w-id` targets. */
@@ -25,12 +35,18 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       observer?.unobserve(el)
     }
 
-    // Only touches elements that haven't been revealed yet — safe to call at any time.
-    const revealVisible = () => {
-      Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]'))
-        .filter((el) => el.dataset.fadeDone !== 'true' && isInViewport(el))
+    const revealVisible = (root?: Element, options?: RevealOptions) => {
+      const queryRoot = (root ?? scope) as ParentNode
+      Array.from(queryRoot.querySelectorAll<HTMLElement>('[data-fade-in]'))
+        .filter((el) => {
+          if (el.dataset.fadeDone === 'true') return false
+          if (options?.forceInRoot) return true
+          return isInViewport(el) || isNearViewport(el)
+        })
         .forEach(reveal)
     }
+
+    registerFadeInReveal(revealVisible)
 
     const onScroll = () => {
       if (scrollRaf) return
@@ -45,9 +61,6 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
     )
 
     if (targets.length) {
-      // The CSS rule `[data-fade-in] { opacity: 0 }` already hides elements before JS runs,
-      // so no rAF deferral is needed. Initialising synchronously (after first paint, which is
-      // when useEffect fires) means the observer is live before the user can scroll.
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -55,13 +68,12 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
             reveal(entry.target as HTMLElement)
           })
         },
-        // Generous margin catches elements that pass through the viewport quickly.
         { threshold: 0, rootMargin: '120px 0px 120px 0px' },
       )
 
       targets.forEach((el) => {
         gsap.set(el, { opacity: 0, y: 24 })
-        if (isInViewport(el)) {
+        if (isInViewport(el) || isNearViewport(el)) {
           reveal(el)
         } else {
           observer?.observe(el)
@@ -69,12 +81,11 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       })
     }
 
-    // Scroll handler as a safety net: catches elements the observer may have missed
-    // when the user scrolls faster than intersection callbacks can fire.
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('scrollend', onScroll, { passive: true })
 
     return () => {
+      unregisterFadeInReveal()
       if (scrollRaf) cancelAnimationFrame(scrollRaf)
       observer?.disconnect()
       window.removeEventListener('scroll', onScroll)

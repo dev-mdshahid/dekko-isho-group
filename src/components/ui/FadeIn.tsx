@@ -11,10 +11,9 @@ type Props = PropsWithChildren<{
 }>
 
 /** Wrapper for scroll-reveal animations via `useInViewAnimation` / `useFooterAnimations`. */
-export function FadeIn({ id, className, style, delay, variant = 'default', children }: Props) {
+export function FadeIn({ className, style, delay, variant = 'default', children }: Props) {
   return (
     <div
-      data-w-id={id}
       data-fade-in
       data-fade-delay={delay}
       data-fade-variant={variant === 'slide-in-bottom' ? variant : undefined}

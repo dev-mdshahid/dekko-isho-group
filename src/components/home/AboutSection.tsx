@@ -1,5 +1,8 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
+import { solutionPath } from '../../data/solutions/solutions'
+import { resetScrollPosition } from '../../lib/resetRouteScroll'
 import { useStickyHorizontalScroll } from '../../hooks/useStickyHorizontalScroll'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
@@ -18,6 +21,7 @@ type IndustryTextItem = {
   id: string
   number: string
   title: string
+  slug: string
   variant: 'light' | 'dark'
 }
 
@@ -36,6 +40,7 @@ const industries: IndustryItem[] = [
     id: '52b525da-7c1b-3a5f-e1d2-3e25e3d423eb',
     number: '01',
     title: 'Manufacturing',
+    slug: 'manufacturing',
     variant: 'light',
   },
   { type: 'image', src: LAUNDRY_IMAGE, alt: 'Industrial laundry' },
@@ -44,6 +49,7 @@ const industries: IndustryItem[] = [
     id: 'a502134d-7170-6735-c416-b637dce64a74',
     number: '02',
     title: 'Industrial Laundry',
+    slug: 'industrial-laundry',
     variant: 'dark',
   },
   { type: 'image', src: COMPLIANCE_IMAGE, alt: 'Compliance and sustainability' },
@@ -52,26 +58,47 @@ const industries: IndustryItem[] = [
     id: 'e0a0517f-1ee8-9dfc-bba2-14c8a6a448da',
     number: '03',
     title: 'Compliance & Sustainability',
+    slug: 'compliance-sustainability',
     variant: 'light',
   },
   { type: 'image', src: DESIGN_IMAGE, alt: 'Design and product development' },
-  { type: 'text', id: 'about-industry-04', number: '04', title: 'Design & Product Development', variant: 'light' },
+  {
+    type: 'text',
+    id: 'about-industry-04',
+    number: '04',
+    title: 'Design & Product Development',
+    slug: 'design-product-development',
+    variant: 'light',
+  },
   { type: 'image', src: INTEGRATION_IMAGE, alt: 'Technology integration' },
-  { type: 'text', id: 'about-industry-05', number: '05', title: 'Technology Integration', variant: 'dark' },
+  {
+    type: 'text',
+    id: 'about-industry-05',
+    number: '05',
+    title: 'Technology Integration',
+    slug: 'technology-integration',
+    variant: 'dark',
+  },
 ]
 
-function IndustryTextCircle({ id, number, title, variant }: IndustryTextItem) {
+function IndustryTextCircle({ id, number, title, slug, variant }: IndustryTextItem) {
   const boxClass = variant === 'dark' ? 'about-info-box box-bg-dark' : 'about-info-box box-bg-white'
   const descriptionClass =
     variant === 'dark' ? 'about-info-description' : 'about-content-description'
 
   return (
-    <FadeIn id={id} className={boxClass}>
-      <div className="about-info-inner-wrap">
-        <div className="about-content">{number}</div>
-        <div className="about-info-text">{title}</div>
-        <p className={descriptionClass}>{INDUSTRY_DESCRIPTION}</p>
-      </div>
+    <FadeIn id={id}>
+      <Link
+        to={solutionPath(slug)}
+        className={boxClass}
+        onClick={() => resetScrollPosition()}
+      >
+        <div className="about-info-inner-wrap">
+          <div className="about-content">{number}</div>
+          <div className="about-info-text">{title}</div>
+          <p className={descriptionClass}>{INDUSTRY_DESCRIPTION}</p>
+        </div>
+      </Link>
     </FadeIn>
   )
 }
@@ -93,15 +120,14 @@ function IndustryImageCircle({ src, alt }: IndustryImageItem) {
 }
 
 export function AboutSection() {
-  const triggerRef = useRef<HTMLDivElement>(null)
-  const pinRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
 
-  useStickyHorizontalScroll({ triggerRef, pinRef, trackRef })
+  useStickyHorizontalScroll({ panelRef, trackRef })
 
   return (
-    <section id="About-Section" ref={triggerRef} className="about-section">
-      <div ref={pinRef} className="about-main">
+    <section id="About-Section" className="about-section">
+      <div ref={panelRef} className="about-main">
         <div className="about-info">
           <div className="about-info-content">
             <div className="about-right-wrap">

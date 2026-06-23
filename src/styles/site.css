@@ -2039,9 +2039,8 @@ figcaption {
 .about-section {
   background-color: var(--color--gray-5);
   width: 100%;
-  height: 100%;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   --about-inset-left: 200px;
   --about-section-padding-top: clamp(5.5rem, 9vh, 8rem);
   --about-section-padding-bottom: clamp(3.75rem, 6vh, 6.25rem);
@@ -2055,7 +2054,9 @@ figcaption {
   flex-flow: column;
   justify-content: flex-start;
   align-items: stretch;
-  min-height: 100svh;
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
   padding-top: var(--about-section-padding-top);
   padding-bottom: var(--about-section-padding-bottom);
   display: flex;
@@ -2342,7 +2343,10 @@ figcaption {
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
 }
 
 .about-info-inner {
@@ -2430,6 +2434,17 @@ figcaption {
   display: flex;
   position: relative;
   overflow: hidden;
+}
+
+a.about-info-box {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+a.about-info-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .about-info-box.box-bg-white {
