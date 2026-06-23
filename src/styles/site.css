@@ -12316,6 +12316,7 @@ figcaption {
   aspect-ratio: 1.74 / 1;
   object-fit: cover;
   object-position: center;
+  border: 0;
   border-radius: .75rem;
   width: 100%;
   display: block;
