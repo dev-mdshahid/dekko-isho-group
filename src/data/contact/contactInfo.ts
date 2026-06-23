@@ -9,9 +9,8 @@ export const contactEmail = {
 } as const
 
 export const socialLinks = [
-  { href: 'https://facebook.com/dekkoisho', label: 'facebook.com/dekkoisho' },
-  { href: 'https://instagram.com/dekkoisho', label: 'instagram.com/dekkoisho' },
-  { href: 'https://linkedin.com/dekkoisho', label: 'linkedin.com/dekkoisho' },
+  { href: 'https://www.facebook.com/share/1HoDreUv8S/', label: 'facebook.com/share/1HoDreUv8S' },
+  { href: 'https://www.linkedin.com/company/dekkoishogroup/', label: 'linkedin.com/company/dekkoishogroup' },
   { href: 'https://x.com/dekkoisho', label: 'x.com/dekkoisho' },
 ] as const
 

@@ -17,6 +17,10 @@ import './styles/legacy-fouc.css'
 import './styles/legacy-interactions.css'
 import App from './App.tsx'
 
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual'
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>

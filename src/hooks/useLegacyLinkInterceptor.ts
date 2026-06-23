@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { resetRouteScroll } from '../lib/resetRouteScroll'
+
 export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLElement | null>) {
   const navigate = useNavigate()
 
@@ -11,6 +13,9 @@ export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLEleme
     const onClick = (event: MouseEvent) => {
       const target = (event.target as HTMLElement).closest('a')
       if (!target || !container.contains(target)) return
+
+      // Let React Router <Link> handle navigation — same path as footer/nav links.
+      if (target.hasAttribute('data-discover')) return
 
       const href = target.getAttribute('href')
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) {
@@ -23,6 +28,7 @@ export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLEleme
 
       if (href.startsWith('/')) {
         event.preventDefault()
+        resetRouteScroll()
         navigate(href)
       }
     }

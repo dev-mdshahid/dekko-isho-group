@@ -1,29 +1,25 @@
-import { type RefObject, useEffect } from 'react'
+import { type RefObject, useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 type StickyHorizontalScrollOptions = {
-  /** Element that defines the scroll range and receives the pin spacer. */
-  triggerRef: RefObject<HTMLElement | null>
-  /** Element to keep fixed while scrolling through the horizontal track. */
-  pinRef: RefObject<HTMLElement | null>
+  /** Pinned panel — used as both ScrollTrigger trigger and pin target. */
+  panelRef: RefObject<HTMLElement | null>
   /** Horizontally moving track inside the viewport. */
   trackRef: RefObject<HTMLElement | null>
 }
 
 /** Pins a section and maps vertical scroll progress to horizontal track movement. */
 export function useStickyHorizontalScroll({
-  triggerRef,
-  pinRef,
+  panelRef,
   trackRef,
 }: StickyHorizontalScrollOptions) {
-  useEffect(() => {
-    const trigger = triggerRef.current
-    const pin = pinRef.current
+  useLayoutEffect(() => {
+    const panel = panelRef.current
     const track = trackRef.current
     const viewport = track?.parentElement
 
-    if (!trigger || !pin || !track || !viewport) return
+    if (!panel || !track || !viewport) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     gsap.registerPlugin(ScrollTrigger)
@@ -37,13 +33,13 @@ export function useStickyHorizontalScroll({
       x: () => -getMaxScroll(),
       ease: 'none',
       scrollTrigger: {
-        trigger,
+        trigger: panel,
+        pin: true,
         start: 'top top',
         end: () => `+=${getMaxScroll()}`,
-        pin,
         scrub: true,
         invalidateOnRefresh: true,
-        anticipatePin: 0,
+        anticipatePin: 1,
       },
     })
 
@@ -62,9 +58,9 @@ export function useStickyHorizontalScroll({
 
     return () => {
       window.removeEventListener('resize', refresh)
-      tween.scrollTrigger?.kill()
+      tween.scrollTrigger?.kill(true)
       tween.kill()
       gsap.set(track, { clearProps: 'transform' })
     }
-  }, [triggerRef, pinRef, trackRef])
+  }, [panelRef, trackRef])
 }
