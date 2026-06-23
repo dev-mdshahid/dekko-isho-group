@@ -51,15 +51,32 @@ export function SustainabilityPillar04Section() {
               <div className="sustain-report-body">
                 <h3 className="sustain-report-title">{report.title}</h3>
                 <p className="sustain-report-description">{report.description}</p>
-                <a
-                  href={report.pdfHref}
-                  className={`sustain-report-download sustain-report-download--${report.variant}`}
-                >
-                  <span className="sustain-report-download-label">Download PDF</span>
-                  <span className="sustain-report-download-icon" aria-hidden="true">
-                    <DownloadIcon />
-                  </span>
-                </a>
+                {report.comingSoon ? (
+                  <div
+                    className={`sustain-report-download sustain-report-download--${report.variant} sustain-report-download--coming-soon`}
+                  >
+                    <span className="sustain-report-download-label">Download PDF</span>
+                    <button
+                      type="button"
+                      disabled
+                      className="sustain-report-download-icon sustain-report-download-icon--text"
+                    >
+                      Coming Soon
+                    </button>
+                  </div>
+                ) : (
+                  <a
+                    href={report.pdfHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`sustain-report-download sustain-report-download--${report.variant}`}
+                  >
+                    <span className="sustain-report-download-label">Download PDF</span>
+                    <span className="sustain-report-download-icon" aria-hidden="true">
+                      <DownloadIcon />
+                    </span>
+                  </a>
+                )}
               </div>
             </FadeIn>
           ))}
