@@ -5,7 +5,6 @@ export const technologyIntegrationHero = {
   ctaLabel: 'Get Started',
   ctaHref: '#ti-intro',
   video: '/videos/technology-integration-hero.mp4',
-  videoPoster: '/legacy/images/industry-2-5.webp',
   videoAlt: 'Code and digital systems on screen',
 }
 

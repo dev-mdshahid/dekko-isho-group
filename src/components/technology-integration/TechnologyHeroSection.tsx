@@ -5,8 +5,7 @@ import { FadeIn } from '../ui/FadeIn'
 const TI_HERO_VIDEO_ID = 'ti-hero-video'
 
 export function TechnologyHeroSection() {
-  const { title, description, ctaLabel, ctaHref, video, videoPoster, videoAlt } =
-    technologyIntegrationHero
+  const { title, description, ctaLabel, ctaHref, video, videoAlt } = technologyIntegrationHero
 
   return (
     <section className="service-details-section section-spacing-top ti-hero-section">
@@ -34,10 +33,11 @@ export function TechnologyHeroSection() {
             loop
             muted
             playsInline
+            preload="auto"
+            fetchPriority="high"
             aria-label={videoAlt}
             data-wf-ignore="true"
             data-object-fit="cover"
-            poster={videoPoster}
             className="ti-hero-video-media"
           >
             <source src={video} type="video/mp4" data-wf-ignore="true" />

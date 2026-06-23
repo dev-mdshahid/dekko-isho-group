@@ -5,7 +5,6 @@ export const designProductDevelopmentHero = {
   ctaLabel: "Let's Talk",
   ctaHref: '#dpd-team',
   video: '/videos/design%20and%20product%20dev.mp4',
-  videoPoster: '/legacy/images/service-image-1-p-2000.webp',
   videoAlt: 'Design team collaborating in a modern studio',
 }
 

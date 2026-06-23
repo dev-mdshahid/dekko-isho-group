@@ -5,7 +5,6 @@ export const complianceSustainabilityHero = {
   ctaLabel: 'Learn More',
   ctaHref: '#cs-initiatives',
   video: '/videos/compliance-sustainability-hero.mp4',
-  videoPoster: '/legacy/images/access-image.jpg',
   videoAlt: 'Compliance audit in an industrial facility',
 }
 

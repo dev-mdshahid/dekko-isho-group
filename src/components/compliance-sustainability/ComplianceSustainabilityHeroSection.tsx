@@ -5,8 +5,7 @@ import { FadeIn } from '../ui/FadeIn'
 const CS_HERO_VIDEO_ID = 'cs-hero-video'
 
 export function ComplianceSustainabilityHeroSection() {
-  const { title, description, ctaLabel, ctaHref, video, videoPoster, videoAlt } =
-    complianceSustainabilityHero
+  const { title, description, ctaLabel, ctaHref, video, videoAlt } = complianceSustainabilityHero
 
   return (
     <section className="service-details-section section-spacing-top cs-hero-section">
@@ -34,10 +33,11 @@ export function ComplianceSustainabilityHeroSection() {
             loop
             muted
             playsInline
+            preload="auto"
+            fetchPriority="high"
             aria-label={videoAlt}
             data-wf-ignore="true"
             data-object-fit="cover"
-            poster={videoPoster}
             className="cs-hero-video-media"
           >
             <source src={video} type="video/mp4" data-wf-ignore="true" />
