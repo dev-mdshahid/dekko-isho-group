@@ -1012,6 +1012,28 @@
   color: var(--color--white);
 }
 
+.sustain-report-download--coming-soon {
+  cursor: default;
+}
+
+.sustain-report-download--coming-soon:hover {
+  opacity: 1;
+}
+
+.sustain-report-download-icon--text {
+  width: auto;
+  min-width: 2.5rem;
+  padding: 0 0.75rem;
+  border: 0;
+  font-family: inherit;
+  font-size: 0.625rem;
+  font-weight: var(--_typography---body--font-weight-600);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: not-allowed;
+}
+
 .sustain-esg-cta-bar {
   border-radius: var(--border-radius--md);
   background-color: var(--color--gray-5);

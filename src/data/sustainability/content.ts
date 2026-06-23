@@ -279,7 +279,7 @@ export const pillar04 = {
       title: 'Sustainability Report 2024',
       description: 'Annual ESG performance overview and progress against 2030 targets.',
       variant: 'light' as const,
-      pdfHref: '#',
+      pdfHref: '/documents/sustainability/sustainability-report-2024.pdf',
     },
     {
       id: '2025',
@@ -287,7 +287,7 @@ export const pillar04 = {
       title: 'Sustainability Report 2025',
       description: 'Latest disclosures on climate, social impact and governance milestones.',
       variant: 'dark' as const,
-      pdfHref: '#',
+      comingSoon: true,
     },
   ],
   ctaText: 'Reporting since 2024 — aligned to GRI standards, with continuous year-on-year disclosure.',

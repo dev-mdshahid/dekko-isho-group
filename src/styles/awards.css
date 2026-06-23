@@ -1,0 +1,14 @@
+.awards-card-preview:disabled,
+.awards-card-preview.awards-card-preview--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: var(--color--gray-5);
+  border-color: var(--color--gray-4);
+  color: var(--color--gray-2);
+}
+
+.awards-card-preview:disabled .awards-card-preview-icon,
+.awards-card-preview.awards-card-preview--disabled .awards-card-preview-icon {
+  color: var(--color--gray-2);
+}
