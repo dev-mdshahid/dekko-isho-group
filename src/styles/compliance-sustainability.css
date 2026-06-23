@@ -1,0 +1,798 @@
+/* Compliance & Sustainability page — Figma deltas. Reuses industry.css base components. */
+
+.compliance-sustainability-page {
+  --cs-brand-start: #2595d5;
+  --cs-brand-end: #1c72a3;
+  --cs-brand-gradient: linear-gradient(180deg, var(--cs-brand-start) 0%, var(--cs-brand-end) 100%);
+}
+
+/* ── Hero (industrial-laundry pattern) ── */
+.compliance-sustainability-page .cs-hero-section .service-details-top {
+  margin-bottom: 2.5rem;
+}
+
+.compliance-sustainability-page .cs-hero-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: var(--_typography---h1--font-weight-700);
+  line-height: 1.02;
+  margin-top: 0;
+}
+
+.compliance-sustainability-page .cs-hero-subtitle {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body);
+  font-weight: var(--_typography---body--font-weight-500);
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.compliance-sustainability-page .service-detail-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.compliance-sustainability-page .cs-hero-video-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.compliance-sustainability-page .cs-hero-video {
+  width: 100%;
+  height: 650px;
+  position: relative;
+}
+
+.compliance-sustainability-page .cs-hero-video-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background-color: var(--color--dark);
+}
+
+/* ── Initiatives (matches industrial-laundry innovation) ── */
+.compliance-sustainability-page .cs-initiatives-section {
+  background-color: var(--color--white);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.compliance-sustainability-page .cs-initiatives-section .container {
+  max-width: 75rem;
+}
+
+.compliance-sustainability-page .cs-initiatives-inner {
+  align-items: center;
+  width: 100%;
+  gap: 3.5rem;
+}
+
+.compliance-sustainability-page .cs-initiatives-block {
+  width: 100%;
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.compliance-sustainability-page .cs-initiatives-section .pre-section-title-square {
+  background-color: var(--cs-brand-start);
+  background-image: var(--cs-brand-gradient);
+}
+
+.compliance-sustainability-page .cs-initiatives-title {
+  text-align: left;
+  font-size: clamp(1.875rem, 2.8vw, 2.5rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.25;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin: 0;
+  color: var(--color--dark);
+}
+
+.compliance-sustainability-page .cs-initiatives-copy {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.compliance-sustainability-page .cs-initiatives-description {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.65;
+  margin: 0;
+  text-align: left;
+}
+
+.compliance-sustainability-page .cs-feature-info {
+  width: 100%;
+}
+
+.compliance-sustainability-page .cs-feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+}
+
+.compliance-sustainability-page .cs-feature-grid .feature-main {
+  height: 100%;
+  text-align: left;
+  background-color: #f7f7f7;
+  border-radius: var(--border-radius--sm);
+  padding: 1.75rem 1.5rem;
+}
+
+.compliance-sustainability-page .cs-feature-grid .feature-icon-wrap {
+  margin-bottom: 1.5rem;
+  line-height: 0;
+}
+
+.compliance-sustainability-page .cs-feature-grid .feature-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.compliance-sustainability-page .cs-feature-grid .feature-name {
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+  color: var(--color--dark);
+}
+
+.compliance-sustainability-page .cs-feature-grid .feature-description {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Safety (dekko garments / industry-image 3-column) ── */
+.compliance-sustainability-page .cs-safety-section.industry-image-section {
+  background-color: var(--color--white);
+  padding-bottom: clamp(4rem, 8vw, 6.25rem);
+}
+
+.compliance-sustainability-page .cs-safety-section .pre-section-title-square {
+  background-color: var(--cs-brand-start);
+  background-image: var(--cs-brand-gradient);
+}
+
+/* ── Risk protection (dark) ── */
+.compliance-sustainability-page .cs-risk-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
+}
+
+.compliance-sustainability-page .cs-risk-glow {
+  position: absolute;
+  inset: auto 0 0;
+  height: 55%;
+  background: radial-gradient(ellipse 80% 70% at 50% 100%, rgb(37 149 213 / 18%) 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.compliance-sustainability-page .cs-risk-container {
+  position: relative;
+  z-index: 1;
+  max-width: 81.25rem;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.compliance-sustainability-page .cs-risk-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.compliance-sustainability-page .cs-risk-title {
+  margin: 0;
+  max-width: 20ch;
+  color: var(--color--white);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.compliance-sustainability-page .cs-risk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.compliance-sustainability-page .cs-risk-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 0.25rem;
+}
+
+.compliance-sustainability-page .cs-risk-card-accent {
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.compliance-sustainability-page .cs-risk-card-title {
+  margin: 0;
+  color: var(--color--white);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+}
+
+.compliance-sustainability-page .cs-risk-card-description {
+  margin: 0;
+  color: #a1a1aa;
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.6;
+}
+
+/* ── Quality control ── */
+.compliance-sustainability-page .cs-quality-section {
+  background-color: var(--color--white);
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
+}
+
+.compliance-sustainability-page .cs-quality-container {
+  max-width: 81.25rem;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.compliance-sustainability-page .cs-quality-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 52rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.compliance-sustainability-page .cs-quality-section .pre-section-title-square {
+  background-color: var(--cs-brand-start);
+  background-image: var(--cs-brand-gradient);
+}
+
+.compliance-sustainability-page .cs-quality-title {
+  margin: 0;
+  color: var(--color--dark);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.compliance-sustainability-page .cs-quality-description {
+  margin: 0;
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  line-height: 1.65;
+  max-width: 40rem;
+}
+
+.compliance-sustainability-page .cs-quality-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.compliance-sustainability-page .cs-quality-gallery-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+  gap: 0.75rem;
+  align-items: stretch;
+  min-height: clamp(18rem, 32vw, 28rem);
+}
+
+.compliance-sustainability-page .cs-quality-gallery-primary,
+.compliance-sustainability-page .cs-quality-gallery-grid-item,
+.compliance-sustainability-page .cs-quality-gallery-banner {
+  overflow: hidden;
+  border-radius: var(--border-radius--sm);
+}
+
+.compliance-sustainability-page .cs-quality-gallery-primary {
+  min-height: 100%;
+}
+
+.compliance-sustainability-page .cs-quality-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  min-height: 100%;
+}
+
+.compliance-sustainability-page .cs-quality-gallery-grid-item {
+  min-height: 0;
+}
+
+.compliance-sustainability-page .cs-quality-gallery-banner {
+  height: clamp(10rem, 18vw, 14rem);
+}
+
+.compliance-sustainability-page .cs-quality-gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.compliance-sustainability-page .cs-quality-pillars-wrap {
+  background-color: var(--color--gray-5);
+  border-radius: var(--border-radius--sm);
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2rem);
+}
+
+.compliance-sustainability-page .cs-quality-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.compliance-sustainability-page .cs-quality-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+.compliance-sustainability-page .cs-quality-pillar-accent {
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 0;
+}
+
+.compliance-sustainability-page .cs-quality-pillar-number {
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1;
+}
+
+.compliance-sustainability-page .cs-quality-pillar-title {
+  margin: 0;
+  color: var(--color--dark);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+}
+
+.compliance-sustainability-page .cs-quality-pillar-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.compliance-sustainability-page .cs-quality-pillar-list-item {
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-xs);
+  line-height: 1.55;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.compliance-sustainability-page .cs-quality-pillar-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color--gray-2);
+}
+
+/* ── Certified reporting (dark category table) ── */
+.compliance-sustainability-page .cs-reporting-section.service-category-section {
+  --cs-reporting-category-width: 18.75rem;
+  --cs-reporting-column-gap: 5rem;
+  background-color: #0a0a0a;
+  background-image: none;
+  padding-bottom: 0;
+}
+
+.compliance-sustainability-page .cs-reporting-container {
+  position: relative;
+  z-index: 1;
+  max-width: 81.25rem;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.compliance-sustainability-page .cs-reporting-main {
+  padding-top: clamp(5rem, 9vw, 7.5rem);
+  padding-bottom: clamp(5rem, 9vw, 7.5rem);
+}
+
+.compliance-sustainability-page .cs-reporting-section .pre-section-title-square {
+  background-color: var(--cs-brand-start);
+  background-image: var(--cs-brand-gradient);
+}
+
+.compliance-sustainability-page .cs-reporting-section .grid-category-title,
+.compliance-sustainability-page .cs-reporting-section .grid-category-inner,
+.compliance-sustainability-page .cs-reporting-section .grid-category-info {
+  grid-template-columns:
+    minmax(0, var(--cs-reporting-category-width))
+    minmax(0, var(--cs-reporting-column-gap))
+    minmax(0, 1fr);
+  column-gap: 0;
+  align-items: start;
+}
+
+.compliance-sustainability-page .cs-reporting-section .service-category-inner {
+  gap: var(--gap--gap-10);
+}
+
+.compliance-sustainability-page .cs-reporting-section .category-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.compliance-sustainability-page .cs-reporting-title {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.625rem);
+  font-weight: 600;
+  line-height: 1.1;
+  max-width: none;
+}
+
+.compliance-sustainability-page .cs-reporting-column-label {
+  color: var(--color--white);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.compliance-sustainability-page .cs-reporting-section .grid-category-inner {
+  margin-bottom: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #ffffff1a;
+}
+
+.compliance-sustainability-page .cs-reporting-section .grid-category-info {
+  border-bottom: 1px solid #ffffff1a;
+  margin-bottom: 0;
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+}
+
+.compliance-sustainability-page .cs-reporting-section .grid-category-info.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.compliance-sustainability-page .cs-reporting-category {
+  color: var(--color--white);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+}
+
+.compliance-sustainability-page .cs-reporting-details-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  max-width: 36rem;
+}
+
+.compliance-sustainability-page .cs-reporting-details-item {
+  color: #a1a1aa;
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.compliance-sustainability-page .cs-reporting-details-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #a1a1aa;
+}
+
+@media screen and (min-width: 992px) {
+  .compliance-sustainability-page .cs-reporting-container {
+    padding-inline: 0;
+  }
+}
+
+/* ── Improvement list (Figma) ── */
+.compliance-sustainability-page .cs-improvement-section {
+  background-color: var(--color--white);
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
+}
+
+.compliance-sustainability-page .cs-improvement-container {
+  max-width: 81.25rem;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.compliance-sustainability-page .cs-improvement-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(100%, 52rem);
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.compliance-sustainability-page .cs-improvement-section .pre-section-title-square {
+  background-color: var(--cs-brand-start);
+  background-image: var(--cs-brand-gradient);
+}
+
+.compliance-sustainability-page .cs-improvement-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-5);
+}
+
+.compliance-sustainability-page .cs-improvement-title {
+  margin: 0;
+  max-width: none;
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.compliance-sustainability-page .cs-improvement-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.compliance-sustainability-page .cs-improvement-item {
+  display: grid;
+  grid-template-columns: minmax(3.25rem, 4rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  align-items: center;
+  padding: clamp(1.75rem, 3vw, 2rem) 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.compliance-sustainability-page .cs-improvement-item.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.compliance-sustainability-page .cs-improvement-item:first-child {
+  padding-top: 0;
+}
+
+.compliance-sustainability-page .cs-improvement-number {
+  color: var(--color--gray-4);
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(2.75rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.compliance-sustainability-page .cs-improvement-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.compliance-sustainability-page .cs-improvement-item-title {
+  margin: 0;
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.compliance-sustainability-page .cs-improvement-item-description {
+  margin: 0;
+  color: var(--color--gray-2);
+  font-family: var(--_typography---font-family--body);
+  font-size: var(--base-font-size--base-small);
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.55;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+/* ── CTA (matches industrial-laundry) ── */
+.compliance-sustainability-page .cs-cta-section {
+  background-color: var(--color--gray-5);
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
+}
+
+.compliance-sustainability-page .cs-cta-card {
+  border-radius: 1.5rem;
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(37 149 213 / 22%) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(28 114 163 / 14%) 0%, transparent 62%);
+  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.compliance-sustainability-page .cs-cta-eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--color--white);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.4;
+}
+
+.compliance-sustainability-page .cs-cta-heading {
+  margin: 0 0 1.5rem;
+  color: var(--color--white);
+  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
+  font-weight: var(--_typography---h3--font-weight-600);
+  line-height: 1.1;
+  max-width: 18ch;
+}
+
+.compliance-sustainability-page .cs-cta-description {
+  margin: 0 0 2.5rem;
+  color: #a1a1aa;
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.5;
+  max-width: min(100%, 36rem);
+}
+
+.compliance-sustainability-page .cs-cta-actions {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.compliance-sustainability-page .cs-cta-card .button-icon-bg {
+  background-color: var(--cs-brand-start);
+  background-image: var(--cs-brand-gradient);
+}
+
+.compliance-sustainability-page .cs-cta-email {
+  color: var(--color--white);
+  font-size: 1rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.compliance-sustainability-page .cs-cta-email:hover {
+  opacity: 0.8;
+}
+
+/* ── Responsive ── */
+@media screen and (min-width: 992px) {
+  .compliance-sustainability-page .cs-risk-container,
+  .compliance-sustainability-page .cs-quality-container,
+  .compliance-sustainability-page .cs-reporting-container,
+  .compliance-sustainability-page .cs-improvement-container {
+    padding-inline: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .compliance-sustainability-page .cs-hero-video {
+    height: clamp(16rem, 50vw, 28rem);
+  }
+
+  .compliance-sustainability-page .cs-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compliance-sustainability-page .cs-risk-grid,
+  .compliance-sustainability-page .cs-quality-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compliance-sustainability-page .cs-reporting-section .grid-category-title,
+  .compliance-sustainability-page .cs-reporting-section .grid-category-inner,
+  .compliance-sustainability-page .cs-reporting-section .grid-category-info {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--gap--gap-5);
+  }
+
+  .compliance-sustainability-page .cs-reporting-spacer {
+    display: none;
+  }
+
+  .compliance-sustainability-page .cs-quality-gallery-row {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .compliance-sustainability-page .cs-quality-gallery-primary {
+    min-height: clamp(14rem, 40vw, 20rem);
+  }
+
+  .compliance-sustainability-page .cs-quality-gallery-grid {
+    min-height: clamp(14rem, 50vw, 22rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .compliance-sustainability-page .cs-hero-title {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .compliance-sustainability-page .cs-hero-video {
+    height: clamp(14rem, 56vw, 22rem);
+  }
+
+  .compliance-sustainability-page .cs-initiatives-block {
+    max-width: 100%;
+  }
+
+  .compliance-sustainability-page .cs-improvement-layout {
+    max-width: 100%;
+  }
+
+  .compliance-sustainability-page .cs-risk-grid,
+  .compliance-sustainability-page .cs-quality-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .compliance-sustainability-page .cs-quality-gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .compliance-sustainability-page .cs-improvement-item {
+    grid-template-columns: minmax(2.75rem, 3.25rem) 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.5rem 0;
+  }
+
+  .compliance-sustainability-page .cs-improvement-number {
+    font-size: clamp(2.25rem, 10vw, 2.75rem);
+  }
+
+  .compliance-sustainability-page .cs-cta-card {
+    padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .compliance-sustainability-page .cs-cta-description {
+    max-width: 100%;
+  }
+
+  .compliance-sustainability-page .cs-cta-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}

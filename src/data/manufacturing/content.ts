@@ -98,7 +98,7 @@ export const manufacturingCuttingPreparation = {
       title: 'Fabric Relaxation & Preparation',
       description:
         'Before spreading, fabrics are prepared according to material behavior, technical requirements and production standards. This helps stabilize shrinkage, reduce distortion and ensure that the cutting process begins with properly conditioned raw material.',
-      image: '/legacy/images/service-image-1.webp',
+      image: '/images/manufacturing/cutting/01-fabric-relaxation.png',
       imageAlt: 'Worker preparing fabric on a spreading table',
     },
     {
@@ -107,7 +107,7 @@ export const manufacturingCuttingPreparation = {
       title: 'Spreading Accuracy',
       description:
         'Fabric spreading is carried out with close attention to ply alignment, grain direction, shade control and marker requirements. Consistent spreading helps improve measurement accuracy and supports better garment balance during assembly.',
-      image: '/legacy/images/3-3.jpg',
+      image: '/images/manufacturing/cutting/02-spreading.png',
       imageAlt: 'Industrial fabric spreading machine',
     },
     {
@@ -116,7 +116,7 @@ export const manufacturingCuttingPreparation = {
       title: 'Marker & Pattern Control',
       description:
         'Approved markers and patterns are followed to optimize fabric usage while maintaining product specifications. The process supports efficient material consumption, accurate component shape and consistent size execution.',
-      image: '/legacy/images/access-image.jpg',
+      image: '/images/manufacturing/cutting/03-marker.png',
       imageAlt: 'Cutting tables in a production facility',
     },
     {
@@ -125,7 +125,7 @@ export const manufacturingCuttingPreparation = {
       title: 'Cutting Precision',
       description:
         'Cutting is performed with controlled handling to maintain panel accuracy across sizes and styles. Cut parts are checked against technical specifications to reduce defects before sewing begins.',
-      image: '/legacy/images/3930.jpg',
+      image: '/images/manufacturing/cutting/04-cutting.png',
       imageAlt: 'Workers handling cut fabric panels',
     },
     {
@@ -134,7 +134,7 @@ export const manufacturingCuttingPreparation = {
       title: 'Fusing Stage',
       description:
         'Fusing is applied where required to strengthen garment components such as collars, cuffs, plackets, waistbands and other structured areas. Temperature, pressure and timing are monitored to ensure bonding quality and long-term product durability.',
-      image: '/legacy/images/3-2.jpg',
+      image: '/images/manufacturing/cutting/05-fusing.png',
       imageAlt: 'Industrial fusing machine on the production floor',
     },
     {
@@ -143,7 +143,7 @@ export const manufacturingCuttingPreparation = {
       title: 'Cut-Part Bundling',
       description:
         'Cut components are numbered, bundled and prepared for line input with clear identification. This improves traceability, reduces mixing risk and allows sewing teams to begin assembly with organized production inputs.',
-      image: '/legacy/images/002_1-p-1080.avif',
+      image: '/images/manufacturing/cutting/06-bundling.png',
       imageAlt: 'Cut-part bundling equipment',
     },
   ],
@@ -289,19 +289,19 @@ export const manufacturingSewing = {
     "The sewing and assembly stage brings design, material and technical planning together on the production floor. Dekko ISHO's sewing operations are structured to maintain construction accuracy, line efficiency and consistent workmanship across product categories. Each garment moves through a controlled workflow supported by operator skill, inline supervision and quality checkpoints.",
   images: [
     {
-      src: '/legacy/images/industry-2-1.webp',
+      src: '/images/manufacturing/sewing/01-production-line.png',
       alt: 'Wide view of sewing production lines in the factory',
     },
     {
-      src: '/legacy/images/industry-2-2.webp',
-      alt: 'Individual sewing workstation with digital display',
+      src: '/images/manufacturing/sewing/02-workstation.png',
+      alt: 'Sewing workstation with quality control board and digital display',
     },
     {
-      src: '/legacy/images/industry-2-3.webp',
+      src: '/images/manufacturing/sewing/03-factory-aisle.png',
       alt: 'Workers at sewing stations with floor safety markings',
     },
     {
-      src: '/legacy/images/industry-2-4.webp',
+      src: '/images/manufacturing/sewing/04-sewing-station.png',
       alt: 'Organized sewing workstation with storage bins',
     },
   ],
@@ -314,7 +314,7 @@ export const manufacturingEmbroidery = {
     {
       id: 'quality-control',
       title: 'In-Process Quality Control',
-      image: '/legacy/images/industry-2-5.webp',
+      image: '/images/manufacturing/embroidery/quality-control.png',
       imageAlt: 'Embroidery factory floor with industrial machines',
       points: [
         'Set the standard for placement and color and design accuracy before starting the bulk.',
@@ -325,7 +325,7 @@ export const manufacturingEmbroidery = {
     {
       id: 'defect-management',
       title: 'Defect Management',
-      image: '/legacy/images/industry-2-2.webp',
+      image: '/images/manufacturing/embroidery/defect-management.png',
       imageAlt: 'Workers operating embroidery machines',
       points: [
         'Record and classify defects immediately.',
@@ -334,6 +334,9 @@ export const manufacturingEmbroidery = {
     },
   ],
 }
+
+const mfgProductNetworkImage = (file: string) =>
+  `/images/manufacturing/product network/${file}`
 
 export const manufacturingProductionNetwork = {
   badge: 'Unit-Wise Capacity',
@@ -344,7 +347,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-garments',
       title: 'Dekko Garments Ltd.',
-      image: '/images/fashion-outlet.png',
+      image: mfgProductNetworkImage('pn.png'),
       imageAlt: 'Garment production floor',
       productionLines: '46',
       monthlyCapacity: '14,40,000',
@@ -357,7 +360,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-readywears',
       title: 'DEKKO READYWEARS LTD.',
-      image: '/images/skyview-company.png',
+      image: mfgProductNetworkImage('pn1.png'),
       imageAlt: 'Readywear production facility',
       productionLines: '24',
       monthlyCapacity: '7,50,000',
@@ -369,7 +372,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-fashions',
       title: 'DEKKO FASHIONS LTD.',
-      image: '/images/corporate-building.png',
+      image: mfgProductNetworkImage('pn2.png'),
       imageAlt: 'Dekko Fashions production unit',
       productionLines: '10',
       monthlyCapacity: '3,00,000',
@@ -381,7 +384,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'agami-fashions',
       title: 'AGAMI FASHIONS LTD.',
-      image: '/legacy/images/industry-2-1.webp',
+      image: mfgProductNetworkImage('pn3.jpg'),
       imageAlt: 'Agami Fashions production floor',
       productionLines: '08',
       monthlyCapacity: '300,000',

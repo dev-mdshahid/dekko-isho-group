@@ -7,6 +7,9 @@ import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
 import { ManufacturingContent } from './ManufacturingContent'
 import { IndustrialLaundryContent } from './IndustrialLaundryContent'
+import { ComplianceSustainabilityContent } from './ComplianceSustainabilityContent'
+import { DesignProductDevelopmentContent } from './DesignProductDevelopmentContent'
+import { TechnologyIntegrationContent } from './TechnologyIntegrationContent'
 
 type SolutionPlaceholderContentProps = {
   solution: Solution
@@ -37,6 +40,18 @@ export function SolutionContent({ solution }: SolutionContentProps) {
 
   if (solution.slug === 'industrial-laundry') {
     return <IndustrialLaundryContent />
+  }
+
+  if (solution.slug === 'compliance-sustainability') {
+    return <ComplianceSustainabilityContent />
+  }
+
+  if (solution.slug === 'design-product-development') {
+    return <DesignProductDevelopmentContent />
+  }
+
+  if (solution.slug === 'technology-integration') {
+    return <TechnologyIntegrationContent />
   }
 
   return <SolutionPlaceholderContent solution={solution} />

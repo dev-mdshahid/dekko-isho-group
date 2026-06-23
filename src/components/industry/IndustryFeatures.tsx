@@ -11,12 +11,15 @@ export type IndustryFeatureItem = {
 }
 
 export type IndustryFeaturesProps = {
-  badge: string
+  badge?: string
   title: string
   description?: string
   descriptions?: string[]
   features?: IndustryFeatureItem[]
   showFeatureCards?: boolean
+  showBadge?: boolean
+  className?: string
+  id?: string
 }
 
 export function IndustryFeatures({
@@ -26,6 +29,9 @@ export function IndustryFeatures({
   descriptions,
   features = [],
   showFeatureCards,
+  showBadge = true,
+  className,
+  id,
 }: IndustryFeaturesProps) {
   const shouldShowFeatureCards = showFeatureCards ?? features.length > 0
   const descriptionParagraphs =
@@ -33,12 +39,13 @@ export function IndustryFeatures({
 
   return (
     <section
-      className={`industry-features${shouldShowFeatureCards ? '' : ' industry-features--intro-only'}`}
+      id={id}
+      className={`industry-features${shouldShowFeatureCards ? '' : ' industry-features--intro-only'}${className ? ` ${className}` : ''}`}
     >
       <div className="industry-features-container">
         <div className="industry-features-main">
           <FadeIn id="industry-features-header" className="industry-features-header">
-            <PreSectionTitle title={badge} />
+            {showBadge && badge ? <PreSectionTitle title={badge} /> : null}
             <h2 className="industry-features-title">{title}</h2>
             {descriptionParagraphs.length > 0 ? (
               <div className="industry-features-descriptions">

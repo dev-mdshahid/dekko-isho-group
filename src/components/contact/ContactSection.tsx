@@ -8,9 +8,6 @@ import {
 } from '../../data/contact/contactInfo'
 import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
-import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
-import { ContactFactoryLocationsSection } from './ContactFactoryLocationsSection'
-import { ContactMarquee } from './ContactMarquee'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
