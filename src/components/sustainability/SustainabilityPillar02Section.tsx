@@ -26,7 +26,7 @@ function CheckIcon() {
 
 export function SustainabilityPillar02Section() {
   return (
-    <section className="sustain-pillar-section sustain-pillar-section--light sustain-pillar-section--bordered">
+    <section className="sustain-pillar-section sustain-pillar-section--light sustain-pillar-section--social">
       <div className="container-medium">
         <FadeIn id="sustain-pillar02-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">
