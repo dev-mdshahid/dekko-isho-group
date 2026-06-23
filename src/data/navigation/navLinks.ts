@@ -38,7 +38,7 @@ export const businessNavGroups: NavLinkGroup[] = [
       { to: '/roxy-paints', label: 'Roxy Paints Ltd.', showExternalIcon: true },
       { to: '/klubhaus', label: 'Klubhaus', showExternalIcon: true },
       { to: '/izakaya', label: 'IZAKAYA', showExternalIcon: true },
-      { to: '/about', label: 'DIVC', showExternalIcon: true },
+      { to: 'https://www.di.vc/', label: 'DIVC', showExternalIcon: true },
       { to: '/dekko-isho', label: 'DITECH', showExternalIcon: true },
     ],
   },
@@ -63,6 +63,10 @@ export function flattenNavLinks(groups: readonly NavLinkGroup[]): NavLink[] {
 }
 
 export function isNavLinkActive(pathname: string, to: string): boolean {
+  if (to.startsWith('http://') || to.startsWith('https://')) {
+    return false
+  }
+
   if (to === '/') {
     return pathname === '/'
   }

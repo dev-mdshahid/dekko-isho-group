@@ -44,7 +44,12 @@ export function CareerOpenPositionsSection() {
                 className="career-position-row"
                 delay={index * 40}
               >
-                <a href="/contact" className="career-position-link">
+                <a
+                  href={careerOpenPositions.applicationFormUrl}
+                  className="career-position-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span className="career-position-badge">{job.department}</span>
                   <h3 className="career-position-title">{job.title}</h3>
                   <span className="career-position-location">{job.location}</span>
