@@ -28,14 +28,14 @@ export const footerContact = {
 
 export const footerSocialLinks = [
   {
-    href: 'https://facebook.com/dekkoisho',
+    href: 'https://www.facebook.com/share/1HoDreUv8S/',
     label: 'Facebook',
     icon: 'facebook.svg',
   },
   {
-    href: 'https://instagram.com/dekkoisho',
-    label: 'Instagram',
-    icon: 'instagram.svg',
+    href: 'https://www.linkedin.com/company/dekkoishogroup/',
+    label: 'LinkedIn',
+    icon: 'linkedin.svg',
   },
   {
     href: 'https://x.com/dekkoisho',

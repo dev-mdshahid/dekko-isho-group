@@ -12308,18 +12308,31 @@ a.about-info-box:hover {
   position: absolute;
   width: min(52%, 40rem);
   height: min(58%, 32rem);
+  display: none;
 }
 
 .page-contact-factories-gradient--top-left {
   top: 0;
   left: 0;
-  background: radial-gradient(ellipse 130% 130% at 0% 0%, #ebc8d8 0%, #f3e0ea 24%, #f8eef3 42%, #0000 74%);
+  background: radial-gradient(
+    ellipse 130% 130% at 0% 0%,
+    color-mix(in srgb, var(--color--primary-1) 28%, white) 0%,
+    color-mix(in srgb, var(--color--primary-1) 18%, white) 24%,
+    color-mix(in srgb, var(--color--primary-1) 10%, white) 42%,
+    #0000 74%
+  );
 }
 
 .page-contact-factories-gradient--bottom-right {
   right: 0;
   bottom: 0;
-  background: radial-gradient(ellipse 130% 130% at 100% 100%, #ebc8d8 0%, #f3e0ea 24%, #f8eef3 42%, #0000 74%);
+  background: radial-gradient(
+    ellipse 130% 130% at 100% 100%,
+    color-mix(in srgb, var(--color--primary-1) 28%, white) 0%,
+    color-mix(in srgb, var(--color--primary-1) 18%, white) 24%,
+    color-mix(in srgb, var(--color--primary-1) 10%, white) 42%,
+    #0000 74%
+  );
 }
 
 .page-contact-factories-container {

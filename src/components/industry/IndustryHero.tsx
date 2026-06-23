@@ -21,8 +21,8 @@ export function IndustryHero({
   imageAlt,
 }: IndustryHeroProps) {
   return (
-    <section className="industry-hero">
-      <div className="industry-hero-content">
+    <section className="industry-hero" style={{ paddingTop: '150px' }}>
+      <div className="industry-hero-content" style={{ paddingBottom: '60px' }}>
         <div className="industry-hero-copy">
           <div className="industry-hero-text">
             <FadeIn id="industry-hero-heading" className="industry-hero-heading">
