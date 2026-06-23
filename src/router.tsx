@@ -1,5 +1,4 @@
 import { createBrowserRouter, Navigate, useParams } from 'react-router-dom'
-import { legacyRoutes } from './data/legacyRoutes'
 import { AboutPage } from './pages/AboutPage'
 import { AgamiFashionsPage } from './pages/AgamiFashionsPage'
 import { AgamiWashingPage } from './pages/AgamiWashingPage'
@@ -9,7 +8,6 @@ import { HomePage } from './pages/HomePage'
 import { IshoLtdPage } from './pages/IshoLtdPage'
 import { IzakayaPage } from './pages/IzakayaPage'
 import { KlubhausPage } from './pages/KlubhausPage'
-import { LegacyRoutePage } from './pages/LegacyRoutePage'
 import { AwardsPage } from './pages/AwardsPage'
 import { CareerPage } from './pages/CareerPage'
 import { DekkoIshoPage } from './pages/DekkoIshoPage'
@@ -23,13 +21,9 @@ import { PressPage } from './pages/PressPage'
 import { RoxyPaintsPage } from './pages/RoxyPaintsPage'
 import { SolutionPage } from './pages/SolutionPage'
 import { SprintexPage } from './pages/SprintexPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 
-const legacyRouteElements = legacyRoutes.map((route) => ({
-  path: route.path,
-  element: <LegacyRoutePage route={route} />,
-}))
-
-function LegacyBlogRedirect() {
+function BlogRedirect() {
   const { slug } = useParams()
   return <Navigate to={slug ? `/press/${slug}` : '/press'} replace />
 }
@@ -58,14 +52,7 @@ export const router = createBrowserRouter([
   { path: '/roxy-paints', element: <RoxyPaintsPage /> },
   { path: '/sprintex', element: <SprintexPage /> },
   { path: '/blog', element: <Navigate to="/press" replace /> },
-  { path: '/blog/:slug', element: <LegacyBlogRedirect /> },
-  ...legacyRouteElements,
-  {
-    path: '*',
-    element: (
-      <LegacyRoutePage
-        route={{ path: '*', file: '404.html', title: 'Page Not Found', layout: 'main' }}
-      />
-    ),
-  },
+  { path: '/blog/:slug', element: <BlogRedirect /> },
+  { path: '/404', element: <NotFoundPage /> },
+  { path: '*', element: <NotFoundPage /> },
 ])
