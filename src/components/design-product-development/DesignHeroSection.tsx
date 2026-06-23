@@ -34,7 +34,6 @@ export function DesignHeroSection() {
             muted
             playsInline
             preload="auto"
-            fetchPriority="high"
             aria-label={videoAlt}
             data-wf-ignore="true"
             data-object-fit="cover"
