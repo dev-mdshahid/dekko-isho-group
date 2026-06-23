@@ -3,14 +3,16 @@ import { gsap } from 'gsap'
 
 function isInViewport(el: HTMLElement) {
   const rect = el.getBoundingClientRect()
-  return rect.top < window.innerHeight * 0.92 && rect.bottom > 0
+  return rect.top < window.innerHeight && rect.bottom > 0
 }
 
 /** Scroll-reveal for `[data-fade-in]` only — does not touch Webflow IX2 `data-w-id` targets. */
 export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>) {
   useEffect(() => {
+    const scope = containerRef?.current
+    if (!scope) return
+
     let observer: IntersectionObserver | null = null
-    let frame = 0
     let scrollRaf = 0
 
     const reveal = (el: HTMLElement) => {
@@ -23,15 +25,11 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       observer?.unobserve(el)
     }
 
-    // Only checks elements that haven't been revealed yet — safe to call any time.
+    // Only touches elements that haven't been revealed yet — safe to call at any time.
     const revealVisible = () => {
-      const scope = containerRef?.current
-      if (!scope) return
       Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]'))
-        .filter((el) => el.dataset.fadeDone !== 'true')
-        .forEach((el) => {
-          if (isInViewport(el)) reveal(el)
-        })
+        .filter((el) => el.dataset.fadeDone !== 'true' && isInViewport(el))
+        .forEach(reveal)
     }
 
     const onScroll = () => {
@@ -42,18 +40,14 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       })
     }
 
-    // Defer init by one frame so the browser paints the initial hidden state first
-    // (prevents a flash of visible→hidden→animated content on load).
-    frame = requestAnimationFrame(() => {
-      const scope = containerRef?.current
-      if (!scope) return
+    const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]')).filter(
+      (el) => el.dataset.fadeDone !== 'true',
+    )
 
-      const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]')).filter(
-        (el) => el.dataset.fadeDone !== 'true',
-      )
-
-      if (!targets.length) return
-
+    if (targets.length) {
+      // The CSS rule `[data-fade-in] { opacity: 0 }` already hides elements before JS runs,
+      // so no rAF deferral is needed. Initialising synchronously (after first paint, which is
+      // when useEffect fires) means the observer is live before the user can scroll.
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -61,8 +55,8 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
             reveal(entry.target as HTMLElement)
           })
         },
-        // Wider margin catches elements that pass through the viewport quickly.
-        { threshold: 0, rootMargin: '100px 0px 100px 0px' },
+        // Generous margin catches elements that pass through the viewport quickly.
+        { threshold: 0, rootMargin: '120px 0px 120px 0px' },
       )
 
       targets.forEach((el) => {
@@ -73,14 +67,14 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
           observer?.observe(el)
         }
       })
-    })
+    }
 
-    // Scroll listener catches elements missed by the observer during fast scrolling.
+    // Scroll handler as a safety net: catches elements the observer may have missed
+    // when the user scrolls faster than intersection callbacks can fire.
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('scrollend', onScroll, { passive: true })
 
     return () => {
-      cancelAnimationFrame(frame)
       if (scrollRaf) cancelAnimationFrame(scrollRaf)
       observer?.disconnect()
       window.removeEventListener('scroll', onScroll)

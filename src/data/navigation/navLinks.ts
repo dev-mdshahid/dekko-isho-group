@@ -46,9 +46,9 @@ export const businessNavGroups: NavLinkGroup[] = [
     id: 'investments',
     label: 'Investments',
     links: [
-      { to: '/about', label: 'Ecovia Limited' },
-      { to: '/about', label: 'Markopolo AI Inc.' },
-      { to: '/about', label: 'Fashol Dotcom Ltd.' },
+      { to: 'https://www.ecoviaglobal.com/', label: 'Ecovia Limited' },
+      { to: 'https://markopolo.ai/', label: 'Markopolo AI Inc.' },
+      { to: 'https://fashol.com/', label: 'Fashol Dotcom Ltd.' },
     ],
   },
 ]

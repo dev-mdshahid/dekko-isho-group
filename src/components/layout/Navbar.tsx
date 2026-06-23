@@ -139,21 +139,45 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
               ))}
             </div>
             <div className="nav-nested-dropdown-links" role="tabpanel">
-              {activeGroup.links.map((link) => (
-                <Link
-                  key={`${activeGroup.id}-${link.label}`}
-                  to={link.to}
-                  className={`dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
-                  onClick={handleLinkClick}
-                >
-                  <span>{link.label}</span>
-                  {link.showExternalIcon ? (
-                    <span className="nav-nested-dropdown-external" aria-hidden="true">
-                      ↗
-                    </span>
-                  ) : null}
-                </Link>
-              ))}
+              {activeGroup.links.map((link) => {
+                const className = `dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
+                const content = (
+                  <>
+                    <span>{link.label}</span>
+                    {link.showExternalIcon ? (
+                      <span className="nav-nested-dropdown-external" aria-hidden="true">
+                        ↗
+                      </span>
+                    ) : null}
+                  </>
+                )
+
+                if (link.to.startsWith('http')) {
+                  return (
+                    <a
+                      key={`${activeGroup.id}-${link.label}`}
+                      href={link.to}
+                      className={className}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleLinkClick}
+                    >
+                      {content}
+                    </a>
+                  )
+                }
+
+                return (
+                  <Link
+                    key={`${activeGroup.id}-${link.label}`}
+                    to={link.to}
+                    className={className}
+                    onClick={handleLinkClick}
+                  >
+                    {content}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
