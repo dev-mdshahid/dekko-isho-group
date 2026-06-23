@@ -1,6 +1,5 @@
 import { capabilityStats } from '../../data/about/capabilities'
 import { legacyImage } from '../../lib/assets'
-import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
@@ -57,7 +56,7 @@ export function AboutOverviewSection() {
                         <div role="list" className="service-three-list">
                           {capabilityStats.map((stat) => (
                             <div key={stat.label} role="listitem" className="service-three-item">
-                              <a href="/services" className="service-link w-inline-block">
+                              <div className="service-link w-inline-block">
                                 <div className="service-name-three">
                                   {stat.label} <strong>{stat.value}</strong>
                                 </div>
@@ -67,13 +66,10 @@ export function AboutOverviewSection() {
                                   alt=""
                                   className="service-link-arrow"
                                 />
-                              </a>
+                              </div>
                             </div>
                           ))}
                         </div>
-                      </div>
-                      <div className="service-three-button">
-                        <ButtonArrow to="/services" label="View all capabilities" />
                       </div>
                     </div>
                   </FadeIn>

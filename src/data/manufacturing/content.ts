@@ -1,5 +1,3 @@
-import { legacyDoc } from '../../lib/assets'
-
 export const manufacturingHero = {
   title: 'Manufacturing',
   description: 'We Are A One-Stop Custom Apparel Manufacturer',
@@ -154,8 +152,6 @@ export const manufacturingCapacity = {
   titleBefore: 'Manufacturing',
   titleAccent: 'Capacity',
   titleAfter: 'at Scale',
-  ctaLabel: 'Download Brochure',
-  ctaHref: legacyDoc('PDF.pdf'),
   stats: [
     {
       id: 'machining',
@@ -430,28 +426,24 @@ export const manufacturingProjects = {
       title: "Men's Outerwear",
       image: '/images/fashion-outlet.png',
       imageAlt: "Men's outerwear collection",
-      href: '/case-studies',
     },
     {
       id: 'womens-wear',
       title: "Women's Wear",
       image: '/images/about/design.jpg',
       imageAlt: "Women's wear collection",
-      href: '/case-studies',
     },
     {
       id: 'denim',
       title: 'Denim Collections',
       image: '/images/about/manufacturing.jpg',
       imageAlt: 'Denim collection',
-      href: '/case-studies',
     },
     {
       id: 'knitwear',
       title: 'Knitwear Lines',
       image: '/images/about/laundry.jpg',
       imageAlt: 'Knitwear production line',
-      href: '/case-studies',
     },
   ],
 }

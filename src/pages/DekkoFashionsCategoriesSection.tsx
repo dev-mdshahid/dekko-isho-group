@@ -2,7 +2,6 @@ import {
   dekkoFashionsCategoriesIntro,
   dekkoFashionsCategoryItems,
 } from '../data/industry/dekkoFashionsCategories'
-import { legacyDoc } from '../lib/assets'
 import { ButtonArrow } from '../components/ui/ButtonArrow'
 import { FadeIn } from '../components/ui/FadeIn'
 import { SectionLines } from '../components/ui/SectionDecor'
@@ -16,14 +15,6 @@ export function DekkoFashionsCategoriesSection() {
         <FadeIn id="dekko-fashions-categories-header" className="dekko-fashions-categories-header">
           <h2 className="dekko-fashions-categories-title">{dekkoFashionsCategoriesIntro.title}</h2>
           <div className="dekko-fashions-categories-actions">
-            <a
-              href={legacyDoc('PDF.pdf')}
-              target="_blank"
-              rel="noreferrer"
-              className="download-link text-white dekko-fashions-categories-download"
-            >
-              Download brochure
-            </a>
             <ButtonArrow
               to="#"
               label="View all products"

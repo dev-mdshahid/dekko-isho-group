@@ -1,12 +1,10 @@
 import { manufacturingCapacity } from '../../data/manufacturing/content'
-import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 export function ManufacturingCapacitySection() {
-  const { badge, titleBefore, titleAccent, titleAfter, ctaLabel, ctaHref, stats } =
-    manufacturingCapacity
+  const { badge, titleBefore, titleAccent, titleAfter, stats } = manufacturingCapacity
 
   return (
     <section className="service-step-section mfg-capacity-section">
@@ -20,9 +18,6 @@ export function ManufacturingCapacitySection() {
                   {titleBefore}{' '}
                   <span className="mfg-capacity-accent">{titleAccent}</span> {titleAfter}
                 </h2>
-              </div>
-              <div className="step-button">
-                <ButtonArrow to={ctaHref} label={ctaLabel} />
               </div>
             </FadeIn>
 

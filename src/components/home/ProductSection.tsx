@@ -1,6 +1,5 @@
 import { homeProducts } from '../../data/home/products'
-import { legacyDoc, legacyImage } from '../../lib/assets'
-import { ButtonArrow } from '../ui/ButtonArrow'
+import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { SectionLines } from '../ui/SectionDecor'
@@ -76,12 +75,6 @@ export function ProductSection() {
           <div className="product-inner-info">
             <FadeIn id="272f39e4-51eb-e15a-5d52-d0b9bb610f28" className="product-info-title">
               <h3>Explore our complete product range across industries.</h3>
-            </FadeIn>
-            <FadeIn id="2b4c5a0b-3ea6-4725-2cf9-ba9aec94d192" className="product-info-button-wrap">
-              <a href={legacyDoc('PDF.pdf')} target="_blank" rel="noreferrer" className="download-link text-white">
-                Download Brochure
-              </a>
-              <ButtonArrow to="/products" label="View All Products" variant="button-primary-bg" />
             </FadeIn>
           </div>
         </div>

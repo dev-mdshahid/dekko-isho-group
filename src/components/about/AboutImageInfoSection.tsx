@@ -1,4 +1,3 @@
-import { legacyDoc } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 
@@ -25,14 +24,6 @@ export function AboutImageInfoSection() {
               </p>
               <div className="about-hero-button">
                 <ButtonArrow to="#team-section" label="Meet Leadership" />
-                <a
-                  href={legacyDoc('PDF.pdf')}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="download-link text-white"
-                >
-                  Download brochure
-                </a>
               </div>
             </div>
           </FadeIn>

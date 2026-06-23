@@ -1,6 +1,5 @@
 import { clientLogos, whyChooseItems } from '../../data/home/clients'
 import { legacyImage } from '../../lib/assets'
-import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 
 function ClientMarqueeList() {
@@ -41,9 +40,6 @@ export function WhyChooseSection() {
                   <div className="why-choose-item">{item}</div>
                 </div>
               ))}
-            </div>
-            <div className="why-choose-button">
-              <ButtonArrow to="/services" label="Our Capabilities" variant="button-primary-bg" />
             </div>
             <div className="why-choose-inner">
               <div className="avatar one">

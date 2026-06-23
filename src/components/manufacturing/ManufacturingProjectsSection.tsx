@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
 
 import { manufacturingProjects } from '../../data/manufacturing/content'
 import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
@@ -26,7 +25,7 @@ export function ManufacturingProjectsSection() {
         <div className="inner-service-list mfg-projects-track">
           {projects.map((project, index) => (
             <FadeIn key={project.id} id={`mfg-project-${project.id}`} delay={index * 60}>
-              <Link to={project.href} className="inner-service-link mfg-project-card w-inline-block">
+              <div className="inner-service-link mfg-project-card w-inline-block">
                 <div className="inner-service-image-wrap">
                   <img
                     src={project.image}
@@ -47,7 +46,7 @@ export function ManufacturingProjectsSection() {
                   <h2 className="service-title">{project.title}</h2>
                   <div className="mfg-project-link">View Project</div>
                 </div>
-              </Link>
+              </div>
             </FadeIn>
           ))}
         </div>
