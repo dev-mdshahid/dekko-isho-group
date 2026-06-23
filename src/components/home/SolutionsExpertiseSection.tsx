@@ -4,7 +4,6 @@ import {
   solutionsExpertiseDecorImages,
   solutionsExpertiseTabs,
 } from '../../data/home/solutionsExpertise'
-import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
@@ -84,7 +83,7 @@ export function SolutionsExpertiseSection() {
                     {activeTab.features.map((feature) => (
                       <li key={feature} className="solutions-expertise-feature-item">
                         <img
-                          src={legacyImage('list-icon.svg')}
+                          src="/images/list-icon-primary.svg"
                           loading="lazy"
                           alt=""
                           className="solutions-expertise-feature-icon"
