@@ -1,7 +1,7 @@
 export const companyLogos = [
   { src: '/images/companies/carhartt.png', alt: 'Carhartt' },
   { src: '/images/companies/bestseller.png', alt: 'Bestseller' },
-  { src: '/images/companies/c%26a.png', alt: 'C&A' },
+  { src: '/images/companies/ca.png', alt: 'CA' },
   { src: '/images/companies/camateu.png', alt: 'Camaïeu' },
   { src: '/images/companies/canda.png', alt: 'Canda' },
   { src: '/images/companies/fussl.png', alt: 'Fussl' },

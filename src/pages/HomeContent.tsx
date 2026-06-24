@@ -9,7 +9,6 @@ import { useWebflowInit } from '../hooks/useWebflowInit'
 import {
   AboutSection,
   CompanySection,
-  CompanyLogosSection,
   ContactUsSection,
   HeroSection,
   HeroVideo,
@@ -46,8 +45,6 @@ export function HomeContent() {
       <ServiceSection />
 
       <CompanySection />
-
-      <CompanyLogosSection />
 
       <ContactUsSection />
 

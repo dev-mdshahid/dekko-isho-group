@@ -42,15 +42,15 @@ export const businessNavGroups: NavLinkGroup[] = [
       { to: '/dekko-isho', label: 'DITECH', showExternalIcon: true },
     ],
   },
-  {
-    id: 'investments',
-    label: 'Investments',
-    links: [
-      { to: 'https://www.ecoviaglobal.com/', label: 'Ecovia Limited' },
-      { to: 'https://markopolo.ai/', label: 'Markopolo AI Inc.' },
-      { to: 'https://fashol.com/', label: 'Fashol Dotcom Ltd.' },
-    ],
-  },
+  // {
+  //   id: 'investments',
+  //   label: 'Investments',
+  //   links: [
+  //     { to: 'https://www.ecoviaglobal.com/', label: 'Ecovia Limited' },
+  //     { to: 'https://markopolo.ai/', label: 'Markopolo AI Inc.' },
+  //     { to: 'https://fashol.com/', label: 'Fashol Dotcom Ltd.' },
+  //   ],
+  // },
 ]
 
 export const mediaNavLinks: NavLink[] = [
