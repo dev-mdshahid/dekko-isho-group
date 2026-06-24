@@ -11,7 +11,12 @@ export function HeroSection() {
             <PreSectionTitle title="Since 1950s" />
             <div className="hero-title-wrap">
               <h1 className="hero-title">
-                Elevating <span className="text-linear-gradient">Excellence</span> Through Sustainable Progress
+                <span className="hero-title-line">
+                  Elevating <span className="text-linear-gradient">Excellence</span>
+                </span>
+                <span className="hero-title-line hero-title-line--single">
+                  Through Sustainable Progress
+                </span>
               </h1>
             </div>
             <div className="hero-content-text">// SINCE - 1953 //</div>

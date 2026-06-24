@@ -1,5 +1,39 @@
 /* Home — About / businesses carousel */
 
+/* Home hero — title line break */
+.hero-centered .hero-title-wrap {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-centered .hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: none;
+  font-size: clamp(2rem, 4.2vw, 4.5rem);
+  font-weight: var(--_typography---h1--font-weight-600);
+  line-height: 1.1;
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-line--single {
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-centered .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.75rem);
+  }
+
+  .hero-title-line--single {
+    white-space: normal;
+  }
+}
+
 .about-info-inner.is-scroll .about-business-card {
   position: relative;
   display: block;
