@@ -14,7 +14,7 @@ function CompanyLogosList({ listId }: { listId: string }) {
 
 export function CompanyLogosSection() {
   return (
-    <section className="company-logos-section" aria-label="Partner brands">
+    <div className="company-logos-section" aria-label="Partner brands">
       <div className="company-logos-marquee">
         <div className="company-logos-track">
           <CompanyLogosList listId="0" />
@@ -22,6 +22,6 @@ export function CompanyLogosSection() {
           <CompanyLogosList listId="2" />
         </div>
       </div>
-    </section>
+    </div>
   )
 }

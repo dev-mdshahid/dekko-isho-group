@@ -1,6 +1,7 @@
 import { FadeIn } from '../ui/FadeIn'
+import { CompanyLogosSection } from './CompanyLogosSection'
 
-const SKYVIEW_IMAGE = '/images/skyview-company.png'
+const AWARDS_IMAGE = '/images/awards/all-awards.png'
 
 export function CompanySection() {
   return (
@@ -18,15 +19,16 @@ export function CompanySection() {
             </p>
           </FadeIn>
           <img
-            src={SKYVIEW_IMAGE}
+            src={AWARDS_IMAGE}
             loading="lazy"
             decoding="async"
-            width={1320}
-            height={486}
-            alt="Aerial view of Dekko ISHO Group manufacturing facility with solar panel rooftops"
+            width={1786}
+            height={696}
+            alt="Corporate awards, trophies, and certificates from partners including Jack & Jones, Ralph Lauren, and Kiabi, awarded to Dekko Garments Limited"
             className="company-section-image"
           />
         </div>
+        <CompanyLogosSection />
       </div>
     </section>
   )

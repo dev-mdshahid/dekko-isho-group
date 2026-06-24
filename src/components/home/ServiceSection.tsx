@@ -145,7 +145,7 @@ export function ServiceSection() {
             ))}
             <div className="service-box-height" aria-hidden="true" />
           </div>
-          <div className="cta-wrap">
+          {/* <div className="cta-wrap">
             <FadeIn id="2a6fecb6-c324-2a47-4e56-63bf9666fe76" className="cta-info-wrapper">
               <div className="cta-info-inner">
                 <h2 className="cta-text">
@@ -161,7 +161,19 @@ export function ServiceSection() {
                 </div>
               </div>
             </FadeIn>
-          </div>
+          </div> */}
+        </div>
+      </div>
+      <div className="service-section-gradient" aria-hidden="true">
+        <div className="service-section-gradient-spacer" />
+        <div className="service-section-gradient-image-wrap">
+          <img
+            src="/images/backgrounds/gradient-section.png"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            className="service-section-gradient-image"
+          />
         </div>
       </div>
     </section>

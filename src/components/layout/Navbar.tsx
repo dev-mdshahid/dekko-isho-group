@@ -132,25 +132,13 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
                   onClick={() => setActiveGroupId(group.id)}
                 >
                   <span>{group.label}</span>
-                  <span className="nav-nested-dropdown-chevron" aria-hidden="true">
-                    ›
-                  </span>
                 </button>
               ))}
             </div>
             <div className="nav-nested-dropdown-links" role="tabpanel">
               {activeGroup.links.map((link) => {
                 const className = `dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
-                const content = (
-                  <>
-                    <span>{link.label}</span>
-                    {link.showExternalIcon ? (
-                      <span className="nav-nested-dropdown-external" aria-hidden="true">
-                        ↗
-                      </span>
-                    ) : null}
-                  </>
-                )
+                const content = <span>{link.label}</span>
 
                 if (link.to.startsWith('http')) {
                   return (

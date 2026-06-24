@@ -105,6 +105,7 @@
 /* Company partner logos — infinite horizontal scroll */
 .company-logos-track {
   display: flex;
+  gap: 20px;
   width: max-content;
   animation: company-logos-marquee-scroll 40s linear infinite;
 }
