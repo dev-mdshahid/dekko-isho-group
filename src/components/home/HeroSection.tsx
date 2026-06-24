@@ -19,13 +19,15 @@ export function HeroSection() {
                 </span>
               </h1>
             </div>
-            <div className="hero-content-text">// SINCE - 1953 //</div>
             <p className="hero-description">
               A dynamic conglomerate focused on innovation, sustainability & creating value across
               industries.
             </p>
             <div className="hero-button">
-              <ButtonArrow to="#About-Section" label="Explore our capabilities" />
+              <ButtonArrow
+                to="#About-Section"
+                label="Explore our capabilities- Know Our Journey"
+              />
             </div>
           </div>
         </div>

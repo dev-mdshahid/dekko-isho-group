@@ -1987,7 +1987,7 @@ figcaption {
 }
 
 .hero-centered .hero-description {
-  max-width: 36rem;
+  max-width: 52rem;
   margin-top: var(--gap--gap-7);
   margin-bottom: 0;
 }
@@ -2280,10 +2280,11 @@ figcaption {
 
 .about-section-title {
   margin-bottom: 1.25rem;
+  margin-top: 3rem;
 }
 
 .about-section .about-description {
-  margin-bottom: 0;
+  margin-bottom: 3rem;
 }
 
 .about-button-wrap {

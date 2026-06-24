@@ -4,12 +4,21 @@
   background-color: var(--color--white);
 }
 
+.solutions-expertise-content {
+  position: relative;
+  z-index: 2;
+  padding-inline: clamp(3.5rem, 6vw, 7rem);
+}
+
 .solutions-expertise-header {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   width: 100%;
+  max-width: 76rem;
   margin: 0 auto 5rem;
   gap: var(--gap--gap-8);
 }
@@ -25,8 +34,16 @@
   font-size: clamp(1.75rem, 3.1vw, 3.625rem);
 }
 
+/* @media screen and (min-width: 992px) {
+  .solutions-expertise-title {
+    font-size: 58px;
+  }
+} */
+
 .solutions-expertise-description-wrap {
-  max-width: 52rem;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
 }
 
 .solutions-expertise-description {
@@ -38,7 +55,6 @@
   position: relative;
   z-index: 1;
   min-height: 34rem;
-  padding-inline: clamp(3.5rem, 6vw, 7rem);
 }
 
 .solutions-expertise-panel {
@@ -165,41 +181,45 @@
   object-fit: cover;
   opacity: 0.72;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   box-shadow: 0 10px 30px rgba(21, 21, 21, 0.08);
 }
 
 .solutions-expertise-decor--left-top {
-  top: -34%;
-  left: 0;
+  top: 34%;
+  left: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .solutions-expertise-decor--left-bottom {
-  bottom: 8%;
-  left: 3%;
+  bottom: 12%;
+  left: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .solutions-expertise-decor--right-top {
-  top: -34%;
-  right: 0;
+  top: 34%;
+  right: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .solutions-expertise-decor--right-bottom {
-  right: 4%;
-  bottom: 10%;
+  bottom: 12%;
+  right: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 @media screen and (max-width: 1199px) {
-  .solutions-expertise-body {
+  .solutions-expertise-content {
     padding-inline: clamp(4rem, 7vw, 6rem);
   }
 }
 
 @media screen and (max-width: 991px) {
-  .solutions-expertise-header {
-    margin-bottom: 3.5rem;
+  .solutions-expertise-content {
     padding-inline: 1rem;
+  }
+
+  .solutions-expertise-header {
+    max-width: none;
+    margin-bottom: 3.5rem;
   }
 
   .solutions-expertise-title {
@@ -209,7 +229,6 @@
 
   .solutions-expertise-body {
     min-height: auto;
-    padding-inline: 1rem;
   }
 
   .solutions-expertise-panel {

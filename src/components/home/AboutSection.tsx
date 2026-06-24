@@ -261,9 +261,7 @@ export function AboutSection() {
               </div>
               <FadeIn id="017b83dc-7656-67a6-b23e-69b6032ef810" className="about-description">
                 <p>
-                  Five industries. One shared vision. At Dekko ISHO Group, we do not simply follow the
-                  future, we shape it with innovation, craft it with purpose, and build it through
-                  generations of excellence.
+                Six industries. One vision. We don't follow the future, we craft it.
                 </p>
               </FadeIn>
             </div>
