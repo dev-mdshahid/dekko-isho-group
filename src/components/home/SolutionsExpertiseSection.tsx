@@ -67,7 +67,13 @@ export function SolutionsExpertiseSection() {
               role="tabpanel"
               aria-labelledby={activeTab.id}
             >
-              <div className="solutions-expertise-card-inner">
+              <div
+                className={`solutions-expertise-card-inner${
+                  activeTab.id === 'integrated-manufacturing'
+                    ? ' solutions-expertise-card-inner--manufacturing'
+                    : ''
+                }`}
+              >
                 <div className="solutions-expertise-card-image-wrap">
                   <img
                     src={activeTab.image}
