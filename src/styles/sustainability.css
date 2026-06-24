@@ -5,7 +5,7 @@
   --sustain-green-dark: #1f7a47;
   --sustain-green-light: #e8f5ee;
   --sustain-green-muted: #4caf7a;
-  --sustain-blue: #2595d5;
+  --sustain-blue: var(--color--primary);
   --sustain-blue-light: #e3f3fa;
 }
 

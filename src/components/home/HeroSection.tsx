@@ -1,37 +1,35 @@
-import { ButtonArrow } from '../ui/ButtonArrow'
-import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
+import { CompanyLogosSection } from './CompanyLogosSection'
 
 export function HeroSection() {
   return (
-    <section className="hero-section section-spacing-top">
-      <div className="container-full">
-        <div className="hero-wrap">
-          <div className="hero-centered">
-            <PreSectionTitle title="Since 1950s" />
-            <div className="hero-title-wrap">
-              <h1 className="hero-title">
-                <span className="hero-title-line">
-                  Elevating <span className="text-linear-gradient">Excellence</span>
-                </span>
-                <span className="hero-title-line hero-title-line--single">
-                  Through Sustainable Progress
-                </span>
-              </h1>
-            </div>
-            <p className="hero-description">
-              A dynamic conglomerate focused on innovation, sustainability & creating value across
-              industries.
-            </p>
-            <div className="hero-button">
-              <ButtonArrow
-                to="#About-Section"
-                label="Explore our capabilities- Know Our Journey"
-              />
+    <section className="hero-section">
+      <div className="hero-inner">
+        <div className="container-full hero-title-area">
+          <h1 className="hero-title">
+            <span className="hero-title-line">
+              Elevating <span className="hero-title-accent hero-title-accent--primary">Excellence</span>
+            </span>
+            <span className="hero-title-line">
+              Through{' '}
+              <span className="hero-title-accent hero-title-accent--green">Sustainable</span>{' '}
+              <span className="hero-title-accent hero-title-accent--red">Progress</span>
+            </span>
+          </h1>
+        </div>
+
+        <div className="hero-bottom">
+          <div className="container-full">
+            <div className="hero-tagline">
+              <span className="hero-tagline-line" aria-hidden="true" />
+              <p className="hero-tagline-text">Born in Bangladesh. Trusted Worldwide</p>
+              <span className="hero-tagline-line" aria-hidden="true" />
             </div>
           </div>
+          <CompanyLogosSection />
         </div>
       </div>
+
       <div className="hero-section-overlay" aria-hidden="true" />
       <SectionLines />
       <NoiseOverlay />

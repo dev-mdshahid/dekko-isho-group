@@ -75,7 +75,7 @@
   bottom: -28%;
   width: 62%;
   height: 58%;
-  background: linear-gradient(180deg, #2595d5 0%, #1c72a3 100%);
+  background: linear-gradient(180deg, var(--color--primary) 0%, var(--color--primary-3) 100%);
   filter: blur(139.6px);
   opacity: 0.55;
   pointer-events: none;

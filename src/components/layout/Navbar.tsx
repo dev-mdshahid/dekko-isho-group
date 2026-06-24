@@ -279,7 +279,7 @@ export function Navbar() {
           </nav>
           <div id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef64-18a8ef3c" className="right-nav">
             <div className="nav-button-wrap">
-              <ButtonArrow to="/contact" label="Contact" variant="button-primary-bg" />
+              <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
             </div>
             <button
               type="button"

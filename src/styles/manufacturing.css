@@ -2,8 +2,8 @@
 
 .manufacturing-page {
   /* Brand gradient — Figma (#2595D5 → #1C72A3) */
-  --mfg-brand-start: #2595d5;
-  --mfg-brand-end: #1c72a3;
+  --mfg-brand-start: var(--color--primary);
+  --mfg-brand-end: var(--color--primary-3);
   --mfg-brand: var(--mfg-brand-start);
   --mfg-brand-light: #7ec4e8;
   --mfg-brand-gradient: linear-gradient(180deg, var(--mfg-brand-start) 0%, var(--mfg-brand-end) 100%);

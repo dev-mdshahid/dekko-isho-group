@@ -1,8 +1,8 @@
 /* Industrial Laundry page — Figma deltas only. Uses legacy site.css classes. */
 
 .industrial-laundry-page {
-  --il-brand-start: #2595d5;
-  --il-brand-end: #1c72a3;
+  --il-brand-start: var(--color--primary);
+  --il-brand-end: var(--color--primary-3);
   --il-brand: var(--il-brand-start);
   --il-brand-gradient: linear-gradient(180deg, var(--il-brand-start) 0%, var(--il-brand-end) 100%);
 }

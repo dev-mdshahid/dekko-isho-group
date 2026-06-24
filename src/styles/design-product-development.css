@@ -1,8 +1,8 @@
 /* Design & Product Development page — Figma deltas. Reuses legacy site.css + industry.css. */
 
 .design-product-development-page {
-  --dpd-brand-start: #2595d5;
-  --dpd-brand-end: #1c72a3;
+  --dpd-brand-start: var(--color--primary);
+  --dpd-brand-end: var(--color--primary-3);
   --dpd-brand-gradient: linear-gradient(180deg, var(--dpd-brand-start) 0%, var(--dpd-brand-end) 100%);
 }
 

@@ -107,7 +107,7 @@
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: company-logos-marquee-scroll 40s linear infinite;
+  animation: company-logos-marquee-scroll 180s linear infinite;
 }
 
 @keyframes company-logos-marquee-scroll {

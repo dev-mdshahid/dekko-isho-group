@@ -1,8 +1,8 @@
 /* Technology Integration page — Figma deltas. Reuses legacy site.css classes. */
 
 .technology-integration-page {
-  --ti-brand-start: #2595d5;
-  --ti-brand-end: #1c72a3;
+  --ti-brand-start: var(--color--primary);
+  --ti-brand-end: var(--color--primary-3);
   --ti-brand-gradient: linear-gradient(180deg, var(--ti-brand-start) 0%, var(--ti-brand-end) 100%);
 }
 

@@ -1,8 +1,8 @@
 /* Compliance & Sustainability page — Figma deltas. Reuses industry.css base components. */
 
 .compliance-sustainability-page {
-  --cs-brand-start: #2595d5;
-  --cs-brand-end: #1c72a3;
+  --cs-brand-start: var(--color--primary);
+  --cs-brand-end: var(--color--primary-3);
   --cs-brand-gradient: linear-gradient(180deg, var(--cs-brand-start) 0%, var(--cs-brand-end) 100%);
 }
 
