@@ -45,7 +45,7 @@
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   gap: var(--gap--gap-12);
   max-width: 76rem;
   margin: 0 auto;
@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 16rem;
-  gap: var(--gap--gap-2);
+  /* gap: var(--gap--gap-2); */
   padding-top: 1.25rem;
 }
 
@@ -91,7 +91,7 @@
   display: grid;
   grid-template-columns: minmax(260px, 1.4fr) minmax(200px, 0.75fr);
   gap: var(--gap--gap-8);
-  align-items: center;
+  align-items: start;
   padding: 1.875rem;
 }
 
@@ -105,7 +105,23 @@
   height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: center;
   display: block;
+}
+
+/* Integrated Manufacturing — image shorter than text; fill column height */
+.solutions-expertise-card-inner--manufacturing {
+  align-items: stretch;
+}
+
+.solutions-expertise-card-inner--manufacturing .solutions-expertise-card-image-wrap {
+  display: flex;
+  min-height: 0;
+}
+
+.solutions-expertise-card-inner--manufacturing .solutions-expertise-card-image {
+  height: 100%;
+  aspect-ratio: unset;
 }
 
 .solutions-expertise-card-title {
