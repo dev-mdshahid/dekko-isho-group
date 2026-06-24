@@ -1,0 +1,60 @@
+/* Home — About / businesses carousel */
+
+.about-info-inner.is-scroll .about-business-card {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 480px;
+  height: 360px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.about-business-card__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-business-card__overlay {
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.38) 100%);
+  transition: background 0.3s ease;
+  position: absolute;
+  inset: 0;
+}
+
+.about-business-card:hover .about-business-card__overlay,
+.about-business-card:focus-visible .about-business-card__overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.62) 100%);
+}
+
+.about-business-card__logo {
+  width: 11rem;
+  max-width: calc(100% - 4rem);
+  height: auto;
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 1;
+}
+
+.about-business-card__arrow {
+  color: var(--color--white);
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1;
+}
+
+.about-business-card:hover .about-business-card__arrow,
+.about-business-card:focus-visible .about-business-card__arrow {
+  opacity: 1;
+}

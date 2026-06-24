@@ -5,6 +5,8 @@ type HorizontalScrollOptions = {
   enableWheel?: boolean
 }
 
+const DRAG_THRESHOLD_PX = 8
+
 /** Pointer-drag horizontal scrolling for overflow containers. Optional wheel mapping on desktop. */
 export function useHorizontalScroll(
   ref: RefObject<HTMLElement | null>,
@@ -14,7 +16,9 @@ export function useHorizontalScroll(
     const element = ref.current
     if (!element) return
 
+    let isPointerDown = false
     let isDragging = false
+    let suppressClick = false
     let startX = 0
     let scrollStart = 0
     let activePointerId: number | null = null
@@ -36,32 +40,64 @@ export function useHorizontalScroll(
       event.preventDefault()
     }
 
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      const deltaX = event.clientX - startX
+
+      if (!isDragging) {
+        if (Math.abs(deltaX) <= DRAG_THRESHOLD_PX) return
+
+        isDragging = true
+        suppressClick = true
+        element.setPointerCapture(event.pointerId)
+        element.classList.add('is-dragging')
+      }
+
+      event.preventDefault()
+      element.scrollLeft = scrollStart - deltaX
+    }
+
+    const endPointer = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+
+      if (isDragging) {
+        if (element.hasPointerCapture(event.pointerId)) {
+          element.releasePointerCapture(event.pointerId)
+        }
+        element.classList.remove('is-dragging')
+      }
+
+      isPointerDown = false
+      isDragging = false
+      activePointerId = null
+    }
+
     const onPointerDown = (event: PointerEvent) => {
       if (event.button !== 0 || !canScroll()) return
 
-      event.preventDefault()
-      isDragging = true
+      isPointerDown = true
+      isDragging = false
+      suppressClick = false
       activePointerId = event.pointerId
       startX = event.clientX
       scrollStart = element.scrollLeft
-      element.setPointerCapture(event.pointerId)
-      element.classList.add('is-dragging')
+
+      document.addEventListener('pointermove', onPointerMove)
+      document.addEventListener('pointerup', endPointer)
+      document.addEventListener('pointercancel', endPointer)
     }
 
-    const onPointerMove = (event: PointerEvent) => {
-      if (!isDragging || event.pointerId !== activePointerId) return
+    const onClick = (event: MouseEvent) => {
+      if (!suppressClick) return
 
       event.preventDefault()
-      element.scrollLeft = scrollStart - (event.clientX - startX)
-    }
-
-    const endDrag = (event: PointerEvent) => {
-      if (!isDragging || event.pointerId !== activePointerId) return
-
-      isDragging = false
-      activePointerId = null
-      element.classList.remove('is-dragging')
-      element.releasePointerCapture(event.pointerId)
+      event.stopPropagation()
+      suppressClick = false
     }
 
     if (enableWheel) {
@@ -69,9 +105,7 @@ export function useHorizontalScroll(
     }
     element.addEventListener('dragstart', onDragStart)
     element.addEventListener('pointerdown', onPointerDown)
-    element.addEventListener('pointermove', onPointerMove)
-    element.addEventListener('pointerup', endDrag)
-    element.addEventListener('pointercancel', endDrag)
+    element.addEventListener('click', onClick, true)
 
     return () => {
       if (enableWheel) {
@@ -79,9 +113,10 @@ export function useHorizontalScroll(
       }
       element.removeEventListener('dragstart', onDragStart)
       element.removeEventListener('pointerdown', onPointerDown)
-      element.removeEventListener('pointermove', onPointerMove)
-      element.removeEventListener('pointerup', endDrag)
-      element.removeEventListener('pointercancel', endDrag)
+      element.removeEventListener('click', onClick, true)
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
       element.classList.remove('is-dragging')
     }
   }, [ref, enableWheel])
