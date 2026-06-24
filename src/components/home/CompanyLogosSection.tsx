@@ -5,7 +5,9 @@ function CompanyLogosList({ listId }: { listId: string }) {
     <div className="company-logos-list" aria-hidden={listId !== '0' ? true : undefined}>
       {companyLogos.map((logo) => (
         <div key={`${listId}-${logo.alt}`} className="company-logos-item">
-          <img src={logo.src} loading="lazy" decoding="async" alt={logo.alt} className="company-logos-image" />
+          <div className="company-logos-image-wrap">
+            <img src={logo.src} loading="lazy" decoding="async" alt={logo.alt} className="company-logos-image" />
+          </div>
         </div>
       ))}
     </div>
