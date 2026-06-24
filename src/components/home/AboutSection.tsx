@@ -62,7 +62,7 @@ const industries: IndustryItem[] = [
     alt: 'Dekko ISHO Group',
     variant: 'business',
     logo: DEKKO_LOGO,
-    href: '/about',
+    href: 'https://www.di.vc/',
   },
   {
     type: 'image',
