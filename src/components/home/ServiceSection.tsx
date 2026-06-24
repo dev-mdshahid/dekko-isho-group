@@ -31,17 +31,29 @@ function ServiceArrow({
   )
 }
 
+function ServiceFeatureItem({ label }: { label: string }) {
+  return (
+    <div className="feature-item-inner">
+      <img
+        src="/images/list-icon-primary.svg"
+        loading="lazy"
+        alt=""
+        className="feature-item-icon"
+      />
+      <div className="feature-item">{label}</div>
+    </div>
+  )
+}
+
 function ServiceFeatures({ features }: { features: string[] | ServiceFeatureGroup[] }) {
   if (features.length === 0) return null
 
   if (typeof features[0] === 'string') {
     return (
       <div className="service-feature-list">
-        <div className="service-feature-group-items">
+        <div className="feature-list-item">
           {(features as string[]).map((item) => (
-            <div key={item} className="service-feature-group-item">
-              {item}
-            </div>
+            <ServiceFeatureItem key={item} label={item} />
           ))}
         </div>
       </div>
@@ -53,11 +65,9 @@ function ServiceFeatures({ features }: { features: string[] | ServiceFeatureGrou
       {(features as ServiceFeatureGroup[]).map((group) => (
         <div key={group.group} className="service-feature-group">
           <div className="service-feature-text text-linear-gradient">{group.group}</div>
-          <div className="service-feature-group-items">
+          <div className="service-feature-group-items feature-list-item">
             {group.items.map((item) => (
-              <div key={item} className="service-feature-group-item">
-                {item}
-              </div>
+              <ServiceFeatureItem key={item} label={item} />
             ))}
           </div>
         </div>

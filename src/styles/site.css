@@ -1966,6 +1966,36 @@ figcaption {
   margin-bottom: 8.125rem;
 }
 
+.hero-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 8.125rem;
+}
+
+.hero-centered .hero-title-wrap {
+  margin-top: var(--gap--gap-8);
+}
+
+.hero-centered .hero-title {
+  max-width: 52rem;
+}
+
+.hero-centered .hero-content-text {
+  display: none;
+}
+
+.hero-centered .hero-description {
+  max-width: 36rem;
+  margin-top: var(--gap--gap-7);
+  margin-bottom: 0;
+}
+
+.hero-centered .hero-button {
+  margin-top: var(--gap--gap-9);
+}
+
 .hero-left-wrap {
   position: relative;
 }
@@ -8780,6 +8810,10 @@ a.about-info-box:hover {
     margin-bottom: 4.375rem;
   }
 
+  .hero-centered {
+    margin-bottom: 4.375rem;
+  }
+
   .hero-quote-wrap {
     padding-bottom: 5rem;
   }
@@ -9929,6 +9963,22 @@ a.about-info-box:hover {
     flex-flow: column;
     margin-bottom: 2.5rem;
     display: flex;
+  }
+
+  .hero-centered {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-centered .hero-title-wrap {
+    margin-top: var(--gap--gap-7);
+  }
+
+  .hero-centered .hero-description {
+    margin-top: var(--gap--gap-6);
+  }
+
+  .hero-centered .hero-button {
+    margin-top: var(--gap--gap-8);
   }
 
   .hero-quote-wrap {
