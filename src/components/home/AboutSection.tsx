@@ -22,10 +22,6 @@ const IZAKAYA_BUSINESS_IMAGE = '/images/home/business-izakaya.png'
 const IZAKAYA_LOGO = '/images/home/izakaya-logo.svg'
 const ECOVIA_BUSINESS_IMAGE = '/images/home/business-ecovia.png'
 const ECOVIA_LOGO = '/images/home/ecovia-logo-white.svg'
-const LAUNDRY_IMAGE = '/images/about/laundry.jpg'
-const COMPLIANCE_IMAGE = '/images/about/compliance.jpg'
-const DESIGN_IMAGE = '/images/about/design.jpg'
-const INTEGRATION_IMAGE = '/images/about/integration.jpg'
 
 type IndustryTextItem = {
   type: 'text'
