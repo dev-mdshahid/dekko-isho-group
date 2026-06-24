@@ -90,6 +90,17 @@
   z-index: 1;
 }
 
+.home-contact-section .page-contact-form-description {
+  max-width: none;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 991px) {
+  .home-contact-section .page-contact-form-description {
+    white-space: normal;
+  }
+}
+
 .home-contact-section .page-contact-form {
   flex: 1;
   display: flex;
