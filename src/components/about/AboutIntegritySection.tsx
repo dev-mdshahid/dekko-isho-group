@@ -1,61 +1,58 @@
+import {
+  aboutCoreValues,
+  aboutPurposeIntro,
+  aboutPurposeMission,
+  aboutPurposeVision,
+} from '../../data/about/purpose'
 import { FadeIn } from '../ui/FadeIn'
-
-const PRINCIPLES = [
-  {
-    id: 'about-integrity-mission',
-    title: 'Mission',
-    description:
-      'To grow exponentially in the apparel industry across the globe by attaining the highest quality standards.',
-  },
-  {
-    id: 'about-integrity-vision',
-    title: 'Vision',
-    description: 'Challenge yourself to reach the top. Set the benchmark, then exceed it.',
-  },
-  {
-    id: 'about-integrity-values',
-    title: 'Values',
-    description:
-      'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.',
-  },
-] as const
 
 export function AboutIntegritySection() {
   return (
-    <section className="about-integrity-section">
-      <div className="about-integrity-main">
-        <div className="about-integrity-container">
-          <div className="about-integrity-grid">
-            <FadeIn id="about-integrity-intro" className="about-integrity-intro">
-              <h2 className="about-integrity-title">
-                A Conglomerate <br /> Built on Ideas &amp; Integrity.
+    <section className="about-purpose-section">
+      <div className="about-purpose-main">
+        <div className="container">
+          <div className="about-purpose-grid">
+            <FadeIn id="about-purpose-intro" className="about-purpose-intro">
+              <h2 className="about-purpose-title">
+                <span className="about-purpose-title-line">
+                  Built on <span className="hero-title-accent hero-title-accent--primary">Ideas</span>
+                </span>
+                <span className="about-purpose-title-line">
+                  Driven by <span className="hero-title-accent hero-title-accent--green">Impact</span>
+                </span>
+                <span className="about-purpose-title-line">
+                  Defined by <span className="hero-title-accent hero-title-accent--red">People</span>
+                </span>
               </h2>
-              <p className="about-integrity-description">
-                Dekko ISHO Group believes in leadership through excellence. We are a distinct apparel
-                group with strategic ventures in furniture, restaurants, fintech, and deep tech —
-                striving for excellence through a culture of innovation and consciously conservative
-                growth. Our adherence to quality and timeliness has earned us a competitive advantage
-                that defines the industry standard.
-              </p>
+              <p className="about-purpose-description">{aboutPurposeIntro}</p>
             </FadeIn>
-            <div className="about-integrity-details">
-              <FadeIn id="about-integrity-card" className="about-integrity-card">
-                <div className="about-integrity-card-stripes about-integrity-card-stripes--top" />
-                <div className="about-integrity-card-stripes about-integrity-card-stripes--bottom" />
-                <div className="about-integrity-year">1953</div>
-                <p className="about-integrity-card-text">
-                  Three entrepreneurs, one bold idea, Bangladesh&apos;s first color paint
-                  manufacturer - Roxy Paints Ltd. sparked a legacy of innovation.
-                </p>
+
+            <div className="about-purpose-details">
+              <FadeIn id="about-purpose-mission" className="about-purpose-block">
+                <h3 className="about-purpose-block-title">Mission</h3>
+                <p className="about-purpose-block-text">{aboutPurposeMission}</p>
               </FadeIn>
-              <div className="about-integrity-principles">
-                {PRINCIPLES.map((item) => (
-                  <FadeIn key={item.id} id={item.id} className="about-integrity-principle">
-                    <h3 className="about-integrity-principle-title">{item.title}</h3>
-                    <p className="about-integrity-principle-text">{item.description}</p>
-                  </FadeIn>
-                ))}
-              </div>
+
+              <div className="about-purpose-separator" aria-hidden="true" />
+
+              <FadeIn id="about-purpose-vision" className="about-purpose-block">
+                <h3 className="about-purpose-block-title">Vision</h3>
+                <p className="about-purpose-block-text">{aboutPurposeVision}</p>
+              </FadeIn>
+
+              <div className="about-purpose-separator" aria-hidden="true" />
+
+              <FadeIn id="about-purpose-values" className="about-purpose-block">
+                <h3 className="about-purpose-block-title">Core Values</h3>
+                <ul className="about-purpose-values">
+                  {aboutCoreValues.map((value) => (
+                    <li key={value.label} className="about-purpose-value-item">
+                      <span className="about-purpose-value-label">{value.label}:</span>{' '}
+                      {value.description}
+                    </li>
+                  ))}
+                </ul>
+              </FadeIn>
             </div>
           </div>
         </div>

@@ -1,106 +1,126 @@
+export type JourneyEntry = {
+  title: string
+  description?: string
+}
+
 export type JourneyMilestone = {
   id: string
   year: string
-  title: string
-  description: string
-  imageAlt: string
-  image: string
+  entries: JourneyEntry[]
 }
-
-const JOURNEY_IMAGE = '/images/dekko-companies'
 
 export const journeyMilestones: JourneyMilestone[] = [
   {
     id: 'about-journey-1953',
     year: '1953',
-    title: 'Roxy Paints Ltd.',
-    description:
-      "Bangladesh's first color paint manufacturer — three entrepreneurs, one bold idea that sparked a legacy of innovation.",
-    imageAlt: 'Roxy Paints Ltd. logo',
-    image: `${JOURNEY_IMAGE}/roxy-paints.png`,
+    entries: [
+      {
+        title: 'Roxy Paints Ltd.',
+        description:
+          "Three young entrepreneurs invest in a new idea. Bangladesh's first color paint manufacturer is born — and a 70-year legacy of innovation begins.",
+      },
+    ],
   },
   {
     id: 'about-journey-1983',
     year: '1983',
-    title: 'Dekko Garments Ltd.',
-    description:
-      'Entry into the apparel industry with three production lines, eventually expanding to 108+ lines across the group.',
-    imageAlt: 'Dekko Garments Ltd. factory',
-    image: `${JOURNEY_IMAGE}/dekko-graments.png`,
+    entries: [
+      {
+        title: 'Dekko Garments Ltd. (Old Factory)',
+        description:
+          'We enter apparel with three production lines. The unit will eventually expand to over 108 lines.',
+      },
+    ],
   },
   {
     id: 'about-journey-1992',
     year: '1992',
-    title: 'Dekko Apparels Ltd.',
-    description:
-      'A 100% export-oriented woven garments concern, strengthening the group\u2019s global manufacturing footprint.',
-    imageAlt: 'Dekko Apparels Ltd. production floor',
-    image: `${JOURNEY_IMAGE}/dekko-apparels.png`,
+    entries: [
+      {
+        title: 'Dekko Fashions Ltd. (Formerly Dekko Apparels Ltd.)',
+        description: '100% export-oriented woven garments concern, opened in January 1992.',
+      },
+    ],
   },
   {
     id: 'about-journey-2006',
     year: '2006',
-    title: 'Dekko Readywears Ltd.',
-    description:
-      'A sister concern specializing in woven garments, further diversifying the group\u2019s apparel capabilities.',
-    imageAlt: 'Dekko Readywears Ltd. facility',
-    image: `${JOURNEY_IMAGE}/dekko-readywears.png`,
+    entries: [
+      {
+        title: 'Dekko Readywears Ltd.',
+        description: 'A sister concern specializing in woven garments, fully export-oriented.',
+      },
+    ],
   },
   {
     id: 'about-journey-2013',
     year: '2013',
-    title: 'Globus Garments Ltd.',
-    description:
-      '18 production lines, 1,319 machines, and 300k+ garments per month — scaling capacity at industrial pace.',
-    imageAlt: 'Globus Garments Ltd. building',
-    image: `${JOURNEY_IMAGE}/globus-graments.png`,
+    entries: [
+      {
+        title: 'Globus Garments Ltd.',
+        description: '18 lines, 1,319 machines, over 300,000 garments produced per month.',
+      },
+    ],
   },
   {
-    id: 'about-journey-2015-agami-fashions',
+    id: 'about-journey-2015',
     year: '2015',
-    title: 'Agami Fashions',
-    description:
-      'An export-oriented factory in Gazipur, expanding the group\u2019s reach in woven garment production.',
-    imageAlt: 'Agami Fashions factory floor',
-    image: `${JOURNEY_IMAGE}/agami-fashions.png`,
-  },
-  {
-    id: 'about-journey-2015-agami-washing',
-    year: '2015',
-    title: 'Agami Washing',
-    description:
-      'Partnered with top buyers to deliver high-quality washing and processing for export-ready garments.',
-    imageAlt: 'Agami Washing facility',
-    image: `${JOURNEY_IMAGE}/agami-washing.png`,
+    entries: [
+      {
+        title: 'Agami Fashions',
+        description:
+          'Agami Fashions Ltd., established in 2015, is also an export oriented woven garments factory, based in Chandra, Gazipur.',
+      },
+      {
+        title: 'Roxy Agami Washing Ltd.',
+        description:
+          'Agami Washing Ltd. was inaugurated on 2015, is partnered with all the top buyers of Dekko ISHO Group and provides clothes with top quality washing and processing.',
+      },
+    ],
   },
   {
     id: 'about-journey-2017',
     year: '2017',
-    title: 'Dekko Garments — Green Factory',
-    description:
-      'A sustainable RMG factory built from the ground up — setting new standards for environmentally conscious manufacturing.',
-    imageAlt: 'Dekko Garments green factory',
-    image: `${JOURNEY_IMAGE}/dekko-garments.png`,
+    entries: [
+      {
+        title: 'Dekko Garments — Green Factory',
+        description:
+          'A complete green setup in Mawna, Gazipur. The latest of our RMG factories, built sustainably from the ground up.',
+      },
+    ],
   },
   {
-    id: 'about-journey-2021-divc',
-    year: '2021',
-    title: 'DIVC — Dekko ISHO Venture Capital',
-    description:
-      'Helping early-stage startups scale with capital, mentorship, and the backing of a multi-industry group.',
-    imageAlt: 'DIVC logo',
-    image: `${JOURNEY_IMAGE}/divc.png`,
+    id: 'about-journey-2018',
+    year: '2018',
+    entries: [
+      { title: 'Globus Embroidery Ltd.' },
+      { title: 'Izakaya' },
+      { title: 'Klubhaus' },
+    ],
   },
   {
-    id: 'about-journey-2021-ditech',
+    id: 'about-journey-2019',
+    year: '2019',
+    entries: [{ title: 'ISHO Ltd.' }],
+  },
+  {
+    id: 'about-journey-2020',
+    year: '2020',
+    entries: [{ title: 'ECOVIA' }],
+  },
+  {
+    id: 'about-journey-2021',
     year: '2021',
-    title: 'DITECH — Dekko ISHO Technologies',
-    description:
-      'A deep-tech initiative spanning cybersecurity, AI, and enterprise solutions for the digital age.',
-    imageAlt: 'DITECH logo',
-    image: `${JOURNEY_IMAGE}/ditech.png`,
+    entries: [{ title: 'Sprintex Enterprise' }, { title: 'Dekko ISHO Technologies Ltd.' }],
+  },
+  {
+    id: 'about-journey-2022',
+    year: '2022',
+    entries: [{ title: 'DIVC' }],
+  },
+  {
+    id: 'about-journey-2026',
+    year: '2026',
+    entries: [{ title: 'Dekko Garments Ltd. Unit 2' }],
   },
 ]
-
-export const journeySummary =
-  'From a single paint factory to a multi-industry group spanning RMG, furniture, fashion retail, restaurants, paints, fintech, deep tech and green tech.'

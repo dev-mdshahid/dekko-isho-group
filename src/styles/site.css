@@ -42,6 +42,7 @@
   --border-radius--md: .625rem;
   --color--gray-3: #a7a3a2;
   --color--neutral-cadet-gray: #91a3ab;
+  --color--neutral-silver-night: #a8b4bc;
   --color--neutral-outer-space: #5c5c5c;
   --color--neutral-night: #191919;
   --color--gray-4: #d1d1d1;
@@ -12058,6 +12059,11 @@ a.about-info-box:hover {
   height: auto;
   object-fit: contain;
   filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.company-logos-item:hover .company-logos-image {
+  filter: grayscale(0%);
 }
 
 @media screen and (max-width: 991px) {
