@@ -83,14 +83,14 @@ export const serviceSpecialities: ServiceSpeciality[] = [
           '20,000+ Skilled People',
         ],
       },
-      {
-        group: 'Creating Shared Value',
-        items: ['Community Impact', 'Employee Well-being'],
-      },
-      {
-        group: 'Sustainable Consumption & Production',
-        items: ['402 Tons of Textile Waste Recycled', '80% reduction in GHG emissions'],
-      },
+      // {
+      //   group: 'Creating Shared Value',
+      //   items: ['Community Impact', 'Employee Well-being'],
+      // },
+      // {
+      //   group: 'Sustainable Consumption & Production',
+      //   items: ['402 Tons of Textile Waste Recycled', '80% reduction in GHG emissions'],
+      // },
     ],
     to: '/sustainability',
   },

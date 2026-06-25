@@ -52,23 +52,17 @@
   transform: translateX(-30px);
 }
 
-@media (min-width: 992px) {
-  .service-image {
-    transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
-
-  .service-info-link:hover .service-image {
-    transform: scale3d(1.05, 1.05, 1);
-  }
-
-  .service-info-link:hover .service-card-action .button-icon {
+@media (hover: hover) {
+  .service-section .service-info-link:hover .service-card-action .button-icon {
     transform: translateX(30px);
   }
 
-  .service-info-link:hover .service-card-action .button-icon-hover {
+  .service-section .service-info-link:hover .service-card-action .button-icon-hover {
     transform: translateX(0);
   }
+}
 
+@media (min-width: 992px) {
   .service-icon-01,
   .service-hover-icon {
     transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);

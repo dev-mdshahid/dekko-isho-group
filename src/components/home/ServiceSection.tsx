@@ -93,7 +93,7 @@ function ServiceFeatures({
 
 export function ServiceSection() {
   return (
-    <section className="service-section section-spacing-top">
+    <section className="service-section">
       <div className="container-full">
         <div className="service-details-main">
           <FadeIn id="238c3f25-28e9-d07e-772d-22cc173e9e24" className="service-details-wrap">
@@ -122,8 +122,7 @@ export function ServiceSection() {
                   <div role="listitem" className="service-list-item w-dyn-item">
                     <Link
                       to={speciality.to}
-                      data-w-id={speciality.linkId}
-                      className="service-info-link w-inline-block"
+                      className="service-info-link"
                       aria-label={speciality.title}
                     >
                       <div className="service-info-inner">
@@ -141,7 +140,6 @@ export function ServiceSection() {
                               loading="lazy"
                               decoding="async"
                               sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, 530px"
-                              data-w-id={speciality.imageWId}
                               alt={speciality.title}
                               className="service-image"
                             />

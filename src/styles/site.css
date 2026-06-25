@@ -28,6 +28,8 @@
   --color--grey-1: #191919;
   --border-radius--xs: .188rem;
   --color--primary: #2595D5;
+  --color--primary-gradient-end: #1B3F6F;
+  --gradient-2: linear-gradient(135deg, var(--color--primary) 0%, var(--color--primary-gradient-end) 100%);
   --color--secondary-amaranth: #F3215D;
   --color--primary-2: var(--color--primary);
   --color--white: white;
@@ -1762,7 +1764,7 @@ figcaption {
 
 .button-icon-bg {
   border-radius: var(--border-radius--xs) var(--border-radius--xs) var(--border-radius--md);
-  background-image: linear-gradient(-45deg, var(--color--primary-2), var(--color--primary-1));
+  background-image: var(--gradient-2);
   flex: none;
   justify-content: center;
   align-items: center;
@@ -2680,6 +2682,7 @@ a.about-info-box:hover {
 }
 
 .service-section {
+  padding-top: 80px;
   padding-bottom: 0;
   position: relative;
 }
@@ -2769,23 +2772,23 @@ a.about-info-box:hover {
 }
 
 .service-list-wrapper.one {
-  top: 100px;
+  top: 20px;
 }
 
 .service-list-wrapper.two {
-  top: 200px;
+  top: 120px;
 }
 
 .service-list-wrapper.three {
-  top: 300px;
+  top: 220px;
 }
 
 .service-list-wrapper.four {
-  top: 400px;
+  top: 320px;
 }
 
 .service-list-wrapper.five {
-  top: 500px;
+  top: 420px;
 }
 
 .service-info-link {
@@ -2964,7 +2967,7 @@ a.about-info-box:hover {
   height: 200px;
   display: flex;
   position: sticky;
-  top: 650px;
+  top: 520px;
 }
 
 .service-details-wrap .service-description {
@@ -11557,6 +11560,25 @@ a.about-info-box:hover {
 }
 
 /* Service section — stacking cards */
+.service-section .service-image-wrap {
+  overflow: hidden;
+  border-radius: var(--border-radius--sm);
+  isolation: isolate;
+}
+
+.service-section .service-image {
+  border-radius: 0;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+@media (hover: hover) {
+  .service-section .service-info-link:hover .service-image {
+    transform: scale(1.1);
+  }
+}
+
 .service-section .service-arrow,
 .service-section .service-arrow-desktop,
 .service-section .service-arrow-mobile {
@@ -11568,6 +11590,8 @@ a.about-info-box:hover {
   text-decoration: none;
   cursor: pointer;
   align-items: start;
+  display: grid;
+  width: 100%;
 }
 
 .service-section .service-image-main {
