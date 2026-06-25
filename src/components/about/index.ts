@@ -1,3 +1,4 @@
+export { AboutContactSection } from './AboutContactSection'
 export { AboutChairmanSection } from './AboutChairmanSection'
 export { AboutClientsSection } from './AboutClientsSection'
 export { AboutHeroSection } from './AboutHeroSection'

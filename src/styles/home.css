@@ -292,6 +292,22 @@
   margin-block: 0;
 }
 
+.about-section .about-scroll-viewport.about-carousel-viewport {
+  overflow: hidden;
+  cursor: default;
+  padding-block: 0;
+  margin-block: 0;
+}
+
+.about-section .about-carousel-track {
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.about-section .about-carousel-track.is-reduced-motion {
+  transition: none;
+}
+
 .about-section .about-info-inner.is-scroll {
   gap: 40px;
   padding-inline: 0;

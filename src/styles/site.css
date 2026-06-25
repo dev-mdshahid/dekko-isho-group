@@ -1504,6 +1504,14 @@ figcaption {
   margin-bottom: 1.625rem;
 }
 
+.footer-subscribe-logo {
+  width: 245px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1.625rem;
+}
+
 .footer-bottom-wrap {
   z-index: 99;
   grid-column-gap: 20px;
@@ -2270,7 +2278,7 @@ figcaption {
   border: none;
   border-radius: var(--border-radius--xl);
   background-color: var(--color--grey-1);
-  color: var(--color--dark);
+  color: var(--color--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2280,6 +2288,7 @@ figcaption {
 
 .hero-video-control:hover {
   background-color: var(--color--white);
+  color: var(--color--dark);
 }
 
 .hero-video-control:focus-visible {

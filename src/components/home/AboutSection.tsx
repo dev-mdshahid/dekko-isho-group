@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 
 import { solutionPath } from '../../data/solutions/solutions'
 import { resetScrollPosition } from '../../lib/resetRouteScroll'
-import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 const ABOUT_CARD_GAP = 40
+const CAROUSEL_INTERVAL_MS = 3000
 const BROCHURE_PDF_FILENAME = 'Dekko_ISHO_Group.pdf'
 const BROCHURE_PDF_PATH = `/docs/${BROCHURE_PDF_FILENAME}`
 
@@ -319,11 +319,9 @@ function CarouselArrowIcon({ direction }: { direction: 'left' | 'right' }) {
 
 function AboutCarouselArrow({
   direction,
-  disabled,
   onClick,
 }: {
   direction: 'left' | 'right'
-  disabled: boolean
   onClick: () => void
 }) {
   return (
@@ -331,7 +329,6 @@ function AboutCarouselArrow({
       type="button"
       className={`about-carousel-arrow about-carousel-arrow--${direction}`}
       onClick={onClick}
-      disabled={disabled}
       aria-label={direction === 'left' ? 'Previous card' : 'Next card'}
     >
       <CarouselArrowIcon direction={direction} />
@@ -339,53 +336,83 @@ function AboutCarouselArrow({
   )
 }
 
+function getVisibleCardCount(viewportWidth: number) {
+  if (viewportWidth <= 767) return 1
+  if (viewportWidth <= 991) return 2
+  return 3
+}
+
 export function AboutSection() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(false)
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [slideStep, setSlideStep] = useState(0)
+  const [visibleCount, setVisibleCount] = useState(3)
+  const [isPaused, setIsPaused] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
-  useHorizontalScroll(scrollRef, { enableWheel: false })
+  const slideCount = Math.max(1, industries.length - visibleCount + 1)
+  const maxIndex = slideCount - 1
 
-  const updateScrollButtons = useCallback(() => {
-    const element = scrollRef.current
-    if (!element) return
+  const goToSlide = useCallback((index: number) => {
+    setActiveIndex(((index % slideCount) + slideCount) % slideCount)
+  }, [slideCount])
 
-    setCanScrollLeft(element.scrollLeft > 1)
-    setCanScrollRight(element.scrollLeft + element.clientWidth < element.scrollWidth - 1)
+  const goToPrevious = useCallback(() => {
+    goToSlide(activeIndex - 1)
+  }, [activeIndex, goToSlide])
+
+  const goToNext = useCallback(() => {
+    goToSlide(activeIndex + 1)
+  }, [activeIndex, goToSlide])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updateMotionPreference = () => setPrefersReducedMotion(mediaQuery.matches)
+
+    updateMotionPreference()
+    mediaQuery.addEventListener('change', updateMotionPreference)
+    return () => mediaQuery.removeEventListener('change', updateMotionPreference)
   }, [])
 
   useEffect(() => {
-    const element = scrollRef.current
-    if (!element) return
+    const viewport = viewportRef.current
+    if (!viewport) return
 
-    updateScrollButtons()
+    const updateLayout = () => {
+      const nextVisibleCount = getVisibleCardCount(viewport.clientWidth)
+      setVisibleCount(nextVisibleCount)
 
-    const resizeObserver = new ResizeObserver(updateScrollButtons)
-    resizeObserver.observe(element)
+      const card = trackRef.current?.querySelector<HTMLElement>('.about-business-card')
+      if (!card) return
 
-    element.addEventListener('scroll', updateScrollButtons, { passive: true })
-    window.addEventListener('resize', updateScrollButtons)
-
-    return () => {
-      resizeObserver.disconnect()
-      element.removeEventListener('scroll', updateScrollButtons)
-      window.removeEventListener('resize', updateScrollButtons)
+      setSlideStep(card.offsetWidth + ABOUT_CARD_GAP)
     }
-  }, [updateScrollButtons])
 
-  const scrollByOneCard = useCallback((direction: 'left' | 'right') => {
-    const element = scrollRef.current
-    if (!element) return
+    updateLayout()
 
-    const card = element.querySelector<HTMLElement>('.about-business-card')
-    if (!card) return
+    const resizeObserver = new ResizeObserver(updateLayout)
+    resizeObserver.observe(viewport)
 
-    const distance = card.offsetWidth + ABOUT_CARD_GAP
-    element.scrollBy({
-      left: direction === 'left' ? -distance : distance,
-      behavior: 'smooth',
-    })
+    return () => resizeObserver.disconnect()
   }, [])
+
+  useEffect(() => {
+    setActiveIndex((current) => Math.min(current, maxIndex))
+  }, [maxIndex])
+
+  useEffect(() => {
+    if (isPaused || prefersReducedMotion || slideCount <= 1) return
+
+    const timerId = window.setInterval(() => {
+      setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1))
+    }, CAROUSEL_INTERVAL_MS)
+
+    return () => window.clearInterval(timerId)
+  }, [activeIndex, isPaused, maxIndex, prefersReducedMotion, slideCount])
+
+  const pauseCarousel = useCallback(() => setIsPaused(true), [])
+  const resumeCarousel = useCallback(() => setIsPaused(false), [])
 
   return (
     <section id="About-Section" className="about-section">
@@ -413,9 +440,23 @@ export function AboutSection() {
             </FadeIn>
           </div>
 
-          <div className="about-carousel">
-            <div ref={scrollRef} className="about-scroll-viewport">
-              <div className="about-info-inner is-scroll">
+          <div
+            className="about-carousel"
+            onMouseEnter={pauseCarousel}
+            onMouseLeave={resumeCarousel}
+            onFocusCapture={pauseCarousel}
+            onBlurCapture={resumeCarousel}
+          >
+            <div ref={viewportRef} className="about-scroll-viewport about-carousel-viewport">
+              <div
+                ref={trackRef}
+                className={`about-info-inner is-scroll about-carousel-track${prefersReducedMotion ? ' is-reduced-motion' : ''}`}
+                style={
+                  slideStep
+                    ? { transform: `translate3d(-${activeIndex * slideStep}px, 0, 0)` }
+                    : undefined
+                }
+              >
                 {industries.map((item, index) =>
                   item.type === 'text' ? (
                     <IndustryTextCircle key={item.id} {...item} />
@@ -426,16 +467,8 @@ export function AboutSection() {
               </div>
             </div>
             <div className="about-carousel-nav">
-              <AboutCarouselArrow
-                direction="left"
-                disabled={!canScrollLeft}
-                onClick={() => scrollByOneCard('left')}
-              />
-              <AboutCarouselArrow
-                direction="right"
-                disabled={!canScrollRight}
-                onClick={() => scrollByOneCard('right')}
-              />
+              <AboutCarouselArrow direction="left" onClick={goToPrevious} />
+              <AboutCarouselArrow direction="right" onClick={goToNext} />
             </div>
           </div>
         </div>

@@ -56,7 +56,12 @@ export function Footer() {
                 variant="slide-in-bottom"
                 delay={100}
               >
-                <h2 className="subscribe-title">Stay connected</h2>
+                <img
+                  src="/images/dekko-footer-logo.svg"
+                  loading="lazy"
+                  alt="Dekko ISHO Group"
+                  className="footer-subscribe-logo"
+                />
                 <p className="subscribe-description">
                   Join our newsletter for tips, updates, and project highlights—only the good stuff.
                 </p>
