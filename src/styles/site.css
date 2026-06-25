@@ -2192,23 +2192,56 @@ figcaption {
 
 .hero-background-video.w-background-video {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
   position: relative;
+  overflow: hidden;
+  background-color: var(--color--dark);
+}
+
+.hero-background-video.w-background-video.hero-background-video--ready {
+  aspect-ratio: auto;
+  height: auto;
+}
+
+.hero-video-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color--dark);
+}
+
+.hero-video-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .hero-background-video.w-background-video > video,
 .hero-video-media {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
+  background-color: var(--color--dark);
+}
+
+.hero-background-video.w-background-video.hero-background-video--ready > video,
+.hero-background-video.w-background-video.hero-background-video--ready .hero-video-media {
   position: static;
   inset: auto;
-  margin: 0;
   width: 100%;
   height: auto;
   max-width: 100%;
   object-fit: initial;
-  object-position: center;
-  display: block;
   z-index: 0;
-  background-color: var(--color--dark);
 }
 
 .hero-video-control {

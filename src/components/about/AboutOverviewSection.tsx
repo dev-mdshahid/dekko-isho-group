@@ -1,10 +1,31 @@
-import { capabilityStats } from '../../data/about/capabilities'
-import { legacyImage } from '../../lib/assets'
+import { aboutOverviewStory, capabilityStats } from '../../data/about/capabilities'
+import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 const OVERVIEW_IMAGE = '/images/skyview-company.png'
+
+function CapabilityArrow() {
+  return (
+    <svg
+      className="about-capability-arrow"
+      width="18"
+      height="15"
+      viewBox="0 0 18 15"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M17 7.657L11 1.657M17 7.657L11 13.657M17 7.657H1.58"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
 
 export function AboutOverviewSection() {
   return (
@@ -16,11 +37,8 @@ export function AboutOverviewSection() {
               <div className="about-three-header-badge">
                 <PreSectionTitle title="Overview" />
               </div>
-              <h2 className="section-title about-three-title">
-                Leadership through <span className="text-linear-gradient">excellence</span>
-                <br />
-                Phenomenal growth,
-                Conservative ambition.
+              <h2 className="section-title about-three-title title-center">
+                From Foundation to <span className="text-linear-gradient">Future</span>
               </h2>
             </FadeIn>
             <div className="about-three-content">
@@ -29,25 +47,14 @@ export function AboutOverviewSection() {
                   <img
                     src={OVERVIEW_IMAGE}
                     loading="lazy"
-                    alt="Aerial view of Dekko Isho Group facilities"
+                    alt="Aerial view of Dekko Isho Group facilities with solar panels"
                     className="about-author-image"
                   />
                 </FadeIn>
                 <div className="about-story-info">
                   <FadeIn id="ff2a1434-ba51-2c54-8317-c7a44458a67e" className="about-story-info-inner">
                     <h3 className="about-story-title">Our story</h3>
-                    <p className="about-story-description">
-                      Dekko Isho Group has experienced phenomenal growth in apparel manufacturing,
-                      becoming a market leader on the strength of its goods, its services, and the
-                      efficiency of its human capital. We are a distinct apparel group with strategic
-                      ventures in furniture, restaurants, bio-degradable packaging, and tech.
-                    </p>
-                    <p className="about-story-description last">
-                      We strive for excellence through a culture of innovation and continuous
-                      improvement. We believe in well thought-out, consistent growth and a consciously
-                      conservative approach – committed to investing in the business with initiatives
-                      directed at long-term sustainability.
-                    </p>
+                    <p className="about-story-description last">{aboutOverviewStory}</p>
                   </FadeIn>
                   <FadeIn id="9fc530be-4a2d-4d89-45e9-fe7251a5290a" className="service-info-three">
                     <h3 className="about-service-title">Our capabilities</h3>
@@ -56,20 +63,19 @@ export function AboutOverviewSection() {
                         <div role="list" className="service-three-list">
                           {capabilityStats.map((stat) => (
                             <div key={stat.label} role="listitem" className="service-three-item">
-                              <div className="service-link w-inline-block">
+                              <div className="service-link about-capability-link">
                                 <div className="service-name-three">
-                                  {stat.label} <strong>{stat.value}</strong>
+                                  <span className="about-capability-value">{stat.value}</span>{' '}
+                                  <span className="about-capability-label">{stat.label}</span>
                                 </div>
-                                <img
-                                  src={legacyImage('Link-Arrow.svg')}
-                                  loading="lazy"
-                                  alt=""
-                                  className="service-link-arrow"
-                                />
+                                <CapabilityArrow />
                               </div>
                             </div>
                           ))}
                         </div>
+                      </div>
+                      <div className="service-three-button">
+                        <ButtonArrow to="/" label="View all capabilities" />
                       </div>
                     </div>
                   </FadeIn>
