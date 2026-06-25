@@ -19,8 +19,8 @@ export const solutionNavLinks: NavLink[] = solutions.map((solution) => ({
 
 export const businessNavGroups: NavLinkGroup[] = [
   {
-    id: 'rmg',
-    label: 'RMG',
+    id: 'apparel-manufacturing',
+    label: 'Apparel Manufacturing',
     links: [
       { to: '/dekko-garments', label: 'Dekko Garments Ltd.' },
       { to: '/dekko-readywares', label: 'Dekko Readywear Ltd.' },
@@ -31,26 +31,17 @@ export const businessNavGroups: NavLinkGroup[] = [
     ],
   },
   {
-    id: 'retail',
-    label: 'Retail',
+    id: 'other-business-verticals',
+    label: 'Other Business Verticals',
     links: [
       { to: '/isho-ltd', label: 'ISHO Limited', showExternalIcon: true },
-      { to: '/roxy-paints', label: 'Roxy Paints Ltd.', showExternalIcon: true },
-      { to: '/klubhaus', label: 'Klubhaus', showExternalIcon: true },
-      { to: '/izakaya', label: 'IZAKAYA', showExternalIcon: true },
       { to: 'https://www.di.vc/', label: 'DIVC', showExternalIcon: true },
       { to: '/dekko-isho', label: 'DITECH', showExternalIcon: true },
+      { to: '/klubhaus', label: 'Klubhaus', showExternalIcon: true },
+      { to: '/izakaya', label: 'IZAKAYA', showExternalIcon: true },
+      { to: 'https://www.ecoviaglobal.com/', label: 'Ecovia Limited', showExternalIcon: true },
     ],
   },
-  // {
-  //   id: 'investments',
-  //   label: 'Investments',
-  //   links: [
-  //     { to: 'https://www.ecoviaglobal.com/', label: 'Ecovia Limited' },
-  //     { to: 'https://markopolo.ai/', label: 'Markopolo AI Inc.' },
-  //     { to: 'https://fashol.com/', label: 'Fashol Dotcom Ltd.' },
-  //   ],
-  // },
 ]
 
 export const mediaNavLinks: NavLink[] = [

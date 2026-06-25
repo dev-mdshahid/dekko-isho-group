@@ -1,3 +1,5 @@
+import { solutionPath } from '../solutions/solutions'
+
 export type ServiceFeatureGroup = {
   group: string
   items: string[]
@@ -10,8 +12,11 @@ export type ServiceSpeciality = {
   arrowWIds: [string, string]
   wrapperClass: 'one' | 'two' | 'three' | 'four' | 'five'
   title: string
+  icon: string
   image: string
+  featureLabel?: string
   features: string[] | ServiceFeatureGroup[]
+  to: string
 }
 
 export const serviceSpecialities: ServiceSpeciality[] = [
@@ -22,12 +27,15 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     arrowWIds: ['6c3d66a0-b420-e0a5-aade-cb7ede5a2f49', '1b0d8c68-7925-4e4c-b357-5d041e365520'],
     wrapperClass: 'one',
     title: 'Versatility at Scale',
+    icon: '/images/specialities/versatility-icon.png',
     image: '/images/specialities/versatility.png',
+    featureLabel: 'Production',
     features: [
       "Men's and Women's woven tops and bottoms",
       '3.3 million pieces/ Year',
       '20,000+ Skilled People',
     ],
+    to: solutionPath('manufacturing'),
   },
   {
     id: '77cde797-b601-13a8-b976-f135a003b69f',
@@ -36,8 +44,11 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     arrowWIds: ['77cde797-b601-13a8-b976-f135a003b6b7', '77cde797-b601-13a8-b976-f135a003b6b8'],
     wrapperClass: 'two',
     title: 'Visibility Across the Value Chain',
+    icon: '/images/specialities/visibility-icon.png',
     image: '/images/specialities/visibility.png',
-    features: ['Responsible Sourcing', 'End to End Traceability', 'Compliance & Impact Monitoring'],
+    featureLabel: 'Working Principle',
+    features: ['Responsible Sourcing', 'End-to-End Traceability', 'Compliance & Impact Monitoring'],
+    to: solutionPath('compliance-sustainability'),
   },
   {
     id: 'fd6444eb-66fc-2dbd-3d3a-042d56ad9110',
@@ -46,8 +57,11 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     arrowWIds: ['fd6444eb-66fc-2dbd-3d3a-042d56ad9128', 'fd6444eb-66fc-2dbd-3d3a-042d56ad9129'],
     wrapperClass: 'three',
     title: 'Strategically Connected',
+    icon: '/images/specialities/strategically-icon.png',
     image: '/images/specialities/strategical.png',
-    features: ['Prime Manufacturing Locations (Map/Pin)', 'Geographic Advantage (Ports)'],
+    featureLabel: 'Environmental Excellence',
+    features: ['Prime Manufacturing Locations (Map/Pin)', 'Geographic Advantage (Facts)'],
+    to: '/contact',
   },
   {
     id: 'ea75087c-806d-fa5f-23d1-e85b71fbeb55',
@@ -55,28 +69,30 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     imageWId: 'ea75087c-806d-fa5f-23d1-e85b71fbeb59',
     arrowWIds: ['ea75087c-806d-fa5f-23d1-e85b71fbeb6d', 'ea75087c-806d-fa5f-23d1-e85b71fbeb6e'],
     wrapperClass: 'four',
-    title: 'Responsibility in Every Stitch',
+    title: 'Responsibility in Every Step',
+    icon: '/images/specialities/responsibility-icon.png',
     image: '/images/specialities/responsibility.png',
     features: [
       {
         group: 'Environmental Excellence',
         items: [
-          'Solar Capacity - 1.761 MWp',
+          'Solar Capacity - 1761 MWp',
           '100 m³/hr Effluent Treatment Capacity',
           '25.5 m³/hr Wastewater Reuse Capacity',
           '8% Improvement in Treatment Efficiency (2025)',
-          '77% reduction of Scope 2 emissions (2025)',
+          '20,000+ Skilled People',
         ],
       },
       {
-        group: 'Creating shared value',
+        group: 'Creating Shared Value',
         items: ['Community Impact', 'Employee Well-being'],
       },
       {
-        group: 'Sustainable Consumption and Production',
+        group: 'Sustainable Consumption & Production',
         items: ['402 Tons of Textile Waste Recycled', '80% reduction in GHG emissions'],
       },
     ],
+    to: '/sustainability',
   },
   {
     id: 'service-speciality-05',
@@ -85,6 +101,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     arrowWIds: ['service-speciality-05-arrow-1', 'service-speciality-05-arrow-2'],
     wrapperClass: 'five',
     title: 'Intelligence in Every Process',
+    icon: '/images/specialities/intelligence-icon.png',
     image: '/images/specialities/intelligence.png',
     features: [
       {
@@ -92,5 +109,6 @@ export const serviceSpecialities: ServiceSpeciality[] = [
         items: ['GPRO', 'BROWZWEAR & CLO', 'TEXTRONIC', 'Automatic Machines'],
       },
     ],
+    to: solutionPath('technology-integration'),
   },
 ]

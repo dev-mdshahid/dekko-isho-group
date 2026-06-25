@@ -1,34 +1,28 @@
+import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
-import { CompanyLogosSection } from './CompanyLogosSection'
-
-const AWARDS_IMAGE = '/images/awards/all-awards.png'
 
 export function CompanySection() {
   return (
     <section className="company-section">
-      <div className="company-section-main">
-        <div className="company-section-inner">
-          <FadeIn id="company-section-content" className="company-section-content">
-            <h2 className="company-section-title section-title text-white">
-              Born in Bangladesh. <span className="text-linear-gradient">Trusted</span>
-              <br />
-              Worldwide
-            </h2>
-            <p className="company-section-description">
-              Delivering for the world&apos;s most iconic brands with precision, purpose and pride
-            </p>
-          </FadeIn>
-          <img
-            src={AWARDS_IMAGE}
-            loading="lazy"
-            decoding="async"
-            width={1786}
-            height={696}
-            alt="Corporate awards, trophies, and certificates from partners including Jack & Jones, Ralph Lauren, and Kiabi, awarded to Dekko Garments Limited"
-            className="company-section-image"
-          />
-        </div>
-        <CompanyLogosSection />
+      <div className="company-section-inner">
+        <FadeIn id="company-section-content" className="company-section-content">
+          <h2 className="company-section-title section-title text-white">
+            The Relentless&nbsp;<span className="text-linear-gradient">Pursuit</span>
+            <br />
+            of Making a Difference
+          </h2>
+          <p className="company-section-description">
+            Driven by purpose and powered by progress, we continue to raise the bar in creating
+            value for people, partners, and the planet
+          </p>
+          <div className="company-section-button">
+            <ButtonArrow
+              to="/awards"
+              label="Explore Achievements"
+              variant="button-white-bg"
+            />
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

@@ -1,33 +1,41 @@
+import { Link } from 'react-router-dom'
 import { serviceSpecialities, type ServiceFeatureGroup } from '../../data/home/specialities'
 import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
-function ServiceArrow({
-  arrowWIds,
-  className = 'service-arrow',
-}: {
-  arrowWIds: [string, string]
-  className?: string
-}) {
+function ServiceTitle({ title }: { title: string }) {
+  const spaceIndex = title.indexOf(' ')
+  const firstWord = spaceIndex === -1 ? title : title.slice(0, spaceIndex)
+  const rest = spaceIndex === -1 ? '' : title.slice(spaceIndex)
+
   return (
-    <div className={className}>
-      <img
-        src={legacyImage('testimonial-Slide-Arrow-1.svg')}
-        loading="lazy"
-        data-w-id={arrowWIds[0]}
-        alt=""
-        className="service-icon-01"
-      />
-      <img
-        src={legacyImage('testimonial-Slide-Arrow-1.svg')}
-        loading="lazy"
-        data-w-id={arrowWIds[1]}
-        alt=""
-        className="service-hover-icon"
-      />
-    </div>
+    <h2 className="service-name">
+      <span className="service-name-highlight">{firstWord}</span>
+      {rest}
+    </h2>
+  )
+}
+
+function ServiceCardAction() {
+  return (
+    <span className="service-card-action" aria-hidden="true">
+      <span className="button-icon-bg service-card-action__icon">
+        <img
+          src={legacyImage('button-icon.svg')}
+          loading="lazy"
+          alt=""
+          className="button-icon"
+        />
+        <img
+          src={legacyImage('button-icon.svg')}
+          loading="lazy"
+          alt=""
+          className="button-icon-hover"
+        />
+      </span>
+    </span>
   )
 }
 
@@ -45,12 +53,19 @@ function ServiceFeatureItem({ label }: { label: string }) {
   )
 }
 
-function ServiceFeatures({ features }: { features: string[] | ServiceFeatureGroup[] }) {
+function ServiceFeatures({
+  features,
+  featureLabel,
+}: {
+  features: string[] | ServiceFeatureGroup[]
+  featureLabel?: string
+}) {
   if (features.length === 0) return null
 
   if (typeof features[0] === 'string') {
     return (
       <div className="service-feature-list">
+        {featureLabel ? <div className="service-feature-text">{featureLabel}</div> : null}
         <div className="feature-list-item">
           {(features as string[]).map((item) => (
             <ServiceFeatureItem key={item} label={item} />
@@ -64,7 +79,7 @@ function ServiceFeatures({ features }: { features: string[] | ServiceFeatureGrou
     <div className="service-feature-list service-feature-list--grouped">
       {(features as ServiceFeatureGroup[]).map((group) => (
         <div key={group.group} className="service-feature-group">
-          <div className="service-feature-text text-linear-gradient">{group.group}</div>
+          <div className="service-feature-text">{group.group}</div>
           <div className="service-feature-group-items feature-list-item">
             {group.items.map((item) => (
               <ServiceFeatureItem key={item} label={item} />
@@ -82,7 +97,7 @@ export function ServiceSection() {
       <div className="container-full">
         <div className="service-details-main">
           <FadeIn id="238c3f25-28e9-d07e-772d-22cc173e9e24" className="service-details-wrap">
-            <PreSectionTitle title="What Makes Us Special" />
+            <PreSectionTitle title="Precision at Global Scale " />
             <div className="section-title-wrap">
               <div className="section-title-intro">
                 <h2 className="section-title">
@@ -105,12 +120,21 @@ export function ServiceSection() {
               >
                 <div role="list" className="service-list w-dyn-items">
                   <div role="listitem" className="service-list-item w-dyn-item">
-                    <div
+                    <Link
+                      to={speciality.to}
                       data-w-id={speciality.linkId}
                       className="service-info-link w-inline-block"
+                      aria-label={speciality.title}
                     >
                       <div className="service-info-inner">
                         <div className="service-image-main">
+                          <img
+                            src={speciality.icon}
+                            loading="lazy"
+                            decoding="async"
+                            alt=""
+                            className="service-icon"
+                          />
                           <div className="service-image-wrap">
                             <img
                               src={speciality.image}
@@ -125,43 +149,22 @@ export function ServiceSection() {
                         </div>
                         <div className="service-content-wrap">
                           <div className="service-name-wrapper">
-                            <h2 className="service-name">{speciality.title}</h2>
-                            <ServiceArrow
-                              arrowWIds={speciality.arrowWIds}
-                              className="service-arrow service-arrow-mobile"
-                            />
+                            <ServiceTitle title={speciality.title} />
                           </div>
-                          <ServiceFeatures features={speciality.features} />
+                          <ServiceFeatures
+                            features={speciality.features}
+                            featureLabel={speciality.featureLabel}
+                          />
                         </div>
                       </div>
-                      <ServiceArrow
-                        arrowWIds={speciality.arrowWIds}
-                        className="service-arrow service-arrow-desktop"
-                      />
-                    </div>
+                      <ServiceCardAction />
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
             <div className="service-box-height" aria-hidden="true" />
           </div>
-          {/* <div className="cta-wrap">
-            <FadeIn id="2a6fecb6-c324-2a47-4e56-63bf9666fe76" className="cta-info-wrapper">
-              <div className="cta-info-inner">
-                <h2 className="cta-text">
-                  Ready to start your <br />
-                  next project?
-                </h2>
-                <div className="cta-button">
-                  <ButtonArrow
-                    to="/contact"
-                    label="Schedule consultation"
-                    variant="button-white-bg"
-                  />
-                </div>
-              </div>
-            </FadeIn>
-          </div> */}
         </div>
       </div>
       <div className="service-section-gradient" aria-hidden="true">

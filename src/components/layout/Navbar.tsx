@@ -87,16 +87,27 @@ type BusinessesNavDropdownProps = {
 function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: BusinessesNavDropdownProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
-  const [activeGroupId, setActiveGroupId] = useState<NavLinkGroup['id']>(businessNavGroups[0].id)
-  const activeGroup =
-    businessNavGroups.find((group) => group.id === activeGroupId) ?? businessNavGroups[0]
+  const [expandedGroupId, setExpandedGroupId] = useState<NavLinkGroup['id'] | null>(null)
+  const expandedGroup = expandedGroupId
+    ? businessNavGroups.find((group) => group.id === expandedGroupId)
+    : null
   const isActive = isNavGroupActive(pathname, flattenNavLinks(businessNavGroups))
 
   useClickOutside(ref, onClose, isOpen)
 
+  useEffect(() => {
+    if (!isOpen) {
+      setExpandedGroupId(null)
+    }
+  }, [isOpen])
+
   function handleLinkClick() {
     onClose()
     closeMenu()
+  }
+
+  function handleGroupClick(groupId: NavLinkGroup['id']) {
+    setExpandedGroupId((current) => (current === groupId ? null : groupId))
   }
 
   return (
@@ -117,56 +128,75 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
         aria-labelledby="businesses-toggle"
         className={`dropdown-list w-dropdown-list nav-dropdown-panel${isOpen ? ' w--open' : ''}`}
       >
-        <div className="dropdown-list-inner nav-dropdown-panel-inner">
-          <div className="nav-nested-dropdown">
-            <div className="nav-nested-dropdown-categories" role="tablist" aria-label="Business categories">
-              {businessNavGroups.map((group) => (
-                <button
-                  key={group.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeGroupId === group.id}
-                  className={`nav-nested-dropdown-category${activeGroupId === group.id ? ' is-active' : ''}`}
-                  onMouseEnter={() => setActiveGroupId(group.id)}
-                  onFocus={() => setActiveGroupId(group.id)}
-                  onClick={() => setActiveGroupId(group.id)}
-                >
-                  <span>{group.label}</span>
-                </button>
-              ))}
-            </div>
-            <div className="nav-nested-dropdown-links" role="tabpanel">
-              {activeGroup.links.map((link) => {
-                const className = `dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
-                const content = <span>{link.label}</span>
-
-                if (link.to.startsWith('http')) {
-                  return (
-                    <a
-                      key={`${activeGroup.id}-${link.label}`}
-                      href={link.to}
-                      className={className}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={handleLinkClick}
-                    >
-                      {content}
-                    </a>
-                  )
-                }
-
-                return (
-                  <Link
-                    key={`${activeGroup.id}-${link.label}`}
-                    to={link.to}
-                    className={className}
-                    onClick={handleLinkClick}
+        <div className="nav-dropdown-panel-inner">
+          <div className={`nav-nested-dropdown${expandedGroupId ? ' is-expanded' : ''}`}>
+            <div className="nav-nested-dropdown-panel">
+              <div className="nav-nested-dropdown-categories" role="list" aria-label="Business categories">
+                {businessNavGroups.map((group) => (
+                  <button
+                    key={group.id}
+                    type="button"
+                    role="listitem"
+                    aria-expanded={expandedGroupId === group.id}
+                    className={`nav-nested-dropdown-category${expandedGroupId === group.id ? ' is-active' : ''}`}
+                    onClick={() => handleGroupClick(group.id)}
                   >
-                    {content}
-                  </Link>
-                )
-              })}
+                    <span>{group.label}</span>
+                    <span className="nav-nested-dropdown-chevron" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M6 4.5L10 8L6 11.5"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
+            {expandedGroup && (
+              <div className="nav-nested-dropdown-panel">
+                <div
+                  className="nav-nested-dropdown-links"
+                  role="region"
+                  aria-label={expandedGroup.label}
+                >
+                  {expandedGroup.links.map((link) => {
+                    const className = `dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
+                    const content = <span>{link.label}</span>
+
+                    if (link.to.startsWith('http')) {
+                      return (
+                        <a
+                          key={`${expandedGroup.id}-${link.label}`}
+                          href={link.to}
+                          className={className}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={handleLinkClick}
+                        >
+                          {content}
+                        </a>
+                      )
+                    }
+
+                    return (
+                      <Link
+                        key={`${expandedGroup.id}-${link.label}`}
+                        to={link.to}
+                        className={className}
+                        onClick={handleLinkClick}
+                      >
+                        {content}
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </nav>

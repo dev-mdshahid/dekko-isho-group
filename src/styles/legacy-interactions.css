@@ -42,7 +42,16 @@
   transform: translateX(0);
 }
 
-/* Service cards — image scale + arrow swap on hover */
+/* Service cards — image scale + arrow button on hover */
+.service-card-action .button-icon,
+.service-card-action .button-icon-hover {
+  transition: transform 0.3s ease;
+}
+
+.service-card-action .button-icon-hover {
+  transform: translateX(-30px);
+}
+
 @media (min-width: 992px) {
   .service-image {
     transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -50,6 +59,14 @@
 
   .service-info-link:hover .service-image {
     transform: scale3d(1.05, 1.05, 1);
+  }
+
+  .service-info-link:hover .service-card-action .button-icon {
+    transform: translateX(30px);
+  }
+
+  .service-info-link:hover .service-card-action .button-icon-hover {
+    transform: translateX(0);
   }
 
   .service-icon-01,

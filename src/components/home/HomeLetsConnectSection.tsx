@@ -1,11 +1,17 @@
 import { type FormEvent, useState } from 'react'
 
 import { contactEmail, contactPhone } from '../../data/contact/contactInfo'
-import { footerContact } from '../../data/footer/footerContent'
 import { FadeIn } from '../ui/FadeIn'
 import { SectionLines } from '../ui/SectionDecor'
 
-const CORPORATE_HQ_IMAGE = '/images/contact/corporate-hq.png'
+const RECEPTION_IMAGE = '/images/dekko-reception-desk.png'
+
+const MINT_ACCENT = '#5ABE8C'
+
+const CORPORATE_HQ_LINES = [
+  'Corporate HQ, Dhaka - The Forum, West Tower,',
+  'Tejgaon Gulshan Link Road.',
+] as const
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -43,10 +49,18 @@ export function HomeLetsConnectSection() {
     }
   }
 
-  const corporateHq = footerContact.address
-
   return (
-    <section className="home-contact-section contact-section page-contact-section">
+    <section
+      className="home-contact-section contact-section page-contact-section"
+      style={
+        {
+          '--color--primary': MINT_ACCENT,
+          '--color--primary-2': MINT_ACCENT,
+          '--color--primary-3': MINT_ACCENT,
+          '--home-contact-accent': MINT_ACCENT,
+        } as React.CSSProperties
+      }
+    >
       <div className="page-contact-main section-spacing">
         <div className="container-full">
           <div className="page-contact-grid home-contact-grid">
@@ -62,10 +76,20 @@ export function HomeLetsConnectSection() {
                   </p>
                 </div>
 
+                <FadeIn id="home-contact-image" delay={200} className="page-contact-visual home-contact-visual">
+                <img
+                  src={RECEPTION_IMAGE}
+                  loading="lazy"
+                  decoding="async"
+                  alt="Dekko ISHO Group reception desk"
+                  className="page-contact-visual-image"
+                />
+              </FadeIn>
+
                 <div className="page-contact-details home-contact-details">
                   <div className="page-contact-details-col">
                     <div className="page-contact-block">
-                      <div className="page-contact-label">// Contact us //</div>
+                      <div className="page-contact-label">Contact us</div>
                       <div className="page-contact-lines">
                         <a href={contactPhone.href} className="page-contact-text-link">
                           {contactPhone.label}
@@ -79,10 +103,14 @@ export function HomeLetsConnectSection() {
 
                   <div className="page-contact-details-col">
                     <div className="page-contact-block">
-                      <div className="page-contact-label">// Find us //</div>
+                      <div className="page-contact-label">Find us</div>
                       <div className="page-contact-locations">
                         <div className="page-contact-location">
-                          <div className="page-contact-location-line">{corporateHq}</div>
+                          {CORPORATE_HQ_LINES.map((line) => (
+                            <div key={line} className="page-contact-location-line">
+                              {line}
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -90,15 +118,7 @@ export function HomeLetsConnectSection() {
                 </div>
               </FadeIn>
 
-              <FadeIn id="home-contact-image" delay={200} className="page-contact-visual home-contact-visual">
-                <img
-                  src={CORPORATE_HQ_IMAGE}
-                  loading="lazy"
-                  decoding="async"
-                  alt="Dekko ISHO Group corporate headquarters"
-                  className="page-contact-visual-image"
-                />
-              </FadeIn>
+              
             </div>
 
             <div className="page-contact-right home-contact-right">

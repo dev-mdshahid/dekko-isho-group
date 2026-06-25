@@ -13,6 +13,7 @@
   align-items: stretch;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-column-gap: clamp(3rem, 6vw, 6.25rem);
+  min-width: 0;
 }
 
 .home-contact-section .page-contact-left {
@@ -21,6 +22,24 @@
   gap: 1.75rem;
   height: 100%;
   min-height: 100%;
+  min-width: 0;
+}
+
+.home-contact-section .page-contact-title {
+  font-size: var(--_typography---h2--h2);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight-600);
+}
+
+.home-contact-section .page-contact-description {
+  color: var(--_color---body-text);
+  max-width: none;
+  width: 100%;
+}
+
+.home-contact-section .page-contact-details {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  grid-column-gap: clamp(2.5rem, 5vw, 6rem);
 }
 
 .home-contact-left-top {
@@ -34,22 +53,22 @@
 }
 
 .home-contact-visual {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   display: flex;
-  min-height: 12rem;
+  height: 280px;
 }
 
 .home-contact-visual .page-contact-visual-image {
   width: 100%;
-  height: 100%;
-  flex: 1;
-  object-fit: contain;
+  height: 280px;
+  object-fit: cover;
   object-position: center;
 }
 
 .home-contact-right {
   display: flex;
   align-items: stretch;
+  min-width: 0;
 }
 
 .home-contact-right > [data-fade-in] {
@@ -64,8 +83,10 @@
   background-color: #191919;
   flex: 1;
   width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .home-contact-section .page-contact-form-card::before {
@@ -88,23 +109,33 @@
 .home-contact-section .page-contact-form-card .error-message {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .home-contact-section .page-contact-form-description {
-  max-width: none;
-  white-space: nowrap;
-}
-
-@media screen and (max-width: 991px) {
-  .home-contact-section .page-contact-form-description {
-    white-space: normal;
-  }
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .home-contact-section .page-contact-form {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+}
+
+.home-contact-section .page-contact-input,
+.home-contact-section .page-contact-textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.home-contact-section .page-contact-field-row {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .home-contact-section .page-contact-field:has(.page-contact-textarea) {
@@ -121,12 +152,12 @@
 .home-contact-section .page-contact-visual {
   width: 100%;
   overflow: hidden;
-  border-radius: var(--border-radius--sm);
+  border-radius: 8px;
 }
 
 .home-contact-section .page-contact-visual-image {
   display: block;
-  border-radius: var(--border-radius--sm);
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 991px) {
@@ -139,7 +170,7 @@
   }
 
   .home-contact-visual {
-    min-height: auto;
+    height: auto;
   }
 
   .home-contact-visual .page-contact-visual-image {
