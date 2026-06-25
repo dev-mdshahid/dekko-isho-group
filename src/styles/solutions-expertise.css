@@ -15,12 +15,34 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   width: 100%;
-  max-width: 76rem;
+  max-width: 80rem;
   margin: 0 auto 5rem;
   gap: var(--gap--gap-8);
+}
+
+.solutions-expertise-pill-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.solutions-expertise-section .pre-section-title-wrap {
+  padding: 5px 14px;
+}
+
+.solutions-expertise-section .pre-section-title {
+  font-size: 14px;
+  font-weight: var(--_typography---body--font-weight-500);
+  text-transform: none;
+}
+
+.solutions-expertise-section .pre-section-title-square {
+  background-color: var(--color--secondary-amaranth);
+  background-image: none;
 }
 
 .solutions-expertise-title-wrap {
@@ -30,25 +52,9 @@
 
 .solutions-expertise-title {
   margin-bottom: 0;
-  white-space: nowrap;
-  font-size: clamp(1.75rem, 3.1vw, 3.625rem);
-}
-
-/* @media screen and (min-width: 992px) {
-  .solutions-expertise-title {
-    font-size: 58px;
-  }
-} */
-
-.solutions-expertise-description-wrap {
-  width: 100%;
-  max-width: 100%;
-  text-align: left;
-}
-
-.solutions-expertise-description {
-  color: var(--color--gray-2);
-  margin-bottom: 0;
+  font-size: 58px;
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.1;
 }
 
 .solutions-expertise-body {
@@ -70,8 +76,8 @@
 .solutions-expertise-menu {
   display: flex;
   flex-direction: column;
-  flex: 0 0 16rem;
-  /* gap: var(--gap--gap-2); */
+  flex: 0 0 auto;
+  width: max-content;
   padding-top: 1.25rem;
 }
 
@@ -79,81 +85,77 @@
   border: 0;
   border-left: 3px solid var(--color--gray-4);
   background: transparent;
-  color: var(--color--gray-3);
+  color: var(--color--neutral-outer-space);
   cursor: pointer;
   font-family: var(--_typography---font-family--heading);
-  font-size: var(--_typography---h6--h6);
+  font-size: 28px;
   font-weight: var(--_typography---h6--font-weight-600);
   line-height: 1.2;
   padding: 0.938rem 0 0.938rem 1.25rem;
   text-align: left;
+  white-space: nowrap;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .solutions-expertise-tab.is-active {
-  border-left-color: var(--color--primary-1);
-  color: var(--color--dark);
+  border-left-color: var(--color--secondary-amaranth);
+  color: var(--color--secondary-amaranth);
 }
 
 .solutions-expertise-card {
   flex: 1;
+  min-width: 0;
   border: 1px solid var(--color--gray-4);
-  border-radius: 1rem;
+  border-radius: 6px;
   background-color: var(--color--white);
-  box-shadow: 0 18px 50px rgba(21, 21, 21, 0.06);
 }
 
 .solutions-expertise-card-inner {
   display: grid;
-  grid-template-columns: minmax(260px, 1.4fr) minmax(200px, 0.75fr);
-  gap: var(--gap--gap-8);
-  align-items: start;
-  padding: 1.875rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: stretch;
+  padding: 30px;
 }
 
 .solutions-expertise-card-image-wrap {
   width: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
 }
 
 .solutions-expertise-card-image {
   border-radius: var(--border-radius--sm);
   width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
 }
 
-/* Integrated Manufacturing — image shorter than text; fill column height */
-.solutions-expertise-card-inner--manufacturing {
-  align-items: stretch;
-}
-
-.solutions-expertise-card-inner--manufacturing .solutions-expertise-card-image-wrap {
-  display: flex;
-  min-height: 0;
-}
-
-.solutions-expertise-card-inner--manufacturing .solutions-expertise-card-image {
-  height: 100%;
-  aspect-ratio: unset;
+.solutions-expertise-card-content {
+  min-width: 0;
 }
 
 .solutions-expertise-card-title {
-  font-size: var(--_typography---h6--h6);
-  margin-bottom: 0.938rem;
+  font-size: 28px;
+  font-weight: var(--_typography---h6--font-weight-600);
+  color: var(--color--dark);
+  margin-bottom: 12px;
 }
 
 .solutions-expertise-card-description {
-  color: var(--color--gray-2);
-  margin-bottom: 2rem;
+  color: var(--_color---body-text);
+  font-size: 18px;
+  font-weight: var(--_typography---body--font-weight-500);
+  margin-bottom: 30px;
 }
 
 .solutions-expertise-feature-list {
   display: flex;
   flex-direction: column;
-  gap: var(--gap--gap-4);
+  /* gap: 10px; */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -161,17 +163,16 @@
 
 .solutions-expertise-feature-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--gap--gap-3);
-  color: var(--color--dark);
-  font-size: var(--_typography---body--body-xs);
+  color: var(--color--grey-1);
+  font-size: 14px;
+  font-weight: var(--_typography---body--font-weight-500);
 }
 
 .solutions-expertise-feature-icon {
   flex: none;
-  width: 15px;
-  height: 10px;
-  margin-top: 0.313rem;
+  width: 12px;
 }
 
 .solutions-expertise-decor {
@@ -187,7 +188,7 @@
 }
 
 .solutions-expertise-decor--left-top {
-  top: 34%;
+  top: 15%;
   left: clamp(0.5rem, 2vw, 1.5rem);
 }
 
@@ -197,7 +198,7 @@
 }
 
 .solutions-expertise-decor--right-top {
-  top: 34%;
+  top: 15%;
   right: clamp(0.5rem, 2vw, 1.5rem);
 }
 
@@ -209,6 +210,14 @@
 @media screen and (max-width: 1199px) {
   .solutions-expertise-content {
     padding-inline: clamp(4rem, 7vw, 6rem);
+  }
+
+  .solutions-expertise-title {
+    font-size: clamp(2.25rem, 4.5vw, 58px);
+  }
+
+  .solutions-expertise-tab {
+    font-size: clamp(1.25rem, 2.2vw, 28px);
   }
 }
 
@@ -223,7 +232,6 @@
   }
 
   .solutions-expertise-title {
-    white-space: normal;
     font-size: clamp(1.625rem, 5vw, 2.5rem);
   }
 
@@ -237,9 +245,9 @@
   }
 
   .solutions-expertise-menu {
-    flex: none;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
     padding-top: 0;
   }
 
@@ -247,10 +255,11 @@
     border-left: 0;
     border-bottom: 3px solid var(--color--gray-4);
     padding: 0.75rem 1rem;
+    white-space: normal;
   }
 
   .solutions-expertise-tab.is-active {
-    border-bottom-color: var(--color--primary-1);
+    border-bottom-color: var(--color--secondary-amaranth);
   }
 
   .solutions-expertise-decor {
@@ -262,10 +271,22 @@
 @media screen and (max-width: 767px) {
   .solutions-expertise-card-inner {
     grid-template-columns: 1fr;
+    gap: var(--gap--gap-8);
+    padding: 1.25rem;
   }
 
   .solutions-expertise-card-image {
     aspect-ratio: 16 / 10;
+    height: auto;
+    min-height: auto;
+  }
+
+  .solutions-expertise-card-title {
+    font-size: 1.5rem;
+  }
+
+  .solutions-expertise-card-description {
+    font-size: 1rem;
   }
 
   .solutions-expertise-decor {

@@ -48,7 +48,7 @@
 }
 
 .hero-title-accent--red {
-  color: #f3215d;
+  color: var(--color--secondary-amaranth);
 }
 
 .hero-bottom {

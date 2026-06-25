@@ -38,9 +38,10 @@ export function HomeContent() {
 
       <HeroVideo />
 
+      <SolutionsExpertiseSection />
+      
       <AboutSection />
 
-      <SolutionsExpertiseSection />
 
       <ServiceSection />
 

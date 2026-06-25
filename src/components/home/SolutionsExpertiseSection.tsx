@@ -5,6 +5,7 @@ import {
   solutionsExpertiseTabs,
 } from '../../data/home/solutionsExpertise'
 import { FadeIn } from '../ui/FadeIn'
+import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 export function SolutionsExpertiseSection() {
@@ -28,15 +29,14 @@ export function SolutionsExpertiseSection() {
       <div className="container-full">
         <div className="solutions-expertise-content">
           <div className="solutions-expertise-header">
-            <FadeIn id="solutions-expertise-title" className="solutions-expertise-title-wrap">
-              <h2 className="section-title solutions-expertise-title">
-                Comprehensive <span className="text-linear-gradient">Solutions</span> Powered by Expertise
-              </h2>
+            <FadeIn id="solutions-expertise-pill" className="solutions-expertise-pill-wrap">
+              <PreSectionTitle title="Transforming ideas into world-class solutions" />
             </FadeIn>
-            <FadeIn id="solutions-expertise-description" className="solutions-expertise-description-wrap">
-              <p className="solutions-expertise-description">
-                Transforming ideas into world-class apparel solutions through expertise, innovation, and experience.
-              </p>
+            <FadeIn id="solutions-expertise-title" className="solutions-expertise-title-wrap">
+              <h2 className="section-title solutions-expertise-title title-center">
+                Comprehensive <span className="hero-title-accent--red">Solutions</span> 
+                <br />Powered by Expertise
+              </h2>
             </FadeIn>
           </div>
 
@@ -66,13 +66,7 @@ export function SolutionsExpertiseSection() {
               role="tabpanel"
               aria-labelledby={activeTab.id}
             >
-              <div
-                className={`solutions-expertise-card-inner${
-                  activeTab.id === 'integrated-manufacturing'
-                    ? ' solutions-expertise-card-inner--manufacturing'
-                    : ''
-                }`}
-              >
+              <div className="solutions-expertise-card-inner">
                 <div className="solutions-expertise-card-image-wrap">
                   <img
                     src={activeTab.image}

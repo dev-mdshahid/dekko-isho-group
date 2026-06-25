@@ -28,6 +28,7 @@
   --color--grey-1: #191919;
   --border-radius--xs: .188rem;
   --color--primary: #2595D5;
+  --color--secondary-amaranth: #F3215D;
   --color--primary-2: var(--color--primary);
   --color--white: white;
   --font-size--1-25rem\<deleted\|variable-b2732499-df66-bb36-957f-2199c8ae882a\>: 1.25rem;
@@ -39,6 +40,7 @@
   --border-radius--md: .625rem;
   --color--gray-3: #a7a3a2;
   --color--neutral-cadet-gray: #91a3ab;
+  --color--neutral-outer-space: #5c5c5c;
   --color--gray-4: #d1d1d1;
   --color--gray-5: #f6f6f6;
   --_layout---inner-container-max-width: 750px;
