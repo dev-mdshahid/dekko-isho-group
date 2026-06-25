@@ -2,31 +2,26 @@ import { strengthIntro, strengthItems } from '../../data/about/strengthItems'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
-const STRENGTH_BG = '/images/about-strength-bg.png'
-
 export function AboutStrengthSection() {
   return (
-    <section className="about-strength-section section-spacing">
-      <img
-        src={STRENGTH_BG}
-        loading="lazy"
-        alt=""
-        aria-hidden="true"
-        className="about-strength-bg"
-      />
-      <div className="about-strength-overlay" aria-hidden="true" />
-
-      <div className="about-strength-container">
+    <section className="about-strength-section about-strength-section--about section-spacing">
+      <div className="hero-section-overlay" aria-hidden="true" />
+      <div className="container about-strength-container">
         <div className="about-strength-main">
           <FadeIn id="about-strength-header" className="about-strength-header">
             <PreSectionTitle title="Our Strength" />
             <div className="about-strength-title-row">
               <span className="about-strength-accent" aria-hidden="true" />
-              <h2 className="section-title text-white about-strength-title">
-                Built on Sourcing Intelligence,<br /> Speed and Transparency.
+              <h2 className="section-title about-strength-title">
+                Built on Expertise.
+                <br />
+                Driven by <span className="text-linear-gradient">Impact.</span>
               </h2>
             </div>
-            <p className="about-strength-description">{strengthIntro}</p>
+            <div className="about-strength-description-row">
+              <span className="about-strength-accent" aria-hidden="true" />
+              <p className="about-strength-description">{strengthIntro}</p>
+            </div>
           </FadeIn>
 
           <div className="about-strength-grid">

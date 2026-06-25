@@ -6,63 +6,77 @@ export type StrengthItem = {
 }
 
 export const strengthIntro =
-  'Dekko ISHO Group combines strong fabric sourcing, agile production planning, global trend awareness, material traceability and disciplined quality control to deliver reliable value across design, manufacturing and international supply partnerships.'
+  'Our diverse capabilities, technological advancement, and commitment to quality empower us to deliver world-class products and lasting partnerships across global markets.'
 
 export const strengthItems: StrengthItem[] = [
   {
     id: 'about-strength-01',
     number: '01',
-    title: 'Strong Fabric Sourcing Capability',
+    title: 'Integrated Manufacturing Ecosystem',
     description:
-      'We maintain a robust network of local and international mills, enabling us to source the right fabrics quickly, efficiently and cost-effectively.',
+      'A fully integrated apparel platform encompassing design, sourcing, manufacturing, washing, embroidery, printing, testing, and packaging under one umbrella.',
   },
   {
     id: 'about-strength-02',
     number: '02',
-    title: 'Quick Order Execution',
+    title: 'Strong Sourcing & Supply Chain Network',
     description:
-      'Our efficient planning and production setup allows us to complete fast-track orders within a 60-day turnaround timeline.',
+      'Robust local and international fabric sourcing capabilities, enabling agility, cost efficiency, material traceability, and shorter lead times.',
   },
   {
     id: 'about-strength-03',
     number: '03',
-    title: 'Material Traceability',
+    title: 'Diverse Product Expertise',
     description:
-      'End-to-end raw material tracking ensures quality, sustainability and full visibility for buyers across the supply chain.',
+      'Capability to produce a wide range of products, including woven tops, bottoms, denim, dresses, outerwear, shirts, jackets, and performance apparel for men, women, and children.',
   },
   {
     id: 'about-strength-04',
     number: '04',
-    title: 'Global Research & Trend Support',
+    title: 'Design & Innovation Capability',
     description:
-      'Our dedicated team continuously studies global fashion trends and market demands to provide updated design and product insights.',
+      'Dedicated design studios, trend forecasting, 3D design technology, CAD systems, and international design support that accelerate product development and creativity.',
   },
   {
     id: 'about-strength-05',
     number: '05',
-    title: 'Traceability & Transparency-Focused Operation',
+    title: 'Technology-Driven Operations',
     description:
-      'We maintain transparent processes across sourcing, production and compliance to ensure ethical, reliable and audit-ready operations.',
+      'Advanced ERP systems, production tracking software, automation, 3D sampling, and digital design tools that enhance efficiency, accuracy, and speed.',
   },
   {
     id: 'about-strength-06',
     number: '06',
-    title: 'Focus on Local Sourcing',
+    title: 'Commitment to Quality & Compliance',
     description:
-      'We prioritize local raw materials to reduce lead time, increase agility and support faster sample-to-production cycles.',
+      'Rigorous quality control, global certifications, traceability programs, and adherence to international compliance and sustainability standards.',
   },
   {
     id: 'about-strength-07',
     number: '07',
-    title: 'Versatile Product Capability',
+    title: 'Sustainability Leadership',
     description:
-      'We offer a wide product range, including denim and non-denim categories across multiple lifestyle segments to meet diverse buyer needs.',
+      'LEED Gold-certified facilities, renewable energy investments, water recycling, waste reduction programs, circular economy initiatives, and ambitious ESG goals for 2030.',
   },
   {
     id: 'about-strength-08',
     number: '08',
-    title: 'Quality & On-Time Delivery',
+    title: 'Speed & Reliability',
     description:
-      'Consistent quality control and disciplined workflow enable us to deliver every order on time with expected quality standards.',
+      'Efficient planning and production systems enabling quick order execution, strong on-time delivery performance, and responsiveness to market demands.',
+  },
+  {
+    id: 'about-strength-09',
+    number: '09',
+    title: 'People-Centric Culture',
+    description:
+      'Over 20,000 team members supported through healthcare, childcare, training, employee welfare, diversity, inclusion, and community development programs.',
+  },
+  {
+    id: 'about-strength-10',
+    number: '10',
+    title: 'Speed & Reliability',
+    description:
+      'Efficient planning and production systems enabling quick order execution, strong on-time delivery performance, and responsiveness to market demands.',
   },
 ]

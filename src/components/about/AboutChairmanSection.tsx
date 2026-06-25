@@ -1,12 +1,14 @@
 import { chairmanParagraphs, chairmanQuote } from '../../data/about/chairmanNote'
 import { FadeIn } from '../ui/FadeIn'
+import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 const CHAIRMAN_PORTRAIT = '/images/shahid-hossain.jpg'
 
 export function AboutChairmanSection() {
   return (
-    <section className="about-chairman-section section-spacing">
-      <div className="about-chairman-container">
+    <section className="about-chairman-section about-chairman-section--about section-spacing">
+      <div className="hero-section-overlay" aria-hidden="true" />
+      <div className="container about-chairman-container">
         <div className="about-chairman-grid">
           <FadeIn id="about-chairman-profile" className="about-chairman-profile">
             <img
@@ -23,10 +25,7 @@ export function AboutChairmanSection() {
 
           <FadeIn id="about-chairman-message" className="about-chairman-message">
             <div className="about-chairman-label">
-              <div className="pre-section-title-inner">
-                <div className="pre-section-title-square" aria-hidden="true" />
-                <div className="pre-section-title about-chairman-label-text">Note From The Chairman</div>
-              </div>
+              <PreSectionTitle title="Note from the Chairman" />
             </div>
 
             <p className="about-chairman-quote">&ldquo;{chairmanQuote}&rdquo;</p>

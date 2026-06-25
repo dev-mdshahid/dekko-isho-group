@@ -5,13 +5,16 @@ import { SectionLines } from '../ui/SectionDecor'
 
 export function AboutLeadershipSection() {
   return (
-    <section id="leadership-section" className="about-leadership-section section-spacing">
+    <section id="leadership-section" className="about-leadership-section about-leadership-section--about section-spacing">
+      <div className="about-leadership-section-glow" aria-hidden="true" />
       <SectionLines border="dark" />
 
-      <div className="about-leadership-container">
+      <div className="container about-leadership-container">
         <FadeIn id="about-leadership-header" className="about-leadership-header">
-          <PreSectionTitle title="Leadership" variant="bg-dark" />
-          <h2 className="about-leadership-title">The people setting the direction.</h2>
+          <PreSectionTitle title="Leadership" />
+          <h2 className="about-leadership-title">
+            The people setting the <span className="about-leadership-title-accent">direction</span>.
+          </h2>
         </FadeIn>
 
         <div className="about-leadership-grid">
@@ -23,12 +26,14 @@ export function AboutLeadershipSection() {
               delay={index * 80}
             >
               <article className="about-leadership-card">
-                <img
-                  src={member.image}
-                  loading="lazy"
-                  alt={member.imageAlt}
-                  className="about-leadership-card-image"
-                />
+                <div className="about-leadership-card-image-wrap">
+                  <img
+                    src={member.image}
+                    loading="lazy"
+                    alt={member.imageAlt}
+                    className="about-leadership-card-image"
+                  />
+                </div>
                 <div className="about-leadership-card-body">
                   <h3 className="about-leadership-card-name">{member.name}</h3>
                   <p className="about-leadership-card-role">{member.title}</p>

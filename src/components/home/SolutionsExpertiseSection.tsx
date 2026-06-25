@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {
   solutionsExpertiseDecorImages,
   solutionsExpertiseTabs,
-} from '../../data/home/solutionsExpertise'
+} from '../../data/solutions/solutionsExpertise'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
