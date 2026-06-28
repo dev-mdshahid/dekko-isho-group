@@ -18,9 +18,9 @@ function ServiceTitle({ title }: { title: string }) {
   )
 }
 
-function ServiceCardAction() {
+function ServiceCardAction({ className }: { className?: string }) {
   return (
-    <span className="service-card-action" aria-hidden="true">
+    <span className={className ? `service-card-action ${className}` : 'service-card-action'} aria-hidden="true">
       <span className="button-icon-bg service-card-action__icon">
         <img
           src={legacyImage('button-icon.svg')}
@@ -148,6 +148,7 @@ export function ServiceSection() {
                         <div className="service-content-wrap">
                           <div className="service-name-wrapper">
                             <ServiceTitle title={speciality.title} />
+                            <ServiceCardAction />
                           </div>
                           <ServiceFeatures
                             features={speciality.features}
@@ -155,7 +156,6 @@ export function ServiceSection() {
                           />
                         </div>
                       </div>
-                      <ServiceCardAction />
                     </Link>
                   </div>
                 </div>
