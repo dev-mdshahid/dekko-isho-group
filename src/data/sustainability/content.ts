@@ -313,6 +313,8 @@ export const pillar03 = {
   title: 'Material Sustainability',
   description:
     'Responsible sourcing, environmental stewardship and full supply-chain transparency – every garment powered by verified, end-to-end traceable data, from fibre to retail.',
+  image: '/images/sustainability/pillar-3/0bb09de306378f3ecacb1d6d465a1012319e104e.jpg',
+  imageAlt: 'Green pathway with palm trees inside a manufacturing facility',
   sustainablePercentage: 61,
   sustainableLabel:
     'of our material mix is now sustainably sourced – up across cotton, flax and circular fibres.',

@@ -31,7 +31,7 @@
   --color--primary-gradient-end: #1B3F6F;
   --gradient-2: linear-gradient(135deg, var(--color--primary) 0%, var(--color--primary-gradient-end) 100%);
   --color--secondary-amaranth: #F3215D;
-  --color--secondary-dark-spring-green: #235237;
+  --color--secondary-dark-spring-green: #29704e;
   --color--secondary-mint: #5abe8c;
   --color--primary-2: var(--color--primary);
   --color--white: white;
