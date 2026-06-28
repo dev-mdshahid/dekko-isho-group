@@ -75,8 +75,8 @@ export const strengthItems: StrengthItem[] = [
   {
     id: 'about-strength-10',
     number: '10',
-    title: 'Speed & Reliability',
+    title: 'Global Market Presence',
     description:
-      'Efficient planning and production systems enabling quick order execution, strong on-time delivery performance, and responsiveness to market demands.',
+      'Long-standing partnerships with leading international brands, global design support, overseas representation, and a strong understanding of global fashion markets.',
   },
 ]

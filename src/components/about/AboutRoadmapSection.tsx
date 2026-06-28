@@ -1,4 +1,4 @@
-import { roadmapItems } from '../../data/about/roadmapItems'
+import { ROADMAP_IMAGE, roadmapItems } from '../../data/about/roadmapItems'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
@@ -6,8 +6,6 @@ import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 export function AboutRoadmapSection() {
   return (
     <section className="about-roadmap-section about-roadmap-section--about section-spacing">
-      <div className="about-roadmap-section-glow" aria-hidden="true" />
-      <div className="hero-section-overlay" aria-hidden="true" />
       <SectionLines />
       <NoiseOverlay />
 
@@ -19,15 +17,24 @@ export function AboutRoadmapSection() {
           </h2>
         </FadeIn>
 
-        <div className="about-roadmap-grid">
-          {roadmapItems.map((item, index) => (
-            <FadeIn
-              key={item.id}
-              id={item.id}
-              className={`about-roadmap-card${item.wide ? ' about-roadmap-card--wide' : ''}`}
-              delay={index * 60}
-            >
-              <div className="about-roadmap-card-icon-wrap">
+        <div className="about-roadmap-content">
+          <FadeIn id="about-roadmap-visual" className="about-roadmap-visual">
+            <img
+              src={ROADMAP_IMAGE}
+              loading="lazy"
+              alt="Road leading through a forest toward misty mountains"
+              className="about-roadmap-image"
+            />
+          </FadeIn>
+
+          <div className="about-roadmap-cards">
+            {roadmapItems.map((item, index) => (
+              <FadeIn
+                key={item.id}
+                id={item.id}
+                className="about-roadmap-card"
+                delay={index * 60}
+              >
                 <img
                   src={item.icon}
                   width={64}
@@ -36,11 +43,13 @@ export function AboutRoadmapSection() {
                   alt={item.iconAlt}
                   className="about-roadmap-card-icon"
                 />
-              </div>
-              <h3 className="about-roadmap-card-title">{item.title}</h3>
-              <p className="about-roadmap-card-description">{item.description}</p>
-            </FadeIn>
-          ))}
+                <div className="about-roadmap-card-content">
+                  <h3 className="about-roadmap-card-title">{item.title}</h3>
+                  <p className="about-roadmap-card-description">{item.description}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </section>

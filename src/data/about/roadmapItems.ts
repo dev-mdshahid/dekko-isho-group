@@ -4,10 +4,11 @@ export type RoadmapItem = {
   description: string
   icon: string
   iconAlt: string
-  wide?: boolean
 }
 
 const ROADMAP_ICONS = '/images/roadmap'
+
+export const ROADMAP_IMAGE = '/images/roadmap.jpg'
 
 export const roadmapItems: RoadmapItem[] = [
   {
@@ -16,7 +17,6 @@ export const roadmapItems: RoadmapItem[] = [
     description: 'Dedicated facility for dress shirts and premium formalwear.',
     icon: `${ROADMAP_ICONS}/portfolio.png`,
     iconAlt: 'Portfolio expansion icon',
-    wide: true,
   },
   {
     id: 'about-roadmap-outerwear',

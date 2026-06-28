@@ -7,6 +7,13 @@ export type LeadershipMember = {
   imageAlt: string
 }
 
+export type TopExecutivesContent = {
+  title: string
+  description: string
+  image: string
+  imageAlt: string
+}
+
 export const leadershipMembers: LeadershipMember[] = [
   {
     id: 'about-leadership-shahid-hossain',
@@ -36,3 +43,11 @@ export const leadershipMembers: LeadershipMember[] = [
     imageAlt: 'Prottoy Hossain, Director of Dekko ISHO Group',
   },
 ]
+
+export const topExecutivesContent: TopExecutivesContent = {
+  title: 'Top Executives',
+  description:
+    'People overseeing different departments are proactively steering the company towards new levels of success and innovation, ensuring a bright and prosperous future for the organization.',
+  image: '/images/top-executives.png',
+  imageAlt: 'Dekko ISHO Group top executives team photo',
+}
