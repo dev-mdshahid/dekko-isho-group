@@ -11907,14 +11907,99 @@ a.about-info-box:hover {
 }
 
 @media screen and (max-width: 767px) {
+  .service-section {
+    padding-top: 3rem;
+  }
+
   .service-section-gradient-spacer {
-    height: 3.125rem;
+    height: 2rem;
+  }
+
+  .service-section .section-title-wrap {
+    margin-top: 0.75rem;
+  }
+
+  .service-section .section-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .service-section .service-details-wrap .service-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+  }
+
+  .service-section .section-button-wrap {
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  .service-section .section-button-wrap .primary-button {
+    width: 100%;
+    display: block;
+  }
+
+  .service-section .section-button-wrap .button-primary-inner {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .service-section .service-info-link {
     display: flex;
     flex-flow: column;
     align-items: stretch;
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .service-section .service-info-inner {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .service-section .service-image-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .service-section .service-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .service-section .service-image-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .service-section .service-content-wrap {
+    width: 100%;
+  }
+
+  .service-section .service-name {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .service-section .service-feature-text {
+    font-size: 0.8125rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-section .service-feature-group .service-feature-text {
+    margin-bottom: 1rem;
+  }
+
+  .service-section .feature-item {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .service-section .service-card-action {
+    align-self: flex-start;
   }
 
   .service-section .service-name-wrapper {
@@ -12033,26 +12118,63 @@ a.about-info-box:hover {
 
 @media screen and (max-width: 767px) {
   .company-section {
-    background-position: 78% center;
-    min-height: 28rem;
+    background-position: 65% center;
+    min-height: auto;
+    height: auto;
+  }
+
+  .company-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.55) 0%,
+      rgba(10, 10, 10, 0.82) 45%,
+      rgba(10, 10, 10, 0.92) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
   }
 
   .company-section-inner {
-    min-height: 28rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    min-height: auto;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    align-items: flex-end;
   }
 
   .company-section-content {
     max-width: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   .company-section-title {
-    font-size: var(--font-size--1-75rem\<deleted\|variable-718b8370-7cf2-f6e7-6026-168fa1cd6d00\>);
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+    line-height: 1.15;
   }
 
   .company-section-description {
     max-width: 100%;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+  }
+
+  .company-section-button {
+    margin-top: 1.5rem;
+  }
+
+  .company-section-button .primary-button {
+    width: 100%;
+    display: block;
+  }
+
+  .company-section-button .button-primary-inner {
+    justify-content: space-between;
+    width: 100%;
   }
 }
 

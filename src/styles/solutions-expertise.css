@@ -248,16 +248,28 @@
 
   .solutions-expertise-menu {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     width: 100%;
+    max-width: 100%;
+    gap: 0;
     padding-top: 0;
+    padding-bottom: 0.25rem;
+  }
+
+  .solutions-expertise-menu::-webkit-scrollbar {
+    display: none;
   }
 
   .solutions-expertise-tab {
+    flex: 0 0 auto;
     border-left: 0;
     border-bottom: 3px solid var(--color--gray-4);
     padding: 0.75rem 1rem;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .solutions-expertise-tab.is-active {
@@ -271,6 +283,72 @@
 }
 
 @media screen and (max-width: 767px) {
+  .solutions-expertise-section.section-spacing-top {
+    padding-top: 3rem;
+  }
+
+  .solutions-expertise-section.section-spacing-bottom {
+    padding-bottom: 3rem;
+  }
+
+  .solutions-expertise-content {
+    padding-inline: 0;
+  }
+
+  .solutions-expertise-header {
+    margin-bottom: 2rem;
+    gap: 1.25rem;
+    padding-inline: 0;
+  }
+
+  .solutions-expertise-title {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  .solutions-expertise-section .pre-section-title {
+    font-size: 0.8125rem;
+  }
+
+  .solutions-expertise-body {
+    min-height: auto;
+  }
+
+  .solutions-expertise-panel {
+    gap: 1.25rem;
+  }
+
+  .solutions-expertise-menu {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+    max-width: 100%;
+    gap: 0;
+    padding-bottom: 0.25rem;
+    margin-inline: -0.9375rem;
+    padding-inline: 0.9375rem;
+  }
+
+  .solutions-expertise-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .solutions-expertise-tab {
+    flex: 0 0 auto;
+    border-left: 0;
+    border-bottom: 3px solid var(--color--gray-4);
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+
+  .solutions-expertise-tab.is-active {
+    border-bottom-color: var(--color--secondary-amaranth);
+  }
+
   .solutions-expertise-card-inner {
     flex-direction: column;
     gap: var(--gap--gap-8);
@@ -289,11 +367,18 @@
   }
 
   .solutions-expertise-card-title {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 
   .solutions-expertise-card-description {
-    font-size: 1rem;
+    font-size: 0.9375rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .solutions-expertise-feature-item {
+    align-items: flex-start;
+    font-size: 0.875rem;
+    line-height: 1.4;
   }
 
   .solutions-expertise-decor {
