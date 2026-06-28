@@ -1,3 +1,11 @@
+/* About page — shell */
+
+.about-content {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 /* About page — hero section */
 
 .about-hero-section {
@@ -66,8 +74,19 @@
 
 @media screen and (max-width: 767px) {
   .about-hero-inner {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 8rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .about-hero-section .about-hero-title {
+    font-size: clamp(1.625rem, 7.5vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .about-hero-subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    padding-inline: 0.25rem;
   }
 }
 
@@ -77,7 +96,8 @@
   --about-marquee-font-size: clamp(2.5rem, 15cqw, 128px);
   position: relative;
   z-index: 2;
-  overflow: visible;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .image-info-about .grid-hero-about {
@@ -110,7 +130,7 @@
   width: 100%;
   height: auto;
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -127,11 +147,49 @@
   text-align: center;
   color: #ffffff4d;
   white-space: nowrap;
-  overflow: visible;
+  overflow: hidden;
   transform: translateY(30%);
 }
 
 @media screen and (max-width: 991px) {
+  .image-info-about .grid-hero-about {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .image-info-about .about-image-left,
+  .image-info-about .about-info-right {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .image-info-about .about-image {
+    height: clamp(14rem, 42vw, 24rem);
+    object-fit: cover;
+  }
+
+  .image-info-about .about-hero-content {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .image-info-about .about-hero-description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .image-info-about .about-hero-button {
+    width: 100%;
+  }
+
+  .image-info-about .about-hero-button .primary-button {
+    width: 100%;
+    display: block;
+  }
+
+  .image-info-about .about-hero-button .button-primary-inner {
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .image-info-about {
     --about-marquee-font-size: clamp(2.25rem, 12vw, 96px);
   }
@@ -145,29 +203,41 @@
   }
 
   .image-info-about .about-info-right {
-    min-height: 28rem;
+    min-height: auto;
+    padding-bottom: calc(var(--about-marquee-font-size) * 0.55);
+    overflow: hidden;
   }
 }
 
 @media screen and (max-width: 767px) {
   .image-info-about {
-    --about-marquee-font-size: clamp(2rem, 11vw, 72px);
+    --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
   .image-info-about .about-hero-text-marquee {
-    --about-marquee-font-size: clamp(2rem, 11vw, 72px);
+    --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
   .image-info-about + .about-three-section {
-    --about-marquee-font-size: clamp(2rem, 11vw, 72px);
+    --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
   .image-info-about .about-info-right {
-    min-height: 24rem;
+    min-height: auto;
+    padding-bottom: calc(var(--about-marquee-font-size) * 0.5);
   }
 
   .image-info-about .about-hero-text-marquee .marquee-text {
     padding: 0 0.75rem;
+    transform: translateY(22%);
+  }
+
+  .image-info-about .about-hero-content {
+    padding: 1.75rem 1.25rem 1.25rem;
+  }
+
+  .image-info-about .about-image {
+    height: clamp(12rem, 52vw, 18rem);
   }
 }
 
@@ -294,21 +364,66 @@
 
 @media screen and (max-width: 767px) {
   .about-three-section .about-three-header {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1.25rem;
   }
 
   .about-three-section .about-three-header-badge {
     grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
   }
 
   .about-three-section .about-three-title {
-    grid-column: 2;
+    grid-column: 1;
+    grid-row: 2;
     justify-self: center;
     text-align: center;
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
   }
 
   .about-three-section .grid-about-three-content {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-three-section .about-three-content-main {
+    gap: 2rem;
+  }
+
+  .about-three-section .about-author-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .about-three-section .about-story-title,
+  .about-three-section .about-service-title {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-three-section .about-story-description,
+  .about-three-section .service-name-three {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .about-three-section .service-three-button {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .about-three-section .service-three-button .primary-button {
+    width: 100%;
+    display: block;
+  }
+
+  .about-three-section .service-three-button .button-primary-inner {
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
@@ -430,13 +545,13 @@
 
 @media screen and (max-width: 767px) {
   .about-purpose-main {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .about-purpose-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2rem;
     align-items: start;
   }
 
@@ -444,8 +559,28 @@
     align-self: start;
   }
 
+  .about-purpose-title {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-purpose-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .about-purpose-block-title {
+    font-size: 1rem;
+  }
+
+  .about-purpose-block-text,
+  .about-purpose-value-item {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
   .about-purpose-separator {
-    margin: 16px 0;
+    margin: 1.25rem 0;
   }
 }
 
@@ -596,22 +731,33 @@
 
 @media screen and (max-width: 767px) {
   .about-journey-section {
-    --about-journey-year-width: 3rem;
-    --about-journey-column-gap: 1rem;
-    --about-journey-content-gap: 2rem;
+    --about-journey-year-width: 2.75rem;
+    --about-journey-column-gap: 0.75rem;
+    --about-journey-content-gap: 1.75rem;
   }
 
   .about-journey-section .about-journey-header {
-    margin-bottom: var(--gap--gap-10);
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .about-journey-section .about-journey-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
   }
 
   .about-journey-section .about-journey-year,
   .about-journey-section .about-journey-item-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   .about-journey-section .about-journey-description {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .about-journey-section .about-journey-content {
+    gap: 1rem;
   }
 }
 
@@ -770,11 +916,36 @@
 
 @media screen and (max-width: 767px) {
   .about-strength-section--about .about-strength-main {
-    gap: var(--gap--gap-8);
+    gap: 2rem;
+  }
+
+  .about-strength-section--about .about-strength-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .about-strength-section--about .about-strength-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
 
   .about-strength-section--about .about-strength-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .about-strength-section--about .about-strength-card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .about-strength-section--about .about-strength-card-title {
+    font-size: 1.125rem;
+  }
+
+  .about-strength-section--about .about-strength-card-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
 }
 
@@ -914,21 +1085,45 @@
 }
 
 @media screen and (max-width: 767px) {
+  .about-chairman-section--about.section-spacing {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .about-chairman-section--about .about-chairman-grid {
+    row-gap: 2rem;
+  }
+
+  .about-chairman-section--about .about-chairman-portrait {
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
   .about-chairman-section--about .about-chairman-name {
-    font-size: 2.625rem;
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+  }
+
+  .about-chairman-section--about .about-chairman-role {
+    font-size: 1rem;
   }
 
   .about-chairman-section--about .about-chairman-quote {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
   }
 
   .about-chairman-section--about .about-chairman-label {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.25rem;
   }
 
   .about-chairman-section--about .about-chairman-divider {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-chairman-section--about .about-chairman-paragraph {
+    font-size: 0.9375rem;
+    line-height: 1.55;
   }
 }
 
@@ -1099,15 +1294,39 @@
 
 @media screen and (max-width: 767px) {
   .about-leadership-section--about .about-leadership-header {
-    margin-bottom: var(--gap--gap-8);
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .about-leadership-section--about .about-leadership-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
   }
 
   .about-leadership-section--about .about-leadership-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
   }
 
   .about-leadership-section--about .about-leadership-card-image-wrap {
-    height: 17rem;
+    height: 14rem;
+  }
+
+  .about-leadership-section--about .about-leadership-card-body {
+    padding: 1.25rem;
+  }
+
+  .about-leadership-section--about .about-leadership-card-name {
+    font-size: 1.25rem;
+  }
+
+  .about-leadership-section--about .about-leadership-card-role {
+    font-size: 1rem;
+  }
+
+  .about-leadership-section--about .about-leadership-card-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
 }
 
@@ -1251,23 +1470,46 @@
 
 @media screen and (max-width: 767px) {
   .about-roadmap-section--about .about-roadmap-header {
-    margin-bottom: var(--gap--gap-8);
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .about-roadmap-section--about .about-roadmap-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
   }
 
   .about-roadmap-section--about .about-roadmap-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
   }
 
   .about-roadmap-section--about .about-roadmap-card--wide {
     grid-column: span 1;
   }
 
+  .about-roadmap-section--about .about-roadmap-card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .about-roadmap-section--about .about-roadmap-card-icon-wrap {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .about-roadmap-section--about .about-roadmap-card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   .about-roadmap-section--about .about-roadmap-card-title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   .about-roadmap-section--about .about-roadmap-card-description {
-    font-size: 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
 }
 
@@ -1343,15 +1585,94 @@
 }
 
 @media screen and (max-width: 767px) {
+  .about-contact-section--about.cta-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .about-contact-section--about .about-contact-header {
+    padding-inline: 0.25rem;
+  }
+
   .about-contact-section--about .about-contact-title {
-    font-size: clamp(2rem, 6vw, 2.625rem);
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .about-contact-section--about .about-contact-form-wrap {
+    width: 100%;
   }
 
   .about-contact-section--about .about-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .about-contact-section--about .about-contact-form-left {
+    display: contents;
+  }
+
+  .about-contact-section--about .about-contact-form-right {
+    order: 3;
+    height: auto;
+    min-height: 0;
+  }
+
+  .about-contact-section--about #about-contact-name {
+    order: 1;
+  }
+
+  .about-contact-section--about #about-contact-email {
+    order: 2;
+  }
+
   .about-contact-section--about .about-contact-textarea {
-    min-height: 8.25rem;
+    min-height: 8rem;
+    flex: none;
+  }
+
+  .about-contact-section--about .about-contact-submit {
+    order: 4;
+    margin-top: 0;
+  }
+}
+
+/* About page — video section (full-bleed on mobile) */
+
+@media screen and (max-width: 767px) {
+  .about-content .video-section .hero-video-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .about-content .video-section .hero-video {
+    aspect-ratio: 16 / 10;
+  }
+
+  .about-content .video-section .hero-video.hero-video--ready {
+    aspect-ratio: 16 / 10;
+    height: auto;
+    position: relative;
+  }
+
+  .about-content .video-section .hero-video.hero-video--ready .hero-video-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about-content .video-section .hero-video-control {
+    bottom: 1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }

@@ -25,7 +25,7 @@ export function AboutContent() {
   useWebflowInit(ref)
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="about-content">
       <AboutHeroSection />
       <AboutImageInfoSection />
       <AboutOverviewSection />
