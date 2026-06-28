@@ -4,7 +4,9 @@ import { SustainabilityBadge } from './SustainabilityBadge'
 
 export function SustainabilityPillar01Section() {
   return (
-    <section className="sustain-pillar-section sustain-pillar-section--light sustain-pillar-section--environment">
+    <section className="sustain-pillar-section sustain-pillar-section--environment">
+      <div className="sustain-pillar-texture-overlay" aria-hidden="true" />
+
       <div className="container-medium">
         <FadeIn id="sustain-pillar01-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">
@@ -22,25 +24,35 @@ export function SustainabilityPillar01Section() {
             <FadeIn
               key={item.id}
               id={`sustain-p01-${item.id}`}
-              className="sustain-initiative-card"
+              className="sustain-initiative-card-wrap"
               delay={index * 50}
             >
-              <div className="sustain-initiative-number">{item.number}</div>
-              <div className="sustain-initiative-content">
-                <h3 className="sustain-initiative-title">{item.title}</h3>
-                <p className="sustain-initiative-description">{item.description}</p>
-                <div className="sustain-initiative-metric">
-                  <span className="sustain-initiative-metric-value">{item.metricValue}</span>{' '}
-                  <span className="sustain-initiative-metric-label">{item.metricLabel}</span>
+              <article className="sustain-initiative-card">
+                <div className="sustain-initiative-media">
+                  <img
+                    src={item.image}
+                    loading="lazy"
+                    alt={item.imageAlt}
+                    className="sustain-initiative-image"
+                  />
+                  <div className="sustain-initiative-number">{item.number}</div>
                 </div>
-              </div>
+                <div className="sustain-initiative-content">
+                  <h3 className="sustain-initiative-title">{item.title}</h3>
+                  <p className="sustain-initiative-description">{item.description}</p>
+                  <div className="sustain-initiative-metric">
+                    <span className="sustain-initiative-metric-value">{item.metricValue}</span>{' '}
+                    <span className="sustain-initiative-metric-label">{item.metricLabel}</span>
+                  </div>
+                </div>
+              </article>
             </FadeIn>
           ))}
         </div>
 
         <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-banner">
           <div className="sustain-snapshot-header">
-            <SustainabilityBadge title={pillar01.snapshotBadge} variant="dark" />
+            <SustainabilityBadge title={pillar01.snapshotBadge} />
             <h3 className="sustain-snapshot-headline">{pillar01.snapshotHeadline}</h3>
           </div>
           <div className="sustain-snapshot-kpis">

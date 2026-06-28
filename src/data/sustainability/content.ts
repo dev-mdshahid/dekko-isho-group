@@ -70,7 +70,11 @@ export type InitiativeCard = {
   description: string
   metricValue: string
   metricLabel: string
+  image: string
+  imageAlt: string
 }
+
+const pillar1Image = (file: string) => `/images/sustainability/pillar-1/${file}`
 
 export const pillar01 = {
   number: '01',
@@ -84,50 +88,66 @@ export const pillar01 = {
       number: '01',
       title: 'Energy Management & Climate Action',
       description:
-        'Solar installations, I-REC procurement and energy-efficiency programmes across all manufacturing sites.',
+        'Tracking and refining energy use across operations - solar, I-REC and efficiency on the path to 80% clean energy by 2030.',
       metricValue: '1.76 MWp',
       metricLabel: 'Solar capacity installed',
+      image: pillar1Image('energy-management.png'),
+      imageAlt: 'Solar panel array at a manufacturing facility',
     },
     {
       id: 'ghg',
       number: '02',
       title: 'GHG Emissions Performance',
-      description: 'Scope-2 emissions reduction through renewable energy transition and efficiency gains.',
+      description:
+        'Scope 1 & 2 monitored to international standards, SBTi-aligned and verified under ISO 14064-1 & 14064-2.',
       metricValue: '80%',
       metricLabel: 'Scope-2 reduction (2025)',
+      image: pillar1Image('ghg-emission.jpg'),
+      imageAlt: 'Industrial facility with emissions monitoring infrastructure',
     },
     {
       id: 'water',
       number: '03',
       title: 'Water Stewardship',
-      description: 'Comprehensive water withdrawal tracking and conservation programmes at every facility.',
+      description:
+        'Rainwater harvesting plus reuse from sewage and greywater treatment plants to cut our dependency on groundwater.',
       metricValue: '766k m³',
       metricLabel: 'withdrawal tracked (2025)',
+      image: pillar1Image('water-stewardship.jpg'),
+      imageAlt: 'Flowing water representing water stewardship programmes',
     },
     {
       id: 'effluent',
       number: '04',
       title: 'Effluent & Wastewater Management',
-      description: 'Advanced ETP capacity with zero liquid discharge roadmap by 2030.',
+      description:
+        'Reducing pollution and maximising water reuse with advanced treatment to protect surrounding communities.',
       metricValue: '130 m³/hr',
       metricLabel: 'ETP capacity & ZLD by 2030',
+      image: pillar1Image('wastewater-management.jpg'),
+      imageAlt: 'Effluent and wastewater treatment facility',
     },
     {
       id: 'waste',
       number: '05',
       title: 'Waste Management & Circularity',
-      description: 'Textile waste diversion and recycling across production lines and supply partners.',
+      description:
+        'A circular system where resources are reused and repurposed – textiles, paper, lube oil and e-waste, via certified partners.',
       metricValue: '650T',
       metricLabel: 'Textile waste recycled',
+      image: pillar1Image('waste-management.jpg'),
+      imageAlt: 'Circular waste management and recycling infrastructure',
     },
     {
       id: 'chemical',
       number: '06',
       title: 'Energy Management & Climate Action',
       description:
-        'Higg FEM, BHive and CleanChain verified chemical management with full ZDHC Level 3 compliance.',
+        'System-driven control aligned to global standards – 88% Higg FEM, digital tracking via BHive & CleanChain, zero compromise.',
       metricValue: '100%',
       metricLabel: 'ZDHC Level 3 compliant',
+      image: pillar1Image('energy-management-2.png'),
+      imageAlt: 'Rooftop solar installation on a factory building',
     },
   ] satisfies InitiativeCard[],
   snapshotBadge: 'Performance snapshot',

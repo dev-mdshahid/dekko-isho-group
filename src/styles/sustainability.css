@@ -7,6 +7,7 @@
   --sustain-green-muted: #4caf7a;
   --sustain-blue: var(--color--primary);
   --sustain-blue-light: #e3f3fa;
+  --sustain-card-shadow: color-mix(in srgb, var(--color--secondary-dark-spring-green) 24%, transparent);
 }
 
 /* ── Hero ── */
@@ -65,7 +66,7 @@
 }
 
 .sustain-badge-square {
-  background-color: var(--color--primary-1);
+  background-color: var(--color--secondary-mint);
   width: 8px;
   height: 8px;
   flex: none;
@@ -446,22 +447,51 @@
 }
 
 /* ── Pillar numbers ── */
+.sustain-pillar-section--environment {
+  background-color: var(--color--white);
+  background-image: url('/images/backgrounds/section-texture-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sustain-pillar-section--environment .sustain-pillar-texture-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: rgb(255 255 255 / 80%);
+}
+
+.sustain-pillar-section--environment .container-medium {
+  position: relative;
+  z-index: 1;
+}
+
 .sustain-pillar-section--environment .sustain-pillar-number {
-  color: var(--sustain-green-light);
+  color: var(--color--secondary-dark-spring-green);
+  opacity: 0.4;
 }
 
 .sustain-pillar-section--social .sustain-pillar-number {
   color: var(--sustain-blue-light);
 }
 
-.sustain-pillar-section--environment .sustain-initiative-number {
-  background-color: var(--sustain-green-dark);
-  border-color: var(--sustain-green-dark);
+.sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-number {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  background-color: var(--color--secondary-dark-spring-green);
+  border: none;
+  border-radius: 8px;
   color: var(--color--white);
+  width: 2rem;
+  height: 2rem;
 }
 
 .sustain-pillar-section--environment .sustain-initiative-metric-value {
-  color: var(--sustain-green);
+  color: var(--color--secondary-dark-spring-green);
 }
 
 .sustain-pillar-section--social .sustain-initiative-number {
@@ -478,13 +508,49 @@
 .sustain-initiatives-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--gap--gap-6);
+  gap: 20px;
   position: relative;
   z-index: 1;
   margin-bottom: 3.75rem;
 }
 
-.sustain-initiative-card,
+.sustain-initiative-card-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.sustain-initiative-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 1rem;
+  background-color: var(--color--white);
+  box-shadow: 0 1.25rem 3.75rem var(--sustain-card-shadow);
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  width: 100%;
+  min-height: 100%;
+  padding: var(--gap--gap-7);
+}
+
+.sustain-initiative-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--color--gray-5);
+}
+
+.sustain-initiative-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .sustain-social-card {
   border-radius: var(--border-radius--md);
   background-color: var(--color--gray-5);
@@ -511,11 +577,29 @@
   align-items: center;
 }
 
+.sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-content {
+  display: flex;
+  flex-flow: column;
+  gap: 0;
+  flex: 1;
+  padding: 0;
+}
+
 .sustain-initiative-content {
   display: flex;
   flex-flow: column;
   gap: 0;
   flex: 1;
+}
+
+.sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-title {
+  color: var(--color--dark);
+  font-size: 1.25rem;
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1.3;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0.625rem;
 }
 
 .sustain-initiative-title {
@@ -528,6 +612,16 @@
   margin-bottom: 0.625rem;
 }
 
+.sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-description {
+  color: var(--color--gray-2);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
 .sustain-initiative-description {
   color: var(--color--gray-2);
   font-size: 18px;
@@ -535,6 +629,14 @@
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: 0;
   margin-bottom: 60px;
+}
+
+.sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-metric {
+  border-top: 1px solid var(--color--gray-4);
+  font-size: var(--_typography---body--body-xs);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .sustain-initiative-metric {
@@ -557,8 +659,9 @@
 
 /* ── Performance snapshot ── */
 .sustain-snapshot-banner {
-  border-radius: var(--border-radius--md);
-  background-color: var(--color--dark);
+  border-radius: 1.5rem;
+  background-color: var(--color--white);
+  box-shadow: 0 1.25rem 3.75rem var(--sustain-card-shadow);
   padding: 2.5rem 2rem;
   position: relative;
   z-index: 1;
@@ -573,7 +676,7 @@
 }
 
 .sustain-snapshot-headline {
-  color: var(--color--white);
+  color: var(--color--dark);
   font-family: var(--_typography---font-family--heading);
   font-size: 1.5rem;
   font-weight: var(--_typography---h3--font-weight-600);
@@ -581,7 +684,8 @@
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 28rem;
+  width: 100%;
+  max-width: none;
 }
 
 .sustain-snapshot-kpis {
@@ -604,11 +708,11 @@
 }
 
 .sustain-snapshot-kpi:not(:last-child) {
-  border-right: 1px solid #ffffff1a;
+  border-right: 1px solid var(--color--gray-4);
 }
 
 .sustain-snapshot-kpi-value {
-  color: var(--color--primary-1);
+  color: var(--color--secondary-mint);
   font-family: var(--_typography---font-family--heading);
   font-size: 1.75rem;
   font-weight: var(--_typography---h3--font-weight-600);
@@ -618,7 +722,7 @@
 }
 
 .sustain-snapshot-kpi-label {
-  color: var(--color--gray-3);
+  color: var(--color--gray-2);
   font-size: var(--_typography---body--body-xs);
   line-height: 1.4em;
   letter-spacing: var(--_typography---body--letter-spacing);
@@ -1371,7 +1475,7 @@
     border-right: none;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid #ffffff1a;
+    border-bottom: 1px solid var(--color--gray-4);
   }
 
   .sustain-snapshot-kpi:last-child {
