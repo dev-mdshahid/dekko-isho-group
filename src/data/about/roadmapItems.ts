@@ -8,7 +8,7 @@ export type RoadmapItem = {
 
 const ROADMAP_ICONS = '/images/roadmap'
 
-export const ROADMAP_IMAGE = '/images/roadmap.jpg'
+export const ROADMAP_IMAGE = '/images/roadmap.png'
 
 export const roadmapItems: RoadmapItem[] = [
   {

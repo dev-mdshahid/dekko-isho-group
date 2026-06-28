@@ -167,14 +167,21 @@ export type SocialCard = {
   description: string
   metricValue: string
   metricLabel: string
+  image: string
+  imageAlt: string
 }
 
 export type GovernanceRow = {
   id: string
   title: string
   count: number
+  image: string
+  imageAlt: string
   policies: [string[], string[]]
 }
+
+const pillar2Image = (file: string) => `/images/sustainability/pillar-2/${file}`
+const pillar2FrameworkImage = (file: string) => `/images/sustainability/pillar-2/framework/${file}`
 
 export const pillar02 = {
   number: '02',
@@ -191,6 +198,8 @@ export const pillar02 = {
         'Meaningful benefits and continuous support – performance & festival bonuses, maternity benefits, loan facilities and the Aastha fair-price shop.',
       metricValue: '16,815',
       metricLabel: 'People behind every stitch',
+      image: pillar2Image('empowering-employees.jpg'),
+      imageAlt: 'Employees gathered outside the Aastha fair-price shop',
     },
     {
       id: 'wellness',
@@ -200,15 +209,19 @@ export const pillar02 = {
         'Childcare facilities, nutritional support for children & pregnant employees, on-site medical care, free eye-test campaigns and celebration days.',
       metricValue: '9+',
       metricLabel: 'Welfare & wellbeing programs',
+      image: pillar2Image('employee-wellness.jpg'),
+      imageAlt: 'Children at an employee wellness programme',
     },
     {
       id: 'upskilling',
       number: '03',
       title: 'Upskilling',
       description:
-        'P.A.C.E, WE Women, Mothers@Work and a structured orientation + refreshment → advanced training framework with green-skills and 5S.',
+        'P.A.C.E, WE Women, Mothers@Work and a structured orientation -> refreshment -> advanced training framework with green-skills and 5S.',
       metricValue: '20 hrs',
       metricLabel: 'Avg. training / person target',
+      image: pillar2Image('upskilling.png'),
+      imageAlt: 'Garment design sketches on a computer monitor',
     },
     {
       id: 'community',
@@ -218,6 +231,8 @@ export const pillar02 = {
         'Nutrition, education, healthcare and disaster support — 510 family food packages, 150,000 vegetable seeds, and aid for single mothers and children.',
       metricValue: '৳5M',
       metricLabel: 'Flood relief to government',
+      image: pillar2Image('community-care.jpg'),
+      imageAlt: 'Community members receiving relief supplies',
     },
     {
       id: 'governance',
@@ -227,6 +242,8 @@ export const pillar02 = {
         'Strong governance is the foundation — codes of ethics, anti-corruption, risk management, supply-chain governance and grievance policies guide every decision.',
       metricValue: '23',
       metricLabel: 'Policies across E, S & G',
+      image: pillar2Image('governance.png'),
+      imageAlt: 'Modern corporate building representing governance',
     },
   ] satisfies SocialCard[],
   governanceBadge: 'Governance',
@@ -236,6 +253,8 @@ export const pillar02 = {
       id: 'environmental',
       title: 'Environmental',
       count: 9,
+      image: pillar2FrameworkImage('environment.jpg'),
+      imageAlt: 'Hands holding soil with a green sprout',
       policies: [
         [
           'Environmental Management System',
@@ -251,6 +270,8 @@ export const pillar02 = {
       id: 'social',
       title: 'Social',
       count: 7,
+      image: pillar2FrameworkImage('social.png'),
+      imageAlt: 'Hand holding a miniature globe with wind turbines',
       policies: [
         [
           'Human Rights Policy',
@@ -265,6 +286,8 @@ export const pillar02 = {
       id: 'governance',
       title: 'Governance',
       count: 7,
+      image: pillar2FrameworkImage('governance.png'),
+      imageAlt: 'Modern glass skyscraper at night',
       policies: [
         [
           'Code of Ethics & Conduct',

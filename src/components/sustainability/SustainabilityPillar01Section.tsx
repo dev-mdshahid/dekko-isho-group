@@ -1,6 +1,7 @@
 import { pillar01 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
+import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
 
 export function SustainabilityPillar01Section() {
   return (
@@ -27,25 +28,7 @@ export function SustainabilityPillar01Section() {
               className="sustain-initiative-card-wrap"
               delay={index * 50}
             >
-              <article className="sustain-initiative-card">
-                <div className="sustain-initiative-media">
-                  <img
-                    src={item.image}
-                    loading="lazy"
-                    alt={item.imageAlt}
-                    className="sustain-initiative-image"
-                  />
-                  <div className="sustain-initiative-number">{item.number}</div>
-                </div>
-                <div className="sustain-initiative-content">
-                  <h3 className="sustain-initiative-title">{item.title}</h3>
-                  <p className="sustain-initiative-description">{item.description}</p>
-                  <div className="sustain-initiative-metric">
-                    <span className="sustain-initiative-metric-value">{item.metricValue}</span>{' '}
-                    <span className="sustain-initiative-metric-label">{item.metricLabel}</span>
-                  </div>
-                </div>
-              </article>
+              <SustainabilityInitiativeCard item={item} />
             </FadeIn>
           ))}
         </div>
