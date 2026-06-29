@@ -30,7 +30,7 @@ export function SustainabilityPillar02Section() {
     <section className="sustain-pillar-section sustain-pillar-section--social">
       <div className="sustain-pillar-texture-overlay" aria-hidden="true" />
 
-      <div className="container-medium">
+      <div className="container-medium sustain-pillar02-container">
         <FadeIn id="sustain-pillar02-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">
             {pillar02.number}

@@ -8,7 +8,7 @@ export function SustainabilityPillar01Section() {
     <section className="sustain-pillar-section sustain-pillar-section--environment">
       <div className="sustain-pillar-texture-overlay" aria-hidden="true" />
 
-      <div className="container-medium">
+      <div className="container-medium sustain-pillar01-container">
         <FadeIn id="sustain-pillar01-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">
             {pillar01.number}

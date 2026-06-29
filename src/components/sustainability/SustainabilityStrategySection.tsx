@@ -35,7 +35,10 @@ export function SustainabilityStrategySection() {
                   <div className="sustain-metric-label">{metric.label}</div>
                 </div>
               </div>
-              <div className="sustain-metric-card-footer">by 2030</div>
+              <div className="sustain-metric-card-footer">
+                <span className="sustain-metric-card-footer-by">by</span>{' '}
+                <span className="sustain-metric-card-footer-year">2030</span>
+              </div>
             </FadeIn>
           ))}
         </div>

@@ -254,7 +254,7 @@
 
 /* ── Strategy ── */
 .sustain-strategy-section {
-  background-color: #f3f3f3;
+  background-color: var(--color--neutral-seasalt);
   position: relative;
   overflow: hidden;
 }
@@ -267,6 +267,9 @@
 .sustain-strategy-container {
   z-index: 2;
   position: relative;
+  max-width: 1500px;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
 }
 
 .sustain-strategy-header {
@@ -274,17 +277,21 @@
   flex-flow: column;
   align-items: flex-start;
   gap: var(--gap--gap-6);
-  max-width: 46rem;
+  width: 100%;
+  max-width: none;
   margin-bottom: var(--gap--gap-10);
+}
+
+.sustain-strategy-header .sustain-section-title,
+.sustain-strategy-header .sustain-section-description,
+.sustain-strategy-title,
+.sustain-strategy-description {
+  max-width: none;
+  width: 100%;
 }
 
 .sustain-strategy-title {
   font-weight: var(--_typography---h1--font-weight-700);
-  max-width: 36rem;
-}
-
-.sustain-strategy-description {
-  max-width: 46rem;
 }
 
 .sustain-metrics-row {
@@ -305,7 +312,7 @@
 .sustain-metric-card-media {
   position: relative;
   flex: none;
-  height: 8.5rem;
+  height: 8rem;
   overflow: hidden;
 }
 
@@ -329,7 +336,7 @@
   align-items: flex-start;
   gap: 0.25rem;
   height: 100%;
-  padding: 0.75rem 0.875rem 0.625rem;
+  padding: 20px;
 }
 
 .sustain-metric-value {
@@ -343,21 +350,32 @@
 
 .sustain-metric-label {
   color: var(--color--white);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.35em;
   letter-spacing: var(--_typography---body--letter-spacing);
-  max-width: 8.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: none;
 }
 
 .sustain-metric-card-footer {
   flex: none;
   padding: 0.75rem 0.875rem;
   background-color: var(--color--white);
-  font-size: 0.6875rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.4em;
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1;
   letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-metric-card-footer-by {
+  font-size: 0.875rem;
+  font-weight: var(--_typography---body--font-weight-500);
+}
+
+.sustain-metric-card-footer-year {
+  font-size: 1.3rem;
+  font-weight: var(--_typography---body--font-weight-600);
 }
 
 .sustain-metric-card--renewable .sustain-metric-card-footer {
@@ -461,7 +479,10 @@
   background-color: var(--color--white);
 }
 
-.sustain-pillar03-container {
+.sustain-pillar01-container,
+.sustain-pillar02-container,
+.sustain-pillar03-container,
+.sustain-pillar04-container {
   max-width: 1500px;
   margin-inline: auto;
   padding-inline: 2.5rem;
@@ -573,7 +594,7 @@
   gap: 20px;
   width: 100%;
   min-height: 100%;
-  padding: var(--gap--gap-7);
+  padding: 2.5rem;
 }
 
 .sustain-initiative-media {
@@ -653,7 +674,7 @@
   line-height: 1.5;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: 0;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
   flex: 1;
 }
 
@@ -663,7 +684,7 @@
   line-height: 1.5em;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: 0;
-  margin-bottom: 60px;
+  margin-bottom: 2.5rem;
 }
 
 .sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-metric,
@@ -822,7 +843,7 @@
 .sustain-governance-row-media {
   position: relative;
   width: 100%;
-  height: 12rem;
+  height: 14rem;
   overflow: hidden;
   border-radius: 12px;
   background-color: var(--color--gray-5);
@@ -1120,12 +1141,6 @@
 }
 
 /* ── ESG Reports (Pillar 04) ── */
-.sustain-pillar04-container {
-  max-width: 1500px;
-  margin-inline: auto;
-  padding-inline: 2.5rem;
-}
-
 .sustain-pillar04-hero-wrap {
   position: relative;
   z-index: 1;
@@ -1550,11 +1565,11 @@
     padding-bottom: 4rem;
   }
 
-  .sustain-pillar03-container {
-    padding-inline: var(--_layout---container-medium-gutter);
-  }
-
-  .sustain-pillar04-container {
+  .sustain-pillar01-container,
+  .sustain-pillar02-container,
+  .sustain-pillar03-container,
+  .sustain-pillar04-container,
+  .sustain-strategy-container {
     padding-inline: var(--_layout---container-medium-gutter);
   }
 
