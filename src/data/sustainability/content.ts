@@ -345,22 +345,26 @@ export const pillar04 = {
   title: 'ESG Disclosure',
   description:
     'In accordance with Global Reporting Initiative (GRI) standards, our sustainability reports communicate our goals, progress, challenges and impact across every ESG area.',
+  heroImage: '/images/sustainability/pillar-4/pillar-4-cover.jpg',
+  heroImageAlt: 'A tree-lined pathway surrounded by lush bamboo and tropical greenery',
   reports: [
     {
-      id: '2024',
-      year: '2024',
-      title: 'Sustainability Report 2024',
-      description: 'Annual ESG performance overview and progress against 2030 targets.',
+      id: '2025',
+      coverImage: '/images/sustainability/pillar-4/sustainability-report-2025.png',
+      title: 'Sustainability Report 2025',
+      description:
+        'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
       variant: 'light' as const,
-      pdfHref: '/documents/sustainability/sustainability-report-2024.pdf',
+      comingSoon: true,
     },
     {
-      id: '2025',
-      year: '2025',
-      title: 'Sustainability Report 2025',
-      description: 'Latest disclosures on climate, social impact and governance milestones.',
+      id: '2024',
+      coverImage: '/images/sustainability/pillar-4/sustainability-report-2024.png',
+      title: 'Sustainability Report 2024',
+      description:
+        'Our first transparent view of the journey toward responsible and sustainable operations – structured disclosures and comprehensive data across E, S & G.',
       variant: 'dark' as const,
-      comingSoon: true,
+      pdfHref: '/documents/sustainability/sustainability-report-2024.pdf',
     },
   ],
   ctaText: 'Reporting since 2024 — aligned to GRI standards, with continuous year-on-year disclosure.',
