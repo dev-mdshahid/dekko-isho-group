@@ -1,10 +1,8 @@
 import { type RefObject, useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 import { revealFadeIns } from '../lib/fadeInReveal'
-
-gsap.registerPlugin(ScrollToPlugin)
+import { prefersReducedMotion } from '../lib/animations/prefersReducedMotion'
+import { getLenis, scrollToElement } from '../lib/smoothScroll'
 
 function afterAnchorScroll(target: HTMLElement) {
   const reveal = () => {
@@ -37,14 +35,13 @@ export function useAnchorScroll(containerRef: RefObject<HTMLElement | null>) {
 
       event.preventDefault()
 
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const reducedMotion = prefersReducedMotion()
+      const lenis = getLenis()
 
-      gsap.killTweensOf(window)
-
-      if (reducedMotion) {
-        gsap.to(window, {
-          scrollTo: { y: target, autoKill: false },
-          duration: 0,
+      if (lenis) {
+        lenis.scrollTo(target, {
+          immediate: reducedMotion,
+          duration: reducedMotion ? undefined : 1.1,
           onComplete: () => {
             history.pushState(null, '', href)
             afterAnchorScroll(target)
@@ -53,10 +50,9 @@ export function useAnchorScroll(containerRef: RefObject<HTMLElement | null>) {
         return
       }
 
-      gsap.to(window, {
-        scrollTo: { y: target, autoKill: true },
-        duration: 1.1,
-        ease: 'power2.inOut',
+      scrollToElement(target, {
+        immediate: reducedMotion,
+        duration: reducedMotion ? undefined : 1.1,
         onComplete: () => {
           history.pushState(null, '', href)
           afterAnchorScroll(target)
