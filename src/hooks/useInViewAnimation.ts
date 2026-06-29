@@ -31,7 +31,16 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       const targetOpacity = el.classList.contains('industry-image-bg') ? 0.7 : 1
       const delayMs = Number.parseInt(el.dataset.fadeDelay ?? '0', 10)
       const delay = Number.isFinite(delayMs) ? delayMs / 1000 : 0
-      gsap.to(el, { opacity: targetOpacity, y: 0, duration: 0.6, ease: 'power2.out', delay, overwrite: 'auto' })
+      const isSlideInBottom = el.dataset.fadeVariant === 'slide-in-bottom'
+
+      gsap.to(el, {
+        opacity: targetOpacity,
+        y: 0,
+        duration: isSlideInBottom ? 1 : 0.6,
+        ease: isSlideInBottom ? 'power4.out' : 'power2.out',
+        delay,
+        overwrite: 'auto',
+      })
       observer?.unobserve(el)
     }
 
@@ -72,7 +81,8 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       )
 
       targets.forEach((el) => {
-        gsap.set(el, { opacity: 0, y: 24 })
+        const isSlideInBottom = el.dataset.fadeVariant === 'slide-in-bottom'
+        gsap.set(el, { opacity: 0, y: isSlideInBottom ? 80 : 24 })
         if (isInViewport(el) || isNearViewport(el)) {
           reveal(el)
         } else {

@@ -6,27 +6,59 @@ export function HeroSection() {
     <section className="hero-section">
       <div className="hero-inner">
         <div className="container-full hero-title-area">
-          <h1 className="hero-title">
-            <span className="hero-title-line">
-              Elevating <span className="hero-title-accent hero-title-accent--primary">Excellence</span>
+          <h1 className="hero-title" data-home-animate="hero-title">
+            <span className="hero-title-line-mask" data-home-animate="hero-line">
+              <span className="hero-title-line">
+                Elevating{' '}
+                <span
+                  className="hero-title-accent hero-title-accent--primary"
+                  data-home-animate="hero-accent"
+                >
+                  Excellence
+                </span>
+              </span>
             </span>
-            <span className="hero-title-line">
-              Through{' '}
-              <span className="hero-title-accent hero-title-accent--green">Sustainable</span>{' '}
-              <span className="hero-title-accent hero-title-accent--red">Progress</span>
+            <span className="hero-title-line-mask" data-home-animate="hero-line">
+              <span className="hero-title-line">
+                Through{' '}
+                <span
+                  className="hero-title-accent hero-title-accent--green"
+                  data-home-animate="hero-accent"
+                >
+                  Sustainable
+                </span>{' '}
+                <span
+                  className="hero-title-accent hero-title-accent--red"
+                  data-home-animate="hero-accent"
+                >
+                  Progress
+                </span>
+              </span>
             </span>
           </h1>
         </div>
 
         <div className="hero-bottom">
           <div className="container-full">
-            <div className="hero-tagline">
-              <span className="hero-tagline-line" aria-hidden="true" />
-              <p className="hero-tagline-text">Born in Bangladesh. Trusted Worldwide</p>
-              <span className="hero-tagline-line" aria-hidden="true" />
+            <div className="hero-tagline" data-home-animate="hero-tagline">
+              <span
+                className="hero-tagline-line"
+                data-home-animate="hero-tagline-line"
+                aria-hidden="true"
+              />
+              <p className="hero-tagline-text" data-home-animate="hero-tagline-text">
+                Born in Bangladesh. Trusted Worldwide
+              </p>
+              <span
+                className="hero-tagline-line"
+                data-home-animate="hero-tagline-line"
+                aria-hidden="true"
+              />
             </div>
           </div>
-          <CompanyLogosSection />
+          <div data-home-animate="hero-logos">
+            <CompanyLogosSection />
+          </div>
         </div>
       </div>
 

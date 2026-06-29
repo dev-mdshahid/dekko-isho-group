@@ -510,3 +510,94 @@
     width: 100%;
   }
 }
+
+/* Home — animation hooks */
+
+.hero-title-line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-home-animate='hero-line'] {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  [data-home-animate='hero-accent'] {
+    opacity: 0;
+  }
+
+  [data-home-animate='hero-tagline-line'] {
+    transform: scaleX(0);
+  }
+
+  [data-home-animate='hero-tagline-text'] {
+    opacity: 0;
+  }
+
+  [data-home-animate='hero-logos'] {
+    opacity: 0;
+  }
+}
+
+.about-section .about-business-card[data-home-animate='about-card'] {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.about-section .about-business-card__media {
+  transition: transform 0.35s ease;
+}
+
+.company-section-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0a0a0a;
+  background-image: url('/images/awards/all-awards.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.company-section-gradient-text {
+  background-size: 200% auto;
+  animation: company-gradient-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes company-gradient-shimmer {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.solutions-expertise-card-inner[data-home-animate='solutions-panel'] {
+  overflow: hidden;
+}
+
+.home-contact-section .page-contact-input:focus-visible,
+.home-contact-section .page-contact-textarea:focus-visible {
+  outline: none;
+  border-color: var(--home-contact-accent, var(--color--primary));
+  box-shadow: 0 0 0 3px rgb(90 190 140 / 0.2);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .company-section-gradient-text {
+    animation: none;
+  }
+
+  .about-section .about-business-card[data-home-animate='about-card'] {
+    will-change: auto;
+  }
+}
+

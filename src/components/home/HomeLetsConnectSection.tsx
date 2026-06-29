@@ -83,6 +83,7 @@ export function HomeLetsConnectSection() {
                   decoding="async"
                   alt="Dekko ISHO Group reception desk"
                   className="page-contact-visual-image"
+                  data-home-animate="contact-visual"
                 />
               </FadeIn>
 
@@ -122,10 +123,12 @@ export function HomeLetsConnectSection() {
             </div>
 
             <div className="page-contact-right home-contact-right">
-              <FadeIn id="home-contact-form" delay={200} className="page-contact-form-card w-form">
+              <div className="page-contact-form-card w-form" data-home-animate="contact-form-card">
                 <div className="page-contact-form-intro">
-                  <h3 className="page-contact-form-title">Start A Conversation</h3>
-                  <p className="page-contact-form-description">
+                  <h3 className="page-contact-form-title" data-home-animate="contact-field">
+                    Start A Conversation
+                  </h3>
+                  <p className="page-contact-form-description" data-home-animate="contact-field">
                     Get in touch with us with your queries. Our dedicated team will get back to you with answers as soon
                     as possible.
                   </p>
@@ -139,7 +142,7 @@ export function HomeLetsConnectSection() {
                   style={status === 'success' ? { display: 'none' } : undefined}
                   noValidate
                 >
-                  <div className="page-contact-field">
+                  <div className="page-contact-field" data-home-animate="contact-field">
                     <label htmlFor="home-contact-name" className="page-contact-field-label">
                       Name
                     </label>
@@ -155,7 +158,7 @@ export function HomeLetsConnectSection() {
                   </div>
 
                   <div className="page-contact-field-row">
-                    <div className="page-contact-field">
+                    <div className="page-contact-field" data-home-animate="contact-field">
                       <label htmlFor="home-contact-email" className="page-contact-field-label">
                         Email address *
                       </label>
@@ -169,7 +172,7 @@ export function HomeLetsConnectSection() {
                         required
                       />
                     </div>
-                    <div className="page-contact-field">
+                    <div className="page-contact-field" data-home-animate="contact-field">
                       <label htmlFor="home-contact-phone" className="page-contact-field-label">
                         Phone number
                       </label>
@@ -184,7 +187,7 @@ export function HomeLetsConnectSection() {
                     </div>
                   </div>
 
-                  <div className="page-contact-field">
+                  <div className="page-contact-field" data-home-animate="contact-field">
                     <label htmlFor="home-contact-message" className="page-contact-field-label">
                       Message
                     </label>
@@ -202,6 +205,7 @@ export function HomeLetsConnectSection() {
                     type="submit"
                     aria-label="Submit contact form"
                     className="page-contact-submit w-button"
+                    data-home-animate="contact-submit"
                     value={status === 'submitting' ? 'Please wait...' : 'Submit'}
                     disabled={status === 'submitting'}
                   />
@@ -219,7 +223,7 @@ export function HomeLetsConnectSection() {
                 >
                   <div>Oops! Something went wrong while submitting the form.</div>
                 </div>
-              </FadeIn>
+              </div>
             </div>
           </div>
         </div>

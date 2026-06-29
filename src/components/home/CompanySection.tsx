@@ -4,10 +4,20 @@ import { FadeIn } from '../ui/FadeIn'
 export function CompanySection() {
   return (
     <section className="company-section">
+      <div
+        className="company-section-bg"
+        data-home-animate="company-bg"
+        aria-hidden="true"
+      />
       <div className="company-section-inner">
-        <FadeIn id="company-section-content" className="company-section-content">
+        <FadeIn
+          id="company-section-content"
+          variant="slide-in-bottom"
+          className="company-section-content"
+        >
           <h2 className="company-section-title section-title text-white">
-            The Relentless&nbsp;<span className="text-linear-gradient">Pursuit</span>
+            The Relentless&nbsp;
+            <span className="text-linear-gradient company-section-gradient-text">Pursuit</span>
             <br />
             of Making a Difference
           </h2>

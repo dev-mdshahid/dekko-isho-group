@@ -2865,6 +2865,17 @@ a.about-info-box:hover {
   position: sticky;
 }
 
+.service-section [data-home-animate='service-card'] .service-info-link {
+  transform-origin: center top;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-section [data-home-animate='service-card'] .service-info-link {
+    will-change: auto;
+  }
+}
+
 .service-list,
 .service-list-item {
   width: 100%;
@@ -12099,10 +12110,6 @@ a.about-info-box:hover {
 
 .company-section {
   background-color: #0a0a0a;
-  background-image: url('/images/awards/all-awards.png');
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 900px;
   position: relative;
   overflow: hidden;

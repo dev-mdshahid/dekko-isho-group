@@ -231,6 +231,7 @@ function IndustryImageCircle({ src, alt, variant = 'default', logo, href }: Indu
           <a
             href={href}
             className="about-business-card"
+            data-home-animate="about-card"
             aria-label={alt}
             target="_blank"
             rel="noopener noreferrer"
@@ -244,6 +245,7 @@ function IndustryImageCircle({ src, alt, variant = 'default', logo, href }: Indu
         <Link
           to={href}
           className="about-business-card"
+          data-home-animate="about-card"
           aria-label={alt}
           onClick={() => resetScrollPosition()}
         >
@@ -252,7 +254,11 @@ function IndustryImageCircle({ src, alt, variant = 'default', logo, href }: Indu
       )
     }
 
-    return <div className="about-business-card">{card}</div>
+    return (
+      <div className="about-business-card" data-home-animate="about-card">
+        {card}
+      </div>
+    )
   }
 
   if (src) {
@@ -440,14 +446,15 @@ export function AboutSection() {
             </FadeIn>
           </div>
 
-          <div
-            className="about-carousel"
-            onMouseEnter={pauseCarousel}
-            onMouseLeave={resumeCarousel}
-            onFocusCapture={pauseCarousel}
-            onBlurCapture={resumeCarousel}
-          >
-            <div ref={viewportRef} className="about-scroll-viewport about-carousel-viewport">
+          <div className="about-carousel" data-home-animate="about-carousel">
+            <div
+              ref={viewportRef}
+              className="about-scroll-viewport about-carousel-viewport"
+              onMouseEnter={pauseCarousel}
+              onMouseLeave={resumeCarousel}
+              onFocusCapture={pauseCarousel}
+              onBlurCapture={resumeCarousel}
+            >
               <div
                 ref={trackRef}
                 className={`about-info-inner is-scroll about-carousel-track${prefersReducedMotion ? ' is-reduced-motion' : ''}`}

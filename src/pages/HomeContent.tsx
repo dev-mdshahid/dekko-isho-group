@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 
 import { useAnchorScroll } from '../hooks/useAnchorScroll'
+import { useHomeAnimations } from '../hooks/useHomeAnimations'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 
@@ -24,6 +25,7 @@ export function HomeContent() {
 
   useLegacyLinkInterceptor(ref)
   useAnchorScroll(ref)
+  useHomeAnimations(ref)
   useInViewAnimation(ref)
 
   useWebflowInit(ref)

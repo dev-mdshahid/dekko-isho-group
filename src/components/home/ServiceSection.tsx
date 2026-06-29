@@ -113,9 +113,11 @@ export function ServiceSection() {
             </div>
           </FadeIn>
           <div className="service-info">
-            {serviceSpecialities.map((speciality) => (
+            {serviceSpecialities.map((speciality, index) => (
               <div
                 key={speciality.id}
+                data-home-animate="service-card"
+                data-home-animate-index={index}
                 className={`service-list-wrapper ${speciality.wrapperClass} w-dyn-list`}
               >
                 <div role="list" className="service-list w-dyn-items">
