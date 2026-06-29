@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 
 import {
-  SustainabilityCTASection,
   SustainabilityHeroImageSection,
   SustainabilityHeroSection,
   SustainabilityPillar01Section,

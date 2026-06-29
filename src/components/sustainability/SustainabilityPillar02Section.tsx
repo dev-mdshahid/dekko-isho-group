@@ -77,16 +77,18 @@ export function SustainabilityPillar02Section() {
                     </span>
                   </div>
                 </div>
-                {row.policies.map((column) => (
-                  <ul key={column.join('-')} className="sustain-governance-list">
-                    {column.map((policy) => (
-                      <li key={policy} className="sustain-governance-item">
-                        <CheckIcon />
-                        <span>{policy}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ))}
+                <div className="sustain-governance-row-policies">
+                  {row.policies.map((column) => (
+                    <ul key={column.join('-')} className="sustain-governance-list">
+                      {column.map((policy) => (
+                        <li key={policy} className="sustain-governance-item">
+                          <CheckIcon />
+                          <span>{policy}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
