@@ -16,6 +16,7 @@ export function SustainabilityHeroImageSection() {
         className="sustain-hero-image-bg"
         onError={() => setImgSrc(sustainabilityHeroImage.fallbackSrc)}
       />
+      <div className="sustain-hero-image-dark-overlay" aria-hidden="true" />
       <div className="sustain-hero-image-overlay" aria-hidden="true" />
 
       <div className="sustain-hero-image-content">

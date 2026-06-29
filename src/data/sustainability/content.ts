@@ -253,7 +253,7 @@ export const pillar02 = {
       id: 'environmental',
       title: 'Environmental',
       count: 9,
-      image: pillar2FrameworkImage('environment.jpg'),
+      image: pillar2FrameworkImage('environment.png'),
       imageAlt: 'Hands holding soil with a green sprout',
       policies: [
         [
@@ -270,7 +270,7 @@ export const pillar02 = {
       id: 'social',
       title: 'Social',
       count: 7,
-      image: pillar2FrameworkImage('social.png'),
+      image: pillar2FrameworkImage('social.jpg'),
       imageAlt: 'Hand holding a miniature globe with wind turbines',
       policies: [
         [
