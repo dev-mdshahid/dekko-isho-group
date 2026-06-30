@@ -172,51 +172,21 @@
 .sustain-hero-image-section {
   position: relative;
   width: 100%;
-  min-height: 62.5rem;
+  min-height: auto;
   overflow: hidden;
-}
-
-.sustain-hero-image-bg {
-  object-fit: cover;
-  object-position: center;
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: absolute;
-  inset: 0;
-}
-
-.sustain-hero-image-dark-overlay {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: rgb(0 0 0 / 18%);
-}
-
-.sustain-hero-image-overlay {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(
-      180deg,
-      rgb(0 0 0 / 28%) 0%,
-      rgb(0 0 0 / 8%) 22%,
-      rgb(0 0 0 / 10%) 42%,
-      rgb(0 0 0 / 38%) 62%,
-      rgb(0 0 0 / 72%) 78%,
-      rgb(0 0 0 / 92%) 100%
-    );
+  background-color: #000;
+  background-image: url('/images/backgrounds/sustainability-hero-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .sustain-hero-image-content {
   z-index: 1;
   position: relative;
   width: 100%;
-  min-height: 62.5rem;
-  padding: 3.5rem 5rem 3.25rem;
+  min-height: auto;
+  padding: 0 5rem 3.25rem;
   display: flex;
   margin: 0;
   max-width: none;
@@ -226,30 +196,28 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 100%;
-  max-width: 1500px;
-  min-height: 100%;
+  max-width: 1320px;
   margin-inline: auto;
+  padding-bottom: 100px;
 }
 
 .sustain-hero-image-top {
   width: 100%;
+  padding-top: 200px;
+  margin-bottom: 200px;
 }
 
 .sustain-hero-image-middle {
-  position: absolute;
-  top: 42%;
-  right: 0;
-  transform: translateY(-50%);
-  width: auto;
-  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 200px;
 }
 
 .sustain-hero-image-brand {
   flex: none;
   text-align: right;
-  pointer-events: auto;
 }
 
 .sustain-hero-image-section .sustain-accent-line {
@@ -259,22 +227,29 @@
   align-self: stretch;
 }
 
+.sustain-hero-image-quote-wrap {
+  width: 100%;
+}
+
 .sustain-hero-image-quote-row {
   display: flex;
   align-items: stretch;
   gap: 1rem;
-  max-width: 34rem;
+  width: 100%;
+  max-width: none;
 }
 
 .sustain-hero-image-quote {
   color: var(--color--white);
   font-family: var(--_typography---font-family--body);
-  font-size: 1.75rem;
-  font-weight: var(--_typography---body--font-weight-500);
+  font-size: 42px;
+  font-weight: var(--_typography---body--font-weight-600);
   line-height: 1.35;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: 0;
   margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .sustain-hero-image-company {
@@ -301,6 +276,7 @@
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: 0;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .sustain-impact-framework-title-accent {
@@ -317,24 +293,31 @@
   margin-top: 0;
   margin-bottom: 5rem;
   margin-inline: 0;
-  max-width: min(66%, 62.5rem);
+  width: 100%;
+  max-width: none;
   text-align: left;
 }
 
 .sustain-impact-metrics {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, max-content));
+  justify-content: start;
   align-items: stretch;
+  column-gap: 3rem;
 }
 
 .sustain-impact-metric {
   position: relative;
   display: flex;
   flex-flow: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  text-align: center;
-  padding-inline: 1.5rem;
+  text-align: left;
+  padding-inline: 0;
+}
+
+.sustain-impact-metric:not(:first-child) {
+  padding-left: 1.5rem;
 }
 
 .sustain-impact-metric:not(:first-child)::before {
@@ -366,7 +349,7 @@
   line-height: 1.3;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin: 0;
-  max-width: 11rem;
+  white-space: nowrap;
 }
 
 /* ── Shared section typography ── */
@@ -1456,17 +1439,20 @@
   }
 
   .sustain-hero-image-content {
-    min-height: 48rem;
-    padding: 2.5rem 1.75rem 3rem;
+    padding: 0 1.75rem 3rem;
+  }
+
+  .sustain-hero-image-top {
+    padding-top: clamp(5rem, 12vw, 200px);
+    margin-bottom: clamp(8rem, 18vw, 400px);
   }
 
   .sustain-hero-image-middle {
-    top: 36%;
-    right: 0;
+    margin-bottom: clamp(8rem, 18vw, 400px);
   }
 
   .sustain-hero-image-quote {
-    font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+    font-size: clamp(1.25rem, 3.5vw, 42px);
     line-height: 1.35;
   }
 
@@ -1511,7 +1497,7 @@
 
   .sustain-impact-metric-label {
     font-size: 1rem;
-    max-width: none;
+    white-space: nowrap;
   }
 
   .sustain-pillar-number {
@@ -1657,23 +1643,16 @@
   }
 
   .sustain-hero-image-content {
-    min-height: auto;
-    padding: 2.5rem var(--_layout---container-medium-gutter) 2.5rem;
+    padding: 0 var(--_layout---container-medium-gutter) 2.5rem;
   }
 
   .sustain-hero-image-top {
-    width: 100%;
+    padding-top: 5rem;
+    margin-bottom: 6rem;
   }
 
   .sustain-hero-image-middle {
-    position: relative;
-    top: auto;
-    right: auto;
-    transform: none;
-    display: flex;
-    justify-content: flex-end;
-    padding-block: 1rem;
-    pointer-events: auto;
+    margin-bottom: 6rem;
   }
 
   .sustain-hero-image-quote-row {
@@ -1723,6 +1702,10 @@
     padding: 1.25rem 0;
   }
 
+  .sustain-impact-metric:not(:first-child) {
+    padding-left: 0;
+  }
+
   .sustain-impact-metric::before {
     display: none;
   }
@@ -1746,7 +1729,7 @@
 
   .sustain-impact-metric-label {
     font-size: 1rem;
-    max-width: none;
+    white-space: nowrap;
   }
 
   /* Initiative cards */
@@ -2033,7 +2016,7 @@
   }
 
   .sustain-hero-image-content {
-    padding-block: 2.5rem;
+    padding-inline: var(--_layout---container-medium-gutter);
   }
 
   .sustain-pillar-section {

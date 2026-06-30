@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import {
   strategyMetrics,
   strategySection,
@@ -8,21 +6,8 @@ import {
 import { FadeIn } from '../ui/FadeIn'
 
 export function SustainabilityHeroImageSection() {
-  const [imgSrc, setImgSrc] = useState(sustainabilityHeroImage.src)
-
   return (
     <section className="sustain-hero-image-section">
-      <img
-        src={imgSrc}
-        loading="eager"
-        alt=""
-        aria-hidden="true"
-        className="sustain-hero-image-bg"
-        onError={() => setImgSrc(sustainabilityHeroImage.fallbackSrc)}
-      />
-      <div className="sustain-hero-image-dark-overlay" aria-hidden="true" />
-      <div className="sustain-hero-image-overlay" aria-hidden="true" />
-
       <div className="sustain-hero-image-content">
         <div className="sustain-hero-image-inner">
           <div className="sustain-hero-image-top">

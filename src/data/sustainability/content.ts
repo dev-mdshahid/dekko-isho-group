@@ -11,8 +11,6 @@ export const sustainabilityHero = {
 }
 
 export const sustainabilityHeroImage = {
-  src: '/images/sustainability/sus.png',
-  fallbackSrc: '/images/about/compliance.jpg',
   quoteLines: [
     'The Earth is our only home – it is',
     'our responsibility to protect it.',
