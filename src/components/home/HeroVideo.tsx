@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+import { setupHeroVideoExpand } from '../../lib/animations/home/video'
 
 const HERO_VIDEO = '/videos/hero-video-2.mp4'
 const HERO_VIDEO_ID = 'home-hero-video'
@@ -21,9 +24,28 @@ function PlayIcon() {
 }
 
 export function HeroVideo() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
+  const scalerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isReady, setIsReady] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const stage = stageRef.current
+    const scaler = scalerRef.current
+    if (!section || !stage || !scaler) return
+
+    const cleanup = setupHeroVideoExpand({
+      section,
+      stage,
+      scaler,
+      media: videoRef.current,
+    })
+
+    return cleanup
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
@@ -43,6 +65,16 @@ export function HeroVideo() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!isReady) return
+
+    const frame = requestAnimationFrame(() => {
+      ScrollTrigger.refresh()
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [isReady])
+
   const handleCanPlay = useCallback(() => {
     setIsReady(true)
   }, [])
@@ -59,40 +91,49 @@ export function HeroVideo() {
   }, [])
 
   return (
-    <div className="hero-video-wrap">
-      <div className={`hero-video${isReady ? ' hero-video--ready' : ''}`}>
-        {!isReady && (
-          <div className="hero-video-loading" aria-hidden="true">
-            <div className="hero-video-loader" role="status" aria-label="Loading video" />
+    <section
+      ref={sectionRef}
+      className="home-hero-video-section"
+      data-home-animate="hero-video-section"
+      aria-label="Hero video"
+    >
+      <div ref={stageRef} className="hero-video-stage">
+        <div ref={scalerRef} className="hero-video-scaler">
+          <div className={`hero-video${isReady ? ' hero-video--ready' : ''}`}>
+              {!isReady && (
+                <div className="hero-video-loading" aria-hidden="true">
+                  <div className="hero-video-loader" role="status" aria-label="Loading video" />
+                </div>
+              )}
+
+              <video
+                ref={videoRef}
+                id={HERO_VIDEO_ID}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                onCanPlay={handleCanPlay}
+                className={`hero-video-media${isReady ? ' hero-video-media--visible' : ''}`}
+              >
+                <source src={HERO_VIDEO} type="video/mp4" />
+              </video>
+
+              {isReady && (
+                <button
+                  type="button"
+                  onClick={togglePlayback}
+                  aria-controls={HERO_VIDEO_ID}
+                  aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                  className="hero-video-control"
+                >
+                  {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                </button>
+              )}
+            </div>
           </div>
-        )}
-
-        <video
-          ref={videoRef}
-          id={HERO_VIDEO_ID}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          onCanPlay={handleCanPlay}
-          className={`hero-video-media${isReady ? ' hero-video-media--visible' : ''}`}
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-
-        {isReady && (
-          <button
-            type="button"
-            onClick={togglePlayback}
-            aria-controls={HERO_VIDEO_ID}
-            aria-label={isPlaying ? 'Pause video' : 'Play video'}
-            className="hero-video-control"
-          >
-            {isPlaying ? <PauseIcon /> : <PlayIcon />}
-          </button>
-        )}
       </div>
-    </div>
+    </section>
   )
 }
