@@ -112,10 +112,10 @@ export function SolutionsExpertiseSection() {
       <div className="container-full">
         <div className="solutions-expertise-content">
           <div className="solutions-expertise-header">
-            <FadeIn id="solutions-expertise-pill" className="solutions-expertise-pill-wrap">
+            <FadeIn id="solutions-expertise-pill" variant="slide-in-bottom" className="solutions-expertise-pill-wrap">
               <PreSectionTitle title="Transforming ideas into world-class solutions" />
             </FadeIn>
-            <FadeIn id="solutions-expertise-title" className="solutions-expertise-title-wrap">
+            <FadeIn id="solutions-expertise-title" variant="slide-in-bottom" delay={120} className="solutions-expertise-title-wrap">
               <h2 className="section-title solutions-expertise-title title-center">
                 Comprehensive <span className="hero-title-accent--red">Solutions</span>
                 <br />
@@ -124,7 +124,7 @@ export function SolutionsExpertiseSection() {
             </FadeIn>
           </div>
 
-          <FadeIn id="solutions-expertise-body" delay={120} className="solutions-expertise-body">
+          <FadeIn id="solutions-expertise-body" variant="slide-in-bottom" delay={250} className="solutions-expertise-body">
             <div className="solutions-expertise-panel">
               <div
                 ref={menuRef}

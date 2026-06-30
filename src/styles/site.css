@@ -247,6 +247,7 @@ body {
   background-color: var(--_color---body-bg);
   font-family: var(--_typography---font-family--body);
   color: var(--_color---body-text);
+  overflow-x: hidden;
   font-size: var(--_typography---body--body-sm);
   line-height: var(--_typography---body--line-height);
   font-weight: var(--_typography---body--font-weight-500);
@@ -11720,6 +11721,17 @@ a.about-info-box:hover {
   align-items: start;
 }
 
+.service-section .service-image-main:has(> .service-image-wrap:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.service-section .service-icon {
+  width: 65px;
+  height: 65px;
+  flex: none;
+  object-fit: contain;
+}
+
 .service-section .service-content-wrap {
   align-items: start;
 }
@@ -11844,6 +11856,20 @@ a.about-info-box:hover {
     white-space: normal;
   }
 
+  .service-section .service-image-main {
+    grid-column-gap: 24px;
+    grid-template-columns: 48px minmax(0, 1fr);
+  }
+
+  .service-section .service-image-main:has(> .service-image-wrap:only-child) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-section .service-icon {
+    width: 48px;
+    height: 48px;
+  }
+
   .service-section .service-feature-text {
     margin-bottom: 24px;
   }
@@ -11910,17 +11936,6 @@ a.about-info-box:hover {
     padding: 1.25rem;
   }
 
-  .service-section .cta-button,
-  .service-section .cta-button .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .service-section .cta-button .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
-
   .service-section .cta-button .button-text-wrap {
     flex: 1;
   }
@@ -11955,15 +11970,6 @@ a.about-info-box:hover {
     width: 100%;
   }
 
-  .service-section .section-button-wrap .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .service-section .section-button-wrap .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
 
   .service-section .service-info-link {
     display: flex;
@@ -12152,30 +12158,23 @@ a.about-info-box:hover {
 
 @media screen and (max-width: 767px) {
   .company-section {
-    background-position: 65% center;
     min-height: auto;
     height: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .company-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(10, 10, 10, 0.55) 0%,
-      rgba(10, 10, 10, 0.82) 45%,
-      rgba(10, 10, 10, 0.92) 100%
-    );
-    pointer-events: none;
-    z-index: 0;
+    display: none;
   }
 
   .company-section-inner {
+    order: 1;
     min-height: auto;
+    height: auto;
     padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    align-items: flex-end;
+    padding-bottom: 1.5rem;
+    align-items: flex-start;
   }
 
   .company-section-content {
@@ -12201,15 +12200,6 @@ a.about-info-box:hover {
     margin-top: 1.5rem;
   }
 
-  .company-section-button .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .company-section-button .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
 }
 
 .company-logos-section {

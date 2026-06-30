@@ -65,7 +65,7 @@ export function HomeLetsConnectSection() {
         <div className="container-full">
           <div className="page-contact-grid home-contact-grid">
             <div className="page-contact-left">
-              <FadeIn id="home-contact-left-top" delay={100} className="home-contact-left-top">
+              <FadeIn id="home-contact-left-top" variant="slide-in-bottom" delay={100} className="home-contact-left-top">
                 <div className="page-contact-hero">
                   <h2 className="page-contact-title">
                     Let&apos;s <span className="page-contact-accent">Connect</span>
@@ -76,7 +76,7 @@ export function HomeLetsConnectSection() {
                   </p>
                 </div>
 
-                <FadeIn id="home-contact-image" delay={200} className="page-contact-visual home-contact-visual">
+                <FadeIn id="home-contact-image" variant="slide-in-bottom" delay={200} className="page-contact-visual home-contact-visual">
                 <img
                   src={RECEPTION_IMAGE}
                   loading="lazy"

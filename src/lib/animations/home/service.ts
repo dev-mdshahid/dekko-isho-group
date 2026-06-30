@@ -25,7 +25,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 1.0,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: card,
@@ -72,9 +72,9 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
         {
           opacity: 1,
           y: 0,
-          duration: 0.4,
+          duration: 0.7,
           ease: 'power2.out',
-          stagger: 0.05,
+          stagger: 0.08,
           scrollTrigger: {
             trigger: card,
             start: 'top 75%',
@@ -96,9 +96,9 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
       {
         opacity: 1,
         y: 0,
-        duration: 0.4,
+        duration: 0.7,
         ease: 'power2.out',
-        stagger: 0.05,
+        stagger: 0.08,
         scrollTrigger: {
           trigger: lastCard,
           start: 'top 75%',

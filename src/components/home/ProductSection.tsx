@@ -10,7 +10,7 @@ export function ProductSection() {
       <div className="product-main section-spacing">
         <div className="container">
           <div className="products-counter-main">
-            <FadeIn id="5dc285f3-2c1b-5d8e-a87b-8fc080957d58" className="products-counter-wrap">
+            <FadeIn id="5dc285f3-2c1b-5d8e-a87b-8fc080957d58" variant="slide-in-bottom" className="products-counter-wrap">
               <PreSectionTitle title="What we manufacture" variant="bg-dark" />
               <div className="products-counter-inner">
                 <div className="inner-number like-score">
@@ -41,8 +41,8 @@ export function ProductSection() {
         <div className="product-info-wrap">
           <div className="container-full">
             <div className="w-layout-grid grid-products">
-              {homeProducts.map((product) => (
-                <FadeIn key={product.id} id={product.id} className="product-info-main">
+              {homeProducts.map((product, index) => (
+                <FadeIn key={product.id} id={product.id} variant="slide-in-bottom" delay={index * 150} className="product-info-main">
                   <h3 className="product-name">{product.name}</h3>
                   <div className="product-image-wrapper">
                     <img
@@ -73,7 +73,7 @@ export function ProductSection() {
         </div>
         <div className="container">
           <div className="product-inner-info">
-            <FadeIn id="272f39e4-51eb-e15a-5d52-d0b9bb610f28" className="product-info-title">
+            <FadeIn id="272f39e4-51eb-e15a-5d52-d0b9bb610f28" variant="slide-in-bottom" className="product-info-title">
               <h3>Explore our complete product range across industries.</h3>
             </FadeIn>
           </div>

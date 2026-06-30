@@ -64,7 +64,33 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
     ScrollTrigger.refresh()
   })
 
-  mm.add('(max-width: 991px), (prefers-reduced-motion: reduce)', () => {
+  mm.add('(max-width: 991px) and (prefers-reduced-motion: no-preference)', () => {
+    const mobileGap = 48
+
+    gsap.set(scaler, { width: `calc(100% - ${mobileGap * 2}px)`, marginLeft: 'auto', marginRight: 'auto', borderRadius: '0.75rem' })
+
+    const expandTween = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'top 40%',
+        scrub: 0.6,
+        invalidateOnRefresh: true,
+      },
+    })
+
+    expandTween.to(scaler, { width: '100%', borderRadius: '0rem', ease: 'none' }, 0)
+
+    cleanups.push(() => {
+      expandTween.scrollTrigger?.kill()
+      expandTween.kill()
+      gsap.set(scaler, { clearProps: 'width,marginLeft,marginRight,borderRadius' })
+    })
+
+    ScrollTrigger.refresh()
+  })
+
+  mm.add('(prefers-reduced-motion: reduce)', () => {
     gsap.set([scaler, stage], { clearProps: 'all' })
   })
 

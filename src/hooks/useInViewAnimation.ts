@@ -36,7 +36,7 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       gsap.to(el, {
         opacity: targetOpacity,
         y: 0,
-        duration: isSlideInBottom ? 1 : 0.6,
+        duration: isSlideInBottom ? 1.5 : 1.0,
         ease: isSlideInBottom ? 'power4.out' : 'power2.out',
         delay,
         overwrite: 'auto',
@@ -83,11 +83,7 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
       targets.forEach((el) => {
         const isSlideInBottom = el.dataset.fadeVariant === 'slide-in-bottom'
         gsap.set(el, { opacity: 0, y: isSlideInBottom ? 80 : 24 })
-        if (isInViewport(el) || isNearViewport(el)) {
-          reveal(el)
-        } else {
-          observer?.observe(el)
-        }
+        observer?.observe(el)
       })
     }
 

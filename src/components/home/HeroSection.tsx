@@ -18,6 +18,7 @@ export function HeroSection() {
                   Excellence
                 </span>
               </span>
+              <span className="hero-title-caret" aria-hidden="true" />
             </span>
             <span className="hero-title-line-mask" data-home-animate="hero-line">
               <span className="hero-title-line">
@@ -35,6 +36,7 @@ export function HeroSection() {
                   Progress
                 </span>
               </span>
+              <span className="hero-title-caret" aria-hidden="true" />
             </span>
           </h1>
         </div>

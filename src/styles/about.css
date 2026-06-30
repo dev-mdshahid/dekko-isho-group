@@ -90,6 +90,18 @@
   }
 }
 
+/* About page — hero animation hooks */
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-about-animate='hero-line'] {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .about-hero-section .about-hero-subtitle {
+    opacity: 0;
+  }
+}
+
 /* About page — image + info section */
 
 .image-info-about .about-image-slideshow {
@@ -210,15 +222,6 @@
     width: 100%;
   }
 
-  .image-info-about .about-hero-button .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .image-info-about .about-hero-button .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
 
   .image-info-about {
     --about-marquee-font-size: clamp(2.25rem, 12vw, 96px);
@@ -450,15 +453,6 @@
     width: 100%;
   }
 
-  .about-three-section .service-three-button .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .about-three-section .service-three-button .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
 }
 
 /* About page — purpose section */

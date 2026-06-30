@@ -21,7 +21,7 @@ export function initAboutAnimations(scope: ParentNode): AnimationCleanup {
       {
         scale: 1,
         opacity: 1,
-        duration: 0.9,
+        duration: 1.4,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: carousel,

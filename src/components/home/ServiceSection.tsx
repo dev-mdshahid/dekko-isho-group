@@ -96,22 +96,40 @@ export function ServiceSection() {
     <section className="service-section">
       <div className="container-full">
         <div className="service-details-main">
-          <FadeIn id="238c3f25-28e9-d07e-772d-22cc173e9e24" className="service-details-wrap">
-            <PreSectionTitle title="Precision at Global Scale " />
+          <div className="service-details-wrap">
+            <FadeIn id="238c3f25-28e9-d07e-772d-22cc173e9e24-pre" variant="slide-in-bottom">
+              <PreSectionTitle title="Precision at Global Scale " />
+            </FadeIn>
             <div className="section-title-wrap">
               <div className="section-title-intro">
-                <h2 className="section-title">
+                <h2
+                  className="section-title"
+                  data-fade-in
+                  data-fade-variant="slide-in-bottom"
+                  data-fade-delay="100"
+                >
                   Weaving the <span className="text-linear-gradient">Future</span> of Fashion
                 </h2>
-                <p className="service-description">
+                <p
+                  className="service-description"
+                  data-fade-in
+                  data-fade-variant="slide-in-bottom"
+                  data-fade-delay="220"
+                >
                   Where precision meets excellence, and every stitch reflects a global standard.
                 </p>
               </div>
-              <div id="w-node-e23adfcb-92aa-cd61-ca12-ef84ce0764ac-ae320c59" className="section-button-wrap">
+              <div
+                id="w-node-e23adfcb-92aa-cd61-ca12-ef84ce0764ac-ae320c59"
+                className="section-button-wrap"
+                data-fade-in
+                data-fade-variant="slide-in-bottom"
+                data-fade-delay="340"
+              >
                 <ButtonArrow to="#About-Section" label="Explore all capabilities" />
               </div>
             </div>
-          </FadeIn>
+          </div>
           <div className="service-info">
             {serviceSpecialities.map((speciality, index) => (
               <div

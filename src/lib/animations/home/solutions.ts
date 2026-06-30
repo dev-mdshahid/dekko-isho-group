@@ -66,18 +66,18 @@ export function animateSolutionsTabPanel(panel: HTMLElement | null) {
 
   const tl = gsap.timeline()
 
-  tl.to(panel, { opacity: 1, x: 0, duration: 0.35, ease: 'power2.out' })
+  tl.to(panel, { opacity: 1, x: 0, duration: 0.55, ease: 'power2.out' })
 
   if (image) {
-    tl.to(image, { scale: 1, duration: 0.45, ease: 'power2.out' }, 0)
+    tl.to(image, { scale: 1, duration: 0.7, ease: 'power2.out' }, 0)
   }
 
   if (title || description) {
     tl.fromTo(
       [title, description].filter(Boolean),
       { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out', stagger: 0.06 },
-      0.08,
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.09 },
+      0.12,
     )
   }
 
@@ -85,8 +85,8 @@ export function animateSolutionsTabPanel(panel: HTMLElement | null) {
     tl.fromTo(
       features,
       { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.28, ease: 'power2.out', stagger: 0.04 },
-      0.12,
+      { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.06 },
+      0.18,
     )
   }
 }

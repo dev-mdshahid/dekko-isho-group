@@ -17,7 +17,28 @@ export function initContactAnimations(scope: ParentNode): AnimationCleanup {
   const triggers: ScrollTrigger[] = []
   const tweens: gsap.core.Tween[] = []
 
+  const formCard = section.querySelector<HTMLElement>('.page-contact-form-card')
   const formTargets = [...fields, submit].filter(Boolean) as HTMLElement[]
+
+  if (formCard && !reduced) {
+    gsap.set(formCard, { opacity: 0, y: 48, scale: 0.97 })
+
+    const cardTween = gsap.to(formCard, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: formCard,
+        start: 'top 80%',
+        once: true,
+      },
+    })
+
+    if (cardTween.scrollTrigger) triggers.push(cardTween.scrollTrigger)
+    tweens.push(cardTween)
+  }
 
   if (formTargets.length && !reduced) {
     gsap.set(formTargets, { opacity: 0, y: 20 })
@@ -25,11 +46,11 @@ export function initContactAnimations(scope: ParentNode): AnimationCleanup {
     const formTween = gsap.to(formTargets, {
       opacity: 1,
       y: 0,
-      duration: 0.5,
+      duration: 0.8,
       ease: 'power2.out',
-      stagger: 0.08,
+      stagger: 0.12,
       scrollTrigger: {
-        trigger: section.querySelector('.page-contact-form-card') ?? section,
+        trigger: formCard ?? section,
         start: 'top 75%',
         once: true,
       },
