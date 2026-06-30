@@ -104,6 +104,32 @@
 
 /* About page — image + info section */
 
+.image-info-about .about-image-slideshow {
+  position: relative;
+  width: 100%;
+  height: 590px;
+  overflow: hidden;
+  background-color: #d9e4ee;
+}
+
+.image-info-about .about-image-slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.image-info-about .about-image-slide.is-active {
+  opacity: 1;
+}
+
+.image-info-about .about-image-slide__media {
+  width: 100%;
+  height: 100%;
+  will-change: transform, filter;
+}
+
 .image-info-about {
   --about-marquee-font-size: clamp(2.5rem, 15cqw, 128px);
   position: relative;
@@ -124,7 +150,7 @@
   background-image: linear-gradient(180deg, #2595d5 0%, #1b3f6f 100%);
 }
 
-.image-info-about + .about-three-section {
+.image-info-about+.about-three-section {
   --about-marquee-font-size: clamp(2.5rem, 15vw, 128px);
   padding-top: calc(var(--about-marquee-font-size) * 0.3);
 }
@@ -174,6 +200,10 @@
     min-width: 0;
   }
 
+  .image-info-about .about-image-slideshow {
+    height: clamp(14rem, 42vw, 24rem);
+  }
+
   .image-info-about .about-image {
     height: clamp(14rem, 42vw, 24rem);
     object-fit: cover;
@@ -201,7 +231,7 @@
     --about-marquee-font-size: clamp(2.25rem, 12vw, 96px);
   }
 
-  .image-info-about + .about-three-section {
+  .image-info-about+.about-three-section {
     --about-marquee-font-size: clamp(2.25rem, 12vw, 96px);
   }
 
@@ -221,7 +251,7 @@
     --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
-  .image-info-about + .about-three-section {
+  .image-info-about+.about-three-section {
     --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
@@ -237,6 +267,10 @@
 
   .image-info-about .about-hero-content {
     padding: 1.75rem 1.25rem 1.25rem;
+  }
+
+  .image-info-about .about-image-slideshow {
+    height: clamp(12rem, 52vw, 18rem);
   }
 
   .image-info-about .about-image {
@@ -585,10 +619,7 @@
   --about-journey-marker-width: 0.75rem;
   --about-journey-column-gap: 1.25rem;
   --about-journey-content-gap: 2.625rem;
-  --about-journey-line-x: calc(
-    var(--about-journey-year-width) + var(--about-journey-column-gap) +
-      var(--about-journey-marker-width) / 2
-  );
+  --about-journey-line-x: calc(var(--about-journey-year-width) + var(--about-journey-column-gap) + var(--about-journey-marker-width) / 2);
   position: relative;
   overflow: hidden;
   background-image: url('/images/backgrounds/journey-bg.jpg');
@@ -636,8 +667,7 @@
   position: relative;
   display: grid;
   grid-template-columns:
-    var(--about-journey-year-width) var(--about-journey-marker-width)
-    minmax(0, 1fr);
+    var(--about-journey-year-width) var(--about-journey-marker-width) minmax(0, 1fr);
   column-gap: var(--about-journey-column-gap);
   align-items: start;
   width: 100%;
@@ -760,21 +790,17 @@
 .about-strength-section--about {
   position: relative;
   overflow: hidden;
-  background-image: url('/images/backgrounds/strength-bg.jpg');
+  background-color: var(--color--white);
+  background-image: url('/images/backgrounds/logo-blurred-bg.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.about-strength-section--about .hero-section-overlay {
-  z-index: 0;
-  background-color: color-mix(in srgb, var(--color--white) 50%, transparent);
-}
-
 .about-strength-section--about .about-strength-container {
   position: relative;
   z-index: 1;
-  max-width: var(--_layout---container-max-width);
+  max-width: 1520px;
   margin-inline: auto;
   padding-inline: var(--_layout---container-gutter);
 }
@@ -793,19 +819,18 @@
   width: 100%;
 }
 
-.about-strength-section--about .about-strength-title-row,
-.about-strength-section--about .about-strength-description-row {
+.about-strength-section--about .about-strength-title-row {
   display: flex;
   align-items: stretch;
-  gap: var(--gap--gap-5);
+  gap: 20px;
   width: 100%;
 }
 
 .about-strength-section--about .about-strength-accent {
-  width: 2px;
   flex: none;
-  background-color: var(--color--primary);
+  width: 2px;
   border-radius: 1px;
+  background-image: linear-gradient(180deg, #1b3f6f 0%, #2595d5 100%);
 }
 
 .about-strength-section--about .about-strength-title {
@@ -815,6 +840,14 @@
   font-weight: var(--_typography---h2--font-weight-600);
   line-height: 1.1;
   color: var(--color--dark);
+}
+
+.about-strength-section--about .about-strength-title-accent--expertise {
+  color: var(--color--secondary-amaranth);
+}
+
+.about-strength-section--about .about-strength-title-accent--impact {
+  color: var(--color--primary);
 }
 
 .about-strength-section--about .about-strength-description {
@@ -831,69 +864,74 @@
 .about-strength-section--about .about-strength-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--gap--gap-6);
+  align-items: stretch;
+  gap: 16px;
 }
 
 .about-strength-section--about .about-strength-card {
-  position: relative;
-  overflow: hidden;
+  --about-strength-card-title-size: 24px;
+  --about-strength-card-title-line-height: 1.2;
+  --about-strength-card-section-gap: 20px;
+
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 30px 23px;
+  gap: var(--about-strength-card-section-gap);
+  height: 100%;
+  min-height: 0;
+  padding: 10px;
   border: none;
   border-radius: 12px;
   background-color: var(--color--white);
-  background-image:
-    linear-gradient(
-      color-mix(in srgb, var(--color--white) 80%, transparent),
-      color-mix(in srgb, var(--color--white) 80%, transparent)
-    ),
-    url('/images/backgrounds/strength-card-bg.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   box-shadow: 0 4px 24px rgb(0 0 0 / 4%);
-  backdrop-filter: none;
+}
+
+.about-strength-section--about .about-strength-card-top {
+  flex: none;
+  padding: 16px 16px 0;
+}
+
+.about-strength-section--about .about-strength-card-bottom {
+  flex: 1 1 auto;
+  padding: 0 16px 16px;
 }
 
 .about-strength-section--about .about-strength-card-number {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background-color: var(--color--primary);
-  color: var(--color--white);
+  margin: 0 0 10px;
   font-family: var(--_typography---font-family--body);
-  font-size: 14px;
-  font-weight: var(--_typography---body--font-weight-600);
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about-strength-section--about .about-strength-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
+  color: var(--color--primary);
 }
 
 .about-strength-section--about .about-strength-card-title {
   margin: 0;
   font-family: var(--_typography---font-family--heading);
-  font-size: 20px;
-  font-weight: var(--_typography---h6--font-weight-600);
-  line-height: 1.1;
+  font-size: var(--about-strength-card-title-size);
+  font-weight: 600;
+  line-height: var(--about-strength-card-title-line-height);
   color: var(--color--dark);
+}
+
+.about-strength-section--about .about-strength-card-title-line {
+  display: block;
+  min-height: calc(var(--about-strength-card-title-size) * var(--about-strength-card-title-line-height));
+}
+
+.about-strength-section--about .about-strength-card-image {
+  flex: none;
+  display: block;
+  width: 100%;
+  height: 192px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .about-strength-section--about .about-strength-card-description {
   margin: 0;
   font-family: var(--_typography---font-family--body);
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.3;
   color: var(--color--neutral-outer-space);
 }
@@ -905,6 +943,14 @@
 
   .about-strength-section--about .about-strength-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-strength-section--about .about-strength-card-image {
+    height: 160px;
+  }
+
+  .about-strength-section--about .about-strength-card-title {
+    --about-strength-card-title-size: 22px;
   }
 }
 
@@ -925,21 +971,15 @@
 
   .about-strength-section--about .about-strength-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
-  }
-
-  .about-strength-section--about .about-strength-card {
-    padding: 1.25rem;
-    gap: 1rem;
+    gap: 16px;
   }
 
   .about-strength-section--about .about-strength-card-title {
-    font-size: 1.125rem;
+    --about-strength-card-title-size: 20px;
   }
 
-  .about-strength-section--about .about-strength-card-description {
-    font-size: 0.9375rem;
-    line-height: 1.5;
+  .about-strength-section--about .about-strength-card-image {
+    height: 140px;
   }
 }
 
@@ -1124,68 +1164,19 @@
 /* About page — leadership section */
 
 .about-leadership-section--about {
-  --about-leadership-card-overlay: #f3f9ff;
-
   position: relative;
   overflow: hidden;
   background-color: var(--color--white);
-}
-
-.about-leadership-section--about .about-leadership-section-glow {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.about-leadership-section--about .about-leadership-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(48px);
-}
-
-.about-leadership-section--about .about-leadership-glow--left {
-  width: 42rem;
-  height: 42rem;
-  left: -11rem;
-  top: 42%;
-  transform: translateY(-50%);
-  background: radial-gradient(
-    circle,
-    rgb(224 242 254 / 100%) 0%,
-    rgb(186 230 253 / 72%) 32%,
-    rgb(147 197 253 / 38%) 52%,
-    transparent 78%
-  );
-}
-
-.about-leadership-section--about .about-leadership-glow--top-right {
-  top: 0;
-  right: 0;
-  width: min(48vw, 38rem);
-  height: clamp(26rem, 58vw, 42rem);
-  border-radius: 0;
-  filter: blur(44px);
-  background: radial-gradient(
-    ellipse 120% 105% at 100% 0%,
-    rgb(243 249 255 / 100%) 0%,
-    rgb(224 242 254 / 78%) 28%,
-    rgb(186 230 253 / 48%) 50%,
-    rgb(147 197 253 / 18%) 66%,
-    transparent 82%
-  );
-}
-
-.about-leadership-section--about .line-wrapper,
-.about-leadership-section--about .noise-overlay {
-  z-index: 1;
+  background-image: url('/images/backgrounds/glow-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .about-leadership-section--about .about-leadership-container {
   position: relative;
   z-index: 1;
-  max-width: var(--_layout---container-max-width);
+  max-width: 1320px;
   margin-inline: auto;
   padding-inline: var(--_layout---container-gutter);
 }
@@ -1210,23 +1201,19 @@
   color: var(--color--dark);
 }
 
-.about-leadership-section--about .about-leadership-layout {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap--gap-8);
-  width: 100%;
+.about-leadership-section--about .about-leadership-title-accent {
+  color: var(--color--primary);
 }
 
 .about-leadership-section--about .about-leadership-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--gap--gap-8);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
   align-items: stretch;
   width: 100%;
 }
 
-.about-leadership-section--about .about-leadership-card-wrap,
-.about-leadership-section--about .about-leadership-executives-wrap {
+.about-leadership-section--about .about-leadership-card-wrap {
   display: flex;
   width: 100%;
   height: 100%;
@@ -1238,23 +1225,28 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 16px;
-  background-color: var(--about-leadership-card-overlay);
+  border-radius: 24px;
+  background-color: var(--color--white);
   box-shadow: 0 4px 24px rgb(0 0 0 / 4%);
 }
 
 .about-leadership-section--about .about-leadership-card-image-wrap {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 640 / 470;
   overflow: hidden;
+  border-radius: 24px 24px 0 0;
   background-color: #101010;
 }
 
 .about-leadership-section--about .about-leadership-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  width: 150%;
+  height: 150%;
+  object-fit: contain;
+  object-position: center;
   filter: grayscale(100%);
   display: block;
 }
@@ -1264,100 +1256,52 @@
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
   width: 100%;
-  padding: 30px;
-  background-color: var(--about-leadership-card-overlay);
+  padding: 24px;
+  background-color: var(--color--white);
   background-image:
-    linear-gradient(
-      color-mix(in srgb, var(--about-leadership-card-overlay) 88%, transparent),
-      color-mix(in srgb, var(--about-leadership-card-overlay) 88%, transparent)
-    ),
-    url('/images/backgrounds/strength-card-bg.jpg');
+    linear-gradient(color-mix(in srgb, var(--color--white) 72%, transparent),
+      color-mix(in srgb, var(--color--white) 72%, transparent)),
+    url('/images/backgrounds/leadership-card-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .about-leadership-section--about .about-leadership-card-name {
-  margin: 0;
+  margin: 0 0 8px;
   font-family: var(--_typography---font-family--heading);
   font-size: 24px;
-  font-weight: var(--_typography---h6--font-weight-600);
+  font-weight: 600;
   line-height: 1.2;
   color: var(--color--dark);
 }
 
 .about-leadership-section--about .about-leadership-card-role {
-  margin: 0;
+  margin: 0 0 16px;
   font-family: var(--_typography---font-family--body);
-  font-size: 16px;
-  font-weight: var(--_typography---body--font-weight-600);
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.3;
   color: var(--color--primary);
 }
 
 .about-leadership-section--about .about-leadership-card-description {
-  margin: 0.75rem 0 0;
+  margin: 0;
   font-family: var(--_typography---font-family--body);
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--color--neutral-outer-space);
-}
-
-.about-leadership-section--about .about-leadership-executives-card .about-leadership-card-role {
-  margin-bottom: 0.25rem;
-}
-
-.about-leadership-section--about .about-leadership-executives-card .about-leadership-card-description {
-  margin-top: 0;
-}
-
-.about-leadership-section--about .about-leadership-executives-image-wrap {
-  width: 100%;
-  aspect-ratio: 2.35 / 1;
-  overflow: hidden;
-  background-color: #101010;
-}
-
-.about-leadership-section--about .about-leadership-executives-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
 }
 
 @media screen and (max-width: 991px) {
   .about-leadership-section--about .about-leadership-title {
     font-size: clamp(2rem, 6vw, 3.625rem);
   }
-
-  .about-leadership-section--about .about-leadership-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .about-leadership-section--about .about-leadership-executives-image-wrap {
-    aspect-ratio: 16 / 9;
-  }
 }
 
 @media screen and (max-width: 767px) {
-  .about-leadership-section--about .about-leadership-glow--left {
-    width: 24rem;
-    height: 24rem;
-    left: -7rem;
-    top: 48%;
-    filter: blur(40px);
-  }
-
-  .about-leadership-section--about .about-leadership-glow--top-right {
-    width: min(78vw, 26rem);
-    height: clamp(20rem, 72vw, 32rem);
-    filter: blur(36px);
-  }
-
   .about-leadership-section--about .about-leadership-header {
     margin-bottom: var(--gap--gap-8);
   }
@@ -1367,53 +1311,203 @@
     line-height: 1.15;
   }
 
-  .about-leadership-section--about .about-leadership-layout {
-    gap: var(--gap--gap-6);
-  }
-
   .about-leadership-section--about .about-leadership-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--gap--gap-6);
+    gap: 16px;
   }
 
   .about-leadership-section--about .about-leadership-card-body {
-    padding: 1.5rem;
+    padding: 24px;
   }
 
   .about-leadership-section--about .about-leadership-card-name {
-    font-size: 1.25rem;
+    font-size: 22px;
   }
 
-  .about-leadership-section--about .about-leadership-card-role {
-    font-size: 0.9375rem;
-  }
-
+  .about-leadership-section--about .about-leadership-card-role,
   .about-leadership-section--about .about-leadership-card-description {
-    font-size: 0.9375rem;
+    font-size: 16px;
+  }
+}
+
+/* About page — top executives section */
+
+.about-top-executives-section--about {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color--white);
+  background-image: url('/images/backgrounds/full-logo-blurred-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-top-executives-section--about .about-top-executives-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.about-top-executives-section--about .about-top-executives-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap--gap-5);
+  margin-bottom: 80px;
+  width: 100%;
+  text-align: left;
+}
+
+.about-top-executives-section--about .about-top-executives-title {
+  margin: 0;
+  font-family: var(--_typography---font-family--heading);
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color--dark);
+}
+
+.about-top-executives-section--about .about-top-executives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+  width: 100%;
+}
+
+.about-top-executives-section--about .about-top-executive-card-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.about-top-executives-section--about .about-top-executive-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.about-top-executives-section--about .about-top-executive-image-wrap {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 360px;
+  max-width: 100%;
+  height: 360px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #dceefa;
+}
+
+.about-top-executives-section--about .about-top-executive-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  /* filter: grayscale(100%); */
+  display: block;
+}
+
+.about-top-executives-section--about .about-top-executive-content {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.about-top-executives-section--about .about-top-executive-name {
+  margin: 0 0 10px;
+  font-family: var(--_typography---font-family--heading);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color--dark);
+}
+
+.about-top-executives-section--about .about-top-executive-role {
+  margin: 0;
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color--primary);
+}
+
+@media screen and (max-width: 991px) {
+  .about-top-executives-section--about .about-top-executives-title {
+    font-size: clamp(2rem, 6vw, 3.625rem);
   }
 
-  .about-leadership-section--about .about-leadership-executives-image-wrap {
-    aspect-ratio: 4 / 3;
+  .about-top-executives-section--about .about-top-executives-header {
+    margin-bottom: 48px;
+  }
+
+  .about-top-executives-section--about .about-top-executives-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .about-top-executives-section--about .about-top-executive-image-wrap {
+    width: min(360px, 100%);
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-top-executives-section--about .about-top-executives-header {
+    margin-bottom: 32px;
+  }
+
+  .about-top-executives-section--about .about-top-executives-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .about-top-executives-section--about .about-top-executives-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .about-top-executives-section--about .about-top-executive-content {
+    padding: 24px 0;
+  }
+
+  .about-top-executives-section--about .about-top-executive-name {
+    font-size: 22px;
+  }
+
+  .about-top-executives-section--about .about-top-executive-role {
+    font-size: 16px;
   }
 }
 
 /* About page — roadmap section */
 
 .about-roadmap-section--about {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color--gray-5);
-}
+  --about-roadmap-pointer-width: clamp(88px, 6.51vw, 125px);
+  --about-roadmap-pointer-height: calc(var(--about-roadmap-pointer-width) * 1.8);
+  --about-roadmap-stage-pad-top: calc(var(--about-roadmap-pointer-height));
+  --about-roadmap-stage-pad-bottom: calc(var(--about-roadmap-pointer-height) + 40px);
+  --about-roadmap-milestone-text-min-width: 19rem;
+  --about-roadmap-milestone-text-gap: 40px;
 
-.about-roadmap-section--about .line-wrapper,
-.about-roadmap-section--about .noise-overlay {
-  z-index: 0;
+  position: relative;
+  overflow: visible;
+  background-color: var(--color--gray-5);
+  background-image: url('/images/backgrounds/roadmap-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .about-roadmap-section--about .about-roadmap-container {
   position: relative;
   z-index: 1;
-  max-width: var(--_layout---container-max-width);
+  max-width: 1320px;
   margin-inline: auto;
   padding-inline: var(--_layout---container-gutter);
 }
@@ -1432,125 +1526,187 @@
   margin: 0;
   font-family: var(--_typography---font-family--heading);
   font-size: 58px;
-  font-weight: var(--_typography---h2--font-weight-600);
+  font-weight: 600;
   line-height: 1.1;
   text-align: center;
   color: var(--color--dark);
 }
 
-.about-roadmap-section--about .about-roadmap-content {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: auto;
-  gap: 20px;
-  align-items: stretch;
-  width: 100%;
+.about-roadmap-section--about .about-roadmap-title-accent {
+  color: var(--color--primary);
 }
 
-.about-roadmap-section--about .about-roadmap-visual {
+.about-roadmap-section--about .about-roadmap-stage-wrap {
   position: relative;
-  grid-column: 1;
-  grid-row: 1;
-  min-height: 0;
-  border-radius: 16px;
-  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  padding-block: 80px;
+  overflow: visible;
 }
 
-.about-roadmap-section--about .about-roadmap-image {
+.about-roadmap-section--about .about-roadmap-stage {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+  padding-top: var(--about-roadmap-stage-pad-top);
+  padding-bottom: var(--about-roadmap-stage-pad-bottom);
+}
+
+.about-roadmap-section--about .about-roadmap-street {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.about-roadmap-section--about .about-roadmap-milestones {
   position: absolute;
-  inset: 0;
+  inset: var(--about-roadmap-stage-pad-top) 0 var(--about-roadmap-stage-pad-bottom) 0;
+  pointer-events: none;
+}
+
+/* ---------- milestone anchor ---------- */
+
+.about-roadmap-section--about .about-roadmap-milestone {
+  position: absolute;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/*
+ * The milestone-inner is sized to the pointer ONLY.
+ * This is critical: translateX(-50%) on this element translates by
+ * half the pointer width, correctly centering the pointer on anchor X.
+ * Text is absolutely positioned so it doesn't affect the width calculation.
+ */
+.about-roadmap-section--about .about-roadmap-milestone-inner {
+  position: relative;
+  width: var(--about-roadmap-pointer-width);
+  height: var(--about-roadmap-pointer-height);
+  transform: translateX(-50%);
+}
+
+/*
+ * "down" pointer: tip is at the bottom of the SVG.
+ * Shift the inner UP by its full height (= pointer height) so the tip touches anchor Y.
+ */
+.about-roadmap-section--about .about-roadmap-milestone--down .about-roadmap-milestone-inner {
+  transform: translateX(-50%) translateY(-100%);
+}
+
+/*
+ * "up" pointer: tip is at the top of the SVG (flipped).
+ * No Y shift — the top of the element (tip) sits at anchor Y.
+ */
+
+/* ---------- pointer SVG ---------- */
+
+.about-roadmap-section--about .about-roadmap-pointer-wrap {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
+}
+
+.about-roadmap-section--about .about-roadmap-pointer {
   display: block;
-}
-
-.about-roadmap-section--about .about-roadmap-cards {
-  display: flex;
-  grid-column: 2;
-  grid-row: 1;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-}
-
-.about-roadmap-section--about .about-roadmap-card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.25rem;
   width: 100%;
-  padding: 24px 30px;
-  border-radius: 12px;
-  background-color: var(--color--white);
-  box-shadow: 0 4px 24px rgb(0 0 0 / 4%);
+  height: 100%;
 }
 
-.about-roadmap-section--about .about-roadmap-card-icon {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  display: block;
-  flex: none;
+/* ---------- text block ---------- */
+
+.about-roadmap-section--about .about-roadmap-milestone-text {
+  position: absolute;
+  width: min-content;
+  min-width: var(--about-roadmap-milestone-text-min-width);
 }
 
-.about-roadmap-section--about .about-roadmap-card-content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 0;
+/*
+ * Text to the RIGHT of the pointer.
+ * top:0 aligns text top with the circle top (for down pointers).
+ */
+.about-roadmap-section--about .about-roadmap-milestone--text-right .about-roadmap-milestone-text {
+  left: calc(100% + var(--about-roadmap-milestone-text-gap));
+  top: 0;
 }
 
-.about-roadmap-section--about .about-roadmap-card-title {
-  margin: 0 0 0.5rem;
+/*
+ * Text to the LEFT of the pointer.
+ */
+.about-roadmap-section--about .about-roadmap-milestone--text-left .about-roadmap-milestone-text {
+  right: calc(100% + var(--about-roadmap-milestone-text-gap));
+  top: 0;
+  text-align: right;
+}
+
+/*
+ * For "up" pointers the circle sits at the bottom of the SVG.
+ * Align the text block to the bottom of the pointer.
+ */
+.about-roadmap-section--about .about-roadmap-milestone--up .about-roadmap-milestone-text {
+  top: auto;
+  bottom: 0;
+}
+
+/* ---------- typography ---------- */
+
+.about-roadmap-section--about .about-roadmap-milestone-title {
+  margin: 0 0 8px;
   font-family: var(--_typography---font-family--heading);
-  font-size: 24px;
-  font-weight: var(--_typography---h6--font-weight-600);
+  font-size: 28px;
+  font-weight: 600;
   line-height: 1.1;
+  white-space: nowrap;
   color: var(--color--dark);
 }
 
-.about-roadmap-section--about .about-roadmap-card-description {
+.about-roadmap-section--about .about-roadmap-milestone-description {
   margin: 0;
   font-family: var(--_typography---font-family--body);
   font-size: 18px;
-  font-weight: var(--_typography---body--font-weight-500);
+  font-weight: 500;
   line-height: 1.3;
   color: var(--color--neutral-outer-space);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .about-roadmap-section--about [data-about-animate='roadmap-street'] {
+    clip-path: inset(0 100% 0 0);
+    will-change: clip-path;
+  }
+
+  .about-roadmap-section--about [data-about-animate='roadmap-pointer'],
+  .about-roadmap-section--about [data-about-animate='roadmap-milestone-text'] {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+}
+
+/* ---------- responsive ---------- */
+
 @media screen and (max-width: 991px) {
+  .about-roadmap-section--about {
+    --about-roadmap-milestone-text-min-width: 17rem;
+  }
+
   .about-roadmap-section--about .about-roadmap-title {
     font-size: clamp(2rem, 6vw, 3.625rem);
   }
 
-  .about-roadmap-section--about .about-roadmap-content {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto;
-    gap: 20px;
+  .about-roadmap-section--about .about-roadmap-milestone-title {
+    font-size: 22px;
   }
 
-  .about-roadmap-section--about .about-roadmap-visual {
-    grid-column: 1;
-    grid-row: 1;
-    aspect-ratio: 4 / 3;
-  }
-
-  .about-roadmap-section--about .about-roadmap-cards {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .about-roadmap-section--about .about-roadmap-image {
-    position: absolute;
-    inset: 0;
-    min-height: 0;
+  .about-roadmap-section--about .about-roadmap-milestone-description {
+    font-size: 16px;
   }
 }
 
 @media screen and (max-width: 767px) {
+  .about-roadmap-section--about {
+    --about-roadmap-pointer-width: 72px;
+    --about-roadmap-milestone-text-min-width: 15rem;
+  }
+
   .about-roadmap-section--about .about-roadmap-header {
     margin-bottom: var(--gap--gap-8);
   }
@@ -1560,38 +1716,22 @@
     line-height: 1.15;
   }
 
-  .about-roadmap-section--about .about-roadmap-content {
-    gap: 20px;
+  .about-roadmap-section--about .about-roadmap-stage-wrap {
+    padding-block: 48px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .about-roadmap-section--about .about-roadmap-visual {
-    aspect-ratio: 4 / 3;
-    border-radius: 12px;
+  .about-roadmap-section--about .about-roadmap-stage {
+    min-width: 960px;
   }
 
-  .about-roadmap-section--about .about-roadmap-cards {
-    grid-row: 2;
+  .about-roadmap-section--about .about-roadmap-milestone-title {
+    font-size: 18px;
   }
 
-  .about-roadmap-section--about .about-roadmap-card {
-    align-items: flex-start;
-    padding: 1.25rem;
-    gap: 1rem;
-  }
-
-  .about-roadmap-section--about .about-roadmap-card-icon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .about-roadmap-section--about .about-roadmap-card-title {
-    font-size: 1.125rem;
-    margin-bottom: 0.375rem;
-  }
-
-  .about-roadmap-section--about .about-roadmap-card-description {
-    font-size: 0.9375rem;
-    line-height: 1.5;
+  .about-roadmap-section--about .about-roadmap-milestone-description {
+    font-size: 14px;
   }
 }
 

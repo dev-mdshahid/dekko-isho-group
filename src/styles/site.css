@@ -11660,7 +11660,7 @@ a.about-info-box:hover {
 
 @media (hover: hover) {
   .service-section .service-info-link:hover .service-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
@@ -11717,8 +11717,7 @@ a.about-info-box:hover {
 }
 
 .service-section .service-image-main {
-  grid-column-gap: 40px;
-  grid-template-columns: 65px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
 
@@ -11997,21 +11996,6 @@ a.about-info-box:hover {
     display: block;
     width: 100%;
     margin-bottom: 1rem;
-  }
-
-  .service-section .service-icon {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
-    z-index: 2;
-    width: 2.75rem;
-    height: 2.75rem;
-    padding: 0.375rem;
-    box-sizing: border-box;
-    object-fit: contain;
-    background-color: rgb(255 255 255 / 0.96);
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 10px rgb(21 21 21 / 0.1);
   }
 
   .service-section .service-image-wrap {

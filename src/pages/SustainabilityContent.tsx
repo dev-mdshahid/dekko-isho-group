@@ -7,7 +7,6 @@ import {
   SustainabilityPillar02Section,
   SustainabilityPillar03Section,
   SustainabilityPillar04Section,
-  SustainabilityStrategySection,
 } from '../components/sustainability'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
@@ -24,7 +23,6 @@ export function SustainabilityContent() {
     <div ref={ref}>
       <SustainabilityHeroSection />
       <SustainabilityHeroImageSection />
-      <SustainabilityStrategySection />
       <SustainabilityPillar01Section />
       <SustainabilityPillar02Section />
       <SustainabilityPillar03Section />

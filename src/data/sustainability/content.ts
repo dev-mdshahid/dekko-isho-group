@@ -1,24 +1,30 @@
 export const sustainabilityHero = {
-  title: 'Sustainability',
+  titleParts: [
+    { text: 'People.', tone: 'primary' as const },
+    { text: 'Planet.', tone: 'green' as const },
+    { text: 'Progress.', tone: 'amaranth' as const },
+  ],
   description:
-    'Driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — embedding Sustainable Consumption & Production into everything we make.',
+    'Advancing responsible growth by balancing business performance with environmental stewardship, social responsibility, and ethical governance.',
   ctaLabel: 'Read 2025 Report',
   ctaHref: '#esg-reports',
 }
 
 export const sustainabilityHeroImage = {
-  src: '/images/sustainability/sus.png',
-  fallbackSrc: '/images/about/compliance.jpg',
-  quote: 'The Earth is our only home – it is our responsibility to protect it.',
-  company: 'Dekko Isho Group',
+  quoteLines: [
+    'The Earth is our only home – it is',
+    'our responsibility to protect it.',
+  ],
+  company: 'Dekko ISHO Group',
   strategy: 'ESG Strategy 2023',
 }
 
 export const strategySection = {
-  badge: 'Our strategy',
-  title: 'A 2030 commitment across the value chain',
+  titlePrefix: 'Our 2030',
+  titleHighlight: 'Impact',
+  titleSuffix: 'Framework',
   description:
-    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance. This commitment extends far beyond our own operations — fully embracing our entire value chain and supply network to foster sustainable excellence at every link.',
+    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance. This commitment extends far beyond our own operations, fully embracing our entire value chain and supply network to foster sustainable excellence at every link.',
 }
 
 export type StrategyMetric = {
