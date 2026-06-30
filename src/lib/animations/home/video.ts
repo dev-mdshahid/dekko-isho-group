@@ -65,7 +65,7 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
   })
 
   mm.add('(max-width: 991px), (prefers-reduced-motion: reduce)', () => {
-    gsap.set(scaler, { clearProps: 'all' })
+    gsap.set([scaler, stage], { clearProps: 'all' })
   })
 
   return () => {

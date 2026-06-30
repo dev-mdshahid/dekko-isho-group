@@ -24,7 +24,7 @@ function PlayIcon() {
 }
 
 export function HeroVideo() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const scalerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -91,7 +91,7 @@ export function HeroVideo() {
   }, [])
 
   return (
-    <section
+    <div
       ref={sectionRef}
       className="home-hero-video-section"
       data-home-animate="hero-video-section"
@@ -134,6 +134,6 @@ export function HeroVideo() {
             </div>
           </div>
       </div>
-    </section>
+    </div>
   )
 }

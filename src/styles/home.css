@@ -1,10 +1,5 @@
 /* Home — hero section */
 
-.hero-section {
-  min-height: 100vh;
-  height: 100vh;
-}
-
 .hero-inner {
   box-sizing: border-box;
   display: flex;
@@ -96,6 +91,13 @@
   height: 192px;
 }
 
+@media screen and (min-width: 992px) {
+  .hero-inner {
+    height: 100vh;
+    min-height: 100vh;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .hero-inner {
     padding-top: 72px;
@@ -119,11 +121,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .hero-section {
-    min-height: auto;
-    height: auto;
-  }
-
   .hero-inner {
     min-height: auto;
     padding-top: 9rem;
@@ -193,37 +190,27 @@
   }
 }
 
-/* Home — hero video (full-bleed on mobile) */
+/* Home — hero video */
 
-.home-hero-video-section {
-  --hero-video-expand-gap: 48px;
+.hero-section .home-hero-video-section {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
+  z-index: 1;
   overflow: hidden;
 }
 
-.home-hero-video-section .hero-video-stage {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+.hero-section .home-hero-video-section .hero-video-stage {
   width: 100%;
-  padding-top: var(--hero-video-expand-gap);
 }
 
-.home-hero-video-section .hero-video-scaler {
+.hero-section .home-hero-video-section .hero-video-scaler {
   overflow: hidden;
-  will-change: width;
-  box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 0.12);
-  width: calc(100vw - (var(--hero-video-expand-gap) * 2));
+  width: 100%;
   height: auto;
   flex-shrink: 0;
   border-radius: 0;
 }
 
-.home-hero-video-section .hero-video {
+.hero-section .home-hero-video-section .hero-video {
   width: 100%;
   height: auto;
   aspect-ratio: unset;
@@ -233,14 +220,18 @@
   background-color: var(--color--dark);
 }
 
-.home-hero-video-section .hero-video.hero-video--ready {
+.hero-section .home-hero-video-section .hero-video:not(.hero-video--ready) {
+  aspect-ratio: 16 / 9;
+}
+
+.hero-section .home-hero-video-section .hero-video.hero-video--ready {
   aspect-ratio: unset;
   height: auto;
 }
 
-.home-hero-video-section .hero-video-media,
-.home-hero-video-section .hero-video-media.hero-video-media--visible,
-.home-hero-video-section .hero-video.hero-video--ready .hero-video-media {
+.hero-section .home-hero-video-section .hero-video-media,
+.hero-section .home-hero-video-section .hero-video-media.hero-video-media--visible,
+.hero-section .home-hero-video-section .hero-video.hero-video--ready .hero-video-media {
   position: relative;
   inset: auto;
   display: block;
@@ -252,50 +243,35 @@
   vertical-align: top;
 }
 
-@media screen and (max-width: 991px) {
-  .home-hero-video-section {
-    height: auto;
-    align-items: stretch;
+@media screen and (min-width: 992px) {
+  .hero-section .home-hero-video-section {
+    --hero-video-expand-gap: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
   }
 
-  .home-hero-video-section .hero-video-stage {
-    height: auto;
+  .hero-section .home-hero-video-section .hero-video-stage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: var(--hero-video-expand-gap);
   }
 
-  .home-hero-video-section .hero-video-scaler {
-    width: 100%;
-    height: auto;
-    box-shadow: none;
-  }
-
-  .home-hero-video-section .hero-video {
-    aspect-ratio: unset;
-    min-height: 0;
+  .hero-section .home-hero-video-section .hero-video-scaler {
+    will-change: width;
+    box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 0.12);
+    width: calc(100vw - (var(--hero-video-expand-gap) * 2));
   }
 }
 
-@media screen and (max-width: 767px) {
-  .home-hero-video-section .hero-video {
-    aspect-ratio: unset;
+@media screen and (max-width: 991px) {
+  .hero-section .home-hero-video-section .hero-video-scaler {
+    box-shadow: none;
   }
 
-  .home-hero-video-section .hero-video.hero-video--ready {
-    aspect-ratio: unset;
-    height: auto;
-    position: relative;
-  }
-
-  .home-hero-video-section .hero-video.hero-video--ready .hero-video-media {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    max-width: none;
-    object-fit: initial;
-    object-position: top center;
-  }
-
-  .home-hero-video-section .hero-video-control {
+  .hero-section .home-hero-video-section .hero-video-control {
     bottom: 1rem;
     right: 1rem;
     width: 2.25rem;

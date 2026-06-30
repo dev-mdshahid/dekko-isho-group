@@ -12,7 +12,6 @@ import {
   CompanySection,
   ContactUsSection,
   HeroSection,
-  HeroVideo,
   ServiceSection,
   SolutionsExpertiseSection,
 } from '../components/home'
@@ -37,8 +36,6 @@ export function HomeContent() {
     <div ref={ref}>
 
       <HeroSection />
-
-      <HeroVideo />
 
       <SolutionsExpertiseSection />
       

@@ -1,5 +1,6 @@
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 import { CompanyLogosSection } from './CompanyLogosSection'
+import { HeroVideo } from './HeroVideo'
 
 export function HeroSection() {
   return (
@@ -61,6 +62,8 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+
+      <HeroVideo />
 
       <div className="hero-section-overlay" aria-hidden="true" />
       <SectionLines />
