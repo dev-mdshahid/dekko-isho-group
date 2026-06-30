@@ -8,6 +8,7 @@ import {
   AboutIntegritySection,
   AboutJourneySection,
   AboutLeadershipSection,
+  AboutTopExecutivesSection,
   AboutOverviewSection,
   AboutRoadmapSection,
   AboutStrengthSection,
@@ -35,6 +36,7 @@ export function AboutContent() {
       <AboutStrengthSection />
       <AboutChairmanSection />
       <AboutLeadershipSection />
+      <AboutTopExecutivesSection />
       <AboutRoadmapSection />
       <AboutContactSection />
       {/* <AboutClientsSection /> */}
