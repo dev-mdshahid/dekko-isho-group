@@ -2,6 +2,7 @@ import { pillar01 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
 import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
+import { SustainabilitySnapshotCard } from './SustainabilitySnapshotCard'
 
 export function SustainabilityPillar01Section() {
   return (
@@ -33,17 +34,21 @@ export function SustainabilityPillar01Section() {
           ))}
         </div>
 
-        <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-banner">
+        <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-section">
           <div className="sustain-snapshot-header">
             <SustainabilityBadge title={pillar01.snapshotBadge} />
             <h3 className="sustain-snapshot-headline">{pillar01.snapshotHeadline}</h3>
           </div>
-          <div className="sustain-snapshot-kpis">
-            {pillar01.snapshotKpis.map((kpi) => (
-              <div key={kpi.id} className="sustain-snapshot-kpi">
-                <div className="sustain-snapshot-kpi-value">{kpi.value}</div>
-                <div className="sustain-snapshot-kpi-label">{kpi.label}</div>
-              </div>
+          <div className="sustain-snapshot-cards">
+            {pillar01.snapshotKpis.map((kpi, index) => (
+              <FadeIn
+                key={kpi.id}
+                id={`sustain-snapshot-${kpi.id}`}
+                className="sustain-snapshot-card-wrap"
+                delay={index * 50}
+              >
+                <SustainabilitySnapshotCard kpi={kpi} />
+              </FadeIn>
             ))}
           </div>
         </FadeIn>

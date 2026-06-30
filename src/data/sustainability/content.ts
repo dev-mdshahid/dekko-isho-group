@@ -82,6 +82,21 @@ export type InitiativeCard = {
 
 const pillar1Image = (file: string) => `/images/sustainability/pillar-1/${file}`
 
+export type SnapshotKpi =
+  | {
+      id: string
+      type: 'stat'
+      value: string
+      suffix: string
+      labelLines: [string, string]
+    }
+  | {
+      id: string
+      type: 'gauge'
+      percentage: number
+      labelLines: [string, string]
+    }
+
 export const pillar01 = {
   number: '01',
   badge: 'Pillar 01',
@@ -157,13 +172,34 @@ export const pillar01 = {
     },
   ] satisfies InitiativeCard[],
   snapshotBadge: 'Performance snapshot',
-  snapshotHeadline: 'Measuring what matters, reducing what counts',
+  snapshotHeadline: 'Measuring what Matters, Reducing what Counts',
   snapshotKpis: [
-    { id: 'irec', value: '13,421 MWh', label: 'I-REC purchased for 2025' },
-    { id: 'scope2', value: '80%', label: 'Scope-2 GHG emissions reduced' },
-    { id: 'textile', value: '40%', label: 'Textile waste recycling rate' },
-    { id: 'chemistry', value: '65%', label: 'Chemistry screen-certified inputs' },
-  ],
+    {
+      id: 'irec',
+      type: 'stat',
+      value: '13,421',
+      suffix: ' MWh',
+      labelLines: ['I-REC purchased', 'for 2025'],
+    },
+    {
+      id: 'scope2',
+      type: 'gauge',
+      percentage: 80,
+      labelLines: ['Scope-2 GHG', 'emissions reduced'],
+    },
+    {
+      id: 'textile',
+      type: 'gauge',
+      percentage: 40,
+      labelLines: ['Textile waste', 'recycling rate'],
+    },
+    {
+      id: 'chemistry',
+      type: 'gauge',
+      percentage: 65,
+      labelLines: ['Chemistry screen-', 'certified inputs'],
+    },
+  ] satisfies SnapshotKpi[],
 }
 
 export type SocialCard = {
