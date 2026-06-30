@@ -129,13 +129,6 @@ export function ServiceSection() {
                     >
                       <div className="service-info-inner">
                         <div className="service-image-main">
-                          <img
-                            src={speciality.icon}
-                            loading="lazy"
-                            decoding="async"
-                            alt=""
-                            className="service-icon"
-                          />
                           <div className="service-image-wrap">
                             <img
                               src={speciality.image}

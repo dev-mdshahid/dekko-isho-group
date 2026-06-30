@@ -51,7 +51,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     const inner = card.querySelector<HTMLElement>('.service-info-link') ?? card
 
     const tween = gsap.to(inner, {
-      scale: 0.96,
+      scale: 0.98,
       ease: 'none',
       scrollTrigger: {
         trigger: nextCard,
