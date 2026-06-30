@@ -10,14 +10,14 @@ export function TestimonialSection() {
     <section className="testimonial-section section-spacing">
       <div className="container-full">
         <div className="testimonial-info-main">
-          <FadeIn id="70c67abc-bbb2-0225-8b62-b34415172d4c" className="section-title-center _01">
+          <FadeIn id="70c67abc-bbb2-0225-8b62-b34415172d4c" variant="slide-in-bottom" className="section-title-center _01">
             <PreSectionTitle title="Built on trust" />
             <h2 className="section-title title-center">
               Trusted by <span className="text-linear-gradient">clients</span>, proven by results
             </h2>
           </FadeIn>
           <div className="w-layout-grid grid-testimonial">
-            <FadeIn id="5b9d076c-a381-6e6a-9705-5ca5cc1c9344">
+            <FadeIn id="5b9d076c-a381-6e6a-9705-5ca5cc1c9344" variant="slide-in-bottom" delay={150}>
               <div
                 data-current="Tab 1"
                 data-easing="ease"
@@ -65,7 +65,7 @@ export function TestimonialSection() {
               </div>
             </FadeIn>
             <div className="testimonial-more-info">
-              <FadeIn id="3c0ff7e9-dac1-81ef-d189-54acdf24a6e9" className="testimonial-inner">
+              <FadeIn id="3c0ff7e9-dac1-81ef-d189-54acdf24a6e9" variant="slide-in-bottom" delay={200} className="testimonial-inner">
                 <div className="testimonial-image-wrap">
                   <img
                     src={legacyImage('01.webp')}
@@ -111,7 +111,7 @@ export function TestimonialSection() {
                   </div>
                 </div>
               </FadeIn>
-              <FadeIn id="875f79ed-bce3-0f38-c930-0a98b0b95d77" className="support-info-wrap">
+              <FadeIn id="875f79ed-bce3-0f38-c930-0a98b0b95d77" variant="slide-in-bottom" delay={350} className="support-info-wrap">
                 <img src={legacyImage('shadow.png')} loading="lazy" alt="Box Shadow" className="box-shadow" />
                 <div className="support-info-inner">
                   <img src={legacyImage('Icon.svg')} loading="lazy" alt="Support Icon" className="support-icon" />

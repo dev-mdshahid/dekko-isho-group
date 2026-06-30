@@ -1,6 +1,5 @@
 import { clientLogos, whyChooseItems } from '../../data/home/clients'
 import { legacyImage } from '../../lib/assets'
-import { FadeIn } from '../ui/FadeIn'
 
 function ClientMarqueeList() {
   return (
@@ -26,11 +25,23 @@ export function WhyChooseSection() {
       </div>
       <div className="why-choose-info">
         <div className="container">
-          <FadeIn id="3bbcdcf0-25d3-d1c7-ebaa-51304b662dba" className="why-choose-content">
-            <h2 className="why-choose-title">Manufacturing solutions you can count on</h2>
+          <div className="why-choose-content">
+            <h2
+              className="why-choose-title"
+              data-fade-in
+              data-fade-variant="slide-in-bottom"
+            >
+              Manufacturing solutions you can count on
+            </h2>
             <div className="why-choose-list">
-              {whyChooseItems.map((item) => (
-                <div key={item} className="why-choose-list-item">
+              {whyChooseItems.map((item, index) => (
+                <div
+                  key={item}
+                  className="why-choose-list-item"
+                  data-fade-in
+                  data-fade-variant="slide-in-bottom"
+                  data-fade-delay={100 + index * 90}
+                >
                   <img
                     src={legacyImage('list-icon.svg')}
                     loading="lazy"
@@ -41,7 +52,12 @@ export function WhyChooseSection() {
                 </div>
               ))}
             </div>
-            <div className="why-choose-inner">
+            <div
+              className="why-choose-inner"
+              data-fade-in
+              data-fade-variant="slide-in-bottom"
+              data-fade-delay={100 + whyChooseItems.length * 90 + 80}
+            >
               <div className="avatar one">
                 <div className="avatar-box">
                   <img
@@ -81,7 +97,7 @@ export function WhyChooseSection() {
                 <div className="rating-text">Happy clients worldwide</div>
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </div>
     </section>

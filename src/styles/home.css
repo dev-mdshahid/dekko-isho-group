@@ -149,20 +149,19 @@
   }
 
   .hero-tagline {
-    flex-direction: column;
     gap: 0.875rem;
-    padding-inline: 1.25rem;
+    padding-inline: 0.5rem;
   }
 
   .hero-tagline-line {
-    width: 100%;
-    max-width: 12rem;
-    flex: none;
+    flex: 1 1 auto;
+    max-width: none;
   }
 
   .hero-tagline-text {
     font-size: 0.9375rem;
     line-height: 1.4;
+    white-space: normal;
   }
 
   .hero-section .company-logos-section {
@@ -523,15 +522,11 @@
 
   .about-section .about-button-wrap {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     width: 100%;
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
     gap: 1rem;
-  }
-
-  .about-section .about-download-link {
-    justify-content: center;
   }
 
   .about-section .about-carousel-nav {
@@ -549,23 +544,46 @@
     left: 1.25rem;
     bottom: 1.25rem;
   }
-
-  .about-section .about-button-wrap .primary-button {
-    width: 100%;
-    display: block;
-  }
-
-  .about-section .about-button-wrap .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-  }
 }
 
 /* Home — animation hooks */
 
 .hero-title-line-mask {
   display: block;
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-right: 0.14em;
   overflow: hidden;
+}
+
+.hero-title-caret {
+  position: absolute;
+  top: 0.16em;
+  left: 0;
+  width: 0.05em;
+  height: 0.78em;
+  border-radius: 0.04em;
+  background-color: var(--color--primary);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-title-caret.is-blinking {
+  animation: hero-caret-blink 0.85s steps(1, end) infinite;
+}
+
+@keyframes hero-caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.01%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -609,6 +627,18 @@
   background-repeat: no-repeat;
   background-size: cover;
   pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  .company-section-bg {
+    position: relative;
+    inset: auto;
+    order: 2;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-position: center;
+    background-size: cover;
+  }
 }
 
 .company-section-gradient-text {

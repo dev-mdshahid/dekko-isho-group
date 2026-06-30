@@ -9,7 +9,7 @@ export function IndustrySection() {
     <section className="industry-section">
       <div className="container">
         <div className="industry-info-main section-spacing">
-          <FadeIn id="cd4d3bf3-e255-714a-a12d-0490dd2d2cf9" className="section-title-center">
+          <FadeIn id="cd4d3bf3-e255-714a-a12d-0490dd2d2cf9" variant="slide-in-bottom" className="section-title-center">
             <PreSectionTitle title="Built for every industry" />
             <h2 className="section-title title-center">
               Manufacturing <span className="text-linear-gradient">solutions</span> for every industry
@@ -22,7 +22,7 @@ export function IndustrySection() {
             data-duration-out="0"
             className="industry-tabs w-tabs"
           >
-            <FadeIn id="b1ef9828-72eb-84fa-b442-e2f6281f5c8c" className="industry-tabs-menu w-tab-menu">
+            <FadeIn id="b1ef9828-72eb-84fa-b442-e2f6281f5c8c" variant="slide-in-bottom" delay={150} className="industry-tabs-menu w-tab-menu">
               {homeIndustries.map((industry, index) => (
                 <a
                   key={industry.tab}
@@ -33,7 +33,7 @@ export function IndustrySection() {
                 </a>
               ))}
             </FadeIn>
-            <FadeIn id="b1ef9828-72eb-84fa-b442-e2f6281f5c96" className="industry-tabs-content w-tab-content">
+            <FadeIn id="b1ef9828-72eb-84fa-b442-e2f6281f5c96" variant="slide-in-bottom" delay={280} className="industry-tabs-content w-tab-content">
               {homeIndustries.map((industry, index) => (
                 <div
                   key={industry.tab}
