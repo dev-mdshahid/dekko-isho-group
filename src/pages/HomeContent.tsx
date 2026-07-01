@@ -12,6 +12,7 @@ import {
   CompanySection,
   ContactUsSection,
   HeroSection,
+  LatestNewsSection,
   ServiceSection,
   SolutionsExpertiseSection,
 } from '../components/home'
@@ -45,6 +46,8 @@ export function HomeContent() {
       <ServiceSection />
 
       <CompanySection />
+
+      <LatestNewsSection />
 
       <ContactUsSection />
 
