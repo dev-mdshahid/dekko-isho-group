@@ -13,7 +13,11 @@ export function useScrollCounter() {
     counters.forEach((el, idx) => {
       const raw = el.getAttribute('data-target') || el.textContent || '0'
       const target = parseInt(String(raw).replace(/\D/g, ''), 10) || 0
-      const duration = Math.max(1, Math.min(3, (target / 200) * 2))
+      const customDuration = el.getAttribute('data-duration')
+      const duration =
+        customDuration != null && customDuration !== ''
+          ? Number.parseFloat(customDuration) || Math.max(1, Math.min(3, (target / 200) * 2))
+          : Math.max(1, Math.min(3, (target / 200) * 2))
       const obj = { val: 0 }
 
       const tween = gsap.to(obj, {
