@@ -9,7 +9,6 @@ export function initHeroAnimations(scope: ParentNode): AnimationCleanup {
   const section = scope.querySelector<HTMLElement>('.hero-section')
   if (!section) return () => {}
 
-  const words = Array.from(section.querySelectorAll<HTMLElement>('[data-home-animate="hero-word"]'))
   const taglineLines = section.querySelectorAll<HTMLElement>('[data-home-animate="hero-tagline-line"]')
   const taglineText = section.querySelector<HTMLElement>('[data-home-animate="hero-tagline-text"]')
   const logos = section.querySelector<HTMLElement>('[data-home-animate="hero-logos"]')
@@ -18,12 +17,11 @@ export function initHeroAnimations(scope: ParentNode): AnimationCleanup {
   const reduced = prefersReducedMotion()
 
   if (reduced) {
-    gsap.set([...words, taglineText, logos].filter(Boolean), { clearProps: 'all' })
+    gsap.set([taglineText, logos].filter(Boolean), { clearProps: 'all' })
     gsap.set(taglineLines, { scaleX: 1, transformOrigin: 'center' })
     return () => {}
   }
 
-  gsap.set(words, { opacity: 0, y: 30 })
   gsap.set(taglineLines, { scaleX: 0, transformOrigin: 'center' })
   if (taglineText) gsap.set(taglineText, { opacity: 0, y: 20 })
   if (logos) gsap.set(logos, { opacity: 0, y: 24 })
@@ -40,10 +38,6 @@ export function initHeroAnimations(scope: ParentNode): AnimationCleanup {
     },
   })
 
-  // Heading words fade up, staggered
-  tl.to(words, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08 })
-
-  // Tagline and logos play in parallel with the heading, after a slight delay
   const bottomStart = 0.2
   tl.to(
     taglineLines,
