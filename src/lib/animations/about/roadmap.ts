@@ -66,7 +66,7 @@ export function initRoadmapAnimations(section: HTMLElement): AnimationCleanup {
     scrollTrigger: {
       trigger: stage,
       start: 'top 72%',
-      once: true,
+      toggleActions: 'restart reset restart reset',
     },
   })
 
