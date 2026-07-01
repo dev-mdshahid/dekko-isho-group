@@ -12,6 +12,7 @@ export function SustainabilityHeroImageSection() {
         <div className="sustain-hero-image-inner">
           <div className="sustain-hero-image-top">
             <FadeIn id="sustain-hero-image-quote" className="sustain-hero-image-quote-wrap">
+              <span className="sustain-hero-image-eyebrow">{sustainabilityHeroImage.strategy}</span>
               <div className="sustain-hero-image-quote-row">
                 <span className="sustain-accent-line" aria-hidden="true" />
                 <p className="sustain-hero-image-quote">
@@ -40,8 +41,16 @@ export function SustainabilityHeroImageSection() {
             <div className="sustain-impact-metrics">
               {strategyMetrics.map((metric) => (
                 <div key={metric.id} className="sustain-impact-metric">
-                  <div className="sustain-impact-metric-value">{metric.value}</div>
-                  <div className="sustain-impact-metric-label">{metric.label}</div>
+                  <div className="sustain-impact-metric-top">
+                    <div className="sustain-impact-metric-value">{metric.value}</div>
+                    <div className="sustain-impact-metric-label">{metric.label}</div>
+                  </div>
+                  <div className="sustain-impact-metric-bar" aria-hidden="true">
+                    <span
+                      className="sustain-impact-metric-bar-fill"
+                      style={{ width: metric.value }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
