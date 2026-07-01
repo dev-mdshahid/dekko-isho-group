@@ -20,8 +20,17 @@ export function SustainabilityPillar03Section() {
           </div>
         </FadeIn>
 
+        <FadeIn id="sustain-pillar03-image" delay={60} className="sustain-materials-hero-wrap">
+          <img
+            src={pillar03.image}
+            loading="lazy"
+            alt={pillar03.imageAlt}
+            className="sustain-materials-hero-image"
+          />
+        </FadeIn>
+
         <div className="sustain-materials-layout">
-          <FadeIn id="sustain-materials-progress" className="sustain-materials-progress-card">
+          <FadeIn id="sustain-materials-progress" delay={80} className="sustain-materials-progress-card">
             <div className="sustain-materials-progress-copy">
               <span className="sustain-materials-progress-value">{pillar03.sustainablePercentage}%</span>
               <p className="sustain-materials-progress-label">{pillar03.sustainableLabel}</p>
@@ -46,7 +55,7 @@ export function SustainabilityPillar03Section() {
             </div>
           </FadeIn>
 
-          <FadeIn id="sustain-materials-chart" delay={80} className="sustain-materials-chart-card">
+          <FadeIn id="sustain-materials-chart" delay={100} className="sustain-materials-chart-card">
             <h3 className="sustain-materials-chart-title">{pillar03.materialsChartTitle}</h3>
             <div className="sustain-materials-bars">
               {pillar03.materials.map((material) => (
@@ -65,22 +74,17 @@ export function SustainabilityPillar03Section() {
           </FadeIn>
         </div>
 
-        <FadeIn id="sustain-pillar03-image" delay={100} className="sustain-materials-hero-wrap">
-          <img
-            src={pillar03.image}
-            loading="lazy"
-            alt={pillar03.imageAlt}
-            className="sustain-materials-hero-image"
-          />
-        </FadeIn>
-
         <FadeIn id="sustain-traceability" delay={120} className="sustain-badges-section">
           <h3 className="sustain-badges-title">{pillar03.traceabilityTitle}</h3>
           <div className="sustain-badges-row">
-            {pillar03.traceabilityPlatforms.map((platform) => (
-              <span key={platform} className="sustain-platform-badge">
-                {platform}
-              </span>
+            {pillar03.traceabilityLogos.map((logo) => (
+              <img
+                key={logo.id}
+                src={logo.src}
+                loading="lazy"
+                alt={logo.alt}
+                className="sustain-badge-logo"
+              />
             ))}
           </div>
         </FadeIn>
@@ -88,10 +92,14 @@ export function SustainabilityPillar03Section() {
         <FadeIn id="sustain-standards" delay={160} className="sustain-badges-section">
           <h3 className="sustain-badges-title">{pillar03.standardsTitle}</h3>
           <div className="sustain-badges-row">
-            {pillar03.standards.map((standard) => (
-              <span key={standard} className="sustain-standard-badge">
-                {standard}
-              </span>
+            {pillar03.standardsLogos.map((logo) => (
+              <img
+                key={logo.id}
+                src={logo.src}
+                loading="lazy"
+                alt={logo.alt}
+                className="sustain-badge-logo"
+              />
             ))}
           </div>
         </FadeIn>

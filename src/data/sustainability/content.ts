@@ -349,14 +349,21 @@ export type MaterialBar = {
   percentage: number
 }
 
+export type SustainabilityLogo = {
+  id: string
+  src: string
+  alt: string
+}
+
 export const pillar03 = {
   number: '03',
   badge: 'Pillar 03',
   title: 'Material Sustainability',
   description:
     'Responsible sourcing, environmental stewardship and full supply-chain transparency – every garment powered by verified, end-to-end traceable data, from fibre to retail.',
-  image: '/images/sustainability/pillar-3/0bb09de306378f3ecacb1d6d465a1012319e104e.jpg',
-  imageAlt: 'Green pathway with palm trees inside a manufacturing facility',
+  image: '/images/sustainability/pillar-3/sustainability-pillar03-cover.png',
+  imageAlt:
+    'Watercolor illustration of green trees blending into a sustainable manufacturing facility',
   sustainablePercentage: 61,
   sustainableLabel:
     'of our material mix is now sustainably sourced – up across cotton, flax and circular fibres.',
@@ -369,16 +376,61 @@ export const pillar03 = {
     { id: 'poly', name: 'Recycled Polyester', percentage: 1.78 },
   ] satisfies MaterialBar[],
   traceabilityTitle: 'Traceability platforms',
-  traceabilityPlatforms: [
-    'TextileGenesis',
-    'Better Cotton Platform',
-    'Retraced',
-    'TrusTrace',
-    'Reverse Resources',
-    'Chain of Custody',
-  ],
+  traceabilityLogos: [
+    {
+      id: 'textile-genesis',
+      src: '/images/sustainability/pillar-3/logos/textile-genesis.png',
+      alt: 'TextileGenesis, a LECTRA company',
+    },
+    {
+      id: 'better-cotton',
+      src: '/images/sustainability/pillar-3/logos/better-cotton.png',
+      alt: 'Better Cotton',
+    },
+    {
+      id: 'retraced',
+      src: '/images/sustainability/pillar-3/logos/retraced.png',
+      alt: 'retraced',
+    },
+    {
+      id: 'trustrace',
+      src: '/images/sustainability/pillar-3/logos/trustrace.png',
+      alt: 'trustrace',
+    },
+    {
+      id: 'reverse-resources',
+      src: '/images/sustainability/pillar-3/logos/reverse-resources.png',
+      alt: 'Reverse Resources',
+    },
+    {
+      id: 'oeko-tex',
+      src: '/images/sustainability/pillar-3/logos/oeko-tex.png',
+      alt: 'OEKO-TEX STeP',
+    },
+    {
+      id: 'fsc',
+      src: '/images/sustainability/pillar-3/logos/fsc.png',
+      alt: 'FSC',
+    },
+  ] satisfies SustainabilityLogo[],
   standardsTitle: 'Certified to global standards',
-  standards: ['GOTS', '13,421 MWh', 'OEKO-TEX Standard 100', 'REACH', 'Regenagri'],
+  standardsLogos: [
+    {
+      id: 'regenagri',
+      src: '/images/sustainability/pillar-3/logos/regenagri.png',
+      alt: 'regenagri',
+    },
+    {
+      id: 'gots',
+      src: '/images/sustainability/pillar-3/logos/gots.png',
+      alt: 'GOTS — Global Organic Textile Standard',
+    },
+    {
+      id: 'reach',
+      src: '/images/sustainability/pillar-3/logos/reach.png',
+      alt: 'REACH',
+    },
+  ] satisfies SustainabilityLogo[],
 }
 
 export const pillar04 = {
@@ -387,7 +439,7 @@ export const pillar04 = {
   title: 'ESG Disclosure',
   description:
     'In accordance with Global Reporting Initiative (GRI) standards, our sustainability reports communicate our goals, progress, challenges and impact across every ESG area.',
-  heroImage: '/images/sustainability/pillar-4/pillar-4-cover.jpg',
+  heroImage: '/images/sustainability/pillar-4/pillar-4-cover.png',
   heroImageAlt: 'A tree-lined pathway surrounded by lush bamboo and tropical greenery',
   reports: [
     {
