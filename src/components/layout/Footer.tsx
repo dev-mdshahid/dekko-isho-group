@@ -57,7 +57,7 @@ export function Footer() {
                 delay={100}
               >
                 <img
-                  src="/images/dekko-footer-logo.svg"
+                  src="/images/footer-logo.png"
                   loading="lazy"
                   alt="Dekko ISHO Group"
                   className="footer-subscribe-logo"
