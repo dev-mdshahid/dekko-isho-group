@@ -8,35 +8,37 @@ export function HeroSection() {
       <div className="hero-inner">
         <div className="container-full hero-title-area">
           <h1 className="hero-title" data-home-animate="hero-title">
-            <span className="hero-title-line-mask" data-home-animate="hero-line">
+            <span className="hero-title-line-mask">
               <span className="hero-title-line">
-                Elevating{' '}
+                <span className="hero-title-word" data-home-animate="hero-word">
+                  Elevating
+                </span>{' '}
                 <span
-                  className="hero-title-accent hero-title-accent--primary"
-                  data-home-animate="hero-accent"
+                  className="hero-title-word hero-title-accent hero-title-accent--primary"
+                  data-home-animate="hero-word"
                 >
                   Excellence
                 </span>
               </span>
-              <span className="hero-title-caret" aria-hidden="true" />
             </span>
-            <span className="hero-title-line-mask" data-home-animate="hero-line">
+            <span className="hero-title-line-mask">
               <span className="hero-title-line">
-                Through{' '}
+                <span className="hero-title-word" data-home-animate="hero-word">
+                  Through
+                </span>{' '}
                 <span
-                  className="hero-title-accent hero-title-accent--green"
-                  data-home-animate="hero-accent"
+                  className="hero-title-word hero-title-accent hero-title-accent--green"
+                  data-home-animate="hero-word"
                 >
                   Sustainable
                 </span>{' '}
                 <span
-                  className="hero-title-accent hero-title-accent--red"
-                  data-home-animate="hero-accent"
+                  className="hero-title-word hero-title-accent hero-title-accent--red"
+                  data-home-animate="hero-word"
                 >
                   Progress
                 </span>
               </span>
-              <span className="hero-title-caret" aria-hidden="true" />
             </span>
           </h1>
         </div>
