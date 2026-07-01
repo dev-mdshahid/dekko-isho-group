@@ -7,45 +7,32 @@ import {
 } from '../data/home/heroTitle'
 import { prefersReducedMotion } from '../lib/animations/prefersReducedMotion'
 
-function getTypingDelay(
-  char: string,
-  prevChar: string | undefined,
-  index: number,
-  token: HeroCharToken,
-): number {
-  if (index === 0) return 380 + Math.random() * 120
-
-  if (char === ' ') {
-    return 140 + Math.random() * 90
-  }
-
-  if (prevChar === ' ') {
-    if (token.accent) {
-      return 220 + Math.random() * 160
-    }
-    return 95 + Math.random() * 75
-  }
-
-  if ('.,!?;:'.includes(char)) {
-    return 260 + Math.random() * 140
-  }
-
-  const base = 52 + Math.random() * 58
-
-  if (index % 5 === 0 && Math.random() < 0.22) {
-    return base + 90 + Math.random() * 110
-  }
-
-  if (Math.random() < 0.08) {
-    return base + 40 + Math.random() * 60
-  }
-
-  return base
+type LineTiming = {
+  /** Characters revealed per second. */
+  cps: number
+  /** Pause before this line starts (ms). */
+  linePause: number
 }
 
-function getLinePauseDelay(lineIndex: number): number {
-  if (lineIndex <= 0) return 0
-  return 420 + lineIndex * 60 + Math.random() * 180
+const LINE_TIMING: LineTiming[] = [
+  { cps: 22, linePause: 0 },
+  { cps: 38, linePause: 100 },
+  { cps: 30, linePause: 120 },
+]
+
+function getCharInterval(
+  char: string,
+  prevChar: string | undefined,
+  token: HeroCharToken,
+  lineIndex: number,
+): number {
+  const { cps } = LINE_TIMING[lineIndex] ?? { cps: 26, linePause: 100 }
+  const base = 1000 / cps
+
+  if (char === ' ') return base * 1.3
+  if (prevChar === ' ' && token.accent) return base * 1.15
+
+  return base
 }
 
 export function useHeroTypewriter() {
@@ -70,11 +57,26 @@ export function useHeroTypewriter() {
 
     let lineIndex = 0
     let charIndex = 0
-    let timer = 0
+    let raf = 0
     let cancelled = false
+    let elapsed = 0
+    let lastTime = 0
+    let nextInterval = LINE_TIMING[0]?.linePause ?? 80
 
-    const tick = () => {
+    const tick = (timestamp: number) => {
       if (cancelled) return
+
+      if (!lastTime) lastTime = timestamp
+      const delta = timestamp - lastTime
+      lastTime = timestamp
+      elapsed += delta
+
+      if (elapsed < nextInterval) {
+        raf = requestAnimationFrame(tick)
+        return
+      }
+
+      elapsed -= nextInterval
 
       const lineLength = lineLengths[lineIndex] ?? 0
 
@@ -87,13 +89,14 @@ export function useHeroTypewriter() {
         lineIndex += 1
         charIndex = 0
         setActiveLine(lineIndex)
-        timer = window.setTimeout(tick, getLinePauseDelay(lineIndex))
+        elapsed = 0
+        nextInterval = LINE_TIMING[lineIndex]?.linePause ?? 100
+        raf = requestAnimationFrame(tick)
         return
       }
 
       const token = lineTokens[lineIndex]![charIndex]!
       const prevToken = charIndex > 0 ? lineTokens[lineIndex]![charIndex - 1] : undefined
-      const delay = getTypingDelay(token.char, prevToken?.char, charIndex, token)
 
       charIndex += 1
       const nextLineIndex = lineIndex
@@ -104,14 +107,18 @@ export function useHeroTypewriter() {
         return next
       })
 
-      timer = window.setTimeout(tick, delay)
+      nextInterval = getCharInterval(token.char, prevToken?.char, token, lineIndex)
+      raf = requestAnimationFrame(tick)
     }
 
-    timer = window.setTimeout(tick, 280)
+    lastTime = 0
+    elapsed = 0
+    nextInterval = 80
+    raf = requestAnimationFrame(tick)
 
     return () => {
       cancelled = true
-      window.clearTimeout(timer)
+      cancelAnimationFrame(raf)
     }
   }, [lineLengths, lineTokens])
 

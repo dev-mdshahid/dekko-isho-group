@@ -563,10 +563,6 @@
   overflow: visible;
 }
 
-.hero-title-line-mask--typing {
-  transition: width 0.12s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 @media screen and (min-width: 768px) {
   .hero-title-line-mask--inline {
     display: inline-block;
@@ -591,18 +587,17 @@
 }
 
 .hero-title-caret.is-blinking {
-  animation: hero-caret-blink 1.05s step-end infinite;
+  animation: hero-caret-blink 1.05s ease-in-out infinite;
 }
 
 @keyframes hero-caret-blink {
   0%,
-  45% {
+  100% {
     opacity: 1;
   }
 
-  45.01%,
-  100% {
-    opacity: 0;
+  50% {
+    opacity: 0.15;
   }
 }
 

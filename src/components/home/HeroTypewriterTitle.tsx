@@ -59,7 +59,6 @@ function HeroTypewriterLine({
   const maskClassName = [
     'hero-title-line-mask',
     line.inline ? 'hero-title-line-mask--inline' : '',
-    showCaret ? 'hero-title-line-mask--typing' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -68,12 +67,7 @@ function HeroTypewriterLine({
     <span className={maskClassName}>
       <span className="hero-title-line">
         {renderCharGroups(groupVisibleChars(tokens, visibleCount))}
-        {showCaret ? (
-          <span
-            className={`hero-title-caret${showCaret ? ' is-blinking' : ''}`}
-            aria-hidden="true"
-          />
-        ) : null}
+        {showCaret ? <span className="hero-title-caret is-blinking" aria-hidden="true" /> : null}
       </span>
     </span>
   )
