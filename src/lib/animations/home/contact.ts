@@ -21,40 +21,44 @@ export function initContactAnimations(scope: ParentNode): AnimationCleanup {
   const formTargets = [...fields, submit].filter(Boolean) as HTMLElement[]
 
   if (formCard && !reduced) {
-    gsap.set(formCard, { opacity: 0, y: 48, scale: 0.97 })
-
-    const cardTween = gsap.to(formCard, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 1.1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: formCard,
-        start: 'top 80%',
-        once: true,
+    const cardTween = gsap.fromTo(
+      formCard,
+      { opacity: 0, y: 72, scale: 0.94 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: formCard,
+          start: 'top 80%',
+          toggleActions: 'restart reset restart reset',
+        },
       },
-    })
+    )
 
     if (cardTween.scrollTrigger) triggers.push(cardTween.scrollTrigger)
     tweens.push(cardTween)
   }
 
   if (formTargets.length && !reduced) {
-    gsap.set(formTargets, { opacity: 0, y: 20 })
-
-    const formTween = gsap.to(formTargets, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-      stagger: 0.12,
-      scrollTrigger: {
-        trigger: formCard ?? section,
-        start: 'top 75%',
-        once: true,
+    const formTween = gsap.fromTo(
+      formTargets,
+      { opacity: 0, y: 32 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: formCard ?? section,
+          start: 'top 75%',
+          toggleActions: 'restart reset restart reset',
+        },
       },
-    })
+    )
 
     if (formTween.scrollTrigger) triggers.push(formTween.scrollTrigger)
     tweens.push(formTween)

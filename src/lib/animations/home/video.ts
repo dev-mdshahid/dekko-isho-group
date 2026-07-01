@@ -12,15 +12,17 @@ export type HeroVideoExpandTargets = {
   media: HTMLElement | null
 }
 
+const DESKTOP_INITIAL_RATIO = 0.8
+const MOBILE_INITIAL_RATIO = 0.8
+
 function getExpandGap(section: HTMLElement) {
   const raw = getComputedStyle(section).getPropertyValue('--hero-video-expand-gap').trim()
   const gap = Number.parseFloat(raw)
   return Number.isFinite(gap) ? gap : 48
 }
 
-function getInitialVideoWidth(section: HTMLElement) {
-  const gap = getExpandGap(section)
-  return Math.max(0, window.innerWidth - gap * 2)
+function getInitialVideoWidth() {
+  return window.innerWidth * DESKTOP_INITIAL_RATIO
 }
 
 /** Scrub: video reaches full bleed once the section has scrolled past half the viewport. */
@@ -32,7 +34,7 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
     const gap = getExpandGap(section)
 
     gsap.set(scaler, {
-      width: getInitialVideoWidth(section),
+      width: getInitialVideoWidth(),
       height: 'auto',
     })
 
@@ -42,7 +44,7 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
       scrollTrigger: {
         trigger: section,
         start: 'top bottom',
-        end: 'top 50%',
+        end: 'center center',
         scrub: 0.85,
         invalidateOnRefresh: true,
       },
@@ -65,15 +67,18 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
   })
 
   mm.add('(max-width: 991px) and (prefers-reduced-motion: no-preference)', () => {
-    const mobileGap = 48
-
-    gsap.set(scaler, { width: `calc(100% - ${mobileGap * 2}px)`, marginLeft: 'auto', marginRight: 'auto', borderRadius: '0.75rem' })
+    gsap.set(scaler, {
+      width: `${MOBILE_INITIAL_RATIO * 100}%`,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      borderRadius: '0.75rem',
+    })
 
     const expandTween = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top bottom',
-        end: 'top 40%',
+        end: 'center center',
         scrub: 0.6,
         invalidateOnRefresh: true,
       },

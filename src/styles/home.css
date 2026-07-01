@@ -34,6 +34,10 @@
   display: block;
 }
 
+.hero-title-word {
+  display: inline-block;
+}
+
 .hero-title-accent--primary {
   color: var(--color--primary);
 }
@@ -263,7 +267,7 @@
   .hero-section .home-hero-video-section .hero-video-scaler {
     will-change: width;
     box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 0.12);
-    width: calc(100vw - (var(--hero-video-expand-gap) * 2));
+    width: 80vw;
   }
 }
 
@@ -600,11 +604,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  [data-home-animate='hero-line'] {
-    clip-path: inset(0 100% 0 0);
-  }
-
-  [data-home-animate='hero-accent'] {
+  [data-home-animate='hero-word'] {
     opacity: 0;
   }
 

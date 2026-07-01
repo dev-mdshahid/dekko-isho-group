@@ -17,16 +17,17 @@ export function initAboutAnimations(scope: ParentNode): AnimationCleanup {
   if (carousel && !prefersReducedMotion()) {
     const tween = gsap.fromTo(
       carousel,
-      { scale: 0.96, opacity: 0 },
+      { scale: 0.9, opacity: 0, y: 60 },
       {
         scale: 1,
         opacity: 1,
+        y: 0,
         duration: 1.4,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: carousel,
           start: 'top 85%',
-          once: true,
+          toggleActions: 'restart reset restart reset',
         },
       },
     )

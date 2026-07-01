@@ -12,20 +12,19 @@ export function HeroSection() {
               <span className="hero-title-line" data-home-animate="hero-line">
                 Elevating{' '}
                 <span
-                  className="hero-title-accent hero-title-accent--primary"
-                  data-home-animate="hero-accent"
+                  className="hero-title-word hero-title-accent hero-title-accent--primary"
+                  data-home-animate="hero-word"
                 >
                   Excellence
                 </span>
               </span>
-              <span className="hero-title-caret" aria-hidden="true" />
             </span>
             <span className="hero-title-line-mask hero-title-line-mask--inline">
               <span className="hero-title-line" data-home-animate="hero-line">
                 Through{' '}
                 <span
-                  className="hero-title-accent hero-title-accent--green"
-                  data-home-animate="hero-accent"
+                  className="hero-title-word hero-title-accent hero-title-accent--green"
+                  data-home-animate="hero-word"
                 >
                   Sustainable
                 </span>
@@ -35,13 +34,12 @@ export function HeroSection() {
             <span className="hero-title-line-mask hero-title-line-mask--inline">
               <span className="hero-title-line" data-home-animate="hero-line">
                 <span
-                  className="hero-title-accent hero-title-accent--red"
-                  data-home-animate="hero-accent"
+                  className="hero-title-word hero-title-accent hero-title-accent--red"
+                  data-home-animate="hero-word"
                 >
                   Progress
                 </span>
               </span>
-              <span className="hero-title-caret" aria-hidden="true" />
             </span>
           </h1>
         </div>

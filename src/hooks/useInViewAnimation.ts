@@ -16,6 +16,11 @@ function isNearViewport(el: HTMLElement) {
   return rect.top < window.innerHeight + margin && rect.bottom > -margin
 }
 
+/** Hidden offset for a target — larger = more noticeable travel on reveal. */
+function hiddenY(el: HTMLElement) {
+  return el.dataset.fadeVariant === 'slide-in-bottom' ? 100 : 44
+}
+
 /** Scroll-reveal for `[data-fade-in]` only — does not touch Webflow IX2 `data-w-id` targets. */
 export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>) {
   useEffect(() => {
@@ -23,11 +28,18 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
     if (!scope) return
 
     let observer: IntersectionObserver | null = null
-    let scrollRaf = 0
+
+    /** Reset a target to its hidden state so it replays the next time it enters view. */
+    const hide = (el: HTMLElement) => {
+      if (el.dataset.fadeState === 'out') return
+      el.dataset.fadeState = 'out'
+      gsap.killTweensOf(el)
+      gsap.set(el, { opacity: 0, y: hiddenY(el) })
+    }
 
     const reveal = (el: HTMLElement) => {
-      if (el.dataset.fadeDone === 'true') return
-      el.dataset.fadeDone = 'true'
+      if (el.dataset.fadeState === 'in') return
+      el.dataset.fadeState = 'in'
       const targetOpacity = el.classList.contains('industry-image-bg') ? 0.7 : 1
       const delayMs = Number.parseInt(el.dataset.fadeDelay ?? '0', 10)
       const delay = Number.isFinite(delayMs) ? delayMs / 1000 : 0
@@ -41,14 +53,13 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
         delay,
         overwrite: 'auto',
       })
-      observer?.unobserve(el)
     }
 
     const revealVisible = (root?: Element, options?: RevealOptions) => {
       const queryRoot = (root ?? scope) as ParentNode
       Array.from(queryRoot.querySelectorAll<HTMLElement>('[data-fade-in]'))
         .filter((el) => {
-          if (el.dataset.fadeDone === 'true') return false
+          if (el.dataset.fadeState === 'in') return false
           if (options?.forceInRoot) return true
           return isInViewport(el) || isNearViewport(el)
         })
@@ -57,45 +68,30 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
 
     registerFadeInReveal(revealVisible)
 
-    const onScroll = () => {
-      if (scrollRaf) return
-      scrollRaf = requestAnimationFrame(() => {
-        scrollRaf = 0
-        revealVisible()
-      })
-    }
-
-    const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]')).filter(
-      (el) => el.dataset.fadeDone !== 'true',
-    )
+    const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]'))
 
     if (targets.length) {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (!entry.isIntersecting) return
-            reveal(entry.target as HTMLElement)
+            const el = entry.target as HTMLElement
+            if (entry.isIntersecting) reveal(el)
+            else hide(el)
           })
         },
-        { threshold: 0, rootMargin: '120px 0px 120px 0px' },
+        { threshold: 0, rootMargin: '0px 0px -10% 0px' },
       )
 
       targets.forEach((el) => {
-        const isSlideInBottom = el.dataset.fadeVariant === 'slide-in-bottom'
-        gsap.set(el, { opacity: 0, y: isSlideInBottom ? 80 : 24 })
+        gsap.set(el, { opacity: 0, y: hiddenY(el) })
+        el.dataset.fadeState = 'out'
         observer?.observe(el)
       })
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('scrollend', onScroll, { passive: true })
-
     return () => {
       unregisterFadeInReveal()
-      if (scrollRaf) cancelAnimationFrame(scrollRaf)
       observer?.disconnect()
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('scrollend', onScroll)
     }
   }, [containerRef])
 }

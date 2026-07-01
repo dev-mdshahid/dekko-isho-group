@@ -21,7 +21,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     cards.forEach((card) => {
       const tween = gsap.fromTo(
         card,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 64 },
         {
           opacity: 1,
           y: 0,
@@ -30,7 +30,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
           scrollTrigger: {
             trigger: card,
             start: 'top 88%',
-            once: true,
+            toggleActions: 'restart reset restart reset',
           },
         },
       )
@@ -68,7 +68,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     if (features.length) {
       const featureTween = gsap.fromTo(
         features,
-        { opacity: 0, y: 12 },
+        { opacity: 0, y: 24 },
         {
           opacity: 1,
           y: 0,
@@ -78,7 +78,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
           scrollTrigger: {
             trigger: card,
             start: 'top 75%',
-            once: true,
+            toggleActions: 'restart reset restart reset',
           },
         },
       )
@@ -92,7 +92,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
   if (lastCard && lastFeatures?.length) {
     const featureTween = gsap.fromTo(
       lastFeatures,
-      { opacity: 0, y: 12 },
+      { opacity: 0, y: 24 },
       {
         opacity: 1,
         y: 0,
@@ -102,7 +102,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
         scrollTrigger: {
           trigger: lastCard,
           start: 'top 75%',
-          once: true,
+          toggleActions: 'restart reset restart reset',
         },
       },
     )

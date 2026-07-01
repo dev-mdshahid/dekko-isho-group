@@ -57,6 +57,17 @@
   color: var(--color--neutral-outer-space);
 }
 
+.about-hero-section .hero-title-word {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-hero-section [data-about-animate='hero-word'],
+  .about-hero-section [data-about-animate='hero-subtitle'] {
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .about-hero-inner {
     padding-top: 120px;
@@ -89,19 +100,6 @@
     padding-inline: 0.25rem;
   }
 }
-
-/* About page — hero animation hooks */
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-about-animate='hero-line'] {
-    clip-path: inset(0 100% 0 0);
-  }
-
-  .about-hero-section .about-hero-subtitle {
-    opacity: 0;
-  }
-}
-
 /* About page — image + info section */
 
 .image-info-about .about-image-slideshow {
@@ -138,6 +136,32 @@
   max-width: 100%;
 }
 
+.image-info-about .about-info-stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.image-info-about .about-info-scaler {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .image-info-about .about-info-scaler {
+    width: 80vw;
+    will-change: width;
+  }
+}
+
+@media (max-width: 991px) and (prefers-reduced-motion: no-preference) {
+  .image-info-about .about-info-scaler {
+    width: 80%;
+    margin-inline: auto;
+    will-change: width;
+  }
+}
+
 .image-info-about .grid-hero-about {
   overflow: visible;
 }
@@ -150,7 +174,7 @@
   background-image: linear-gradient(180deg, #2595d5 0%, #1b3f6f 100%);
 }
 
-.image-info-about+.about-three-section {
+.about-hero-section+.about-three-section {
   --about-marquee-font-size: clamp(2.5rem, 15vw, 128px);
   padding-top: calc(var(--about-marquee-font-size) * 0.3);
 }
@@ -231,7 +255,7 @@
     --about-marquee-font-size: clamp(2.25rem, 12vw, 96px);
   }
 
-  .image-info-about+.about-three-section {
+  .about-hero-section+.about-three-section {
     --about-marquee-font-size: clamp(2.25rem, 12vw, 96px);
   }
 
@@ -251,7 +275,7 @@
     --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
-  .image-info-about+.about-three-section {
+  .about-hero-section+.about-three-section {
     --about-marquee-font-size: clamp(1.75rem, 10vw, 56px);
   }
 
