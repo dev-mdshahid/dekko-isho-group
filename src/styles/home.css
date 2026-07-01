@@ -558,6 +558,17 @@
   overflow: hidden;
 }
 
+@media screen and (min-width: 768px) {
+  .hero-title-line-mask--inline {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  .hero-title-line-mask--inline + .hero-title-line-mask--inline {
+    margin-left: 0.28em;
+  }
+}
+
 .hero-title-caret {
   position: absolute;
   top: 0.16em;
