@@ -11678,13 +11678,10 @@ a.about-info-box:hover {
   display: grid;
   width: 100%;
   position: relative;
-  border-top: 0;
-  background-color: transparent;
 }
 
 .service-section .service-card-divider {
-  border-bottom: 1px solid var(--color--gray-4);
-  width: 100%;
+  display: none;
 }
 
 .service-section .service-name-wrapper {
@@ -11709,6 +11706,8 @@ a.about-info-box:hover {
 @media screen and (min-width: 992px) {
   .service-section .service-info-link {
     grid-template-columns: 1fr auto;
+    border-top: 1px solid var(--color--gray-4);
+    background-color: var(--color--white);
   }
 
   .service-section .service-info-inner {
@@ -11720,6 +11719,11 @@ a.about-info-box:hover {
     top: 2.5rem;
     right: 0;
     z-index: 1;
+  }
+
+  .service-section .service-name {
+    font-size: 28px;
+    line-height: 1.25;
   }
 }
 
@@ -11745,11 +11749,6 @@ a.about-info-box:hover {
 
 .service-section .service-name-highlight {
   color: var(--color--primary);
-}
-
-.service-section .service-name {
-  font-size: 20px;
-  line-height: 1.25;
 }
 
 .service-section .service-feature-text {
@@ -11998,6 +11997,12 @@ a.about-info-box:hover {
     background-color: transparent;
   }
 
+  .service-section .service-card-divider {
+    display: block;
+    border-bottom: 1px solid var(--color--gray-4);
+    width: 100%;
+  }
+
   .service-section .service-info-inner {
     flex-direction: column;
     gap: 0;
@@ -12030,6 +12035,8 @@ a.about-info-box:hover {
   }
 
   .service-section .service-name-wrapper .service-name {
+    font-size: 20px;
+    line-height: 1.25;
     padding-right: 0.5rem;
   }
 
