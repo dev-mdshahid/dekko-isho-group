@@ -31,24 +31,14 @@ function useSolutionsTabIndicator(activeTabId: string) {
   const [indicator, setIndicator] = useState<TabIndicator>(INITIAL_INDICATOR)
 
   const updateIndicator = useCallback(() => {
+    if (window.matchMedia('(max-width: 991px)').matches) return
+
     const menu = menuRef.current
     const tab = tabRefs.current[activeTabId]
     if (!menu || !tab) return
 
     const menuRect = menu.getBoundingClientRect()
     const tabRect = tab.getBoundingClientRect()
-    const horizontal = window.matchMedia('(max-width: 991px)').matches
-
-    if (horizontal) {
-      setIndicator({
-        horizontal: true,
-        top: tabRect.top - menuRect.top + tabRect.height - 3,
-        left: tabRect.left - menuRect.left,
-        width: tabRect.width,
-        height: 3,
-      })
-      return
-    }
 
     setIndicator({
       horizontal: false,

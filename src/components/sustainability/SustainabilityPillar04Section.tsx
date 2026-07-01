@@ -1,5 +1,4 @@
 import { pillar04 } from '../../data/sustainability/content'
-import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
 

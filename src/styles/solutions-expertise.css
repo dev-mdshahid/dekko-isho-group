@@ -262,33 +262,51 @@
   }
 
   .solutions-expertise-menu {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 0.625rem;
     width: 100%;
     max-width: 100%;
-    gap: 0;
-    padding-top: 0;
-    padding-bottom: 0.25rem;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    background: transparent;
   }
 
-  .solutions-expertise-menu::-webkit-scrollbar {
+  .solutions-expertise-tab-indicator {
     display: none;
   }
 
   .solutions-expertise-tab {
-    flex: 0 0 auto;
-    border-left: 0;
-    border-bottom: 3px solid var(--color--gray-4);
-    padding: 0.75rem 1rem;
-    white-space: nowrap;
+    min-height: 3.5rem;
+    border: 1px solid var(--color--gray-4);
+    border-radius: 0.625rem;
+    padding: 0.75rem 0.625rem;
+    color: var(--_color---body-text);
+    font-family: var(--_typography---font-family--heading);
+    font-size: 0.9375rem;
+    font-weight: var(--_typography---h6--font-weight-600);
+    line-height: 1.25;
+    white-space: normal;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--color--white);
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .solutions-expertise-tab.is-active {
+    border-color: var(--color--secondary-amaranth);
+    background-color: rgba(243, 33, 93, 0.06);
     color: var(--color--secondary-amaranth);
+    box-shadow: 0 4px 12px rgba(243, 33, 93, 0.1);
+  }
+
+  .solutions-expertise-tab:active:not(.is-active) {
+    background-color: var(--color--gray-5);
   }
 
   .solutions-expertise-decor {
@@ -333,35 +351,12 @@
   }
 
   .solutions-expertise-menu {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    width: 100%;
-    max-width: 100%;
-    gap: 0;
-    padding-bottom: 0.25rem;
-    margin-inline: -0.9375rem;
-    padding-inline: 0.9375rem;
-  }
-
-  .solutions-expertise-menu::-webkit-scrollbar {
-    display: none;
+    margin-bottom: 1.25rem;
   }
 
   .solutions-expertise-tab {
-    flex: 0 0 auto;
-    border-left: 0;
-    border-bottom: 3px solid var(--color--gray-4);
-    padding: 0.625rem 0.875rem;
-    font-size: 0.9375rem;
-    white-space: nowrap;
-  }
-
-  .solutions-expertise-tab.is-active {
-    color: var(--color--secondary-amaranth);
+    font-size: 0.875rem;
+    padding: 0.625rem 0.5rem;
   }
 
   .solutions-expertise-card-inner {
