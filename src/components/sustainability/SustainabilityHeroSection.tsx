@@ -1,3 +1,4 @@
+import { SustainabilityHeroImageSection } from './SustainabilityHeroImageSection'
 import { sustainabilityHero } from '../../data/sustainability/content'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
@@ -31,6 +32,7 @@ export function SustainabilityHeroSection() {
       <div className="hero-section-overlay" aria-hidden="true" />
       <SectionLines border="grey" />
       <NoiseOverlay />
+      <SustainabilityHeroImageSection />
     </section>
   )
 }

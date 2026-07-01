@@ -11811,6 +11811,10 @@ a.about-info-box:hover {
   max-width: 1078px;
 }
 
+.service-section .service-details-wrap {
+  overflow: visible;
+}
+
 .service-section .section-title-wrap {
   grid-template-columns: 1fr auto;
   align-items: start;

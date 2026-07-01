@@ -79,7 +79,11 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
             else hide(el)
           })
         },
-        { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+        {
+          threshold: 0,
+          // Extra bottom margin so slide-in-bottom targets (y: 100) still intersect before reveal
+          rootMargin: '0px 0px 120px 0px',
+        },
       )
 
       targets.forEach((el) => {
@@ -87,6 +91,8 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
         el.dataset.fadeState = 'out'
         observer?.observe(el)
       })
+
+      requestAnimationFrame(() => revealVisible())
     }
 
     return () => {

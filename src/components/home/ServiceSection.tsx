@@ -102,32 +102,25 @@ export function ServiceSection() {
             </FadeIn>
             <div className="section-title-wrap">
               <div className="section-title-intro">
-                <h2
-                  className="section-title"
-                  data-fade-in
-                  data-fade-variant="slide-in-bottom"
-                  data-fade-delay="100"
-                >
-                  Weaving the <span className="text-linear-gradient">Future</span> of Fashion
-                </h2>
-                <p
-                  className="service-description"
-                  data-fade-in
-                  data-fade-variant="slide-in-bottom"
-                  data-fade-delay="220"
-                >
-                  Where precision meets excellence, and every stitch reflects a global standard.
-                </p>
+                <FadeIn id="service-section-title" variant="slide-in-bottom" delay={100}>
+                  <h2 className="section-title">
+                    Weaving the <span className="text-linear-gradient">Future</span> of Fashion
+                  </h2>
+                </FadeIn>
+                <FadeIn id="service-section-description" variant="slide-in-bottom" delay={220}>
+                  <p className="service-description">
+                    Where precision meets excellence, and every stitch reflects a global standard.
+                  </p>
+                </FadeIn>
               </div>
-              <div
+              <FadeIn
                 id="w-node-e23adfcb-92aa-cd61-ca12-ef84ce0764ac-ae320c59"
+                variant="slide-in-bottom"
+                delay={340}
                 className="section-button-wrap"
-                data-fade-in
-                data-fade-variant="slide-in-bottom"
-                data-fade-delay="340"
               >
                 <ButtonArrow to="#About-Section" label="Explore all capabilities" />
-              </div>
+              </FadeIn>
             </div>
           </div>
           <div className="service-info">

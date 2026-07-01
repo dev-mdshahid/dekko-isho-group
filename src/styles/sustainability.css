@@ -13,8 +13,11 @@
 
 /* ── Hero ── */
 .sustain-hero-section.hero-simple-section {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
   padding-top: 200px;
-  padding-bottom: 200px;
+  padding-bottom: 0;
   background-color: var(--color--white);
   background-image: url('/images/fabric-bg.jpg');
   background-position: center;
@@ -169,6 +172,40 @@
 }
 
 /* ── Hero image + impact framework ── */
+.sustain-hero-image {
+  position: relative;
+  z-index: 2;
+  overflow-x: clip;
+  max-width: 100%;
+  margin-top: 200px;
+}
+
+.sustain-hero-image-stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sustain-hero-image-scaler {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .sustain-hero-image-scaler {
+    width: 80vw;
+    will-change: width;
+  }
+}
+
+@media (max-width: 991px) and (prefers-reduced-motion: no-preference) {
+  .sustain-hero-image-scaler {
+    width: 80%;
+    margin-inline: auto;
+    will-change: width;
+  }
+}
+
 .sustain-hero-image-section {
   position: relative;
   width: 100%;
@@ -1522,7 +1559,11 @@
 
   .sustain-hero-section.hero-simple-section {
     padding-top: 7.5rem;
-    padding-bottom: 9rem;
+    padding-bottom: 0;
+  }
+
+  .sustain-hero-image {
+    margin-top: 5rem;
   }
 
   .sustain-hero-title {
@@ -1723,7 +1764,11 @@
   /* Hero */
   .sustain-hero-section.hero-simple-section {
     padding-top: 8rem;
-    padding-bottom: 6.5rem;
+    padding-bottom: 0;
+  }
+
+  .sustain-hero-image {
+    margin-top: 3.5rem;
   }
 
   .sustain-hero-wrap {
@@ -2238,7 +2283,11 @@
 @media screen and (max-width: 479px) {
   .sustain-hero-section.hero-simple-section {
     padding-top: 7.5rem;
-    padding-bottom: 6rem;
+    padding-bottom: 0;
+  }
+
+  .sustain-hero-image {
+    margin-top: 2.5rem;
   }
 
   .sustain-hero-title {

@@ -28,9 +28,7 @@ function StatSnapshotCard({ kpi }: { kpi: Extract<SnapshotKpi, { type: 'stat' }>
             className="sustain-snapshot-card-value-accent count"
             data-target={numericTarget}
             data-duration="4.5"
-          >
-            {kpi.value}
-          </span>
+          />
           <span className="sustain-snapshot-card-value-suffix">{kpi.suffix}</span>
         </p>
         <SnapshotLabel lines={kpi.labelLines} />

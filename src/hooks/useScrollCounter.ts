@@ -8,27 +8,40 @@ export function useScrollCounter() {
     const counters = gsap.utils.toArray<HTMLElement>('.count')
     if (!counters.length) return
 
-    const tweens: gsap.core.Tween[] = []
+    const cleanups: (() => void)[] = []
 
     counters.forEach((el, idx) => {
-      const raw = el.getAttribute('data-target') || el.textContent || '0'
+      const raw = el.getAttribute('data-target') || '0'
       const target = parseInt(String(raw).replace(/\D/g, ''), 10) || 0
       const customDuration = el.getAttribute('data-duration')
       const duration =
         customDuration != null && customDuration !== ''
           ? Number.parseFloat(customDuration) || Math.max(1, Math.min(3, (target / 200) * 2))
           : Math.max(1, Math.min(3, (target / 200) * 2))
-      const obj = { val: 0 }
 
+      const delayAttr = el.getAttribute('data-delay')
+      const delay =
+        delayAttr != null && delayAttr !== ''
+          ? Number.parseFloat(delayAttr) || 0
+          : idx * 0.15
+
+      const scrollStart = el.getAttribute('data-scroll-start') || 'top 80%'
+      const scrollTriggerSelector = el.getAttribute('data-scroll-trigger')
+      const triggerEl = scrollTriggerSelector
+        ? document.querySelector<HTMLElement>(scrollTriggerSelector)
+        : el
+
+      if (!triggerEl) return
+
+      el.textContent = ''
+
+      const obj = { val: 0 }
       const tween = gsap.to(obj, {
         val: target,
         duration,
         ease: 'none',
-        delay: idx * 0.15,
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%',
-        },
+        delay,
+        paused: true,
         onUpdate: () => {
           el.textContent = Math.floor(obj.val).toLocaleString()
         },
@@ -37,14 +50,25 @@ export function useScrollCounter() {
         },
       })
 
-      tweens.push(tween)
-    })
+      const scrollTrigger = ScrollTrigger.create({
+        trigger: triggerEl,
+        start: scrollStart,
+        once: true,
+        onEnter: () => {
+          tween.play()
+        },
+      })
 
-    return () => {
-      tweens.forEach((tween) => {
-        tween.scrollTrigger?.kill()
+      cleanups.push(() => {
+        scrollTrigger.kill()
         tween.kill()
       })
+    })
+
+    ScrollTrigger.refresh()
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup())
     }
   }, [])
 }

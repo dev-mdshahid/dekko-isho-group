@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 
 import {
-  SustainabilityHeroImageSection,
   SustainabilityHeroSection,
   SustainabilityPillar01Section,
   SustainabilityPillar02Section,
@@ -22,7 +21,6 @@ export function SustainabilityContent() {
   return (
     <div ref={ref}>
       <SustainabilityHeroSection />
-      <SustainabilityHeroImageSection />
       <SustainabilityPillar01Section />
       <SustainabilityPillar02Section />
       <SustainabilityPillar03Section />
