@@ -406,9 +406,12 @@
   grid-template-columns: auto minmax(0, 1fr);
   align-items: start;
   column-gap: var(--gap--gap-8);
-  margin-bottom: 3.75rem;
   position: relative;
   z-index: 1;
+}
+
+.sustain-pillar-section:not(.sustain-pillar-section--material) .sustain-pillar-header {
+  margin-bottom: 64px;
 }
 
 .sustain-pillar-number {
@@ -982,15 +985,42 @@
 }
 
 .sustain-materials-progress-card {
+  position: relative;
+  overflow: hidden;
   border: none;
   border-radius: 1rem;
-  background-color: #0000000a;
+  background-color: transparent;
   padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   min-height: 100%;
+}
+
+.sustain-materials-progress-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/images/backgrounds/strength-card-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sustain-materials-progress-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: rgb(255 255 255 / 70%);
+}
+
+.sustain-materials-progress-copy,
+.sustain-materials-progress-metrics {
+  position: relative;
+  z-index: 1;
 }
 
 .sustain-materials-chart-card {
@@ -1092,24 +1122,26 @@
 }
 
 .sustain-materials-bars {
-  display: flex;
-  flex-flow: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 20px;
+  row-gap: 1rem;
 }
 
 .sustain-material-bar-row {
   display: grid;
-  grid-template-columns: minmax(0, 11rem) 1fr auto;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
   align-items: center;
-  gap: 0.75rem;
 }
 
 .sustain-material-bar-label {
-  color: var(--color--neutral-outer-space);
+  color: var(--color--neutral-night);
   font-size: 1.25rem;
   font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.3;
   letter-spacing: var(--_typography---body--letter-spacing);
+  white-space: nowrap;
 }
 
 .sustain-material-bar-track {
@@ -1140,23 +1172,18 @@
   z-index: 1;
   margin-bottom: 3.75rem;
   width: 100%;
-  overflow: hidden;
-  border-radius: 1rem;
 }
 
 .sustain-materials-hero-image {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
-  object-position: center;
 }
 
 .sustain-pillar-section--material .sustain-badges-section {
   position: relative;
   z-index: 1;
-  margin-bottom: 2.5rem;
+  margin-bottom: 5rem;
 }
 
 .sustain-pillar-section--material .sustain-badges-section:last-child {
@@ -1164,33 +1191,28 @@
 }
 
 .sustain-pillar-section--material .sustain-badges-title {
-  color: var(--color--dark);
-  font-size: 1.5rem;
-  font-weight: var(--_typography---body--font-weight-600);
+  color: var(--color--neutral-outer-space);
+  font-size: 24px;
+  font-weight: 600;
   line-height: 1.3;
   letter-spacing: var(--_typography---body--letter-spacing);
   text-transform: none;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .sustain-pillar-section--material .sustain-badges-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 60px;
 }
 
-.sustain-pillar-section--material .sustain-platform-badge,
-.sustain-pillar-section--material .sustain-standard-badge {
-  border: 1px solid var(--color--gray-4);
-  border-radius: 12px;
-  background-color: var(--color--white);
-  color: var(--color--dark);
-  font-size: 1.2rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.3;
-  letter-spacing: var(--_typography---body--letter-spacing);
-  padding: 20px;
+.sustain-pillar-section--material .sustain-badge-logo {
+  display: block;
+  height: 85px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* ── ESG Reports (Pillar 04) ── */
@@ -1222,8 +1244,8 @@
 }
 
 .sustain-report-card {
-  border-radius: 1.5rem;
-  padding: 2.5rem;
+  border-radius: 16px;
+  padding: 40px;
   display: flex;
   flex-flow: column;
   gap: 0;
@@ -1241,15 +1263,18 @@
 }
 
 .sustain-report-banner {
-  border-radius: 1rem;
+  border-radius: 8px;
   overflow: hidden;
   flex: none;
+  height: 460px;
 }
 
 .sustain-report-banner-image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 460px;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .sustain-report-body {
@@ -1472,6 +1497,13 @@
 @media screen and (max-width: 991px) {
   .sustain-pillar-header {
     column-gap: var(--gap--gap-6);
+  }
+
+  .sustain-pillar-section:not(.sustain-pillar-section--material) .sustain-pillar-header {
+    margin-bottom: 64px;
+  }
+
+  .sustain-pillar-section--material .sustain-pillar-header {
     margin-bottom: 2.75rem;
   }
 
@@ -1646,6 +1678,13 @@
   .sustain-pillar-header {
     grid-template-columns: 1fr;
     row-gap: 0.75rem;
+  }
+
+  .sustain-pillar-section:not(.sustain-pillar-section--material) .sustain-pillar-header {
+    margin-bottom: 64px;
+  }
+
+  .sustain-pillar-section--material .sustain-pillar-header {
     margin-bottom: 2rem;
   }
 
@@ -1913,9 +1952,17 @@
     margin-bottom: 1.5rem;
   }
 
+  .sustain-materials-bars {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+  }
+
   .sustain-material-bar-row {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    grid-column: auto;
+    row-gap: 20px;
   }
 
   .sustain-material-bar-label,
@@ -1929,11 +1976,6 @@
 
   .sustain-materials-hero-wrap {
     margin-bottom: 2rem;
-    border-radius: 0.75rem;
-  }
-
-  .sustain-materials-hero-image {
-    aspect-ratio: 16 / 10;
   }
 
   .sustain-pillar-section--material .sustain-badges-section {
@@ -1941,21 +1983,15 @@
   }
 
   .sustain-pillar-section--material .sustain-badges-title {
-    font-size: 1.125rem;
     margin-bottom: 1rem;
   }
 
   .sustain-pillar-section--material .sustain-badges-row {
-    gap: 0.5rem;
+    gap: 2rem;
   }
 
-  .sustain-pillar-section--material .sustain-platform-badge,
-  .sustain-pillar-section--material .sustain-standard-badge {
-    font-size: 0.875rem;
-    padding: 0.75rem 1rem;
-    border-radius: 0.625rem;
-    flex: 1 1 auto;
-    min-width: 0;
+  .sustain-pillar-section--material .sustain-badge-logo {
+    height: 64px;
   }
 
   /* Pillar 04 */
@@ -1975,7 +2011,7 @@
 
   .sustain-report-card {
     padding: 1.25rem;
-    border-radius: 1rem;
+    border-radius: 16px;
   }
 
   .sustain-report-body {
@@ -2067,9 +2103,7 @@
     font-size: 4rem;
   }
 
-  .sustain-pillar-section--material .sustain-platform-badge,
-  .sustain-pillar-section--material .sustain-standard-badge {
-    flex: 1 1 100%;
-    text-align: center;
+  .sustain-pillar-section--material .sustain-badge-logo {
+    height: 48px;
   }
 }

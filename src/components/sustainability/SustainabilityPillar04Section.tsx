@@ -105,14 +105,14 @@ export function SustainabilityPillar04Section() {
           ))}
         </div>
 
-        <FadeIn id="sustain-pillar04-cta" className="sustain-esg-cta-bar">
+        {/* <FadeIn id="sustain-pillar04-cta" className="sustain-esg-cta-bar">
           <p className="sustain-esg-cta-text">{pillar04.ctaText}</p>
           <ButtonArrow
             to={pillar04.ctaHref}
             label={pillar04.ctaButtonLabel}
             className="primary-button sustain-esg-cta-button w-inline-block"
           />
-        </FadeIn>
+        </FadeIn> */}
       </div>
     </section>
   )
