@@ -170,6 +170,9 @@ export function ServiceSection() {
                         </div>
                       </div>
                     </Link>
+                    {index < serviceSpecialities.length - 1 ? (
+                      <div className="service-card-divider" aria-hidden="true" />
+                    ) : null}
                   </div>
                 </div>
               </div>
