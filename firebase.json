@@ -1,0 +1,25 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "scripts/**",
+      ".env",
+      ".env.*"
+    ],
+    "rewrites": [
+      {
+        "source": "/sustainibility-report-2025",
+        "destination": "/documents/Impact Journal 2025.pdf"
+      },
+      {
+        "source": "/sustainability-report-2025",
+        "destination": "/documents/Impact Journal 2025.pdf"
+      }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+}
