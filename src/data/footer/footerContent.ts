@@ -33,6 +33,11 @@ export const footerSocialLinks = [
     icon: 'facebook.svg',
   },
   {
+    href: 'https://www.instagram.com/',
+    label: 'Instagram',
+    icon: 'instagram.svg',
+  },
+  {
     href: 'https://www.linkedin.com/company/dekkoishogroup/',
     label: 'LinkedIn',
     icon: 'linkedin.svg',
@@ -45,6 +50,6 @@ export const footerSocialLinks = [
   {
     href: 'https://www.youtube.com/@dekkoishogroup9251',
     label: 'Youtube',
-    icon: 'social-icon-3.svg',
+    icon: '/youtube-logo.svg',
   },
 ] as const
