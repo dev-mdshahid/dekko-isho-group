@@ -700,7 +700,26 @@
   background-size: cover;
 }
 
+.latest-news-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: min(160%, 2000px);
+  height: 110%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--color--primary) 12%, transparent) 0%,
+    transparent 82%
+  );
+  pointer-events: none;
+}
+
 .latest-news-container {
+  position: relative;
+  z-index: 1;
   max-width: 1520px;
   margin-inline: auto;
   padding: 200px var(--_layout---container-gutter);
@@ -757,6 +776,7 @@
   background-color: var(--color--white);
   border-radius: 12px;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .latest-news-card-portal {
@@ -784,6 +804,8 @@
 .latest-news-card-image-wrap {
   display: block;
   width: 100%;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .latest-news-card-image {
@@ -791,6 +813,9 @@
   width: 100%;
   height: 320px;
   object-fit: cover;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .latest-news-card-body {
@@ -836,7 +861,7 @@
 
 .latest-news-card-action {
   flex: none;
-  display: flex;
+  display: inline-flex;
   text-decoration: none;
 }
 
@@ -846,20 +871,26 @@
   margin: 0;
 }
 
-.latest-news-card-action .button-icon,
-.latest-news-card-action .button-icon-hover {
-  transition: transform 0.3s ease;
-}
-
 .latest-news-card-action .button-icon-hover {
   transform: translateX(-30px);
 }
 
 @media (hover: hover) {
+  .latest-news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .latest-news-card:hover .latest-news-card-image {
+    transform: scale(1.05);
+  }
+
+  .latest-news-card:hover .latest-news-card-action .button-icon,
   .latest-news-card-action:hover .button-icon {
     transform: translateX(30px);
   }
 
+  .latest-news-card:hover .latest-news-card-action .button-icon-hover,
   .latest-news-card-action:hover .button-icon-hover {
     transform: translateX(0);
   }

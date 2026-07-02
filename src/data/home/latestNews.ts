@@ -23,7 +23,7 @@ export const latestNewsItems: LatestNewsItem[] = [
     description:
       "This International Women's Day, ISHO has launched the Women's Day 2026 Design Challenge: Designing Safer Cities for Women, a nationwide design comp...",
     date: 'March 8, 2026',
-    href: '/press',
+    href: 'https://www.thedailystar.net/lifestyle/news/isho-launches-national-design-challenge-rethink-womens-safety-cities-4123701',
   },
   {
     id: 'butex-career-club',
@@ -51,6 +51,6 @@ export const latestNewsItems: LatestNewsItem[] = [
     description:
       'In a significant step toward advancing environmental sustainability and responsible business practices, Dekko ISHO Group has entere...',
     date: 'May 13, 2026',
-    href: '/press',
+    href: 'https://textilefocus.com/dekko-isho-group-partners-with-jr-recycling-solutions-ltd-to-strengthen-sustainable-e-waste-management/',
   },
 ]

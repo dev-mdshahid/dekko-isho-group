@@ -6,7 +6,7 @@ import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 
 function NewsCardAction({ href, label }: { href: string; label: string }) {
-  const icon = (
+  const inner = (
     <span className="button-icon-bg latest-news-card-action__icon" aria-hidden="true">
       <img
         src={legacyImage('button-icon.svg')}
@@ -32,14 +32,14 @@ function NewsCardAction({ href, label }: { href: string; label: string }) {
         target="_blank"
         rel="noreferrer"
       >
-        {icon}
+        {inner}
       </a>
     )
   }
 
   return (
     <Link to={href} className="latest-news-card-action" aria-label={label}>
-      {icon}
+      {inner}
     </Link>
   )
 }
