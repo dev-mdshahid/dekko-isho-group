@@ -26,6 +26,8 @@ export type CareerTestimonial = {
   name: string
   role: string
   quote: string
+  avatar: string
+  avatarAlt: string
 }
 
 export const careerHero = {
@@ -133,7 +135,7 @@ export const careerOpenPositions = {
 export const careerEmployeeVoices = {
   badge: 'Employee Voices',
   headline:
-    'Our strength is our people. From the precision in our laundry facilities to the intelligence in our software, excellence is driven by the individuals who call Dekko ISHO home.',
+    '"Our strength is our people. From the precision in our laundry facilities to the intelligence in our software, excellence is driven by the individuals who call Dekko ISHO home."',
   testimonials: [
     {
       id: 'career-voice-01',
@@ -141,6 +143,8 @@ export const careerEmployeeVoices = {
       role: 'Production Lead',
       quote:
         'The exposure to global manufacturing standards here has completely changed my perspective on quality and scale.',
+      avatar: '/images/employees/rafiq-islam.jpg',
+      avatarAlt: 'Portrait of Rafiq Islam',
     },
     {
       id: 'career-voice-02',
@@ -148,6 +152,8 @@ export const careerEmployeeVoices = {
       role: 'UX Designer',
       quote:
         'Working in the technology vertical allows us to build solutions that literally move the needle for thousands of employees.',
+      avatar: '/images/employees/sarah-ahmed.jpg',
+      avatarAlt: 'Portrait of Sarah Ahmed',
     },
     {
       id: 'career-voice-03',
@@ -155,6 +161,8 @@ export const careerEmployeeVoices = {
       role: 'Sustainability Analyst',
       quote:
         'Being at a group that actually invests in solar and wastewater reuse is what makes this work truly meaningful.',
+      avatar: '/images/employees/tanvir-hasan.jpg',
+      avatarAlt: 'Portrait of Tanvir Hasan',
     },
   ] satisfies CareerTestimonial[],
 }
