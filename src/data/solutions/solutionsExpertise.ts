@@ -3,6 +3,7 @@ const SOLUTIONS_IMAGES = '/images/solutions'
 export type SolutionsExpertiseTab = {
   id: string
   label: string
+  tag: string
   title: string
   description: string
   image: string
@@ -14,6 +15,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'design-studio',
     label: 'Design Studio',
+    tag: 'From Concept',
     title: 'Design Studio',
     description:
       'Comprehensive design studio enabling innovation, material sourcing and sample production.',
@@ -29,6 +31,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'integrated-manufacturing',
     label: 'Integrated Manufacturing',
+    tag: 'At Scale',
     title: 'Integrated Manufacturing',
     description:
       'End-to-end apparel manufacturing with cutting, sewing, finishing and quality control under one roof.',
@@ -44,6 +47,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'industrial-laundry',
     label: 'Industrial laundry',
+    tag: 'Sustainable Finish',
     title: 'Industrial Laundry',
     description:
       'Advanced garment washing and finishing with controlled recipes, consistency and bulk production scale.',
@@ -59,6 +63,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'embroidery',
     label: 'Embroidery',
+    tag: 'Detail Craft',
     title: 'Embroidery',
     description:
       'In-house embroidery capability with quality control, defect management and production-ready finishing.',
