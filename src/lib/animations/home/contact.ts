@@ -33,7 +33,10 @@ export function initContactAnimations(scope: ParentNode): AnimationCleanup {
         scrollTrigger: {
           trigger: formCard,
           start: 'top 80%',
-          toggleActions: 'restart reset restart reset',
+          // No actions at the trigger end: the card must never be reset to
+          // opacity 0 while it is still on screen (lazy-loaded images above
+          // can shift the measured end position mid-viewport).
+          toggleActions: 'restart none none reset',
         },
       },
     )
@@ -55,7 +58,7 @@ export function initContactAnimations(scope: ParentNode): AnimationCleanup {
         scrollTrigger: {
           trigger: formCard ?? section,
           start: 'top 75%',
-          toggleActions: 'restart reset restart reset',
+          toggleActions: 'restart none none reset',
         },
       },
     )

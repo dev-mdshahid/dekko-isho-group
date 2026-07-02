@@ -11816,8 +11816,10 @@ a.about-info-box:hover {
 }
 
 .service-section .section-title-wrap {
-  grid-template-columns: 1fr auto;
-  align-items: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap--gap-5);
   overflow: visible;
 }
 
@@ -11855,13 +11857,13 @@ a.about-info-box:hover {
   }
 
   .service-section .section-title-wrap {
-    grid-template-columns: 1fr;
-    align-items: stretch;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .service-section .section-button-wrap {
     justify-self: start;
-    align-self: start;
+    align-self: flex-start;
   }
 
   .service-section .section-title-intro {

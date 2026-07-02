@@ -21,13 +21,23 @@ function hiddenY(el: HTMLElement) {
   return el.dataset.fadeVariant === 'slide-in-bottom' ? 100 : 44
 }
 
+/**
+ * How far past the viewport (px) an element must travel before it is re-hidden
+ * for replay. MUST stay larger than the max `hiddenY` offset: hiding shifts the
+ * element down by up to 100px, and if that shift could move it back inside the
+ * reveal zone the reveal/hide observers would feed each other and the element
+ * would flicker at the viewport edge.
+ */
+const HIDE_MARGIN_PX = 200
+
 /** Scroll-reveal for `[data-fade-in]` only — does not touch Webflow IX2 `data-w-id` targets. */
 export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const scope = containerRef?.current
     if (!scope) return
 
-    let observer: IntersectionObserver | null = null
+    let revealObserver: IntersectionObserver | null = null
+    let hideObserver: IntersectionObserver | null = null
 
     /** Reset a target to its hidden state so it replays the next time it enters view. */
     const hide = (el: HTMLElement) => {
@@ -71,12 +81,15 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
     const targets = Array.from(scope.querySelectorAll<HTMLElement>('[data-fade-in]'))
 
     if (targets.length) {
-      observer = new IntersectionObserver(
+      // Reveal and hide use separate observers with deliberately asymmetric
+      // bounds (hysteresis): reveal fires just inside the viewport, hide only
+      // once the element is HIDE_MARGIN_PX fully outside it. Decisions rely on
+      // `entry.isIntersecting` alone — no getBoundingClientRect in the scroll
+      // path, and the hidden y-offset can never re-enter the reveal zone.
+      revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            const el = entry.target as HTMLElement
-            if (entry.isIntersecting) reveal(el)
-            else hide(el)
+            if (entry.isIntersecting) reveal(entry.target as HTMLElement)
           })
         },
         {
@@ -86,10 +99,20 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
         },
       )
 
+      hideObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) hide(entry.target as HTMLElement)
+          })
+        },
+        { threshold: 0, rootMargin: `${HIDE_MARGIN_PX}px 0px ${HIDE_MARGIN_PX}px 0px` },
+      )
+
       targets.forEach((el) => {
         gsap.set(el, { opacity: 0, y: hiddenY(el) })
         el.dataset.fadeState = 'out'
-        observer?.observe(el)
+        revealObserver?.observe(el)
+        hideObserver?.observe(el)
       })
 
       requestAnimationFrame(() => revealVisible())
@@ -97,7 +120,8 @@ export function useInViewAnimation(containerRef?: RefObject<HTMLElement | null>)
 
     return () => {
       unregisterFadeInReveal()
-      observer?.disconnect()
+      revealObserver?.disconnect()
+      hideObserver?.disconnect()
     }
   }, [containerRef])
 }
