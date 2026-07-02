@@ -6,7 +6,7 @@ import { initCompanyAnimations } from '../lib/animations/home/company'
 import { initContactAnimations } from '../lib/animations/home/contact'
 import { initHeroAnimations } from '../lib/animations/home/hero'
 import { initServiceStackAnimations } from '../lib/animations/home/service'
-import { initSolutionsDecorParallax } from '../lib/animations/home/solutions'
+import { initSolutionsExpertiseAnimations } from '../lib/animations/home/solutions'
 
 /** GSAP ScrollTrigger animations for the homepage landing sections. */
 export function useHomeAnimations(containerRef: RefObject<HTMLElement | null>) {
@@ -22,7 +22,7 @@ export function useHomeAnimations(containerRef: RefObject<HTMLElement | null>) {
       if (disposed || !containerRef.current) return
 
       cleanups.push(initHeroAnimations(scope))
-      cleanups.push(initSolutionsDecorParallax(scope))
+      cleanups.push(initSolutionsExpertiseAnimations(scope))
       cleanups.push(initAboutAnimations(scope))
       cleanups.push(initServiceStackAnimations(scope))
       cleanups.push(initCompanyAnimations(scope))

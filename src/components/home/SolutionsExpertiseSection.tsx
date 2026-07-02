@@ -1,9 +1,15 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { solutionsExpertiseTabs } from '../../data/solutions/solutionsExpertise'
+import {
+  animateSolutionsAccordionPanel,
+  resetSolutionsPanelChrome,
+} from '../../lib/animations/home/solutions'
+import { FadeIn } from '../ui/FadeIn'
 
 export function SolutionsExpertiseSection() {
   const [activeTabId, setActiveTabId] = useState(solutionsExpertiseTabs[0].id)
+  const panelRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
   const activatePanel = useCallback((id: string) => {
     setActiveTabId(id)
@@ -18,18 +24,39 @@ export function SolutionsExpertiseSection() {
     [activatePanel],
   )
 
+  useEffect(() => {
+    Object.entries(panelRefs.current).forEach(([id, panel]) => {
+      if (panel && id !== activeTabId) {
+        resetSolutionsPanelChrome(panel)
+      }
+    })
+
+    const panel = panelRefs.current[activeTabId]
+    if (!panel) return
+
+    const frame = requestAnimationFrame(() => {
+      animateSolutionsAccordionPanel(panel)
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [activeTabId])
+
   return (
     <section className="solutions-expertise-section">
       <div className="solutions-expertise-head">
-        <span className="solutions-expertise-pill">
-          <span className="solutions-expertise-pill-sq" aria-hidden="true" />
-          Transforming ideas into world-class solutions
-        </span>
-        <h2 className="solutions-expertise-title">
-          Comprehensive <span className="solutions-expertise-accent">Solutions</span>
-          <br />
-          Powered by Expertise
-        </h2>
+        <FadeIn id="solutions-expertise-pill" variant="slide-in-bottom">
+          <span className="solutions-expertise-pill">
+            <span className="solutions-expertise-pill-sq" aria-hidden="true" />
+            Transforming ideas into world-class solutions
+          </span>
+        </FadeIn>
+        <FadeIn id="solutions-expertise-title" variant="slide-in-bottom" delay={120}>
+          <h2 className="solutions-expertise-title">
+            Comprehensive <span className="solutions-expertise-accent">Solutions</span>
+            <br />
+            Powered by Expertise
+          </h2>
+        </FadeIn>
       </div>
 
       <div className="solutions-expertise-acc" role="tablist" aria-label="Solutions">
@@ -40,10 +67,15 @@ export function SolutionsExpertiseSection() {
           return (
             <div
               key={tab.id}
+              ref={(node) => {
+                panelRefs.current[tab.id] = node
+              }}
               className={`solutions-expertise-panel${isActive ? ' active' : ''}`}
               role="tab"
               aria-selected={isActive}
               tabIndex={isActive ? 0 : -1}
+              data-home-animate="solutions-panel"
+              data-solutions-index={index}
               onClick={() => activatePanel(tab.id)}
               onMouseEnter={() => handleMouseEnter(tab.id)}
               onKeyDown={(event) => {
@@ -55,7 +87,7 @@ export function SolutionsExpertiseSection() {
             >
               <img src={tab.image} loading="lazy" alt={tab.imageAlt} />
               <div className="solutions-expertise-chip" aria-hidden="true">
-                {num}
+                <span className="solutions-expertise-chip-inner">{num}</span>
               </div>
               <div className="solutions-expertise-v-label-wrap" aria-hidden={isActive}>
                 <div className="solutions-expertise-v-label">{tab.label}</div>
@@ -77,209 +109,3 @@ export function SolutionsExpertiseSection() {
     </section>
   )
 }
-
-/*
- * ─── Previous tab-panel design (commented out) ───────────────────────────────
- *
- * import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
- *
- * import {
- *   solutionsExpertiseDecorImages,
- *   solutionsExpertiseTabs,
- * } from '../../data/solutions/solutionsExpertise'
- * import { animateSolutionsTabPanel } from '../../lib/animations/home/solutions'
- * import { FadeIn } from '../ui/FadeIn'
- * import { PreSectionTitle } from '../ui/PreSectionTitle'
- * import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
- *
- * type TabIndicator = {
- *   top: number
- *   left: number
- *   width: number
- *   height: number
- *   horizontal: boolean
- * }
- *
- * const INITIAL_INDICATOR: TabIndicator = {
- *   top: 0,
- *   left: 0,
- *   width: 3,
- *   height: 0,
- *   horizontal: false,
- * }
- *
- * function useSolutionsTabIndicator(activeTabId: string) {
- *   const menuRef = useRef<HTMLDivElement>(null)
- *   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({})
- *   const [indicator, setIndicator] = useState<TabIndicator>(INITIAL_INDICATOR)
- *
- *   const updateIndicator = useCallback(() => {
- *     if (window.matchMedia('(max-width: 991px)').matches) return
- *
- *     const menu = menuRef.current
- *     const tab = tabRefs.current[activeTabId]
- *     if (!menu || !tab) return
- *
- *     const menuRect = menu.getBoundingClientRect()
- *     const tabRect = tab.getBoundingClientRect()
- *
- *     setIndicator({
- *       horizontal: false,
- *       top: tabRect.top - menuRect.top,
- *       left: 0,
- *       width: 3,
- *       height: tabRect.height,
- *     })
- *   }, [activeTabId])
- *
- *   useLayoutEffect(() => {
- *     updateIndicator()
- *   }, [updateIndicator])
- *
- *   useEffect(() => {
- *     const menu = menuRef.current
- *     if (!menu) return
- *
- *     const resizeObserver = new ResizeObserver(updateIndicator)
- *     resizeObserver.observe(menu)
- *
- *     window.addEventListener('resize', updateIndicator)
- *
- *     return () => {
- *       resizeObserver.disconnect()
- *       window.removeEventListener('resize', updateIndicator)
- *     }
- *   }, [updateIndicator])
- *
- *   const setTabRef = useCallback((id: string, node: HTMLButtonElement | null) => {
- *     tabRefs.current[id] = node
- *   }, [])
- *
- *   return { menuRef, setTabRef, indicator }
- * }
- *
- * export function SolutionsExpertiseSection() {
- *   const [activeTabId, setActiveTabId] = useState(solutionsExpertiseTabs[0].id)
- *   const panelRef = useRef<HTMLDivElement>(null)
- *   const { menuRef, setTabRef, indicator } = useSolutionsTabIndicator(activeTabId)
- *   const activeTab =
- *     solutionsExpertiseTabs.find((tab) => tab.id === activeTabId) ?? solutionsExpertiseTabs[0]
- *
- *   useEffect(() => {
- *     animateSolutionsTabPanel(panelRef.current)
- *   }, [activeTabId])
- *
- *   return (
- *     <section className="solutions-expertise-section section-spacing-top section-spacing-bottom">
- *       {solutionsExpertiseDecorImages.map((image) => (
- *         <img
- *           key={image.className}
- *           src={image.src}
- *           loading="lazy"
- *           alt={image.alt}
- *           className={`solutions-expertise-decor ${image.className}`}
- *           data-home-animate="solutions-decor"
- *         />
- *       ))}
- *
- *       <div className="container-full">
- *         <div className="solutions-expertise-content">
- *           <div className="solutions-expertise-header">
- *             <FadeIn id="solutions-expertise-pill" variant="slide-in-bottom" className="solutions-expertise-pill-wrap">
- *               <PreSectionTitle title="Transforming ideas into world-class solutions" />
- *             </FadeIn>
- *             <FadeIn id="solutions-expertise-title" variant="slide-in-bottom" delay={120} className="solutions-expertise-title-wrap">
- *               <h2 className="section-title solutions-expertise-title title-center">
- *                 Comprehensive <span className="hero-title-accent--red">Solutions</span>
- *                 <br />
- *                 Powered by Expertise
- *               </h2>
- *             </FadeIn>
- *           </div>
- *
- *           <FadeIn id="solutions-expertise-body" variant="slide-in-bottom" delay={250} className="solutions-expertise-body">
- *             <div className="solutions-expertise-panel">
- *               <div
- *                 ref={menuRef}
- *                 className="solutions-expertise-menu"
- *                 role="tablist"
- *                 aria-label="Solutions"
- *                 data-home-animate="solutions-tabs"
- *               >
- *                 <span
- *                   className="solutions-expertise-tab-indicator"
- *                   aria-hidden="true"
- *                   style={{
- *                     top: indicator.top,
- *                     left: indicator.left,
- *                     width: indicator.width,
- *                     height: indicator.height,
- *                   }}
- *                 />
- *                 {solutionsExpertiseTabs.map((tab) => {
- *                   const isActive = tab.id === activeTabId
- *
- *                   return (
- *                     <button
- *                       key={tab.id}
- *                       ref={(node) => setTabRef(tab.id, node)}
- *                       type="button"
- *                       role="tab"
- *                       aria-selected={isActive}
- *                       className={`solutions-expertise-tab${isActive ? ' is-active' : ''}`}
- *                       onClick={() => setActiveTabId(tab.id)}
- *                     >
- *                       {tab.label}
- *                     </button>
- *                   )
- *                 })}
- *               </div>
- *
- *               <div
- *                 className="solutions-expertise-card"
- *                 role="tabpanel"
- *                 aria-labelledby={activeTab.id}
- *               >
- *                 <div
- *                   key={activeTabId}
- *                   ref={panelRef}
- *                   className="solutions-expertise-card-inner"
- *                   data-home-animate="solutions-panel"
- *                 >
- *                   <div className="solutions-expertise-card-image-wrap">
- *                     <img
- *                       src={activeTab.image}
- *                       loading="lazy"
- *                       alt={activeTab.imageAlt}
- *                       className="solutions-expertise-card-image"
- *                     />
- *                   </div>
- *                   <div className="solutions-expertise-card-content">
- *                     <h3 className="solutions-expertise-card-title">{activeTab.title}</h3>
- *                     <p className="solutions-expertise-card-description">{activeTab.description}</p>
- *                     <ul className="solutions-expertise-feature-list">
- *                       {activeTab.features.map((feature) => (
- *                         <li key={feature} className="solutions-expertise-feature-item">
- *                           <img
- *                             src="/images/list-icon-primary.svg"
- *                             loading="lazy"
- *                             alt=""
- *                             className="solutions-expertise-feature-icon"
- *                           />
- *                           <span>{feature}</span>
- *                         </li>
- *                       ))}
- *                     </ul>
- *                   </div>
- *                 </div>
- *               </div>
- *             </div>
- *           </FadeIn>
- *         </div>
- *       </div>
- *       <SectionLines />
- *       <NoiseOverlay />
- *     </section>
- *   )
- * }
- */

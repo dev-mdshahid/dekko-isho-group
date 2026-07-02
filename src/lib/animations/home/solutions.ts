@@ -1,92 +1,139 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { type AnimationCleanup, prefersReducedMotion } from '../prefersReducedMotion'
+import { type AnimationCleanup, isMobileViewport, prefersReducedMotion } from '../prefersReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const DECOR_PARALLAX = [
-  { y: -30, rotate: -2 },
-  { y: -60, rotate: -1.5 },
-  { y: -45, rotate: 1.5 },
-  { y: -75, rotate: 2 },
-]
-
-export function initSolutionsDecorParallax(scope: ParentNode): AnimationCleanup {
+export function initSolutionsExpertiseAnimations(scope: ParentNode): AnimationCleanup {
   const section = scope.querySelector<HTMLElement>('.solutions-expertise-section')
   if (!section) return () => {}
 
-  const decors = section.querySelectorAll<HTMLElement>('[data-home-animate="solutions-decor"]')
-  if (!decors.length) return () => {}
+  const accordion = section.querySelector<HTMLElement>('.solutions-expertise-acc')
+  const panels = section.querySelectorAll<HTMLElement>('[data-home-animate="solutions-panel"]')
+  if (!accordion || !panels.length) return () => {}
 
   const reduced = prefersReducedMotion()
   const triggers: ScrollTrigger[] = []
+  const tweens: gsap.core.Tween[] = []
 
   if (reduced) {
-    gsap.set(decors, { clearProps: 'all' })
+    gsap.set(panels, { clearProps: 'all' })
     return () => {}
   }
 
-  decors.forEach((el, index) => {
-    const config = DECOR_PARALLAX[index % DECOR_PARALLAX.length]
-    gsap.set(el, { rotate: config.rotate })
+  gsap.set(panels, { opacity: 0, y: 56, scale: 0.96 })
 
-    const tween = gsap.to(el, {
-      y: config.y,
-      rotate: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.8,
-      },
-    })
-
-    if (tween.scrollTrigger) triggers.push(tween.scrollTrigger)
+  const entranceTween = gsap.to(panels, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 1,
+    ease: 'power3.out',
+    stagger: 0.14,
+    scrollTrigger: {
+      trigger: accordion,
+      start: 'top 86%',
+      toggleActions: 'restart reset restart reset',
+    },
   })
 
+  if (entranceTween.scrollTrigger) triggers.push(entranceTween.scrollTrigger)
+  tweens.push(entranceTween)
+
+  if (!isMobileViewport()) {
+    panels.forEach((panel) => {
+      const image = panel.querySelector<HTMLElement>('img')
+      if (!image) return
+
+      const parallaxTween = gsap.fromTo(
+        image,
+        { y: '-4%' },
+        {
+          y: '4%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: panel,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.6,
+          },
+        },
+      )
+
+      if (parallaxTween.scrollTrigger) triggers.push(parallaxTween.scrollTrigger)
+      tweens.push(parallaxTween)
+    })
+  }
+
   return () => {
-    triggers.forEach((t) => t.kill())
+    triggers.forEach((trigger) => trigger.kill())
+    tweens.forEach((tween) => tween.kill())
   }
 }
 
-export function animateSolutionsTabPanel(panel: HTMLElement | null) {
+export function resetSolutionsPanelChrome(panel: HTMLElement) {
+  const chip = panel.querySelector<HTMLElement>('.solutions-expertise-chip')
+  const chipInner = panel.querySelector<HTMLElement>('.solutions-expertise-chip-inner')
+
+  gsap.killTweensOf([chip, chipInner].filter(Boolean))
+
+  if (chip) {
+    gsap.set(chip, { clearProps: 'all' })
+  }
+
+  if (chipInner) {
+    gsap.set(chipInner, { clearProps: 'all' })
+  }
+}
+
+export function animateSolutionsAccordionPanel(panel: HTMLElement | null) {
   if (!panel || prefersReducedMotion()) return
 
-  const image = panel.querySelector<HTMLElement>('.solutions-expertise-card-image')
-  const title = panel.querySelector<HTMLElement>('.solutions-expertise-card-title')
-  const description = panel.querySelector<HTMLElement>('.solutions-expertise-card-description')
-  const features = panel.querySelectorAll<HTMLElement>('.solutions-expertise-feature-item')
+  const image = panel.querySelector<HTMLElement>('img')
+  const chip = panel.querySelector<HTMLElement>('.solutions-expertise-chip')
+  const chipInner = panel.querySelector<HTMLElement>('.solutions-expertise-chip-inner')
+  const content = panel.querySelector<HTMLElement>('.solutions-expertise-panel-content')
+  const tag = content?.querySelector<HTMLElement>('.solutions-expertise-tag')
+  const title = content?.querySelector<HTMLElement>('h3')
+  const description = content?.querySelector<HTMLElement>('p')
+  const features = content?.querySelectorAll<HTMLElement>('li')
 
-  gsap.killTweensOf([panel, image, title, description, ...features])
+  const contentItems = [tag, title, description, ...(features ? Array.from(features) : [])].filter(
+    Boolean,
+  ) as HTMLElement[]
 
-  gsap.set(panel, { opacity: 0, x: 24 })
-  if (image) gsap.set(image, { scale: 1.04 })
-
-  const tl = gsap.timeline()
-
-  tl.to(panel, { opacity: 1, x: 0, duration: 0.55, ease: 'power2.out' })
+  gsap.killTweensOf([image, chip, chipInner, content, ...contentItems])
 
   if (image) {
-    tl.to(image, { scale: 1, duration: 0.7, ease: 'power2.out' }, 0)
-  }
-
-  if (title || description) {
-    tl.fromTo(
-      [title, description].filter(Boolean),
-      { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.09 },
-      0.12,
+    gsap.fromTo(
+      image,
+      { scale: 1.1 },
+      { scale: 1, duration: 1.15, ease: 'power3.out' },
     )
   }
 
-  if (features.length) {
-    tl.fromTo(
-      features,
-      { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.06 },
-      0.18,
+  if (chipInner) {
+    gsap.fromTo(
+      chipInner,
+      { scale: 0.65 },
+      { scale: 1, duration: 0.55, ease: 'back.out(2.4)' },
     )
   }
+
+  if (chip) {
+    gsap.fromTo(chip, { opacity: 0.4 }, { opacity: 1, duration: 0.55, ease: 'power2.out' })
+  }
+
+  if (!contentItems.length) return
+
+  gsap.set(contentItems, { opacity: 0, y: 22 })
+  gsap.to(contentItems, {
+    opacity: 1,
+    y: 0,
+    duration: 0.62,
+    ease: 'power3.out',
+    stagger: 0.08,
+    delay: 0.12,
+  })
 }
