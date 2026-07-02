@@ -13,42 +13,44 @@ export type LatestNewsItem = {
 
 export const latestNewsItems: LatestNewsItem[] = [
   {
+    id: 'isho-design-challenge',
+    portalName: 'The Daily Star',
+    portalLogo: '/images/news/portals/the-daily-star.png',
+    portalLogoAlt: 'The Daily Star',
+    image: '/images/news/isho-launches-national-design.png',
+    imageAlt: "ISHO Launches National Design Challenge to Rethink Women's Safety in Cities",
+    title: "ISHO Launches National Design Challenge to Rethink Women's Safety in Cities",
+    description:
+      "This International Women's Day, ISHO has launched the Women's Day 2026 Design Challenge: Designing Safer Cities for Women, a nationwide design comp...",
+    date: 'March 8, 2026',
+    href: '/press',
+  },
+  {
     id: 'butex-career-club',
     portalName: 'TextileToday',
     portalLogo: '/images/news/portals/textile-today.png',
     portalLogoAlt: 'TextileToday',
     image: '/images/news/butex-career-club-visit.png',
-    imageAlt: 'BUTEX Career Club visits LEED-Certified Dekko Garments',
-    title: 'BUTEX Career Club visits LEED-Certified Dekko Garments in Gazip...',
+    imageAlt: 'BUTEX Career Club visits LEED-Certified Dekko Garments in Gazipur',
+    title: 'BUTEX Career Club visits LEED-Certified Dekko Garments in Gazipur',
     description:
-      'On August 30, 2025, members of the BUTEX Career Club visited Dekko Garments Ltd., a LEED-certified...',
-    date: '24 July, 2025',
+      'On August 30, 2025, members of the BUTEX Career Club visited Dekko Garments Ltd., a LEED-certified green factory located in Mawna, Gazipur. The initia...',
+    date: 'July 24, 2025',
     href: '/press',
   },
   {
-    id: 'flood-support',
-    portalName: 'TextileToday',
-    portalLogo: '/images/news/portals/textile-today.png',
-    portalLogoAlt: 'TextileToday',
-    image: '/images/news/dekko-extend-support-flood.png',
-    imageAlt: 'Dekko ISHO Group extends support to flood-affected communities',
-    title: 'Dekko ISHO Group extends support to flood-affected communities',
+    id: 'jr-recycling-partnership',
+    portalName: 'Textile Focus',
+    portalLogo: '/images/news/portals/textile-focus.png',
+    portalLogoAlt: 'Textile Focus',
+    image: '/images/news/dekko-partner-with-recycling.png',
+    imageAlt:
+      'Dekko ISHO Group Partners with JR Recycling Solutions Ltd. to Strengthen Sustainable E-Waste Management',
+    title:
+      'Dekko ISHO Group Partners with JR Recycling Solutions Ltd. to Strengthen Sustainable E-Waste M...',
     description:
-      'In response to the devastating impact of recent floods that have affected countless lives across th...',
-    date: '21 October, 2024',
-    href: '/press',
-  },
-  {
-    id: 'isho-furniture-outlet',
-    portalName: 'The Financial Express',
-    portalLogo: '/images/news/portals/financial-express.png',
-    portalLogoAlt: 'The Financial Express',
-    image: '/images/news/online-isho-furniture.png',
-    imageAlt: 'Online based ISHO furniture opens first outlet',
-    title: 'Online based ISHO furniture opens first outlet',
-    description:
-      'ISHO, an online based furniture store of Dekko ISHO group, has launched its first outlet in the city, aimin...',
-    date: 'Nov 17, 2019',
+      'In a significant step toward advancing environmental sustainability and responsible business practices, Dekko ISHO Group has entere...',
+    date: 'May 13, 2026',
     href: '/press',
   },
 ]

@@ -209,7 +209,7 @@ export function Footer() {
                   className="footer-social-link w-inline-block"
                 >
                   <img
-                    src={legacyImage(social.icon)}
+                    src={social.icon.startsWith('/') ? social.icon : legacyImage(social.icon)}
                     loading="eager"
                     alt=""
                     className="footer-social-icon"
