@@ -1,9 +1,10 @@
 import { pillar03 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
+import { SustainabilityMaterialsChart } from './SustainabilityMaterialsChart'
+import { SustainabilityMaterialsProgressCard } from './SustainabilityMaterialsProgressCard'
 
 const maxMaterialPercentage = Math.max(...pillar03.materials.map((m) => m.percentage))
-const conventionalPercentage = 100 - pillar03.sustainablePercentage
 
 export function SustainabilityPillar03Section() {
   return (
@@ -30,47 +31,19 @@ export function SustainabilityPillar03Section() {
         </FadeIn>
 
         <div className="sustain-materials-layout">
-          <FadeIn id="sustain-materials-progress" delay={80} className="sustain-materials-progress-card">
-            <div className="sustain-materials-progress-copy">
-              <span className="sustain-materials-progress-value">{pillar03.sustainablePercentage}%</span>
-              <p className="sustain-materials-progress-label">{pillar03.sustainableLabel}</p>
-            </div>
-            <div className="sustain-materials-progress-metrics">
-              <div className="sustain-progress-bar">
-                <div
-                  className="sustain-progress-bar-fill"
-                  style={{ width: `${pillar03.sustainablePercentage}%` }}
-                />
-              </div>
-              <div className="sustain-progress-legend">
-                <div className="sustain-progress-legend-item sustain-progress-legend-item--primary">
-                  <span className="sustain-progress-legend-swatch sustain-progress-legend-swatch--primary" />
-                  <span>{pillar03.sustainablePercentage}% Sustainable</span>
-                </div>
-                <div className="sustain-progress-legend-item sustain-progress-legend-item--muted">
-                  <span className="sustain-progress-legend-swatch sustain-progress-legend-swatch--muted" />
-                  <span>{conventionalPercentage}% Conventional</span>
-                </div>
-              </div>
-            </div>
+          <FadeIn id="sustain-materials-progress" delay={80}>
+            <SustainabilityMaterialsProgressCard
+              sustainablePercentage={pillar03.sustainablePercentage}
+              sustainableLabel={pillar03.sustainableLabel}
+            />
           </FadeIn>
 
-          <FadeIn id="sustain-materials-chart" delay={100} className="sustain-materials-chart-card">
-            <h3 className="sustain-materials-chart-title">{pillar03.materialsChartTitle}</h3>
-            <div className="sustain-materials-bars">
-              {pillar03.materials.map((material) => (
-                <div key={material.id} className="sustain-material-bar-row">
-                  <div className="sustain-material-bar-label">{material.name}</div>
-                  <div className="sustain-material-bar-track">
-                    <div
-                      className="sustain-material-bar-fill"
-                      style={{ width: `${(material.percentage / maxMaterialPercentage) * 100}%` }}
-                    />
-                  </div>
-                  <div className="sustain-material-bar-value">{material.percentage}%</div>
-                </div>
-              ))}
-            </div>
+          <FadeIn id="sustain-materials-chart" delay={100}>
+            <SustainabilityMaterialsChart
+              title={pillar03.materialsChartTitle}
+              materials={pillar03.materials}
+              maxPercentage={maxMaterialPercentage}
+            />
           </FadeIn>
         </div>
 

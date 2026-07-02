@@ -2,7 +2,9 @@ import { pillar01 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
 import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
+import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
 import { SustainabilitySnapshotCard } from './SustainabilitySnapshotCard'
+import { SustainabilitySnapshotGrid } from './SustainabilitySnapshotGrid'
 
 export function SustainabilityPillar01Section() {
   return (
@@ -21,36 +23,26 @@ export function SustainabilityPillar01Section() {
           </div>
         </FadeIn>
 
-        <div className="sustain-initiatives-grid">
+        <SustainabilityInitiativesGrid>
           {pillar01.initiatives.map((item, index) => (
-            <FadeIn
-              key={item.id}
-              id={`sustain-p01-${item.id}`}
-              className="sustain-initiative-card-wrap"
-              delay={index * 50}
-            >
-              <SustainabilityInitiativeCard item={item} />
-            </FadeIn>
+            <div key={item.id} className="sustain-initiative-card-wrap">
+              <SustainabilityInitiativeCard item={item} index={index} />
+            </div>
           ))}
-        </div>
+        </SustainabilityInitiativesGrid>
 
         <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-section">
           <div className="sustain-snapshot-header">
             <SustainabilityBadge title={pillar01.snapshotBadge} />
             <h3 className="sustain-snapshot-headline">{pillar01.snapshotHeadline}</h3>
           </div>
-          <div className="sustain-snapshot-cards">
-            {pillar01.snapshotKpis.map((kpi, index) => (
-              <FadeIn
-                key={kpi.id}
-                id={`sustain-snapshot-${kpi.id}`}
-                className="sustain-snapshot-card-wrap"
-                delay={index * 50}
-              >
+          <SustainabilitySnapshotGrid>
+            {pillar01.snapshotKpis.map((kpi) => (
+              <div key={kpi.id} className="sustain-snapshot-card-wrap">
                 <SustainabilitySnapshotCard kpi={kpi} />
-              </FadeIn>
+              </div>
             ))}
-          </div>
+          </SustainabilitySnapshotGrid>
         </FadeIn>
       </div>
     </section>

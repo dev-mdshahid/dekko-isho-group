@@ -1,7 +1,7 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import type { SnapshotKpi } from '../../data/sustainability/content'
-import { useGaugeAnimation } from '../../hooks/useGaugeAnimation'
+import { useSnapshotCardAnimation } from '../../hooks/useSnapshotCardAnimation'
 import { SustainabilitySnapshotGauge } from './SustainabilitySnapshotGauge'
 
 type Props = {
@@ -18,17 +18,21 @@ function SnapshotLabel({ lines }: { lines: [string, string] }) {
 }
 
 function StatSnapshotCard({ kpi }: { kpi: Extract<SnapshotKpi, { type: 'stat' }> }) {
-  const numericTarget = kpi.value.replace(/\D/g, '')
+  const cardRef = useRef<HTMLElement>(null)
+  const numericTarget = Number.parseInt(kpi.value.replace(/\D/g, ''), 10) || 0
+
+  useSnapshotCardAnimation(cardRef, {
+    statTarget: numericTarget,
+    statDuration: 4.5,
+  })
 
   return (
-    <article className="sustain-snapshot-card sustain-snapshot-card--stat">
+    <article ref={cardRef} className="sustain-snapshot-card sustain-snapshot-card--stat">
+      <div className="sustain-card-glow" aria-hidden="true" />
+      <div className="sustain-snapshot-shine" aria-hidden="true" />
       <div className="sustain-snapshot-card-body">
         <p className="sustain-snapshot-card-value">
-          <span
-            className="sustain-snapshot-card-value-accent count"
-            data-target={numericTarget}
-            data-duration="4.5"
-          />
+          <span className="sustain-snapshot-card-value-accent sustain-snapshot-stat-value" />
           <span className="sustain-snapshot-card-value-suffix">{kpi.suffix}</span>
         </p>
         <SnapshotLabel lines={kpi.labelLines} />
@@ -39,10 +43,17 @@ function StatSnapshotCard({ kpi }: { kpi: Extract<SnapshotKpi, { type: 'stat' }>
 
 function GaugeSnapshotCard({ kpi }: { kpi: Extract<SnapshotKpi, { type: 'gauge' }> }) {
   const cardRef = useRef<HTMLElement>(null)
-  const displayPct = useGaugeAnimation(kpi.percentage, cardRef)
+  const [displayPct, setDisplayPct] = useState(0)
+
+  useSnapshotCardAnimation(cardRef, {
+    percentage: kpi.percentage,
+    onGaugeUpdate: setDisplayPct,
+  })
 
   return (
     <article ref={cardRef} className="sustain-snapshot-card sustain-snapshot-card--gauge">
+      <div className="sustain-card-glow" aria-hidden="true" />
+      <div className="sustain-snapshot-shine" aria-hidden="true" />
       <div className="sustain-snapshot-gauge-wrap">
         <SustainabilitySnapshotGauge percentage={displayPct} />
         <div className="sustain-snapshot-gauge-center">

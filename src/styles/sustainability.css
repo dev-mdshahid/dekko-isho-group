@@ -618,6 +618,8 @@
   display: flex;
   width: 100%;
   height: 100%;
+  perspective: 900px;
+  will-change: transform, opacity;
 }
 
 .sustain-initiative-card {
@@ -631,15 +633,54 @@
   width: 100%;
   min-height: 100%;
   padding: 2rem;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: default;
+  overflow: hidden;
+  transition: box-shadow 0.45s ease;
+}
+
+.sustain-card-glow {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    220px circle at var(--glow-x) var(--glow-y),
+    var(--sustain-card-glow-color, color-mix(in srgb, var(--color--primary) 11%, transparent)),
+    transparent 68%
+  );
+}
+
+.sustain-pillar-section--environment .sustain-card-glow {
+  --sustain-card-glow-color: color-mix(in srgb, var(--color--secondary-dark-spring-green) 11%, transparent);
+}
+
+.sustain-pillar-section--social .sustain-card-glow {
+  --sustain-card-glow-color: color-mix(in srgb, var(--color--primary) 11%, transparent);
+}
+
+.sustain-pillar-section--environment .sustain-initiative-card.is-hovered {
+  box-shadow: 0 1.4rem 4rem var(--sustain-card-shadow);
+}
+
+.sustain-pillar-section--social .sustain-initiative-card.is-hovered {
+  box-shadow: 0 1.4rem 4rem var(--sustain-card-shadow-social);
 }
 
 .sustain-initiative-media {
   position: relative;
+  z-index: 1;
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 10px;
   background-color: var(--color--gray-5);
+  transform: translateZ(0);
 }
 
 .sustain-initiative-image {
@@ -648,6 +689,23 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.sustain-initiative-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 62%
+  );
+  opacity: 0;
+  transform: translateX(-120%);
 }
 
 .sustain-initiative-number {
@@ -680,6 +738,8 @@
   flex-flow: column;
   gap: 0;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-title,
@@ -730,7 +790,7 @@
 
 .sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-metric,
 .sustain-pillar-section--social .sustain-initiative-card .sustain-initiative-metric {
-  border-top: 1px solid var(--color--gray-4);
+  border-top: none;
   font-size: var(--_typography---body--body-xs);
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: auto;
@@ -738,21 +798,77 @@
 }
 
 .sustain-initiative-metric {
-  border-top: 1px solid var(--color--gray-4);
+  border-top: none;
   font-size: var(--_typography---body--body-xs);
   letter-spacing: var(--_typography---body--letter-spacing);
   margin-top: auto;
   padding-top: 1rem;
 }
 
+.sustain-initiative-metric-line {
+  height: 1px;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: var(--color--gray-4);
+  transform-origin: left center;
+}
+
+.sustain-pillar-section--environment .sustain-initiative-card .sustain-initiative-metric-line {
+  background: linear-gradient(
+    90deg,
+    var(--color--secondary-dark-spring-green) 0%,
+    var(--color--gray-4) 100%
+  );
+}
+
+.sustain-pillar-section--social .sustain-initiative-card .sustain-initiative-metric-line {
+  background: linear-gradient(90deg, var(--color--primary) 0%, var(--color--gray-4) 100%);
+}
+
+.sustain-initiative-metric-text {
+  margin: 0;
+}
+
 .sustain-initiative-metric-value {
   color: var(--color--primary-1);
   font-weight: var(--_typography---body--font-weight-600);
+  display: inline-block;
+  transform-origin: left center;
+  transition: color 0.35s ease;
+}
+
+.sustain-pillar-section--environment .sustain-initiative-card.is-hovered .sustain-initiative-metric-value {
+  color: var(--color--secondary-dark-spring-green);
+}
+
+.sustain-pillar-section--social .sustain-initiative-card.is-hovered .sustain-initiative-metric-value {
+  color: var(--color--primary);
 }
 
 .sustain-initiative-metric-label {
   color: var(--color--gray-2);
   font-weight: var(--_typography---body--font-weight-500);
+}
+
+.sustain-initiative-number {
+  transition: box-shadow 0.4s ease;
+}
+
+.sustain-pillar-section--environment .sustain-initiative-card.is-hovered .sustain-initiative-number {
+  box-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--color--secondary-dark-spring-green) 35%, transparent);
+}
+
+.sustain-pillar-section--social .sustain-initiative-card.is-hovered .sustain-initiative-number {
+  box-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--color--primary) 35%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sustain-initiative-card,
+  .sustain-initiative-image,
+  .sustain-initiative-metric-value,
+  .sustain-initiative-number {
+    transition: none;
+  }
 }
 
 /* ── Performance snapshot ── */
@@ -792,9 +908,13 @@
   display: flex;
   width: 100%;
   height: 100%;
+  perspective: 900px;
+  will-change: transform, opacity;
 }
 
 .sustain-snapshot-card {
+  position: relative;
+  overflow: hidden;
   border-radius: 1rem;
   background-color: var(--color--white);
   box-shadow: 0 1.25rem 3.75rem var(--sustain-card-shadow);
@@ -806,6 +926,51 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.45s ease;
+}
+
+.sustain-snapshot-card .sustain-card-glow {
+  --sustain-card-glow-color: color-mix(in srgb, var(--color--secondary-dark-spring-green) 11%, transparent);
+}
+
+.sustain-snapshot-card.is-hovered {
+  box-shadow: 0 1.4rem 4rem var(--sustain-card-shadow);
+}
+
+.sustain-snapshot-card-body,
+.sustain-snapshot-gauge-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-snapshot-shine {
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 62%
+  );
+  opacity: 0;
+  transform: translateX(-120%);
+}
+
+.sustain-snapshot-card-value-accent {
+  color: #58c28d;
+  display: inline-block;
+  transform-origin: center center;
+  transition: color 0.35s ease;
+}
+
+.sustain-snapshot-card.is-hovered .sustain-snapshot-card-value-accent {
+  color: var(--color--secondary-dark-spring-green);
 }
 
 .sustain-snapshot-card-body {
@@ -823,10 +988,6 @@
   line-height: 1.1;
   letter-spacing: var(--_typography---body--letter-spacing);
   margin: 0;
-}
-
-.sustain-snapshot-card-value-accent {
-  color: #58c28d;
 }
 
 .sustain-snapshot-card-value-suffix {
@@ -850,6 +1011,8 @@
 .sustain-snapshot-gauge-wrap {
   display: grid;
   width: 100%;
+  transform-origin: center center;
+  will-change: transform, opacity;
 }
 
 .sustain-snapshot-gauge-wrap > * {
@@ -887,6 +1050,14 @@
   line-height: 1;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .sustain-snapshot-card,
+  .sustain-snapshot-card-value-accent,
+  .sustain-snapshot-gauge-wrap {
+    transition: none;
+  }
+}
+
 /* ── Governance banner (Pillar 02) ── */
 .sustain-governance-banner {
   border-radius: 1rem;
@@ -895,9 +1066,18 @@
   padding: 2.5rem 2rem;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  will-change: transform;
+  transition: box-shadow 0.45s ease;
+}
+
+.sustain-governance-banner.is-hovered {
+  box-shadow: 0 1.4rem 4rem var(--sustain-card-shadow-social);
 }
 
 .sustain-governance-header {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
@@ -921,6 +1101,8 @@
 .sustain-governance-rows {
   display: flex;
   flex-flow: column;
+  position: relative;
+  z-index: 1;
 }
 
 .sustain-governance-row {
@@ -949,6 +1131,7 @@
   overflow: hidden;
   border-radius: 12px;
   background-color: var(--color--gray-5);
+  will-change: transform, opacity;
 }
 
 .sustain-governance-row-image {
@@ -957,6 +1140,8 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  transform-origin: center center;
+  will-change: transform;
 }
 
 .sustain-governance-row-overlay {
@@ -1014,6 +1199,18 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  will-change: transform, opacity;
+  transition: color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .sustain-governance-item:hover {
+    color: var(--color--primary);
+  }
+
+  .sustain-governance-item:hover .sustain-governance-check {
+    transform: scale(1.08);
+  }
 }
 
 .sustain-governance-check {
@@ -1021,6 +1218,18 @@
   flex: none;
   width: 1.5rem;
   height: 1.5rem;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: transform 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sustain-governance-row-media,
+  .sustain-governance-row-image,
+  .sustain-governance-item,
+  .sustain-governance-check {
+    will-change: auto;
+  }
 }
 
 /* ── Material sustainability (Pillar 03) ── */
@@ -1092,7 +1301,7 @@
   font-weight: var(--_typography---body--font-weight-600);
   line-height: 1;
   letter-spacing: var(--_typography---body--letter-spacing);
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 }
 
 .sustain-materials-progress-label {
@@ -1121,7 +1330,7 @@
   background-color: var(--color--secondary-dark-spring-green);
   border-radius: 999px;
   height: 100%;
-  transition: width 0.6s ease;
+  width: 0;
 }
 
 .sustain-progress-legend {
@@ -1206,6 +1415,7 @@
   border-radius: 999px;
   height: 14px;
   min-width: 0;
+  width: 0;
 }
 
 .sustain-material-bar-value {

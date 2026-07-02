@@ -1,29 +1,9 @@
 import { pillar02 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
+import { SustainabilityGovernanceBanner } from './SustainabilityGovernanceBanner'
 import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
-
-function CheckIcon() {
-  return (
-    <svg
-      className="sustain-governance-check"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 12L10 17L19 7"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
+import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
 
 export function SustainabilityPillar02Section() {
   return (
@@ -42,57 +22,15 @@ export function SustainabilityPillar02Section() {
           </div>
         </FadeIn>
 
-        <div className="sustain-initiatives-grid">
+        <SustainabilityInitiativesGrid>
           {pillar02.cards.map((item, index) => (
-            <FadeIn
-              key={item.id}
-              id={`sustain-p02-${item.id}`}
-              className="sustain-initiative-card-wrap"
-              delay={index * 50}
-            >
-              <SustainabilityInitiativeCard item={item} />
-            </FadeIn>
+            <div key={item.id} className="sustain-initiative-card-wrap">
+              <SustainabilityInitiativeCard item={item} index={index} />
+            </div>
           ))}
-        </div>
+        </SustainabilityInitiativesGrid>
 
-        <FadeIn id="sustain-pillar02-governance" className="sustain-governance-banner">
-          <div className="sustain-governance-header">
-            <SustainabilityBadge title={pillar02.governanceBadge} />
-            <h3 className="sustain-governance-title">{pillar02.governanceTitle}</h3>
-          </div>
-          <div className="sustain-governance-rows">
-            {pillar02.governanceRows.map((row) => (
-              <div key={row.id} className="sustain-governance-row">
-                <div className="sustain-governance-row-media">
-                  <img
-                    src={row.image}
-                    loading="lazy"
-                    alt={row.imageAlt}
-                    className="sustain-governance-row-image"
-                  />
-                  <div className="sustain-governance-row-overlay">
-                    <span className="sustain-governance-row-title">{row.title}</span>
-                    <span className="sustain-governance-row-count">
-                      <span className="sustain-governance-row-count-value">{row.count}</span> policies
-                    </span>
-                  </div>
-                </div>
-                <div className="sustain-governance-row-policies">
-                  {row.policies.map((column) => (
-                    <ul key={column.join('-')} className="sustain-governance-list">
-                      {column.map((policy) => (
-                        <li key={policy} className="sustain-governance-item">
-                          <CheckIcon />
-                          <span>{policy}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
+        <SustainabilityGovernanceBanner />
       </div>
     </section>
   )
