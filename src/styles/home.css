@@ -768,17 +768,17 @@
 
 .latest-news-card-portal-logo {
   flex: none;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
 .latest-news-card-portal-name {
-  font-family: var(--_typography---font-family--heading);
-  font-size: 24px;
-  font-weight: var(--_typography---h2--font-weight-600);
+  font-family: var(--_typography---font-family--body);
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1.2;
-  color: var(--color--dark);
+  color: var(--color--neutral-outer-space);
 }
 
 .latest-news-card-image-wrap {
@@ -802,18 +802,18 @@
 
 .latest-news-card-title {
   margin: 0 0 20px;
-  font-family: var(--_typography---font-family--heading);
-  font-size: 24px;
-  font-weight: var(--_typography---h2--font-weight-600);
+  font-family: var(--_typography---font-family--body);
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1.25;
-  color: var(--color--dark);
+  color: var(--color--neutral-outer-space);
 }
 
 .latest-news-card-description {
   margin: 0 0 20px;
   font-family: var(--_typography---font-family--body);
-  font-size: 18px;
-  font-weight: var(--_typography---body--font-weight-500);
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.4;
   color: var(--color--neutral-outer-space);
 }
@@ -910,11 +910,11 @@
 
   .latest-news-card-portal-name,
   .latest-news-card-title {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 
   .latest-news-card-description {
-    font-size: 1rem;
+    font-size: 14px;
   }
 }
 
