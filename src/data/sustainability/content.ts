@@ -449,7 +449,7 @@ export const pillar04 = {
       description:
         'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
       variant: 'light' as const,
-      comingSoon: true,
+      pdfHref: '/sustainability-report-2025',
     },
     {
       id: '2024',

@@ -94,9 +94,8 @@ export function SustainabilityPillar04Section() {
                 <div className={`sustain-report-download sustain-report-download--${report.variant}`}>
                   <span className="sustain-report-download-label">Download PDF</span>
                   <ReportDownloadButton
-                    href={report.comingSoon ? undefined : report.pdfHref}
+                    href={report.pdfHref}
                     variant={report.variant}
-                    disabled={report.comingSoon}
                   />
                 </div>
               </div>

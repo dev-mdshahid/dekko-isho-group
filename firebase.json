@@ -1,13 +1,10 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-      "scripts/**",
-      ".env",
-      ".env.*"
+      "**/node_modules/**"
     ],
     "rewrites": [
       {
@@ -17,6 +14,10 @@
       {
         "source": "/sustainability-report-2025",
         "destination": "/documents/Impact Journal 2025.pdf"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ],
     "cleanUrls": true,
