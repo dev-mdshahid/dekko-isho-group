@@ -2,7 +2,6 @@ import { useRef } from 'react'
 
 import {
   CareerApplyCTASection,
-  CareerBannerSection,
   CareerEmployeeVoicesSection,
   CareerHeroSection,
   CareerOpenPositionsSection,
@@ -23,7 +22,6 @@ export function CareerContent() {
   return (
     <div ref={ref}>
       <CareerHeroSection />
-      <CareerBannerSection />
       <CareerWhySection />
       <CareerStatsSection />
       <CareerOpenPositionsSection />

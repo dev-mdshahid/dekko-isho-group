@@ -8,43 +8,242 @@
   padding-left: var(--_layout---container-full-gutter);
 }
 
+/* Career page — hero section */
+
 .career-hero-section {
-  background-color: var(--color--gray-5);
+  z-index: 1;
+  width: 100%;
   position: relative;
   overflow: hidden;
+  background-image: url('/images/fabric-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.career-hero-main {
-  z-index: 2;
+.career-hero-inner {
+  box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
-.career-hero-wrap {
-  display: flex;
+.career-hero-section .career-hero-title-wrap {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-}
-
-.career-hero-title-wrap {
+  gap: var(--gap--gap-7);
+  margin-bottom: 0;
   display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--gap--gap-10);
-  margin-bottom: 7.188rem;
 }
 
-.career-hero-title-wrap .pre-section-title {
+.career-hero-section .career-hero-title {
+  margin: 0;
+  font-family: var(--_typography---font-family--heading);
+  font-size: 72px;
+  font-weight: var(--_typography---h1--font-weight-600);
+  line-height: 1.1;
+  text-align: center;
+  color: var(--color--dark);
+}
+
+.career-hero-section .career-hero-title-wrap .pre-section-title {
   text-transform: none;
 }
 
-.career-hero-title {
+.career-hero-section .hero-title-word {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .career-hero-section [data-about-animate='hero-word'] {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .career-hero-inner {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .career-hero-section .career-hero-title {
+    font-size: clamp(2.25rem, 7vw, 3.5rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .career-hero-inner {
+    padding-top: 8rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .career-hero-section .career-hero-title {
+    font-size: clamp(1.625rem, 7.5vw, 2.25rem);
+    line-height: 1.15;
+  }
+}
+
+/* Career page — image + info section */
+
+.image-info-career .career-image-right {
+  width: 100%;
+  overflow: hidden;
+  background-color: #d9e4ee;
+}
+
+.image-info-career {
+  --career-marquee-font-size: clamp(2.5rem, 15cqw, 128px);
+  position: relative;
+  z-index: 2;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.image-info-career .career-info-stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.image-info-career .career-info-scaler {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .image-info-career .career-info-scaler {
+    width: 80vw;
+    will-change: width;
+  }
+}
+
+@media (max-width: 991px) and (prefers-reduced-motion: no-preference) {
+  .image-info-career .career-info-scaler {
+    width: 80%;
+    margin-inline: auto;
+    will-change: width;
+  }
+}
+
+.image-info-career .grid-hero-about {
+  overflow: visible;
+  grid-template-columns: minmax(200px, 0.7fr) minmax(200px, 1fr);
+}
+
+.image-info-career .about-info-right {
+  position: relative;
+  overflow: visible;
+  container-type: inline-size;
+  padding-bottom: calc(var(--career-marquee-font-size) * 0.7);
+  background-image: linear-gradient(180deg, #2595d5 0%, #1b3f6f 100%);
+}
+
+.image-info-career .about-hero-text-marquee {
+  --career-marquee-font-size: clamp(2.5rem, 15cqw, 128px);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.image-info-career .about-hero-text-marquee .marquee-text {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--career-marquee-font-size);
+  font-weight: var(--_typography---h1--font-weight-700);
+  line-height: 1;
   text-align: center;
-  margin-bottom: 0;
-  line-height: 1.1;
-  max-width: none;
+  color: #ffffff4d;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(30%);
+}
+
+@media screen and (max-width: 991px) {
+  .image-info-career .grid-hero-about {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .image-info-career .career-image-right,
+  .image-info-career .about-info-right {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .image-info-career .about-image {
+    height: clamp(14rem, 42vw, 24rem);
+    object-fit: cover;
+  }
+
+  .image-info-career .about-hero-content {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .image-info-career .about-hero-description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .image-info-career .about-hero-button {
+    width: 100%;
+  }
+
+  .image-info-career {
+    --career-marquee-font-size: clamp(2.25rem, 12vw, 96px);
+  }
+
+  .image-info-career .about-hero-text-marquee {
+    --career-marquee-font-size: clamp(2.25rem, 12vw, 96px);
+  }
+
+  .image-info-career .about-info-right {
+    min-height: auto;
+    padding-bottom: calc(var(--career-marquee-font-size) * 0.55);
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .image-info-career {
+    --career-marquee-font-size: clamp(1.75rem, 10vw, 56px);
+  }
+
+  .image-info-career .about-hero-text-marquee {
+    --career-marquee-font-size: clamp(1.75rem, 10vw, 56px);
+  }
+
+  .image-info-career .about-info-right {
+    min-height: auto;
+    padding-bottom: calc(var(--career-marquee-font-size) * 0.5);
+  }
+
+  .image-info-career .about-hero-text-marquee .marquee-text {
+    padding: 0 0.75rem;
+    transform: translateY(22%);
+  }
+
+  .image-info-career .about-hero-content {
+    padding: 1.75rem 1.25rem 1.25rem;
+  }
+
+  .image-info-career .about-image {
+    height: clamp(12rem, 52vw, 18rem);
+  }
 }
 
 /* ── Career Banner ── */
@@ -577,10 +776,6 @@
 
 /* ── Responsive ── */
 @media screen and (max-width: 991px) {
-  .career-hero-title-wrap {
-    margin-bottom: 5rem;
-  }
-
   .career-banner-grid {
     grid-template-columns: 1fr;
   }
@@ -625,9 +820,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .career-hero-title-wrap {
-    margin-bottom: 3.75rem;
-  }
 
   .career-why-item {
     grid-template-columns: minmax(3rem, 4rem) 1fr;
