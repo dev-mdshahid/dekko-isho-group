@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { AwardsGridSection, AwardsHeroSection } from '../components/awards'
+import { AwardsGridSection, AwardsHeroSection, AwardsHonorsSection } from '../components/awards'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -15,6 +15,7 @@ export function AwardsContent() {
   return (
     <div ref={ref}>
       <AwardsHeroSection />
+      <AwardsHonorsSection />
       <AwardsGridSection />
     </div>
   )
