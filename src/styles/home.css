@@ -430,7 +430,8 @@
 .about-section .about-scroll-viewport.about-carousel-viewport {
   overflow: hidden;
   cursor: default;
-  padding-block: 0;
+  /* Room for hover tilt + image scale so cards are never clipped */
+  padding: 1.25rem;
   margin-block: 0;
 }
 

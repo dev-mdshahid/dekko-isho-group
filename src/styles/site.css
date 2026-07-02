@@ -11645,6 +11645,15 @@ a.about-info-box:hover {
 }
 
 /* Service section — stacking cards */
+.service-section .service-info,
+.service-section .service-list-wrapper,
+.service-section .service-list-item,
+.service-section .service-info-link,
+.service-section .service-info-inner,
+.service-section .service-image-main {
+  overflow: visible;
+}
+
 .service-section .service-image-wrap {
   overflow: hidden;
   border-radius: var(--border-radius--sm);

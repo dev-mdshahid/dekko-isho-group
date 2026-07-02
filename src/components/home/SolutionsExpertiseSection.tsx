@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 
 import { solutionsExpertiseTabs } from '../../data/solutions/solutionsExpertise'
 import {
@@ -24,7 +24,7 @@ export function SolutionsExpertiseSection() {
     [activatePanel],
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     Object.entries(panelRefs.current).forEach(([id, panel]) => {
       if (panel && id !== activeTabId) {
         resetSolutionsPanelChrome(panel)
@@ -32,13 +32,9 @@ export function SolutionsExpertiseSection() {
     })
 
     const panel = panelRefs.current[activeTabId]
-    if (!panel) return
-
-    const frame = requestAnimationFrame(() => {
+    if (panel) {
       animateSolutionsAccordionPanel(panel)
-    })
-
-    return () => cancelAnimationFrame(frame)
+    }
   }, [activeTabId])
 
   return (
@@ -85,7 +81,9 @@ export function SolutionsExpertiseSection() {
                 }
               }}
             >
-              <img src={tab.image} loading="lazy" alt={tab.imageAlt} />
+              <div className="solutions-expertise-panel-media">
+                <img src={tab.image} loading="lazy" alt={tab.imageAlt} />
+              </div>
               <div className="solutions-expertise-chip" aria-hidden="true">
                 <span className="solutions-expertise-chip-inner">{num}</span>
               </div>

@@ -43,20 +43,21 @@ export function initSolutionsExpertiseAnimations(scope: ParentNode): AnimationCl
 
   if (!isMobileViewport()) {
     panels.forEach((panel) => {
-      const image = panel.querySelector<HTMLElement>('img')
-      if (!image) return
+      const media = panel.querySelector<HTMLElement>('.solutions-expertise-panel-media')
+      if (!media) return
 
       const parallaxTween = gsap.fromTo(
-        image,
-        { y: '-4%' },
+        media,
+        { y: '-3%' },
         {
-          y: '4%',
+          y: '3%',
           ease: 'none',
+          force3D: true,
           scrollTrigger: {
             trigger: panel,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: 0.6,
+            scrub: 1.2,
           },
         },
       )
@@ -72,11 +73,25 @@ export function initSolutionsExpertiseAnimations(scope: ParentNode): AnimationCl
   }
 }
 
+function getSolutionsPanelContentItems(panel: HTMLElement) {
+  const content = panel.querySelector<HTMLElement>('.solutions-expertise-panel-content')
+  if (!content) return []
+
+  const tag = content.querySelector<HTMLElement>('.solutions-expertise-tag')
+  const title = content.querySelector<HTMLElement>('h3')
+  const description = content.querySelector<HTMLElement>('p')
+  const features = content.querySelectorAll<HTMLElement>('li')
+
+  return [tag, title, description, ...Array.from(features)].filter(Boolean) as HTMLElement[]
+}
+
 export function resetSolutionsPanelChrome(panel: HTMLElement) {
   const chip = panel.querySelector<HTMLElement>('.solutions-expertise-chip')
   const chipInner = panel.querySelector<HTMLElement>('.solutions-expertise-chip-inner')
+  const image = panel.querySelector<HTMLElement>('img')
+  const contentItems = getSolutionsPanelContentItems(panel)
 
-  gsap.killTweensOf([chip, chipInner].filter(Boolean))
+  gsap.killTweensOf([chip, chipInner, ...contentItems].filter(Boolean))
 
   if (chip) {
     gsap.set(chip, { clearProps: 'all' })
@@ -84,6 +99,15 @@ export function resetSolutionsPanelChrome(panel: HTMLElement) {
 
   if (chipInner) {
     gsap.set(chipInner, { clearProps: 'all' })
+  }
+
+  if (contentItems.length) {
+    gsap.set(contentItems, { clearProps: 'opacity,transform' })
+  }
+
+  if (image) {
+    gsap.killTweensOf(image, 'scale')
+    gsap.set(image, { scale: 1, force3D: true })
   }
 }
 
@@ -93,24 +117,24 @@ export function animateSolutionsAccordionPanel(panel: HTMLElement | null) {
   const image = panel.querySelector<HTMLElement>('img')
   const chip = panel.querySelector<HTMLElement>('.solutions-expertise-chip')
   const chipInner = panel.querySelector<HTMLElement>('.solutions-expertise-chip-inner')
-  const content = panel.querySelector<HTMLElement>('.solutions-expertise-panel-content')
-  const tag = content?.querySelector<HTMLElement>('.solutions-expertise-tag')
-  const title = content?.querySelector<HTMLElement>('h3')
-  const description = content?.querySelector<HTMLElement>('p')
-  const features = content?.querySelectorAll<HTMLElement>('li')
+  const contentItems = getSolutionsPanelContentItems(panel)
 
-  const contentItems = [tag, title, description, ...(features ? Array.from(features) : [])].filter(
-    Boolean,
-  ) as HTMLElement[]
+  gsap.killTweensOf([chip, chipInner, ...contentItems].filter(Boolean))
 
-  gsap.killTweensOf([image, chip, chipInner, content, ...contentItems])
+  if (contentItems.length) {
+    gsap.set(contentItems, { opacity: 0, y: 22, force3D: true })
+  }
 
   if (image) {
-    gsap.fromTo(
-      image,
-      { scale: 1.1 },
-      { scale: 1, duration: 1.15, ease: 'power3.out' },
-    )
+    gsap.killTweensOf(image, 'scale')
+    gsap.set(image, { scale: 1, force3D: true })
+    gsap.to(image, {
+      scale: 1.14,
+      duration: 1.6,
+      ease: 'power2.inOut',
+      overwrite: 'auto',
+      force3D: true,
+    })
   }
 
   if (chipInner) {
@@ -127,13 +151,12 @@ export function animateSolutionsAccordionPanel(panel: HTMLElement | null) {
 
   if (!contentItems.length) return
 
-  gsap.set(contentItems, { opacity: 0, y: 22 })
   gsap.to(contentItems, {
     opacity: 1,
     y: 0,
     duration: 0.62,
     ease: 'power3.out',
     stagger: 0.08,
-    delay: 0.12,
+    delay: 0.42,
   })
 }
