@@ -11,17 +11,11 @@
         "source": "/sustainibility-report-2025",
         "destination": "/sustainability-report-2025",
         "type": 301
-      }
-    ],
-    "headers": [
+      },
       {
-        "source": "/documents/sustainability/sustainability-report-2025.pdf",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=3600"
-          }
-        ]
+        "source": "/sustainability-report-2025",
+        "destination": "https://drive.google.com/file/d/1iRRvXVsUhUD1fBJLE5HQHmEGoZvuUw4l/view",
+        "type": 302
       }
     ],
     "rewrites": [
@@ -31,6 +25,7 @@
       }
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "headers": []
   }
 }

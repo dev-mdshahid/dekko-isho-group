@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "build:firebase": "npm run build",
-    "deploy:live": "npm run build && FIREBASE_SKIP_UPDATE_CHECK=true firebase deploy --only hosting",
+    "deploy:live": "node scripts/prepare-firebase-hosting.mjs && npm run build && FIREBASE_SKIP_UPDATE_CHECK=true firebase deploy --only hosting",
     "deploy:firebase": "npm run deploy:live",
     "extract:home": "node scripts/extract-home-body.mjs",
     "convert:home": "node scripts/extract-home-body.mjs && node scripts/convert-home-to-tsx.mjs"
