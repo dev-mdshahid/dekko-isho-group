@@ -7,11 +7,13 @@ import {
 } from '../../data/sustainability/content'
 import { SustainabilitySdgGoals } from './SustainabilitySdgGoals'
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
+import { setupSdgFrameworkAnimations } from '../../lib/animations/sustainability/sdgGoals'
 import { FadeIn } from '../ui/FadeIn'
 
 export function SustainabilityHeroImageSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const scalerRef = useRef<HTMLDivElement>(null)
+  const frameworkRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -19,6 +21,13 @@ export function SustainabilityHeroImageSection() {
     if (!section || !scaler) return
 
     return setupImageInfoExpand({ section, scaler })
+  }, [])
+
+  useEffect(() => {
+    const framework = frameworkRef.current
+    if (!framework) return
+
+    return setupSdgFrameworkAnimations(framework)
   }, [])
 
   return (
@@ -48,16 +57,18 @@ export function SustainabilityHeroImageSection() {
                   </FadeIn>
                 </div>
 
-                <FadeIn id="sustain-impact-framework" delay={120} className="sustain-impact-framework">
-                  <h2 className="sustain-impact-framework-title">
+                <div ref={frameworkRef} className="sustain-impact-framework">
+                  <h2 className="sustain-impact-framework-title" data-sdg-animate="title">
                     {strategySection.titlePrefix}{' '}
                     <span className="sustain-impact-framework-title-accent">{strategySection.titleHighlight}</span>{' '}
                     {strategySection.titleSuffix}
                   </h2>
-                  <p className="sustain-impact-framework-description">{strategySection.description}</p>
+                  <p className="sustain-impact-framework-description" data-sdg-animate="description">
+                    {strategySection.description}
+                  </p>
 
                   <SustainabilitySdgGoals pillars={sdgGoals} />
-                </FadeIn>
+                </div>
               </div>
             </div>
           </div>
