@@ -975,6 +975,158 @@
   font-weight: var(--_typography---body--font-weight-500);
 }
 
+/* ── Focus cards (Pillar 01 compact variant) ── */
+.sustain-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.75rem;
+}
+
+.sustain-focus-card-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  perspective: 900px;
+  will-change: transform, opacity;
+}
+
+.sustain-focus-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  border-radius: 6px;
+  background-color: var(--color--white);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: default;
+  transition: box-shadow 0.45s ease;
+}
+
+.sustain-pillar-section--environment .sustain-focus-card.is-hovered {
+  box-shadow: 0 1.4rem 4rem var(--sustain-card-shadow);
+}
+
+.sustain-focus-card-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color--black);
+}
+
+.sustain-focus-card-media {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--color--gray-5);
+  transform: translateZ(0);
+  transform-origin: center center;
+}
+
+.sustain-focus-card-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 62%
+  );
+  opacity: 0;
+  transform: translateX(-120%);
+}
+
+.sustain-focus-card-media--carousel .sustain-focus-card-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  transform: scale(1.06);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sustain-focus-card-media--carousel .sustain-focus-card-image.is-active {
+  opacity: 1;
+  z-index: 1;
+  transform: scale(1);
+}
+
+.sustain-focus-card-media--carousel.is-resetting .sustain-focus-card-image {
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sustain-focus-card-media--carousel.is-resetting .sustain-focus-card-dot {
+  transition:
+    width 0.8s ease,
+    background-color 0.8s ease;
+}
+
+.sustain-focus-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.sustain-focus-card-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.sustain-focus-card-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.sustain-focus-card-dot.is-active {
+  width: 24px;
+  background-color: var(--color--white);
+}
+
+.sustain-focus-card-dot:focus-visible {
+  outline: 2px solid var(--color--white);
+  outline-offset: 2px;
+}
+
 .sustain-initiative-number {
   transition: box-shadow 0.4s ease;
 }
@@ -992,6 +1144,16 @@
   .sustain-initiative-image,
   .sustain-initiative-metric-value,
   .sustain-initiative-number {
+    transition: none;
+  }
+
+  .sustain-focus-card-media--carousel .sustain-focus-card-image,
+  .sustain-focus-card-dot {
+    transition: none;
+  }
+
+  .sustain-focus-card,
+  .sustain-focus-card-image {
     transition: none;
   }
 }
@@ -1981,6 +2143,11 @@
     margin-bottom: 2.5rem;
   }
 
+  .sustain-focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 2.5rem;
+  }
+
   .sustain-snapshot-header {
     margin-bottom: 2rem;
   }
@@ -2229,6 +2396,12 @@
 
   /* Initiative cards */
   .sustain-initiatives-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .sustain-focus-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
     margin-bottom: 2rem;

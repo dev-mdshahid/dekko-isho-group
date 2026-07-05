@@ -233,7 +233,184 @@ export type InitiativeCard = {
   imageAlt: string
 }
 
-const pillar1Image = (file: string) => `/images/sustainability/pillar-1/${file}`
+const pillar1Image = (...parts: string[]) =>
+  `/images/sustainability/pillar-1/${parts.map(encodeURIComponent).join('/')}`
+
+export type FocusAreaImage = {
+  src: string
+  alt: string
+}
+
+export type FocusAreaCard = {
+  id: string
+  title: string
+  images: FocusAreaImage[]
+}
+
+export const pillar01FocusAreas: FocusAreaCard[] = [
+  {
+    id: 'renewable-energy',
+    title: 'Renewable Energy',
+    images: [
+      {
+        src: pillar1Image('1. Renewable Energy', '1. Renewable-Energy.png'),
+        alt: 'Solar panels installed on a factory rooftop',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'DJI_0047.JPG'),
+        alt: 'Aerial view of solar panel arrays',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'DJI_0081.JPG'),
+        alt: 'Wide aerial view of renewable energy installation',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'DJI_0091.JPG'),
+        alt: 'Solar farm under clear skies',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'Solar Panel.png'),
+        alt: 'Close-up of photovoltaic solar panels',
+      },
+    ],
+  },
+  {
+    id: 'energy-monitoring',
+    title: 'Energy Monitoring',
+    images: [
+      {
+        src: pillar1Image('2. Energy Monitoring', '2. Energy-Monitoring.png'),
+        alt: 'Digital energy monitoring control panel',
+      },
+    ],
+  },
+  {
+    id: 'biomass-boiler',
+    title: 'Biomass Boiler',
+    images: [
+      {
+        src: pillar1Image('3. Biomass Boiler', '3. Biomass-Boiler.png'),
+        alt: 'Biomass boiler facility with workers in protective gear',
+      },
+      {
+        src: pillar1Image('3. Biomass Boiler', 'AWL 28202601.jpeg'),
+        alt: 'Biomass boiler operation in progress',
+      },
+    ],
+  },
+  {
+    id: 'steam-recovery',
+    title: 'Steam Recovery',
+    images: [
+      {
+        src: pillar1Image('4. Steam Recovery', '4. Steam-Recovery.png'),
+        alt: 'Industrial steam recovery piping system',
+      },
+    ],
+  },
+  {
+    id: 'rainwater-harvesting',
+    title: 'Rainwater Harvesting',
+    images: [
+      {
+        src: pillar1Image('5. Rainwater Harvesting', '5.-Rainwater-Harvesting.png'),
+        alt: 'Rainwater harvesting infrastructure on a building exterior',
+      },
+      {
+        src: pillar1Image('5. Rainwater Harvesting', '5.-Rainwater-Harvesting-2.png'),
+        alt: 'Rainwater collection system detail',
+      },
+      {
+        src: pillar1Image('5. Rainwater Harvesting', 'WhatsApp Image 2026-06-23 at 3.18.13 PM.jpeg'),
+        alt: 'Rainwater harvesting installation on site',
+      },
+    ],
+  },
+  {
+    id: 'stp',
+    title: 'Sewerage Treatment Plan (STP)',
+    images: [
+      {
+        src: pillar1Image('6. Sewerage Treatment Plan (STP)', '6.-Sewerage-Treatment-Plan-(STP).png'),
+        alt: 'Sewerage treatment plant water sample testing',
+      },
+    ],
+  },
+  {
+    id: 'etp',
+    title: 'Effluent Treatment Plant (ETP)',
+    images: [
+      {
+        src: pillar1Image('7. Effluent Treatment Plant (ETP)', '7.-Effluent-Treatment-Plant-(ETP).png'),
+        alt: 'Effluent treatment plant tanks and processing area',
+      },
+    ],
+  },
+  {
+    id: 'grey-water',
+    title: 'Grey Water Treatment Plant',
+    images: [
+      {
+        src: pillar1Image('8. Grey Water Treatment Plant', '8.-Grey-Water-Treatment-Plant.png'),
+        alt: 'Grey water treatment plant equipment and storage',
+      },
+    ],
+  },
+  {
+    id: 'textile-waste',
+    title: 'Textile Waste Recycling',
+    images: [
+      {
+        src: pillar1Image('9. Textile Waste Recycling', '9.-Textile-Waste-Recycling.png'),
+        alt: 'Textile waste recycling facility',
+      },
+    ],
+  },
+  {
+    id: 'lube-oil',
+    title: 'Used Lube Oil Recycling',
+    images: [
+      {
+        src: pillar1Image('10. Used Lube Oil Recycling', '10.-Used-Lube-Oil-Recycling.png'),
+        alt: 'Used lube oil recycling tanker at facility',
+      },
+      {
+        src: pillar1Image('10. Used Lube Oil Recycling', 'WhatsApp Image 2026-06-22 at 4.06.25 PM (1).jpeg'),
+        alt: 'Lube oil recycling operation on site',
+      },
+    ],
+  },
+  {
+    id: 'water-efficient-machines',
+    title: 'Water Efficient Machines',
+    images: [
+      {
+        src: pillar1Image('11. Water Efficient Machines', '11.-Water-Efficient-Machines.png'),
+        alt: 'Row of water-efficient industrial washing machines',
+      },
+    ],
+  },
+  {
+    id: 'conveyor-dryer',
+    title: 'Conveyor Dryer',
+    images: [
+      {
+        src: pillar1Image('12. Conveyor Dryer', '12.-Conveyor-Dryer.png'),
+        alt: 'Garments on a conveyor dryer line in production',
+      },
+    ],
+  },
+  {
+    id: 'chemical-management',
+    title: 'Chemical Management',
+    images: [
+      {
+        src: pillar1Image('13. Chemical Management', '13.-Chemical-Management.png'),
+        alt: 'Chemical drums stored on industrial shelving',
+      },
+    ],
+  },
+]
 
 export type SnapshotKpi =
   | {
