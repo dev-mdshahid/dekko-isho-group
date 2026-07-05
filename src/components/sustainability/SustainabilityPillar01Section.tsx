@@ -5,8 +5,9 @@ import { SustainabilityFocusCard } from './SustainabilityFocusCard'
 import { SustainabilityFocusGrid } from './SustainabilityFocusGrid'
 // import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
 // import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
-import { SustainabilitySnapshotCard } from './SustainabilitySnapshotCard'
-import { SustainabilitySnapshotGrid } from './SustainabilitySnapshotGrid'
+import { SustainabilityPerformanceSnapshot } from './SustainabilityPerformanceSnapshot'
+// import { SustainabilitySnapshotCard } from './SustainabilitySnapshotCard'
+// import { SustainabilitySnapshotGrid } from './SustainabilitySnapshotGrid'
 
 export function SustainabilityPillar01Section() {
   return (
@@ -41,7 +42,7 @@ export function SustainabilityPillar01Section() {
           ))}
         </SustainabilityFocusGrid>
 
-        <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-section">
+        {/* <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-section">
           <div className="sustain-snapshot-header">
             <SustainabilityBadge title={pillar01.snapshotBadge} />
             <h3 className="sustain-snapshot-headline">{pillar01.snapshotHeadline}</h3>
@@ -53,7 +54,9 @@ export function SustainabilityPillar01Section() {
               </div>
             ))}
           </SustainabilitySnapshotGrid>
-        </FadeIn>
+        </FadeIn> */}
+
+        <SustainabilityPerformanceSnapshot />
       </div>
     </section>
   )

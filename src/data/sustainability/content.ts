@@ -532,6 +532,141 @@ export const pillar01 = {
   ] satisfies SnapshotKpi[],
 }
 
+export type PerformanceSnapshotStat = {
+  value: string
+  unit?: string
+  label: string
+  lead?: boolean
+}
+
+export type PerformanceSnapshotFooter =
+  | {
+      label: string
+      type: 'single'
+      bold: string
+      text: string
+    }
+  | {
+      label: string
+      type: 'items'
+      items: { bold: string; text: string }[]
+    }
+
+export type PerformanceSnapshotCard = {
+  id: string
+  theme: 'energy' | 'waste' | 'water'
+  category: string
+  title: string
+  description: string
+  statsColumns: 2 | 3 | 4
+  stats: PerformanceSnapshotStat[]
+  footer: PerformanceSnapshotFooter
+}
+
+export const performanceSnapshot = {
+  badge: 'Our progress',
+  headline: 'Measuring what Matters, Reducing what Counts',
+  cards: [
+    {
+      id: 'energy',
+      theme: 'energy',
+      category: 'Energy',
+      title: 'Renewable Electricity & Energy Efficiency',
+      description: 'Clean electricity milestones and solar expansion across all units.',
+      statsColumns: 3,
+      stats: [
+        {
+          value: '80%',
+          label: 'Reduction in Scope-2 GHG emissions',
+          lead: true,
+        },
+        {
+          value: '1.861',
+          unit: 'MWp',
+          label: 'Current solar capacity',
+        },
+        {
+          value: '5.07%',
+          label: 'Renewable energy share',
+        },
+      ],
+      footer: {
+        label: 'Upcoming',
+        type: 'single',
+        bold: '2.324 MWp',
+        text: 'solar expansion planned',
+      },
+    },
+    {
+      id: 'waste',
+      theme: 'waste',
+      category: 'Waste',
+      title: 'Waste Accountability',
+      description: 'Closed-loop recycling with verified partners across every waste stream.',
+      statsColumns: 2,
+      stats: [
+        {
+          value: '405',
+          unit: 'tons',
+          label: 'Textile waste recycled with Reverse Resources',
+          lead: true,
+        },
+        {
+          value: '27%',
+          label: 'Overall waste recycling rate',
+        },
+      ],
+      footer: {
+        label: 'Partners & plans',
+        type: 'items',
+        items: [
+          { bold: 'Paper', text: 'Base Paper Ltd' },
+          { bold: 'Lube oil', text: 'Lub-rref BD' },
+          { bold: 'E-waste', text: 'JR Recycling' },
+          { bold: '2026', text: 'thread cone & plastic recycling' },
+        ],
+      },
+    },
+    {
+      id: 'water',
+      theme: 'water',
+      category: 'Water',
+      title: 'Water Management',
+      description: 'Reduction, treatment and reuse across the entire production footprint.',
+      statsColumns: 4,
+      stats: [
+        {
+          value: '9%',
+          label: 'Groundwater withdrawal reduction',
+          lead: true,
+        },
+        {
+          value: '2%',
+          label: 'Water recycled',
+        },
+        {
+          value: '40',
+          unit: 'm³/hr',
+          label: 'STP capacity · all units',
+        },
+        {
+          value: '15',
+          unit: 'm³/hr',
+          label: 'GWTP capacity · all units',
+        },
+      ],
+      footer: {
+        label: 'Practices',
+        type: 'items',
+        items: [
+          { bold: 'Rainwater harvesting', text: 'all units' },
+          { bold: 'Push taps & awareness', text: 'all units' },
+        ],
+      },
+    },
+  ] satisfies PerformanceSnapshotCard[],
+}
+
 export type SocialCard = {
   id: string
   number: string

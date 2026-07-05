@@ -5,6 +5,7 @@
   --sustain-green-dark: #1f7a47;
   --sustain-green-light: #e8f5ee;
   --sustain-green-muted: #4caf7a;
+  --sustain-amber: #c98a2e;
   --sustain-blue: var(--color--primary);
   --sustain-blue-light: #e3f3fa;
   --sustain-card-shadow: color-mix(in srgb, var(--color--secondary-dark-spring-green) 24%, transparent);
@@ -1342,6 +1343,261 @@
   .sustain-snapshot-card-value-accent,
   .sustain-snapshot-gauge-wrap {
     transition: none;
+  }
+}
+
+/* ── Performance progress snapshot (Pillar 01) ── */
+.sustain-progress-section {
+  position: relative;
+  z-index: 1;
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.sustain-progress-head {
+  margin-bottom: var(--gap--gap-10);
+}
+
+.sustain-progress-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap--gap-3);
+  background-color: var(--color--white);
+  border: 1px solid var(--color--gray-4);
+  border-radius: var(--border-radius--xl);
+  padding: var(--gap--gap-3) var(--gap--gap-5);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--color--dark) 3%, transparent);
+  margin-bottom: var(--gap--gap-6);
+}
+
+.sustain-progress-pill-sq {
+  width: 8px;
+  height: 8px;
+  background-color: var(--sustain-green);
+  border-radius: var(--border-radius--xs);
+  flex: none;
+}
+
+.sustain-progress-headline {
+  font-family: var(--_typography---font-family--heading);
+  font-weight: var(--_typography---h1--font-weight-700);
+  font-size: clamp(1.75rem, 3.4vw, 2.625rem);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height-1-2);
+  margin: 0;
+  color: var(--color--dark);
+}
+
+.sustain-progress-card {
+  background-color: var(--color--white);
+  border: 1px solid var(--color--gray-4);
+  border-radius: var(--border-radius--lg);
+  margin-bottom: var(--gap--gap-6);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+}
+
+.sustain-progress-card:last-child {
+  margin-bottom: 0;
+}
+
+.sustain-progress-card-title {
+  padding: var(--gap--gap-9) var(--gap--gap-8);
+  border-right: 1px solid var(--color--gray-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap--gap-4);
+}
+
+.sustain-progress-card-category {
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: var(--gap--gap-3);
+}
+
+.sustain-progress-card-category::before {
+  content: '';
+  width: 1.125rem;
+  height: 3px;
+  border-radius: var(--border-radius--xs);
+}
+
+.sustain-progress-card--energy .sustain-progress-card-category {
+  color: var(--sustain-green);
+}
+
+.sustain-progress-card--energy .sustain-progress-card-category::before {
+  background-color: var(--sustain-green);
+}
+
+.sustain-progress-card--waste .sustain-progress-card-category {
+  color: var(--sustain-amber);
+}
+
+.sustain-progress-card--waste .sustain-progress-card-category::before {
+  background-color: var(--sustain-amber);
+}
+
+.sustain-progress-card--water .sustain-progress-card-category {
+  color: var(--sustain-blue);
+}
+
+.sustain-progress-card--water .sustain-progress-card-category::before {
+  background-color: var(--sustain-blue);
+}
+
+.sustain-progress-card-heading {
+  font-family: var(--_typography---font-family--heading);
+  font-size: 1.25rem;
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: var(--_typography---body--line-height);
+  margin: 0;
+  color: var(--color--dark);
+}
+
+.sustain-progress-card-description {
+  font-size: var(--_typography---body--body-xs);
+  color: var(--color--gray-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sustain-progress-card-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.sustain-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex: 1;
+}
+
+.sustain-progress-stats--c3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sustain-progress-stats--c2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.sustain-progress-stat {
+  padding: var(--gap--gap-8) var(--gap--gap-7);
+  border-left: 1px solid var(--color--gray-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap--gap-3);
+}
+
+.sustain-progress-stat:first-child {
+  border-left: none;
+}
+
+.sustain-progress-stat-value {
+  font-family: var(--_typography---font-family--heading);
+  font-size: var(--_typography---h5--h5);
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1;
+  color: var(--color--dark);
+}
+
+.sustain-progress-stat-value small {
+  font-size: var(--base-font-size--base-small);
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: 0;
+}
+
+.sustain-progress-stat-label {
+  font-size: var(--_typography---body--body-xs);
+  color: var(--color--gray-2);
+  line-height: 1.45;
+}
+
+.sustain-progress-card--energy .sustain-progress-stat--lead .sustain-progress-stat-value {
+  color: var(--sustain-green);
+}
+
+.sustain-progress-card--waste .sustain-progress-stat--lead .sustain-progress-stat-value {
+  color: var(--sustain-amber);
+}
+
+.sustain-progress-card--water .sustain-progress-stat--lead .sustain-progress-stat-value {
+  color: var(--sustain-blue);
+}
+
+.sustain-progress-card-foot {
+  border-top: 1px solid var(--color--gray-4);
+  padding: var(--gap--gap-7) var(--gap--gap-7);
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap--gap-6);
+  flex-wrap: wrap;
+  background-color: var(--color--gray-5);
+}
+
+.sustain-progress-foot-label {
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---h1--font-weight-700);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color--gray-2);
+  white-space: nowrap;
+}
+
+.sustain-progress-foot-item {
+  font-size: var(--_typography---body--body-xs);
+  color: var(--color--gray-2);
+}
+
+.sustain-progress-foot-item b {
+  color: var(--color--dark);
+  font-weight: var(--_typography---body--font-weight-600);
+}
+
+.sustain-progress-foot-sep {
+  color: var(--color--gray-4);
+}
+
+@media (max-width: 1020px) {
+  .sustain-progress-card {
+    grid-template-columns: 1fr;
+  }
+
+  .sustain-progress-card-title {
+    border-right: none;
+    border-bottom: 1px solid var(--color--gray-4);
+  }
+
+  .sustain-progress-stats,
+  .sustain-progress-stats--c3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sustain-progress-stat {
+    border-top: 1px solid var(--color--gray-4);
+  }
+
+  .sustain-progress-stat:nth-child(-n + 2) {
+    border-top: none;
+  }
+
+  .sustain-progress-stat:nth-child(odd) {
+    border-left: none;
+  }
+
+  .sustain-progress-stat:nth-child(even) {
+    border-left: 1px solid var(--color--gray-4);
   }
 }
 
