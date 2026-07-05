@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sustainability Report 2025 | Dekko Isho Group</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #323639;
+        color: #fff;
+        font-family: system-ui, sans-serif;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 16px;
+        background: #1a1a1a;
+        border-bottom: 1px solid #444;
+      }
+
+      header h1 {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      header a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        padding: 8px 12px;
+        border: 1px solid #666;
+        border-radius: 4px;
+      }
+
+      #status {
+        padding: 48px 16px;
+        text-align: center;
+        color: #ddd;
+      }
+
+      #viewer {
+        flex: 1;
+        overflow: auto;
+        padding: 16px;
+        text-align: center;
+      }
+
+      canvas {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sustainability Report 2025</h1>
+      <a href="/documents/sustainability/sustainability-report-2025.pdf" download>
+        Download PDF
+      </a>
+    </header>
+    <p id="status">Loading report…</p>
+    <div id="viewer" hidden></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      const pdfUrl = '/documents/sustainability/sustainability-report-2025.pdf'
+      const status = document.getElementById('status')
+      const viewer = document.getElementById('viewer')
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'
+
+      pdfjsLib
+        .getDocument(pdfUrl)
+        .promise.then(async (pdf) => {
+          status.hidden = true
+          viewer.hidden = false
+
+          for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+            const page = await pdf.getPage(pageNumber)
+            const baseViewport = page.getViewport({ scale: 1 })
+            const scale = Math.min((window.innerWidth - 32) / baseViewport.width, 1.5)
+            const viewport = page.getViewport({ scale })
+            const canvas = document.createElement('canvas')
+            const context = canvas.getContext('2d')
+
+            canvas.width = viewport.width
+            canvas.height = viewport.height
+            viewer.appendChild(canvas)
+
+            await page.render({ canvasContext: context, viewport }).promise
+          }
+        })
+        .catch(() => {
+          status.textContent = 'Unable to display the report in your browser.'
+        })
+    </script>
+  </body>
+</html>
