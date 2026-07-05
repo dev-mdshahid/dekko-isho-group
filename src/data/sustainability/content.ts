@@ -2,7 +2,7 @@ export const sustainabilityHero = {
   titleParts: [
     { text: 'People.', tone: 'primary' as const },
     { text: 'Planet.', tone: 'green' as const },
-    { text: 'Progress.', tone: 'amaranth' as const },
+    { text: 'Prosperity.', tone: 'amaranth' as const },
   ],
   description:
     'Advancing responsible growth by balancing business performance with environmental stewardship, social responsibility, and ethical governance.',
@@ -694,16 +694,16 @@ export const pillar03 = {
   image: '/images/sustainability/pillar-3/sustainability-pillar03-cover.png',
   imageAlt:
     'Watercolor illustration of green trees blending into a sustainable manufacturing facility',
-  sustainablePercentage: 61,
+  sustainablePercentage: 81,
   sustainableLabel:
     'of our material mix is now sustainably sourced – up across cotton, flax and circular fibres.',
   materialsChartTitle: 'Top 5 Sustainable Materials Uptake',
   materials: [
-    { id: 'bci', name: 'BCI Cotton', percentage: 17.23 },
-    { id: 'flax', name: 'European Flax (Linen)', percentage: 16.51 },
-    { id: 'organic', name: 'Organic Cotton', percentage: 13.33 },
-    { id: 'us-cotton', name: 'US Cotton', percentage: 5.05 },
-    { id: 'poly', name: 'Recycled Polyester', percentage: 1.78 },
+    { id: 'bci', name: 'BCI Cotton', percentage: 37 },
+    { id: 'flax', name: 'European Flax (Linen)', percentage: 13 },
+    { id: 'organic', name: 'Organic Cotton', percentage: 16 },
+    { id: 'us-cotton', name: 'US Cotton', percentage: 5 },
+    { id: 'regen-agri', name: 'Regen Agri Cotton', percentage: 5 },
   ] satisfies MaterialBar[],
   traceabilityTitle: 'Traceability platforms',
   traceabilityLogos: [
