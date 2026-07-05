@@ -1,8 +1,10 @@
-import { pillar01 } from '../../data/sustainability/content'
+import { pillar01, pillar01FocusAreas } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
-import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
-import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
+import { SustainabilityFocusCard } from './SustainabilityFocusCard'
+import { SustainabilityFocusGrid } from './SustainabilityFocusGrid'
+// import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
+// import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
 import { SustainabilitySnapshotCard } from './SustainabilitySnapshotCard'
 import { SustainabilitySnapshotGrid } from './SustainabilitySnapshotGrid'
 
@@ -23,13 +25,21 @@ export function SustainabilityPillar01Section() {
           </div>
         </FadeIn>
 
-        <SustainabilityInitiativesGrid>
+        {/* <SustainabilityInitiativesGrid>
           {pillar01.initiatives.map((item, index) => (
             <div key={item.id} className="sustain-initiative-card-wrap">
               <SustainabilityInitiativeCard item={item} index={index} />
             </div>
           ))}
-        </SustainabilityInitiativesGrid>
+        </SustainabilityInitiativesGrid> */}
+
+        <SustainabilityFocusGrid>
+          {pillar01FocusAreas.map((item) => (
+            <div key={item.id} className="sustain-focus-card-wrap">
+              <SustainabilityFocusCard item={item} />
+            </div>
+          ))}
+        </SustainabilityFocusGrid>
 
         <FadeIn id="sustain-pillar01-snapshot" className="sustain-snapshot-section">
           <div className="sustain-snapshot-header">

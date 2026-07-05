@@ -1,16 +1,19 @@
 import { useEffect, useRef } from 'react'
 
 import {
-  strategyMetrics,
+  sdgGoals,
   strategySection,
   sustainabilityHeroImage,
 } from '../../data/sustainability/content'
+import { SustainabilitySdgGoals } from './SustainabilitySdgGoals'
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
+import { setupSdgFrameworkAnimations } from '../../lib/animations/sustainability/sdgGoals'
 import { FadeIn } from '../ui/FadeIn'
 
 export function SustainabilityHeroImageSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const scalerRef = useRef<HTMLDivElement>(null)
+  const frameworkRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -18,6 +21,13 @@ export function SustainabilityHeroImageSection() {
     if (!section || !scaler) return
 
     return setupImageInfoExpand({ section, scaler })
+  }, [])
+
+  useEffect(() => {
+    const framework = frameworkRef.current
+    if (!framework) return
+
+    return setupSdgFrameworkAnimations(framework)
   }, [])
 
   return (
@@ -47,45 +57,18 @@ export function SustainabilityHeroImageSection() {
                   </FadeIn>
                 </div>
 
-                <FadeIn id="sustain-impact-framework" delay={120} className="sustain-impact-framework">
-                  <h2 className="sustain-impact-framework-title">
+                <div ref={frameworkRef} className="sustain-impact-framework">
+                  <h2 className="sustain-impact-framework-title" data-sdg-animate="title">
                     {strategySection.titlePrefix}{' '}
                     <span className="sustain-impact-framework-title-accent">{strategySection.titleHighlight}</span>{' '}
                     {strategySection.titleSuffix}
                   </h2>
-                  <p className="sustain-impact-framework-description">{strategySection.description}</p>
+                  <p className="sustain-impact-framework-description" data-sdg-animate="description">
+                    {strategySection.description}
+                  </p>
 
-                  <div id="sustain-impact-metrics" className="sustain-impact-metrics">
-                    {strategyMetrics.map((metric) => {
-                      const numericTarget = metric.value.replace(/\D/g, '')
-
-                      return (
-                        <div key={metric.id} className="sustain-impact-metric">
-                          <div className="sustain-impact-metric-top">
-                            <div className="sustain-impact-metric-value">
-                              <span
-                                className="count"
-                                data-target={numericTarget}
-                                data-duration="1.25"
-                                data-scroll-trigger="#sustain-impact-metrics"
-                                data-scroll-start="top bottom"
-                                data-delay="0"
-                              />
-                              %
-                            </div>
-                            <div className="sustain-impact-metric-label">{metric.label}</div>
-                          </div>
-                          <div className="sustain-impact-metric-bar" aria-hidden="true">
-                            <span
-                              className="sustain-impact-metric-bar-fill"
-                              style={{ width: metric.value }}
-                            />
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </FadeIn>
+                  <SustainabilitySdgGoals pillars={sdgGoals} />
+                </div>
               </div>
             </div>
           </div>

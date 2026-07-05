@@ -20,52 +20,205 @@ export const sustainabilityHeroImage = {
 }
 
 export const strategySection = {
-  titlePrefix: 'Our 2030',
-  titleHighlight: 'Impact',
-  titleSuffix: 'Framework',
+  titlePrefix: 'Our Strategic',
+  titleHighlight: 'Sustainability',
+  titleSuffix: 'Goals — 2030',
   description:
-    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance. This commitment extends far beyond our own operations, fully embracing our entire value chain and supply network to foster sustainable excellence at every link.',
+    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — extending beyond our own operations to our entire value chain.',
 }
 
-export type StrategyMetric = {
+export type SdgLogo = {
+  src: string
+  alt: string
+}
+
+export type SdgGoal = {
+  highlight?: string
+  text: string
+}
+
+export type SdgGoalGroup = {
   id: string
-  value: string
-  label: string
-  image: string
+  logos: SdgLogo[]
+  goals: SdgGoal[]
 }
 
-const strategyImage = (file: string) => `/images/sustainability/${file}`
+export type SdgPillar = {
+  id: 'environment' | 'social' | 'governance'
+  label: string
+  description: string
+  groups: SdgGoalGroup[]
+}
 
-export const strategyMetrics: StrategyMetric[] = [
+const sdgImage = (file: string) => `/images/sustainability/goals/${file}`
+
+export const sdgGoals: SdgPillar[] = [
   {
-    id: 'renewable',
-    value: '80%',
-    label: 'Renewable Energy',
-    image: strategyImage('strategy-renewable.png'),
+    id: 'environment',
+    label: 'Environmental',
+    description: 'Energy, water, waste, chemistry and land stewardship.',
+    groups: [
+      {
+        id: 'env-energy',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-07.png'), alt: 'SDG 7 Affordable and Clean Energy' },
+          { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
+          { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
+        ],
+        goals: [
+          { highlight: 'Renewable Energy 80%', text: '' },
+          { text: 'Energy Efficiency 20%' },
+          { text: '50% GHG Emission Scope-3' },
+        ],
+      },
+      {
+        id: 'env-water',
+        logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
+        goals: [
+          { highlight: 'Blue Water Reduction 40%', text: '' },
+          { text: 'Water Efficiency 20%' },
+        ],
+      },
+      {
+        id: 'env-waste',
+        logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
+        goals: [
+          { highlight: 'Waste Recycle 40%', text: '' },
+          { text: 'Waste Water Recycle 70%' },
+          { text: 'ZDHC Level 3 Compliant 100%' },
+        ],
+      },
+      {
+        id: 'env-land',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
+          { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
+          { src: sdgImage('E-WEB-Goal-15.png'), alt: 'SDG 15 Life on Land' },
+        ],
+        goals: [
+          { highlight: 'Brand COC Completion 100%', text: '' },
+          { text: 'Green Landscape 15%' },
+          { text: 'Tree Plantation 10K' },
+          { text: 'Plastic Free Office' },
+          { text: 'Paperless Office' },
+          { text: 'Sustainability Awareness Training & Practices' },
+        ],
+      },
+    ],
   },
   {
-    id: 'ghg',
-    value: '50%',
-    label: 'GHG Scope-3 reduction',
-    image: strategyImage('strategy-ghg.png'),
+    id: 'social',
+    label: 'Social',
+    description: 'Rights, safety, equity and community wellbeing.',
+    groups: [
+      {
+        id: 'soc-rights',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
+          { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
+        ],
+        goals: [
+          { highlight: '0% Human Rights Violation', text: '' },
+          { text: 'Low Human Rights Due Diligence risk' },
+          { text: '0% Work Related Accidents' },
+          { text: '0% Work Related Illness' },
+        ],
+      },
+      {
+        id: 'soc-training',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
+          { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
+        ],
+        goals: [
+          { highlight: 'Avg. Training 20 hrs/person', text: '' },
+          { text: 'Employee Engagement ≥ 80%' },
+          { text: 'Resignation Rate < 10%/yr; < 4% in high performers' },
+        ],
+      },
+      {
+        id: 'soc-diversity',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-03.png'), alt: 'SDG 3 Good Health and Well-Being' },
+          { src: sdgImage('E-WEB-Goal-05.png'), alt: 'SDG 5 Gender Equality' },
+          { src: sdgImage('E-WEB-Goal-10.png'), alt: 'SDG 10 Reduced Inequalities' },
+        ],
+        goals: [
+          { highlight: 'Free Sanitary Napkin for Workers', text: '' },
+          { text: 'Workplace Diversity & Inclusion' },
+          { text: 'Ensuring Nutrition' },
+          { text: '100% Sexual Harassment Protection' },
+          { text: 'Gender Parity in Management: 40% Female' },
+        ],
+      },
+      {
+        id: 'soc-community',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
+          { src: sdgImage('E-WEB-Goal-06.png'), alt: 'SDG 6 Clean Water and Sanitation' },
+          { src: sdgImage('E-WEB-Goal-04.png'), alt: 'SDG 4 Quality Education' },
+        ],
+        goals: [
+          { highlight: '100% Workers Accessible to Healthcare', text: '' },
+          { text: 'Clean Water & Energy for Local Community' },
+          { text: 'Primary Education Centers for Local Community' },
+          { text: 'Primary Health Care Facility for Local Community' },
+        ],
+      },
+    ],
   },
   {
-    id: 'wastewater',
-    value: '70%',
-    label: 'Wastewater recycled',
-    image: strategyImage('strategy-wastewater.png'),
-  },
-  {
-    id: 'waste',
-    value: '50%',
-    label: 'Waste recycled',
-    image: strategyImage('strategy-waste.png'),
-  },
-  {
-    id: 'traceability',
-    value: '100%',
-    label: 'Supply-chain traceability',
-    image: strategyImage('strategy-traceability.png'),
+    id: 'governance',
+    label: 'Governance',
+    description: 'Ethics, transparency and continuous improvement.',
+    groups: [
+      {
+        id: 'gov-suppliers',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
+          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
+        ],
+        goals: [
+          { highlight: '100% suppliers agree with Code of Conduct', text: '' },
+          { text: '100% Supplier Training Session' },
+        ],
+      },
+      {
+        id: 'gov-ethics',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
+          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
+        ],
+        goals: [
+          { highlight: 'Business Ethics', text: '' },
+          { text: 'Anti-Corruption Training' },
+        ],
+      },
+      {
+        id: 'gov-traceability',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
+          { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
+          { src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' },
+        ],
+        goals: [
+          {
+            highlight: '100% Traceability & Transparency',
+            text: ' in upstream & downstream supply chain',
+          },
+          { text: 'Digital Product Passport Integration' },
+        ],
+      },
+      {
+        id: 'gov-innovation',
+        logos: [{ src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' }],
+        goals: [
+          { highlight: 'Development of Innovation & Cooperation', text: '' },
+          { text: 'Reduce ≥ 5 work steps via 5S & KAIZEN' },
+          { text: 'Reduce process time ≥ 25%' },
+        ],
+      },
+    ],
   },
 ]
 
@@ -80,7 +233,184 @@ export type InitiativeCard = {
   imageAlt: string
 }
 
-const pillar1Image = (file: string) => `/images/sustainability/pillar-1/${file}`
+const pillar1Image = (...parts: string[]) =>
+  `/images/sustainability/pillar-1/${parts.map(encodeURIComponent).join('/')}`
+
+export type FocusAreaImage = {
+  src: string
+  alt: string
+}
+
+export type FocusAreaCard = {
+  id: string
+  title: string
+  images: FocusAreaImage[]
+}
+
+export const pillar01FocusAreas: FocusAreaCard[] = [
+  {
+    id: 'renewable-energy',
+    title: 'Renewable Energy',
+    images: [
+      {
+        src: pillar1Image('1. Renewable Energy', '1. Renewable-Energy.png'),
+        alt: 'Solar panels installed on a factory rooftop',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'DJI_0047.JPG'),
+        alt: 'Aerial view of solar panel arrays',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'DJI_0081.JPG'),
+        alt: 'Wide aerial view of renewable energy installation',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'DJI_0091.JPG'),
+        alt: 'Solar farm under clear skies',
+      },
+      {
+        src: pillar1Image('1. Renewable Energy', 'Solar Panel.png'),
+        alt: 'Close-up of photovoltaic solar panels',
+      },
+    ],
+  },
+  {
+    id: 'energy-monitoring',
+    title: 'Energy Monitoring',
+    images: [
+      {
+        src: pillar1Image('2. Energy Monitoring', '2. Energy-Monitoring.png'),
+        alt: 'Digital energy monitoring control panel',
+      },
+    ],
+  },
+  {
+    id: 'biomass-boiler',
+    title: 'Biomass Boiler',
+    images: [
+      {
+        src: pillar1Image('3. Biomass Boiler', '3. Biomass-Boiler.png'),
+        alt: 'Biomass boiler facility with workers in protective gear',
+      },
+      {
+        src: pillar1Image('3. Biomass Boiler', 'AWL 28202601.jpeg'),
+        alt: 'Biomass boiler operation in progress',
+      },
+    ],
+  },
+  {
+    id: 'steam-recovery',
+    title: 'Steam Recovery',
+    images: [
+      {
+        src: pillar1Image('4. Steam Recovery', '4. Steam-Recovery.png'),
+        alt: 'Industrial steam recovery piping system',
+      },
+    ],
+  },
+  {
+    id: 'rainwater-harvesting',
+    title: 'Rainwater Harvesting',
+    images: [
+      {
+        src: pillar1Image('5. Rainwater Harvesting', '5.-Rainwater-Harvesting.png'),
+        alt: 'Rainwater harvesting infrastructure on a building exterior',
+      },
+      {
+        src: pillar1Image('5. Rainwater Harvesting', '5.-Rainwater-Harvesting-2.png'),
+        alt: 'Rainwater collection system detail',
+      },
+      {
+        src: pillar1Image('5. Rainwater Harvesting', 'WhatsApp Image 2026-06-23 at 3.18.13 PM.jpeg'),
+        alt: 'Rainwater harvesting installation on site',
+      },
+    ],
+  },
+  {
+    id: 'stp',
+    title: 'Sewerage Treatment Plan (STP)',
+    images: [
+      {
+        src: pillar1Image('6. Sewerage Treatment Plan (STP)', '6.-Sewerage-Treatment-Plan-(STP).png'),
+        alt: 'Sewerage treatment plant water sample testing',
+      },
+    ],
+  },
+  {
+    id: 'etp',
+    title: 'Effluent Treatment Plant (ETP)',
+    images: [
+      {
+        src: pillar1Image('7. Effluent Treatment Plant (ETP)', '7.-Effluent-Treatment-Plant-(ETP).png'),
+        alt: 'Effluent treatment plant tanks and processing area',
+      },
+    ],
+  },
+  {
+    id: 'grey-water',
+    title: 'Grey Water Treatment Plant',
+    images: [
+      {
+        src: pillar1Image('8. Grey Water Treatment Plant', '8.-Grey-Water-Treatment-Plant.png'),
+        alt: 'Grey water treatment plant equipment and storage',
+      },
+    ],
+  },
+  {
+    id: 'textile-waste',
+    title: 'Textile Waste Recycling',
+    images: [
+      {
+        src: pillar1Image('9. Textile Waste Recycling', '9.-Textile-Waste-Recycling.png'),
+        alt: 'Textile waste recycling facility',
+      },
+    ],
+  },
+  {
+    id: 'lube-oil',
+    title: 'Used Lube Oil Recycling',
+    images: [
+      {
+        src: pillar1Image('10. Used Lube Oil Recycling', '10.-Used-Lube-Oil-Recycling.png'),
+        alt: 'Used lube oil recycling tanker at facility',
+      },
+      {
+        src: pillar1Image('10. Used Lube Oil Recycling', 'WhatsApp Image 2026-06-22 at 4.06.25 PM (1).jpeg'),
+        alt: 'Lube oil recycling operation on site',
+      },
+    ],
+  },
+  {
+    id: 'water-efficient-machines',
+    title: 'Water Efficient Machines',
+    images: [
+      {
+        src: pillar1Image('11. Water Efficient Machines', '11.-Water-Efficient-Machines.png'),
+        alt: 'Row of water-efficient industrial washing machines',
+      },
+    ],
+  },
+  {
+    id: 'conveyor-dryer',
+    title: 'Conveyor Dryer',
+    images: [
+      {
+        src: pillar1Image('12. Conveyor Dryer', '12.-Conveyor-Dryer.png'),
+        alt: 'Garments on a conveyor dryer line in production',
+      },
+    ],
+  },
+  {
+    id: 'chemical-management',
+    title: 'Chemical Management',
+    images: [
+      {
+        src: pillar1Image('13. Chemical Management', '13.-Chemical-Management.png'),
+        alt: 'Chemical drums stored on industrial shelving',
+      },
+    ],
+  },
+]
 
 export type SnapshotKpi =
   | {
@@ -443,22 +773,22 @@ export const pillar04 = {
   heroImageAlt: 'A tree-lined pathway surrounded by lush bamboo and tropical greenery',
   reports: [
     {
-      id: '2025',
-      coverImage: '/images/sustainability/pillar-4/sustainability-report-2025.png',
-      title: 'Sustainability Report 2025',
-      description:
-        'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
-      variant: 'light' as const,
-      pdfHref: '/sustainability-report-2025',
-    },
-    {
       id: '2024',
       coverImage: '/images/sustainability/pillar-4/sustainability-report-2024.png',
       title: 'Sustainability Report 2024',
       description:
         'Our first transparent view of the journey toward responsible and sustainable operations – structured disclosures and comprehensive data across E, S & G.',
-      variant: 'dark' as const,
+      variant: 'light' as const,
       pdfHref: '/documents/sustainability/sustainability-report-2024.pdf',
+    },
+    {
+      id: '2025',
+      coverImage: '/images/sustainability/pillar-4/sustainability-report-2025.png',
+      title: 'Sustainability Report 2025',
+      description:
+        'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
+      variant: 'dark' as const,
+      pdfHref: '/documents/sustainability/sustainability-report-2025.pdf',
     },
   ],
   ctaText: 'Reporting since 2024 — aligned to GRI standards, with continuous year-on-year disclosure.',
