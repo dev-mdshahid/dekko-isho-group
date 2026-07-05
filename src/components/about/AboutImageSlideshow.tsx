@@ -1,8 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { gsap } from 'gsap'
 
 const SLIDE_INTERVAL_MS = 3000
-const TRANSITION_DURATION = 0.9
+const TRANSITION_DURATION = 0.85
+const GLASS_INTRO_DURATION = 0.4
+const SLICE_COUNT = 14
+const STAGGER_PER_SLICE = 0.04
 
 const ABOUT_SLIDES = [
   {
@@ -35,126 +38,188 @@ const ABOUT_SLIDES = [
   },
 ] as const
 
+type TransitionState = {
+  from: number
+  to: number
+}
+
 export function AboutImageSlideshow() {
-  const slideshowRef = useRef<HTMLDivElement>(null)
-  const slideRefs = useRef<(HTMLDivElement | null)[]>([])
-  const mediaRefs = useRef<(HTMLImageElement | null)[]>([])
+  const mediaRef = useRef<HTMLImageElement>(null)
+  const shutterRef = useRef<HTMLDivElement>(null)
   const activeIndexRef = useRef(0)
   const isTransitioningRef = useRef(false)
-  const kenBurnsTweenRef = useRef<gsap.core.Tween | null>(null)
   const intervalRef = useRef<number | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [transitionState, setTransitionState] = useState<TransitionState | null>(null)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
 
-  const killKenBurns = useCallback(() => {
-    kenBurnsTweenRef.current?.kill()
-    kenBurnsTweenRef.current = null
+  const visibleIndex = transitionState?.to ?? activeIndex
+  const visibleSlide = ABOUT_SLIDES[visibleIndex]
+
+  const completeTransition = useCallback((to: number) => {
+    activeIndexRef.current = to
+    setActiveIndex(to)
+    setTransitionState(null)
+    isTransitioningRef.current = false
+    gsap.set(mediaRef.current, { filter: 'blur(0px) brightness(1) saturate(1)' })
   }, [])
-
-  const startKenBurns = useCallback(
-    (index: number) => {
-      if (prefersReducedMotion) return
-
-      const media = mediaRefs.current[index]
-      if (!media) return
-
-      killKenBurns()
-      gsap.set(media, { scale: 1.04, transformOrigin: 'center center' })
-      kenBurnsTweenRef.current = gsap.to(media, {
-        scale: 1.12,
-        duration: SLIDE_INTERVAL_MS / 1000 + TRANSITION_DURATION,
-        ease: 'none',
-      })
-    },
-    [killKenBurns, prefersReducedMotion],
-  )
 
   const transitionTo = useCallback(
     (nextIndex: number) => {
       if (isTransitioningRef.current || nextIndex === activeIndexRef.current) return
 
       const currentIndex = activeIndexRef.current
-      const currentSlide = slideRefs.current[currentIndex]
-      const nextSlide = slideRefs.current[nextIndex]
-      const currentMedia = mediaRefs.current[currentIndex]
-      const nextMedia = mediaRefs.current[nextIndex]
-
-      if (!currentSlide || !nextSlide || !currentMedia || !nextMedia) return
-
       isTransitioningRef.current = true
-      killKenBurns()
-
-      activeIndexRef.current = nextIndex
-      setActiveIndex(nextIndex)
 
       if (prefersReducedMotion) {
-        gsap.to(currentSlide, { opacity: 0, duration: 0.35, ease: 'power1.out' })
-        gsap.fromTo(
-          nextSlide,
-          { opacity: 0, zIndex: 2 },
-          { opacity: 1, duration: 0.35, ease: 'power1.out', onComplete: () => {
-            gsap.set(currentSlide, { zIndex: 0 })
-            gsap.set(nextMedia, { scale: 1, filter: 'blur(0px)' })
-            isTransitioningRef.current = false
-          }},
-        )
+        gsap.to(mediaRef.current, {
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power1.out',
+          onComplete: () => {
+            activeIndexRef.current = nextIndex
+            setActiveIndex(nextIndex)
+            gsap.fromTo(
+              mediaRef.current,
+              { opacity: 0 },
+              {
+                opacity: 1,
+                duration: 0.35,
+                ease: 'power1.out',
+                onComplete: () => {
+                  isTransitioningRef.current = false
+                },
+              },
+            )
+          },
+        })
         return
       }
 
-      gsap.set(nextSlide, { opacity: 0, zIndex: 2 })
-      gsap.set(currentSlide, { zIndex: 1 })
-      gsap.set(nextMedia, {
-        scale: 1.14,
-        filter: 'blur(10px)',
-        transformOrigin: 'center center',
-      })
-      gsap.set(currentMedia, { transformOrigin: 'center center' })
-
-      const timeline = gsap.timeline({
-        defaults: { duration: TRANSITION_DURATION, ease: 'power3.inOut' },
-        onComplete: () => {
-          gsap.set(currentSlide, { opacity: 0, zIndex: 0 })
-          gsap.set(currentMedia, { scale: 1, filter: 'blur(0px)' })
-          isTransitioningRef.current = false
-          startKenBurns(nextIndex)
-        },
-      })
-
-      timeline
-        .to(
-          currentSlide,
-          {
-            opacity: 0,
-          },
-          0,
-        )
-        .to(
-          currentMedia,
-          {
-            scale: 1.02,
-            filter: 'blur(4px)',
-          },
-          0,
-        )
-        .to(
-          nextSlide,
-          {
-            opacity: 1,
-          },
-          0,
-        )
-        .to(
-          nextMedia,
-          {
-            scale: 1.04,
-            filter: 'blur(0px)',
-          },
-          0,
-        )
+      setTransitionState({ from: currentIndex, to: nextIndex })
     },
-    [killKenBurns, prefersReducedMotion, startKenBurns],
+    [prefersReducedMotion],
   )
+
+  useLayoutEffect(() => {
+    if (!transitionState) return
+
+    const shutter = shutterRef.current
+    const media = mediaRef.current
+    const slices = shutter?.querySelectorAll<HTMLElement>('.about-image-shutter-slice')
+    if (!slices?.length || !media) return
+
+    const staggerSpan = STAGGER_PER_SLICE * (SLICE_COUNT - 1)
+    const revealDuration = TRANSITION_DURATION + staggerSpan
+
+    const sliceMedia = Array.from(slices).map((slice) =>
+      slice.querySelector<HTMLElement>('.about-image-shutter-slice__media'),
+    )
+    const sliceGlass = Array.from(slices).map((slice) =>
+      slice.querySelector<HTMLElement>('.about-image-shutter-slice__glass'),
+    )
+
+    gsap.set(media, {
+      filter: 'blur(0px) brightness(1) saturate(1)',
+    })
+
+    sliceMedia.forEach((element) => {
+      if (!element) return
+      gsap.set(element, { filter: 'blur(0px) brightness(1) saturate(1)' })
+    })
+
+    sliceGlass.forEach((element) => {
+      if (!element) return
+      gsap.set(element, { opacity: 0 })
+    })
+
+    gsap.set(slices, { scaleY: 1, transformOrigin: '50% 0%' })
+
+    const timeline = gsap.timeline({
+      onComplete: () => completeTransition(transitionState.to),
+    })
+
+    timeline.to(
+      sliceGlass.filter(Boolean),
+      {
+        opacity: 0.55,
+        duration: GLASS_INTRO_DURATION,
+        ease: 'power2.out',
+        stagger: {
+          each: STAGGER_PER_SLICE * 0.75,
+          from: 'start',
+        },
+      },
+      0,
+    )
+
+    timeline.to(
+      media,
+      {
+        filter: 'blur(10px) brightness(1.08) saturate(1.15)',
+        duration: GLASS_INTRO_DURATION,
+        ease: 'power2.inOut',
+      },
+      0,
+    )
+
+    timeline.to(
+      media,
+      {
+        filter: 'blur(0px) brightness(1) saturate(1)',
+        duration: revealDuration,
+        ease: 'power2.out',
+      },
+      GLASS_INTRO_DURATION,
+    )
+
+    timeline.to(
+      slices,
+      {
+        scaleY: 0,
+        duration: TRANSITION_DURATION,
+        ease: 'power3.inOut',
+        stagger: {
+          each: STAGGER_PER_SLICE,
+          from: 'start',
+        },
+      },
+      GLASS_INTRO_DURATION,
+    )
+
+    timeline.to(
+      sliceMedia.filter(Boolean),
+      {
+        filter: 'blur(16px) brightness(1.25) saturate(0.9)',
+        duration: TRANSITION_DURATION * 0.65,
+        ease: 'power2.in',
+        stagger: {
+          each: STAGGER_PER_SLICE,
+          from: 'start',
+        },
+      },
+      GLASS_INTRO_DURATION,
+    )
+
+    timeline.to(
+      sliceGlass.filter(Boolean),
+      {
+        opacity: 0.95,
+        duration: TRANSITION_DURATION * 0.45,
+        ease: 'power2.out',
+        stagger: {
+          each: STAGGER_PER_SLICE,
+          from: 'start',
+        },
+      },
+      GLASS_INTRO_DURATION,
+    )
+
+    return () => {
+      timeline.kill()
+    }
+  }, [completeTransition, transitionState])
 
   const advanceSlide = useCallback(() => {
     const nextIndex = (activeIndexRef.current + 1) % ABOUT_SLIDES.length
@@ -178,19 +243,15 @@ export function AboutImageSlideshow() {
   }, [])
 
   useEffect(() => {
-    const firstSlide = slideRefs.current[0]
-    const firstMedia = mediaRefs.current[0]
-    if (!firstSlide || !firstMedia) return
+    const media = mediaRef.current
+    if (!media) return
 
-    gsap.set(firstSlide, { opacity: 1, zIndex: 2 })
-    gsap.set(firstMedia, { scale: prefersReducedMotion ? 1 : 1.04, filter: 'blur(0px)' })
-    startKenBurns(0)
+    gsap.set(media, { opacity: 1, filter: 'blur(0px)' })
 
     return () => {
-      killKenBurns()
-      gsap.killTweensOf([...slideRefs.current, ...mediaRefs.current].filter(Boolean))
+      gsap.killTweensOf(media)
     }
-  }, [killKenBurns, prefersReducedMotion, startKenBurns])
+  }, [])
 
   useEffect(() => {
     if (isPaused) {
@@ -213,11 +274,11 @@ export function AboutImageSlideshow() {
 
   return (
     <div
-      ref={slideshowRef}
       className="about-image-slideshow"
       role="region"
       aria-roledescription="carousel"
       aria-label="About Dekko Isho Group"
+      aria-live="polite"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
@@ -227,28 +288,40 @@ export function AboutImageSlideshow() {
         }
       }}
     >
-      {ABOUT_SLIDES.map((slide, index) => (
-        <div
-          key={slide.src}
-          ref={(element) => {
-            slideRefs.current[index] = element
-          }}
-          className={`about-image-slide${index === activeIndex ? ' is-active' : ''}`}
-          aria-hidden={index !== activeIndex}
-        >
-          <img
-            ref={(element) => {
-              mediaRefs.current[index] = element
-            }}
-            src={slide.src}
-            loading={index === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            alt={slide.alt}
-            className="about-image about-image-slide__media"
-            draggable={false}
-          />
+      <img
+        ref={mediaRef}
+        src={visibleSlide.src}
+        loading={visibleIndex === 0 ? 'eager' : 'lazy'}
+        decoding="async"
+        alt={visibleSlide.alt}
+        className="about-image about-image-slide__media"
+        draggable={false}
+      />
+
+      {transitionState && (
+        <div ref={shutterRef} className="about-image-shutter" aria-hidden="true">
+          {Array.from({ length: SLICE_COUNT }, (_, sliceIndex) => (
+            <div
+              key={sliceIndex}
+              className="about-image-shutter-slice"
+              style={
+                {
+                  '--slice-index': sliceIndex,
+                  '--slice-count': SLICE_COUNT,
+                } as CSSProperties
+              }
+            >
+              <img
+                src={ABOUT_SLIDES[transitionState.from].src}
+                alt=""
+                className="about-image about-image-shutter-slice__media"
+                draggable={false}
+              />
+              <div className="about-image-shutter-slice__glass" />
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   )
 }

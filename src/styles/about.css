@@ -110,22 +110,52 @@
   background-color: #d9e4ee;
 }
 
-.image-info-about .about-image-slide {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  opacity: 0;
-  will-change: opacity;
-}
-
-.image-info-about .about-image-slide.is-active {
-  opacity: 1;
-}
-
 .image-info-about .about-image-slide__media {
   width: 100%;
   height: 100%;
-  will-change: transform, filter;
+  will-change: filter;
+}
+
+.image-info-about .about-image-shutter {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  pointer-events: none;
+}
+
+.image-info-about .about-image-shutter-slice {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.image-info-about .about-image-shutter-slice__media {
+  width: calc(100% * var(--slice-count));
+  max-width: none;
+  height: 100%;
+  transform: translateX(calc(-100% * var(--slice-index) / var(--slice-count)));
+  will-change: filter;
+}
+
+.image-info-about .about-image-shutter-slice__glass {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    160deg,
+    rgb(255 255 255 / 42%) 0%,
+    rgb(255 255 255 / 12%) 42%,
+    rgb(255 255 255 / 28%) 100%
+  );
+  border-inline: 1px solid rgb(255 255 255 / 22%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 35%);
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
 }
 
 .image-info-about {
@@ -170,7 +200,7 @@
   position: relative;
   overflow: visible;
   container-type: inline-size;
-  padding-bottom: calc(var(--about-marquee-font-size) * 0.7);
+  padding-bottom: calc(var(--about-marquee-font-size) * 0.8);
   background-image: linear-gradient(180deg, #2595d5 0%, #1b3f6f 100%);
 }
 
@@ -181,14 +211,13 @@
 
 .image-info-about .about-hero-text-marquee {
   --about-marquee-font-size: clamp(2.5rem, 15cqw, 128px);
+  --about-marquee-duration: 38s;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  display: block;
   width: 100%;
   height: auto;
   padding: 0;
@@ -196,21 +225,40 @@
   pointer-events: none;
 }
 
+.image-info-about .about-marquee-track {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+  animation: about-info-marquee-scroll-left var(--about-marquee-duration) linear infinite;
+  will-change: transform;
+}
+
+@keyframes about-info-marquee-scroll-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 .image-info-about .about-hero-text-marquee .marquee-text {
-  width: 100%;
-  max-width: 100%;
+  flex: none;
+  width: auto;
+  max-width: none;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0;
   box-sizing: border-box;
   font-family: var(--_typography---font-family--heading);
   font-size: var(--about-marquee-font-size);
   font-weight: var(--_typography---h1--font-weight-700);
   line-height: 1;
-  text-align: center;
+  text-align: left;
   color: #ffffff4d;
   white-space: nowrap;
-  overflow: hidden;
-  transform: translateY(30%);
+  text-transform: uppercase;
+  transform: translateY(20%);
 }
 
 @media screen and (max-width: 991px) {
@@ -261,7 +309,7 @@
 
   .image-info-about .about-info-right {
     min-height: auto;
-    padding-bottom: calc(var(--about-marquee-font-size) * 0.55);
+    padding-bottom: calc(var(--about-marquee-font-size) * 0.65);
     overflow: hidden;
   }
 }
@@ -281,12 +329,11 @@
 
   .image-info-about .about-info-right {
     min-height: auto;
-    padding-bottom: calc(var(--about-marquee-font-size) * 0.5);
+    padding-bottom: calc(var(--about-marquee-font-size) * 0.6);
   }
 
   .image-info-about .about-hero-text-marquee .marquee-text {
-    padding: 0 0.75rem;
-    transform: translateY(22%);
+    transform: translateY(20%);
   }
 
   .image-info-about .about-hero-content {
@@ -299,6 +346,13 @@
 
   .image-info-about .about-image {
     height: clamp(12rem, 52vw, 18rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-info-about .about-marquee-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
   }
 }
 

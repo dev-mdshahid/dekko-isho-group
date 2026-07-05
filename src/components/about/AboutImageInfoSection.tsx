@@ -39,7 +39,13 @@ export function AboutImageInfoSection() {
                 </div>
               </FadeIn>
               <div className="about-hero-text-marquee">
-                <h2 className="marquee-text">SINCE 1953</h2>
+                <div className="about-marquee-track" aria-hidden="true">
+                  {Array.from({ length: 2 }, (_, index) => (
+                    <h2 key={index} className="marquee-text">
+                      Redefining Possibilities Since 1953
+                    </h2>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
