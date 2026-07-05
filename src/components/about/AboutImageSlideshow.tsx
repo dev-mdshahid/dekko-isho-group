@@ -25,6 +25,14 @@ const ABOUT_SLIDES = [
     src: '/images/about/about-5.png',
     alt: 'Dekko Isho workspace reflecting decades of industry leadership',
   },
+  {
+    src: '/images/about/about-6.png',
+    alt: 'DIVC team presenting startup portfolio in a modern venture capital office',
+  },
+  {
+    src: '/images/about/about-7.png',
+    alt: 'Ecovia sustainable packaging products displayed on a wooden surface',
+  },
 ] as const
 
 export function AboutImageSlideshow() {
