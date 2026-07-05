@@ -443,6 +443,19 @@
   background-color: var(--color--white);
 }
 
+.sustain-pillar-section--disclosure {
+  background-color: var(--color--white);
+}
+
+.sustain-pillar-section--disclosure .sustain-pillar-number {
+  color: var(--color--primary);
+  opacity: 0.4;
+}
+
+.sustain-pillar-section--disclosure .sustain-badge-square {
+  background-color: var(--color--primary);
+}
+
 .sustain-pillar-section--dark {
   background-color: var(--color--dark);
 }
@@ -1639,6 +1652,17 @@
 .sustain-download-icon-button--dark .sustain-download-icon-button-bg {
   background-color: transparent;
   background-image: linear-gradient(180deg, #f3215d 0%, #b81a47 100%);
+  color: var(--color--white);
+}
+
+.sustain-pillar-section--disclosure .sustain-download-icon-button--light .sustain-download-icon-button-bg {
+  background-color: color-mix(in srgb, var(--color--primary) 12%, transparent);
+  color: var(--color--primary);
+}
+
+.sustain-pillar-section--disclosure .sustain-download-icon-button--dark .sustain-download-icon-button-bg {
+  background-color: var(--color--primary);
+  background-image: none;
   color: var(--color--white);
 }
 

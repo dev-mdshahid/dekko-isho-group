@@ -49,7 +49,7 @@ function ReportDownloadButton({ href, variant, disabled }: ReportDownloadButtonP
 
 export function SustainabilityPillar04Section() {
   return (
-    <section id="esg-reports" className="sustain-pillar-section sustain-pillar-section--light">
+    <section id="esg-reports" className="sustain-pillar-section sustain-pillar-section--disclosure">
       <div className="container-medium sustain-pillar04-container">
         <FadeIn id="sustain-pillar04-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">

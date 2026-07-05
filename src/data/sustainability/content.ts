@@ -443,22 +443,22 @@ export const pillar04 = {
   heroImageAlt: 'A tree-lined pathway surrounded by lush bamboo and tropical greenery',
   reports: [
     {
-      id: '2025',
-      coverImage: '/images/sustainability/pillar-4/sustainability-report-2025.png',
-      title: 'Sustainability Report 2025',
-      description:
-        'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
-      variant: 'light' as const,
-      pdfHref: '/sustainability-report-2025',
-    },
-    {
       id: '2024',
       coverImage: '/images/sustainability/pillar-4/sustainability-report-2024.png',
       title: 'Sustainability Report 2024',
       description:
         'Our first transparent view of the journey toward responsible and sustainable operations – structured disclosures and comprehensive data across E, S & G.',
-      variant: 'dark' as const,
+      variant: 'light' as const,
       pdfHref: '/documents/sustainability/sustainability-report-2024.pdf',
+    },
+    {
+      id: '2025',
+      coverImage: '/images/sustainability/pillar-4/sustainability-report-2025.png',
+      title: 'Sustainability Report 2025',
+      description:
+        'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
+      variant: 'dark' as const,
+      pdfHref: '/documents/sustainability/sustainability-report-2025.pdf',
     },
   ],
   ctaText: 'Reporting since 2024 — aligned to GRI standards, with continuous year-on-year disclosure.',

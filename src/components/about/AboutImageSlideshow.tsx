@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
-const SLIDE_INTERVAL_MS = 5500
-const TRANSITION_DURATION = 1.75
+const SLIDE_INTERVAL_MS = 3000
+const TRANSITION_DURATION = 0.9
 
 const ABOUT_SLIDES = [
   {
