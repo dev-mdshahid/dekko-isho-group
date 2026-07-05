@@ -20,52 +20,205 @@ export const sustainabilityHeroImage = {
 }
 
 export const strategySection = {
-  titlePrefix: 'Our 2030',
-  titleHighlight: 'Impact',
-  titleSuffix: 'Framework',
+  titlePrefix: 'Our Strategic',
+  titleHighlight: 'Sustainability',
+  titleSuffix: 'Goals — 2030',
   description:
-    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance. This commitment extends far beyond our own operations, fully embracing our entire value chain and supply network to foster sustainable excellence at every link.',
+    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — extending beyond our own operations to our entire value chain.',
 }
 
-export type StrategyMetric = {
+export type SdgLogo = {
+  src: string
+  alt: string
+}
+
+export type SdgGoal = {
+  highlight?: string
+  text: string
+}
+
+export type SdgGoalGroup = {
   id: string
-  value: string
-  label: string
-  image: string
+  logos: SdgLogo[]
+  goals: SdgGoal[]
 }
 
-const strategyImage = (file: string) => `/images/sustainability/${file}`
+export type SdgPillar = {
+  id: 'environment' | 'social' | 'governance'
+  label: string
+  description: string
+  groups: SdgGoalGroup[]
+}
 
-export const strategyMetrics: StrategyMetric[] = [
+const sdgImage = (file: string) => `/images/sustainability/goals/${file}`
+
+export const sdgGoals: SdgPillar[] = [
   {
-    id: 'renewable',
-    value: '80%',
-    label: 'Renewable Energy',
-    image: strategyImage('strategy-renewable.png'),
+    id: 'environment',
+    label: 'Environmental',
+    description: 'Energy, water, waste, chemistry and land stewardship.',
+    groups: [
+      {
+        id: 'env-energy',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-07.png'), alt: 'SDG 7 Affordable and Clean Energy' },
+          { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
+          { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
+        ],
+        goals: [
+          { highlight: 'Renewable Energy 80%', text: '' },
+          { text: 'Energy Efficiency 20%' },
+          { text: '50% GHG Emission Scope-3' },
+        ],
+      },
+      {
+        id: 'env-water',
+        logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
+        goals: [
+          { highlight: 'Blue Water Reduction 40%', text: '' },
+          { text: 'Water Efficiency 20%' },
+        ],
+      },
+      {
+        id: 'env-waste',
+        logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
+        goals: [
+          { highlight: 'Waste Recycle 40%', text: '' },
+          { text: 'Waste Water Recycle 70%' },
+          { text: 'ZDHC Level 3 Compliant 100%' },
+        ],
+      },
+      {
+        id: 'env-land',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
+          { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
+          { src: sdgImage('E-WEB-Goal-15.png'), alt: 'SDG 15 Life on Land' },
+        ],
+        goals: [
+          { highlight: 'Brand COC Completion 100%', text: '' },
+          { text: 'Green Landscape 15%' },
+          { text: 'Tree Plantation 10K' },
+          { text: 'Plastic Free Office' },
+          { text: 'Paperless Office' },
+          { text: 'Sustainability Awareness Training & Practices' },
+        ],
+      },
+    ],
   },
   {
-    id: 'ghg',
-    value: '50%',
-    label: 'GHG Scope-3 reduction',
-    image: strategyImage('strategy-ghg.png'),
+    id: 'social',
+    label: 'Social',
+    description: 'Rights, safety, equity and community wellbeing.',
+    groups: [
+      {
+        id: 'soc-rights',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
+          { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
+        ],
+        goals: [
+          { highlight: '0% Human Rights Violation', text: '' },
+          { text: 'Low Human Rights Due Diligence risk' },
+          { text: '0% Work Related Accidents' },
+          { text: '0% Work Related Illness' },
+        ],
+      },
+      {
+        id: 'soc-training',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
+          { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
+        ],
+        goals: [
+          { highlight: 'Avg. Training 20 hrs/person', text: '' },
+          { text: 'Employee Engagement ≥ 80%' },
+          { text: 'Resignation Rate < 10%/yr; < 4% in high performers' },
+        ],
+      },
+      {
+        id: 'soc-diversity',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-03.png'), alt: 'SDG 3 Good Health and Well-Being' },
+          { src: sdgImage('E-WEB-Goal-05.png'), alt: 'SDG 5 Gender Equality' },
+          { src: sdgImage('E-WEB-Goal-10.png'), alt: 'SDG 10 Reduced Inequalities' },
+        ],
+        goals: [
+          { highlight: 'Free Sanitary Napkin for Workers', text: '' },
+          { text: 'Workplace Diversity & Inclusion' },
+          { text: 'Ensuring Nutrition' },
+          { text: '100% Sexual Harassment Protection' },
+          { text: 'Gender Parity in Management: 40% Female' },
+        ],
+      },
+      {
+        id: 'soc-community',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
+          { src: sdgImage('E-WEB-Goal-06.png'), alt: 'SDG 6 Clean Water and Sanitation' },
+          { src: sdgImage('E-WEB-Goal-04.png'), alt: 'SDG 4 Quality Education' },
+        ],
+        goals: [
+          { highlight: '100% Workers Accessible to Healthcare', text: '' },
+          { text: 'Clean Water & Energy for Local Community' },
+          { text: 'Primary Education Centers for Local Community' },
+          { text: 'Primary Health Care Facility for Local Community' },
+        ],
+      },
+    ],
   },
   {
-    id: 'wastewater',
-    value: '70%',
-    label: 'Wastewater recycled',
-    image: strategyImage('strategy-wastewater.png'),
-  },
-  {
-    id: 'waste',
-    value: '50%',
-    label: 'Waste recycled',
-    image: strategyImage('strategy-waste.png'),
-  },
-  {
-    id: 'traceability',
-    value: '100%',
-    label: 'Supply-chain traceability',
-    image: strategyImage('strategy-traceability.png'),
+    id: 'governance',
+    label: 'Governance',
+    description: 'Ethics, transparency and continuous improvement.',
+    groups: [
+      {
+        id: 'gov-suppliers',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
+          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
+        ],
+        goals: [
+          { highlight: '100% suppliers agree with Code of Conduct', text: '' },
+          { text: '100% Supplier Training Session' },
+        ],
+      },
+      {
+        id: 'gov-ethics',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
+          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
+        ],
+        goals: [
+          { highlight: 'Business Ethics', text: '' },
+          { text: 'Anti-Corruption Training' },
+        ],
+      },
+      {
+        id: 'gov-traceability',
+        logos: [
+          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
+          { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
+          { src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' },
+        ],
+        goals: [
+          {
+            highlight: '100% Traceability & Transparency',
+            text: ' in upstream & downstream supply chain',
+          },
+          { text: 'Digital Product Passport Integration' },
+        ],
+      },
+      {
+        id: 'gov-innovation',
+        logos: [{ src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' }],
+        goals: [
+          { highlight: 'Development of Innovation & Cooperation', text: '' },
+          { text: 'Reduce ≥ 5 work steps via 5S & KAIZEN' },
+          { text: 'Reduce process time ≥ 25%' },
+        ],
+      },
+    ],
   },
 ]
 

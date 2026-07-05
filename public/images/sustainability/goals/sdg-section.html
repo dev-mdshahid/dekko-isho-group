@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Strategic Sustainability Goals 2030</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c1f16;
+    --mint:#6fd6a3;
+    --txt:#eef4ef;
+    --txt-soft:#9db3a3;
+    --line:rgba(255,255,255,.09);
+    --env:#3f7e44;
+    --soc:#2b7fc2;
+    --gov:#d92b2b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  img{display:block;}
+
+  .sdg-section{padding:110px 56px 130px;max-width:1360px;margin:0 auto;}
+  .head{max-width:820px;margin-bottom:70px;}
+  .head h2{font-weight:700;font-size:clamp(32px,4vw,50px);letter-spacing:-.02em;margin-bottom:18px;}
+  .head h2 .accent{color:var(--mint);}
+  .head p{font-size:14.5px;color:var(--txt-soft);line-height:1.7;}
+
+  /* ===== PILLAR ROW ===== */
+  .pillar{
+    display:grid;grid-template-columns:200px 1fr;gap:40px;
+    padding:48px 0;border-top:1px solid var(--line);align-items:start;
+  }
+  .pillar:last-of-type{border-bottom:1px solid var(--line);}
+
+  .p-label{position:sticky;top:90px;display:flex;flex-direction:column;gap:12px;}
+  .p-label .bar{width:38px;height:4px;border-radius:4px;}
+  .pillar.env .bar{background:var(--env);}
+  .pillar.soc .bar{background:var(--soc);}
+  .pillar.gov .bar{background:var(--gov);}
+  .p-label h3{font-size:20px;font-weight:700;letter-spacing:-.01em;}
+  .p-label span{font-size:12px;color:var(--txt-soft);line-height:1.55;}
+
+  /* ===== 4 GROUPS w/ SEPARATORS ===== */
+  .groups{
+    display:grid;grid-template-columns:repeat(4,1fr);
+  }
+  .group{
+    padding:0 22px;
+    border-left:1px solid var(--line);
+  }
+  .group:first-child{padding-left:0;border-left:none;}
+  .group:last-child{padding-right:0;}
+
+  .logos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;min-height:64px;align-items:flex-start;}
+  .logos img{
+    width:58px;height:58px;border-radius:6px;object-fit:cover;
+    transition:transform .25s ease;
+  }
+  .logos img:hover{transform:scale(1.08);}
+
+  .group ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .group ul li{
+    font-size:12px;line-height:1.5;color:var(--txt-soft);
+    padding-left:14px;position:relative;
+  }
+  .group ul li::before{
+    content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--mint);
+  }
+  .group ul li b{color:var(--txt);font-weight:600;}
+
+  @media (max-width:1080px){
+    .groups{grid-template-columns:1fr 1fr;row-gap:34px;}
+    .group:nth-child(3){border-left:none;padding-left:0;}
+  }
+  @media (max-width:760px){
+    .sdg-section{padding:70px 20px 90px;}
+    .pillar{grid-template-columns:1fr;gap:24px;}
+    .p-label{position:static;}
+    .groups{grid-template-columns:1fr;}
+    .group{border-left:none;padding:0 0 26px;border-bottom:1px solid var(--line);}
+    .group:last-child{border-bottom:none;padding-bottom:0;}
+  }
+</style>
+</head>
+<body>
+
+<section class="sdg-section">
+  <div class="head">
+    <h2>Our Strategic <span class="accent">Sustainability</span> Goals — 2030</h2>
+    <p>Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — extending beyond our own operations to our entire value chain.</p>
+  </div>
+
+  <!-- ============ ENVIRONMENTAL ============ -->
+  <div class="pillar env">
+    <div class="p-label">
+      <div class="bar"></div>
+      <h3>Environmental</h3>
+      <span>Energy, water, waste, chemistry and land stewardship.</span>
+    </div>
+    <div class="groups">
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-07.png" alt="SDG 7 Affordable and Clean Energy">
+          <img src="E-WEB-Goal-09.png" alt="SDG 9 Industry, Innovation and Infrastructure">
+          <img src="E-WEB-Goal-13.png" alt="SDG 13 Climate Action">
+        </div>
+        <ul>
+          <li><b>Renewable Energy 80%</b></li>
+          <li>Energy Efficiency 20%</li>
+          <li>50% GHG Emission Scope-3</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-12.png" alt="SDG 12 Responsible Consumption and Production">
+        </div>
+        <ul>
+          <li><b>Blue Water Reduction 40%</b></li>
+          <li>Water Efficiency 20%</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-12.png" alt="SDG 12 Responsible Consumption and Production">
+        </div>
+        <ul>
+          <li><b>Waste Recycle 40%</b></li>
+          <li>Waste Water Recycle 70%</li>
+          <li>ZDHC Level 3 Compliant 100%</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-09.png" alt="SDG 9 Industry, Innovation and Infrastructure">
+          <img src="E-WEB-Goal-13.png" alt="SDG 13 Climate Action">
+          <img src="E-WEB-Goal-15.png" alt="SDG 15 Life on Land">
+        </div>
+        <ul>
+          <li><b>Brand COC Completion 100%</b></li>
+          <li>Green Landscape 15%</li>
+          <li>Tree Plantation 10K</li>
+          <li>Plastic Free Office</li>
+          <li>Paperless Office</li>
+          <li>Sustainability Awareness Training &amp; Practices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SOCIAL ============ -->
+  <div class="pillar soc">
+    <div class="p-label">
+      <div class="bar"></div>
+      <h3>Social</h3>
+      <span>Rights, safety, equity and community wellbeing.</span>
+    </div>
+    <div class="groups">
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-08.png" alt="SDG 8 Decent Work and Economic Growth">
+          <img src="E-WEB-Goal-01.png" alt="SDG 1 No Poverty">
+        </div>
+        <ul>
+          <li><b>0% Human Rights Violation</b></li>
+          <li>Low Human Rights Due Diligence risk</li>
+          <li>0% Work Related Accidents</li>
+          <li>0% Work Related Illness</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-08.png" alt="SDG 8 Decent Work and Economic Growth">
+          <img src="E-WEB-Goal-01.png" alt="SDG 1 No Poverty">
+        </div>
+        <ul>
+          <li><b>Avg. Training 20 hrs/person</b></li>
+          <li>Employee Engagement ≥ 80%</li>
+          <li>Resignation Rate &lt; 10%/yr; &lt; 4% in high performers</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-03.png" alt="SDG 3 Good Health and Well-Being">
+          <img src="E-WEB-Goal-05.png" alt="SDG 5 Gender Equality">
+          <img src="E-WEB-Goal-10.png" alt="SDG 10 Reduced Inequalities">
+        </div>
+        <ul>
+          <li><b>Free Sanitary Napkin for Workers</b></li>
+          <li>Workplace Diversity &amp; Inclusion</li>
+          <li>Ensuring Nutrition</li>
+          <li>100% Sexual Harassment Protection</li>
+          <li>Gender Parity in Management: 40% Female</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-11.png" alt="SDG 11 Sustainable Cities and Communities">
+          <img src="E-WEB-Goal-06.png" alt="SDG 6 Clean Water and Sanitation">
+          <img src="E-WEB-Goal-04.png" alt="SDG 4 Quality Education">
+        </div>
+        <ul>
+          <li><b>100% Workers Accessible to Healthcare</b></li>
+          <li>Clean Water &amp; Energy for Local Community</li>
+          <li>Primary Education Centers for Local Community</li>
+          <li>Primary Health Care Facility for Local Community</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ GOVERNANCE ============ -->
+  <div class="pillar gov">
+    <div class="p-label">
+      <div class="bar"></div>
+      <h3>Governance</h3>
+      <span>Ethics, transparency and continuous improvement.</span>
+    </div>
+    <div class="groups">
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-16.png" alt="SDG 16 Peace, Justice and Strong Institutions">
+          <img src="E-WEB-Goal-17.png" alt="SDG 17 Partnerships for the Goals">
+        </div>
+        <ul>
+          <li><b>100% suppliers agree with Code of Conduct</b></li>
+          <li>100% Supplier Training Session</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-16.png" alt="SDG 16 Peace, Justice and Strong Institutions">
+          <img src="E-WEB-Goal-17.png" alt="SDG 17 Partnerships for the Goals">
+        </div>
+        <ul>
+          <li><b>Business Ethics</b></li>
+          <li>Anti-Corruption Training</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-17.png" alt="SDG 17 Partnerships for the Goals">
+          <img src="E-WEB-Goal-11.png" alt="SDG 11 Sustainable Cities and Communities">
+          <img src="E-WEB-Goal-12.png" alt="SDG 12 Responsible Consumption and Production">
+        </div>
+        <ul>
+          <li><b>100% Traceability &amp; Transparency</b> in upstream &amp; downstream supply chain</li>
+          <li>Digital Product Passport Integration</li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="logos">
+          <img src="E-WEB-Goal-11.png" alt="SDG 11 Sustainable Cities and Communities">
+        </div>
+        <ul>
+          <li><b>Development of Innovation &amp; Cooperation</b></li>
+          <li>Reduce ≥ 5 work steps via 5S &amp; KAIZEN</li>
+          <li>Reduce process time ≥ 25%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
 
 import {
-  strategyMetrics,
+  sdgGoals,
   strategySection,
   sustainabilityHeroImage,
 } from '../../data/sustainability/content'
+import { SustainabilitySdgGoals } from './SustainabilitySdgGoals'
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
 import { FadeIn } from '../ui/FadeIn'
 
@@ -55,36 +56,7 @@ export function SustainabilityHeroImageSection() {
                   </h2>
                   <p className="sustain-impact-framework-description">{strategySection.description}</p>
 
-                  <div id="sustain-impact-metrics" className="sustain-impact-metrics">
-                    {strategyMetrics.map((metric) => {
-                      const numericTarget = metric.value.replace(/\D/g, '')
-
-                      return (
-                        <div key={metric.id} className="sustain-impact-metric">
-                          <div className="sustain-impact-metric-top">
-                            <div className="sustain-impact-metric-value">
-                              <span
-                                className="count"
-                                data-target={numericTarget}
-                                data-duration="1.25"
-                                data-scroll-trigger="#sustain-impact-metrics"
-                                data-scroll-start="top bottom"
-                                data-delay="0"
-                              />
-                              %
-                            </div>
-                            <div className="sustain-impact-metric-label">{metric.label}</div>
-                          </div>
-                          <div className="sustain-impact-metric-bar" aria-hidden="true">
-                            <span
-                              className="sustain-impact-metric-bar-fill"
-                              style={{ width: metric.value }}
-                            />
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
+                  <SustainabilitySdgGoals pillars={sdgGoals} />
                 </FadeIn>
               </div>
             </div>

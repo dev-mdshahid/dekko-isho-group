@@ -25,7 +25,7 @@ export function setupImageInfoExpand({ section, scaler }: ImageInfoExpandTargets
       scrollTrigger: {
         trigger: section,
         start: 'top bottom',
-        end: 'center center',
+        end: 'top top',
         scrub: 0.85,
         invalidateOnRefresh: true,
       },
@@ -53,7 +53,7 @@ export function setupImageInfoExpand({ section, scaler }: ImageInfoExpandTargets
       scrollTrigger: {
         trigger: section,
         start: 'top bottom',
-        end: 'center center',
+        end: 'top top',
         scrub: 0.6,
         invalidateOnRefresh: true,
       },
