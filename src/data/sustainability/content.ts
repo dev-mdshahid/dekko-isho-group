@@ -863,18 +863,89 @@ export const pillar03 = {
   ] satisfies SustainabilityLogo[],
 }
 
+export type GovernanceTopic = {
+  id: string
+  title: string
+  description: string
+  icon: string
+  iconAlt: string
+}
+
+const pillar4Image = (file: string) => `/images/sustainability/pillar-4/${file}`
+
 export const pillar04 = {
   number: '04',
   badge: 'Pillar 04',
+  title: 'Governance',
+  description:
+    'Ethics, compliance and accountability embedded into daily operations – governing how we work with people, partners and the planet.',
+  heroImage: pillar4Image('pillar-4-cover.png'),
+  heroImageAlt: 'Team member presenting anti-corruption collective action frameworks',
+  topics: [
+    {
+      id: 'code-of-ethics',
+      title: 'Code of Ethics & Conduct',
+      description: 'Binding standard for all employees and suppliers.',
+      icon: pillar4Image('Scroll.png'),
+      iconAlt: 'Code of Ethics & Conduct',
+    },
+    {
+      id: 'risk-management',
+      title: 'Risk Management',
+      description: 'Systematic identification and mitigation.',
+      icon: pillar4Image('ShieldCheckered.png'),
+      iconAlt: 'Risk Management',
+    },
+    {
+      id: 'supply-chain-governance',
+      title: 'Supply Chain Governance',
+      description: 'Accountability across every tier.',
+      icon: pillar4Image('Package.png'),
+      iconAlt: 'Supply Chain Governance',
+    },
+    {
+      id: 'anti-corruption',
+      title: 'Anti-Corruption',
+      description: 'Zero tolerance, mandatory training.',
+      icon: pillar4Image('Scales.png'),
+      iconAlt: 'Anti-Corruption',
+    },
+    {
+      id: 'grievance-policy',
+      title: 'Grievance Policy',
+      description: 'Protected channels for concerns.',
+      icon: pillar4Image('Megaphone.png'),
+      iconAlt: 'Grievance Policy',
+    },
+    {
+      id: 'compliance-engagement',
+      title: 'Compliance & Engagement',
+      description: 'Alignment with brand and legal requirements.',
+      icon: pillar4Image('Gavel.png'),
+      iconAlt: 'Compliance & Engagement',
+    },
+    {
+      id: 'quality-policy',
+      title: 'Quality Policy',
+      description: 'Consistent standards end to end.',
+      icon: pillar4Image('SealCheck.png'),
+      iconAlt: 'Quality Policy',
+    },
+  ] satisfies GovernanceTopic[],
+}
+
+export const pillar05 = {
+  number: '05',
+  badge: 'Pillar 05',
   title: 'ESG Disclosure',
   description:
     'In accordance with Global Reporting Initiative (GRI) standards, our sustainability reports communicate our goals, progress, challenges and impact across every ESG area.',
-  heroImage: '/images/sustainability/pillar-4/pillar-4-cover.png',
+  heroImage: '/images/sustainability/pillar-5/pillar-5-cover.png',
   heroImageAlt: 'A tree-lined pathway surrounded by lush bamboo and tropical greenery',
   reports: [
     {
       id: '2024',
-      coverImage: '/images/sustainability/pillar-4/sustainability-report-2024.png',
+      coverImage: '/images/sustainability/pillar-5/sustainability-report-2024.png',
       title: 'Sustainability Report 2024',
       description:
         'Our first transparent view of the journey toward responsible and sustainable operations – structured disclosures and comprehensive data across E, S & G.',
@@ -883,7 +954,7 @@ export const pillar04 = {
     },
     {
       id: '2025',
-      coverImage: '/images/sustainability/pillar-4/sustainability-report-2025.png',
+      coverImage: '/images/sustainability/pillar-5/sustainability-report-2025.png',
       title: 'Sustainability Report 2025',
       description:
         'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',

@@ -1,55 +1,11 @@
 import { pillar04 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
-
-function DownloadIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path
-        d="M8 2.5V10M8 10L5.5 7.5M8 10L10.5 7.5M3 11.5V12.5C3 13.0523 3.44772 13.5 4 13.5H12C12.5523 13.5 13 13.0523 13 12.5V11.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-type ReportDownloadButtonProps = {
-  href?: string
-  variant: 'light' | 'dark'
-  disabled?: boolean
-}
-
-function ReportDownloadButton({ href, variant, disabled }: ReportDownloadButtonProps) {
-  const classes = `primary-button sustain-download-icon-button sustain-download-icon-button--${variant} w-inline-block`
-  const inner = (
-    <div className="button-primary-inner sustain-download-icon-button-inner">
-      <div className="button-icon-bg sustain-download-icon-button-bg">
-        <DownloadIcon />
-      </div>
-    </div>
-  )
-
-  if (disabled || !href) {
-    return (
-      <button type="button" disabled className={classes} aria-label="Download PDF — coming soon">
-        {inner}
-      </button>
-    )
-  }
-
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={classes} aria-label="Download PDF">
-      {inner}
-    </a>
-  )
-}
+import { SustainabilityGovernanceTopicCard } from './SustainabilityGovernanceTopicCard'
 
 export function SustainabilityPillar04Section() {
   return (
-    <section id="esg-reports" className="sustain-pillar-section sustain-pillar-section--disclosure">
+    <section className="sustain-pillar-section sustain-pillar-section--governance">
       <div className="container-medium sustain-pillar04-container">
         <FadeIn id="sustain-pillar04-header" className="sustain-pillar-header">
           <span className="sustain-pillar-number" aria-hidden="true">
@@ -62,55 +18,27 @@ export function SustainabilityPillar04Section() {
           </div>
         </FadeIn>
 
-        {/* <FadeIn id="sustain-pillar04-hero" className="sustain-pillar04-hero-wrap">
+        <FadeIn id="sustain-pillar04-hero" className="sustain-pillar04-hero-wrap">
           <img
             src={pillar04.heroImage}
             loading="lazy"
             alt={pillar04.heroImageAlt}
             className="sustain-pillar04-hero-image"
           />
-        </FadeIn> */}
+        </FadeIn>
 
-        <div className="sustain-reports-grid">
-          {pillar04.reports.map((report, index) => (
+        <div className="sustain-governance-topics-grid">
+          {pillar04.topics.map((topic, index) => (
             <FadeIn
-              key={report.id}
-              id={`sustain-report-${report.id}`}
-              className={`sustain-report-card sustain-report-card--${report.variant}`}
-              delay={index * 80}
+              key={topic.id}
+              id={`sustain-governance-topic-${topic.id}`}
+              className="sustain-governance-topic-wrap"
+              delay={index * 60}
             >
-              <div className="sustain-report-banner">
-                <img
-                  src={report.coverImage}
-                  loading="lazy"
-                  alt={`${report.title} cover`}
-                  className="sustain-report-banner-image"
-                />
-              </div>
-
-              <div className="sustain-report-body">
-                <h3 className="sustain-report-title">{report.title}</h3>
-                <p className="sustain-report-description">{report.description}</p>
-                <div className={`sustain-report-download sustain-report-download--${report.variant}`}>
-                  <span className="sustain-report-download-label">Download PDF</span>
-                  <ReportDownloadButton
-                    href={report.pdfHref}
-                    variant={report.variant}
-                  />
-                </div>
-              </div>
+              <SustainabilityGovernanceTopicCard topic={topic} />
             </FadeIn>
           ))}
         </div>
-
-        {/* <FadeIn id="sustain-pillar04-cta" className="sustain-esg-cta-bar">
-          <p className="sustain-esg-cta-text">{pillar04.ctaText}</p>
-          <ButtonArrow
-            to={pillar04.ctaHref}
-            label={pillar04.ctaButtonLabel}
-            className="primary-button sustain-esg-cta-button w-inline-block"
-          />
-        </FadeIn> */}
       </div>
     </section>
   )

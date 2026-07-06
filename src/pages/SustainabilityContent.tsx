@@ -6,6 +6,7 @@ import {
   SustainabilityPillar02Section,
   SustainabilityPillar03Section,
   SustainabilityPillar04Section,
+  SustainabilityPillar05Section,
   SustainabilityCertificationsSection,
 } from '../components/sustainability'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -26,6 +27,7 @@ export function SustainabilityContent() {
       <SustainabilityPillar02Section />
       <SustainabilityPillar03Section />
       <SustainabilityPillar04Section />
+      <SustainabilityPillar05Section />
       <SustainabilityCertificationsSection />
       {/* <SustainabilityCTASection /> */}
     </div>

@@ -645,6 +645,7 @@
 .sustain-pillar02-container,
 .sustain-pillar03-container,
 .sustain-pillar04-container,
+.sustain-pillar05-container,
 .sustain-certifications-container {
   max-width: 1500px;
   margin-inline: auto;
@@ -2047,7 +2048,80 @@
   object-fit: contain;
 }
 
-/* ── ESG Reports (Pillar 04) ── */
+/* ── Governance (Pillar 04) ── */
+.sustain-pillar-section--governance {
+  background-color: var(--color--neutral-seasalt);
+}
+
+.sustain-pillar-section--governance .sustain-pillar-number {
+  color: var(--color--white);
+  opacity: 1;
+}
+
+.sustain-pillar-section--governance .sustain-badge-square {
+  background-color: var(--color--dark);
+}
+
+.sustain-governance-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-governance-topic-wrap {
+  min-width: 0;
+}
+
+.sustain-governance-topic-card {
+  background-color: var(--color--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 128px 0 rgb(64 73 80 / 16%);
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: 40px;
+}
+
+.sustain-governance-topic-icon-wrap {
+  align-items: center;
+  background-color: var(--color--neutral-seasalt);
+  border-radius: 12px;
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.sustain-governance-topic-icon {
+  display: block;
+  height: 48px;
+  object-fit: contain;
+  width: 48px;
+}
+
+.sustain-governance-topic-title {
+  color: var(--color--dark);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.3;
+  margin: 0 0 10px;
+}
+
+.sustain-governance-topic-description {
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── ESG Reports (Pillar 05) ── */
 .sustain-pillar04-hero-wrap {
   position: relative;
   z-index: 1;
@@ -2458,6 +2532,7 @@
   .sustain-pillar02-container,
   .sustain-pillar03-container,
   .sustain-pillar04-container,
+  .sustain-pillar05-container,
   .sustain-certifications-container {
     padding-inline: 1.75rem;
   }
@@ -2497,6 +2572,11 @@
   .sustain-materials-layout {
     grid-template-columns: 1fr;
     margin-bottom: 2.5rem;
+  }
+
+  .sustain-governance-topics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
   .sustain-reports-grid {
@@ -2933,7 +3013,35 @@
     height: 64px;
   }
 
-  /* Pillar 04 */
+  /* Pillar 04 & 05 */
+  .sustain-governance-topics-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sustain-governance-topic-card {
+    padding: 24px;
+  }
+
+  .sustain-governance-topic-icon-wrap {
+    margin-bottom: 20px;
+    padding: 16px;
+  }
+
+  .sustain-governance-topic-icon {
+    height: 40px;
+    width: 40px;
+  }
+
+  .sustain-governance-topic-title {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .sustain-governance-topic-description {
+    font-size: 16px;
+  }
+
   .sustain-pillar04-hero-wrap {
     margin-bottom: 2rem;
     border-radius: 0.75rem;
@@ -3004,6 +3112,7 @@
   .sustain-pillar02-container,
   .sustain-pillar03-container,
   .sustain-pillar04-container,
+  .sustain-pillar05-container,
   .sustain-certifications-container {
     padding-inline: var(--_layout---container-medium-gutter);
   }
