@@ -6,21 +6,26 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
         "source": "/sustainibility-report-2025",
-        "destination": "/documents/Impact Journal 2025.pdf"
+        "destination": "/sustainability-report-2025",
+        "type": 301
       },
       {
         "source": "/sustainability-report-2025",
-        "destination": "/documents/Impact Journal 2025.pdf"
-      },
+        "destination": "https://drive.google.com/file/d/1iRRvXVsUhUD1fBJLE5HQHmEGoZvuUw4l/view",
+        "type": 302
+      }
+    ],
+    "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
       }
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "headers": []
   }
 }
