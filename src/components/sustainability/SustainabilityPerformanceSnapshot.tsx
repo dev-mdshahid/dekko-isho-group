@@ -1,8 +1,11 @@
+import { useRef } from 'react'
+
 import {
   performanceSnapshot,
   type PerformanceSnapshotCard,
   type PerformanceSnapshotFooterItem,
 } from '../../data/sustainability/content'
+import { usePerformanceSnapshotAnimation } from '../../hooks/usePerformanceSnapshotAnimation'
 import { FadeIn } from '../ui/FadeIn'
 
 function PerformanceSnapshotStat({
@@ -12,8 +15,12 @@ function PerformanceSnapshotStat({
 }) {
   return (
     <div className={`sustain-progress-stat${stat.lead ? ' sustain-progress-stat--lead' : ''}`}>
-      <span className="sustain-progress-stat-value">
-        {stat.value}
+      <span
+        className="sustain-progress-stat-value"
+        data-stat-value={stat.value}
+        data-stat-unit={stat.unit ?? ''}
+      >
+        <span className="sustain-progress-stat-value-num">{stat.value}</span>
         {stat.unit ? <small> {stat.unit}</small> : null}
       </span>
       <span className="sustain-progress-stat-label">{stat.label}</span>
@@ -84,19 +91,24 @@ function PerformanceSnapshotCardView({ card }: { card: PerformanceSnapshotCard }
 }
 
 export function SustainabilityPerformanceSnapshot() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  usePerformanceSnapshotAnimation(sectionRef)
+
   return (
     <FadeIn id="sustain-pillar01-snapshot" className="sustain-progress-section">
-      <div className="sustain-progress-head">
-        <span className="sustain-progress-pill">
-          <span className="sustain-progress-pill-sq" aria-hidden="true" />
-          {performanceSnapshot.badge}
-        </span>
-        <h3 className="sustain-progress-headline">{performanceSnapshot.headline}</h3>
-      </div>
+      <div ref={sectionRef}>
+        <div className="sustain-progress-head">
+          <span className="sustain-progress-pill">
+            <span className="sustain-progress-pill-sq" aria-hidden="true" />
+            {performanceSnapshot.badge}
+          </span>
+          <h3 className="sustain-progress-headline">{performanceSnapshot.headline}</h3>
+        </div>
 
-      {performanceSnapshot.cards.map((card) => (
-        <PerformanceSnapshotCardView key={card.id} card={card} />
-      ))}
+        {performanceSnapshot.cards.map((card) => (
+          <PerformanceSnapshotCardView key={card.id} card={card} />
+        ))}
+      </div>
     </FadeIn>
   )
 }

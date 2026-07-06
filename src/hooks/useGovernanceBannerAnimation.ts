@@ -144,26 +144,49 @@ export function useGovernanceBannerAnimation(bannerRef: RefObject<HTMLElement | 
       })
     }
 
-    const hideBanner = () => {
-      revealed = false
-      activeTimeline?.kill()
-      activeTimeline = null
-      setHiddenState()
+    setHiddenState()
+
+    let lastScrollY = window.scrollY
+
+    const stopObserving = () => {
+      observer?.disconnect()
+      observer = null
+      window.removeEventListener('scroll', onScroll)
     }
 
-    setHiddenState()
+    const tryReveal = () => {
+      if (revealed) return
+
+      const rect = banner.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0
+      if (!inView) return
+
+      const currentScrollY = window.scrollY
+      const scrollingDown = currentScrollY >= lastScrollY
+      lastScrollY = currentScrollY
+
+      if (!scrollingDown) return
+
+      revealBanner()
+      stopObserving()
+    }
+
+    const onScroll = () => {
+      tryReveal()
+    }
 
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) revealBanner()
-          else hideBanner()
+          if (!entry.isIntersecting) return
+          tryReveal()
         })
       },
       { threshold: 0.12, rootMargin: '0px 0px 60px 0px' },
     )
 
     observer.observe(banner)
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     const onEnter = (event: PointerEvent) => {
       if (!canHover || reduced) return
@@ -238,7 +261,7 @@ export function useGovernanceBannerAnimation(bannerRef: RefObject<HTMLElement | 
     }
 
     return () => {
-      observer?.disconnect()
+      stopObserving()
       activeTimeline?.kill()
       banner.removeEventListener('pointerenter', onEnter)
       banner.removeEventListener('pointerleave', onLeave)

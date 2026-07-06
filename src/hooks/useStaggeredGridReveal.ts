@@ -15,9 +15,17 @@ const STAGGER_S = 0.12
 const REVEAL_DURATION = 1.1
 const HIDDEN_Y = 100
 
+type StaggeredGridRevealOptions = {
+  /** Keep items visible after the first reveal instead of hiding when leaving the viewport. */
+  once?: boolean
+  /** Only reveal while the user is scrolling downward. */
+  requireScrollDown?: boolean
+}
+
 export function useStaggeredGridReveal(
   gridRef: RefObject<HTMLElement | null>,
   wrapSelector: string,
+  { once = false, requireScrollDown = false }: StaggeredGridRevealOptions = {},
 ) {
   useEffect(() => {
     const grid = gridRef.current
@@ -82,11 +90,45 @@ export function useStaggeredGridReveal(
 
     hideWraps()
 
+    let lastScrollY = window.scrollY
+
+    const stopObserving = () => {
+      observer?.disconnect()
+      observer = null
+      window.removeEventListener('scroll', onScroll)
+    }
+
+    const tryReveal = () => {
+      if (revealed) return
+
+      const rect = grid.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0
+      if (!inView) return
+
+      const currentScrollY = window.scrollY
+      const scrollingDown = currentScrollY >= lastScrollY
+      lastScrollY = currentScrollY
+
+      if (requireScrollDown && !scrollingDown) return
+
+      revealGrid()
+
+      if (once) stopObserving()
+    }
+
+    const onScroll = () => {
+      tryReveal()
+    }
+
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) revealGrid()
-          else hideWraps()
+          if (!entry.isIntersecting) {
+            if (!once) hideWraps()
+            return
+          }
+
+          tryReveal()
         })
       },
       { threshold: 0.15, rootMargin: '0px 0px 80px 0px' },
@@ -94,16 +136,23 @@ export function useStaggeredGridReveal(
 
     observer.observe(grid)
 
+    if (requireScrollDown) {
+      window.addEventListener('scroll', onScroll, { passive: true })
+    }
+
     return () => {
-      observer?.disconnect()
+      stopObserving()
       tweens.forEach((t) => t.kill())
       gsap.killTweensOf(wraps)
     }
-  }, [gridRef, wrapSelector])
+  }, [gridRef, wrapSelector, once, requireScrollDown])
 }
 
 export function useInitiativeGridReveal(gridRef: RefObject<HTMLElement | null>) {
-  useStaggeredGridReveal(gridRef, '.sustain-initiative-card-wrap')
+  useStaggeredGridReveal(gridRef, '.sustain-initiative-card-wrap', {
+    once: true,
+    requireScrollDown: true,
+  })
 }
 
 export function useSnapshotGridReveal(gridRef: RefObject<HTMLElement | null>) {

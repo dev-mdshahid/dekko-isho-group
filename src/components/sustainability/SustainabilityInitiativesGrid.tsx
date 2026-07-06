@@ -1,14 +1,24 @@
 import { type PropsWithChildren, useRef } from 'react'
 
-import { useInitiativeGridReveal } from '../../hooks/useStaggeredGridReveal'
+import { useStaggeredGridReveal } from '../../hooks/useStaggeredGridReveal'
 
-export function SustainabilityInitiativesGrid({ children }: PropsWithChildren) {
+type Props = PropsWithChildren<{
+  twoColumn?: boolean
+}>
+
+export function SustainabilityInitiativesGrid({ children, twoColumn = false }: Props) {
   const gridRef = useRef<HTMLDivElement>(null)
 
-  useInitiativeGridReveal(gridRef)
+  useStaggeredGridReveal(gridRef, '.sustain-initiative-card-wrap', {
+    once: true,
+    requireScrollDown: true,
+  })
 
   return (
-    <div ref={gridRef} className="sustain-initiatives-grid">
+    <div
+      ref={gridRef}
+      className={`sustain-initiatives-grid${twoColumn ? ' sustain-initiatives-grid--two-column' : ''}`}
+    >
       {children}
     </div>
   )

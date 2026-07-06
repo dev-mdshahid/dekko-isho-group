@@ -1,7 +1,6 @@
 import { pillar02 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
-import { SustainabilityGovernanceBanner } from './SustainabilityGovernanceBanner'
 import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
 import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
 
@@ -22,15 +21,13 @@ export function SustainabilityPillar02Section() {
           </div>
         </FadeIn>
 
-        <SustainabilityInitiativesGrid>
+        <SustainabilityInitiativesGrid twoColumn>
           {pillar02.cards.map((item, index) => (
             <div key={item.id} className="sustain-initiative-card-wrap">
               <SustainabilityInitiativeCard item={item} index={index} />
             </div>
           ))}
         </SustainabilityInitiativesGrid>
-
-        <SustainabilityGovernanceBanner />
       </div>
     </section>
   )

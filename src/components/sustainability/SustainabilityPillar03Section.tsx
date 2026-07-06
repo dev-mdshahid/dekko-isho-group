@@ -62,7 +62,7 @@ export function SustainabilityPillar03Section() {
           </div>
         </FadeIn>
 
-        <FadeIn id="sustain-standards" delay={160} className="sustain-badges-section">
+        {/* <FadeIn id="sustain-standards" delay={160} className="sustain-badges-section">
           <h3 className="sustain-badges-title">{pillar03.standardsTitle}</h3>
           <div className="sustain-badges-row">
             {pillar03.standardsLogos.map((logo) => (
@@ -75,7 +75,7 @@ export function SustainabilityPillar03Section() {
               />
             ))}
           </div>
-        </FadeIn>
+        </FadeIn> */}
       </div>
     </section>
   )

@@ -740,6 +740,14 @@
   margin-bottom: 3.75rem;
 }
 
+.sustain-initiatives-grid--two-column {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sustain-pillar02-container .sustain-initiatives-grid {
+  margin-bottom: 0;
+}
+
 .sustain-initiative-card-wrap {
   display: flex;
   width: 100%;
