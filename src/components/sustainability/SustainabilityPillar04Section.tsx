@@ -62,14 +62,14 @@ export function SustainabilityPillar04Section() {
           </div>
         </FadeIn>
 
-        <FadeIn id="sustain-pillar04-hero" className="sustain-pillar04-hero-wrap">
+        {/* <FadeIn id="sustain-pillar04-hero" className="sustain-pillar04-hero-wrap">
           <img
             src={pillar04.heroImage}
             loading="lazy"
             alt={pillar04.heroImageAlt}
             className="sustain-pillar04-hero-image"
           />
-        </FadeIn>
+        </FadeIn> */}
 
         <div className="sustain-reports-grid">
           {pillar04.reports.map((report, index) => (

@@ -6,7 +6,7 @@ export function ManufacturingEmbroiderySection() {
   const { badge, title, cards } = manufacturingEmbroidery
 
   return (
-    <section className="service-category-section mfg-embroidery-section">
+    <section id="embroidery-unit" className="service-category-section mfg-embroidery-section">
       <div className="container">
         <div className="service-category-main mfg-embroidery-main">
           <FadeIn id="mfg-embroidery-header" className="mfg-embroidery-header">

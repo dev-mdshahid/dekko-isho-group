@@ -1355,9 +1355,32 @@
 .sustain-progress-section {
   position: relative;
   z-index: 1;
+  overflow: hidden;
   color: var(--color--neutral-night);
   font-family: var(--_typography---font-family--body);
   -webkit-font-smoothing: antialiased;
+}
+
+.sustain-progress-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: min(140%, 1200px);
+  height: 110%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    #2352373d 0%,
+    transparent 82%
+  );
+  pointer-events: none;
+}
+
+.sustain-progress-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .sustain-progress-head {
@@ -1398,7 +1421,7 @@
 
 .sustain-progress-card {
   background-color: var(--color--white);
-  border: 1px solid var(--color--neutral-silver-night);
+  border: none;
   border-radius: var(--border-radius--lg);
   margin-bottom: var(--gap--gap-6);
   display: grid;

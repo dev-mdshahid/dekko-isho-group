@@ -1,4 +1,4 @@
-import { solutions, solutionPath } from '../solutions/solutions'
+import { solutionPath } from '../solutions/solutions'
 
 export type NavLink = {
   to: string
@@ -12,10 +12,12 @@ export type NavLinkGroup = {
   links: NavLink[]
 }
 
-export const solutionNavLinks: NavLink[] = solutions.map((solution) => ({
-  to: solutionPath(solution.slug),
-  label: solution.title,
-}))
+export const solutionNavLinks: NavLink[] = [
+  { to: solutionPath('design-product-development'), label: 'Design Studio' },
+  { to: solutionPath('manufacturing'), label: 'Integrated Manufacturing' },
+  { to: solutionPath('industrial-laundry'), label: 'Industrial Laundry' },
+  { to: `${solutionPath('manufacturing')}#embroidery-unit`, label: 'Embroidery Unit' },
+]
 
 export const businessNavGroups: NavLinkGroup[] = [
   {
