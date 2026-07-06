@@ -30,7 +30,7 @@ export function SustainabilityPillar02Section() {
           ))}
         </SustainabilityInitiativesGrid>
 
-        <SustainabilityGovernanceBanner />
+        {/* <SustainabilityGovernanceBanner /> */}
       </div>
     </section>
   )

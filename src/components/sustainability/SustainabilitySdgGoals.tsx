@@ -45,17 +45,16 @@ function syncSdgSwapHeights(container: HTMLElement) {
   })
 }
 
-function SdgGoalItem({ goal }: { goal: SdgGoal }) {
+function formatSdgGoal(goal: SdgGoal): string {
   if (goal.highlight) {
-    return (
-      <li data-sdg-animate="goal">
-        <b>{goal.highlight}</b>
-        {goal.text}
-      </li>
-    )
+    return `${goal.highlight}${goal.text}`
   }
 
-  return <li data-sdg-animate="goal">{goal.text}</li>
+  return goal.text
+}
+
+function SdgGoalItem({ goal }: { goal: SdgGoal }) {
+  return <li data-sdg-animate="goal">{formatSdgGoal(goal)}</li>
 }
 
 export function SustainabilitySdgGoals({ pillars }: SustainabilitySdgGoalsProps) {

@@ -482,7 +482,7 @@
 }
 
 .sustain-sdg-group ul li {
-  color: var(--color--neutral-cadet-gray);
+  color: var(--color--white);
   font-family: var(--_typography---font-family--body);
   font-size: 1rem;
   line-height: 1.5;
@@ -499,11 +499,6 @@
   height: 5px;
   border-radius: 50%;
   background-color: var(--color--secondary-mint);
-}
-
-.sustain-sdg-group ul li b {
-  color: var(--color--white);
-  font-weight: 600;
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -2456,12 +2451,28 @@
 
 /* ── Certifications section ── */
 .sustain-certifications-section {
+  position: relative;
+  overflow: hidden;
   background-color: var(--color--white);
   padding-top: 100px;
   padding-bottom: 100px;
 }
 
+.sustain-certifications-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/backgrounds/fabric-texture.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
 .sustain-certifications-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
 }
@@ -2490,6 +2501,67 @@
   line-height: 1.5;
   letter-spacing: var(--_typography---body--letter-spacing);
   max-width: none;
+}
+
+.sustain-certifications-section .awards-logo-image {
+  filter: none;
+}
+
+.sustain-certifications-section .awards-logo-item:hover .awards-logo-image,
+.sustain-certifications-section .awards-logo-item:focus-within .awards-logo-image {
+  filter: none;
+}
+
+.sustain-affiliations-header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.sustain-affiliations-title {
+  margin: 0 0 20px;
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 58px;
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1.2;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-affiliations-description {
+  margin: 0 0 64px;
+  color: var(--_color---body-text);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.5;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  max-width: none;
+}
+
+.sustain-affiliations-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 60px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sustain-affiliations-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.sustain-affiliations-image {
+  display: block;
+  width: 100%;
+  max-height: 72px;
+  object-fit: contain;
 }
 
 /* ── CTA section ── */
@@ -2731,6 +2803,26 @@
     margin-bottom: 3rem;
     font-size: 1rem;
     line-height: 1.5;
+  }
+
+  .sustain-affiliations-header {
+    margin-top: 5rem;
+  }
+
+  .sustain-affiliations-title {
+    font-size: clamp(2rem, 5vw, 3.625rem);
+    line-height: 1.2;
+  }
+
+  .sustain-affiliations-description {
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 
   .sustain-cta-card {
@@ -3218,6 +3310,29 @@
   .sustain-certifications-description {
     margin-bottom: 2.5rem;
     font-size: 0.9375rem;
+  }
+
+  .sustain-affiliations-header {
+    margin-top: 3.5rem;
+  }
+
+  .sustain-affiliations-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.25rem);
+    margin-bottom: 16px;
+  }
+
+  .sustain-affiliations-description {
+    margin-bottom: 2.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .sustain-affiliations-image {
+    max-height: 56px;
   }
 
   /* Shared pillar spacing */

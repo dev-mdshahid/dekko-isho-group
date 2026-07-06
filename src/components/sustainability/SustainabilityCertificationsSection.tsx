@@ -1,5 +1,5 @@
 import { AwardsLogosGrid } from '../awards/AwardsLogosGrid'
-import { certifications } from '../../data/sustainability/content'
+import { certifications, externalAffiliations } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 
 export function SustainabilityCertificationsSection() {
@@ -15,6 +15,29 @@ export function SustainabilityCertificationsSection() {
 
         <FadeIn id="sustain-certifications-logos" delay={80}>
           <AwardsLogosGrid />
+        </FadeIn>
+
+        <FadeIn id="sustain-affiliations-header" className="sustain-affiliations-header" delay={120}>
+          <h2 id="sustain-affiliations-title" className="sustain-affiliations-title">
+            {externalAffiliations.title}
+          </h2>
+          <p className="sustain-affiliations-description">{externalAffiliations.description}</p>
+        </FadeIn>
+
+        <FadeIn id="sustain-affiliations-logos" delay={160}>
+          <ul className="sustain-affiliations-grid">
+            {externalAffiliations.logos.map((logo) => (
+              <li key={logo.id} className="sustain-affiliations-item">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="sustain-affiliations-image"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            ))}
+          </ul>
         </FadeIn>
       </div>
     </section>
