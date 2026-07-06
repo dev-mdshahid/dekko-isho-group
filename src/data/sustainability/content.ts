@@ -896,6 +896,12 @@ export const pillar04 = {
   ctaHref: '/contact',
 }
 
+export const certifications = {
+  title: 'Certifications',
+  description:
+    'Our certifications demonstrate our commitment to sustainable practices, ensuring quality and responsibility across all operations.',
+} as const
+
 export const sustainabilityCta = {
   eyebrow: "Let's Connect",
   heading: "And build what's next, together",

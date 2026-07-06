@@ -6,6 +6,7 @@ import {
   SustainabilityPillar02Section,
   SustainabilityPillar03Section,
   SustainabilityPillar04Section,
+  SustainabilityCertificationsSection,
 } from '../components/sustainability'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
@@ -25,6 +26,7 @@ export function SustainabilityContent() {
       <SustainabilityPillar02Section />
       <SustainabilityPillar03Section />
       <SustainabilityPillar04Section />
+      <SustainabilityCertificationsSection />
       {/* <SustainabilityCTASection /> */}
     </div>
   )

@@ -1,5 +1,6 @@
-import { awardLogos, awardsGridContent } from '../../data/awards/logoGrid'
+import { awardsGridContent } from '../../data/awards/logoGrid'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
+import { AwardsLogosGrid } from './AwardsLogosGrid'
 
 export function AwardsGridSection() {
   return (
@@ -13,19 +14,7 @@ export function AwardsGridSection() {
           <p className="awards-grid-section__description">{awardsGridContent.description}</p>
         </header>
 
-        <ul className="awards-logos-grid">
-          {awardLogos.map((logo) => (
-            <li key={logo.id} className="awards-logo-item">
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="awards-logo-image"
-                loading="lazy"
-                decoding="async"
-              />
-            </li>
-          ))}
-        </ul>
+        <AwardsLogosGrid />
       </div>
     </section>
   )
