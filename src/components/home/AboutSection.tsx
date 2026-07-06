@@ -15,8 +15,6 @@ const INDUSTRY_DESCRIPTION =
 
 const ISHO_BUSINESS_IMAGE = '/images/home/business-isho.png'
 const ISHO_LOGO = '/images/home/isho-logo-white.svg'
-const DEKKO_BUSINESS_IMAGE = '/images/home/business-dekko.png'
-const DEKKO_LOGO = '/images/home/dekko-logo-white.svg'
 const DIVC_BUSINESS_IMAGE = '/images/home/business-divc.png'
 const DIVC_LOGO = '/images/home/divc-logo.svg'
 const DITECH_BUSINESS_IMAGE = '/images/home/business-ditech.png'
@@ -56,14 +54,6 @@ const industries: IndustryItem[] = [
     variant: 'business',
     logo: ISHO_LOGO,
     href: '/isho-ltd',
-  },
-  {
-    type: 'image',
-    src: DEKKO_BUSINESS_IMAGE,
-    alt: 'Dekko ISHO Group',
-    variant: 'business',
-    logo: DEKKO_LOGO,
-    href: 'https://www.di.vc/',
   },
   {
     type: 'image',

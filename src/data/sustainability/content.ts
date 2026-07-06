@@ -539,18 +539,10 @@ export type PerformanceSnapshotStat = {
   lead?: boolean
 }
 
-export type PerformanceSnapshotFooter =
-  | {
-      label: string
-      type: 'single'
-      bold: string
-      text: string
-    }
-  | {
-      label: string
-      type: 'items'
-      items: { bold: string; text: string }[]
-    }
+export type PerformanceSnapshotFooterItem = {
+  title: string
+  text: string
+}
 
 export type PerformanceSnapshotCard = {
   id: string
@@ -560,7 +552,7 @@ export type PerformanceSnapshotCard = {
   description: string
   statsColumns: 2 | 3 | 4
   stats: PerformanceSnapshotStat[]
-  footer: PerformanceSnapshotFooter
+  footer?: PerformanceSnapshotFooterItem[]
 }
 
 export const performanceSnapshot = {
@@ -573,12 +565,16 @@ export const performanceSnapshot = {
       category: 'Energy',
       title: 'Renewable Electricity & Energy Efficiency',
       description: 'Clean electricity milestones and solar expansion across all units.',
-      statsColumns: 3,
+      statsColumns: 2,
       stats: [
         {
           value: '80%',
-          label: 'Reduction in Scope-2 GHG emissions',
+          label: 'Scope-2 GHG reduced',
           lead: true,
+        },
+        {
+          value: '5.07%',
+          label: 'Renewable energy share',
         },
         {
           value: '1.861',
@@ -586,16 +582,11 @@ export const performanceSnapshot = {
           label: 'Current solar capacity',
         },
         {
-          value: '5.07%',
-          label: 'Renewable energy share',
+          value: '2.324',
+          unit: 'MWp',
+          label: 'Planned solar capacity by 2026',
         },
       ],
-      footer: {
-        label: 'Upcoming',
-        type: 'single',
-        bold: '2.324 MWp',
-        text: 'solar expansion planned',
-      },
     },
     {
       id: 'waste',
@@ -607,33 +598,30 @@ export const performanceSnapshot = {
       stats: [
         {
           value: '405',
-          unit: 'tons',
-          label: 'Textile waste recycled with Reverse Resources',
+          unit: 'Tons',
+          label: 'Textile waste recycled',
           lead: true,
         },
         {
           value: '27%',
-          label: 'Overall waste recycling rate',
+          label: 'Waste recycling rate',
         },
       ],
-      footer: {
-        label: 'Partners & plans',
-        type: 'items',
-        items: [
-          { bold: 'Paper', text: 'Base Paper Ltd' },
-          { bold: 'Lube oil', text: 'Lub-rref BD' },
-          { bold: 'E-waste', text: 'JR Recycling' },
-          { bold: '2026', text: 'thread cone & plastic recycling' },
-        ],
-      },
+      footer: [
+        { title: 'Base Paper Ltd.', text: 'Paper recycling initiative' },
+        { title: 'Lub-rref BD Ltd.', text: 'Lube Oil recycling initiative' },
+        { title: 'JR Recycling', text: 'E-waste recycling initiative' },
+        { title: 'By 2026', text: 'Thread cone & plastic recycling' },
+      ],
     },
     {
       id: 'water',
       theme: 'water',
       category: 'Water',
       title: 'Water Management',
-      description: 'Reduction, treatment and reuse across the entire production footprint.',
-      statsColumns: 4,
+      description:
+        'Reduction, treatment and reuse across the entire production footprint. With Rainwater Harvesting & Push taps & Awareness across all units',
+      statsColumns: 2,
       stats: [
         {
           value: '9%',
@@ -644,25 +632,13 @@ export const performanceSnapshot = {
           value: '2%',
           label: 'Water recycled',
         },
-        {
-          value: '40',
-          unit: 'm³/hr',
-          label: 'STP capacity · all units',
-        },
-        {
-          value: '15',
-          unit: 'm³/hr',
-          label: 'GWTP capacity · all units',
-        },
       ],
-      footer: {
-        label: 'Practices',
-        type: 'items',
-        items: [
-          { bold: 'Rainwater harvesting', text: 'all units' },
-          { bold: 'Push taps & awareness', text: 'all units' },
-        ],
-      },
+      footer: [
+        { title: 'STP Capacity', text: '40 m³/hr across all units' },
+        { title: 'GWTP Capacity', text: '15 m³/hr across all units' },
+        { title: 'Blue Water', text: 'Rainwater harvesting across all units' },
+        { title: 'Practices', text: 'Push taps and awareness at all units' },
+      ],
     },
   ] satisfies PerformanceSnapshotCard[],
 }
