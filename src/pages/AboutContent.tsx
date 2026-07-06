@@ -35,7 +35,7 @@ export function AboutContent() {
       <AboutChairmanSection />
       <AboutLeadershipSection />
       <AboutTopExecutivesSection />
-      <AboutRoadmapSection />
+      {/* <AboutRoadmapSection /> */}
       <AboutContactSection />
       {/* <AboutClientsSection /> */}
     </div>

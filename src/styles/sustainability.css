@@ -1140,7 +1140,7 @@
 .sustain-focus-card-title {
   position: relative;
   z-index: 1;
-  margin: 0 0 20px;
+  margin: 20px 0 0;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25;
@@ -1689,15 +1689,18 @@
   line-height: 1.45;
 }
 
-.sustain-progress-card--energy .sustain-progress-stat--lead .sustain-progress-stat-value {
+.sustain-progress-card--energy .sustain-progress-stat-value,
+.sustain-progress-card--energy .sustain-progress-foot-num {
   color: var(--color--secondary-mint);
 }
 
-.sustain-progress-card--waste .sustain-progress-stat--lead .sustain-progress-stat-value {
+.sustain-progress-card--waste .sustain-progress-stat-value,
+.sustain-progress-card--waste .sustain-progress-foot-num {
   color: var(--color--secondary-amaranth);
 }
 
-.sustain-progress-card--water .sustain-progress-stat--lead .sustain-progress-stat-value {
+.sustain-progress-card--water .sustain-progress-stat-value,
+.sustain-progress-card--water .sustain-progress-foot-num {
   color: var(--color--primary);
 }
 

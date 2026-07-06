@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { Fragment, useRef } from 'react'
 
 import {
   performanceSnapshot,
@@ -14,7 +14,7 @@ function PerformanceSnapshotStat({
   stat: PerformanceSnapshotCard['stats'][number]
 }) {
   return (
-    <div className={`sustain-progress-stat${stat.lead ? ' sustain-progress-stat--lead' : ''}`}>
+    <div className="sustain-progress-stat">
       <span
         className="sustain-progress-stat-value"
         data-stat-value={stat.value}
@@ -28,11 +28,25 @@ function PerformanceSnapshotStat({
   )
 }
 
+function colorFooterNumbers(text: string) {
+  const parts = text.split(/(\d[\d,.%]*)/g)
+
+  return parts.map((part, index) =>
+    /^\d/.test(part) ? (
+      <span key={index} className="sustain-progress-foot-num">
+        {part}
+      </span>
+    ) : (
+      <Fragment key={index}>{part}</Fragment>
+    ),
+  )
+}
+
 function PerformanceSnapshotFootBlock({ item }: { item: PerformanceSnapshotFooterItem }) {
   return (
     <div className="sustain-progress-foot-block">
       <span className="sustain-progress-foot-block-title">{item.title}</span>
-      <span className="sustain-progress-foot-block-text">{item.text}</span>
+      <span className="sustain-progress-foot-block-text">{colorFooterNumbers(item.text)}</span>
     </div>
   )
 }
