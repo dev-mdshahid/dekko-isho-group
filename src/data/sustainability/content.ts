@@ -654,7 +654,17 @@ export type SocialCard = {
   imageAlt: string
 }
 
+export type GovernanceRow = {
+  id: string
+  title: string
+  count: number
+  image: string
+  imageAlt: string
+  policies: [string[], string[]]
+}
+
 const pillar2Image = (file: string) => `/images/sustainability/pillar-2/${file}`
+const pillar2FrameworkImage = (file: string) => `/images/sustainability/pillar-2/framework/${file}`
 
 export const pillar02 = {
   number: '02',
@@ -708,6 +718,59 @@ export const pillar02 = {
       imageAlt: 'Community members receiving relief supplies',
     },
   ] satisfies SocialCard[],
+  governanceBadge: 'Governance',
+  governanceTitle: 'A framework for every decision',
+  governanceRows: [
+    // {
+    //   id: 'environmental',
+    //   title: 'Environmental',
+    //   count: 9,
+    //   image: pillar2FrameworkImage('environment.png'),
+    //   imageAlt: 'Hands holding soil with a green sprout',
+    //   policies: [
+    //     [
+    //       'Environmental Management System',
+    //       'Water Policy',
+    //       'Waste Management',
+    //       'Chemical Purchase',
+    //       'MRSL & RSL Management',
+    //     ],
+    //     ['Energy Policy', 'Air Policy', 'Chemical Management', 'GHG Management'],
+    //   ],
+    // },
+    // {
+    //   id: 'social',
+    //   title: 'Social',
+    //   count: 7,
+    //   image: pillar2FrameworkImage('social.jpg'),
+    //   imageAlt: 'Hand holding a miniature globe with wind turbines',
+    //   policies: [
+    //     [
+    //       'Human Rights Policy',
+    //       'Diversity, Equity & Inclusion',
+    //       'Training & Development',
+    //       'Child & Forced Labor',
+    //     ],
+    //     ['Labor Practices & Welfare', 'Health & Safety Policy', 'Talent Acquisition'],
+    //   ],
+    // },
+    {
+      id: 'governance',
+      title: 'Governance',
+      count: 7,
+      image: pillar2FrameworkImage('governance.png'),
+      imageAlt: 'Professional reviewing anti-corruption collective action framework',
+      policies: [
+        [
+          'Code of Ethics & Conduct',
+          'Compliance & Engagement',
+          'Grievance Policy',
+          'Anti-Corruption',
+        ],
+        ['Risk Management', 'Supply Chain Governance', 'Quality Policy'],
+      ],
+    },
+  ] satisfies GovernanceRow[],
 }
 
 export type MaterialBar = {
