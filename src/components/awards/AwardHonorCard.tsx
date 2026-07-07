@@ -1,25 +1,77 @@
+import type { KeyboardEvent, MouseEvent, PointerEvent, TransitionEvent } from 'react'
+
 import type { AwardHonor } from '../../data/awards/honors'
-import { FadeIn } from '../ui/FadeIn'
 
 type Props = {
   award: AwardHonor
-  index: number
+  cardKey: string
+  isGhost?: boolean
+  isReentering?: boolean
+  onActivate?: (cardKey: string, award: AwardHonor, element: HTMLDivElement) => void
+  onReentryEnd?: (cardKey: string) => void
 }
 
-export function AwardHonorCard({ award, index }: Props) {
+export function AwardHonorCard({
+  award,
+  cardKey,
+  isGhost = false,
+  isReentering = false,
+  onActivate,
+  onReentryEnd,
+}: Props) {
+  const handlePointerEnter = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') return
+    onActivate?.(cardKey, award, event.currentTarget)
+  }
+
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    onActivate?.(cardKey, award, event.currentTarget)
+  }
+
+  const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
+    if (event.propertyName !== 'opacity' || !isReentering) return
+    onReentryEnd?.(cardKey)
+  }
+
   return (
-    <FadeIn id={award.id} className="awards-honor-card" delay={index * 50}>
-      <img
-        src={award.image}
-        alt={award.imageAlt}
-        className="awards-honor-card__image"
-        loading="lazy"
-        decoding="async"
-      />
-      <div className="awards-honor-card__content">
-        <h3 className="awards-honor-card__title">{award.title}</h3>
-        <p className="awards-honor-card__category">{award.category}</p>
+    <div
+      className={[
+        'awards-honor-card',
+        isGhost ? 'awards-honor-card--ghost' : '',
+        isReentering ? 'awards-honor-card--reentering' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      onPointerEnter={handlePointerEnter}
+      onClick={handleClick}
+      onTransitionEnd={handleTransitionEnd}
+      role="button"
+      tabIndex={0}
+      aria-label={`${award.title}, ${award.year}. ${award.category}`}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          onActivate?.(cardKey, award, event.currentTarget)
+        }
+      }}
+    >
+      <div className="awards-honor-card__media">
+        <img
+          src={award.image}
+          alt={award.imageAlt}
+          className="awards-honor-card__image"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
-    </FadeIn>
+      <div className="awards-honor-card__caption" aria-hidden="true">
+        <div className="awards-honor-card__caption-top">
+          <h3 className="awards-honor-card__title">{award.title}</h3>
+          <span className="awards-honor-card__year">{award.year}</span>
+        </div>
+        <p className="awards-honor-card__organization">{award.category}</p>
+      </div>
+    </div>
   )
 }

@@ -4,6 +4,7 @@ export type AwardHonor = {
   imageAlt: string
   title: string
   category: string
+  year: string
 }
 
 const awardImage = (file: string) => `/images/awards/award-list/${file}`
@@ -22,6 +23,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Supplier Award 2024 certificate',
     title: 'Supplier Award 2024',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-certificate-excellence-thrive-1',
@@ -29,6 +31,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Certificate of Excellence from Thrive Champions Award 2024',
     title: 'Certificate of Excellence',
     category: 'Thrive Champions Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-certificate-excellence-thrive-2',
@@ -36,6 +39,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Certificate of Excellence from Thrive Champions Award 2024',
     title: 'Certificate of Excellence',
     category: 'Thrive Champions Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-best-pace-trainer',
@@ -43,6 +47,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Best P.A.C.E Trainer trophy from Thrive Champions Award 2024',
     title: 'Best P.A.C.E Trainer',
     category: 'Thrive Champions Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-highest-pace-learners',
@@ -50,6 +55,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Highest P.A.C.E Learners trophy from Thrive Champions Award 2024',
     title: 'Highest P.A.C.E Learners (2nd Runner Up)',
     category: 'Thrive Champions Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-partnership-award',
@@ -57,6 +63,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'JOYJO Partnership Award trophy',
     title: 'Partnership Award',
     category: 'JOYJO Partnership Award Aug 2025',
+    year: '2025',
   },
   {
     id: 'honor-certificate-appreciation',
@@ -64,6 +71,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Certificate of Appreciation for Top Hard Value Score 2023',
     title: 'Certificate of Appreciation',
     category: 'Top Hard Value Score 2023',
+    year: '2023',
   },
   {
     id: 'honor-kiabi-supplier-relationship',
@@ -71,6 +79,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'KIABI Supplier Relationship Management Day award',
     title: 'KIABI Supplier Relationship Management Day',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-jack-jones-leading-manufacturer',
@@ -78,6 +87,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Jack&Jones Leading Manufacturer Growth Turnover trophy',
     title: 'Jack&Jones Leading Manufacturer Growth Turnover',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-recognition-key-supplier',
@@ -85,6 +95,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Certificate of Recognition Key Supplier',
     title: 'Certificate of Recognition Key Supplier',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-certificate-excellence-supplier-2024-1',
@@ -92,6 +103,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Certificate of Excellence from Supplier Award 2024',
     title: 'Certificate of Excellence',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-certificate-excellence-supplier-2024-2',
@@ -99,6 +111,7 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Certificate of Excellence from Supplier Award 2024',
     title: 'Certificate of Excellence',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
   {
     id: 'honor-supplier-award-glass',
@@ -106,5 +119,6 @@ export const awardHonors: AwardHonor[] = [
     imageAlt: 'Supplier Award 2024 glass trophy',
     title: 'Supplier Award 2024',
     category: 'Supplier Award 2024',
+    year: '2024',
   },
 ]
