@@ -48,9 +48,9 @@ export const topExecutives: TopExecutive[] = [
   {
     id: 'about-top-executive-rakib-bin-zahid',
     name: 'Rakib Bin Zahid',
-    title: 'Head of Sustainability',
+    title: 'Assistant General Manager, Sustainability',
     image: '/images/top-executives/rakib-bin-zahid.png',
-    imageAlt: 'Rakib Bin Zahid, Head of Sustainability',
+    imageAlt: 'Rakib Bin Zahid, Assistant General Manager, Sustainability',
   },
   {
     id: 'about-top-executive-sheikh-faridul',
