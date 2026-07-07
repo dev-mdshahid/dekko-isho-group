@@ -1,3 +1,25 @@
+import { awardLogos, type AwardLogo } from '../awards/logoGrid'
+
+const certificationLogoSrc = (assetNumber: number) =>
+  `/images/awards/certifications/Asset%20${assetNumber}Logo%201.png`
+
+const assetNumberFromLogoSrc = (src: string) => {
+  const match = src.match(/Asset%20(\d+)Logo/)
+  return match ? Number(match[1]) : null
+}
+
+const missingCertificationAssets = new Set([9, 16, 21])
+
+export const certificationLogos: AwardLogo[] = awardLogos
+  .filter((logo) => {
+    const assetNumber = assetNumberFromLogoSrc(logo.src)
+    return assetNumber !== null && !missingCertificationAssets.has(assetNumber)
+  })
+  .map((logo) => ({
+    ...logo,
+    src: certificationLogoSrc(assetNumberFromLogoSrc(logo.src)!),
+  }))
+
 export const sustainabilityHero = {
   titleParts: [
     { text: 'People.', tone: 'primary' as const },

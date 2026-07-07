@@ -1,9 +1,13 @@
-import { awardLogos } from '../../data/awards/logoGrid'
+import { awardLogos, type AwardLogo } from '../../data/awards/logoGrid'
 
-export function AwardsLogosGrid() {
+type AwardsLogosGridProps = {
+  logos?: AwardLogo[]
+}
+
+export function AwardsLogosGrid({ logos = awardLogos }: AwardsLogosGridProps) {
   return (
     <ul className="awards-logos-grid">
-      {awardLogos.map((logo) => (
+      {logos.map((logo) => (
         <li key={logo.id} className="awards-logo-item">
           <img
             src={logo.src}
