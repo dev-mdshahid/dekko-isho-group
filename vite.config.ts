@@ -4,6 +4,7 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
+  envPrefix: ['VITE_', 'SUSTAINABILITY_'],
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })

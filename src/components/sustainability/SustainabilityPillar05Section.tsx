@@ -2,6 +2,16 @@ import { pillar05 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
 
+const sustainabilityReport2025Url = import.meta.env.SUSTAINABILITY_REPORT_2025_URL?.trim()
+
+function getReportPdfHref(reportId: string, pdfHref?: string) {
+  if (reportId === '2025') {
+    return sustainabilityReport2025Url || pdfHref
+  }
+
+  return pdfHref
+}
+
 function DownloadIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -84,7 +94,10 @@ export function SustainabilityPillar05Section() {
                 <p className="sustain-report-description">{report.description}</p>
                 <div className={`sustain-report-download sustain-report-download--${report.variant}`}>
                   <span className="sustain-report-download-label">Download PDF</span>
-                  <ReportDownloadButton href={report.pdfHref} variant={report.variant} />
+                  <ReportDownloadButton
+                    href={getReportPdfHref(report.id, report.pdfHref)}
+                    variant={report.variant}
+                  />
                 </div>
               </div>
             </FadeIn>
