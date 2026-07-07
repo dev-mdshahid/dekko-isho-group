@@ -1,4 +1,4 @@
-import type { KeyboardEvent, MouseEvent, PointerEvent, TransitionEvent } from 'react'
+import type { MouseEvent, PointerEvent, TransitionEvent } from 'react'
 
 import type { AwardHonor } from '../../data/awards/honors'
 

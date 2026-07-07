@@ -9,7 +9,6 @@ import {
   AboutLeadershipSection,
   AboutTopExecutivesSection,
   AboutOverviewSection,
-  AboutRoadmapSection,
   AboutStrengthSection,
   AboutVideoSection,
 } from '../components/about'

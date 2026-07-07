@@ -10,6 +10,8 @@ import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
 import { setupSdgFrameworkAnimations } from '../../lib/animations/sustainability/sdgGoals'
 import { FadeIn } from '../ui/FadeIn'
 
+const SUSTAIN_HERO_VIDEO = '/videos/dekko-isho-factory-drone-shot.mp4'
+
 export function SustainabilityHeroImageSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const scalerRef = useRef<HTMLDivElement>(null)
@@ -35,6 +37,20 @@ export function SustainabilityHeroImageSection() {
       <div className="sustain-hero-image-stage">
         <div className="sustain-hero-image-scaler" ref={scalerRef}>
           <div className="sustain-hero-image-section">
+            <div className="sustain-hero-image-backdrop" aria-hidden="true">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="sustain-hero-image-video"
+              >
+                <source src={SUSTAIN_HERO_VIDEO} type="video/mp4" />
+              </video>
+              <div className="sustain-hero-image-overlay" />
+              <div className="sustain-hero-image-dark-overlay" />
+            </div>
             <div className="sustain-hero-image-content">
               <div className="sustain-hero-image-inner">
                 <div className="sustain-hero-image-top">
