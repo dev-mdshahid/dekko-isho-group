@@ -22,12 +22,12 @@ export function AwardHonorCard({
   onReentryEnd,
 }: Props) {
   const handlePointerEnter = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === 'touch' || isGhost) return
+    if (event.pointerType === 'touch') return
     onActivate?.(cardKey, award, event.currentTarget)
   }
 
   const handlePointerLeave = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === 'touch' || isGhost) return
+    if (event.pointerType === 'touch') return
     onDeactivate?.(cardKey)
   }
 
