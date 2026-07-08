@@ -1,10 +1,20 @@
 import { useRef } from 'react'
 
 import {
-  SolutionExpertiseSection,
-  SolutionVideoHeroSection,
+  SolutionCapacitySection,
+  SolutionCtaSection,
+  SolutionIntroSections,
+  SolutionQualitySection,
+  SolutionSpotlightSection,
 } from '../components/solutions'
-import { embroideryExpertise, embroideryHero } from '../data/embroidery/content'
+import {
+  embroideryCapacity,
+  embroideryCta,
+  embroideryExpertise,
+  embroideryHero,
+  embroideryQuality,
+  embroiderySpotlight,
+} from '../data/embroidery/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -20,10 +30,15 @@ export function EmbroideryContent() {
 
   return (
     <div ref={ref} className="solution-page embroidery-page">
-      <section className="service-details-section section-spacing-top solution-hero-section">
-        <SolutionVideoHeroSection idPrefix={ID_PREFIX} {...embroideryHero} />
-      </section>
-      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...embroideryExpertise} />
+      <SolutionIntroSections
+        idPrefix={ID_PREFIX}
+        hero={embroideryHero}
+        expertise={embroideryExpertise}
+      />
+      <SolutionSpotlightSection idPrefix={ID_PREFIX} content={embroiderySpotlight} />
+      <SolutionCapacitySection idPrefix={ID_PREFIX} content={embroideryCapacity} />
+      <SolutionQualitySection idPrefix={ID_PREFIX} content={embroideryQuality} />
+      <SolutionCtaSection idPrefix={ID_PREFIX} content={embroideryCta} />
     </div>
   )
 }

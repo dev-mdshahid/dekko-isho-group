@@ -10,7 +10,7 @@ export type SolutionFeature = {
 
 export type SolutionExpertiseContent = {
   id: string
-  badge: string
+  badge?: string
   title: string
   paragraphs: string[]
   features: SolutionFeature[]
@@ -33,9 +33,11 @@ export function SolutionExpertiseSection({
       <div className="container">
         <div className="more-info-inner solution-expertise-inner">
           <div className="solution-expertise-block">
-            <FadeIn id={`${idPrefix}-expertise-badge`} className="solution-expertise-badge">
-              <PreSectionTitle title={badge} />
-            </FadeIn>
+            {badge ? (
+              <FadeIn id={`${idPrefix}-expertise-badge`} className="solution-expertise-badge">
+                <PreSectionTitle title={badge} />
+              </FadeIn>
+            ) : null}
 
             <FadeIn id={`${idPrefix}-expertise-title`} className="solution-expertise-title-wrap">
               <h2 className="section-title solution-expertise-title">{title}</h2>

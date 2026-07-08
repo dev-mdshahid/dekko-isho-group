@@ -6,14 +6,17 @@ import {
   ManufacturingCTASection,
   ManufacturingCuttingPreparationSection,
   ManufacturingEmbroiderySection,
-  ManufacturingHeroSection,
   ManufacturingHowItWorksSection,
   ManufacturingProductionNetworkSection,
   ManufacturingSewingSection,
 } from '../components/manufacturing'
+import { SolutionIntroSections } from '../components/solutions'
+import { manufacturingExpertise, manufacturingHero } from '../data/manufacturing/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+
+const ID_PREFIX = 'mfg'
 
 export function ManufacturingContent() {
   const ref = useRef<HTMLDivElement>(null)
@@ -24,7 +27,12 @@ export function ManufacturingContent() {
 
   return (
     <div ref={ref} className="solution-page manufacturing-page">
-      <ManufacturingHeroSection />
+      <SolutionIntroSections
+        idPrefix={ID_PREFIX}
+        hero={manufacturingHero}
+        expertise={manufacturingExpertise}
+        className="mfg-hero-section"
+      />
       <ManufacturingHowItWorksSection />
       <ManufacturingCapacitySection />
       <ManufacturingCapacityDetailsSection />

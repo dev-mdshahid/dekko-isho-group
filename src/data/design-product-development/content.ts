@@ -8,11 +8,12 @@ export const designProductDevelopmentHero = {
   videoAlt: 'Design team collaborating in a modern studio',
 }
 
-export const designProductDevelopmentTeam = {
+export const designProductDevelopmentExpertise = {
   id: 'dpd-team',
   title: 'A team driven by passion for innovation and excellence',
-  description:
+  paragraphs: [
     'Our design and development specialists combine market insight, technical knowledge and creative craft to support brands from first concept through approved production samples.',
+  ],
   features: [
     {
       id: 'research',
@@ -37,6 +38,9 @@ export const designProductDevelopmentTeam = {
     },
   ],
 }
+
+/** @deprecated Use designProductDevelopmentExpertise */
+export const designProductDevelopmentTeam = designProductDevelopmentExpertise
 
 export const designProductDevelopmentServices = {
   id: 'dpd-services',

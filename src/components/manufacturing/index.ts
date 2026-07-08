@@ -1,4 +1,3 @@
-export { ManufacturingHeroSection } from './ManufacturingHeroSection'
 export { ManufacturingHowItWorksSection } from './ManufacturingHowItWorksSection'
 export { ManufacturingCuttingPreparationSection } from './ManufacturingCuttingPreparationSection'
 export { ManufacturingCapacitySection } from './ManufacturingCapacitySection'

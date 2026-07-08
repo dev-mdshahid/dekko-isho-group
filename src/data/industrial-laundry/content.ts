@@ -8,12 +8,12 @@ export const industrialLaundryHero = {
   videoAlt: 'Industrial laundry facility with large washing machines',
 }
 
-export const industrialLaundryInnovation = {
+export const industrialLaundryExpertise = {
   id: 'il-innovation',
-  title:
-    'Own innovation in design and development is the primary focus of Agami Washing Ltd.',
-  description:
+  title: 'Own innovation in design and development is the primary focus of Agami Washing Ltd.',
+  paragraphs: [
     'From wash recipe development to bulk production, our teams combine technical expertise with modern equipment to deliver repeatable, brand-aligned finishes at scale.',
+  ],
   features: [
     {
       id: 'capacity',
@@ -39,14 +39,21 @@ export const industrialLaundryInnovation = {
   ],
 }
 
-export const industrialLaundryDevelopment = {
+/** @deprecated Use industrialLaundryExpertise */
+export const industrialLaundryInnovation = industrialLaundryExpertise
+
+export const industrialLaundrySpotlight = {
+  badge: 'Creative Capability',
   title: 'From idea reference to sample-ready fashion development.',
   description:
-    'Our development workflow translates brand references into approved wash standards — supporting faster sampling, clearer communication and smoother transition into bulk production.',
+    'Agami Washing Ltd, a sister concern of Dekko ISHO Group, started its journey in 2015 at Gazipur. It is a fully compliance and green model factory. The company accomplished all parameters set by Accord and Alliance.',
   image: '/images/industrial-laundry/development-section.png',
   imageAlt: 'Industrial washing machines in a laundry facility',
   imageLabel: 'Design',
 }
+
+/** @deprecated Use industrialLaundrySpotlight */
+export const industrialLaundryDevelopment = industrialLaundrySpotlight
 
 export const industrialLaundryWashing = {
   badge: 'Process',
