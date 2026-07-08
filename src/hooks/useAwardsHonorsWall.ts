@@ -1,366 +1,280 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, type RefObject } from 'react'
 
 import type { AwardHonor } from '../data/awards/honors'
 import { distributeHonorsColumns, getHonorsColumnCount } from '../lib/awards/distributeHonorsColumns'
 import { prefersReducedMotion } from '../lib/animations/prefersReducedMotion'
 
-const FLOAT_EXIT_MS = 520
-
-type ColumnState = {
-  y: number
-  speed: number
-}
-
-type HoveredCard = {
-  cardKey: string
-  award: AwardHonor
-  element: HTMLElement
-}
-
-export type ActiveHonorFloat = {
-  award: AwardHonor
-  cardKey: string
-  rect: DOMRect
-  phase: 'entering' | 'active' | 'exiting'
-}
+const FLOAT_EXIT_MS = 450
+const FLOAT_GUARD_PAD = 6
 
 type Options = {
   awards: AwardHonor[]
+  wallRef: RefObject<HTMLDivElement | null>
 }
 
-export function useAwardsHonorsWall({ awards }: Options) {
-  const [columnCount, setColumnCount] = useState(() =>
-    typeof window !== 'undefined' ? getHonorsColumnCount(window.innerWidth) : 4,
-  )
-  const [reducedMotion, setReducedMotion] = useState(() =>
-    typeof window !== 'undefined' ? prefersReducedMotion() : false,
-  )
-  const [isLit, setIsLit] = useState(false)
-  const [ghostCardKey, setGhostCardKey] = useState<string | null>(null)
-  const [reenteringCardKey, setReenteringCardKey] = useState<string | null>(null)
-  const [activeFloat, setActiveFloat] = useState<ActiveHonorFloat | null>(null)
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+}
 
-  const columnInnerRefs = useRef<(HTMLDivElement | null)[]>([])
-  const columnStatesRef = useRef<ColumnState[]>([])
-  const animationFrameRef = useRef<number | null>(null)
-  const exitTimeoutRef = useRef<number | null>(null)
-  const reentryTimeoutRef = useRef<number | null>(null)
-  const pendingDismissTimeoutRef = useRef<number | null>(null)
-  const enterFrameRef = useRef<number | null>(null)
-  const isPausedRef = useRef(false)
-  const exitingRef = useRef(false)
-  const activeFloatRef = useRef<ActiveHonorFloat | null>(null)
-  const ghostCardKeyRef = useRef<string | null>(null)
-  const hoveredCardRef = useRef<HoveredCard | null>(null)
+function cardHTML(award: AwardHonor) {
+  const title = escapeHtml(award.title)
+  const org = escapeHtml(award.category)
+  const year = escapeHtml(award.year)
+  const image = escapeHtml(award.image)
+  const alt = escapeHtml(award.imageAlt)
 
-  const columns = useMemo(
-    () => distributeHonorsColumns(awards, columnCount),
-    [awards, columnCount],
-  )
+  return `<div class="card" data-award-id="${escapeHtml(award.id)}">
+    <div class="ph"><img src="${image}" alt="${alt}" loading="lazy"></div>
+    <div class="cap">
+      <div class="top"><h4>${title}</h4><span class="yr">${year}</span></div>
+      <p>${org}</p>
+    </div>
+  </div>`
+}
 
+export function useAwardsHonorsWall({ awards, wallRef }: Options) {
   useEffect(() => {
-    ghostCardKeyRef.current = ghostCardKey
-  }, [ghostCardKey])
+    const wall = wallRef.current
+    if (!wall || awards.length === 0) return
 
-  const clearExitTimeout = useCallback(() => {
-    if (exitTimeoutRef.current !== null) {
-      window.clearTimeout(exitTimeoutRef.current)
-      exitTimeoutRef.current = null
-    }
-  }, [])
+    let animationFrameId: number | null = null
+    let exitTimeoutId: number | null = null
+    let floatEl: HTMLDivElement | null = null
+    let ghostEl: HTMLDivElement | null = null
+    let columnCount = getHonorsColumnCount(window.innerWidth)
+    let reducedMotion = prefersReducedMotion()
 
-  const clearPendingDismiss = useCallback(() => {
-    if (pendingDismissTimeoutRef.current !== null) {
-      window.clearTimeout(pendingDismissTimeoutRef.current)
-      pendingDismissTimeoutRef.current = null
-    }
-  }, [])
+    const colEls: Array<{ el: HTMLDivElement; y: number; speed: number }> = []
 
-  const clearEnterFrame = useCallback(() => {
-    if (enterFrameRef.current !== null) {
-      window.cancelAnimationFrame(enterFrameRef.current)
-      enterFrameRef.current = null
-    }
-  }, [])
-
-  const scheduleReentry = useCallback((cardKey: string) => {
-    setReenteringCardKey(cardKey)
-    if (reentryTimeoutRef.current !== null) {
-      window.clearTimeout(reentryTimeoutRef.current)
-    }
-    reentryTimeoutRef.current = window.setTimeout(() => {
-      setReenteringCardKey(null)
-      reentryTimeoutRef.current = null
-    }, 500)
-  }, [])
-
-  const setPaused = useCallback((paused: boolean) => {
-    isPausedRef.current = paused
-  }, [])
-
-  const commitFloat = useCallback((next: ActiveHonorFloat | null) => {
-    activeFloatRef.current = next
-    setActiveFloat(next)
-  }, [])
-
-  const activateFloat = useCallback(
-    (cardKey: string, award: AwardHonor, cardElement: HTMLElement) => {
-      if (reducedMotion || !cardElement.isConnected) return
-
-      hoveredCardRef.current = { cardKey, award, element: cardElement }
-      clearPendingDismiss()
-      clearEnterFrame()
-
-      const current = activeFloatRef.current
-      if (current?.cardKey === cardKey && current.phase !== 'exiting' && !exitingRef.current) {
-        return
+    const clearExitTimeout = () => {
+      if (exitTimeoutId !== null) {
+        window.clearTimeout(exitTimeoutId)
+        exitTimeoutId = null
       }
+    }
 
+    const teardownFloat = (immediate = false) => {
       clearExitTimeout()
-      exitingRef.current = false
-      setPaused(true)
 
-      const previousGhost = ghostCardKeyRef.current
-      if (previousGhost && previousGhost !== cardKey) {
-        scheduleReentry(previousGhost)
-      }
-
-      const rect = cardElement.getBoundingClientRect()
-      setGhostCardKey(cardKey)
-      setIsLit(true)
-
-      // Already open (or mid-exit): morph the same float to the next card.
-      if (current) {
-        commitFloat({
-          award,
-          cardKey,
-          rect,
-          phase: 'active',
-        })
+      if (!floatEl) {
+        if (ghostEl) {
+          ghostEl.classList.remove('ghost')
+          ghostEl.style.transition = ''
+          ghostEl = null
+        }
+        wall.classList.remove('lit')
         return
       }
 
-      commitFloat({
-        award,
-        cardKey,
-        rect,
-        phase: 'entering',
-      })
+      const float = floatEl
+      const ghost = ghostEl
+      floatEl = null
+      ghostEl = null
+      wall.classList.remove('lit')
 
-      // Wait two frames so the float paints in its resting state before animating open.
-      enterFrameRef.current = window.requestAnimationFrame(() => {
-        enterFrameRef.current = window.requestAnimationFrame(() => {
-          enterFrameRef.current = null
-          const active = activeFloatRef.current
-          if (!active || active.cardKey !== cardKey || active.phase !== 'entering') return
-          commitFloat({ ...active, phase: 'active' })
-        })
-      })
-    },
-    [
-      clearEnterFrame,
-      clearExitTimeout,
-      clearPendingDismiss,
-      commitFloat,
-      reducedMotion,
-      scheduleReentry,
-      setPaused,
-    ],
-  )
-
-  const dismissFloat = useCallback(() => {
-    clearPendingDismiss()
-    clearEnterFrame()
-    if (!activeFloatRef.current || exitingRef.current) return
-
-    exitingRef.current = true
-    setIsLit(false)
-    commitFloat(
-      activeFloatRef.current
-        ? { ...activeFloatRef.current, phase: 'exiting' }
-        : null,
-    )
-    clearExitTimeout()
-
-    exitTimeoutRef.current = window.setTimeout(() => {
-      const ghostKey = ghostCardKeyRef.current
-      commitFloat(null)
-      setGhostCardKey(null)
-      exitingRef.current = false
-      exitTimeoutRef.current = null
-
-      const hovered = hoveredCardRef.current
-      if (hovered?.element.isConnected) {
-        // Cursor never left (or already entered another card) during the close animation.
-        activateFloat(hovered.cardKey, hovered.award, hovered.element)
+      if (immediate) {
+        float.remove()
+        if (ghost) {
+          ghost.classList.remove('ghost')
+          ghost.style.transition = ''
+        }
         return
       }
 
-      if (ghostKey) {
-        scheduleReentry(ghostKey)
-      }
+      float.classList.remove('in')
+      float.classList.add('out')
 
-      setPaused(false)
-    }, FLOAT_EXIT_MS)
-  }, [
-    activateFloat,
-    clearEnterFrame,
-    clearExitTimeout,
-    clearPendingDismiss,
-    commitFloat,
-    scheduleReentry,
-    setPaused,
-  ])
+      exitTimeoutId = window.setTimeout(() => {
+        float.remove()
 
-  const requestDismissFloat = useCallback(
-    (cardKey?: string) => {
-      if (!activeFloatRef.current) return
-      if (cardKey && activeFloatRef.current.cardKey !== cardKey) return
+        if (ghost) {
+          ghost.style.transition = 'opacity .8s ease .1s, filter .8s ease .1s'
+          ghost.classList.remove('ghost')
+          window.setTimeout(() => {
+            ghost.style.transition = ''
+          }, 1000)
+        }
 
-      if (hoveredCardRef.current?.cardKey === cardKey || !cardKey) {
-        hoveredCardRef.current = null
-      }
-
-      clearPendingDismiss()
-      pendingDismissTimeoutRef.current = window.setTimeout(() => {
-        pendingDismissTimeoutRef.current = null
-        // Another card may have been hovered in the meantime.
-        if (hoveredCardRef.current) return
-        dismissFloat()
-      }, 0)
-    },
-    [clearPendingDismiss, dismissFloat],
-  )
-
-  const clearHoverAndDismiss = useCallback(() => {
-    hoveredCardRef.current = null
-    dismissFloat()
-  }, [dismissFloat])
-
-  useEffect(() => {
-    const updateColumnCount = () => setColumnCount(getHonorsColumnCount(window.innerWidth))
-    const updateReducedMotion = () => setReducedMotion(prefersReducedMotion())
-
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    updateColumnCount()
-    updateReducedMotion()
-
-    window.addEventListener('resize', updateColumnCount)
-    motionQuery.addEventListener('change', updateReducedMotion)
-
-    return () => {
-      window.removeEventListener('resize', updateColumnCount)
-      motionQuery.removeEventListener('change', updateReducedMotion)
+        exitTimeoutId = null
+      }, FLOAT_EXIT_MS)
     }
-  }, [])
 
-  useEffect(() => {
-    hoveredCardRef.current = null
-    clearPendingDismiss()
-    clearEnterFrame()
-    clearExitTimeout()
-    exitingRef.current = false
-    activeFloatRef.current = null
-    setActiveFloat(null)
-    setGhostCardKey(null)
-    setReenteringCardKey(null)
-    setIsLit(false)
-    setPaused(false)
-    columnInnerRefs.current = []
-    columnStatesRef.current = []
-  }, [columnCount, awards.length, clearEnterFrame, clearExitTimeout, clearPendingDismiss, setPaused])
+    const dismiss = () => {
+      if (!floatEl) return
+      teardownFloat()
+    }
 
-  useEffect(() => {
-    if (reducedMotion) return
+    const buildWall = () => {
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId)
+        animationFrameId = null
+      }
 
-    columnStatesRef.current = Array.from({ length: columnCount }, (_, index) => ({
-      y: Math.random() * 200,
-      speed: index % 2 === 0 ? 0.9 : 1.2,
-    }))
+      teardownFloat(true)
+      colEls.length = 0
+      wall.innerHTML = ''
+      wall.classList.remove('lit', 'wall--static')
+
+      if (reducedMotion) {
+        wall.classList.add('wall--static')
+      }
+
+      const columns = distributeHonorsColumns(awards, columnCount)
+
+      columns.forEach((columnAwards, columnIndex) => {
+        const col = document.createElement('div')
+        col.className = 'col'
+
+        const inner = document.createElement('div')
+        inner.className = 'col-inner'
+        inner.innerHTML = columnAwards.map(cardHTML).join('')
+
+        if (!reducedMotion) {
+          inner.innerHTML += columnAwards.map(cardHTML).join('')
+        }
+
+        col.appendChild(inner)
+        wall.appendChild(col)
+
+        if (!reducedMotion) {
+          colEls.push({
+            el: inner,
+            y: Math.random() * 200,
+            speed: columnIndex % 2 === 0 ? 0.9 : 1.2,
+          })
+        }
+      })
+    }
 
     const tick = () => {
-      if (!isPausedRef.current) {
-        columnInnerRefs.current.forEach((element, index) => {
-          const state = columnStatesRef.current[index]
-          if (!element || !state) return
+      colEls.forEach((column) => {
+        column.y += column.speed
+        const half = column.el.scrollHeight / 2
 
-          state.y += state.speed
-          const halfHeight = element.scrollHeight / 2
+        if (half > 0 && column.y >= half) {
+          column.y -= half
+        }
 
-          if (halfHeight > 0 && state.y >= halfHeight) {
-            state.y -= halfHeight
-          }
+        column.el.style.transform = `translateY(${-column.y}px)`
+      })
 
-          element.style.transform = `translate3d(0, ${-state.y}px, 0)`
-        })
+      animationFrameId = window.requestAnimationFrame(tick)
+    }
+
+    const handleWallMouseOver = (event: MouseEvent) => {
+      if (reducedMotion || floatEl) return
+
+      const card = (event.target as HTMLElement).closest<HTMLDivElement>('.card')
+      if (!card || card.classList.contains('ghost')) return
+
+      const rect = card.getBoundingClientRect()
+      ghostEl = card
+      ghostEl.classList.add('ghost')
+      wall.classList.add('lit')
+
+      const float = document.createElement('div')
+      float.className = 'awards-honors-float'
+      float.style.left = `${rect.left}px`
+      float.style.top = `${rect.top}px`
+      float.style.width = `${rect.width}px`
+      float.innerHTML = card.innerHTML
+      document.body.appendChild(float)
+      floatEl = float
+
+      window.requestAnimationFrame(() => {
+        if (floatEl === float) {
+          float.classList.add('in')
+        }
+      })
+
+      float.addEventListener('mouseleave', dismiss)
+    }
+
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!floatEl) return
+
+      const rect = floatEl.getBoundingClientRect()
+      const pad = FLOAT_GUARD_PAD
+
+      if (
+        event.clientX < rect.left - pad ||
+        event.clientX > rect.right + pad ||
+        event.clientY < rect.top - pad ||
+        event.clientY > rect.bottom + pad
+      ) {
+        dismiss()
+      }
+    }
+
+    const handleResize = () => {
+      const nextColumnCount = getHonorsColumnCount(window.innerWidth)
+      const nextReducedMotion = prefersReducedMotion()
+
+      if (nextColumnCount !== columnCount || nextReducedMotion !== reducedMotion) {
+        columnCount = nextColumnCount
+        reducedMotion = nextReducedMotion
+        buildWall()
+
+        if (!reducedMotion) {
+          animationFrameId = window.requestAnimationFrame(tick)
+        }
+
+        return
       }
 
-      animationFrameRef.current = window.requestAnimationFrame(tick)
+      dismiss()
     }
 
-    animationFrameRef.current = window.requestAnimationFrame(tick)
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handleMotionChange = () => {
+      const nextReducedMotion = prefersReducedMotion()
+      if (nextReducedMotion === reducedMotion) return
 
-    return () => {
-      if (animationFrameRef.current !== null) {
-        window.cancelAnimationFrame(animationFrameRef.current)
-      }
-    }
-  }, [columnCount, reducedMotion])
+      reducedMotion = nextReducedMotion
+      buildWall()
 
-  useEffect(() => {
-    const handleDismiss = () => clearHoverAndDismiss()
-
-    window.addEventListener('scroll', handleDismiss, { passive: true })
-    window.addEventListener('resize', handleDismiss)
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        clearHoverAndDismiss()
+      if (!reducedMotion) {
+        animationFrameId = window.requestAnimationFrame(tick)
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown)
+    buildWall()
 
-    return () => {
-      window.removeEventListener('scroll', handleDismiss)
-      window.removeEventListener('resize', handleDismiss)
-      window.removeEventListener('keydown', handleKeyDown)
+    if (!reducedMotion) {
+      animationFrameId = window.requestAnimationFrame(tick)
     }
-  }, [clearHoverAndDismiss])
 
-  const handleReentryEnd = useCallback((cardKey: string) => {
-    setReenteringCardKey((current) => (current === cardKey ? null : current))
-  }, [])
+    wall.addEventListener('mouseover', handleWallMouseOver)
+    document.addEventListener('mousemove', handleMouseMove, { passive: true })
+    window.addEventListener('scroll', dismiss, { passive: true })
+    window.addEventListener('resize', handleResize)
+    motionQuery.addEventListener('change', handleMotionChange)
 
-  useEffect(() => {
     return () => {
       clearExitTimeout()
-      clearPendingDismiss()
-      clearEnterFrame()
-      if (reentryTimeoutRef.current !== null) {
-        window.clearTimeout(reentryTimeoutRef.current)
+
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId)
       }
-      if (animationFrameRef.current !== null) {
-        window.cancelAnimationFrame(animationFrameRef.current)
+
+      wall.removeEventListener('mouseover', handleWallMouseOver)
+      document.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('scroll', dismiss)
+      window.removeEventListener('resize', handleResize)
+      motionQuery.removeEventListener('change', handleMotionChange)
+
+      if (floatEl) {
+        floatEl.remove()
+        floatEl = null
       }
+
+      ghostEl = null
+      wall.innerHTML = ''
+      wall.classList.remove('lit', 'wall--static')
     }
-  }, [clearEnterFrame, clearExitTimeout, clearPendingDismiss])
-
-  const setColumnRef = useCallback((index: number, element: HTMLDivElement | null) => {
-    columnInnerRefs.current[index] = element
-  }, [])
-
-  return {
-    columns,
-    reducedMotion,
-    isLit,
-    ghostCardKey,
-    reenteringCardKey,
-    activeFloat,
-    activateFloat,
-    dismissFloat: clearHoverAndDismiss,
-    requestDismissFloat,
-    setColumnRef,
-    handleReentryEnd,
-  }
+  }, [awards, wallRef])
 }
