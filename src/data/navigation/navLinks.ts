@@ -16,7 +16,7 @@ export const solutionNavLinks: NavLink[] = [
   { to: solutionPath('design-product-development'), label: 'Design Studio' },
   { to: solutionPath('manufacturing'), label: 'Integrated Manufacturing' },
   { to: solutionPath('industrial-laundry'), label: 'Industrial Laundry' },
-  { to: `${solutionPath('manufacturing')}#embroidery-unit`, label: 'Embroidery Unit' },
+  { to: solutionPath('embroidery'), label: 'Embroidery Unit' },
 ]
 
 export const businessNavGroups: NavLinkGroup[] = [

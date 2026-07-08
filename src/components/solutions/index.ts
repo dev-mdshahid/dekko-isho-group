@@ -1,1 +1,5 @@
 export { SolutionHeroSection } from './SolutionHeroSection'
+export { SolutionExpertiseSection } from './SolutionExpertiseSection'
+export type { SolutionExpertiseContent, SolutionFeature } from './SolutionExpertiseSection'
+export { SolutionVideoHeroSection } from './SolutionVideoHeroSection'
+export type { SolutionVideoHeroContent } from './SolutionVideoHeroSection'

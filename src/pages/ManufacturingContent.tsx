@@ -23,7 +23,7 @@ export function ManufacturingContent() {
   useWebflowInit(ref)
 
   return (
-    <div ref={ref} className="manufacturing-page">
+    <div ref={ref} className="solution-page manufacturing-page">
       <ManufacturingHeroSection />
       <ManufacturingHowItWorksSection />
       <ManufacturingCapacitySection />

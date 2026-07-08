@@ -5,6 +5,7 @@ import type { Solution } from '../data/solutions/solutions'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+import { EmbroideryContent } from './EmbroideryContent'
 import { ManufacturingContent } from './ManufacturingContent'
 import { IndustrialLaundryContent } from './IndustrialLaundryContent'
 import { ComplianceSustainabilityContent } from './ComplianceSustainabilityContent'
@@ -34,6 +35,10 @@ type SolutionContentProps = {
 }
 
 export function SolutionContent({ solution }: SolutionContentProps) {
+  if (solution.slug === 'embroidery') {
+    return <EmbroideryContent />
+  }
+
   if (solution.slug === 'manufacturing') {
     return <ManufacturingContent />
   }
