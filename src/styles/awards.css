@@ -230,69 +230,46 @@
 /* Awards & Honors section */
 
 .awards-honors-section {
+  --bg: #f5f5f3;
+  --ink: #141519;
+  --ink-soft: #6c7076;
+  --line: #e8e8e4;
+  --pink: #ef2d67;
   position: relative;
   overflow: hidden;
   background-color: var(--color--white);
-  padding: 7.5rem var(--_layout---container-full-gutter);
+  padding: 90px 0 0;
 }
 
-.awards-honors-section__glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  width: min(160%, 2000px);
-  height: 110%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--color--primary) 14%, transparent) 0%,
-    transparent 82%
-  );
-  pointer-events: none;
-}
-
-.awards-honors-section__inner {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1520px;
-  margin-inline: auto;
-}
-
-.awards-honors-section__header {
-  display: flex;
-  flex-direction: column;
+.awards-honors-section .pill {
+  display: inline-flex;
   align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 7px 15px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px;
+}
+
+.awards-honors-section .pill .sq {
+  width: 8px;
+  height: 8px;
+  background: var(--pink);
+  border-radius: 2px;
+}
+
+.awards-honors-section .s-head {
   text-align: center;
-  width: 100%;
+  margin-bottom: 56px;
+  padding: 0 20px;
 }
 
-.awards-honors-section__header .pre-section-title-wrap {
-  margin-bottom: 30px;
-}
-
-.awards-honors-section__title {
-  margin: 0 0 20px;
-  color: var(--color--dark);
-  font-family: var(--_typography---font-family--heading);
-  font-size: 40px;
-  font-weight: var(--_typography---body--font-weight-600);
-  line-height: 1.2;
-  letter-spacing: var(--_typography---body--letter-spacing);
-}
-
-.awards-honors-section__description {
-  margin: 0 0 56px;
-  width: 100%;
-  max-width: 560px;
-  align-self: center;
-  color: var(--_color---body-text);
-  font-family: var(--_typography---font-family--body);
-  font-size: 18px;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.65;
-  letter-spacing: var(--_typography---body--letter-spacing);
+.awards-honors-section .s-head .awards-grid-section__description {
+  margin-bottom: 0;
 }
 
 .awards-honors-section .wall {
@@ -369,12 +346,6 @@
   pointer-events: none;
 }
 
-.awards-honors-section .card.card--reentering {
-  transition:
-    opacity 0.8s ease 0.1s,
-    filter 0.8s ease 0.1s;
-}
-
 .awards-honors-section .card .ph {
   display: flex;
   align-items: center;
@@ -426,7 +397,7 @@
   padding: 3px 9px;
   border-radius: 100px;
   background-color: #fdeef3;
-  color: var(--color--secondary-amaranth);
+  color: #ef2d67;
   font-family: var(--_typography---font-family--body);
   font-size: 10px;
   font-weight: var(--_typography---body--font-weight-600);
@@ -514,7 +485,7 @@
   padding: 3px 9px;
   border-radius: 100px;
   background-color: #fdeef3;
-  color: var(--color--secondary-amaranth);
+  color: #ef2d67;
   font-family: var(--_typography---font-family--body);
   font-size: 10px;
   font-weight: var(--_typography---body--font-weight-600);
@@ -585,30 +556,6 @@
   }
 }
 
-@media screen and (max-width: 991px) {
-  .awards-honors-section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    padding-inline: var(--_layout---container-full-gutter);
-  }
-
-  .awards-honors-section__title {
-    font-size: clamp(1.75rem, 5vw, 2.25rem);
-    line-height: 1.2;
-  }
-
-  .awards-honors-section__description {
-    margin-bottom: 3rem;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .awards-honors-section__glow {
-    width: 180%;
-    height: 100%;
-  }
-}
-
 @media screen and (max-width: 680px) {
   .awards-honors-section .wall {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -618,33 +565,6 @@
   .awards-honors-section .card .ph,
   .awards-honors-float .ph {
     height: 200px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .awards-honors-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    padding-inline: 1.25rem;
-  }
-
-  .awards-honors-section__header .pre-section-title-wrap {
-    margin-bottom: 30px;
-  }
-
-  .awards-honors-section__title {
-    font-size: clamp(1.5rem, 6.5vw, 1.875rem);
-    margin-bottom: 16px;
-  }
-
-  .awards-honors-section__description {
-    margin-bottom: 2.5rem;
-    font-size: 0.9375rem;
-  }
-
-  .awards-honors-section__glow {
-    width: 180%;
-    height: 100%;
   }
 }
 
