@@ -8,6 +8,7 @@ type Props = {
   isGhost?: boolean
   isReentering?: boolean
   onActivate?: (cardKey: string, award: AwardHonor, element: HTMLDivElement) => void
+  onDeactivate?: (cardKey: string) => void
   onReentryEnd?: (cardKey: string) => void
 }
 
@@ -17,11 +18,17 @@ export function AwardHonorCard({
   isGhost = false,
   isReentering = false,
   onActivate,
+  onDeactivate,
   onReentryEnd,
 }: Props) {
   const handlePointerEnter = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === 'touch') return
+    if (event.pointerType === 'touch' || isGhost) return
     onActivate?.(cardKey, award, event.currentTarget)
+  }
+
+  const handlePointerLeave = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch' || isGhost) return
+    onDeactivate?.(cardKey)
   }
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -44,6 +51,7 @@ export function AwardHonorCard({
         .filter(Boolean)
         .join(' ')}
       onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
       onClick={handleClick}
       onTransitionEnd={handleTransitionEnd}
       role="button"

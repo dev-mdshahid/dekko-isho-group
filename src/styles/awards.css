@@ -305,6 +305,12 @@
   padding-inline: 40px;
 }
 
+.awards-honors-wall .awards-honor-card {
+  transition:
+    opacity 0.45s ease,
+    filter 0.45s ease;
+}
+
 .awards-honors-wall::before,
 .awards-honors-wall::after {
   content: '';
@@ -366,13 +372,12 @@
 .awards-honor-card--ghost {
   opacity: 0 !important;
   filter: none !important;
-  pointer-events: none;
 }
 
 .awards-honor-card--reentering {
   transition:
-    opacity 0.8s ease 0.1s,
-    filter 0.8s ease 0.1s;
+    opacity 0.45s ease,
+    filter 0.45s ease;
 }
 
 .awards-honor-card__media {
@@ -397,11 +402,12 @@
   padding: 0 20px;
   opacity: 0;
   background-color: var(--color--white);
-  border-top: 1px solid #e8e8e4;
+  border-top: 1px solid transparent;
   transition:
-    max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 0.32s ease 0.08s,
-    padding 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    max-height 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.36s ease,
+    padding 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
 }
 
 .awards-honor-card__caption-top {
@@ -451,50 +457,105 @@
   border-radius: 18px;
   background-color: var(--color--white);
   box-shadow:
-    0 2px 5px rgb(20 21 25 / 6%),
-    0 36px 64px -24px rgb(20 21 25 / 32%);
-  cursor: pointer;
+    0 1px 2px rgb(20 21 25 / 4%),
+    0 6px 18px -8px rgb(20 21 25 / 8%);
+  pointer-events: none;
   transform: scale(1);
+  transform-origin: center center;
+  opacity: 1;
+  will-change: transform, opacity, box-shadow, left, top, width;
   transition:
-    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.4s ease,
-    filter 0.4s ease,
-    box-shadow 0.45s ease;
+    box-shadow 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.awards-honor-float .awards-honor-card {
+  cursor: default;
+  box-shadow: none;
+  transition: none;
+}
+
+.awards-honor-float .awards-honor-card__image {
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.awards-honor-float__image {
+  animation: awards-honor-float-content-in 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.awards-honor-float__caption-body {
+  animation: awards-honor-float-content-in 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes awards-honor-float-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .awards-honor-float--in {
-  transform: scale(1.06);
+  transform: scale(1.08);
+  box-shadow:
+    0 2px 5px rgb(20 21 25 / 6%),
+    0 28px 54px -20px rgb(20 21 25 / 28%);
+  transition:
+    transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    box-shadow 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+    left 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.48s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .awards-honor-float--in .awards-honor-card__image {
-  transform: scale(1.06);
+  transform: scale(1.04);
 }
 
 .awards-honor-float--in .awards-honor-card__caption {
   max-height: 120px;
   padding: 14px 20px 16px;
   opacity: 1;
+  border-top-color: #e8e8e4;
+  transition:
+    max-height 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.05s,
+    opacity 0.36s ease 0.1s,
+    padding 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.05s,
+    border-color 0.3s ease 0.08s;
 }
 
 .awards-honor-float--out {
-  transform: scale(0.82);
+  transform: scale(1);
   opacity: 0;
-  filter: blur(6px);
-  box-shadow: 0 6px 18px -8px rgb(20 21 25 / 10%);
+  box-shadow:
+    0 1px 2px rgb(20 21 25 / 4%),
+    0 6px 18px -8px rgb(20 21 25 / 8%);
+  transition:
+    transform 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.28s ease 0.14s,
+    box-shadow 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.awards-honor-float--out .awards-honor-card__image {
+  transform: scale(1);
 }
 
 .awards-honor-float--out .awards-honor-card__caption {
   max-height: 0;
   padding: 0 20px;
   opacity: 0;
-}
-
-.awards-honor-card--float .awards-honor-card__caption {
-  max-height: none;
-}
-
-.awards-honor-float .awards-honor-card__image {
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border-top-color: transparent;
+  transition:
+    max-height 0.36s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.22s ease,
+    padding 0.36s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.22s ease;
 }
 
 .awards-honors-wall--static {

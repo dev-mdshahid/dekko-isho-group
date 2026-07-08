@@ -13,6 +13,7 @@ function renderColumnItems(
   ghostCardKey: string | null,
   reenteringCardKey: string | null,
   onActivate: (cardKey: string, award: (typeof awardHonors)[number], element: HTMLDivElement) => void,
+  onDeactivate: (cardKey: string) => void,
   onReentryEnd: (cardKey: string) => void,
 ) {
   return columnAwards.map((award, awardIndex) => {
@@ -26,6 +27,7 @@ function renderColumnItems(
         isGhost={ghostCardKey === cardKey}
         isReentering={reenteringCardKey === cardKey}
         onActivate={onActivate}
+        onDeactivate={onDeactivate}
         onReentryEnd={onReentryEnd}
       />
     )
@@ -44,17 +46,10 @@ export function AwardsHonorsSection() {
     activeFloat,
     activateFloat,
     dismissFloat,
+    requestDismissFloat,
     setColumnRef,
     handleReentryEnd,
   } = useAwardsHonorsWall({ awards: awardHonors })
-
-  const handleActivate = (
-    cardKey: string,
-    award: (typeof awardHonors)[number],
-    element: HTMLDivElement,
-  ) => {
-    activateFloat(cardKey, award, element)
-  }
 
   const floatPortal =
     activeFloat && typeof document !== 'undefined'
@@ -72,26 +67,26 @@ export function AwardsHonorsSection() {
               top: activeFloat.rect.top,
               width: activeFloat.rect.width,
             }}
-            onMouseLeave={dismissFloat}
-            onClick={dismissFloat}
-            role="dialog"
-            aria-label={`${activeFloat.award.title}, ${activeFloat.award.year}`}
+            aria-hidden="true"
           >
             <div className="awards-honor-card awards-honor-card--float">
               <div className="awards-honor-card__media">
                 <img
+                  key={activeFloat.award.id}
                   src={activeFloat.award.image}
-                  alt={activeFloat.award.imageAlt}
-                  className="awards-honor-card__image"
+                  alt=""
+                  className="awards-honor-card__image awards-honor-float__image"
                   decoding="async"
                 />
               </div>
               <div className="awards-honor-card__caption">
-                <div className="awards-honor-card__caption-top">
-                  <h3 className="awards-honor-card__title">{activeFloat.award.title}</h3>
-                  <span className="awards-honor-card__year">{activeFloat.award.year}</span>
+                <div key={activeFloat.award.id} className="awards-honor-float__caption-body">
+                  <div className="awards-honor-card__caption-top">
+                    <h3 className="awards-honor-card__title">{activeFloat.award.title}</h3>
+                    <span className="awards-honor-card__year">{activeFloat.award.year}</span>
+                  </div>
+                  <p className="awards-honor-card__organization">{activeFloat.award.category}</p>
                 </div>
-                <p className="awards-honor-card__organization">{activeFloat.award.category}</p>
               </div>
             </div>
           </div>,
@@ -119,6 +114,10 @@ export function AwardsHonorsSection() {
           ]
             .filter(Boolean)
             .join(' ')}
+          onPointerLeave={(event) => {
+            if (event.pointerType === 'touch') return
+            dismissFloat()
+          }}
         >
           {columns.map((columnAwards, columnIndex) => (
             <div key={`column-${columnIndex}`} className="awards-honors-wall__column">
@@ -132,7 +131,8 @@ export function AwardsHonorsSection() {
                   0,
                   ghostCardKey,
                   reenteringCardKey,
-                  handleActivate,
+                  activateFloat,
+                  requestDismissFloat,
                   handleReentryEnd,
                 )}
                 {!reducedMotion &&
@@ -142,7 +142,8 @@ export function AwardsHonorsSection() {
                     1,
                     ghostCardKey,
                     reenteringCardKey,
-                    handleActivate,
+                    activateFloat,
+                    requestDismissFloat,
                     handleReentryEnd,
                   )}
               </div>

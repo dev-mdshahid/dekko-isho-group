@@ -4,7 +4,7 @@ import type { AwardHonor } from '../data/awards/honors'
 import { distributeHonorsColumns, getHonorsColumnCount } from '../lib/awards/distributeHonorsColumns'
 import { prefersReducedMotion } from '../lib/animations/prefersReducedMotion'
 
-const FLOAT_EXIT_MS = 450
+const FLOAT_EXIT_MS = 520
 
 type ColumnState = {
   y: number
@@ -39,6 +39,8 @@ export function useAwardsHonorsWall({ awards }: Options) {
   const animationFrameRef = useRef<number | null>(null)
   const exitTimeoutRef = useRef<number | null>(null)
   const reentryTimeoutRef = useRef<number | null>(null)
+  const pendingDismissTimeoutRef = useRef<number | null>(null)
+  const isPausedRef = useRef(false)
   const exitingRef = useRef(false)
   const activeFloatRef = useRef<ActiveHonorFloat | null>(null)
   const ghostCardKeyRef = useRef<string | null>(null)
@@ -60,7 +62,30 @@ export function useAwardsHonorsWall({ awards }: Options) {
     }
   }, [])
 
+  const clearPendingDismiss = useCallback(() => {
+    if (pendingDismissTimeoutRef.current !== null) {
+      window.clearTimeout(pendingDismissTimeoutRef.current)
+      pendingDismissTimeoutRef.current = null
+    }
+  }, [])
+
+  const scheduleReentry = useCallback((cardKey: string) => {
+    setReenteringCardKey(cardKey)
+    if (reentryTimeoutRef.current !== null) {
+      window.clearTimeout(reentryTimeoutRef.current)
+    }
+    reentryTimeoutRef.current = window.setTimeout(() => {
+      setReenteringCardKey(null)
+      reentryTimeoutRef.current = null
+    }, 500)
+  }, [])
+
+  const setPaused = useCallback((paused: boolean) => {
+    isPausedRef.current = paused
+  }, [])
+
   const dismissFloat = useCallback(() => {
+    clearPendingDismiss()
     if (!activeFloatRef.current || exitingRef.current) return
 
     exitingRef.current = true
@@ -74,30 +99,64 @@ export function useAwardsHonorsWall({ awards }: Options) {
       setGhostCardKey(null)
 
       if (ghostKey) {
-        setReenteringCardKey(ghostKey)
-        if (reentryTimeoutRef.current !== null) {
-          window.clearTimeout(reentryTimeoutRef.current)
-        }
-        reentryTimeoutRef.current = window.setTimeout(() => {
-          setReenteringCardKey(null)
-          reentryTimeoutRef.current = null
-        }, 1000)
+        scheduleReentry(ghostKey)
       }
 
+      setPaused(false)
       exitingRef.current = false
       exitTimeoutRef.current = null
     }, FLOAT_EXIT_MS)
-  }, [clearExitTimeout])
+  }, [clearExitTimeout, clearPendingDismiss, scheduleReentry, setPaused])
+
+  const requestDismissFloat = useCallback(
+    (cardKey?: string) => {
+      if (!activeFloatRef.current) return
+      if (cardKey && activeFloatRef.current.cardKey !== cardKey) return
+
+      clearPendingDismiss()
+      pendingDismissTimeoutRef.current = window.setTimeout(() => {
+        pendingDismissTimeoutRef.current = null
+        dismissFloat()
+      }, 0)
+    },
+    [clearPendingDismiss, dismissFloat],
+  )
 
   const activateFloat = useCallback(
     (cardKey: string, award: AwardHonor, cardElement: HTMLElement) => {
-      if (reducedMotion || exitingRef.current || activeFloatRef.current) {
+      if (reducedMotion) return
+
+      clearPendingDismiss()
+
+      const current = activeFloatRef.current
+      if (current?.cardKey === cardKey && !exitingRef.current) {
         return
+      }
+
+      clearExitTimeout()
+      exitingRef.current = false
+      setPaused(true)
+
+      const previousGhost = ghostCardKeyRef.current
+      if (previousGhost && previousGhost !== cardKey) {
+        scheduleReentry(previousGhost)
       }
 
       const rect = cardElement.getBoundingClientRect()
       setGhostCardKey(cardKey)
       setIsLit(true)
+
+      // Already open (or mid-exit): morph the same float to the next card.
+      if (current) {
+        setActiveFloat({
+          award,
+          cardKey,
+          rect,
+          phase: 'active',
+        })
+        return
+      }
+
       setActiveFloat({
         award,
         cardKey,
@@ -105,13 +164,16 @@ export function useAwardsHonorsWall({ awards }: Options) {
         phase: 'entering',
       })
 
+      // Wait two frames so the float paints in its resting state before animating open.
       requestAnimationFrame(() => {
-        setActiveFloat((current) =>
-          current?.cardKey === cardKey ? { ...current, phase: 'active' } : current,
-        )
+        requestAnimationFrame(() => {
+          setActiveFloat((active) =>
+            active?.cardKey === cardKey ? { ...active, phase: 'active' } : active,
+          )
+        })
       })
     },
-    [reducedMotion],
+    [clearExitTimeout, clearPendingDismiss, reducedMotion, scheduleReentry, setPaused],
   )
 
   useEffect(() => {
@@ -133,9 +195,10 @@ export function useAwardsHonorsWall({ awards }: Options) {
 
   useEffect(() => {
     dismissFloat()
+    setPaused(false)
     columnInnerRefs.current = []
     columnStatesRef.current = []
-  }, [columnCount, awards.length, dismissFloat])
+  }, [columnCount, awards.length, dismissFloat, setPaused])
 
   useEffect(() => {
     if (reducedMotion) return
@@ -146,19 +209,21 @@ export function useAwardsHonorsWall({ awards }: Options) {
     }))
 
     const tick = () => {
-      columnInnerRefs.current.forEach((element, index) => {
-        const state = columnStatesRef.current[index]
-        if (!element || !state) return
+      if (!isPausedRef.current) {
+        columnInnerRefs.current.forEach((element, index) => {
+          const state = columnStatesRef.current[index]
+          if (!element || !state) return
 
-        state.y += state.speed
-        const halfHeight = element.scrollHeight / 2
+          state.y += state.speed
+          const halfHeight = element.scrollHeight / 2
 
-        if (halfHeight > 0 && state.y >= halfHeight) {
-          state.y -= halfHeight
-        }
+          if (halfHeight > 0 && state.y >= halfHeight) {
+            state.y -= halfHeight
+          }
 
-        element.style.transform = `translate3d(0, ${-state.y}px, 0)`
-      })
+          element.style.transform = `translate3d(0, ${-state.y}px, 0)`
+        })
+      }
 
       animationFrameRef.current = window.requestAnimationFrame(tick)
     }
@@ -200,6 +265,7 @@ export function useAwardsHonorsWall({ awards }: Options) {
   useEffect(() => {
     return () => {
       clearExitTimeout()
+      clearPendingDismiss()
       if (reentryTimeoutRef.current !== null) {
         window.clearTimeout(reentryTimeoutRef.current)
       }
@@ -207,7 +273,7 @@ export function useAwardsHonorsWall({ awards }: Options) {
         window.cancelAnimationFrame(animationFrameRef.current)
       }
     }
-  }, [clearExitTimeout])
+  }, [clearExitTimeout, clearPendingDismiss])
 
   const setColumnRef = useCallback((index: number, element: HTMLDivElement | null) => {
     columnInnerRefs.current[index] = element
@@ -222,6 +288,7 @@ export function useAwardsHonorsWall({ awards }: Options) {
     activeFloat,
     activateFloat,
     dismissFloat,
+    requestDismissFloat,
     setColumnRef,
     handleReentryEnd,
   }
