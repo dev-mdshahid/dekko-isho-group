@@ -6,7 +6,7 @@ import { setupHeroVideoExpand } from '../../lib/animations/home/video'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
-const AWARDS_BANNER = '/images/awards/awards-banner.jpg'
+const AWARDS_BANNER = '/images/awards/awards-banner.webp'
 
 export function AwardsHeroSection() {
   const bannerSectionRef = useRef<HTMLDivElement>(null)
