@@ -19,6 +19,44 @@ function cardHTML(a: Award) {
   </div>`
 }
 
+function getNumCols() {
+  return window.innerWidth <= 680 ? 2 : window.innerWidth <= 1000 ? 3 : 4
+}
+
+function estimateCardBlockHeight() {
+  const phHeight = window.innerWidth <= 680 ? 200 : 250
+  return phHeight + 18
+}
+
+function distributeAwards(awards: Award[], numCols: number) {
+  const cols: Award[][] = Array.from({ length: numCols }, () => [])
+  awards.forEach((award, index) => {
+    cols[index % numCols].push(award)
+  })
+  return cols.map((col) => (col.length > 0 ? col : [...awards]))
+}
+
+function expandColumnItems(baseItems: Award[], minCount: number) {
+  const items = [...baseItems]
+  let index = 0
+
+  while (items.length < minCount) {
+    items.push(baseItems[index++ % baseItems.length])
+  }
+
+  return items
+}
+
+function buildColumnContent(awards: Award[], numCols: number, loopDurationSec: number) {
+  const cardBlockHeight = estimateCardBlockHeight()
+  const targetLoopHeight = 54 * loopDurationSec
+  const minCards = Math.ceil(targetLoopHeight / cardBlockHeight)
+
+  return distributeAwards(awards, numCols).map((col) => expandColumnItems(col, minCards))
+}
+
+const LOOP_DURATION_SEC = 120
+
 export function AwardsHonorsSection() {
   const wallRef = useRef<HTMLDivElement>(null)
 
@@ -33,32 +71,37 @@ export function AwardsHonorsSection() {
       yr: a.year,
     }))
 
-    const NUM_COLS = window.innerWidth <= 680 ? 2 : window.innerWidth <= 1000 ? 3 : 4
-    const cols: Award[][] = Array.from({ length: NUM_COLS }, () => [])
-    awards.forEach((a, i) => cols[i % NUM_COLS].push(a))
-    cols.forEach((c) => {
-      let i = 0
-      while (c.length < 4) {
-        c.push(awards[i++ % awards.length])
-      }
-    })
+    const numCols = getNumCols()
+    const cols = buildColumnContent(awards, numCols, LOOP_DURATION_SEC)
 
     const colEls: { el: HTMLDivElement; y: number; speed: number }[] = []
-    cols.forEach((c, ci) => {
+    cols.forEach((columnItems, ci) => {
       const col = document.createElement('div')
       col.className = 'col'
       const inner = document.createElement('div')
       inner.className = 'col-inner'
-      inner.innerHTML = c.map(cardHTML).join('') + c.map(cardHTML).join('')
+      inner.innerHTML = columnItems.map(cardHTML).join('') + columnItems.map(cardHTML).join('')
       col.appendChild(inner)
       wall.appendChild(col)
-      colEls.push({ el: inner, y: Math.random() * 200, speed: ci % 2 === 0 ? 0.9 : 1.2 })
+
+      const loopHeight = inner.scrollHeight / 2
+      const speedVariation = ci % 2 === 0 ? 0.92 : 1.08
+      colEls.push({
+        el: inner,
+        y: Math.random() * Math.min(loopHeight, 200),
+        speed: (loopHeight / LOOP_DURATION_SEC) * speedVariation,
+      })
     })
 
     let rafId = 0
-    function tick() {
+    let lastTime = performance.now()
+
+    function tick(now: number) {
+      const dt = Math.min((now - lastTime) / 1000, 0.05)
+      lastTime = now
+
       colEls.forEach((c) => {
-        c.y += c.speed
+        c.y += c.speed * dt
         const half = c.el.scrollHeight / 2
         if (c.y >= half) c.y -= half
         c.el.style.transform = `translateY(${-c.y}px)`
