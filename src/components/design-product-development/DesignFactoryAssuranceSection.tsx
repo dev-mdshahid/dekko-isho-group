@@ -7,15 +7,24 @@ export function DesignFactoryAssuranceSection() {
 
   return (
     <section className="dpd-factory-section">
-      <div className="dpd-factory-glow" aria-hidden="true" />
       <div className="dpd-factory-container">
-        <div className="dpd-factory-header">
+        <header className="dpd-factory-header">
           <FadeIn id="dpd-factory-badge" className="dpd-factory-badge">
-            <PreSectionTitle title={badge} variant="bg-dark" />
+            <PreSectionTitle title={badge} />
           </FadeIn>
           <FadeIn id="dpd-factory-title-wrap" className="dpd-factory-title-wrap">
             <h2 className="dpd-factory-title">{title}</h2>
           </FadeIn>
+        </header>
+
+        <div className="dpd-factory-accent-bar" aria-hidden="true">
+          {items.map((item) => (
+            <span
+              key={item.id}
+              className="dpd-factory-accent-segment"
+              style={{ backgroundColor: item.accent }}
+            />
+          ))}
         </div>
 
         <div className="dpd-factory-grid">
@@ -26,11 +35,6 @@ export function DesignFactoryAssuranceSection() {
               className="dpd-factory-card"
               delay={index * 50}
             >
-              <span
-                className="dpd-factory-card-accent"
-                style={{ backgroundColor: item.accent }}
-                aria-hidden="true"
-              />
               <span className="dpd-factory-card-number" style={{ color: item.accent }}>
                 {item.number}
               </span>

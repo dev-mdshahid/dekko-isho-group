@@ -91,7 +91,7 @@ export const designProductDevelopmentFactoryAssurance = {
     {
       id: 'raw-material',
       number: '01',
-      accent: '#f5c518',
+      accent: '#FFC219',
       title: 'Raw Material Inspection against standard',
       items: [
         'Max 4 point Inspection',
@@ -106,7 +106,7 @@ export const designProductDevelopmentFactoryAssurance = {
     {
       id: 'size-set',
       number: '02',
-      accent: '#1c72a3',
+      accent: '#F3215D',
       title: 'Size Set samples review by color',
       description:
         'Finalize designs/patterns and specifications to create an approved sample.',
@@ -114,7 +114,7 @@ export const designProductDevelopmentFactoryAssurance = {
     {
       id: 'pre-production',
       number: '03',
-      accent: '#2595d5',
+      accent: '#449BFF',
       title: 'Pre -Production Meeting by style',
       description:
         'Establish quality standards and reject criteria based on approved samples',
@@ -122,7 +122,7 @@ export const designProductDevelopmentFactoryAssurance = {
     {
       id: 'pilot-run',
       number: '04',
-      accent: '#22c55e',
+      accent: '#14B253',
       title: 'Pilot Run / First of Bulk review by style',
       description:
         'Establish quality standards and reject criteria based on approved samples.',

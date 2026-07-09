@@ -29,17 +29,12 @@
   background-image: var(--mfg-brand-gradient);
 }
 
-/* ── How It Works: dark category table (Figma) ── */
+/* ── How It Works: light category table ── */
 .manufacturing-page .mfg-how-it-works-section.service-category-section {
   --mfg-how-category-width: 18.75rem;
   --mfg-how-column-gap: 5rem;
-  --mfg-how-divider: color-mix(in srgb, var(--color--gray-5) 5%, transparent);
-  background-color: var(--color--grey-1);
-  background-image: radial-gradient(
-    ellipse 90% 45% at 50% 100%,
-    rgb(37 149 213 / 14%) 0%,
-    transparent 72%
-  );
+  background-color: var(--color--neutral-seasalt);
+  background-image: none;
   padding-bottom: 0;
 }
 
@@ -85,26 +80,30 @@
 
 .manufacturing-page .mfg-how-it-works-title {
   margin: 0;
+  color: var(--color--neutral-night);
   font-size: clamp(2rem, 4.5vw, 3.625rem);
   font-weight: 600;
   line-height: 1.1;
+  letter-spacing: -0.02em;
   max-width: none;
 }
 
 .manufacturing-page .mfg-how-it-works-column-label {
-  color: var(--color--white);
-  font-size: 1.125rem;
-  font-weight: 600;
+  color: var(--color--neutral-cadet-gray);
+  font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .manufacturing-page .mfg-how-it-works-section .grid-category-inner {
   margin-bottom: 0;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #ffffff1a;
+  border-bottom: 1px solid var(--color--neutral-silver-night);
 }
 
 .manufacturing-page .mfg-how-it-works-section .grid-category-info {
-  border-bottom: 1px solid #ffffff1a;
+  border-bottom: 1px solid var(--color--neutral-silver-night);
   margin-bottom: 0;
   padding-top: 1.875rem;
   padding-bottom: 1.875rem;
@@ -116,14 +115,15 @@
 }
 
 .manufacturing-page .mfg-how-it-works-category {
-  color: var(--color--white);
+  color: var(--color--neutral-night);
   font-size: 1.125rem;
   font-weight: var(--_typography---body--font-weight-500);
 }
 
 .manufacturing-page .mfg-how-it-works-details {
-  color: var(--color--gray-3);
+  color: var(--color--neutral-outer-space);
   font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.6;
   max-width: 36rem;
 }
@@ -134,10 +134,10 @@
   }
 }
 
-/* ── Cutting & Preparation: dark process card grid (Figma) ── */
+/* ── Cutting & Preparation: light process card grid ── */
 .manufacturing-page .mfg-cutting-section.service-category-section {
   background-image: none;
-  background-color: var(--color--grey-1);
+  background-color: var(--color--white);
 }
 
 .manufacturing-page .mfg-cutting-header {
@@ -155,14 +155,17 @@
 
 .manufacturing-page .mfg-cutting-title {
   margin: 0;
+  color: var(--color--neutral-night);
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .manufacturing-page .mfg-cutting-description {
   margin: 0;
-  color: #d1d1d1;
+  color: var(--color--neutral-outer-space);
   font-size: var(--_typography---body--body-sm);
+  font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.6;
   max-width: 36rem;
 }
@@ -179,11 +182,9 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: stretch;
   min-height: 13.5rem;
-  border: 1px solid #ffffff1a;
+  border: 1px solid var(--color--neutral-silver-night);
   border-radius: var(--border-radius--md);
-  background-color: #15151580;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background-color: var(--color--neutral-seasalt);
   overflow: hidden;
 }
 
@@ -196,7 +197,7 @@
 }
 
 .manufacturing-page .mfg-cutting-card-number {
-  color: var(--color--white);
+  color: var(--mfg-brand-start);
   font-size: var(--_typography---body--body-xs);
   font-weight: 600;
   line-height: 1;
@@ -204,7 +205,7 @@
 
 .manufacturing-page .mfg-cutting-card-title {
   margin: 0;
-  color: var(--color--white);
+  color: var(--color--neutral-night);
   font-size: var(--_typography---body--body-sm);
   font-weight: 600;
   line-height: 1.35;
@@ -212,8 +213,9 @@
 
 .manufacturing-page .mfg-cutting-card-description {
   margin: 0;
-  color: #a1a1aa;
+  color: var(--color--neutral-outer-space);
   font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.55;
 }
 
@@ -471,10 +473,10 @@
   vertical-align: middle;
 }
 
-/* ── In-House Embroidery Capability (Figma) ── */
+/* ── In-House Embroidery Capability (light) ── */
 .manufacturing-page .mfg-embroidery-section.service-category-section {
   background-image: none;
-  background-color: var(--color--grey-1);
+  background-color: var(--color--neutral-seasalt);
   padding-bottom: 0;
 }
 
@@ -498,8 +500,10 @@
 
 .manufacturing-page .mfg-embroidery-title {
   margin: 0;
+  color: var(--color--neutral-night);
   font-size: clamp(1.875rem, 3vw, 2.75rem);
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .manufacturing-page .mfg-embroidery-grid {
@@ -512,6 +516,10 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  border: 1px solid var(--color--neutral-silver-night);
+  border-radius: var(--border-radius--md);
+  overflow: hidden;
+  background-color: var(--color--white);
 }
 
 .manufacturing-page .mfg-embroidery-card-image {
@@ -519,19 +527,17 @@
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
-  border-radius: var(--border-radius--md) var(--border-radius--md) 0 0;
 }
 
 .manufacturing-page .mfg-embroidery-card-body {
   flex: 1;
   padding: 1.5rem 1.375rem 1.625rem;
-  background-color: #111111;
-  border-radius: 0 0 var(--border-radius--md) var(--border-radius--md);
+  background-color: var(--color--white);
 }
 
 .manufacturing-page .mfg-embroidery-card-title {
   margin: 0 0 1rem;
-  color: var(--color--white);
+  color: var(--color--neutral-night);
   font-size: var(--_typography---body--body-sm);
   font-weight: 600;
   line-height: 1.35;
@@ -545,8 +551,9 @@
 
 .manufacturing-page .mfg-embroidery-card-point {
   margin: 0;
-  color: #a1a1aa;
+  color: var(--color--neutral-outer-space);
   font-size: var(--_typography---body--body-xs);
+  font-weight: var(--_typography---body--font-weight-500);
   line-height: 1.55;
 }
 
@@ -758,20 +765,32 @@
   }
 }
 
-/* ── Factories (dark) ── */
+/* ── Factories (light) ── */
+.manufacturing-page .mfg-factories-section.service-category-section {
+  background-image: none;
+  background-color: var(--color--neutral-seasalt);
+}
+
+.manufacturing-page .mfg-factories-title {
+  color: var(--color--neutral-night);
+}
+
 .manufacturing-page .mfg-factories-section .inner-service-link {
-  background-color: #ffffff08;
-  border: 1px solid #ffffff12;
+  background-color: var(--color--white);
+  border: 1px solid var(--color--neutral-silver-night);
   height: 100%;
 }
 
-.manufacturing-page .mfg-factories-section .service-title,
-.manufacturing-page .mfg-factories-section .feature-description {
-  color: var(--color--white);
+.manufacturing-page .mfg-factories-section .service-title {
+  color: var(--color--neutral-night);
 }
 
 .manufacturing-page .mfg-factories-section .feature-description {
-  color: #a1a1aa;
+  color: var(--color--neutral-outer-space);
+}
+
+.manufacturing-page .mfg-factories-section .bg-gradient {
+  display: none;
 }
 
 .manufacturing-page .mfg-factories-grid {

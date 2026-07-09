@@ -21,7 +21,7 @@ export function ManufacturingQualitySection() {
       <div className="about-strength-container">
         <div className="about-strength-main">
           <FadeIn id="mfg-quality-header" className="about-strength-header">
-            <PreSectionTitle title={badge} variant="bg-dark" />
+            <PreSectionTitle title={badge} />
             <div className="about-strength-title-row">
               <span className="about-strength-accent" aria-hidden="true" />
               <h2 className="section-title text-white about-strength-title">{title}</h2>

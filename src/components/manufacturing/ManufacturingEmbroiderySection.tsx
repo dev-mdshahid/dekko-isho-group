@@ -10,7 +10,7 @@ export function ManufacturingEmbroiderySection() {
       <div className="container">
         <div className="service-category-main mfg-embroidery-main">
           <FadeIn id="mfg-embroidery-header" className="mfg-embroidery-header">
-            <PreSectionTitle title={badge} variant="bg-dark" />
+            <PreSectionTitle title={badge} />
             <h2 className="category-title mfg-embroidery-title">{title}</h2>
           </FadeIn>
 
