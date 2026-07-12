@@ -22,11 +22,11 @@ export function SustainabilityFocusCard({ item }: Props) {
   return (
     <article ref={cardRef} className="sustain-focus-card">
       <div className="sustain-card-glow" aria-hidden="true" />
-      <h3 className="sustain-focus-card-title">{item.title}</h3>
       <SustainabilityFocusCardCarousel
         images={item.images}
         isPlaying={isHovered && hasMultiple}
       />
+      <h3 className="sustain-focus-card-title">{item.title}</h3>
     </article>
   )
 }

@@ -46,6 +46,13 @@ export const topExecutives: TopExecutive[] = [
     imageAlt: 'Md. Ali Ahad Bin Zahid, Head of Corporate HR',
   },
   {
+    id: 'about-top-executive-rakib-bin-zahid',
+    name: 'Rakib Bin Zaid',
+    title: 'Assistant General Manager, Sustainability',
+    image: '/images/top-executives/rakib-bin-zahid.png',
+    imageAlt: 'Rakib Bin Zaid, Assistant General Manager, Sustainability',
+  },
+  {
     id: 'about-top-executive-sheikh-faridul',
     name: 'Sheikh Faridul Azam Kaisar',
     title: 'Head of Internal Audit',

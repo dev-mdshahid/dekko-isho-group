@@ -1,7 +1,6 @@
 import { pillar02 } from '../../data/sustainability/content'
 import { FadeIn } from '../ui/FadeIn'
 import { SustainabilityBadge } from './SustainabilityBadge'
-import { SustainabilityGovernanceBanner } from './SustainabilityGovernanceBanner'
 import { SustainabilityInitiativeCard } from './SustainabilityInitiativeCard'
 import { SustainabilityInitiativesGrid } from './SustainabilityInitiativesGrid'
 
@@ -30,7 +29,7 @@ export function SustainabilityPillar02Section() {
           ))}
         </SustainabilityInitiativesGrid>
 
-        <SustainabilityGovernanceBanner />
+        {/* <SustainabilityGovernanceBanner /> */}
       </div>
     </section>
   )

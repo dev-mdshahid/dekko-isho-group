@@ -10,7 +10,7 @@ export function ManufacturingCuttingPreparationSection() {
       <div className="container">
         <div className="service-category-main section-spacing">
           <FadeIn id="mfg-cutting-header" className="mfg-cutting-header">
-            <PreSectionTitle title={badge} variant="bg-dark" />
+            <PreSectionTitle title={badge} />
             <h2 className="category-title mfg-cutting-title">{title}</h2>
             <p className="mfg-cutting-description">{description}</p>
           </FadeIn>

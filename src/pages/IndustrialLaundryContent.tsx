@@ -1,16 +1,25 @@
 import { useRef } from 'react'
 
 import {
-  IndustrialLaundryCTASection,
-  IndustrialLaundryDevelopmentSection,
-  IndustrialLaundryHeroSection,
-  IndustrialLaundryInnovationSection,
-  IndustrialLaundryQualitySection,
-  IndustrialLaundryWashingSection,
-} from '../components/industrial-laundry'
+  SolutionCapacitySection,
+  SolutionCtaSection,
+  SolutionIntroSections,
+  SolutionQualitySection,
+  SolutionSpotlightSection,
+} from '../components/solutions'
+import {
+  industrialLaundryExpertise,
+  industrialLaundryCta,
+  industrialLaundryHero,
+  industrialLaundryQuality,
+  industrialLaundrySpotlight,
+  industrialLaundryWashing,
+} from '../data/industrial-laundry/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+
+const ID_PREFIX = 'il'
 
 export function IndustrialLaundryContent() {
   const ref = useRef<HTMLDivElement>(null)
@@ -20,13 +29,16 @@ export function IndustrialLaundryContent() {
   useWebflowInit(ref)
 
   return (
-    <div ref={ref} className="industrial-laundry-page">
-      <IndustrialLaundryHeroSection />
-      <IndustrialLaundryInnovationSection />
-      <IndustrialLaundryDevelopmentSection />
-      <IndustrialLaundryWashingSection />
-      <IndustrialLaundryQualitySection />
-      <IndustrialLaundryCTASection />
+    <div ref={ref} className="solution-page industrial-laundry-page">
+      <SolutionIntroSections
+        idPrefix={ID_PREFIX}
+        hero={industrialLaundryHero}
+        expertise={industrialLaundryExpertise}
+      />
+      <SolutionSpotlightSection idPrefix={ID_PREFIX} content={industrialLaundrySpotlight} />
+      <SolutionCapacitySection idPrefix={ID_PREFIX} content={industrialLaundryWashing} />
+      <SolutionQualitySection idPrefix={ID_PREFIX} content={industrialLaundryQuality} />
+      <SolutionCtaSection idPrefix={ID_PREFIX} content={industrialLaundryCta} />
     </div>
   )
 }

@@ -5,18 +5,23 @@ import {
   DesignExperienceSection,
   DesignFacilitiesSection,
   DesignFactoryAssuranceSection,
-  DesignHeroSection,
   DesignPresenceSection,
   DesignServicesSection,
   DesignShowroomSection,
   DesignSolutionsBannerSection,
-  DesignTeamSection,
 } from '../components/design-product-development'
 import { IndustryImageSection } from '../components/industry'
-import { designProductDevelopmentConcept } from '../data/design-product-development/content'
+import { SolutionIntroSections } from '../components/solutions'
+import {
+  designProductDevelopmentConcept,
+  designProductDevelopmentExpertise,
+  designProductDevelopmentHero,
+} from '../data/design-product-development/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+
+const ID_PREFIX = 'dpd'
 
 export function DesignProductDevelopmentContent() {
   const ref = useRef<HTMLDivElement>(null)
@@ -26,9 +31,12 @@ export function DesignProductDevelopmentContent() {
   useWebflowInit(ref)
 
   return (
-    <div ref={ref} className="design-product-development-page">
-      <DesignHeroSection />
-      <DesignTeamSection />
+    <div ref={ref} className="solution-page design-product-development-page">
+      <SolutionIntroSections
+        idPrefix={ID_PREFIX}
+        hero={designProductDevelopmentHero}
+        expertise={designProductDevelopmentExpertise}
+      />
       <DesignServicesSection />
       <DesignFactoryAssuranceSection />
       <DesignSolutionsBannerSection />

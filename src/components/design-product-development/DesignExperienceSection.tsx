@@ -7,10 +7,9 @@ export function DesignExperienceSection() {
 
   return (
     <section className="dpd-experience-section">
-      <div className="dpd-experience-glow" aria-hidden="true" />
       <div className="dpd-experience-container">
         <FadeIn id="dpd-experience-header" className="dpd-experience-header">
-          <PreSectionTitle title={badge} variant="bg-dark" />
+          <PreSectionTitle title={badge} />
           <h2 className="dpd-experience-title">
             {titleBefore}
             <span className="dpd-experience-title-accent">{titleAccent}</span>

@@ -12,7 +12,7 @@ export function ManufacturingHowItWorksSection() {
           <div className="service-category-inner">
             <div className="w-layout-grid grid-category-title mfg-how-it-works-header">
               <FadeIn id="mfg-how-it-works-badge" className="title-grid-left">
-                <PreSectionTitle title={badge} variant="bg-dark" />
+                <PreSectionTitle title={badge} />
               </FadeIn>
               <div className="mfg-how-it-works-spacer" aria-hidden="true" />
               <FadeIn id="mfg-how-it-works-title" className="title-grid-right">

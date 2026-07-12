@@ -9,7 +9,6 @@ import {
   AboutLeadershipSection,
   AboutTopExecutivesSection,
   AboutOverviewSection,
-  AboutRoadmapSection,
   AboutStrengthSection,
   AboutVideoSection,
 } from '../components/about'
@@ -35,7 +34,7 @@ export function AboutContent() {
       <AboutChairmanSection />
       <AboutLeadershipSection />
       <AboutTopExecutivesSection />
-      <AboutRoadmapSection />
+      {/* <AboutRoadmapSection /> */}
       <AboutContactSection />
       {/* <AboutClientsSection /> */}
     </div>

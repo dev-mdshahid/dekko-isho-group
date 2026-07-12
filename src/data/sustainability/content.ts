@@ -1,3 +1,5 @@
+export { certificationLogos } from '../certifications/content'
+
 export const sustainabilityHero = {
   titleParts: [
     { text: 'People.', tone: 'primary' as const },
@@ -809,38 +811,33 @@ export const pillar03 = {
   traceabilityLogos: [
     {
       id: 'textile-genesis',
-      src: '/images/sustainability/pillar-3/logos/textile-genesis.png',
+      src: '/images/sustainability/pillar-3/traceability-platforms/textile-genesis.png',
       alt: 'TextileGenesis, a LECTRA company',
     },
     {
-      id: 'better-cotton',
-      src: '/images/sustainability/pillar-3/logos/better-cotton.png',
-      alt: 'Better Cotton',
+      id: 'bci',
+      src: '/images/sustainability/pillar-3/traceability-platforms/bci.png',
+      alt: 'Better Cotton Initiative',
     },
     {
       id: 'retraced',
-      src: '/images/sustainability/pillar-3/logos/retraced.png',
+      src: '/images/sustainability/pillar-3/traceability-platforms/retraced.png',
       alt: 'retraced',
     },
     {
       id: 'trustrace',
-      src: '/images/sustainability/pillar-3/logos/trustrace.png',
+      src: '/images/sustainability/pillar-3/traceability-platforms/trustrace.png',
       alt: 'trustrace',
     },
     {
-      id: 'reverse-resources',
-      src: '/images/sustainability/pillar-3/logos/reverse-resources.png',
-      alt: 'Reverse Resources',
+      id: 'chain-of-custody',
+      src: '/images/sustainability/pillar-3/traceability-platforms/chain-of-custody.png',
+      alt: 'Chain of Custody',
     },
     {
-      id: 'oeko-tex',
-      src: '/images/sustainability/pillar-3/logos/oeko-tex.png',
-      alt: 'OEKO-TEX STeP',
-    },
-    {
-      id: 'fsc',
-      src: '/images/sustainability/pillar-3/logos/fsc.png',
-      alt: 'FSC',
+      id: 'extranet',
+      src: '/images/sustainability/pillar-3/traceability-platforms/extranet.png',
+      alt: 'Extranet',
     },
   ] satisfies SustainabilityLogo[],
   standardsTitle: 'Certified to global standards',
@@ -967,11 +964,7 @@ export const pillar05 = {
   ctaHref: '/contact',
 }
 
-export const certifications = {
-  title: 'Certifications',
-  description:
-    'Our certifications demonstrate our commitment to sustainable practices, ensuring quality and responsibility across all operations.',
-} as const
+export { certifications, externalAffiliations } from '../certifications/content'
 
 export const sustainabilityCta = {
   eyebrow: "Let's Connect",

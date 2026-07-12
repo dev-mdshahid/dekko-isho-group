@@ -16,6 +16,14 @@ export const solutions: Solution[] = [
     imageAlt: 'Manufacturing facility',
   },
   {
+    slug: 'embroidery',
+    title: 'Embroidery Unit',
+    description:
+      'Precision embroidery and applied decoration, kept in-house with high-capacity Barudan and Maya machines.',
+    image: '/images/solutions/embroidery-unit.jpg',
+    imageAlt: 'Industrial embroidery machines',
+  },
+  {
     slug: 'industrial-laundry',
     title: 'Industrial Laundry',
     description:

@@ -212,11 +212,44 @@
   width: 100%;
   min-height: auto;
   overflow: hidden;
-  background-color: #000;
-  background-image: url('/images/backgrounds/sustainability-hero-bg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--color--dark);
+}
+
+.sustain-hero-image-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sustain-hero-image-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.sustain-hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color--secondary-mint) 50%, transparent) 0%,
+    var(--color--secondary-mint) 100%
+  );
+}
+
+.sustain-hero-image-dark-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 60%) 0%,
+    rgb(0 0 0 / 80%) 100%
+  );
 }
 
 .sustain-hero-image-content {
@@ -235,7 +268,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1320px;
+  max-width: 1520px;
   margin-inline: auto;
   padding-bottom: 100px;
 }
@@ -421,26 +454,55 @@
   padding-right: 0;
 }
 
+.sustain-sdg-swap {
+  position: relative;
+}
+
 .sustain-sdg-logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 18px;
-  min-height: 64px;
+  gap: 2px;
   align-items: flex-start;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.4s;
 }
 
 .sustain-sdg-logos img {
   display: block;
-  width: 58px;
-  height: 58px;
+  width: 120px;
+  height: 120px;
   border-radius: 6px;
   object-fit: cover;
-  transition: transform 0.25s ease;
 }
 
-.sustain-sdg-logos img:hover {
-  transform: scale(1.08);
+.sustain-sdg-goals-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.94) translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.4s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sustain-sdg-swap--stable .sustain-sdg-logos,
+  .sustain-sdg-swap--stable .sustain-sdg-goals-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 .sustain-sdg-group ul {
@@ -453,7 +515,7 @@
 }
 
 .sustain-sdg-group ul li {
-  color: var(--color--neutral-cadet-gray);
+  color: var(--color--white);
   font-family: var(--_typography---font-family--body);
   font-size: 1rem;
   line-height: 1.5;
@@ -472,9 +534,90 @@
   background-color: var(--color--secondary-mint);
 }
 
-.sustain-sdg-group ul li b {
-  color: var(--color--white);
-  font-weight: 600;
+@media (hover: none), (pointer: coarse) {
+  .sustain-sdg-logos {
+    display: none;
+  }
+
+  .sustain-sdg-goals-panel {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sustain-sdg-swap--stable .sustain-sdg-logos {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) .sustain-sdg-logos {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9) translateY(-10px);
+    pointer-events: none;
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) .sustain-sdg-goals-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+
+  .sustain-sdg-group ul li {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li:nth-child(1) {
+    transition-delay: 0.08s;
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li:nth-child(2) {
+    transition-delay: 0.12s;
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li:nth-child(3) {
+    transition-delay: 0.16s;
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li:nth-child(5) {
+    transition-delay: 0.24s;
+  }
+
+  .sustain-sdg-group:is(:hover, :focus-within) ul li:nth-child(6) {
+    transition-delay: 0.28s;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .sustain-sdg-logos,
+  .sustain-sdg-goals-panel {
+    transition: opacity 0.15s ease, visibility 0.15s;
+    transform: none;
+  }
+
+  .sustain-sdg-group ul li {
+    transition: opacity 0.15s ease;
+    transform: none;
+  }
 }
 
 @media screen and (max-width: 1080px) {
@@ -647,7 +790,7 @@
 .sustain-pillar04-container,
 .sustain-pillar05-container,
 .sustain-certifications-container {
-  max-width: 1500px;
+  max-width: 1520px;
   margin-inline: auto;
   padding-inline: 2.5rem;
 }
@@ -1025,7 +1168,7 @@
 .sustain-focus-card-title {
   position: relative;
   z-index: 1;
-  margin: 0 0 20px;
+  margin: 20px 0 0;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25;
@@ -1574,15 +1717,18 @@
   line-height: 1.45;
 }
 
-.sustain-progress-card--energy .sustain-progress-stat--lead .sustain-progress-stat-value {
+.sustain-progress-card--energy .sustain-progress-stat-value,
+.sustain-progress-card--energy .sustain-progress-foot-num {
   color: var(--color--secondary-mint);
 }
 
-.sustain-progress-card--waste .sustain-progress-stat--lead .sustain-progress-stat-value {
+.sustain-progress-card--waste .sustain-progress-stat-value,
+.sustain-progress-card--waste .sustain-progress-foot-num {
   color: var(--color--secondary-amaranth);
 }
 
-.sustain-progress-card--water .sustain-progress-stat--lead .sustain-progress-stat-value {
+.sustain-progress-card--water .sustain-progress-stat-value,
+.sustain-progress-card--water .sustain-progress-foot-num {
   color: var(--color--primary);
 }
 
@@ -2054,8 +2200,8 @@
 }
 
 .sustain-pillar-section--governance .sustain-pillar-number {
-  color: var(--color--white);
-  opacity: 1;
+  color: var(--color--neutral-outer-space);
+  opacity: 0.4;
 }
 
 .sustain-pillar-section--governance .sustain-badge-square {
@@ -2338,12 +2484,28 @@
 
 /* ── Certifications section ── */
 .sustain-certifications-section {
+  position: relative;
+  overflow: hidden;
   background-color: var(--color--white);
   padding-top: 100px;
   padding-bottom: 100px;
 }
 
+.sustain-certifications-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/backgrounds/fabric-texture.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
 .sustain-certifications-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
 }
@@ -2372,6 +2534,67 @@
   line-height: 1.5;
   letter-spacing: var(--_typography---body--letter-spacing);
   max-width: none;
+}
+
+.sustain-certifications-section .awards-logo-image {
+  filter: none;
+}
+
+.sustain-certifications-section .awards-logo-item:hover .awards-logo-image,
+.sustain-certifications-section .awards-logo-item:focus-within .awards-logo-image {
+  filter: none;
+}
+
+.sustain-affiliations-header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.sustain-affiliations-title {
+  margin: 0 0 20px;
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 58px;
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1.2;
+  letter-spacing: var(--_typography---body--letter-spacing);
+}
+
+.sustain-affiliations-description {
+  margin: 0 0 64px;
+  color: var(--_color---body-text);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.5;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  max-width: none;
+}
+
+.sustain-affiliations-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 60px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sustain-affiliations-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.sustain-affiliations-image {
+  display: block;
+  width: 100%;
+  max-height: 72px;
+  object-fit: contain;
 }
 
 /* ── CTA section ── */
@@ -2615,6 +2838,26 @@
     line-height: 1.5;
   }
 
+  .sustain-affiliations-header {
+    margin-top: 5rem;
+  }
+
+  .sustain-affiliations-title {
+    font-size: clamp(2rem, 5vw, 3.625rem);
+    line-height: 1.2;
+  }
+
+  .sustain-affiliations-description {
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
   .sustain-cta-card {
     padding: 2.5rem 2rem;
   }
@@ -2700,21 +2943,6 @@
   .sustain-hero-image-section {
     min-height: auto;
     position: relative;
-  }
-
-  .sustain-hero-image-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      rgb(0 0 0 / 20%) 0%,
-      rgb(0 0 0 / 0%) 28%,
-      rgb(0 0 0 / 15%) 60%,
-      rgb(0 0 0 / 55%) 100%
-    );
   }
 
   .sustain-hero-image-content {
@@ -3100,6 +3328,29 @@
   .sustain-certifications-description {
     margin-bottom: 2.5rem;
     font-size: 0.9375rem;
+  }
+
+  .sustain-affiliations-header {
+    margin-top: 3.5rem;
+  }
+
+  .sustain-affiliations-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.25rem);
+    margin-bottom: 16px;
+  }
+
+  .sustain-affiliations-description {
+    margin-bottom: 2.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .sustain-affiliations-image {
+    max-height: 56px;
   }
 
   /* Shared pillar spacing */

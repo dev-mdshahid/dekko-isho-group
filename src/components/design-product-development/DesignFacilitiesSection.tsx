@@ -12,7 +12,7 @@ export function DesignFacilitiesSection() {
           <div className="service-category-inner">
             <div className="w-layout-grid grid-category-title dpd-facilities-header">
               <FadeIn id="dpd-facilities-badge" className="title-grid-left">
-                <PreSectionTitle title={badge} variant="bg-dark" />
+                <PreSectionTitle title={badge} />
               </FadeIn>
               <div className="dpd-facilities-spacer" aria-hidden="true" />
               <FadeIn id="dpd-facilities-title" className="title-grid-right">

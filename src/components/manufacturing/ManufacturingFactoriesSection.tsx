@@ -14,8 +14,8 @@ export function ManufacturingFactoriesSection() {
       <div className="container">
         <div className="service-category-main section-spacing">
           <FadeIn id="mfg-factories-header" className="section-title-center one">
-            <PreSectionTitle title={badge} variant="bg-dark" />
-            <h2 className="section-title title-center text-white">{title}</h2>
+            <PreSectionTitle title={badge} />
+            <h2 className="section-title title-center mfg-factories-title">{title}</h2>
           </FadeIn>
 
           <div className="inner-service-list mfg-factories-grid">
@@ -48,7 +48,7 @@ export function ManufacturingFactoriesSection() {
           </div>
         </div>
       </div>
-      <SectionLines border="dark" />
+      <SectionLines border="grey" />
       <div className="bg-gradient" aria-hidden="true" />
     </section>
   )
