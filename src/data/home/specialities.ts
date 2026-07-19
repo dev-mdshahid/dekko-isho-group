@@ -29,11 +29,11 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     title: 'Versatility at Scale',
     icon: '/images/specialities/versatility-icon.png',
     image: '/images/specialities/versatility.png',
-    featureLabel: 'Production',
+    featureLabel: 'Manufacturing Capacity',
     features: [
-      "Men's and Women's woven tops and bottoms",
-      '3.3 million pieces/ Year',
-      '20,000+ Skilled People',
+      'High-quality woven and denim garments, including bottoms, tops, outerwear, and accessories for men, women, and children.',
+      '3.5 million pieces/month',
+      '18,000+ Skilled People',
     ],
     to: solutionPath('manufacturing'),
   },
@@ -46,8 +46,8 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     title: 'Visibility Across the Value Chain',
     icon: '/images/specialities/visibility-icon.png',
     image: '/images/specialities/visibility.png',
-    featureLabel: 'Working Principle',
-    features: ['Responsible Sourcing', 'End-to-End Traceability', 'Compliance & Impact Monitoring'],
+    featureLabel: 'Operational Transparency',
+    features: ['Responsible Sourcing', 'End-to-End Traceability', 'Compliance Monitoring'],
     to: solutionPath('compliance-sustainability'),
   },
   {
@@ -59,8 +59,12 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     title: 'Strategically Connected',
     icon: '/images/specialities/strategically-icon.png',
     image: '/images/specialities/strategical.png',
-    featureLabel: 'Environmental Excellence',
-    features: ['Prime Manufacturing Locations (Map/Pin)', 'Geographic Advantage (Facts)'],
+    featureLabel: 'Strategic Presence',
+    features: [
+      'Prime Manufacturing Locations in the Dhaka & Gazipur Region',
+      'Liaison Offices and Display Centers in the USA and Europe',
+      'Efficient Logistics and Export Network',
+    ],
     to: '/contact',
   },
   {
@@ -74,13 +78,13 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     image: '/images/specialities/responsibility.png',
     features: [
       {
-        group: 'Environmental Excellence',
+        group: 'Sustainability Impact (As of 2025)',
         items: [
-          'Solar Capacity - 1761 MWp',
-          '100 m³/hr Effluent Treatment Capacity',
-          '25.5 m³/hr Wastewater Reuse Capacity',
-          '8% Improvement in Treatment Efficiency (2025)',
-          '20,000+ Skilled People',
+          '80% Scope 2 GHG Reduction',
+          '81% Sustainable Materials Used',
+          '40% Textile Waste Recycled',
+          '19,374 m³ Water Reused',
+          '613 MWh Solar Energy Generated',
         ],
       },
       // {

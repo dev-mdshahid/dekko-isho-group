@@ -12831,9 +12831,9 @@ a.about-info-box:hover {
 }
 
 .page-contact-input {
-  border: 1px solid #2a2a2a;
+  border: 1px solid #4a4a4a;
   border-radius: var(--border-radius--form-input);
-  background-color: #242424;
+  background-color: #2e2e2e;
   color: var(--color--white);
   font-family: var(--_typography---font-family--body);
   font-size: var(--_typography---body--body-sm);
@@ -12843,11 +12843,12 @@ a.about-info-box:hover {
   min-height: 3.125rem;
   margin-bottom: 0;
   padding: .875rem 1rem;
-  transition: border-color .3s cubic-bezier(.455, .03, .515, .955);
+  transition: border-color .3s cubic-bezier(.455, .03, .515, .955), background-color .3s cubic-bezier(.455, .03, .515, .955);
 }
 
 .page-contact-input:focus {
   border-color: var(--color--primary-2);
+  background-color: #333333;
   outline: 0;
 }
 

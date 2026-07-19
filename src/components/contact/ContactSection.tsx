@@ -56,8 +56,8 @@ export function ContactSection() {
                   Let&apos;s <span className="page-contact-accent">Connect</span>
                 </h1>
                 <p className="page-contact-description">
-                  Reach us directly, whether you want to call, visit our corporate headquarters, email an inquiry, or
-                  connect with Dekko ISHO Group on social media.
+                  Whether you have a business inquiry, partnership opportunity, or general question, our team is here to
+                  help. Reach out through your preferred channel.
                 </p>
               </FadeIn>
 
@@ -128,10 +128,9 @@ export function ContactSection() {
             <div className="page-contact-right">
               <FadeIn id="857de6dc-794f-f6cb-7a70-22bab7c6291d" delay={200} className="page-contact-form-card w-form">
                 <div className="page-contact-form-intro">
-                  <h2 className="page-contact-form-title">Start A Conversation</h2>
+                  <h2 className="page-contact-form-title">Send us a Message</h2>
                   <p className="page-contact-form-description">
-                    Get in touch with us with your queries. Our dedicated team will get back to you with answers as soon
-                    as possible.
+                    Complete the form below, and the appropriate team will get back to you as soon as possible.
                   </p>
                 </div>
 

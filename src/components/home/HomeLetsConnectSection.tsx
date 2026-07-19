@@ -71,8 +71,8 @@ export function HomeLetsConnectSection() {
                     Let&apos;s <span className="page-contact-accent">Connect</span>
                   </h2>
                   <p className="page-contact-description">
-                    Reach us directly, whether you want to call, visit our corporate headquarters, email an inquiry, or
-                    connect with Dekko ISHO Group on social media.
+                    Whether you have a business inquiry, partnership opportunity, or general question, our team is here to
+                    help. Reach out through your preferred channel.
                   </p>
                 </div>
 
@@ -126,11 +126,10 @@ export function HomeLetsConnectSection() {
               <div className="page-contact-form-card w-form" data-home-animate="contact-form-card">
                 <div className="page-contact-form-intro">
                   <h3 className="page-contact-form-title" data-home-animate="contact-field">
-                    Start A Conversation
+                    Send us a Message
                   </h3>
                   <p className="page-contact-form-description" data-home-animate="contact-field">
-                    Get in touch with us with your queries. Our dedicated team will get back to you with answers as soon
-                    as possible.
+                    Complete the form below, and the appropriate team will get back to you as soon as possible.
                   </p>
                 </div>
 

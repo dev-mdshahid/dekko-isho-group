@@ -20,7 +20,7 @@ export function HeroSection() {
                 aria-hidden="true"
               />
               <p className="hero-tagline-text" data-home-animate="hero-tagline-text">
-                Born in Bangladesh. Trusted Worldwide
+                Born in Bangladesh. Trusted Worldwide.
               </p>
               <span
                 className="hero-tagline-line"
