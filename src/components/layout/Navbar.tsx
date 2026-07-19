@@ -14,6 +14,7 @@ import {
 import { useClickOutside } from '../../hooks/useClickOutside'
 import { MOBILE_NAV_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 import { useNavMenu } from '../../hooks/useNavMenu'
+import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { ButtonArrow } from '../ui/ButtonArrow'
 
 type NavDropdownProps = {
@@ -527,10 +528,31 @@ export function Navbar() {
   const { pathname } = useLocation()
   const isMobileNav = useMediaQuery(MOBILE_NAV_QUERY)
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
+  const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setOpenDropdownId(null)
   }, [pathname])
+
+  // Close desktop dropdowns on scroll so panels don't float over moving content.
+  useEffect(() => {
+    if (openDropdownId === null) {
+      return undefined
+    }
+
+    function handleScroll() {
+      setOpenDropdownId(null)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [openDropdownId])
+
+  // Solidify the bar while a desktop dropdown is open so content doesn't show through.
+  useStickyNavbar(navRef, {
+    forceSolid: openDropdownId !== null,
+    resetKey: pathname,
+  })
 
   function closeDropdown() {
     setOpenDropdownId(null)
@@ -542,6 +564,7 @@ export function Navbar() {
 
   return (
     <div
+      ref={navRef}
       data-wf--navbar--variant="base"
       data-animation="default"
       data-collapse="medium"
@@ -564,7 +587,7 @@ export function Navbar() {
               loading="eager"
               alt="Dekko Isho Group"
               className="logo"
-              style={{ width: 'auto', height: '50px', objectFit: 'contain' }}
+              style={{ width: 'auto', height: isMobileNav ? '50px' : '64px', objectFit: 'contain' }}
             />
           </Link>
           {!isMobileNav && (
