@@ -1,6 +1,3 @@
-export const aboutPurposeIntro =
-  'Across industries and generations, we continue to create meaningful impact through purpose-driven actions and collective effort, transforming growth into positive change for people, communities, and the future.'
-
 export const aboutPurposeMission =
   'Uphold and advance global standards in our products, services, and operations by fostering a culture of innovation, continuous learning and positivity, while committing to sustainability.'
 
