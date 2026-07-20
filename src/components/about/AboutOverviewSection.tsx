@@ -65,7 +65,7 @@ export function AboutOverviewSection() {
                             <div key={stat.label} role="listitem" className="service-three-item">
                               <div className="service-link about-capability-link">
                                 <div className="service-name-three">
-                                  <span className="about-capability-value">{stat.value}</span>{' '}
+                                  <span className="about-capability-value">{stat.value}</span>
                                   <span className="about-capability-label">{stat.label}</span>
                                 </div>
                                 <CapabilityArrow />

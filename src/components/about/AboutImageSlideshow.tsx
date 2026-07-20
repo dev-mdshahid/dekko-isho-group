@@ -1,73 +1,103 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { gsap } from 'gsap'
 
 const SLIDE_INTERVAL_MS = 3000
-const TRANSITION_DURATION = 0.85
-const GLASS_INTRO_DURATION = 0.4
-const SLICE_COUNT = 14
-const STAGGER_PER_SLICE = 0.04
+const TRANSITION_DURATION = 0.65
 
 const ABOUT_SLIDES = [
   {
-    src: '/images/about/about-1.png',
-    alt: 'Dekko Isho team collaborating in a modern corporate office',
+    src: '/images/about/about-slider/about-slide-01.png',
+    alt: 'Colleagues walking through a modern open-plan office at Dekko Isho Group',
   },
   {
-    src: '/images/about/about-2.png',
-    alt: 'Garment manufacturing team working at industrial sewing stations',
-  },
-  {
-    src: '/images/about/about-3.png',
-    alt: 'Dekko Isho production facility showcasing operational excellence',
-  },
-  {
-    src: '/images/about/about-4.png',
-    alt: 'Employees engaged in quality-focused manufacturing work',
-  },
-  {
-    src: '/images/about/about-5.png',
-    alt: 'Dekko Isho workspace reflecting decades of industry leadership',
-  },
-  {
-    src: '/images/about/about-6.png',
+    src: '/images/about/about-slider/about-slide-02.png',
     alt: 'DIVC team presenting startup portfolio in a modern venture capital office',
   },
   {
-    src: '/images/about/about-7.png',
+    src: '/images/about/about-slider/about-slide-03.png',
     alt: 'Ecovia sustainable packaging products displayed on a wooden surface',
   },
+  {
+    src: '/images/about/about-slider/about-slide-04.png',
+    alt: 'Garment manufacturing team working at industrial sewing stations',
+  },
+  {
+    src: '/images/about/about-slider/about-slide-05.png',
+    alt: 'Team members reviewing apparel samples in a fashion showroom',
+  },
+  {
+    src: '/images/about/about-slider/about-slide-06.png',
+    alt: 'Craftsperson assembling furniture frames in a woodworking workshop',
+  },
 ] as const
+
+type SlideDirection = 'next' | 'previous'
 
 type TransitionState = {
   from: number
   to: number
+  direction: SlideDirection
+}
+
+function SlideshowArrowIcon({ direction }: { direction: 'previous' | 'next' }) {
+  return (
+    <svg
+      className="about-image-slideshow__arrow-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d={direction === 'previous' ? 'M14.5 5.5 7.5 12l7 6.5' : 'M9.5 5.5 16.5 12l-7 6.5'}
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
 }
 
 export function AboutImageSlideshow() {
   const mediaRef = useRef<HTMLImageElement>(null)
-  const shutterRef = useRef<HTMLDivElement>(null)
+  const outgoingRef = useRef<HTMLImageElement>(null)
+  const incomingRef = useRef<HTMLImageElement>(null)
   const activeIndexRef = useRef(0)
   const isTransitioningRef = useRef(false)
   const intervalRef = useRef<number | null>(null)
+  const isHoveredRef = useRef(false)
+  const isFocusWithinRef = useRef(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [transitionState, setTransitionState] = useState<TransitionState | null>(null)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
+  const [isInteractionPaused, setIsInteractionPaused] = useState(false)
+  const [autoplayEpoch, setAutoplayEpoch] = useState(0)
 
+  const slideCount = ABOUT_SLIDES.length
   const visibleIndex = transitionState?.to ?? activeIndex
   const visibleSlide = ABOUT_SLIDES[visibleIndex]
+
+  const clearAutoplay = useCallback(() => {
+    if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current)
+      intervalRef.current = null
+    }
+  }, [])
+
+  const syncInteractionPause = useCallback(() => {
+    setIsInteractionPaused(isHoveredRef.current || isFocusWithinRef.current)
+  }, [])
 
   const completeTransition = useCallback((to: number) => {
     activeIndexRef.current = to
     setActiveIndex(to)
     setTransitionState(null)
     isTransitioningRef.current = false
-    gsap.set(mediaRef.current, { filter: 'blur(0px) brightness(1) saturate(1)' })
   }, [])
 
   const transitionTo = useCallback(
-    (nextIndex: number) => {
-      if (isTransitioningRef.current || nextIndex === activeIndexRef.current) return
+    (nextIndex: number, direction: SlideDirection) => {
+      if (isTransitioningRef.current || nextIndex === activeIndexRef.current) return false
 
       const currentIndex = activeIndexRef.current
       isTransitioningRef.current = true
@@ -94,137 +124,89 @@ export function AboutImageSlideshow() {
             )
           },
         })
-        return
+        return true
       }
 
-      setTransitionState({ from: currentIndex, to: nextIndex })
+      setTransitionState({ from: currentIndex, to: nextIndex, direction })
+      return true
     },
     [prefersReducedMotion],
+  )
+
+  const resetAutoplayTimer = useCallback(() => {
+    setAutoplayEpoch((epoch) => epoch + 1)
+  }, [])
+
+  const goToPrevious = useCallback(() => {
+    const previousIndex = (activeIndexRef.current - 1 + slideCount) % slideCount
+    const didStart = transitionTo(previousIndex, 'previous')
+    if (didStart) resetAutoplayTimer()
+  }, [resetAutoplayTimer, slideCount, transitionTo])
+
+  const goToNext = useCallback(
+    (options?: { fromAutoplay?: boolean }) => {
+      const nextIndex = (activeIndexRef.current + 1) % slideCount
+      const didStart = transitionTo(nextIndex, 'next')
+      if (didStart && !options?.fromAutoplay) resetAutoplayTimer()
+    },
+    [resetAutoplayTimer, slideCount, transitionTo],
+  )
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        goToPrevious()
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        goToNext()
+      }
+    },
+    [goToNext, goToPrevious],
   )
 
   useLayoutEffect(() => {
     if (!transitionState) return
 
-    const shutter = shutterRef.current
-    const media = mediaRef.current
-    const slices = shutter?.querySelectorAll<HTMLElement>('.about-image-shutter-slice')
-    if (!slices?.length || !media) return
+    const outgoing = outgoingRef.current
+    const incoming = incomingRef.current
+    if (!outgoing || !incoming) return
 
-    const staggerSpan = STAGGER_PER_SLICE * (SLICE_COUNT - 1)
-    const revealDuration = TRANSITION_DURATION + staggerSpan
+    const isNext = transitionState.direction === 'next'
+    const outgoingExitX = isNext ? '-100%' : '100%'
+    const incomingEnterX = isNext ? '100%' : '-100%'
 
-    const sliceMedia = Array.from(slices).map((slice) =>
-      slice.querySelector<HTMLElement>('.about-image-shutter-slice__media'),
-    )
-    const sliceGlass = Array.from(slices).map((slice) =>
-      slice.querySelector<HTMLElement>('.about-image-shutter-slice__glass'),
-    )
-
-    gsap.set(media, {
-      filter: 'blur(0px) brightness(1) saturate(1)',
-    })
-
-    sliceMedia.forEach((element) => {
-      if (!element) return
-      gsap.set(element, { filter: 'blur(0px) brightness(1) saturate(1)' })
-    })
-
-    sliceGlass.forEach((element) => {
-      if (!element) return
-      gsap.set(element, { opacity: 0 })
-    })
-
-    gsap.set(slices, { scaleY: 1, transformOrigin: '50% 0%' })
+    gsap.set(outgoing, { x: 0 })
+    gsap.set(incoming, { x: incomingEnterX })
 
     const timeline = gsap.timeline({
       onComplete: () => completeTransition(transitionState.to),
     })
 
     timeline.to(
-      sliceGlass.filter(Boolean),
+      outgoing,
       {
-        opacity: 0.55,
-        duration: GLASS_INTRO_DURATION,
-        ease: 'power2.out',
-        stagger: {
-          each: STAGGER_PER_SLICE * 0.75,
-          from: 'start',
-        },
-      },
-      0,
-    )
-
-    timeline.to(
-      media,
-      {
-        filter: 'blur(10px) brightness(1.08) saturate(1.15)',
-        duration: GLASS_INTRO_DURATION,
+        x: outgoingExitX,
+        duration: TRANSITION_DURATION,
         ease: 'power2.inOut',
       },
       0,
     )
 
     timeline.to(
-      media,
+      incoming,
       {
-        filter: 'blur(0px) brightness(1) saturate(1)',
-        duration: revealDuration,
-        ease: 'power2.out',
-      },
-      GLASS_INTRO_DURATION,
-    )
-
-    timeline.to(
-      slices,
-      {
-        scaleY: 0,
+        x: 0,
         duration: TRANSITION_DURATION,
-        ease: 'power3.inOut',
-        stagger: {
-          each: STAGGER_PER_SLICE,
-          from: 'start',
-        },
+        ease: 'power2.inOut',
       },
-      GLASS_INTRO_DURATION,
-    )
-
-    timeline.to(
-      sliceMedia.filter(Boolean),
-      {
-        filter: 'blur(16px) brightness(1.25) saturate(0.9)',
-        duration: TRANSITION_DURATION * 0.65,
-        ease: 'power2.in',
-        stagger: {
-          each: STAGGER_PER_SLICE,
-          from: 'start',
-        },
-      },
-      GLASS_INTRO_DURATION,
-    )
-
-    timeline.to(
-      sliceGlass.filter(Boolean),
-      {
-        opacity: 0.95,
-        duration: TRANSITION_DURATION * 0.45,
-        ease: 'power2.out',
-        stagger: {
-          each: STAGGER_PER_SLICE,
-          from: 'start',
-        },
-      },
-      GLASS_INTRO_DURATION,
+      0,
     )
 
     return () => {
       timeline.kill()
     }
   }, [completeTransition, transitionState])
-
-  const advanceSlide = useCallback(() => {
-    const nextIndex = (activeIndexRef.current + 1) % ABOUT_SLIDES.length
-    transitionTo(nextIndex)
-  }, [transitionTo])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -246,7 +228,7 @@ export function AboutImageSlideshow() {
     const media = mediaRef.current
     if (!media) return
 
-    gsap.set(media, { opacity: 1, filter: 'blur(0px)' })
+    gsap.set(media, { opacity: 1, x: 0 })
 
     return () => {
       gsap.killTweensOf(media)
@@ -254,23 +236,23 @@ export function AboutImageSlideshow() {
   }, [])
 
   useEffect(() => {
-    if (isPaused) {
-      if (intervalRef.current !== null) {
-        window.clearInterval(intervalRef.current)
-        intervalRef.current = null
-      }
-      return
-    }
+    clearAutoplay()
 
-    intervalRef.current = window.setInterval(advanceSlide, SLIDE_INTERVAL_MS)
+    if (prefersReducedMotion || isInteractionPaused) return
 
-    return () => {
-      if (intervalRef.current !== null) {
-        window.clearInterval(intervalRef.current)
-        intervalRef.current = null
-      }
-    }
-  }, [advanceSlide, isPaused])
+    intervalRef.current = window.setInterval(() => {
+      if (isTransitioningRef.current) return
+      goToNext({ fromAutoplay: true })
+    }, SLIDE_INTERVAL_MS)
+
+    return clearAutoplay
+  }, [
+    autoplayEpoch,
+    clearAutoplay,
+    goToNext,
+    isInteractionPaused,
+    prefersReducedMotion,
+  ])
 
   return (
     <div
@@ -279,49 +261,76 @@ export function AboutImageSlideshow() {
       aria-roledescription="carousel"
       aria-label="About Dekko Isho Group"
       aria-live="polite"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onMouseEnter={() => {
+        isHoveredRef.current = true
+        syncInteractionPause()
+      }}
+      onMouseLeave={() => {
+        isHoveredRef.current = false
+        syncInteractionPause()
+      }}
+      onFocus={() => {
+        isFocusWithinRef.current = true
+        syncInteractionPause()
+      }}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setIsPaused(false)
-        }
+        if (event.currentTarget.contains(event.relatedTarget as Node | null)) return
+        isFocusWithinRef.current = false
+        syncInteractionPause()
       }}
     >
-      <img
-        ref={mediaRef}
-        src={visibleSlide.src}
-        loading={visibleIndex === 0 ? 'eager' : 'lazy'}
-        decoding="async"
-        alt={visibleSlide.alt}
-        className="about-image about-image-slide__media"
-        draggable={false}
-      />
-
-      {transitionState && (
-        <div ref={shutterRef} className="about-image-shutter" aria-hidden="true">
-          {Array.from({ length: SLICE_COUNT }, (_, sliceIndex) => (
-            <div
-              key={sliceIndex}
-              className="about-image-shutter-slice"
-              style={
-                {
-                  '--slice-index': sliceIndex,
-                  '--slice-count': SLICE_COUNT,
-                } as CSSProperties
-              }
-            >
-              <img
-                src={ABOUT_SLIDES[transitionState.from].src}
-                alt=""
-                className="about-image about-image-shutter-slice__media"
-                draggable={false}
-              />
-              <div className="about-image-shutter-slice__glass" />
-            </div>
-          ))}
-        </div>
+      {transitionState ? (
+        <>
+          <img
+            ref={incomingRef}
+            src={ABOUT_SLIDES[transitionState.to].src}
+            loading="eager"
+            decoding="async"
+            alt={ABOUT_SLIDES[transitionState.to].alt}
+            className="about-image about-image-slide__media about-image-slide__media--layer"
+            draggable={false}
+          />
+          <img
+            ref={outgoingRef}
+            src={ABOUT_SLIDES[transitionState.from].src}
+            alt=""
+            aria-hidden="true"
+            className="about-image about-image-slide__media about-image-slide__media--layer"
+            draggable={false}
+          />
+        </>
+      ) : (
+        <img
+          ref={mediaRef}
+          src={visibleSlide.src}
+          loading={visibleIndex === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          alt={visibleSlide.alt}
+          className="about-image about-image-slide__media"
+          draggable={false}
+        />
       )}
+
+      <div className="about-image-slideshow__nav">
+        <button
+          type="button"
+          className="about-image-slideshow__arrow about-image-slideshow__arrow--previous"
+          onClick={goToPrevious}
+          aria-label="Previous slide"
+        >
+          <SlideshowArrowIcon direction="previous" />
+        </button>
+        <button
+          type="button"
+          className="about-image-slideshow__arrow about-image-slideshow__arrow--next"
+          onClick={() => goToNext()}
+          aria-label="Next slide"
+        >
+          <SlideshowArrowIcon direction="next" />
+        </button>
+      </div>
     </div>
   )
 }
