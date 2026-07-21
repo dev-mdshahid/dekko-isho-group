@@ -3,16 +3,26 @@ export type JourneyEntry = {
   description?: string
 }
 
+export type JourneyEra = 1 | 2 | 3
+
 export type JourneyMilestone = {
   id: string
   year: string
+  era: JourneyEra
   entries: JourneyEntry[]
+}
+
+export const journeyEraColors: Record<JourneyEra, string> = {
+  1: '#2595d5',
+  2: '#ef2d67',
+  3: '#3fbf7f',
 }
 
 export const journeyMilestones: JourneyMilestone[] = [
   {
     id: 'about-journey-1953',
     year: '1953',
+    era: 1,
     entries: [
       {
         title: 'Roxy Paints Ltd.',
@@ -24,27 +34,31 @@ export const journeyMilestones: JourneyMilestone[] = [
   {
     id: 'about-journey-1983',
     year: '1983',
+    era: 1,
     entries: [
       {
         title: 'Dekko Garments Ltd. (Old Factory)',
         description:
-          'We enter apparel with three production lines. The unit will eventually expand to over 108 lines.',
+          'Our apparel manufacturing journey started with just 3 production lines — eventually expanding to over 130+.',
       },
     ],
   },
   {
     id: 'about-journey-1992',
     year: '1992',
+    era: 1,
     entries: [
       {
-        title: 'Dekko Fashions Ltd. (Formerly Dekko Apparels Ltd.)',
-        description: '100% export-oriented woven garments concern, opened in January 1992.',
+        title: 'Dekko Fashions Ltd.',
+        description:
+          'Formerly Dekko Apparels Ltd. — a 100% export-oriented woven garments concern.',
       },
     ],
   },
   {
     id: 'about-journey-2006',
     year: '2006',
+    era: 1,
     entries: [
       {
         title: 'Dekko Readywears Ltd.',
@@ -55,72 +69,127 @@ export const journeyMilestones: JourneyMilestone[] = [
   {
     id: 'about-journey-2013',
     year: '2013',
+    era: 2,
     entries: [
       {
         title: 'Globus Garments Ltd.',
-        description: '18 lines, 1,319 machines, over 300,000 garments produced per month.',
+        description: '19 production lines. 300,000 garments produced per month.',
       },
     ],
   },
   {
     id: 'about-journey-2015',
     year: '2015',
+    era: 2,
     entries: [
       {
         title: 'Agami Fashions',
         description:
-          'Agami Fashions Ltd., established in 2015, is also an export oriented woven garments factory, based in Chandra, Gazipur.',
+          'An export-oriented woven garments factory based in Chandra, Gazipur.',
       },
       {
-        title: 'Roxy Agami Washing Ltd.',
+        title: 'Agami Washing Ltd.',
         description:
-          'Agami Washing Ltd. was inaugurated on 2015, is partnered with all the top buyers of Dekko ISHO Group and provides clothes with top quality washing and processing.',
+          'Advanced washing facility supporting the group’s denim and woven production.',
       },
     ],
   },
   {
     id: 'about-journey-2017',
     year: '2017',
+    era: 2,
     entries: [
       {
-        title: 'Dekko Garments — Green Factory',
+        title: 'Dekko Garments Ltd.',
         description:
-          'A complete green setup in Mawna, Gazipur. The latest of our RMG factories, built sustainably from the ground up.',
+          'A LEED Gold-certified apparel manufacturing facility built on sustainable design and environmentally responsible practices.',
       },
     ],
   },
   {
     id: 'about-journey-2018',
     year: '2018',
+    era: 2,
     entries: [
-      { title: 'Globus Embroidery Ltd.' },
-      { title: 'Izakaya' },
-      { title: 'Klubhaus' },
+      {
+        title: 'Globus Embroidery',
+        description:
+          'A state-of-the-art embroidery facility delivering precision, quality and versatility.',
+      },
+      {
+        title: 'IZAKAYA',
+        description:
+          'Contemporary Japanese dining — authentic flavors with a modern culinary experience.',
+      },
+      {
+        title: 'KLUBHAUS',
+        description:
+          'A vibrant dining destination bringing elevated hospitality into the group’s portfolio.',
+      },
     ],
   },
   {
     id: 'about-journey-2019',
     year: '2019',
-    entries: [{ title: 'ISHO Ltd.' }],
+    era: 3,
+    entries: [
+      {
+        title: 'ISHO',
+        description:
+          'A furniture and lifestyle brand, redefining modern living through contemporary design and innovation.',
+      },
+    ],
   },
   {
     id: 'about-journey-2020',
     year: '2020',
-    entries: [{ title: 'ECOVIA' }],
+    era: 3,
+    entries: [
+      {
+        title: 'Ecovia',
+        description:
+          'A sustainability-driven business transforming textile waste into compostable packaging solutions.',
+      },
+    ],
   },
   {
     id: 'about-journey-2021',
     year: '2021',
-    entries: [{ title: 'Sprintex Enterprise' }, { title: 'Dekko ISHO Technologies Ltd.' }],
+    era: 3,
+    entries: [
+      {
+        title: 'Sprintex',
+        description:
+          'A digital textile printing business specializing in fabric printing solutions.',
+      },
+      {
+        title: 'Dekko ISHO Technologies Ltd. (DITECH)',
+        description:
+          'A strategic technology solutions partner delivering integrated digital infrastructure.',
+      },
+    ],
   },
   {
     id: 'about-journey-2022',
     year: '2022',
-    entries: [{ title: 'DIVC' }],
+    era: 3,
+    entries: [
+      {
+        title: 'Dekko ISHO Venture Capital',
+        description:
+          'A venture capital firm investing in and nurturing high-potential startups and emerging businesses.',
+      },
+    ],
   },
   {
     id: 'about-journey-2026',
     year: '2026',
-    entries: [{ title: 'Dekko Garments Ltd. Unit 2' }],
+    era: 3,
+    entries: [
+      {
+        title: 'Dekko Garments Limited (Unit 2)',
+        description: 'The next chapter of sustainable, large-scale apparel manufacturing.',
+      },
+    ],
   },
 ]
