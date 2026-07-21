@@ -11699,6 +11699,7 @@ a.about-info-box:hover {
   display: grid;
   width: 100%;
   position: relative;
+  padding-inline: 20px;
 }
 
 .service-section .service-card-divider {
@@ -11724,11 +11725,30 @@ a.about-info-box:hover {
   display: flex;
 }
 
+.service-section .service-list-wrapper.one .service-info-link {
+  background-color: var(--color--white);
+  background-image: linear-gradient(rgb(37 149 213 / 8%), rgb(37 149 213 / 8%));
+}
+
+.service-section .service-list-wrapper.two .service-info-link {
+  background-color: var(--color--white);
+  background-image: linear-gradient(rgb(243 33 93 / 8%), rgb(243 33 93 / 8%));
+}
+
+.service-section .service-list-wrapper.three .service-info-link {
+  background-color: var(--color--white);
+  background-image: linear-gradient(rgb(90 190 140 / 8%), rgb(90 190 140 / 8%));
+}
+
+.service-section .service-list-wrapper.four .service-info-link {
+  background-color: var(--color--white);
+  background-image: linear-gradient(rgb(80 170 223 / 8%), rgb(80 170 223 / 8%));
+}
+
 @media screen and (min-width: 992px) {
   .service-section .service-info-link {
     grid-template-columns: 1fr auto;
     border-top: 1px solid var(--color--gray-4);
-    background-color: var(--color--white);
   }
 
   .service-section .service-info-inner {
@@ -11738,7 +11758,7 @@ a.about-info-box:hover {
   .service-section .service-name-wrapper .service-card-action {
     position: absolute;
     top: 2.5rem;
-    right: 0;
+    right: 20px;
     z-index: 1;
   }
 
@@ -12016,7 +12036,7 @@ a.about-info-box:hover {
     flex-flow: column;
     align-items: stretch;
     gap: 0;
-    padding: 1.25rem 0;
+    padding: 1.25rem 20px;
     margin-bottom: 0;
     border: 0;
     border-radius: 0;
