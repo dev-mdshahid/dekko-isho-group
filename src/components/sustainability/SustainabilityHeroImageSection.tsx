@@ -67,12 +67,6 @@ export function SustainabilityHeroImageSection() {
                   </FadeIn>
                 </div>
 
-                <div className="sustain-hero-image-middle">
-                  <FadeIn id="sustain-hero-image-brand" delay={80} className="sustain-hero-image-brand">
-                    <div className="sustain-hero-image-company">{sustainabilityHeroImage.company}</div>
-                  </FadeIn>
-                </div>
-
                 <div ref={frameworkRef} className="sustain-impact-framework">
                   <h2 className="sustain-impact-framework-title" data-sdg-animate="title">
                     {strategySection.titlePrefix}{' '}

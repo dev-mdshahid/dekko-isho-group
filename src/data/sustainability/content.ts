@@ -14,10 +14,9 @@ export const sustainabilityHero = {
 
 export const sustainabilityHeroImage = {
   quoteLines: [
-    'The Earth is our only home – it is',
-    'our responsibility to protect it.',
+    'Weaving a more sustainable future',
+    'through responsible manufacturing.',
   ],
-  company: 'Dekko ISHO Group',
   strategy: 'ESG Strategy 2023',
 }
 
@@ -552,6 +551,8 @@ export type PerformanceSnapshotCard = {
   category: string
   title: string
   description: string
+  /** Large decorative value shown behind the left-panel title copy */
+  watermark?: string
   statsColumns: 2 | 3 | 4
   stats: PerformanceSnapshotStat[]
   footer?: PerformanceSnapshotFooterItem[]
@@ -567,6 +568,7 @@ export const performanceSnapshot = {
       category: 'Energy',
       title: 'Renewable Electricity & Energy Efficiency',
       description: 'Clean electricity milestones and solar expansion across all units.',
+      watermark: '80%',
       statsColumns: 2,
       stats: [
         {
@@ -650,8 +652,6 @@ export type SocialCard = {
   number: string
   title: string
   description: string
-  metricValue: string
-  metricLabel: string
   image: string
   imageAlt: string
 }
@@ -678,44 +678,36 @@ export const pillar02 = {
     {
       id: 'employees',
       number: '01',
-      title: 'Empowering Employees',
+      title: 'Employee Support & Inclusion',
       description:
         'Meaningful benefits and continuous support – performance & festival bonuses, maternity benefits, loan facilities and the Aastha fair-price shop.',
-      metricValue: '16,815',
-      metricLabel: 'People behind every stitch',
       image: pillar2Image('empowering-employees.jpg'),
       imageAlt: 'Employees gathered outside the Aastha fair-price shop',
     },
     {
       id: 'wellness',
       number: '02',
-      title: 'Employee Wellness',
+      title: 'Health, Safety & Wellbeing',
       description:
         'Childcare facilities, nutritional support for children & pregnant employees, on-site medical care, free eye-test campaigns and celebration days.',
-      metricValue: '9+',
-      metricLabel: 'Welfare & wellbeing programs',
       image: pillar2Image('employee-wellness.jpg'),
       imageAlt: 'Children at an employee wellness programme',
     },
     {
       id: 'upskilling',
       number: '03',
-      title: 'Upskilling',
+      title: 'Learning & Development',
       description:
         'P.A.C.E., WE Women, Mothers@Work and a structured orientation → refreshment → advanced training framework with green-skills and 5S.',
-      metricValue: '20 hrs',
-      metricLabel: 'Avg. training / person target',
       image: pillar2Image('upskilling.jpg'),
       imageAlt: 'Garment design sketches on a computer monitor',
     },
     {
       id: 'community',
       number: '04',
-      title: 'Community Care',
+      title: 'Community Impact',
       description:
         'Nutrition, education, healthcare and disaster support — 510 family food packages, 150,000 vegetable seeds, and aid for single mothers and children.',
-      metricValue: '৳5M',
-      metricLabel: 'Flood relief to government',
       image: pillar2Image('community-care.png'),
       imageAlt: 'Community members receiving relief supplies',
     },

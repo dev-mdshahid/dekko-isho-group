@@ -6,8 +6,8 @@ export type SustainabilityInitiativeCardData = {
   number: string
   title: string
   description: string
-  metricValue: string
-  metricLabel: string
+  metricValue?: string
+  metricLabel?: string
   image: string
   imageAlt: string
 }
@@ -19,6 +19,7 @@ type Props = {
 
 export function SustainabilityInitiativeCard({ item, index = 0 }: Props) {
   const cardRef = useRef<HTMLElement>(null)
+  const hasMetric = Boolean(item.metricValue && item.metricLabel)
 
   useInitiativeCardAnimation(cardRef, { index })
 
@@ -38,13 +39,15 @@ export function SustainabilityInitiativeCard({ item, index = 0 }: Props) {
       <div className="sustain-initiative-content">
         <h3 className="sustain-initiative-title">{item.title}</h3>
         <p className="sustain-initiative-description">{item.description}</p>
-        <div className="sustain-initiative-metric">
-          <div className="sustain-initiative-metric-line" aria-hidden="true" />
-          <p className="sustain-initiative-metric-text">
-            <span className="sustain-initiative-metric-value">{item.metricValue}</span>{' '}
-            <span className="sustain-initiative-metric-label">{item.metricLabel}</span>
-          </p>
-        </div>
+        {hasMetric ? (
+          <div className="sustain-initiative-metric">
+            <div className="sustain-initiative-metric-line" aria-hidden="true" />
+            <p className="sustain-initiative-metric-text">
+              <span className="sustain-initiative-metric-value">{item.metricValue}</span>{' '}
+              <span className="sustain-initiative-metric-label">{item.metricLabel}</span>
+            </p>
+          </div>
+        ) : null}
       </div>
     </article>
   )
