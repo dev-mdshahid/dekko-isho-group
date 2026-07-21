@@ -2,7 +2,7 @@ import { chairmanParagraphs, chairmanQuote } from '../../data/about/chairmanNote
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
-const CHAIRMAN_PORTRAIT = '/images/shahid-hossain.jpg'
+const CHAIRMAN_PORTRAIT = '/images/shahid-hossain.png'
 
 export function AboutChairmanSection() {
   return (

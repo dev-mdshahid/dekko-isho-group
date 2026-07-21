@@ -1,9 +1,12 @@
-/* About page — shell */
-
-.about-content {
+/* About page — shell.
+   `:has(> section)` scopes past the home About-card `.about-content` in site.css,
+   which sets margin-bottom and was leaving a white body-bg stripe above the footer. */
+.about-content:has(> section) {
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
+  margin-bottom: 0;
+  color: inherit;
 }
 
 /* About page — hero section */
@@ -1544,12 +1547,14 @@
   margin: 0 0 2rem;
   width: 100%;
   max-width: none;
+  padding-left: 40px;
+  border-left: 4px solid var(--color--primary-gradient-end);
   font-family: var(--_typography---font-family--heading);
-  font-size: 1.75rem;
-  font-weight: var(--_typography---h6--font-weight-600);
+  font-size: 28px;
+  font-weight: 600;
   line-height: 1.35;
   text-align: left;
-  color: var(--color--dark);
+  color: var(--color--primary-gradient-end);
 }
 
 .about-chairman-section--about .about-chairman-divider {

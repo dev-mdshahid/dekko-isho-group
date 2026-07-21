@@ -40,7 +40,7 @@ export function AboutContactSection() {
         <FadeIn id="about-contact-header" className="section-title-center _02 about-contact-header">
           <PreSectionTitle title="Get in touch" variant="bg-dark" />
           <h2 className="section-title title-center text-white about-contact-title">
-            Have a question in <span className="text-linear-gradient">mind?</span>
+            Connect with Our <span className="text-linear-gradient">Team</span>
           </h2>
         </FadeIn>
 

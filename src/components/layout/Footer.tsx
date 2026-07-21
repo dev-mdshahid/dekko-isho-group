@@ -63,7 +63,7 @@ export function Footer() {
                   className="footer-subscribe-logo"
                 />
                 <p className="subscribe-description">
-                  Join our newsletter for tips, updates, and project highlights—only the good stuff.
+                  Get the latest updates, stories, and announcements delivered to your inbox.
                 </p>
                 <div className="form-subscribe-wrap w-form">
                   <form

@@ -14,7 +14,7 @@ export const leadershipMembers: LeadershipMember[] = [
     title: 'Chairman',
     description:
       'Began contributing during his Masters at Dhaka University and was instrumental in establishing the Group from the very beginning. His creativity, drive and obsessive attention to detail have led the Group to industry prominence.',
-    image: '/images/shahid-hossain.jpg',
+    image: '/images/shahid-hossain.png',
     imageAlt: 'Shahid Hossain, Chairman of Dekko ISHO Group',
   },
   {
@@ -23,7 +23,7 @@ export const leadershipMembers: LeadershipMember[] = [
     title: 'Vice Chairman',
     description:
       'Vice Chairman of Dekko ISHO Group and Managing Director of Klubhaus. A passionate advocate for people-first leadership, she champions inclusive growth, employee wellbeing, and the culture that keeps the Group moving forward.',
-    image: '/images/maimuna-hossain.jpg',
+    image: '/images/maimuna-hossain.png',
     imageAlt: 'Maimuna Hossain, Vice Chairman of Dekko ISHO Group',
   },
   {
@@ -31,7 +31,7 @@ export const leadershipMembers: LeadershipMember[] = [
     name: 'Prottoy Hossain',
     title: 'Director',
     description:
-      "A changemaker leading sustainable business practices. Under his leadership, Dekko Isho has invested in deep tech and green tech to reduce environmental footprint and increase positive social impact — driving the Group's zero-carbon ambition.",
+      "A changemaker leading sustainable business practices. Under his leadership, Dekko ISHO has invested in deep-tech and green-tech to reduce environmental footprint and increase positive social impact — driving the Group's zero-carbon ambition.",
     image: '/images/prottoy-hossain.png',
     imageAlt: 'Prottoy Hossain, Director of Dekko ISHO Group',
   },
