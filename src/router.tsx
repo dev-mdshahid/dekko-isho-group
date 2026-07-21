@@ -1,6 +1,8 @@
 import { createBrowserRouter, Navigate, Outlet, useParams } from 'react-router-dom'
 import { ScrollToTop } from './components/common/ScrollToTop'
 import { SmoothScroll } from './components/common/SmoothScroll'
+import { SplashScreen } from './components/splash/SplashScreen'
+import { SplashProvider } from './context/SplashContext'
 import { AboutPage } from './pages/AboutPage'
 import { AgamiFashionsPage } from './pages/AgamiFashionsPage'
 import { AgamiWashingPage } from './pages/AgamiWashingPage'
@@ -32,11 +34,12 @@ function BlogRedirect() {
 
 function RootLayout() {
   return (
-    <>
+    <SplashProvider>
       <SmoothScroll />
       <ScrollToTop />
+      <SplashScreen />
       <Outlet />
-    </>
+    </SplashProvider>
   )
 }
 

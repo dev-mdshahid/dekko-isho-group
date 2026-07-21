@@ -11,6 +11,7 @@ import {
   type NavLink as NavMenuLink,
   type NavLinkGroup,
 } from '../../data/navigation/navLinks'
+import { useSplashOptional } from '../../context/SplashContext'
 import { useClickOutside } from '../../hooks/useClickOutside'
 import { MOBILE_NAV_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 import { useNavMenu } from '../../hooks/useNavMenu'
@@ -529,10 +530,19 @@ export function Navbar() {
   const isMobileNav = useMediaQuery(MOBILE_NAV_QUERY)
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
+  const logoRef = useRef<HTMLImageElement>(null)
+  const splash = useSplashOptional()
 
   useEffect(() => {
     setOpenDropdownId(null)
   }, [pathname])
+
+  // Expose the navbar logo rect so splash can FLIP into this exact slot.
+  useEffect(() => {
+    if (!splash) return
+    splash.registerLogoTarget(logoRef.current)
+    return () => splash.registerLogoTarget(null)
+  }, [splash, isMobileNav])
 
   // Close desktop dropdowns on scroll so panels don't float over moving content.
   useEffect(() => {
@@ -583,10 +593,12 @@ export function Navbar() {
             onClick={closeMenu}
           >
             <img
+              ref={logoRef}
               src="/dekko-logo.svg"
               loading="eager"
               alt="Dekko Isho Group"
               className="logo"
+              data-splash-logo-target=""
               style={{ width: 'auto', height: isMobileNav ? '50px' : '64px', objectFit: 'contain' }}
             />
           </Link>
