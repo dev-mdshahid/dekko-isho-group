@@ -69,6 +69,11 @@ export function AboutJourneySection() {
               />
             </svg>
 
+            <div className="about-journey-mobile-rail" data-journey-mobile-rail aria-hidden="true">
+              <div className="about-journey-mobile-rail-track" />
+              <div className="about-journey-mobile-rail-fill" data-journey-mobile-fill />
+            </div>
+
             <div className="about-journey-timeline" aria-label="Company history timeline">
               {journeyMilestones.map((milestone, index) => {
                 const side = index % 2 === 0 ? 'right' : 'left'
@@ -80,6 +85,7 @@ export function AboutJourneySection() {
                     key={milestone.id}
                     className={`about-journey-row about-journey-row--${side} about-journey-row--era-${milestone.era}`}
                     data-journey-row
+                    data-journey-era={milestone.era}
                     style={eraStyle}
                   >
                     <div className="about-journey-half about-journey-half--left">
