@@ -15,7 +15,7 @@ export function AboutJourneySection() {
 
   return (
     <section ref={sectionRef} className="about-journey-section">
-      <div className="hero-section-overlay" aria-hidden="true" />
+      <div className="about-journey-stroke-bg" aria-hidden="true" />
       <div className="about-journey-main section-spacing">
         <div className="container">
           <FadeIn id="about-journey-header" className="about-journey-header">
