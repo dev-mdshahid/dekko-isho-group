@@ -19,7 +19,7 @@ export function AboutHeroSection() {
                   Creating
                 </span>{' '}
                 <span
-                  className="hero-title-word hero-title-accent hero-title-accent--primary"
+                  className="hero-title-word hero-title-accent hero-title-accent--green"
                   data-about-animate="hero-word"
                 >
                   Impact
@@ -29,7 +29,10 @@ export function AboutHeroSection() {
                 <span className="hero-title-word" data-about-animate="hero-word">
                   Across
                 </span>{' '}
-                <span className="hero-title-word" data-about-animate="hero-word">
+                <span
+                  className="hero-title-word hero-title-accent hero-title-accent--primary"
+                  data-about-animate="hero-word"
+                >
                   Generations
                 </span>
               </span>
