@@ -210,6 +210,21 @@ function drawFlourish(flourish: SVGElement | null, paths: SVGPathElement[]) {
   })
 }
 
+function resetFlourish(flourish: SVGElement | null, paths: SVGPathElement[]) {
+  if (!flourish || !paths.length) return
+
+  gsap.killTweensOf([flourish, ...paths])
+  flourish.classList.remove('is-drawn')
+
+  paths.forEach((path) => {
+    const length = path.getTotalLength()
+    path.style.strokeDasharray = `${length}`
+    path.style.strokeDashoffset = `${length}`
+  })
+
+  gsap.set(flourish, { opacity: 0.35, y: 18 })
+}
+
 export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
   const flow = section.querySelector<HTMLElement>('[data-journey-flow]')
   const fill = section.querySelector<SVGPathElement>('[data-journey-spine-fill]')
@@ -306,17 +321,29 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
     strokeBg.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`
   }
 
-  const updateFlourish = (progress: number) => {
-    if (prefersReducedMotion() || !flourish || flourishDrawn) return
-    if (progress < FLOURISH_PROGRESS_TRIGGER && !isMobile()) return
+  const isFlourishInView = () => {
+    if (!flourish) return false
+    const rect = flourish.getBoundingClientRect()
+    return rect.top <= window.innerHeight * 0.92 && rect.bottom >= 0
+  }
 
-    if (isMobile()) {
-      const rect = flourish.getBoundingClientRect()
-      if (rect.top > window.innerHeight * 0.92) return
+  const updateFlourish = (progress: number) => {
+    if (prefersReducedMotion() || !flourish) return
+
+    const shouldDraw = isMobile()
+      ? isFlourishInView()
+      : progress >= FLOURISH_PROGRESS_TRIGGER
+
+    if (shouldDraw) {
+      if (flourishDrawn) return
+      flourishDrawn = true
+      drawFlourish(flourish, flourishPaths)
+      return
     }
 
-    flourishDrawn = true
-    drawFlourish(flourish, flourishPaths)
+    if (!flourishDrawn) return
+    flourishDrawn = false
+    resetFlourish(flourish, flourishPaths)
   }
 
   const applyFill = (progress: number) => {
@@ -411,11 +438,20 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          entry.target.classList.add('is-in')
+          const target = entry.target as HTMLElement
+          if (entry.isIntersecting) {
+            target.classList.add('is-in')
+            if (isMobile()) {
+              const index = rows.indexOf(target)
+              if (index >= 0) activateNode(dots[index], true)
+            }
+            return
+          }
+
+          target.classList.remove('is-in')
           if (isMobile()) {
-            const index = rows.indexOf(entry.target as HTMLElement)
-            if (index >= 0) activateNode(dots[index], true)
+            const index = rows.indexOf(target)
+            if (index >= 0) activateNode(dots[index], false)
           }
         })
       },
@@ -456,6 +492,7 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
     window.removeEventListener('scroll', onScroll)
     lenis?.off('scroll', onLenisScroll)
     revealObservers.forEach((observer) => observer.disconnect())
+    rows.forEach((row) => row.classList.remove('is-in'))
     dots.forEach((dot) => {
       gsap.killTweensOf(dot)
       gsap.set(dot, { clearProps: 'scale' })
