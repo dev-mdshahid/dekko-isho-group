@@ -100,6 +100,9 @@ export function SustainabilitySdgGoals({ pillars }: SustainabilitySdgGoalsProps)
           <div className="sustain-sdg-groups">
             {pillar.groups.map((group) => (
               <div key={group.id} className="sustain-sdg-group" data-sdg-animate="group">
+                <h4 className="sustain-sdg-group-title" data-sdg-animate="group-title">
+                  {group.title}
+                </h4>
                 <div className="sustain-sdg-swap">
                   <div className="sustain-sdg-logos">
                     {group.logos.map((logo) => (

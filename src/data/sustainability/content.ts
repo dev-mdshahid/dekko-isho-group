@@ -40,6 +40,7 @@ export type SdgGoal = {
 
 export type SdgGoalGroup = {
   id: string
+  title: string
   logos: SdgLogo[]
   goals: SdgGoal[]
 }
@@ -61,6 +62,7 @@ export const sdgGoals: SdgPillar[] = [
     groups: [
       {
         id: 'env-energy',
+        title: 'Decarbonization',
         logos: [
           { src: sdgImage('E-WEB-Goal-07.png'), alt: 'SDG 7 Affordable and Clean Energy' },
           { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
@@ -74,6 +76,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'env-water',
+        title: 'Blue Impact',
         logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
         goals: [
           { highlight: 'Blue Water Reduction 40%', text: '' },
@@ -82,6 +85,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'env-waste',
+        title: 'Circularity',
         logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
         goals: [
           { highlight: 'Waste Recycle 40%', text: '' },
@@ -91,6 +95,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'env-land',
+        title: 'EcoSphere',
         logos: [
           { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
           { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
@@ -114,6 +119,7 @@ export const sdgGoals: SdgPillar[] = [
     groups: [
       {
         id: 'soc-rights',
+        title: 'Wellbeing',
         logos: [
           { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
           { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
@@ -127,6 +133,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'soc-training',
+        title: 'Upskill',
         logos: [
           { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
           { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
@@ -139,6 +146,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'soc-diversity',
+        title: 'Inclusion',
         logos: [
           { src: sdgImage('E-WEB-Goal-03.png'), alt: 'SDG 3 Good Health and Well-Being' },
           { src: sdgImage('E-WEB-Goal-05.png'), alt: 'SDG 5 Gender Equality' },
@@ -154,6 +162,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'soc-community',
+        title: 'Community',
         logos: [
           { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
           { src: sdgImage('E-WEB-Goal-06.png'), alt: 'SDG 6 Clean Water and Sanitation' },
@@ -175,6 +184,7 @@ export const sdgGoals: SdgPillar[] = [
     groups: [
       {
         id: 'gov-suppliers',
+        title: 'Compliance',
         logos: [
           { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
           { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
@@ -186,6 +196,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'gov-ethics',
+        title: 'Integrity',
         logos: [
           { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
           { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
@@ -197,6 +208,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'gov-traceability',
+        title: 'Transparency',
         logos: [
           { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
           { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
@@ -212,6 +224,7 @@ export const sdgGoals: SdgPillar[] = [
       },
       {
         id: 'gov-innovation',
+        title: 'Innovation',
         logos: [{ src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' }],
         goals: [
           { highlight: 'Development of Innovation & Cooperation', text: '' },
