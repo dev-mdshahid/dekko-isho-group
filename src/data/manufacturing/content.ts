@@ -238,6 +238,34 @@ export const manufacturingProductRange = {
   ],
 }
 
+export const manufacturingWhyItMatters = {
+  title: 'Why It Matters',
+  description:
+    'Managing every stage under one roof keeps production coordinated, fast, simple, and consistent from start to finish.',
+  items: [
+    {
+      id: 'coordination',
+      title: 'Improved coordination',
+      description: 'Virtual sampling replaces costly physical rounds.',
+    },
+    {
+      id: 'cycles',
+      title: 'Shorter development cycles',
+      description: '3D visualization accelerates approvals across the lifecycle.',
+    },
+    {
+      id: 'complexity',
+      title: 'Reduced operational complexity',
+      description: 'Styles reach market sooner, with greater accuracy.',
+    },
+    {
+      id: 'quality',
+      title: 'Consistent product quality',
+      description: 'Digital iteration cuts fabric consumption before production.',
+    },
+  ],
+}
+
 export const manufacturingCapacityDetails = {
   badge: 'Detailed Insight',
   title: 'Full Capacity Details',

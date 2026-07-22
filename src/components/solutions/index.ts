@@ -9,6 +9,11 @@ export { SolutionSpotlightSection } from './SolutionSpotlightSection'
 export type { SolutionSpotlightContent } from './SolutionSpotlightSection'
 export { SolutionCtaSection } from './SolutionCtaSection'
 export type { SolutionCtaContent } from './SolutionCtaSection'
+export { SolutionWhyItMattersSection } from './SolutionWhyItMattersSection'
+export type {
+  SolutionWhyItMattersContent,
+  SolutionWhyItMattersItem,
+} from './SolutionWhyItMattersSection'
 export { SolutionIntroSections } from './SolutionIntroSections'
 export { SolutionPageHeroSection } from './SolutionPageHeroSection'
 export type { SolutionPageHeroContent } from './SolutionPageHeroSection'

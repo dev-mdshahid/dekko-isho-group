@@ -12,8 +12,16 @@ import {
   ManufacturingProductionNetworkSection,
   ManufacturingSewingSection,
 } from '../components/manufacturing'
-import { SolutionCtaSection, SolutionExpertiseSection } from '../components/solutions'
-import { manufacturingCta, manufacturingExpertise } from '../data/manufacturing/content'
+import {
+  SolutionCtaSection,
+  SolutionExpertiseSection,
+  SolutionWhyItMattersSection,
+} from '../components/solutions'
+import {
+  manufacturingCta,
+  manufacturingExpertise,
+  manufacturingWhyItMatters,
+} from '../data/manufacturing/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -36,6 +44,7 @@ export function ManufacturingContent() {
       <ManufacturingCapacitySection />
       <ManufacturingClientsSection />
       <ManufacturingProductRangeSection />
+      <SolutionWhyItMattersSection idPrefix={ID_PREFIX} content={manufacturingWhyItMatters} />
       <ManufacturingCapacityDetailsSection />
       <ManufacturingCuttingPreparationSection />
       <ManufacturingSewingSection />
