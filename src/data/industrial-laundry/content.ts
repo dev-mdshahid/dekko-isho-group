@@ -46,6 +46,21 @@ export const industrialLaundryExpertise = {
 /** @deprecated Use industrialLaundryExpertise */
 export const industrialLaundryInnovation = industrialLaundryExpertise
 
+export const industrialLaundryProductionNetwork = {
+  badge: 'Verified scale',
+  title: 'Production Network',
+  description:
+    'Key production units across washing facilities, capacity, manpower, product mix, and compliance progress.',
+  units: [
+    {
+      id: 'agami-washing',
+      title: 'Agami Washing Ltd.',
+      image: '/images/industrial-laundry/agami-washing-production-network.jpg',
+      imageAlt: 'Industrial washing machine at Agami Washing Ltd.',
+    },
+  ],
+}
+
 export const industrialLaundryWaterStewardship = {
   badge: 'Responsible Water Management',
   titleBefore: 'Water',

@@ -14,6 +14,11 @@ export type {
   SolutionWhyItMattersContent,
   SolutionWhyItMattersItem,
 } from './SolutionWhyItMattersSection'
+export { SolutionProductionNetworkSection } from './SolutionProductionNetworkSection'
+export type {
+  SolutionProductionNetworkContent,
+  SolutionProductionNetworkUnit,
+} from './SolutionProductionNetworkSection'
 export { SolutionIntroSections } from './SolutionIntroSections'
 export { SolutionPageHeroSection } from './SolutionPageHeroSection'
 export type { SolutionPageHeroContent } from './SolutionPageHeroSection'

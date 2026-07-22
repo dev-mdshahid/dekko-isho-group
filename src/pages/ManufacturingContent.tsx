@@ -9,18 +9,19 @@ import {
   // ManufacturingEmbroiderySection,
   ManufacturingHeroSection,
   // ManufacturingHowItWorksSection,
-  ManufacturingProductionNetworkSection,
   // ManufacturingSewingSection,
 } from '../components/manufacturing'
 import {
   SolutionCtaSection,
   // SolutionExpertiseSection,
+  SolutionProductionNetworkSection,
   SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
   manufacturingCapacity,
   manufacturingCta,
   // manufacturingExpertise,
+  manufacturingProductionNetwork,
   manufacturingWhyItMatters,
 } from '../data/manufacturing/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -39,7 +40,10 @@ export function ManufacturingContent() {
   return (
     <div ref={ref} className="solution-page manufacturing-page">
       <ManufacturingHeroSection />
-      <ManufacturingProductionNetworkSection />
+      <SolutionProductionNetworkSection
+        idPrefix={ID_PREFIX}
+        content={manufacturingProductionNetwork}
+      />
       {/* <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} /> */}
       {/* <ManufacturingHowItWorksSection /> */}
       <ManufacturingCapacitySection content={manufacturingCapacity} />

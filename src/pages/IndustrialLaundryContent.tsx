@@ -6,6 +6,7 @@ import {
   SolutionCtaSection,
   SolutionExpertiseSection,
   SolutionPageHeroSection,
+  SolutionProductionNetworkSection,
   SolutionQualitySection,
   SolutionSpotlightSection,
 } from '../components/solutions'
@@ -13,6 +14,7 @@ import {
   industrialLaundryExpertise,
   industrialLaundryCta,
   industrialLaundryHero,
+  industrialLaundryProductionNetwork,
   industrialLaundryQuality,
   industrialLaundrySpotlight,
   industrialLaundryWashing,
@@ -38,6 +40,10 @@ export function IndustrialLaundryContent() {
       <ManufacturingCapacitySection
         idPrefix={ID_PREFIX}
         content={industrialLaundryWaterStewardship}
+      />
+      <SolutionProductionNetworkSection
+        idPrefix={ID_PREFIX}
+        content={industrialLaundryProductionNetwork}
       />
       <SolutionSpotlightSection idPrefix={ID_PREFIX} content={industrialLaundrySpotlight} />
       <SolutionCapacitySection idPrefix={ID_PREFIX} content={industrialLaundryWashing} />
