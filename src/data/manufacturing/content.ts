@@ -331,10 +331,10 @@ export const manufacturingEmbroidery = {
 }
 
 const mfgProductNetworkImage = (file: string) =>
-  `/images/manufacturing/product network/${file}`
+  `/images/manufacturing/product-network/${file}`
 
 export const manufacturingProductionNetwork = {
-  badge: 'Unit-Wise Capacity',
+  badge: 'Verified scale',
   title: 'Production Network',
   description:
     'Key production units across Dekko ISHO Group with lines, capacity, manpower, product mix, and compliance progress.',
@@ -342,8 +342,8 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-garments',
       title: 'Dekko Garments Ltd.',
-      image: mfgProductNetworkImage('pn.png'),
-      imageAlt: 'Garment production floor',
+      image: mfgProductNetworkImage('dekko-garments.png'),
+      imageAlt: 'Colorful garments hanging on production racks',
       productionLines: '46',
       monthlyCapacity: '14,40,000',
       manpower: '6,800',
@@ -354,9 +354,9 @@ export const manufacturingProductionNetwork = {
     },
     {
       id: 'dekko-readywears',
-      title: 'DEKKO READYWEARS LTD.',
-      image: mfgProductNetworkImage('pn1.png'),
-      imageAlt: 'Readywear production facility',
+      title: 'Dekko Readywears Ltd.',
+      image: mfgProductNetworkImage('dekko-readywears.png'),
+      imageAlt: 'Readywear garments on studio hanging system',
       productionLines: '24',
       monthlyCapacity: '7,50,000',
       manpower: '3,150',
@@ -366,9 +366,9 @@ export const manufacturingProductionNetwork = {
     },
     {
       id: 'dekko-fashions',
-      title: 'DEKKO FASHIONS LTD.',
-      image: mfgProductNetworkImage('pn2.png'),
-      imageAlt: 'Dekko Fashions production unit',
+      title: 'Dekko Fashions Ltd.',
+      image: mfgProductNetworkImage('dekko-fashions.png'),
+      imageAlt: 'Fashion display mannequins in red and white looks',
       productionLines: '10',
       monthlyCapacity: '3,00,000',
       manpower: '1,450',
@@ -378,9 +378,9 @@ export const manufacturingProductionNetwork = {
     },
     {
       id: 'agami-fashions',
-      title: 'AGAMI FASHIONS LTD.',
-      image: mfgProductNetworkImage('pn3.jpg'),
-      imageAlt: 'Agami Fashions production floor',
+      title: 'Agami Fashions Ltd.',
+      image: mfgProductNetworkImage('agami-fashions.jpg'),
+      imageAlt: 'Lifestyle fashion portrait in a forest setting',
       productionLines: '08',
       monthlyCapacity: '300,000',
       manpower: '1,200(AP.)',

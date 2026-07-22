@@ -28,6 +28,7 @@ export function ManufacturingContent() {
   return (
     <div ref={ref} className="solution-page manufacturing-page">
       <ManufacturingHeroSection />
+      <ManufacturingProductionNetworkSection />
       <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} />
       <ManufacturingHowItWorksSection />
       <ManufacturingCapacitySection />
@@ -35,7 +36,6 @@ export function ManufacturingContent() {
       <ManufacturingCuttingPreparationSection />
       <ManufacturingSewingSection />
       <ManufacturingEmbroiderySection />
-      <ManufacturingProductionNetworkSection />
       <SolutionCtaSection idPrefix={ID_PREFIX} content={manufacturingCta} />
     </div>
   )

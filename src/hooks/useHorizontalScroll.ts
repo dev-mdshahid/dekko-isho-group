@@ -26,7 +26,15 @@ export function useHorizontalScroll(
     const canScroll = () => element.scrollWidth > element.clientWidth
 
     const onWheel = (event: WheelEvent) => {
-      if (!enableWheel || !canScroll()) return
+      if (!canScroll()) return
+
+      if (!enableWheel) {
+        // Drag-only mode: block wheel/trackpad horizontal scroll, allow vertical page scroll.
+        const isHorizontalIntent =
+          event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)
+        if (isHorizontalIntent) event.preventDefault()
+        return
+      }
 
       const delta =
         Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
@@ -100,17 +108,13 @@ export function useHorizontalScroll(
       suppressClick = false
     }
 
-    if (enableWheel) {
-      element.addEventListener('wheel', onWheel, { passive: false })
-    }
+    element.addEventListener('wheel', onWheel, { passive: false })
     element.addEventListener('dragstart', onDragStart)
     element.addEventListener('pointerdown', onPointerDown)
     element.addEventListener('click', onClick, true)
 
     return () => {
-      if (enableWheel) {
-        element.removeEventListener('wheel', onWheel)
-      }
+      element.removeEventListener('wheel', onWheel)
       element.removeEventListener('dragstart', onDragStart)
       element.removeEventListener('pointerdown', onPointerDown)
       element.removeEventListener('click', onClick, true)
