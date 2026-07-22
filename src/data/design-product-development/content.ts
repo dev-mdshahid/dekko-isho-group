@@ -193,6 +193,36 @@ export const designProductDevelopmentFactoryAssurance = {
   ],
 }
 
+export const designProductDevelopmentDigitalImpact = {
+  id: 'dpd-digital-impact',
+  badge: 'Design excellence infrastructure',
+  title: 'Digital-first development, measurable impact.',
+  description:
+    'Digital product development minimizes physical sampling, accelerates decision-making, and helps brands launch collections faster while reducing material waste.',
+  items: [
+    {
+      id: 'fewer-samples',
+      title: 'Fewer physical samples',
+      description: 'Virtual sampling replaces costly physical rounds.',
+    },
+    {
+      id: 'faster-decisions',
+      title: 'Faster decision-making',
+      description: '3D visualization accelerates approvals across the lifecycle.',
+    },
+    {
+      id: 'faster-launches',
+      title: 'Faster collection launches',
+      description: 'Styles reach market sooner, with greater accuracy.',
+    },
+    {
+      id: 'reduced-waste',
+      title: 'Reduced material waste',
+      description: 'Digital iteration cuts fabric consumption before production.',
+    },
+  ],
+}
+
 export const designProductDevelopmentSolutionsBanner = {
   badge: 'Product Development',
   title: 'Unique design solutions for modern apparel customers.',
@@ -342,12 +372,10 @@ export const designProductDevelopmentShowroom = {
 }
 
 export const designProductDevelopmentCta = {
-  eyebrow: "Let's Connect",
+  badge: "Let's Connect",
   heading: "And build what's next, together",
   description:
-    "Get in touch with our team for partnership, sourcing, careers or general inquiries - we'll get back to you with answers.",
+    'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',
   buttonHref: '/contact',
-  email: 'hello@dekkoisho.com',
-  emailHref: 'mailto:hello@dekkoisho.com',
 }

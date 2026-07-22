@@ -3,18 +3,19 @@ import { useRef } from 'react'
 import {
   DesignCapabilitiesSection,
   DesignCTASection,
-  DesignExperienceSection,
-  DesignFacilitiesSection,
+  DesignDigitalImpactSection,
+  // DesignExperienceSection,
+  // DesignFacilitiesSection,
   DesignFactoryAssuranceSection,
-  DesignPresenceSection,
-  DesignServicesSection,
-  DesignShowroomSection,
-  DesignSolutionsBannerSection,
+  // DesignPresenceSection,
+  // DesignServicesSection,
+  // DesignShowroomSection,
+  // DesignSolutionsBannerSection,
 } from '../components/design-product-development'
-import { IndustryImageSection } from '../components/industry'
+// import { IndustryImageSection } from '../components/industry'
 import { SolutionPageHeroSection } from '../components/solutions'
 import {
-  designProductDevelopmentConcept,
+  // designProductDevelopmentConcept,
   designProductDevelopmentHero,
 } from '../data/design-product-development/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -34,14 +35,15 @@ export function DesignProductDevelopmentContent() {
     <div ref={ref} className="solution-page design-product-development-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...designProductDevelopmentHero} />
       <DesignCapabilitiesSection />
-      <DesignServicesSection />
+      {/* <DesignServicesSection /> */}
       <DesignFactoryAssuranceSection />
-      <DesignSolutionsBannerSection />
-      <IndustryImageSection className="dpd-concept-section" {...designProductDevelopmentConcept} />
-      <DesignFacilitiesSection />
-      <DesignExperienceSection />
-      <DesignPresenceSection />
-      <DesignShowroomSection />
+      <DesignDigitalImpactSection />
+      {/* <DesignSolutionsBannerSection /> */}
+      {/* <IndustryImageSection className="dpd-concept-section" {...designProductDevelopmentConcept} /> */}
+      {/* <DesignFacilitiesSection /> */}
+      {/* <DesignExperienceSection /> */}
+      {/* <DesignPresenceSection /> */}
+      {/* <DesignShowroomSection /> */}
       <DesignCTASection />
     </div>
   )
