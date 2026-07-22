@@ -13576,20 +13576,21 @@ a.about-info-box:hover {
   --capacity-cols: 3;
   --capacity-rows: 2;
   position: relative;
-  width: calc(var(--capacity-circle-size) * var(--capacity-cols));
-  height: calc(var(--capacity-circle-size) * var(--capacity-rows));
+  width: min(100%, calc(var(--capacity-circle-size) * var(--capacity-cols)));
+  aspect-ratio: var(--capacity-cols) / var(--capacity-rows);
+  height: auto;
   overflow: visible;
 }
 
 .capacity-stat-circle {
   position: absolute;
-  top: calc(var(--circle-y, 0) * var(--capacity-circle-size));
-  left: calc(var(--circle-x, 0) * var(--capacity-circle-size));
+  top: calc(var(--circle-y, 0) * 100% / var(--capacity-rows));
+  left: calc(var(--circle-x, 0) * 100% / var(--capacity-cols));
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--capacity-circle-size);
-  height: var(--capacity-circle-size);
+  width: calc(100% / var(--capacity-cols));
+  height: calc(100% / var(--capacity-rows));
   border-radius: 50%;
   text-align: center;
 }
@@ -13600,19 +13601,19 @@ a.about-info-box:hover {
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  padding: 1.1rem;
-  max-width: 72%;
+  padding: clamp(0.45rem, 1.5vw, 1.1rem);
+  max-width: 78%;
 }
 
 .capacity-stat-value {
-  font-size: clamp(1.875rem, 2.8vw, 2.5rem);
+  font-size: clamp(1.125rem, 2.8vw, 2.5rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
 }
 
 .capacity-stat-label {
-  font-size: clamp(0.8125rem, 1.05vw, 0.9375rem);
+  font-size: clamp(0.625rem, 1.05vw, 0.9375rem);
   font-weight: 500;
   line-height: 1.25;
 }
@@ -13648,9 +13649,55 @@ a.about-info-box:hover {
   color: #fff;
 }
 
+@supports (width: 1cqi) {
+  .capacity-stat-circles {
+    container-type: inline-size;
+  }
+
+  .capacity-stat-value {
+    font-size: clamp(1.125rem, 22cqi, 2.5rem);
+  }
+
+  .capacity-stat-label {
+    font-size: clamp(0.625rem, 8.5cqi, 0.9375rem);
+  }
+
+  .capacity-stat-circle-inner {
+    padding: clamp(0.45rem, 2.2cqi, 1.1rem);
+  }
+}
+
 @media screen and (max-width: 991px) {
   .capacity-stat-circles {
-    --capacity-circle-size: clamp(6.5rem, 27vw, 9rem);
+    width: 100%;
+  }
+
+  .capacity-stat-value {
+    font-size: clamp(1.125rem, 5.2vw, 1.875rem);
+  }
+
+  .capacity-stat-label {
+    font-size: clamp(0.625rem, 2.7vw, 0.8125rem);
+  }
+
+  .capacity-stat-circle-inner {
+    padding: clamp(0.4rem, 2vw, 0.85rem);
+    gap: 0.15rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .capacity-stat-circle-inner {
+    max-width: 84%;
+    padding: 0.4rem;
+  }
+
+  .capacity-stat-value {
+    font-size: clamp(1rem, 6.5vw, 1.375rem);
+  }
+
+  .capacity-stat-label {
+    font-size: clamp(0.5625rem, 3.2vw, 0.6875rem);
   }
 }
 

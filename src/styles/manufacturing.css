@@ -239,9 +239,9 @@
 
 .manufacturing-page .mfg-capacity-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   align-items: center;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: clamp(1.5rem, 4vw, 4rem);
   overflow: visible;
 }
 
@@ -249,7 +249,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
   min-width: 0;
 }
 
@@ -257,7 +257,7 @@
   width: 100%;
   max-width: none;
   text-align: left;
-  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -276,11 +276,14 @@
 }
 
 .manufacturing-page .mfg-capacity-cluster {
+  width: 100%;
+  min-width: 0;
   margin-left: auto;
 }
 
 .manufacturing-page .mfg-capacity-cluster .capacity-stat-circles {
-  --capacity-circle-size: clamp(9.5rem, 13vw, 12.5rem);
+  --capacity-circle-size: clamp(8.5rem, 12vw, 12.5rem);
+  margin-left: auto;
 }
 
 /* ── Full Capacity Details (Figma card list) ── */
@@ -760,16 +763,28 @@
 
   .manufacturing-page .mfg-capacity-grid {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 
   .manufacturing-page .mfg-capacity-cluster {
-    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 28rem;
+    margin-top: 0.5rem;
     margin-right: auto;
     margin-left: 0;
   }
 
+  .manufacturing-page .mfg-capacity-cluster .capacity-stat-circles {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .manufacturing-page .mfg-capacity-title {
-    font-size: clamp(2rem, 8vw, 2.75rem);
+    font-size: clamp(1.875rem, 7.5vw, 2.75rem);
+  }
+
+  .manufacturing-page .mfg-capacity-cta {
+    width: 100%;
   }
 
   .manufacturing-page .mfg-quality-card {
