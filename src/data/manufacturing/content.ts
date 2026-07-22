@@ -189,6 +189,55 @@ export const manufacturingCapacity = {
   ] satisfies CapacityStat[],
 }
 
+const productRangeImage = (file: string) => `/images/manufacturing/product-range/${file}`
+
+export const manufacturingProductRange = {
+  badge: 'Detailed insight',
+  title: 'Product Range',
+  items: [
+    {
+      id: 'formal-shirts',
+      label: 'Formal Shirts',
+      image: productRangeImage('formal-shirts.png'),
+    },
+    {
+      id: 'casual-shirts',
+      label: 'Casual Shirts',
+      image: productRangeImage('casual-shirts.png'),
+    },
+    {
+      id: 'pants',
+      label: 'Pants',
+      image: productRangeImage('pants.png'),
+    },
+    {
+      id: 'denim-twill-jackets',
+      label: 'Denim & Twill Jackets',
+      image: productRangeImage('denim-twill-jackets.png'),
+    },
+    {
+      id: 'quilted-shirts-jackets',
+      label: 'Quilted Shirts & Jackets',
+      image: productRangeImage('quilted-shirts-jackets.png'),
+    },
+    {
+      id: 'shakets',
+      label: 'Shakets',
+      image: productRangeImage('shakets.png'),
+    },
+    {
+      id: 'ladies-blouse',
+      label: "Ladies' Blouse",
+      image: productRangeImage('ladies-blouse.png'),
+    },
+    {
+      id: 'ladies-dress',
+      label: "Ladies' Dress",
+      image: productRangeImage('ladies-dress.png'),
+    },
+  ],
+}
+
 export const manufacturingCapacityDetails = {
   badge: 'Detailed Insight',
   title: 'Full Capacity Details',

@@ -325,6 +325,78 @@
   height: 9.5rem;
 }
 
+/* ── Product Range ── */
+.manufacturing-page .mfg-product-range-section {
+  background-color: var(--color--gray-5);
+  overflow: hidden;
+}
+
+.manufacturing-page .mfg-product-range-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
+  margin-bottom: 4.375rem;
+}
+
+.manufacturing-page .mfg-product-range-section .pre-section-title-square {
+  background-color: var(--mfg-brand-start);
+  background-image: var(--mfg-brand-gradient);
+}
+
+.manufacturing-page .mfg-product-range-title {
+  margin: 0;
+  font-size: 3.625rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color--dark);
+}
+
+.manufacturing-page .mfg-product-range-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.manufacturing-page .mfg-product-range-card {
+  position: relative;
+  display: block;
+  height: 287px;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.manufacturing-page .mfg-product-range-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.manufacturing-page .mfg-product-range-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+}
+
+.manufacturing-page .mfg-product-range-card-label {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  z-index: 1;
+}
+
 /* ── Full Capacity Details (Figma card list) ── */
 .manufacturing-page .mfg-capacity-details-section {
   background-color: var(--color--white);
@@ -831,6 +903,29 @@
     height: 6.5rem;
   }
 
+  .manufacturing-page .mfg-product-range-title {
+    font-size: clamp(2rem, 8vw, 3.625rem);
+  }
+
+  .manufacturing-page .mfg-product-range-header {
+    margin-bottom: 2.75rem;
+  }
+
+  .manufacturing-page .mfg-product-range-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .manufacturing-page .mfg-product-range-card {
+    height: 240px;
+  }
+
+  .manufacturing-page .mfg-product-range-card-label {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    font-size: clamp(1.125rem, 3.5vw, 1.5rem);
+  }
+
   .manufacturing-page .mfg-quality-card {
     grid-template-columns: 1fr;
   }
@@ -872,6 +967,21 @@
   .manufacturing-page .mfg-clients-section .company-logos-image {
     max-height: 4.5rem;
     max-width: 9rem;
+  }
+
+  .manufacturing-page .mfg-product-range-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .manufacturing-page .mfg-product-range-card {
+    height: 200px;
+  }
+
+  .manufacturing-page .mfg-product-range-card-label {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 1.125rem;
   }
 
   .manufacturing-page .mfg-sewing-layout {

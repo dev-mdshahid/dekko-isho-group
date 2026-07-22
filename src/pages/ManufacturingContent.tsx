@@ -5,6 +5,7 @@ import {
   ManufacturingCapacitySection,
   ManufacturingClientsSection,
   ManufacturingCuttingPreparationSection,
+  ManufacturingProductRangeSection,
   ManufacturingEmbroiderySection,
   ManufacturingHeroSection,
   ManufacturingHowItWorksSection,
@@ -34,6 +35,7 @@ export function ManufacturingContent() {
       <ManufacturingHowItWorksSection />
       <ManufacturingCapacitySection />
       <ManufacturingClientsSection />
+      <ManufacturingProductRangeSection />
       <ManufacturingCapacityDetailsSection />
       <ManufacturingCuttingPreparationSection />
       <ManufacturingSewingSection />

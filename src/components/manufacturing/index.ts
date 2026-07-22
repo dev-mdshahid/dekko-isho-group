@@ -3,6 +3,7 @@ export { ManufacturingHowItWorksSection } from './ManufacturingHowItWorksSection
 export { ManufacturingCuttingPreparationSection } from './ManufacturingCuttingPreparationSection'
 export { ManufacturingCapacitySection } from './ManufacturingCapacitySection'
 export { ManufacturingClientsSection } from './ManufacturingClientsSection'
+export { ManufacturingProductRangeSection } from './ManufacturingProductRangeSection'
 export { ManufacturingCapacityDetailsSection } from './ManufacturingCapacityDetailsSection'
 export { ManufacturingQualitySection } from './ManufacturingQualitySection'
 export { ManufacturingSewingSection } from './ManufacturingSewingSection'
