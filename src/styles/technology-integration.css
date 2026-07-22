@@ -6,55 +6,6 @@
   --ti-brand-gradient: linear-gradient(180deg, var(--ti-brand-start) 0%, var(--ti-brand-end) 100%);
 }
 
-/* ── Hero ── */
-.technology-integration-page .ti-hero-section .service-details-top {
-  margin-bottom: 2.5rem;
-}
-
-.technology-integration-page .ti-hero-title {
-  font-size: clamp(3.5rem, 8vw, 6.5rem);
-  font-weight: var(--_typography---h1--font-weight-700);
-  line-height: 1.02;
-  margin-top: 0;
-}
-
-.technology-integration-page .ti-hero-subtitle {
-  color: var(--color--gray-2);
-  font-size: var(--_typography---body--body);
-  font-weight: var(--_typography---body--font-weight-500);
-  max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.technology-integration-page .service-detail-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.technology-integration-page .ti-hero-video-wrap {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.technology-integration-page .ti-hero-video {
-  width: 100%;
-  height: 650px;
-  position: relative;
-}
-
-.technology-integration-page .ti-hero-video-media {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  background-color: transparent;
-}
-
 /* ── Intro (industrial-laundry innovation pattern) ── */
 .technology-integration-page .ti-intro-section {
   background-color: var(--color--white);
@@ -595,10 +546,6 @@
 }
 
 @media screen and (max-width: 991px) {
-  .technology-integration-page .ti-hero-video {
-    height: clamp(16rem, 50vw, 28rem);
-  }
-
   .technology-integration-page .ti-feature-grid,
   .technology-integration-page .ti-partners-grid {
     grid-template-columns: 1fr;
@@ -629,14 +576,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .technology-integration-page .ti-hero-title {
-    font-size: clamp(2.75rem, 12vw, 4rem);
-  }
-
-  .technology-integration-page .ti-hero-video {
-    height: clamp(14rem, 56vw, 22rem);
-  }
-
   .technology-integration-page .ti-unified-grid {
     grid-template-columns: 1fr;
   }

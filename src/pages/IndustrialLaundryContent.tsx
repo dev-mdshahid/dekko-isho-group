@@ -3,7 +3,8 @@ import { useRef } from 'react'
 import {
   SolutionCapacitySection,
   SolutionCtaSection,
-  SolutionIntroSections,
+  SolutionExpertiseSection,
+  SolutionPageHeroSection,
   SolutionQualitySection,
   SolutionSpotlightSection,
 } from '../components/solutions'
@@ -30,11 +31,8 @@ export function IndustrialLaundryContent() {
 
   return (
     <div ref={ref} className="solution-page industrial-laundry-page">
-      <SolutionIntroSections
-        idPrefix={ID_PREFIX}
-        hero={industrialLaundryHero}
-        expertise={industrialLaundryExpertise}
-      />
+      <SolutionPageHeroSection idPrefix={ID_PREFIX} {...industrialLaundryHero} />
+      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...industrialLaundryExpertise} />
       <SolutionSpotlightSection idPrefix={ID_PREFIX} content={industrialLaundrySpotlight} />
       <SolutionCapacitySection idPrefix={ID_PREFIX} content={industrialLaundryWashing} />
       <SolutionQualitySection idPrefix={ID_PREFIX} content={industrialLaundryQuality} />

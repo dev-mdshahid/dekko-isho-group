@@ -3,7 +3,8 @@ import { useRef } from 'react'
 import {
   SolutionCapacitySection,
   SolutionCtaSection,
-  SolutionIntroSections,
+  SolutionExpertiseSection,
+  SolutionPageHeroSection,
   SolutionQualitySection,
   SolutionSpotlightSection,
 } from '../components/solutions'
@@ -30,11 +31,8 @@ export function EmbroideryContent() {
 
   return (
     <div ref={ref} className="solution-page embroidery-page">
-      <SolutionIntroSections
-        idPrefix={ID_PREFIX}
-        hero={embroideryHero}
-        expertise={embroideryExpertise}
-      />
+      <SolutionPageHeroSection idPrefix={ID_PREFIX} {...embroideryHero} />
+      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...embroideryExpertise} />
       <SolutionSpotlightSection idPrefix={ID_PREFIX} content={embroiderySpotlight} />
       <SolutionCapacitySection idPrefix={ID_PREFIX} content={embroideryCapacity} />
       <SolutionQualitySection idPrefix={ID_PREFIX} content={embroideryQuality} />

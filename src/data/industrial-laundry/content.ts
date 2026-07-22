@@ -1,6 +1,6 @@
 export const industrialLaundryHero = {
-  title: 'Industrial Laundry',
-  description:
+  titleLines: [[{ text: 'Industrial' }, { text: 'Laundry' }]],
+  subtitle:
     'Agami Washing Ltd. delivers industrial garment washing with controlled finish, consistency and scale for global fashion partners.',
   ctaLabel: 'Learn More',
   ctaHref: '#il-innovation',

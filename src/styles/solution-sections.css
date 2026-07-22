@@ -1,4 +1,4 @@
-/* Shared solution page sections — video hero + expertise/feature grid */
+/* Shared solution page sections — About-style expanding hero + expertise/feature grid */
 
 .solution-page {
   --solution-brand-start: var(--color--primary);
@@ -10,7 +10,82 @@
   );
 }
 
-/* ── Video hero ── */
+/* ── About-style solution page hero (title + CTA + expanding viewport video) ── */
+.solution-page-hero.about-hero-section .about-hero-inner {
+  padding-bottom: 200px;
+}
+
+.solution-page-hero-button {
+  display: flex;
+  justify-content: center;
+}
+
+.solution-page-hero-media {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.solution-page-hero-media-stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.solution-page-hero-media-scaler {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .solution-page-hero-media-scaler {
+    width: 80vw;
+    will-change: width;
+  }
+}
+
+@media (max-width: 991px) and (prefers-reduced-motion: no-preference) {
+  .solution-page-hero-media-scaler {
+    width: 80%;
+    margin-inline: auto;
+    will-change: width;
+  }
+}
+
+.solution-page-hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.solution-page-hero-video-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-color: transparent;
+}
+
+.solution-page-hero-video-control {
+  z-index: 2;
+}
+
+@media screen and (max-width: 991px) {
+  .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-bottom: 120px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* ── Legacy video hero (kept for any remaining SolutionIntroSections usage) ── */
 .solution-page .solution-hero-section .service-details-top {
   margin-bottom: 0;
 }

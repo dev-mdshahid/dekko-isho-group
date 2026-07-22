@@ -1,6 +1,6 @@
 export const technologyIntegrationHero = {
-  title: 'Technology Integration',
-  description:
+  titleLines: [[{ text: 'Technology' }, { text: 'Integration' }]],
+  subtitle:
     'Connect factory systems, business platforms and data workflows into one reliable technology stack built for scale, visibility and operational control.',
   ctaLabel: 'Get free quote',
   ctaHref: '#ti-intro',

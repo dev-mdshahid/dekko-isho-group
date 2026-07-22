@@ -11,7 +11,7 @@ import {
   DesignSolutionsBannerSection,
 } from '../components/design-product-development'
 import { IndustryImageSection } from '../components/industry'
-import { SolutionIntroSections } from '../components/solutions'
+import { SolutionExpertiseSection, SolutionPageHeroSection } from '../components/solutions'
 import {
   designProductDevelopmentConcept,
   designProductDevelopmentExpertise,
@@ -32,11 +32,8 @@ export function DesignProductDevelopmentContent() {
 
   return (
     <div ref={ref} className="solution-page design-product-development-page">
-      <SolutionIntroSections
-        idPrefix={ID_PREFIX}
-        hero={designProductDevelopmentHero}
-        expertise={designProductDevelopmentExpertise}
-      />
+      <SolutionPageHeroSection idPrefix={ID_PREFIX} {...designProductDevelopmentHero} />
+      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...designProductDevelopmentExpertise} />
       <DesignServicesSection />
       <DesignFactoryAssuranceSection />
       <DesignSolutionsBannerSection />

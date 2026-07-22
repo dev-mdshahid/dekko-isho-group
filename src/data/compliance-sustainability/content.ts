@@ -1,6 +1,9 @@
 export const complianceSustainabilityHero = {
-  title: 'Compliance & Sustainability',
-  description:
+  titleLines: [
+    [{ text: 'Compliance' }, { text: '&' }],
+    [{ text: 'Sustainability' }],
+  ],
+  subtitle:
     'Responsible operations, verified standards and continuous improvement across every Dekko ISHO facility — from social compliance to environmental stewardship.',
   ctaLabel: 'Learn More',
   ctaHref: '#cs-initiatives',

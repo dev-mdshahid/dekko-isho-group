@@ -1,6 +1,6 @@
 export const embroideryHero = {
-  title: 'Embroidery Unit',
-  description:
+  titleLines: [[{ text: 'Embroidery' }, { text: 'Unit' }]],
+  subtitle:
     'Precision embroidery and applied decoration, kept in-house. High-capacity Barudan and Maya machines supporting Dekko ISHO Group\'s production lines with integrated printing and finishing.',
   ctaLabel: 'Learn More',
   ctaHref: '#embroidery-expertise',

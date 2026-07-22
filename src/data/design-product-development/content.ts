@@ -1,6 +1,9 @@
 export const designProductDevelopmentHero = {
-  title: 'Design & Product Development',
-  description:
+  titleLines: [
+    [{ text: 'Design' }, { text: '&' }, { text: 'Product' }],
+    [{ text: 'Development' }],
+  ],
+  subtitle:
     'From trend research to sample-ready garments, our design teams translate brand vision into production-ready collections with speed, precision and creative confidence.',
   ctaLabel: 'Learn More',
   ctaHref: '#dpd-team',
