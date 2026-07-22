@@ -1664,39 +1664,27 @@
 }
 
 .sustain-progress-card--energy .sustain-progress-card-title {
-  background-color: color-mix(in srgb, var(--color--secondary-mint) 8%, white);
+  background-color: var(--color--secondary-mint);
 }
 
 .sustain-progress-card--waste .sustain-progress-card-title {
-  background-color: color-mix(in srgb, var(--color--secondary-amaranth) 8%, white);
-}
-
-.sustain-progress-card--water .sustain-progress-card-title {
-  background-color: color-mix(in srgb, var(--color--primary) 8%, white);
-}
-
-.sustain-progress-card--energy .sustain-progress-card-category {
-  color: var(--color--secondary-dark-spring-green);
-}
-
-.sustain-progress-card--energy .sustain-progress-card-category::before {
-  background-color: var(--color--secondary-dark-spring-green);
-}
-
-.sustain-progress-card--waste .sustain-progress-card-category {
-  color: var(--color--secondary-amaranth);
-}
-
-.sustain-progress-card--waste .sustain-progress-card-category::before {
   background-color: var(--color--secondary-amaranth);
 }
 
-.sustain-progress-card--water .sustain-progress-card-category {
-  color: var(--color--primary);
+.sustain-progress-card--water .sustain-progress-card-title {
+  background-color: var(--color--primary);
 }
 
+.sustain-progress-card--energy .sustain-progress-card-category,
+.sustain-progress-card--waste .sustain-progress-card-category,
+.sustain-progress-card--water .sustain-progress-card-category {
+  color: var(--color--white);
+}
+
+.sustain-progress-card--energy .sustain-progress-card-category::before,
+.sustain-progress-card--waste .sustain-progress-card-category::before,
 .sustain-progress-card--water .sustain-progress-card-category::before {
-  background-color: var(--color--primary);
+  background-color: var(--color--white);
 }
 
 .sustain-progress-card-heading {
@@ -1706,13 +1694,13 @@
   letter-spacing: var(--_typography---body--letter-spacing);
   line-height: var(--_typography---body--line-height);
   margin: 0 0 20px;
-  color: var(--color--neutral-night);
+  color: var(--color--white);
 }
 
 .sustain-progress-card-description {
   font-size: 18px;
   font-weight: 500;
-  color: var(--_color---body-text);
+  color: var(--color--white);
   line-height: 1.6;
   margin: 0;
 }
