@@ -286,6 +286,45 @@
   margin-left: auto;
 }
 
+/* ── Trusted By / Our Clients ── */
+.manufacturing-page .mfg-clients-section {
+  background-color: var(--color--white);
+  overflow: hidden;
+}
+
+.manufacturing-page .mfg-clients-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.manufacturing-page .mfg-clients-section .pre-section-title-square {
+  background-color: var(--mfg-brand-start);
+  background-image: var(--mfg-brand-gradient);
+}
+
+.manufacturing-page .mfg-clients-title {
+  margin: 0;
+  font-size: 3.625rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color--dark);
+}
+
+.manufacturing-page .mfg-clients-section .company-logos-section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.manufacturing-page .mfg-clients-section .company-logos-item {
+  width: 18rem;
+  height: 9.5rem;
+}
+
 /* ── Full Capacity Details (Figma card list) ── */
 .manufacturing-page .mfg-capacity-details-section {
   background-color: var(--color--white);
@@ -787,6 +826,11 @@
     width: 100%;
   }
 
+  .manufacturing-page .mfg-clients-section .company-logos-item {
+    width: 12rem;
+    height: 6.5rem;
+  }
+
   .manufacturing-page .mfg-quality-card {
     grid-template-columns: 1fr;
   }
@@ -811,6 +855,25 @@
 }
 
 @media screen and (max-width: 767px) {
+  .manufacturing-page .mfg-clients-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .manufacturing-page .mfg-clients-title {
+    font-size: clamp(2rem, 8vw, 3.625rem);
+  }
+
+  .manufacturing-page .mfg-clients-section .company-logos-item {
+    width: auto;
+    height: 5.5rem;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .manufacturing-page .mfg-clients-section .company-logos-image {
+    max-height: 4.5rem;
+    max-width: 9rem;
+  }
+
   .manufacturing-page .mfg-sewing-layout {
     width: 100%;
     justify-content: flex-start;

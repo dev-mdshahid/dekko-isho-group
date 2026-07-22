@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import {
   ManufacturingCapacityDetailsSection,
   ManufacturingCapacitySection,
+  ManufacturingClientsSection,
   ManufacturingCuttingPreparationSection,
   ManufacturingEmbroiderySection,
   ManufacturingHeroSection,
@@ -32,6 +33,7 @@ export function ManufacturingContent() {
       <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} />
       <ManufacturingHowItWorksSection />
       <ManufacturingCapacitySection />
+      <ManufacturingClientsSection />
       <ManufacturingCapacityDetailsSection />
       <ManufacturingCuttingPreparationSection />
       <ManufacturingSewingSection />
