@@ -1251,7 +1251,15 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.25;
-  color: var(--color--dark);
+  color: var(--color--primary-gradient-end);
+}
+
+.about-journey-section .about-journey-row--era-2 .about-journey-item-title {
+  color: var(--color--secondary-purple);
+}
+
+.about-journey-section .about-journey-row--era-3 .about-journey-item-title {
+  color: var(--color--secondary-dark-spring-green);
 }
 
 .about-journey-section .about-journey-description {
