@@ -703,42 +703,17 @@
 .solution-page .solution-cta-card {
   position: relative;
   isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
   border-radius: 1.5rem;
   background-color: #0a0a0a;
+  background-image:
+    radial-gradient(ellipse 70% 90% at 0% 100%, color-mix(in srgb, var(--solution-brand-start) 22%, transparent) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 65% at 100% 0%, color-mix(in srgb, var(--solution-brand-end) 14%, transparent) 0%, transparent 62%);
   padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
   overflow: hidden;
-}
-
-.solution-page .solution-cta-card::before,
-.solution-page .solution-cta-card::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.solution-page .solution-cta-card::before {
-  bottom: -30%;
-  left: -12%;
-  width: min(52%, 24rem);
-  height: 80%;
-  background-color: var(--solution-brand-start);
-  opacity: 0.32;
-}
-
-.solution-page .solution-cta-card::after {
-  top: -18%;
-  right: -6%;
-  width: min(56%, 28rem);
-  height: 85%;
-  background-color: var(--solution-brand-start);
-  opacity: 0.48;
-  filter: blur(100px);
 }
 
 .solution-page .solution-cta-card > * {
@@ -746,37 +721,40 @@
   z-index: 1;
 }
 
-.solution-page .solution-cta-eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--color--white);
-  font-size: 1.125rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.4;
+.solution-page .solution-cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  max-width: 40rem;
+}
+
+.solution-page .solution-cta-card .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
 }
 
 .solution-page .solution-cta-heading {
-  margin: 0 0 1.5rem;
+  margin: 1.25rem 0 0;
   color: var(--color--white);
-  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
-  font-weight: var(--_typography---h3--font-weight-600);
-  line-height: 1.1;
-  max-width: 18ch;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .solution-page .solution-cta-description {
-  margin: 0 0 2.5rem;
+  margin: 16px 0 0;
   color: #a1a1aa;
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.5;
-  max-width: min(100%, 36rem);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
 }
 
-.solution-page .solution-cta-actions {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  gap: 1.875rem;
+.solution-page .solution-cta-action {
+  flex-shrink: 0;
+  justify-self: end;
+  align-self: center;
 }
 
 .solution-page .solution-cta-card .button-icon-bg {
@@ -784,30 +762,21 @@
   background-image: var(--solution-brand-gradient);
 }
 
-.solution-page .solution-cta-email {
-  color: var(--color--white);
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.solution-page .solution-cta-email:hover {
-  opacity: 0.8;
-}
-
 @media screen and (max-width: 767px) {
   .solution-page .solution-cta-card {
+    grid-template-columns: 1fr;
     padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .solution-page .solution-cta-heading {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
   }
 
   .solution-page .solution-cta-description {
     max-width: 100%;
   }
 
-  .solution-page .solution-cta-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+  .solution-page .solution-cta-action {
+    justify-self: start;
   }
 }

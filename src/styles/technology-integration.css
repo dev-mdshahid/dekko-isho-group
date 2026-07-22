@@ -4,6 +4,9 @@
   --ti-brand-start: var(--color--primary);
   --ti-brand-end: var(--color--primary-3);
   --ti-brand-gradient: linear-gradient(180deg, var(--ti-brand-start) 0%, var(--ti-brand-end) 100%);
+  --solution-brand-start: var(--ti-brand-start);
+  --solution-brand-end: var(--ti-brand-end);
+  --solution-brand-gradient: var(--ti-brand-gradient);
 }
 
 /* ── Intro (industrial-laundry innovation pattern) ── */
@@ -467,75 +470,6 @@
   line-height: 1.55;
 }
 
-/* ── CTA (industrial-laundry pattern) ── */
-.technology-integration-page .ti-cta-section {
-  background-color: var(--color--gray-5);
-  padding: clamp(5rem, 9vw, 7.5rem) 0;
-}
-
-.technology-integration-page .ti-cta-card {
-  border-radius: 1.5rem;
-  background-color: #0a0a0a;
-  background-image:
-    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(37 149 213 / 22%) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(28 114 163 / 14%) 0%, transparent 62%);
-  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  overflow: hidden;
-}
-
-.technology-integration-page .ti-cta-eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--color--white);
-  font-size: 1.125rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.4;
-}
-
-.technology-integration-page .ti-cta-heading {
-  margin: 0 0 1.5rem;
-  color: var(--color--white);
-  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
-  font-weight: var(--_typography---h3--font-weight-600);
-  line-height: 1.1;
-  max-width: 18ch;
-}
-
-.technology-integration-page .ti-cta-description {
-  margin: 0 0 2.5rem;
-  color: #a1a1aa;
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.5;
-  max-width: min(100%, 36rem);
-}
-
-.technology-integration-page .ti-cta-actions {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  gap: 1.875rem;
-}
-
-.technology-integration-page .ti-cta-card .button-icon-bg {
-  background-color: var(--ti-brand-start);
-  background-image: var(--ti-brand-gradient);
-}
-
-.technology-integration-page .ti-cta-email {
-  color: var(--color--white);
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.technology-integration-page .ti-cta-email:hover {
-  opacity: 0.8;
-}
-
 /* ── Responsive ── */
 @media screen and (min-width: 992px) {
   .technology-integration-page .ti-unified-container,
@@ -582,19 +516,5 @@
 
   .technology-integration-page .ti-intro-block {
     max-width: 100%;
-  }
-
-  .technology-integration-page .ti-cta-card {
-    padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
-  }
-
-  .technology-integration-page .ti-cta-description {
-    max-width: 100%;
-  }
-
-  .technology-integration-page .ti-cta-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
   }
 }

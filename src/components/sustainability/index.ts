@@ -1,6 +1,5 @@
 export { SustainabilityBadge } from './SustainabilityBadge'
 export { SustainabilityButton } from './SustainabilityButton'
-export { SustainabilityCTASection } from './SustainabilityCTASection'
 export { SustainabilityHeroImageSection } from './SustainabilityHeroImageSection'
 export { SustainabilityHeroSection } from './SustainabilityHeroSection'
 export { SustainabilityPillar01Section } from './SustainabilityPillar01Section'

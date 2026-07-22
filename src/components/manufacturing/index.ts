@@ -9,4 +9,3 @@ export { ManufacturingEmbroiderySection } from './ManufacturingEmbroiderySection
 export { ManufacturingProductionNetworkSection } from './ManufacturingProductionNetworkSection'
 export { ManufacturingFactoriesSection } from './ManufacturingFactoriesSection'
 export { ManufacturingProjectsSection } from './ManufacturingProjectsSection'
-export { ManufacturingCTASection } from './ManufacturingCTASection'

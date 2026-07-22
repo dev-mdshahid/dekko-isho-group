@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import {
   ManufacturingCapacityDetailsSection,
   ManufacturingCapacitySection,
-  ManufacturingCTASection,
   ManufacturingCuttingPreparationSection,
   ManufacturingEmbroiderySection,
   ManufacturingHeroSection,
@@ -11,8 +10,8 @@ import {
   ManufacturingProductionNetworkSection,
   ManufacturingSewingSection,
 } from '../components/manufacturing'
-import { SolutionExpertiseSection } from '../components/solutions'
-import { manufacturingExpertise } from '../data/manufacturing/content'
+import { SolutionCtaSection, SolutionExpertiseSection } from '../components/solutions'
+import { manufacturingCta, manufacturingExpertise } from '../data/manufacturing/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -37,7 +36,7 @@ export function ManufacturingContent() {
       <ManufacturingSewingSection />
       <ManufacturingEmbroiderySection />
       <ManufacturingProductionNetworkSection />
-      <ManufacturingCTASection />
+      <SolutionCtaSection idPrefix={ID_PREFIX} content={manufacturingCta} />
     </div>
   )
 }

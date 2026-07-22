@@ -972,12 +972,10 @@ export const pillar05 = {
 export { certifications, externalAffiliations } from '../certifications/content'
 
 export const sustainabilityCta = {
-  eyebrow: "Let's Connect",
+  badge: "Let's Connect",
   heading: "And build what's next, together",
   description:
-    "Get in touch with our team for partnership, sourcing, careers or general inquiries - we'll get back to you with answers.",
+    'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',
   buttonHref: '/contact',
-  email: 'hello@dekkoisho.com',
-  emailHref: 'mailto:hello@dekkoisho.com',
 }

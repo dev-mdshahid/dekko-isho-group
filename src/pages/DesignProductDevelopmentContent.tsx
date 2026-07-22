@@ -2,7 +2,6 @@ import { useRef } from 'react'
 
 import {
   DesignCapabilitiesSection,
-  DesignCTASection,
   DesignDigitalImpactSection,
   // DesignExperienceSection,
   // DesignFacilitiesSection,
@@ -13,9 +12,10 @@ import {
   // DesignSolutionsBannerSection,
 } from '../components/design-product-development'
 // import { IndustryImageSection } from '../components/industry'
-import { SolutionPageHeroSection } from '../components/solutions'
+import { SolutionCtaSection, SolutionPageHeroSection } from '../components/solutions'
 import {
   // designProductDevelopmentConcept,
+  designProductDevelopmentCta,
   designProductDevelopmentHero,
 } from '../data/design-product-development/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -44,7 +44,7 @@ export function DesignProductDevelopmentContent() {
       {/* <DesignExperienceSection /> */}
       {/* <DesignPresenceSection /> */}
       {/* <DesignShowroomSection /> */}
-      <DesignCTASection />
+      <SolutionCtaSection idPrefix={ID_PREFIX} content={designProductDevelopmentCta} />
     </div>
   )
 }

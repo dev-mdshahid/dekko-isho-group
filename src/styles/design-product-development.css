@@ -1141,67 +1141,6 @@
   opacity: 0.8;
 }
 
-/* ── CTA (industrial-laundry pattern) ── */
-.design-product-development-page .dpd-cta-section {
-  background-color: var(--color--gray-5);
-  padding: clamp(5rem, 9vw, 7.5rem) 0;
-}
-
-.design-product-development-page .dpd-cta-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
-  border-radius: 1.5rem;
-  background-color: #0a0a0a;
-  background-image:
-    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(37 149 213 / 22%) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(28 114 163 / 14%) 0%, transparent 62%);
-  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
-  overflow: hidden;
-}
-
-.design-product-development-page .dpd-cta-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 0;
-  max-width: 40rem;
-}
-
-.design-product-development-page .dpd-cta-card .pre-section-title-square {
-  background-color: var(--dpd-brand-start);
-  background-image: var(--dpd-brand-gradient);
-}
-
-.design-product-development-page .dpd-cta-heading {
-  margin: 1.25rem 0 0;
-  color: var(--color--white);
-  font-size: 42px;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-
-.design-product-development-page .dpd-cta-description {
-  margin: 16px 0 0;
-  color: #a1a1aa;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.55;
-}
-
-.design-product-development-page .dpd-cta-action {
-  flex-shrink: 0;
-  justify-self: end;
-  align-self: center;
-}
-
-.design-product-development-page .dpd-cta-card .button-icon-bg {
-  background-color: var(--dpd-brand-start);
-  background-image: var(--dpd-brand-gradient);
-}
-
 /* ── Responsive ── */
 @media screen and (min-width: 992px) {
   .design-product-development-page .dpd-factory-container,
@@ -1368,22 +1307,5 @@
   .design-product-development-page .dpd-presence-gallery-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-  }
-
-  .design-product-development-page .dpd-cta-card {
-    grid-template-columns: 1fr;
-    padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
-  }
-
-  .design-product-development-page .dpd-cta-heading {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
-  }
-
-  .design-product-development-page .dpd-cta-description {
-    max-width: 100%;
-  }
-
-  .design-product-development-page .dpd-cta-action {
-    justify-self: start;
   }
 }

@@ -843,75 +843,6 @@
   margin-top: 0.5rem;
 }
 
-/* ── Let's Connect CTA (Figma card) ── */
-.manufacturing-page .mfg-cta-section {
-  background-color: var(--color--gray-5);
-  padding: clamp(5rem, 9vw, 7.5rem) 0;
-}
-
-.manufacturing-page .mfg-cta-card {
-  border-radius: 1.5rem;
-  background-color: #0a0a0a;
-  background-image:
-    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(37 149 213 / 22%) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(28 114 163 / 14%) 0%, transparent 62%);
-  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  overflow: hidden;
-}
-
-.manufacturing-page .mfg-cta-eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--color--white);
-  font-size: 1.125rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.4;
-}
-
-.manufacturing-page .mfg-cta-heading {
-  margin: 0 0 1.5rem;
-  color: var(--color--white);
-  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
-  font-weight: var(--_typography---h3--font-weight-600);
-  line-height: 1.1;
-  max-width: 18ch;
-}
-
-.manufacturing-page .mfg-cta-description {
-  margin: 0 0 2.5rem;
-  color: #a1a1aa;
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.5;
-  max-width: min(100%, 36rem);
-}
-
-.manufacturing-page .mfg-cta-actions {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  gap: 1.875rem;
-}
-
-.manufacturing-page .mfg-cta-card .button-icon-bg {
-  background-color: var(--mfg-brand-start);
-  background-image: var(--mfg-brand-gradient);
-}
-
-.manufacturing-page .mfg-cta-email {
-  color: var(--color--white);
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.manufacturing-page .mfg-cta-email:hover {
-  opacity: 0.8;
-}
-
 /* ── Responsive ── */
 @media screen and (max-width: 991px) {
   .manufacturing-page .mfg-how-it-works-section .grid-category-title,
@@ -982,20 +913,6 @@
 
   .manufacturing-page .mfg-sewing-media {
     width: min(100%, 22rem);
-  }
-
-  .manufacturing-page .mfg-cta-card {
-    padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
-  }
-
-  .manufacturing-page .mfg-cta-description {
-    max-width: 100%;
-  }
-
-  .manufacturing-page .mfg-cta-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
   }
 
   .manufacturing-page .mfg-projects-track {

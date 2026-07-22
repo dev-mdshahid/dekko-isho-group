@@ -4,6 +4,9 @@
   --cs-brand-start: var(--color--primary);
   --cs-brand-end: var(--color--primary-3);
   --cs-brand-gradient: linear-gradient(180deg, var(--cs-brand-start) 0%, var(--cs-brand-end) 100%);
+  --solution-brand-start: var(--cs-brand-start);
+  --solution-brand-end: var(--cs-brand-end);
+  --solution-brand-gradient: var(--cs-brand-gradient);
 }
 
 /* ── Initiatives (matches industrial-laundry innovation) ── */
@@ -577,75 +580,6 @@
   letter-spacing: var(--_typography---body--letter-spacing);
 }
 
-/* ── CTA (matches industrial-laundry) ── */
-.compliance-sustainability-page .cs-cta-section {
-  background-color: var(--color--gray-5);
-  padding: clamp(5rem, 9vw, 7.5rem) 0;
-}
-
-.compliance-sustainability-page .cs-cta-card {
-  border-radius: 1.5rem;
-  background-color: #0a0a0a;
-  background-image:
-    radial-gradient(ellipse 70% 90% at 0% 100%, rgb(37 149 213 / 22%) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 65% at 100% 0%, rgb(28 114 163 / 14%) 0%, transparent 62%);
-  padding: clamp(3.75rem, 6vw, 5rem) clamp(2.5rem, 5vw, 5rem);
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  overflow: hidden;
-}
-
-.compliance-sustainability-page .cs-cta-eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--color--white);
-  font-size: 1.125rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.4;
-}
-
-.compliance-sustainability-page .cs-cta-heading {
-  margin: 0 0 1.5rem;
-  color: var(--color--white);
-  font-size: clamp(2.25rem, 4.5vw, 3.375rem);
-  font-weight: var(--_typography---h3--font-weight-600);
-  line-height: 1.1;
-  max-width: 18ch;
-}
-
-.compliance-sustainability-page .cs-cta-description {
-  margin: 0 0 2.5rem;
-  color: #a1a1aa;
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  line-height: 1.5;
-  max-width: min(100%, 36rem);
-}
-
-.compliance-sustainability-page .cs-cta-actions {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  gap: 1.875rem;
-}
-
-.compliance-sustainability-page .cs-cta-card .button-icon-bg {
-  background-color: var(--cs-brand-start);
-  background-image: var(--cs-brand-gradient);
-}
-
-.compliance-sustainability-page .cs-cta-email {
-  color: var(--color--white);
-  font-size: 1rem;
-  font-weight: var(--_typography---body--font-weight-500);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.compliance-sustainability-page .cs-cta-email:hover {
-  opacity: 0.8;
-}
-
 /* ── Responsive ── */
 @media screen and (min-width: 992px) {
   .compliance-sustainability-page .cs-risk-container,
@@ -719,19 +653,5 @@
 
   .compliance-sustainability-page .cs-improvement-number {
     font-size: clamp(2.25rem, 10vw, 2.75rem);
-  }
-
-  .compliance-sustainability-page .cs-cta-card {
-    padding: clamp(2.5rem, 8vw, 3.5rem) clamp(1.5rem, 5vw, 2rem);
-  }
-
-  .compliance-sustainability-page .cs-cta-description {
-    max-width: 100%;
-  }
-
-  .compliance-sustainability-page .cs-cta-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
   }
 }

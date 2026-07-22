@@ -1,4 +1,3 @@
-export { TechnologyCTASection } from './TechnologyCTASection'
 export { TechnologyDashboardSection } from './TechnologyDashboardSection'
 export { TechnologyGrowthSection } from './TechnologyGrowthSection'
 export { TechnologyHeroSection } from './TechnologyHeroSection'
