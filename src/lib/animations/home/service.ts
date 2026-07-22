@@ -98,54 +98,82 @@ function setupFeatureReveals(cards: NodeListOf<HTMLElement>) {
   }
 }
 
+/** Scrub window while `covering` advances over stuck `covered`. */
+function coverScrubRange(covered: HTMLElement, covering: HTMLElement) {
+  return {
+    start: () => {
+      const coveringStickyTop = getStickyTopPx(covering)
+      const coverStart = getStickyTopPx(covered) + covered.offsetHeight
+      return `top ${Math.max(coverStart, coveringStickyTop + MIN_COVER_SCRUB_PX)}px`
+    },
+    end: () => `top ${getStickyTopPx(covering)}px`,
+  }
+}
+
+function scalePanelOnCover(
+  panel: HTMLElement,
+  trigger: HTMLElement,
+  covered: HTMLElement,
+  covering: HTMLElement,
+) {
+  gsap.set(panel, { scale: 1, transformOrigin: 'center top' })
+  const { start, end } = coverScrubRange(covered, covering)
+
+  return gsap.fromTo(
+    panel,
+    { scale: 1 },
+    {
+      scale: COVERED_SCALE,
+      ease: 'none',
+      force3D: true,
+      overwrite: false,
+      scrollTrigger: {
+        trigger,
+        start,
+        end,
+        scrub: 0.35,
+        invalidateOnRefresh: true,
+      },
+    },
+  )
+}
+
 /**
- * Cover-cascade: card N stays at scale 1 until card N+1 begins overlapping it.
- * Then only card N's panel scales down with N+1's cover progress.
- * The covering card never scales in this pass. Last card stays full size.
+ * Cover-cascade:
+ * 1) Card N scales only while card N+1 covers it.
+ * 2) Final card self-scales while it covers the previous card (no successor).
+ * Each tween targets that card's `.service-card-panel` only; sticky wrappers stay plain.
  */
 function setupCoverCascadeScale(cards: NodeListOf<HTMLElement>) {
   const triggers: ScrollTrigger[] = []
   const tweens: gsap.core.Tween[] = []
   const cardList = Array.from(cards)
 
+  // Pass 1 — N→N+1: covered card scales; covering card does not.
   cardList.forEach((card, index) => {
-    // Last card has no successor — stay at full scale.
     if (index >= cardList.length - 1) return
 
     const nextCard = cardList[index + 1]
     if (!nextCard) return
 
-    const panel = getCardPanel(card)
-    gsap.set(panel, { scale: 1, transformOrigin: 'center top' })
-
-    const tween = gsap.fromTo(
-      panel,
-      { scale: 1 },
-      {
-        scale: COVERED_SCALE,
-        ease: 'none',
-        force3D: true,
-        overwrite: false,
-        scrollTrigger: {
-          // Progress is driven only by the immediate next card.
-          trigger: nextCard,
-          // Cover begins when the next card's top reaches this card's stuck bottom.
-          start: () => {
-            const nextStickyTop = getStickyTopPx(nextCard)
-            const coverStart = getStickyTopPx(card) + card.offsetHeight
-            return `top ${Math.max(coverStart, nextStickyTop + MIN_COVER_SCRUB_PX)}px`
-          },
-          // Cover complete when the next card reaches its own sticky top.
-          end: () => `top ${getStickyTopPx(nextCard)}px`,
-          scrub: 0.35,
-          invalidateOnRefresh: true,
-        },
-      },
-    )
-
+    const tween = scalePanelOnCover(getCardPanel(card), nextCard, card, nextCard)
     if (tween.scrollTrigger) triggers.push(tween.scrollTrigger)
     tweens.push(tween)
   })
+
+  // Pass 2 — final card only: scale itself as it wraps over the previous card.
+  if (cardList.length >= 2) {
+    const lastCard = cardList[cardList.length - 1]
+    const prevCard = cardList[cardList.length - 2]
+    const lastTween = scalePanelOnCover(
+      getCardPanel(lastCard),
+      lastCard,
+      prevCard,
+      lastCard,
+    )
+    if (lastTween.scrollTrigger) triggers.push(lastTween.scrollTrigger)
+    tweens.push(lastTween)
+  }
 
   return () => {
     triggers.forEach((t) => t.kill())
