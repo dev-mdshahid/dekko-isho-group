@@ -3,7 +3,9 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export type SolutionFeature = {
   id: string
-  icon: string
+  icon?: string
+  logo?: string
+  logoAlt?: string
   title: string
   description: string
 }
@@ -28,6 +30,16 @@ export function SolutionExpertiseSection({
   paragraphs,
   features,
 }: SolutionExpertiseSectionProps) {
+  const hasLogoCards = features.some((feature) => Boolean(feature.logo))
+  const featureGridClassName = [
+    'w-layout-grid',
+    'grid-feature',
+    'solution-feature-grid',
+    hasLogoCards ? 'solution-feature-grid--logos' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
     <div id={id} className="service-more-info section-spacing solution-expertise-section">
       <div className="container">
@@ -53,7 +65,7 @@ export function SolutionExpertiseSection({
           </div>
 
           <div className="service-feature-info solution-feature-info">
-            <div className="w-layout-grid grid-feature solution-feature-grid">
+            <div className={featureGridClassName}>
               {features.map((feature, index) => (
                 <FadeIn
                   key={feature.id}
@@ -61,9 +73,20 @@ export function SolutionExpertiseSection({
                   className="feature-main"
                   delay={index * 60}
                 >
-                  <div className="feature-icon-wrap">
-                    <img src={feature.icon} loading="lazy" alt="" className="feature-icon" />
-                  </div>
+                  {feature.logo ? (
+                    <div className="feature-logo-wrap">
+                      <img
+                        src={feature.logo}
+                        loading="lazy"
+                        alt={feature.logoAlt ?? ''}
+                        className="feature-logo"
+                      />
+                    </div>
+                  ) : feature.icon ? (
+                    <div className="feature-icon-wrap">
+                      <img src={feature.icon} loading="lazy" alt="" className="feature-icon" />
+                    </div>
+                  ) : null}
                   <h2 className="feature-name">{feature.title}</h2>
                   <p className="feature-description">{feature.description}</p>
                 </FadeIn>

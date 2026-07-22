@@ -10,31 +10,33 @@ export const industrialLaundryHero = {
 
 export const industrialLaundryExpertise = {
   id: 'il-innovation',
-  title: 'Own innovation in design and development is the primary focus of Agami Washing Ltd.',
+  badge: 'From Wash to Finish',
+  title: 'Sustainable washing for premium garment finishes.',
   paragraphs: [
-    'From wash recipe development to bulk production, our teams combine technical expertise with modern equipment to deliver repeatable, brand-aligned finishes at scale.',
+    'Our washing facilities combine innovation, process control, and responsible manufacturing to deliver premium finishes across a wide range of denim and garment applications, while reducing environmental impact through efficient water management.',
   ],
   features: [
     {
-      id: 'capacity',
-      icon: '/images/industrial-laundry/feature-icon-capacity.svg',
-      title: 'Denim Washing Capacity',
+      id: 'ozone',
+      logo: '/images/industrial-laundry/jeanologia-logo.png',
+      logoAlt: 'Jeanologia — The Science of Finishing',
+      title: 'OZONE Technology',
       description:
         'Around 70 thousand pieces of denim washing capacity supported by modern laundry setup and technical expertise.',
     },
     {
-      id: 'technology',
-      icon: '/images/industrial-laundry/feature-icon-technology.svg',
-      title: 'Advanced Laundry Technology',
-      description:
-        'Equipped with OZONE fading, nano bubble technology, front loading machines, sample machines and high-tech dryers.',
+      id: 'nano-bubble',
+      logo: '/images/industrial-laundry/tonello-logo.png',
+      logoAlt: 'Tonello — The Inspiring Company',
+      title: 'Nano-Bubble Machines',
+      description: 'Precision garment treatment using advanced nano-bubble washing technology.',
     },
     {
-      id: 'processes',
-      icon: '/images/industrial-laundry/feature-icon-processes.svg',
-      title: 'Wet & Dry Wash Processes',
-      description:
-        'Supports garment wash, enzyme wash, dip dye, snow wash, hand scraping, whisker, destroy, PP spray and 3D effects.',
+      id: 'dryers',
+      logo: '/images/industrial-laundry/tupesa-logo.png',
+      logoAlt: 'Tupesa — Maquinaria Textil',
+      title: 'High-Performance Dryers',
+      description: 'Fast, consistent and energy-efficient drying at industrial scale.',
     },
   ],
 }

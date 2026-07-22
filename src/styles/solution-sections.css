@@ -164,7 +164,7 @@
 
 .solution-page .solution-expertise-block {
   width: 100%;
-  max-width: 52rem;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -222,6 +222,11 @@
   padding: 1.75rem 1.5rem;
 }
 
+.solution-page .solution-feature-grid--logos .feature-main {
+  padding: 30px;
+  border-radius: 12px;
+}
+
 .solution-page .solution-feature-grid .feature-icon-wrap {
   margin-bottom: 1.5rem;
   line-height: 0;
@@ -234,11 +239,39 @@
   flex: none;
 }
 
+.solution-page .solution-feature-grid .feature-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 190px;
+  margin-bottom: 40px;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background-color: var(--color--white);
+  overflow: hidden;
+}
+
+.solution-page .solution-feature-grid .feature-logo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .solution-page .solution-feature-grid .feature-name {
   font-size: var(--_typography---body--body-sm);
   font-weight: var(--_typography---h6--font-weight-600);
   line-height: 1.35;
   margin-bottom: 0.75rem;
+}
+
+.solution-page .solution-feature-grid--logos .feature-name {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .solution-page .solution-feature-grid .feature-description {
@@ -248,9 +281,40 @@
   margin: 0;
 }
 
+.solution-page .solution-feature-grid--logos .feature-description {
+  font-size: 18px;
+}
+
 @media screen and (max-width: 991px) {
+  .solution-page .solution-expertise-section {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .solution-page .solution-expertise-inner {
+    gap: 2.5rem;
+  }
+
   .solution-page .solution-feature-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-main {
+    padding: 24px;
+  }
+
+  .solution-page .solution-feature-grid .feature-logo-wrap {
+    height: 160px;
+    margin-bottom: 28px;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-name {
+    font-size: 22px;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-description {
+    font-size: 17px;
   }
 
   .solution-page .solution-expertise-title-wrap,
@@ -268,6 +332,53 @@
 }
 
 @media screen and (max-width: 767px) {
+  .solution-page .solution-expertise-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .solution-page .solution-expertise-inner {
+    gap: 2rem;
+  }
+
+  .solution-page .solution-expertise-block {
+    gap: 1rem;
+  }
+
+  .solution-page .solution-expertise-title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  .solution-page .solution-expertise-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .solution-page .solution-feature-grid {
+    gap: 1rem;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-main {
+    padding: 20px;
+  }
+
+  .solution-page .solution-feature-grid .feature-logo-wrap {
+    height: 140px;
+    margin-bottom: 24px;
+    padding: 0.875rem 1rem;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-name {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-description {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
   .solution-page .solution-hero-title {
     font-size: clamp(2.5rem, 10vw, 3.5rem);
   }
