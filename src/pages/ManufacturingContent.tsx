@@ -1,25 +1,25 @@
 import { useRef } from 'react'
 
 import {
-  ManufacturingCapacityDetailsSection,
+  // ManufacturingCapacityDetailsSection,
   ManufacturingCapacitySection,
   ManufacturingClientsSection,
-  ManufacturingCuttingPreparationSection,
+  // ManufacturingCuttingPreparationSection,
   ManufacturingProductRangeSection,
-  ManufacturingEmbroiderySection,
+  // ManufacturingEmbroiderySection,
   ManufacturingHeroSection,
-  ManufacturingHowItWorksSection,
+  // ManufacturingHowItWorksSection,
   ManufacturingProductionNetworkSection,
-  ManufacturingSewingSection,
+  // ManufacturingSewingSection,
 } from '../components/manufacturing'
 import {
   SolutionCtaSection,
-  SolutionExpertiseSection,
+  // SolutionExpertiseSection,
   SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
   manufacturingCta,
-  manufacturingExpertise,
+  // manufacturingExpertise,
   manufacturingWhyItMatters,
 } from '../data/manufacturing/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -39,16 +39,16 @@ export function ManufacturingContent() {
     <div ref={ref} className="solution-page manufacturing-page">
       <ManufacturingHeroSection />
       <ManufacturingProductionNetworkSection />
-      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} />
-      <ManufacturingHowItWorksSection />
+      {/* <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} /> */}
+      {/* <ManufacturingHowItWorksSection /> */}
       <ManufacturingCapacitySection />
       <ManufacturingClientsSection />
       <ManufacturingProductRangeSection />
       <SolutionWhyItMattersSection idPrefix={ID_PREFIX} content={manufacturingWhyItMatters} />
-      <ManufacturingCapacityDetailsSection />
-      <ManufacturingCuttingPreparationSection />
-      <ManufacturingSewingSection />
-      <ManufacturingEmbroiderySection />
+      {/* <ManufacturingCapacityDetailsSection /> */}
+      {/* <ManufacturingCuttingPreparationSection /> */}
+      {/* <ManufacturingSewingSection /> */}
+      {/* <ManufacturingEmbroiderySection /> */}
       <SolutionCtaSection idPrefix={ID_PREFIX} content={manufacturingCta} />
     </div>
   )

@@ -12,7 +12,7 @@ export function ManufacturingProductionNetworkSection() {
   const { badge, title, description, units } = manufacturingProductionNetwork
 
   return (
-    <section className="service-inner-section mfg-network-section">
+    <section id="mfg-production-network" className="service-inner-section mfg-network-section">
       <div className="mfg-network-main">
         <FadeIn id="mfg-network-header" className="mfg-network-header">
           <PreSectionTitle title={badge} />

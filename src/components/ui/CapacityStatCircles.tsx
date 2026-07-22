@@ -25,6 +25,7 @@ type CapacityStatCirclesProps = {
 
 const DEFAULT_GRID_LAYOUT: Record<string, CapacityStatLayout> = {
   machining: { x: 0, y: 0, z: 1 },
+  production: { x: 0, y: 0, z: 1 },
   'woven-tops': { x: 1, y: 0, z: 1 },
   'woven-bottoms': { x: 2, y: 0, z: 1 },
   units: { x: 0, y: 1, z: 1 },

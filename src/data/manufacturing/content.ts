@@ -2,9 +2,9 @@ import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
 
 export const manufacturingHero = {
   titleLines: [[{ text: 'Integrated' }, { text: 'Manufacturing' }]],
-  subtitle: 'Precision Manufacturing. End to End.',
+  subtitle: 'Powering Manufacturing End to End.',
   ctaLabel: 'Learn More',
-  ctaHref: '#mfg-expertise',
+  ctaHref: '#mfg-production-network',
   video: '/videos/Person_People_1280x720.mp4',
   videoAlt: 'Apparel manufacturing — person working with fabric',
 }
@@ -157,20 +157,20 @@ export const manufacturingCapacity = {
   ctaHref: '/docs/Dekko_ISHO_Group.pdf',
   stats: [
     {
-      id: 'machining',
-      value: '3.5 M',
-      label: 'Precision Machining',
+      id: 'production',
+      value: '2.0 M',
+      label: 'Pcs Production Monthly',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5 M',
+      value: '2.0 M',
       label: 'Woven Tops',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0 M',
+      value: '2.0 M',
       label: 'Woven Bottoms',
       variant: 'navy',
     },
@@ -241,27 +241,27 @@ export const manufacturingProductRange = {
 export const manufacturingWhyItMatters = {
   title: 'Why It Matters',
   description:
-    'Managing every stage under one roof keeps production coordinated, fast, simple, and consistent from start to finish.',
+    'Managing your orders under one roof keeps production seamless, fast, simple, and consistent.',
   items: [
     {
-      id: 'coordination',
-      title: 'Improved coordination',
-      description: 'Virtual sampling replaces costly physical rounds.',
+      id: 'customization',
+      title: 'Improved customization',
+      description: "It's all about providing quality products for better value.",
     },
     {
       id: 'cycles',
       title: 'Shorter development cycles',
-      description: '3D visualization accelerates approvals across the lifecycle.',
+      description: 'At the speed of fast fashion, getting a product to market.',
     },
     {
       id: 'complexity',
       title: 'Reduced operational complexity',
-      description: 'Styles reach market sooner, with greater accuracy.',
+      description: 'Single point contact ensures manageable workflow.',
     },
     {
       id: 'quality',
       title: 'Consistent product quality',
-      description: 'Digital iteration cuts fabric consumption before production.',
+      description: 'Highly skilled workforce ensures top-tier apparel production.',
     },
   ],
 }
@@ -430,7 +430,7 @@ export const manufacturingProductionNetwork = {
   badge: 'Verified scale',
   title: 'Production Network',
   description:
-    'Key production units across Dekko ISHO Group with lines, capacity, manpower, product mix, and compliance progress.',
+    'Our production units ensure better efficiency with their capacity, immense product mix, and compliance standards.',
   units: [
     {
       id: 'dekko-garments',
@@ -544,7 +544,7 @@ export const manufacturingCta = {
   badge: "Let's Connect",
   heading: "And build what's next, together",
   description:
-    'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
-  buttonLabel: 'Schedule consultation',
+    "Get in touch with us. Start the conversation by telling us about your ideas & let's get down to work together.",
+  buttonLabel: 'Send us a message',
   buttonHref: '/contact',
 }
