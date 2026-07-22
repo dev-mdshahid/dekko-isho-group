@@ -7,11 +7,17 @@ type Props = {
 export function SustainabilityGovernanceTopicCard({ topic }: Props) {
   return (
     <article className="sustain-governance-topic-card">
-      <div className="sustain-governance-topic-icon-wrap">
-        <img src={topic.icon} loading="lazy" alt={topic.iconAlt} className="sustain-governance-topic-icon" />
+      <div className="sustain-governance-topic-content">
+        <h3 className="sustain-governance-topic-title">{topic.title}</h3>
+        <p className="sustain-governance-topic-description">{topic.description}</p>
       </div>
-      <h3 className="sustain-governance-topic-title">{topic.title}</h3>
-      <p className="sustain-governance-topic-description">{topic.description}</p>
+      <img
+        src={topic.icon}
+        loading="lazy"
+        alt=""
+        aria-hidden="true"
+        className="sustain-governance-topic-icon"
+      />
     </article>
   )
 }

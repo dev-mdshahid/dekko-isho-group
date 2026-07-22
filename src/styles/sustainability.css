@@ -2241,30 +2241,34 @@
 .sustain-governance-topic-card {
   background-color: var(--color--white);
   border-radius: 20px;
-  box-shadow: 0 4px 128px 0 rgb(64 73 80 / 16%);
+  box-shadow: 0 4px 24px 0 rgb(64 73 80 / 8%);
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  height: 100%;
-  padding: 40px;
+  height: 220px;
+  overflow: hidden;
+  padding: 32px;
+  position: relative;
 }
 
-.sustain-governance-topic-icon-wrap {
-  align-items: center;
-  background-color: var(--color--neutral-seasalt);
-  border-radius: 12px;
-  display: inline-flex;
-  flex: none;
-  justify-content: center;
-  margin-bottom: 30px;
-  padding: 20px;
+.sustain-governance-topic-content {
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 48px);
 }
 
 .sustain-governance-topic-icon {
+  bottom: -28px;
   display: block;
-  height: 48px;
+  height: 175px;
   object-fit: contain;
-  width: 48px;
+  opacity: 0.3;
+  pointer-events: none;
+  position: absolute;
+  right: -24px;
+  user-select: none;
+  width: 175px;
+  z-index: 0;
 }
 
 .sustain-governance-topic-title {
@@ -2272,8 +2276,9 @@
   font-size: 28px;
   font-weight: 600;
   letter-spacing: var(--_typography---body--letter-spacing);
-  line-height: 1.3;
-  margin: 0 0 10px;
+  line-height: 1.25;
+  margin: 0 0 8px;
+  white-space: nowrap;
 }
 
 .sustain-governance-topic-description {
@@ -2283,6 +2288,7 @@
   letter-spacing: var(--_typography---body--letter-spacing);
   line-height: 1.5;
   margin: 0;
+  max-width: 18em;
 }
 
 /* ── ESG Reports (Pillar 05) ── */
@@ -2820,6 +2826,18 @@
     gap: 1.25rem;
   }
 
+  .sustain-governance-topic-card {
+    height: auto;
+    min-height: 220px;
+  }
+
+  .sustain-governance-topic-icon {
+    bottom: -28px;
+    height: 175px;
+    right: -24px;
+    width: 175px;
+  }
+
   .sustain-reports-grid {
     grid-template-columns: 1fr;
     margin-bottom: 2.5rem;
@@ -3266,22 +3284,26 @@
   }
 
   .sustain-governance-topic-card {
+    height: auto;
+    min-height: 200px;
     padding: 24px;
   }
 
-  .sustain-governance-topic-icon-wrap {
-    margin-bottom: 20px;
-    padding: 16px;
+  .sustain-governance-topic-content {
+    max-width: 80%;
   }
 
   .sustain-governance-topic-icon {
-    height: 40px;
-    width: 40px;
+    bottom: -24px;
+    height: 175px;
+    right: -20px;
+    width: 175px;
   }
 
   .sustain-governance-topic-title {
     font-size: 22px;
     margin-bottom: 8px;
+    white-space: normal;
   }
 
   .sustain-governance-topic-description {
