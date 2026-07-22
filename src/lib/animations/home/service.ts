@@ -131,7 +131,8 @@ function scalePanelOnCover(
         trigger,
         start,
         end,
-        scrub: 0.35,
+        // Tight scrub so scale stays locked to scroll into the stack release.
+        scrub: 0.15,
         invalidateOnRefresh: true,
       },
     },
