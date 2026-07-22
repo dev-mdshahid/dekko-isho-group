@@ -20,6 +20,7 @@ function removeBootSplash() {
 export function SplashScreen() {
   const { phase, setPhase, isActive, logoTargetRef, completeSplash } = useSplash()
   const overlayRef = useRef<HTMLDivElement>(null)
+  const backdropRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLImageElement>(null)
   const progressTrackRef = useRef<HTMLDivElement>(null)
@@ -64,12 +65,13 @@ export function SplashScreen() {
     if (startedRef.current || finishedRef.current) return
 
     const overlay = overlayRef.current
+    const backdrop = backdropRef.current
     const stage = stageRef.current
     const logo = logoRef.current
     const progressTrack = progressTrackRef.current
     const progressFill = progressFillRef.current
 
-    if (!overlay || !stage || !logo || !progressTrack || !progressFill) return
+    if (!overlay || !backdrop || !stage || !logo || !progressTrack || !progressFill) return
 
     startedRef.current = true
     setPhaseRef.current('loading')
@@ -77,6 +79,7 @@ export function SplashScreen() {
     const cleanup = runSplashAnimation(
       {
         overlay,
+        backdrop,
         stage,
         logo,
         progressTrack,
@@ -84,14 +87,23 @@ export function SplashScreen() {
         getLogoTarget: () => logoTargetRef.current,
       },
       {
-        onTransitionStart: () => setPhaseRef.current('transitioning'),
+        onTransitionStart: () => {
+          setPhaseRef.current('transitioning')
+          // Reveal page under the fading backdrop while the logo flies.
+          document.documentElement.classList.add('splash-revealing')
+        },
         onHandoff: () => {
           document.documentElement.classList.add('splash-handoff')
         },
         onComplete: () => {
           finishedRef.current = true
           document.documentElement.classList.add('splash-done')
-          document.documentElement.classList.remove('splash-handoff', 'splash-active', 'splash-boot')
+          document.documentElement.classList.remove(
+            'splash-handoff',
+            'splash-active',
+            'splash-boot',
+            'splash-revealing',
+          )
           completeSplashRef.current()
         },
       },
@@ -118,6 +130,7 @@ export function SplashScreen() {
       aria-busy={isActive}
       aria-label="Loading Dekko Isho Group"
     >
+      <div ref={backdropRef} className="splash-backdrop" aria-hidden="true" />
       <div ref={stageRef} className="splash-stage">
         <img
           ref={logoRef}

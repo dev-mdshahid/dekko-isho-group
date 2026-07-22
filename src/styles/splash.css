@@ -1,12 +1,13 @@
 /* ── Splash screen ───────────────────────────────────────────────── */
 
-/* Keep app content invisible until splash handoff / completion */
+/* Keep app content invisible until the logo flight begins (backdrop fade reveals it) */
 html.splash-boot #root,
-html.splash-active:not(.splash-handoff):not(.splash-done) #root {
+html.splash-active:not(.splash-revealing):not(.splash-handoff):not(.splash-done) #root {
   opacity: 0;
   pointer-events: none;
 }
 
+html.splash-revealing #root,
 html.splash-handoff #root,
 html.splash-done #root {
   opacity: 1;
@@ -25,22 +26,31 @@ html.splash-done #root {
     max(1.5rem, env(safe-area-inset-right))
     max(1.5rem, env(safe-area-inset-bottom))
     max(1.5rem, env(safe-area-inset-left));
+  /* Backdrop is a separate layer so it can fade without washing out the logo */
+  background: transparent;
+  contain: layout style paint;
+}
+
+.splash-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background:
     radial-gradient(120% 80% at 50% 40%, rgba(37, 149, 213, 0.06) 0%, transparent 55%),
     linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
-  /* Isolate paint; transforms stay on compositor */
-  contain: layout style paint;
   will-change: opacity;
+  pointer-events: none;
 }
 
 .splash-stage {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.75rem;
   width: min(72vw, 22rem);
-  will-change: opacity;
 }
 
 .splash-logo {
@@ -52,9 +62,11 @@ html.splash-done #root {
   /* Keep the flying logo above the navbar during handoff */
   position: relative;
   z-index: 1;
-  transform: translateZ(0);
+  opacity: 0;
+  transform: translateZ(0) scale(0.88);
+  transform-origin: center center;
   backface-visibility: hidden;
-  will-change: transform;
+  will-change: transform, opacity;
   user-select: none;
   pointer-events: none;
 }
@@ -65,6 +77,7 @@ html.splash-done #root {
   border-radius: 999px;
   background-color: rgba(21, 21, 21, 0.12);
   overflow: hidden;
+  opacity: 0;
   transform: translateZ(0);
   will-change: opacity, transform;
 }
@@ -137,7 +150,17 @@ html.splash-done .navbar .right-nav {
     pointer-events: auto;
   }
 
+  .splash-logo {
+    opacity: 1;
+    transform: none;
+  }
+
+  .splash-progress {
+    opacity: 1;
+  }
+
   .splash-overlay,
+  .splash-backdrop,
   .splash-stage,
   .splash-logo,
   .splash-progress,

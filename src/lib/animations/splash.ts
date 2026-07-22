@@ -8,14 +8,17 @@ import { type AnimationCleanup, prefersReducedMotion } from './prefersReducedMot
  */
 export const LOGO_MOVE_EASE = 'power3.inOut'
 
+const LOGO_APPEAR_DURATION = 0.55
 const PROGRESS_DURATION = 1
 /** Slightly snappy shared-element flight to the navbar. */
 const LOGO_MOVE_DURATION = 0.55
 const PROGRESS_HIDE_DURATION = 0.16
-const OVERLAY_FADE_DURATION = 0.35
+/** Quick veil clear after the logo has seated. */
+const BACKDROP_FADE_DURATION = 0.22
 
 export type SplashAnimationElements = {
   overlay: HTMLElement
+  backdrop: HTMLElement
   stage: HTMLElement
   logo: HTMLElement
   progressTrack: HTMLElement
@@ -60,15 +63,16 @@ function measureLogoFlight(logo: HTMLElement, target: HTMLElement | null): LogoF
 
 /**
  * Run the full splash sequence:
- * 1) progress 0→100 (~1s ease-in-out)
- * 2) FLIP logo from center → navbar target
- * 3) fade overlay + reveal chrome
+ * 1) logo appear (fade + scale)
+ * 2) progress 0→100 (~1s ease-in-out)
+ * 3) FLIP logo from center → navbar target while backdrop fades
+ * 4) complete
  */
 export function runSplashAnimation(
   els: SplashAnimationElements,
   callbacks: SplashAnimationCallbacks = {},
 ): AnimationCleanup {
-  const { overlay, stage, logo, progressTrack, progressFill, getLogoTarget } = els
+  const { overlay, backdrop, stage, logo, progressTrack, progressFill, getLogoTarget } = els
 
   if (prefersReducedMotion()) {
     callbacks.onComplete?.()
@@ -80,15 +84,17 @@ export function runSplashAnimation(
   let moveTween: gsap.core.Tween | null = null
 
   gsap.set(progressFill, { scaleX: 0, transformOrigin: 'left center' })
+  gsap.set(progressTrack, { opacity: 0 })
   gsap.set(logo, {
     x: 0,
     y: 0,
-    scale: 1,
-    opacity: 1,
+    scale: 0.88,
+    opacity: 0,
     transformOrigin: 'center center',
     force3D: true,
   })
-  gsap.set([overlay, stage, progressTrack], { force3D: true })
+  gsap.set(backdrop, { opacity: 1, force3D: true })
+  gsap.set([overlay, stage], { force3D: true })
 
   const tl = gsap.timeline({
     defaults: { force3D: true },
@@ -98,14 +104,33 @@ export function runSplashAnimation(
     },
   })
 
-  // ── 1. Loading progress ──────────────────────────────────────────
+  // ── 1. Logo appear ───────────────────────────────────────────────
+  tl.to(logo, {
+    opacity: 1,
+    scale: 1,
+    duration: LOGO_APPEAR_DURATION,
+    ease: 'power3.out',
+  })
+
+  // Progress track fades in just as the logo settles.
+  tl.to(
+    progressTrack,
+    {
+      opacity: 1,
+      duration: 0.28,
+      ease: 'power2.out',
+    },
+    '-=0.25',
+  )
+
+  // ── 2. Loading progress ──────────────────────────────────────────
   tl.to(progressFill, {
     scaleX: 1,
     duration: PROGRESS_DURATION,
     ease: 'power2.inOut',
   })
 
-  // ── 2. Hide progress quickly so the logo flight starts cleanly ───
+  // ── 3. Hide progress quickly so the logo flight starts cleanly ───
   tl.to(
     progressTrack,
     {
@@ -121,7 +146,7 @@ export function runSplashAnimation(
     callbacks.onTransitionStart?.()
   })
 
-  // ── 3. FLIP logo to navbar target (on-timeline for smooth sync) ──
+  // ── 4. FLIP logo + fade splash backdrop in parallel ──────────────
   tl.add(() => {
     if (disposed) return
 
@@ -136,6 +161,7 @@ export function runSplashAnimation(
       x: 0,
       y: 0,
       scale: 1,
+      opacity: 1,
       transformOrigin: 'center center',
       force3D: true,
     })
@@ -151,7 +177,6 @@ export function runSplashAnimation(
       onComplete: () => {
         if (disposed) return
         // Instant seat: navbar logo appears under the flyer, then flyer is removed.
-        // No opacity fade — it should feel like the same logo settling in place.
         callbacks.onHandoff?.()
         gsap.set(logo, { opacity: 0, visibility: 'hidden' })
       },
@@ -165,7 +190,6 @@ export function runSplashAnimation(
       const progress = moveTween.progress()
       if (progress >= 1) return
 
-      // Recompute deltas from the logo's untransformed origin.
       const f = logo.getBoundingClientRect()
       const curX = gsap.getProperty(logo, 'x') as number
       const curY = gsap.getProperty(logo, 'y') as number
@@ -187,17 +211,17 @@ export function runSplashAnimation(
     window.addEventListener('resize', resizeHandler)
   })
 
+  // Keep the splash fully opaque while the logo flies.
   tl.to({}, { duration: LOGO_MOVE_DURATION })
 
-  // ── 4. Fade only the splash backdrop after the logo has seated ───
-  // Do not fade `stage` during the flight — that made the logo look washed out
-  // as it arrived. Overlay fades after handoff so the navbar logo reads solid.
-  tl.to(overlay, {
+  // After the logo seats, fade the veil out quickly.
+  tl.to(backdrop, {
     opacity: 0,
-    duration: OVERLAY_FADE_DURATION,
+    duration: BACKDROP_FADE_DURATION,
     ease: 'power2.out',
-    pointerEvents: 'none',
   })
+
+  tl.set(overlay, { pointerEvents: 'none' })
 
   return () => {
     disposed = true
@@ -206,6 +230,6 @@ export function runSplashAnimation(
     }
     tl.kill()
     moveTween?.kill()
-    gsap.killTweensOf([overlay, stage, logo, progressTrack, progressFill])
+    gsap.killTweensOf([overlay, backdrop, stage, logo, progressTrack, progressFill])
   }
 }

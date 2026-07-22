@@ -21,7 +21,7 @@
       }
 
       html.splash-boot #root,
-      html.splash-active:not(.splash-handoff):not(.splash-done) #root {
+      html.splash-active:not(.splash-revealing):not(.splash-handoff):not(.splash-done) #root {
         opacity: 0;
         pointer-events: none;
       }
@@ -38,12 +38,22 @@
           max(1.5rem, env(safe-area-inset-right))
           max(1.5rem, env(safe-area-inset-bottom))
           max(1.5rem, env(safe-area-inset-left));
+        background: transparent;
+      }
+
+      #boot-splash .splash-backdrop {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
         background:
           radial-gradient(120% 80% at 50% 40%, rgba(37, 149, 213, 0.06) 0%, transparent 55%),
           linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+        pointer-events: none;
       }
 
       #boot-splash .splash-stage {
+        position: relative;
+        z-index: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -58,6 +68,9 @@
         height: auto;
         max-height: min(28vh, 9rem);
         object-fit: contain;
+        opacity: 0;
+        transform: scale(0.88);
+        transform-origin: center center;
       }
 
       #boot-splash .splash-progress {
@@ -66,6 +79,7 @@
         border-radius: 999px;
         background-color: rgba(21, 21, 21, 0.12);
         overflow: hidden;
+        opacity: 0;
       }
 
       #boot-splash .splash-progress-fill {
@@ -117,6 +131,7 @@
   </head>
   <body>
     <div id="boot-splash" role="status" aria-live="polite" aria-label="Loading Dekko Isho Group">
+      <div class="splash-backdrop" aria-hidden="true"></div>
       <div class="splash-stage">
         <img
           class="splash-logo"
