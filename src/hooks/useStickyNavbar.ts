@@ -16,7 +16,8 @@ type UseStickyNavbarOptions = {
 
 /**
  * Drive a fixed navbar's transparent → solid white transition from scroll position.
- * Updates a CSS variable on the element (no React re-renders per frame).
+ * Updates CSS variables on the element / document (no React re-renders per frame).
+ * Also exposes `--navbar-height` for sticky content offsets below the bar.
  */
 export function useStickyNavbar(
   navRef: RefObject<HTMLElement | null>,
@@ -30,13 +31,18 @@ export function useStickyNavbar(
 
     let frameId = 0
 
+    function syncNavbarHeight() {
+      const height = Math.round(nav!.getBoundingClientRect().height)
+      document.documentElement.style.setProperty('--navbar-height', `${height}px`)
+    }
+
     function applyProgress(progress: number) {
       const clamped = Math.min(1, Math.max(0, progress))
       nav!.style.setProperty('--nav-bg-progress', clamped.toFixed(4))
       nav!.classList.toggle('is-scrolled', clamped >= SCROLLED_CLASS_THRESHOLD)
     }
 
-    function measure() {
+    function measureScrollProgress() {
       if (forceSolid) {
         applyProgress(1)
         return
@@ -53,30 +59,46 @@ export function useStickyNavbar(
       applyProgress(y / FADE_DISTANCE_PX)
     }
 
-    function onScrollOrResize() {
+    function measureAll() {
+      syncNavbarHeight()
+      measureScrollProgress()
+    }
+
+    function onScroll() {
       if (frameId) {
         return
       }
       frameId = window.requestAnimationFrame(() => {
         frameId = 0
-        measure()
+        measureScrollProgress()
       })
     }
 
-    measure()
+    function onResizeOrPageshow() {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+        frameId = 0
+      }
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0
+        measureAll()
+      })
+    }
 
-    window.addEventListener('scroll', onScrollOrResize, { passive: true })
-    window.addEventListener('resize', onScrollOrResize, { passive: true })
+    measureAll()
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResizeOrPageshow, { passive: true })
     // Restore correct state after bfcache / back-forward navigation.
-    window.addEventListener('pageshow', measure)
+    window.addEventListener('pageshow', onResizeOrPageshow)
 
     return () => {
       if (frameId) {
         window.cancelAnimationFrame(frameId)
       }
-      window.removeEventListener('scroll', onScrollOrResize)
-      window.removeEventListener('resize', onScrollOrResize)
-      window.removeEventListener('pageshow', measure)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResizeOrPageshow)
+      window.removeEventListener('pageshow', onResizeOrPageshow)
     }
   }, [navRef, forceSolid, resetKey])
 }

@@ -102,6 +102,10 @@
   --_color---noice-bg: var(--color--gray-5);
   --_typography---body--line-height-1-2: 1.2em;
   --_layout---spacing--section-spacing-top: 12.5rem;
+  /* Fixed navbar: 64px logo + 1.125rem vertical padding each side. JS may override. */
+  --navbar-height: calc(64px + 2.25rem);
+  /* Gap between navbar bottom and first stuck service card. */
+  --service-sticky-gap: var(--gap--gap-6);
 }
 
 .w-layout-grid {
@@ -2891,29 +2895,28 @@ a.about-info-box:hover {
 }
 
 .service-list-wrapper.one {
-  top: 20px;
+  top: calc(var(--navbar-height) + var(--service-sticky-gap));
 }
 
 .service-list-wrapper.two {
-  top: 120px;
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
 }
 
 .service-list-wrapper.three {
-  top: 220px;
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 200px);
 }
 
 .service-list-wrapper.four {
-  top: 320px;
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 300px);
 }
 
 .service-list-wrapper.five {
-  top: 420px;
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 400px);
 }
 
 .service-info-link {
   grid-column-gap: var(--gap--gap-10);
   grid-row-gap: var(--gap--gap-10);
-  border-top: 1px solid var(--color--gray-4);
   background-color: var(--color--white);
   grid-template-rows: auto;
   grid-template-columns: 1fr auto;
@@ -3086,7 +3089,7 @@ a.about-info-box:hover {
   height: 200px;
   display: flex;
   position: sticky;
-  top: 520px;
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 500px);
 }
 
 .service-details-wrap .service-description {
@@ -11748,7 +11751,6 @@ a.about-info-box:hover {
 @media screen and (min-width: 992px) {
   .service-section .service-info-link {
     grid-template-columns: 1fr auto;
-    border-top: 1px solid var(--color--gray-4);
   }
 
   .service-section .service-info-inner {
