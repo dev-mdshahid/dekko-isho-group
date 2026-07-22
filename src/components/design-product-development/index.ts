@@ -1,3 +1,4 @@
+export { DesignCapabilitiesSection } from './DesignCapabilitiesSection'
 export { DesignCTASection } from './DesignCTASection'
 export { DesignExperienceSection } from './DesignExperienceSection'
 export { DesignFacilitiesSection } from './DesignFacilitiesSection'

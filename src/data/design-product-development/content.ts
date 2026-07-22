@@ -1,49 +1,115 @@
 export const designProductDevelopmentHero = {
-  titleLines: [
-    [{ text: 'Design' }, { text: '&' }, { text: 'Product' }],
-    [{ text: 'Development' }],
-  ],
-  subtitle:
-    'From trend research to sample-ready garments, our design teams translate brand vision into production-ready collections with speed, precision and creative confidence.',
+  titleLines: [[{ text: 'Design' }, { text: '&' }, { text: 'Development' }]],
+  subtitle: 'Fashion Intelligence to Manufacturing Excellence.',
   ctaLabel: 'Learn More',
-  ctaHref: '#dpd-team',
+  ctaHref: '#dpd-capabilities',
   video: '/videos/design%20and%20product%20dev.mp4',
   videoAlt: 'Design team collaborating in a modern studio',
 }
 
-export const designProductDevelopmentExpertise = {
-  id: 'dpd-team',
-  title: 'A team driven by passion for innovation and excellence',
-  paragraphs: [
-    'Our design and development specialists combine market insight, technical knowledge and creative craft to support brands from first concept through approved production samples.',
-  ],
-  features: [
+const CAPABILITY_IMAGE_BASE = '/images/design-product-development'
+
+export type DesignCapabilityIcon =
+  | 'search'
+  | 'pencil'
+  | 'shirt'
+  | 'layers'
+  | 'chart'
+  | 'scroll'
+  | 'ruler'
+  | 'folder'
+  | 'box'
+
+export const designProductDevelopmentCapabilities = {
+  id: 'dpd-capabilities',
+  badge: 'Capabilities',
+  title: 'A development system that balances creativity and control.',
+  description:
+    'Our Design & Development team combines market insights, technical expertise, and digital product creation to transform concepts into production-ready garments. Through advanced 3D technologies and virtual product development, we enable faster approvals, greater design accuracy, and more efficient collaboration throughout the product lifecycle.',
+  items: [
     {
-      id: 'research',
-      icon: '/images/design-product-development/feature-icon-trend.svg',
-      title: 'Trend & Market Understanding',
-      description:
-        'Design inputs are shaped by lifestyle direction, customer positioning, global market signals and category-specific product needs.',
+      id: 'trend-research',
+      icon: 'search' as const satisfies DesignCapabilityIcon,
+      iconTone: 'blue',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-trend-research.jpg`,
+      imageAlt: 'Designers collaborating on fashion sketches',
+      title: 'Trend Research & Product Ideation',
+      description: 'Market signals and category insight shaping every collection direction.',
     },
     {
-      id: 'technical',
-      icon: '/images/design-product-development/feature-icon-design.svg',
-      title: 'Design & Development',
-      description:
-        'Fabric, trims, construction and wash possibilities are considered early to improve feasibility, cost control and final product quality.',
+      id: 'design-rd',
+      icon: 'pencil' as const satisfies DesignCapabilityIcon,
+      iconTone: 'amber',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-design-rd.jpg`,
+      imageAlt: 'Fabric swatches, thread bobbins and design notebook',
+      title: 'Design & R&D',
+      description: 'Original design development backed by continuous research and experimentation.',
     },
     {
-      id: 'sampling',
-      icon: '/images/design-product-development/feature-icon-sample.svg',
-      title: 'Sample Creation',
-      description:
-        'Design, merchandising, sampling and production teams work together so creative ideas can move smoothly into scalable execution.',
+      id: 'garment-visualization',
+      icon: 'shirt' as const satisfies DesignCapabilityIcon,
+      iconTone: 'pink',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-garment-visualization.jpg`,
+      imageAlt: 'Draped patterned fabric for digital garment visualization',
+      title: '3D Garment Visualization',
+      description: 'True-to-life digital garments before a single cut is made (Browzwear & CLO)',
+    },
+    {
+      id: 'virtual-sampling',
+      icon: 'layers' as const satisfies DesignCapabilityIcon,
+      iconTone: 'green',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-virtual-sampling.jpg`,
+      imageAlt: 'Design workspace with fabric swatches, sketches and measuring tools',
+      title: 'Virtual Sampling',
+      description: 'Digital samples that reduce physical rounds, cost and material waste.',
+    },
+    {
+      id: 'tech-pack',
+      icon: 'chart' as const satisfies DesignCapabilityIcon,
+      iconTone: 'violet',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-tech-pack.jpg`,
+      imageAlt: 'Designers working on a laptop with fabric samples',
+      title: 'Digital Tech Pack Creation',
+      description: 'Precise, production-ready specifications for every style.',
+    },
+    {
+      id: 'bom-management',
+      icon: 'scroll' as const satisfies DesignCapabilityIcon,
+      iconTone: 'gray',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-bom-management.jpg`,
+      imageAlt: 'Garment pattern pieces hanging on a rail',
+      title: 'Bill of Materials (BOM) Management',
+      description: 'Structured material data from first sketch to bulk order.',
+    },
+    {
+      id: 'fit-engineering',
+      icon: 'ruler' as const satisfies DesignCapabilityIcon,
+      iconTone: 'sky',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-fit-engineering.jpg`,
+      imageAlt: 'Measuring tape held against a garment shoulder seam',
+      title: 'Fit Engineering',
+      description: 'Consistent, engineered fits across sizes and silhouettes.',
+    },
+    {
+      id: 'collection-development',
+      icon: 'folder' as const satisfies DesignCapabilityIcon,
+      iconTone: 'teal',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-collection-development.jpg`,
+      imageAlt: 'Outerwear collection hanging on a rack',
+      title: 'Collection Development',
+      description: 'Cohesive, commercial collections built season after season.',
+    },
+    {
+      id: 'design-simulation',
+      icon: 'box' as const satisfies DesignCapabilityIcon,
+      iconTone: 'purple',
+      image: `${CAPABILITY_IMAGE_BASE}/capability-design-simulation.png`,
+      imageAlt: '3D garment design software on a studio monitor',
+      title: 'Rapid Design Simulation',
+      description: 'Fast fabric design iteration with dedicated software (Textronics)',
     },
   ],
 }
-
-/** @deprecated Use designProductDevelopmentExpertise */
-export const designProductDevelopmentTeam = designProductDevelopmentExpertise
 
 export const designProductDevelopmentServices = {
   id: 'dpd-services',

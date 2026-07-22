@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 
 import {
+  DesignCapabilitiesSection,
   DesignCTASection,
   DesignExperienceSection,
   DesignFacilitiesSection,
@@ -11,10 +12,9 @@ import {
   DesignSolutionsBannerSection,
 } from '../components/design-product-development'
 import { IndustryImageSection } from '../components/industry'
-import { SolutionExpertiseSection, SolutionPageHeroSection } from '../components/solutions'
+import { SolutionPageHeroSection } from '../components/solutions'
 import {
   designProductDevelopmentConcept,
-  designProductDevelopmentExpertise,
   designProductDevelopmentHero,
 } from '../data/design-product-development/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -33,7 +33,7 @@ export function DesignProductDevelopmentContent() {
   return (
     <div ref={ref} className="solution-page design-product-development-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...designProductDevelopmentHero} />
-      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...designProductDevelopmentExpertise} />
+      <DesignCapabilitiesSection />
       <DesignServicesSection />
       <DesignFactoryAssuranceSection />
       <DesignSolutionsBannerSection />
