@@ -11700,6 +11700,23 @@ a.about-info-box:hover {
 .service-section .service-card-panel {
   width: 100%;
   position: relative;
+  background-color: var(--color--white);
+}
+
+/* Shared fabric texture at 40% opacity over each card tint. */
+.service-section .service-card-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/images/backgrounds/card-texture-bg.jpg') center / cover no-repeat;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-section .service-card-panel .service-info-link {
+  position: relative;
+  z-index: 1;
 }
 
 .service-section .service-image-wrap {
@@ -11785,27 +11802,23 @@ a.about-info-box:hover {
 }
 
 .service-section .service-list-wrapper.one .service-card-panel {
-  background-color: var(--color--white);
   background-image: linear-gradient(rgb(37 149 213 / 8%), rgb(37 149 213 / 8%));
 }
 
+/* Soft teal in place of the previous reddish/pink wash. */
 .service-section .service-list-wrapper.two .service-card-panel {
-  background-color: var(--color--white);
-  background-image: linear-gradient(rgb(243 33 93 / 8%), rgb(243 33 93 / 8%));
+  background-image: linear-gradient(rgb(32 178 170 / 8%), rgb(32 178 170 / 8%));
 }
 
 .service-section .service-list-wrapper.three .service-card-panel {
-  background-color: var(--color--white);
   background-image: linear-gradient(rgb(90 190 140 / 8%), rgb(90 190 140 / 8%));
 }
 
 .service-section .service-list-wrapper.four .service-card-panel {
-  background-color: var(--color--white);
   background-image: linear-gradient(rgb(80 170 223 / 8%), rgb(80 170 223 / 8%));
 }
 
 .service-section .service-list-wrapper.five .service-card-panel {
-  background-color: var(--color--white);
   background-image: linear-gradient(rgb(100 116 139 / 8%), rgb(100 116 139 / 8%));
 }
 
