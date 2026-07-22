@@ -55,11 +55,20 @@ export function ButtonArrow({ to, label, variant = 'base', className }: Props) {
     </div>
   )
 
-  if (to.startsWith('http') || to.startsWith('/legacy/')) {
+  const isFileLink =
+    to.startsWith('http') ||
+    to.startsWith('/legacy/') ||
+    to.startsWith('/docs/') ||
+    to.startsWith('/documents/') ||
+    /\.(pdf|zip|docx?)$/i.test(to)
+
+  if (isFileLink) {
     const anchorProps: AnchorHTMLAttributes<HTMLAnchorElement> = {
       href: to,
       className: classes,
-      ...(to.startsWith('/legacy/') ? { target: '_blank', rel: 'noreferrer' } : {}),
+      ...(to.startsWith('http') || to.startsWith('/legacy/') || /\.pdf$/i.test(to)
+        ? { target: '_blank', rel: 'noreferrer' }
+        : {}),
     }
     return <a {...anchorProps}>{inner}</a>
   }

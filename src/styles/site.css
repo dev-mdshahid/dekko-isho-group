@@ -13570,6 +13570,90 @@ a.about-info-box:hover {
   }
 }
 
+/* ── Capacity stat circles (shared) ── */
+.capacity-stat-circles {
+  --capacity-circle-size: clamp(9.5rem, 13vw, 12.5rem);
+  --capacity-cols: 3;
+  --capacity-rows: 2;
+  position: relative;
+  width: calc(var(--capacity-circle-size) * var(--capacity-cols));
+  height: calc(var(--capacity-circle-size) * var(--capacity-rows));
+  overflow: visible;
+}
+
+.capacity-stat-circle {
+  position: absolute;
+  top: calc(var(--circle-y, 0) * var(--capacity-circle-size));
+  left: calc(var(--circle-x, 0) * var(--capacity-circle-size));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--capacity-circle-size);
+  height: var(--capacity-circle-size);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.capacity-stat-circle-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 1.1rem;
+  max-width: 72%;
+}
+
+.capacity-stat-value {
+  font-size: clamp(1.875rem, 2.8vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.capacity-stat-label {
+  font-size: clamp(0.8125rem, 1.05vw, 0.9375rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.capacity-stat-circle--blue {
+  background-color: #2595d5;
+  color: #fff;
+}
+
+.capacity-stat-circle--sky {
+  background-color: #c5e3f6;
+  color: #151515;
+}
+
+.capacity-stat-circle--navy {
+  background-color: #1b3f6f;
+  color: #fff;
+}
+
+.capacity-stat-circle--white {
+  background-color: #fff;
+  color: #151515;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.capacity-stat-circle--pink {
+  background-color: #f3215d;
+  color: #fff;
+}
+
+.capacity-stat-circle--dark {
+  background-color: var(--color--dark);
+  color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .capacity-stat-circles {
+    --capacity-circle-size: clamp(6.5rem, 27vw, 9rem);
+  }
+}
+
 /* Lenis smooth scroll */
 html.lenis,
 html.lenis body {

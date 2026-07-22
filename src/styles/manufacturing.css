@@ -229,98 +229,58 @@
 /* ── Capacity at Scale (Figma colours) ── */
 .manufacturing-page .mfg-capacity-section {
   background-color: var(--color--gray-5);
+  overflow: visible;
+}
+
+.manufacturing-page .mfg-capacity-section .service-step-main,
+.manufacturing-page .mfg-capacity-section .container {
+  overflow: visible;
+}
+
+.manufacturing-page .mfg-capacity-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  overflow: visible;
+}
+
+.manufacturing-page .mfg-capacity-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  min-width: 0;
 }
 
 .manufacturing-page .mfg-capacity-title {
+  width: 100%;
+  max-width: none;
   text-align: left;
-  line-height: 1.15;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color--dark);
+  text-wrap: balance;
 }
 
 .manufacturing-page .mfg-capacity-accent {
-  background-image: var(--mfg-brand-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #1b3f6f;
 }
 
-.manufacturing-page .mfg-capacity-section .step-button .button-icon-bg {
-  background-color: var(--mfg-brand-start);
-  background-image: var(--mfg-brand-gradient);
+.manufacturing-page .mfg-capacity-cta .button-icon-bg {
+  background-color: #2595d5;
+  background-image: linear-gradient(180deg, #2595d5 0%, #1c72a3 100%);
 }
 
-.manufacturing-page .mfg-capacity-circles {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0;
+.manufacturing-page .mfg-capacity-cluster {
+  margin-left: auto;
 }
 
-.manufacturing-page .mfg-capacity-circles .mfg-capacity-circle {
-  width: 220px;
-  height: 220px;
-  position: relative;
-  background-image: none;
-}
-
-.manufacturing-page .mfg-capacity-circles .mfg-capacity-circle:not(:first-child) {
-  margin-left: 0;
-}
-
-.manufacturing-page .mfg-capacity-circle-inner {
-  width: 100%;
-  max-width: 11rem;
-}
-
-.manufacturing-page .mfg-capacity-value {
-  font-size: clamp(1.75rem, 2.8vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 0.35rem;
-}
-
-.manufacturing-page .mfg-capacity-label {
-  font-size: var(--_typography---body--body-xs);
-  line-height: 1.35;
-  margin: 0;
-}
-
-.manufacturing-page .mfg-capacity-circle--dark {
-  background-color: var(--color--dark);
-}
-
-.manufacturing-page .mfg-capacity-circle--dark .mfg-capacity-value {
-  color: var(--color--white);
-}
-
-.manufacturing-page .mfg-capacity-circle--dark .mfg-capacity-label {
-  color: #a1a1aa;
-}
-
-.manufacturing-page .mfg-capacity-circle--light {
-  background-color: var(--color--white);
-  border: 1px solid var(--color--gray-4);
-}
-
-.manufacturing-page .mfg-capacity-circle--light .mfg-capacity-value {
-  color: var(--color--dark);
-}
-
-.manufacturing-page .mfg-capacity-circle--light .mfg-capacity-label {
-  color: var(--mfg-brand);
-}
-
-.manufacturing-page .mfg-capacity-circles .mfg-capacity-circle--blue {
-  background-color: var(--mfg-brand-start);
-  background-image: var(--mfg-brand-gradient);
-}
-
-.manufacturing-page .mfg-capacity-circles .mfg-capacity-circle--blue .mfg-capacity-value {
-  color: var(--color--white);
-}
-
-.manufacturing-page .mfg-capacity-circles .mfg-capacity-circle--blue .mfg-capacity-label {
-  color: var(--color--white);
+.manufacturing-page .mfg-capacity-cluster .capacity-stat-circles {
+  --capacity-circle-size: clamp(9.5rem, 13vw, 12.5rem);
 }
 
 /* ── Full Capacity Details (Figma card list) ── */
@@ -798,18 +758,18 @@
     grid-template-columns: 1fr;
   }
 
-  .manufacturing-page .mfg-capacity-circles {
-    justify-content: center;
-    margin-top: 2rem;
+  .manufacturing-page .mfg-capacity-grid {
+    grid-template-columns: 1fr;
   }
 
-  .manufacturing-page .mfg-capacity-circles .mfg-capacity-circle:not(:first-child) {
+  .manufacturing-page .mfg-capacity-cluster {
+    margin-top: 1.5rem;
+    margin-right: auto;
     margin-left: 0;
   }
 
-  .manufacturing-page .mfg-capacity-circles .mfg-capacity-circle {
-    width: 190px;
-    height: 190px;
+  .manufacturing-page .mfg-capacity-title {
+    font-size: clamp(2rem, 8vw, 2.75rem);
   }
 
   .manufacturing-page .mfg-quality-card {
@@ -863,11 +823,6 @@
     max-height: 14rem;
   }
 
-  .manufacturing-page .mfg-capacity-circles .mfg-capacity-circle {
-    width: 180px;
-    height: 180px;
-  }
-
   .manufacturing-page .mfg-details-card {
     grid-template-columns: 1fr;
     padding: 1rem 1.125rem;
@@ -881,15 +836,5 @@
 @media screen and (max-width: 479px) {
   .manufacturing-page .mfg-sewing-media {
     width: 100%;
-  }
-
-  .manufacturing-page .mfg-capacity-circles {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .manufacturing-page .mfg-capacity-circles .mfg-capacity-circle:not(:first-child) {
-    margin-left: 0;
-    margin-top: 1rem;
   }
 }

@@ -1,3 +1,5 @@
+import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
+
 export const manufacturingHero = {
   titleLines: [[{ text: 'Integrated' }, { text: 'Manufacturing' }]],
   subtitle: 'Precision Manufacturing. End to End.',
@@ -147,30 +149,44 @@ export const manufacturingCuttingPreparation = {
 }
 
 export const manufacturingCapacity = {
-  badge: 'Full Capacity Details',
+  badge: 'Total Monthly Production Capacity',
   titleBefore: 'Manufacturing',
   titleAccent: 'Capacity',
   titleAfter: 'at Scale',
+  ctaLabel: 'Download Brochure',
+  ctaHref: '/docs/Dekko_ISHO_Group.pdf',
   stats: [
     {
       id: 'machining',
-      value: '3.5M',
-      label: 'Precision machining',
-      variant: 'dark' as const,
+      value: '3.5 M',
+      label: 'Precision Machining',
+      variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5M',
+      value: '2.5 M',
       label: 'Woven Tops',
-      variant: 'light' as const,
+      variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0M',
+      value: '1.0 M',
       label: 'Woven Bottoms',
-      variant: 'blue' as const,
+      variant: 'navy',
     },
-  ],
+    {
+      id: 'units',
+      value: '7',
+      label: 'Manufacturing Units',
+      variant: 'white',
+    },
+    {
+      id: 'workforce',
+      value: '20,000+',
+      label: 'Workforce',
+      variant: 'pink',
+    },
+  ] satisfies CapacityStat[],
 }
 
 export const manufacturingCapacityDetails = {
