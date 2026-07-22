@@ -2,23 +2,25 @@ import { useRef } from 'react'
 
 import { ManufacturingCapacitySection } from '../components/manufacturing'
 import {
-  SolutionCapacitySection,
+  // SolutionCapacitySection,
   SolutionCtaSection,
   SolutionExpertiseSection,
   SolutionPageHeroSection,
   SolutionProductionNetworkSection,
-  SolutionQualitySection,
-  SolutionSpotlightSection,
+  // SolutionQualitySection,
+  // SolutionSpotlightSection,
+  SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
   industrialLaundryExpertise,
   industrialLaundryCta,
   industrialLaundryHero,
   industrialLaundryProductionNetwork,
-  industrialLaundryQuality,
-  industrialLaundrySpotlight,
-  industrialLaundryWashing,
+  // industrialLaundryQuality,
+  // industrialLaundrySpotlight,
+  // industrialLaundryWashing,
   industrialLaundryWaterStewardship,
+  industrialLaundryWhyItMatters,
 } from '../data/industrial-laundry/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
@@ -45,9 +47,10 @@ export function IndustrialLaundryContent() {
         idPrefix={ID_PREFIX}
         content={industrialLaundryProductionNetwork}
       />
-      <SolutionSpotlightSection idPrefix={ID_PREFIX} content={industrialLaundrySpotlight} />
-      <SolutionCapacitySection idPrefix={ID_PREFIX} content={industrialLaundryWashing} />
-      <SolutionQualitySection idPrefix={ID_PREFIX} content={industrialLaundryQuality} />
+      {/* <SolutionSpotlightSection idPrefix={ID_PREFIX} content={industrialLaundrySpotlight} /> */}
+      {/* <SolutionCapacitySection idPrefix={ID_PREFIX} content={industrialLaundryWashing} /> */}
+      {/* <SolutionQualitySection idPrefix={ID_PREFIX} content={industrialLaundryQuality} /> */}
+      <SolutionWhyItMattersSection idPrefix={ID_PREFIX} content={industrialLaundryWhyItMatters} />
       <SolutionCtaSection idPrefix={ID_PREFIX} content={industrialLaundryCta} />
     </div>
   )

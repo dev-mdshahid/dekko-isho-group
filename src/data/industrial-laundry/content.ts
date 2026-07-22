@@ -1,9 +1,8 @@
 import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
 
 export const industrialLaundryHero = {
-  titleLines: [[{ text: 'Industrial' }, { text: 'Laundry' }]],
-  subtitle:
-    'Agami Washing Ltd. delivers industrial garment washing with controlled finish, consistency and scale for global fashion partners.',
+  titleLines: [[{ text: 'Washing' }]],
+  subtitle: 'Performance-Driven Washing Solutions',
   ctaLabel: 'Learn More',
   ctaHref: '#il-innovation',
   video: '/videos/industry%20laundry.mp4',
@@ -12,7 +11,7 @@ export const industrialLaundryHero = {
 
 export const industrialLaundryExpertise = {
   id: 'il-innovation',
-  badge: 'From Wash to Finish',
+  badge: 'Our Approach to Wash',
   title: 'Sustainable washing for premium garment finishes.',
   paragraphs: [
     'Our washing facilities combine innovation, process control, and responsible manufacturing to deliver premium finishes across a wide range of denim and garment applications, while reducing environmental impact through efficient water management.',
@@ -46,21 +45,6 @@ export const industrialLaundryExpertise = {
 /** @deprecated Use industrialLaundryExpertise */
 export const industrialLaundryInnovation = industrialLaundryExpertise
 
-export const industrialLaundryProductionNetwork = {
-  badge: 'Verified scale',
-  title: 'Production Network',
-  description:
-    'Key production units across washing facilities, capacity, manpower, product mix, and compliance progress.',
-  units: [
-    {
-      id: 'agami-washing',
-      title: 'Agami Washing Ltd.',
-      image: '/images/industrial-laundry/agami-washing-production-network.jpg',
-      imageAlt: 'Industrial washing machine at Agami Washing Ltd.',
-    },
-  ],
-}
-
 export const industrialLaundryWaterStewardship = {
   badge: 'Responsible Water Management',
   titleBefore: 'Water',
@@ -71,7 +55,7 @@ export const industrialLaundryWaterStewardship = {
   stats: [
     {
       id: 'etp',
-      value: '130 m³/hr',
+      value: '120 m³/hr',
       label: 'Effluent Treatment Plant',
       variant: 'blue',
     },
@@ -90,7 +74,7 @@ export const industrialLaundryWaterStewardship = {
     {
       id: 'rainwater',
       value: 'Rainwater Harvesting',
-      label: 'Across all units',
+      label: 'Several units',
       variant: 'white',
     },
     {
@@ -102,6 +86,54 @@ export const industrialLaundryWaterStewardship = {
   ] satisfies CapacityStat[],
 }
 
+export const industrialLaundryProductionNetwork = {
+  badge: 'Our Footprint',
+  title: 'Production Network',
+  description:
+    'We operate state-of-the-art washing facilities with capacity, product mix, and compliance standards.',
+  units: [
+    {
+      id: 'agami-washing',
+      title: 'Agami Washing Ltd.',
+      image: '/images/industrial-laundry/agami-washing-production-network.jpg',
+      imageAlt: 'Industrial washing machine at Agami Washing Ltd.',
+    },
+  ],
+}
+
+export const industrialLaundryWhyItMatters = {
+  title: 'Why It Matters',
+  description:
+    'Advanced washing technology paired with responsible water management delivers premium garment finishes while continuously improving resource efficiency and environmental performance.',
+  items: [
+    {
+      id: 'finishes',
+      title: 'Premium garment finishes',
+      description: 'Exceptional quality and durability for every garment.',
+    },
+    {
+      id: 'efficiency',
+      title: 'Improved resource efficiency',
+      description: 'Optimized processes that reduce water and energy consumption.',
+    },
+    {
+      id: 'environment',
+      title: 'Improved Environmental Performance',
+      description: 'Commitment to environmentally friendly manufacturing processes.',
+    },
+  ],
+}
+
+export const industrialLaundryCta = {
+  badge: "Let's Connect",
+  heading: "And build what's next, together",
+  description:
+    'Get in touch with our team for partnership, sourcing, careers or upcoming projects. We will be back to you with solutions.',
+  buttonLabel: 'Contact us now',
+  buttonHref: '/contact',
+}
+
+/** @deprecated Not used on the current laundry page design. */
 export const industrialLaundrySpotlight = {
   badge: 'Creative Capability',
   title: 'From idea reference to sample-ready fashion development.',
@@ -115,6 +147,7 @@ export const industrialLaundrySpotlight = {
 /** @deprecated Use industrialLaundrySpotlight */
 export const industrialLaundryDevelopment = industrialLaundrySpotlight
 
+/** @deprecated Not used on the current laundry page design. */
 export const industrialLaundryWashing = {
   badge: 'Process',
   title: 'Industrial washing with controlled finish and repeatability.',
@@ -155,6 +188,7 @@ export const industrialLaundryWashing = {
   ],
 }
 
+/** @deprecated Not used on the current laundry page design. */
 export const industrialLaundryQuality = {
   badge: 'Washing QA Process',
   title: 'Quality control from sorting to final dispatch.',
@@ -198,13 +232,4 @@ export const industrialLaundryQuality = {
       imageAlt: 'Final inspection area with industrial washing machines',
     },
   ],
-}
-
-export const industrialLaundryCta = {
-  badge: "Let's Connect",
-  heading: "And build what's next, together",
-  description:
-    'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
-  buttonLabel: 'Schedule consultation',
-  buttonHref: '/contact',
 }
