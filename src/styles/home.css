@@ -317,13 +317,42 @@
 }
 
 .about-business-card__logo {
-  width: 11rem;
+  /* Equalize by height; width follows each mark’s aspect ratio. */
+  height: 2.5rem;
+  width: auto;
   max-width: calc(100% - 4rem);
-  height: auto;
+  object-fit: contain;
+  object-position: left bottom;
   position: absolute;
   left: 2rem;
   bottom: 2rem;
   z-index: 1;
+}
+
+/* Optical size tweaks — bold / blocky marks read larger than thin wordmarks. */
+.about-business-card__logo[data-logo='isho'] {
+  height: 2.25rem;
+}
+
+.about-business-card__logo[data-logo='divc'] {
+  height: 2.125rem;
+}
+
+.about-business-card__logo[data-logo='ditech'] {
+  height: 2.75rem;
+}
+
+.about-business-card__logo[data-logo='klubhaus'] {
+  /* Yellow bar has internal padding, so it needs more height to match wordmarks. */
+  height: 3rem;
+}
+
+.about-business-card__logo[data-logo='izakaya'] {
+  height: 2.25rem;
+}
+
+.about-business-card__logo[data-logo='ecovia'] {
+  height: 2.875rem;
 }
 
 .about-business-card__arrow {
@@ -547,9 +576,33 @@
   }
 
   .about-section .about-business-card__logo {
-    width: 7rem;
+    height: 1.75rem;
     left: 1.25rem;
     bottom: 1.25rem;
+  }
+
+  .about-section .about-business-card__logo[data-logo='isho'] {
+    height: 1.6rem;
+  }
+
+  .about-section .about-business-card__logo[data-logo='divc'] {
+    height: 1.5rem;
+  }
+
+  .about-section .about-business-card__logo[data-logo='klubhaus'] {
+    height: 2.125rem;
+  }
+
+  .about-section .about-business-card__logo[data-logo='izakaya'] {
+    height: 1.6rem;
+  }
+
+  .about-section .about-business-card__logo[data-logo='ditech'] {
+    height: 1.95rem;
+  }
+
+  .about-section .about-business-card__logo[data-logo='ecovia'] {
+    height: 2rem;
   }
 }
 

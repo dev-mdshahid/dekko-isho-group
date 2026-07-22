@@ -35,12 +35,15 @@ type IndustryTextItem = {
   variant: 'light' | 'dark'
 }
 
+type BusinessLogoId = 'isho' | 'divc' | 'ditech' | 'klubhaus' | 'izakaya' | 'ecovia'
+
 type IndustryImageItem = {
   type: 'image'
   src?: string
   alt: string
   variant?: 'default' | 'business'
   logo?: string
+  logoId?: BusinessLogoId
   href?: string
 }
 
@@ -53,6 +56,7 @@ const industries: IndustryItem[] = [
     alt: 'ISHO Ltd.',
     variant: 'business',
     logo: ISHO_LOGO,
+    logoId: 'isho',
     href: '/isho-ltd',
   },
   {
@@ -61,6 +65,7 @@ const industries: IndustryItem[] = [
     alt: 'DIVC',
     variant: 'business',
     logo: DIVC_LOGO,
+    logoId: 'divc',
     href: 'https://www.di.vc/',
   },
   {
@@ -69,6 +74,7 @@ const industries: IndustryItem[] = [
     alt: 'DITECH',
     variant: 'business',
     logo: DITECH_LOGO,
+    logoId: 'ditech',
     href: '/dekko-isho',
   },
   {
@@ -77,6 +83,7 @@ const industries: IndustryItem[] = [
     alt: 'Klubhaus',
     variant: 'business',
     logo: KLUBHAUS_LOGO,
+    logoId: 'klubhaus',
     href: '/klubhaus',
   },
   {
@@ -85,6 +92,7 @@ const industries: IndustryItem[] = [
     alt: 'IZAKAYA',
     variant: 'business',
     logo: IZAKAYA_LOGO,
+    logoId: 'izakaya',
     href: '/izakaya',
   },
   {
@@ -93,6 +101,7 @@ const industries: IndustryItem[] = [
     alt: 'Ecovia',
     variant: 'business',
     logo: ECOVIA_LOGO,
+    logoId: 'ecovia',
     href: 'https://www.ecoviaglobal.com/',
   },
   // {
@@ -188,13 +197,21 @@ function isExternalHref(href: string) {
   return href.startsWith('http://') || href.startsWith('https://')
 }
 
-function IndustryImageCircle({ src, alt, variant = 'default', logo, href }: IndustryImageItem) {
+function IndustryImageCircle({ src, alt, variant = 'default', logo, logoId, href }: IndustryImageItem) {
   if (variant === 'business' && src) {
     const card = (
       <>
         <img src={src} loading="lazy" alt="" className="about-business-card__media" />
         <div className="about-business-card__overlay" aria-hidden="true" />
-        {logo ? <img src={logo} alt="" className="about-business-card__logo" aria-hidden="true" /> : null}
+        {logo ? (
+          <img
+            src={logo}
+            alt=""
+            className="about-business-card__logo"
+            data-logo={logoId}
+            aria-hidden="true"
+          />
+        ) : null}
         <ArrowUpRightIcon />
       </>
     )
