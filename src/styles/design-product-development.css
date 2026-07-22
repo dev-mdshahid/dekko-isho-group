@@ -343,8 +343,26 @@
 /* ── Factory assurance (4-col process) ── */
 .design-product-development-page .dpd-factory-section {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background-color: var(--color--neutral-seasalt);
-  padding: clamp(4rem, 8vw, 6rem) 0;
+  padding: 200px 0;
+}
+
+.design-product-development-page .dpd-factory-section::after {
+  content: '';
+  position: absolute;
+  bottom: -42%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(160%, 90rem);
+  height: 55%;
+  border-radius: 50%;
+  background-color: var(--dpd-brand-start);
+  opacity: 0.1;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .design-product-development-page .dpd-factory-container {
@@ -361,10 +379,20 @@
   align-items: flex-start;
   gap: 1.25rem;
   width: 100%;
+  margin-bottom: 88px;
 }
 
 .design-product-development-page .dpd-factory-title-wrap {
   width: 100%;
+}
+
+.design-product-development-page .dpd-factory-section .pre-section-title-wrap {
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+}
+
+.design-product-development-page .dpd-factory-section .pre-section-title {
+  color: var(--color--neutral-night);
 }
 
 .design-product-development-page .dpd-factory-section .pre-section-title-square {
@@ -375,19 +403,42 @@
 .design-product-development-page .dpd-factory-title {
   margin: 0;
   width: 100%;
-  font-size: 3.625rem;
+  font-size: 58px;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color--neutral-night);
 }
 
+.design-product-development-page .dpd-factory-title-accent {
+  color: #f3215d;
+}
+
+.design-product-development-page .dpd-factory-media {
+  width: 100%;
+}
+
+.design-product-development-page .dpd-factory-image {
+  display: block;
+  width: 100%;
+  height: 448px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius--lg);
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--color--neutral-night) 8%, transparent);
+}
+
+.design-product-development-page .dpd-factory-content {
+  width: 100%;
+  padding: 88px 0 0;
+}
+
 .design-product-development-page .dpd-factory-accent-bar {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
   width: 100%;
   height: 3px;
-  margin-top: 5.5rem;
 }
 
 .design-product-development-page .dpd-factory-accent-segment {
@@ -399,7 +450,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-top: 1.25rem;
 }
 
 .design-product-development-page .dpd-factory-card {
@@ -410,7 +461,7 @@
 }
 
 .design-product-development-page .dpd-factory-card-number {
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.75rem;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1;
@@ -419,49 +470,17 @@
 .design-product-development-page .dpd-factory-card-title {
   margin: 0;
   color: var(--color--neutral-night);
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1.3;
-}
-
-.design-product-development-page .dpd-factory-card-list,
-.design-product-development-page .dpd-factory-card-description {
-  margin: 1rem 0 0;
-}
-
-.design-product-development-page .dpd-factory-card-list {
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.design-product-development-page .dpd-factory-card-list-item {
-  color: var(--color--neutral-outer-space);
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.55;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.design-product-development-page .dpd-factory-card-list-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: var(--color--neutral-outer-space);
+  letter-spacing: -0.01em;
 }
 
 .design-product-development-page .dpd-factory-card-description {
+  margin: 16px 0 0;
   color: var(--color--neutral-outer-space);
-  font-size: 1.125rem;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 1.55;
 }
 
@@ -1099,12 +1118,28 @@
     grid-template-columns: 1fr;
   }
 
-  .design-product-development-page .dpd-factory-title {
-    font-size: clamp(2rem, 6vw, 3.625rem);
+  .design-product-development-page .dpd-factory-section {
+    padding: 100px 0;
   }
 
-  .design-product-development-page .dpd-factory-accent-bar {
-    margin-top: clamp(3rem, 8vw, 5.5rem);
+  .design-product-development-page .dpd-factory-header {
+    margin-bottom: 48px;
+  }
+
+  .design-product-development-page .dpd-factory-title {
+    font-size: clamp(1.875rem, 5vw, 2.75rem);
+  }
+
+  .design-product-development-page .dpd-factory-image {
+    height: 280px;
+  }
+
+  .design-product-development-page .dpd-factory-content {
+    padding-top: 48px;
+  }
+
+  .design-product-development-page .dpd-factory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .design-product-development-page .dpd-solutions-banner-card {
@@ -1167,9 +1202,33 @@
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-factory-section {
+    padding: 72px 0;
+  }
+
+  .design-product-development-page .dpd-factory-header {
+    margin-bottom: 32px;
+  }
+
   .design-product-development-page .dpd-factory-grid,
   .design-product-development-page .dpd-experience-grid {
     grid-template-columns: 1fr;
+  }
+
+  .design-product-development-page .dpd-factory-image {
+    height: 220px;
+  }
+
+  .design-product-development-page .dpd-factory-content {
+    padding-top: 32px;
+  }
+
+  .design-product-development-page .dpd-factory-card-title {
+    font-size: 1.25rem;
+  }
+
+  .design-product-development-page .dpd-factory-card-description {
+    font-size: 1rem;
   }
 
   .design-product-development-page .dpd-presence-gallery-grid {

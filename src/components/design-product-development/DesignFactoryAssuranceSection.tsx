@@ -3,7 +3,8 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export function DesignFactoryAssuranceSection() {
-  const { badge, title, items } = designProductDevelopmentFactoryAssurance
+  const { badge, titleBefore, titleAccent, titleAfter, image, imageAlt, items } =
+    designProductDevelopmentFactoryAssurance
 
   return (
     <section className="dpd-factory-section">
@@ -13,45 +14,45 @@ export function DesignFactoryAssuranceSection() {
             <PreSectionTitle title={badge} />
           </FadeIn>
           <FadeIn id="dpd-factory-title-wrap" className="dpd-factory-title-wrap">
-            <h2 className="dpd-factory-title">{title}</h2>
+            <h2 className="dpd-factory-title">
+              {titleBefore}
+              <span className="dpd-factory-title-accent">{titleAccent}</span>
+              {titleAfter}
+            </h2>
           </FadeIn>
         </header>
 
-        <div className="dpd-factory-accent-bar" aria-hidden="true">
-          {items.map((item) => (
-            <span
-              key={item.id}
-              className="dpd-factory-accent-segment"
-              style={{ backgroundColor: item.accent }}
-            />
-          ))}
-        </div>
+        <FadeIn id="dpd-factory-media" className="dpd-factory-media" delay={40}>
+          <img src={image} loading="lazy" alt={imageAlt} className="dpd-factory-image" />
+        </FadeIn>
 
-        <div className="dpd-factory-grid">
-          {items.map((item, index) => (
-            <FadeIn
-              key={item.id}
-              id={`dpd-factory-${item.id}`}
-              className="dpd-factory-card"
-              delay={index * 50}
-            >
-              <span className="dpd-factory-card-number" style={{ color: item.accent }}>
-                {item.number}
-              </span>
-              <h3 className="dpd-factory-card-title">{item.title}</h3>
-              {item.items && item.items.length > 0 ? (
-                <ul className="dpd-factory-card-list">
-                  {item.items.map((detail) => (
-                    <li key={detail} className="dpd-factory-card-list-item">
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              ) : item.description ? (
+        <div className="dpd-factory-content">
+          <div className="dpd-factory-accent-bar" aria-hidden="true">
+            {items.map((item) => (
+              <span
+                key={item.id}
+                className="dpd-factory-accent-segment"
+                style={{ backgroundColor: item.accent }}
+              />
+            ))}
+          </div>
+
+          <div className="dpd-factory-grid">
+            {items.map((item, index) => (
+              <FadeIn
+                key={item.id}
+                id={`dpd-factory-${item.id}`}
+                className="dpd-factory-card"
+                delay={index * 50}
+              >
+                <span className="dpd-factory-card-number" style={{ color: item.accent }}>
+                  {item.number}
+                </span>
+                <h3 className="dpd-factory-card-title">{item.title}</h3>
                 <p className="dpd-factory-card-description">{item.description}</p>
-              ) : null}
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -154,47 +154,41 @@ export const designProductDevelopmentServices = {
 }
 
 export const designProductDevelopmentFactoryAssurance = {
-  badge: 'Process',
-  title: 'Pre-Production Quality Assurance in Factory',
+  badge: 'Design excellence infrastructure',
+  titleBefore: 'Built around ',
+  titleAccent: 'designers',
+  titleAfter: ', close to the market',
+  image: '/images/design-product-development/design-excellence-infrastructure.png',
+  imageAlt: 'Designer working at a studio desk with fabric samples and a computer',
   items: [
     {
-      id: 'raw-material',
+      id: 'london-showroom',
       number: '01',
       accent: '#FFC219',
-      title: 'Raw Material Inspection against standard',
-      items: [
-        'Max 4 point Inspection',
-        'Max 20 points/100 sq. Yds',
-        '100% shrinkage & Shade management',
-        'Zero defect acceptance',
-        '1.5 AQL inspection for trims & accessories',
-        'Basic test of bulk fabrics by the supplier',
-        'Supplier audits & certifications.',
-      ],
+      title: 'Showroom in London',
+      description:
+        '94 Harley Street — a dedicated space to explore collections, review samples and collaborate with our design team in person.',
     },
     {
-      id: 'size-set',
+      id: 'european-support',
       number: '02',
       accent: '#F3215D',
-      title: 'Size Set samples review by color',
-      description:
-        'Finalize designs/patterns and specifications to create an approved sample.',
+      title: 'European Designer Support',
+      description: 'On-the-ground design collaboration with European brands and teams.',
     },
     {
-      id: 'pre-production',
+      id: 'fabric-sourcing',
       number: '03',
       accent: '#449BFF',
-      title: 'Pre -Production Meeting by style',
-      description:
-        'Establish quality standards and reject criteria based on approved samples',
+      title: 'Dedicated Fabric Sourcing Team',
+      description: 'Specialists sourcing the right fabric at the right price, faster.',
     },
     {
-      id: 'pilot-run',
+      id: 'local-support',
       number: '04',
       accent: '#14B253',
-      title: 'Pilot Run / First of Bulk review by style',
-      description:
-        'Establish quality standards and reject criteria based on approved samples.',
+      title: 'Local Design Support',
+      description: "Ladies' tops, men's tops & bottoms, supported by local design expertise.",
     },
   ],
 }
