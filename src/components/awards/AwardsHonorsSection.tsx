@@ -11,26 +11,27 @@ export function AwardsHonorsSection() {
           <p className="awards-grid-section__description">{awardsHonorsContent.description}</p>
         </header>
 
-        {awardHonorShelves.map((shelf, shelfIndex) => (
-          <div className="shelf" key={`shelf-${shelfIndex}`}>
-            <div
-              className="shelf-items"
-              style={{ gridTemplateColumns: `repeat(${shelf.length}, 1fr)` }}
-            >
-              {shelf.map((award) => (
-                <div className="s-item" key={award.id} tabIndex={0}>
-                  <img src={award.image} alt={award.imageAlt} loading="lazy" />
-                  <div className="s-cap">
-                    <span className="yr">{award.year}</span>
-                    <h4>{award.title}</h4>
-                    <p>{award.category}</p>
+        <div className="awards-honors-gallery">
+          {awardHonorShelves.map((shelf, shelfIndex) => (
+            <div className="shelf" key={`shelf-${shelfIndex}`}>
+              <div className={`shelf-items shelf-items--${shelf.length}`}>
+                {shelf.map((award) => (
+                  <div className="s-item" key={award.id} tabIndex={0}>
+                    <div className="s-media">
+                      <img src={award.image} alt={award.imageAlt} loading="lazy" />
+                    </div>
+                    <div className="s-cap">
+                      <span className="yr">{award.year}</span>
+                      <h4>{award.title}</h4>
+                      <p>{award.category}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="board" aria-hidden="true" />
             </div>
-            <div className="board" aria-hidden="true" />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )
