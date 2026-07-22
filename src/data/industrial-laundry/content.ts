@@ -1,3 +1,5 @@
+import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
+
 export const industrialLaundryHero = {
   titleLines: [[{ text: 'Industrial' }, { text: 'Laundry' }]],
   subtitle:
@@ -43,6 +45,47 @@ export const industrialLaundryExpertise = {
 
 /** @deprecated Use industrialLaundryExpertise */
 export const industrialLaundryInnovation = industrialLaundryExpertise
+
+export const industrialLaundryWaterStewardship = {
+  badge: 'Responsible Water Management',
+  titleBefore: 'Water',
+  titleAccent: 'Stewardship',
+  titleAfter: 'at Scale',
+  ctaLabel: 'Download Brochure',
+  ctaHref: '/docs/Dekko_ISHO_Group.pdf',
+  stats: [
+    {
+      id: 'etp',
+      value: '130 m³/hr',
+      label: 'Effluent Treatment Plant',
+      variant: 'blue',
+    },
+    {
+      id: 'stp',
+      value: '40 m³/hr',
+      label: 'Sewage Treatment Plant',
+      variant: 'sky',
+    },
+    {
+      id: 'gwt',
+      value: '15 m³/hr',
+      label: 'Ground Water Treatment',
+      variant: 'navy',
+    },
+    {
+      id: 'rainwater',
+      value: 'Rainwater Harvesting',
+      label: 'Across all units',
+      variant: 'white',
+    },
+    {
+      id: 'recycling',
+      value: '2%',
+      label: 'Water Recycling',
+      variant: 'pink',
+    },
+  ] satisfies CapacityStat[],
+}
 
 export const industrialLaundrySpotlight = {
   badge: 'Creative Capability',

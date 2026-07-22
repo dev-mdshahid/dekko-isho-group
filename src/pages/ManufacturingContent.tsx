@@ -18,6 +18,7 @@ import {
   SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
+  manufacturingCapacity,
   manufacturingCta,
   // manufacturingExpertise,
   manufacturingWhyItMatters,
@@ -41,7 +42,7 @@ export function ManufacturingContent() {
       <ManufacturingProductionNetworkSection />
       {/* <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} /> */}
       {/* <ManufacturingHowItWorksSection /> */}
-      <ManufacturingCapacitySection />
+      <ManufacturingCapacitySection content={manufacturingCapacity} />
       <ManufacturingClientsSection />
       <ManufacturingProductRangeSection />
       <SolutionWhyItMattersSection idPrefix={ID_PREFIX} content={manufacturingWhyItMatters} />

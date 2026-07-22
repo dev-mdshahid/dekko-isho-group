@@ -14,3 +14,31 @@
   background-color: var(--il-brand-start);
   background-image: var(--il-brand-gradient);
 }
+
+.industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
+  --capacity-circle-size: 220px;
+}
+
+.industrial-laundry-page .mfg-capacity-cluster .capacity-stat-value {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.industrial-laundry-page .mfg-capacity-cluster .capacity-stat-label {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: min(220px, 28vw);
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(1.125rem, 4.5vw, 28px);
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-label {
+    font-size: clamp(0.75rem, 2.8vw, 18px);
+  }
+}

@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 
+import { ManufacturingCapacitySection } from '../components/manufacturing'
 import {
   SolutionCapacitySection,
   SolutionCtaSection,
@@ -15,6 +16,7 @@ import {
   industrialLaundryQuality,
   industrialLaundrySpotlight,
   industrialLaundryWashing,
+  industrialLaundryWaterStewardship,
 } from '../data/industrial-laundry/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
@@ -33,6 +35,10 @@ export function IndustrialLaundryContent() {
     <div ref={ref} className="solution-page industrial-laundry-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...industrialLaundryHero} />
       <SolutionExpertiseSection idPrefix={ID_PREFIX} {...industrialLaundryExpertise} />
+      <ManufacturingCapacitySection
+        idPrefix={ID_PREFIX}
+        content={industrialLaundryWaterStewardship}
+      />
       <SolutionSpotlightSection idPrefix={ID_PREFIX} content={industrialLaundrySpotlight} />
       <SolutionCapacitySection idPrefix={ID_PREFIX} content={industrialLaundryWashing} />
       <SolutionQualitySection idPrefix={ID_PREFIX} content={industrialLaundryQuality} />
