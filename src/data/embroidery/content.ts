@@ -1,8 +1,7 @@
 export const embroideryHero = {
-  titleLines: [[{ text: 'Embroidery' }, { text: 'Unit' }]],
-  subtitle:
-    'Precision embroidery and applied decoration, kept in-house. High-capacity Barudan and Maya machines supporting Dekko ISHO Group\'s production lines with integrated printing and finishing.',
-  ctaLabel: 'Learn More',
+  titleLines: [[{ text: 'Embroidery' }]],
+  subtitle: 'PRECISION IN EVERY STITCH.',
+  ctaLabel: 'OUR WORK',
   ctaHref: '#embroidery-expertise',
   video: '/images/embroidery/embroidery-hero.mp4',
   videoAlt: 'Industrial embroidery machine stitching a floral pattern on fabric',
@@ -10,36 +9,90 @@ export const embroideryHero = {
 
 export const embroideryExpertise = {
   id: 'embroidery-expertise',
-  badge: 'DGL Embroidery Unit',
-  title: 'State-of-the-art embroidery, built into the production line.',
+  badge: 'OUR EXPERTISE',
+  title: 'Crafting Excellence in Every Thread',
   paragraphs: [
-    'The embroidery unit at Dekko Garments Ltd. is equipped with advanced embroidery machines from Barudan and Maya, known for their precision and durability. High stitch capacity supports efficient daily production, while in-house printing, embroidery, and finishing enhance quality control from panel to packed garment.',
+    'Backed by 70 years of manufacturing experience, Dekko Isho delivers exceptional embroidery solutions using high-speed industrial machinery. Our state-of-the-art facilities offer a comprehensive range of decorative and functional embroidery services for various product categories.',
   ],
+  cardMedia: 'photo' as const,
   features: [
     {
-      id: 'machines',
-      icon: '/images/industrial-laundry/feature-icon-technology.svg',
-      title: 'Multi-Head Embroidery Machines',
-      description:
-        'Multi-head embroidery machines from Barudan and Maya, selected for precision and durability across long production runs.',
+      id: 'barudan',
+      logo: '/images/embroidery/barudan.png',
+      logoAlt: 'Barudan multi-head embroidery machines',
+      title: 'Barudan',
+      description: 'The ultimate precision embroidery machine.',
     },
     {
-      id: 'capacity',
-      icon: '/images/industrial-laundry/feature-icon-capacity.svg',
-      title: 'High Stitch Capacity',
-      description:
-        'Up to 50 million stitches per day across the unit, supporting efficient bulk decoration without slowing the line.',
+      id: 'maya',
+      logo: '/images/embroidery/maya.png',
+      logoAlt: 'MAYA dual-head embroidery machine',
+      title: 'MAYA',
+      description: 'Precision, Performance, and Excellence.',
     },
     {
-      id: 'integration',
-      icon: '/images/technology-integration/feature-icon-connected.svg',
-      title: 'In-House Integration',
-      description:
-        'Printing, embroidery, and finishing under one roof — better control over placement, color accuracy, and delivery.',
+      id: 'in-house',
+      logo: '/images/embroidery/in-house.jpg',
+      logoAlt: 'In-house embroidery production line',
+      title: 'In-House',
+      description: 'Printing Capacity: 0.5 Million.',
     },
   ],
 }
 
+export const embroideryProductionNetwork = {
+  badge: 'OUR NETWORK',
+  title: 'Production Network',
+  description: 'We operate within a strong, sustainable network for all your needs.',
+  units: [
+    {
+      id: 'dgl',
+      title: 'DGL Embroidery Unit',
+      image: '/images/embroidery/dgl-embroidery-unit.png',
+      imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
+    },
+    {
+      id: 'globus',
+      title: 'Globus Embroidery',
+      image: '/images/embroidery/globus-embroidery.png',
+      imageAlt: 'Finished embroidered garments at Globus Embroidery',
+    },
+  ],
+}
+
+export const embroideryWhyItMatters = {
+  title: 'Why It Matters',
+  description:
+    'We prioritize embroidery as an essential element that elevates quality, craftsmanship, and brand expression across our product offerings.',
+  items: [
+    {
+      id: 'craftsmanship',
+      title: 'Exceptional craftsmanship',
+      description: 'A testament to artistry and technical precision.',
+    },
+    {
+      id: 'durability',
+      title: 'Durability and Longevity',
+      description: 'High-performance stitching for high-end garments.',
+    },
+    {
+      id: 'unique',
+      title: 'Distinctively Unique',
+      description: 'Customizations that set your brand apart in the market.',
+    },
+  ],
+}
+
+export const embroideryCta = {
+  badge: 'Get in touch',
+  heading: "And build what's next, together",
+  description:
+    'Get in touch with us to find out how our high quality embroidery and production network can help your brand grow.',
+  buttonLabel: 'Shoot us a line',
+  buttonHref: '/contact',
+}
+
+/** @deprecated Not used on the current embroidery page design. */
 export const embroiderySpotlight = {
   badge: 'Applied Decoration',
   title: 'From approved artwork to embroidered bulk.',
@@ -49,6 +102,7 @@ export const embroiderySpotlight = {
   imageAlt: 'Industrial embroidery machines in a production facility',
 }
 
+/** @deprecated Not used on the current embroidery page design. */
 export const embroideryQuality = {
   badge: 'Embroidery QA Process',
   title: 'Quality control before a single panel moves.',
@@ -94,6 +148,7 @@ export const embroideryQuality = {
   ],
 }
 
+/** @deprecated Not used on the current embroidery page design. */
 export const embroideryCapacity = {
   badge: 'Capacity',
   title: 'Embroidery capacity at a glance.',
@@ -129,13 +184,4 @@ export const embroideryCapacity = {
       ],
     },
   ],
-}
-
-export const embroideryCta = {
-  badge: "Let's Connect",
-  heading: "And build what's next, together",
-  description:
-    'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
-  buttonLabel: 'Schedule consultation',
-  buttonHref: '/contact',
 }

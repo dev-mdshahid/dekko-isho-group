@@ -16,6 +16,8 @@ export type SolutionExpertiseContent = {
   title: string
   paragraphs: string[]
   features: SolutionFeature[]
+  /** Use photo cards (cover) instead of logo plates (contain). */
+  cardMedia?: 'logo' | 'photo'
 }
 
 type SolutionExpertiseSectionProps = SolutionExpertiseContent & {
@@ -29,13 +31,20 @@ export function SolutionExpertiseSection({
   title,
   paragraphs,
   features,
+  cardMedia,
 }: SolutionExpertiseSectionProps) {
   const hasLogoCards = features.some((feature) => Boolean(feature.logo))
+  const mediaClass =
+    cardMedia === 'photo'
+      ? 'solution-feature-grid--photos'
+      : hasLogoCards
+        ? 'solution-feature-grid--logos'
+        : ''
   const featureGridClassName = [
     'w-layout-grid',
     'grid-feature',
     'solution-feature-grid',
-    hasLogoCards ? 'solution-feature-grid--logos' : '',
+    mediaClass,
   ]
     .filter(Boolean)
     .join(' ')

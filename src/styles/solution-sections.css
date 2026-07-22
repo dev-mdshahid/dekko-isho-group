@@ -222,7 +222,8 @@
   padding: 1.75rem 1.5rem;
 }
 
-.solution-page .solution-feature-grid--logos .feature-main {
+.solution-page .solution-feature-grid--logos .feature-main,
+.solution-page .solution-feature-grid--photos .feature-main {
   padding: 30px;
   border-radius: 12px;
 }
@@ -268,7 +269,8 @@
   margin-bottom: 0.75rem;
 }
 
-.solution-page .solution-feature-grid--logos .feature-name {
+.solution-page .solution-feature-grid--logos .feature-name,
+.solution-page .solution-feature-grid--photos .feature-name {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -281,8 +283,22 @@
   margin: 0;
 }
 
-.solution-page .solution-feature-grid--logos .feature-description {
+.solution-page .solution-feature-grid--logos .feature-description,
+.solution-page .solution-feature-grid--photos .feature-description {
   font-size: 18px;
+}
+
+.solution-page .solution-feature-grid--photos .feature-logo-wrap {
+  padding: 0;
+  background-color: transparent;
+}
+
+.solution-page .solution-feature-grid--photos .feature-logo {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 991px) {
@@ -300,7 +316,8 @@
     gap: 1.25rem;
   }
 
-  .solution-page .solution-feature-grid--logos .feature-main {
+  .solution-page .solution-feature-grid--logos .feature-main,
+  .solution-page .solution-feature-grid--photos .feature-main {
     padding: 24px;
   }
 
@@ -309,11 +326,13 @@
     margin-bottom: 28px;
   }
 
-  .solution-page .solution-feature-grid--logos .feature-name {
+  .solution-page .solution-feature-grid--logos .feature-name,
+  .solution-page .solution-feature-grid--photos .feature-name {
     font-size: 22px;
   }
 
-  .solution-page .solution-feature-grid--logos .feature-description {
+  .solution-page .solution-feature-grid--logos .feature-description,
+  .solution-page .solution-feature-grid--photos .feature-description {
     font-size: 17px;
   }
 
@@ -359,7 +378,8 @@
     gap: 1rem;
   }
 
-  .solution-page .solution-feature-grid--logos .feature-main {
+  .solution-page .solution-feature-grid--logos .feature-main,
+  .solution-page .solution-feature-grid--photos .feature-main {
     padding: 20px;
   }
 
@@ -369,12 +389,18 @@
     padding: 0.875rem 1rem;
   }
 
-  .solution-page .solution-feature-grid--logos .feature-name {
+  .solution-page .solution-feature-grid--photos .feature-logo-wrap {
+    padding: 0;
+  }
+
+  .solution-page .solution-feature-grid--logos .feature-name,
+  .solution-page .solution-feature-grid--photos .feature-name {
     font-size: 20px;
     margin-bottom: 12px;
   }
 
-  .solution-page .solution-feature-grid--logos .feature-description {
+  .solution-page .solution-feature-grid--logos .feature-description,
+  .solution-page .solution-feature-grid--photos .feature-description {
     font-size: 16px;
     line-height: 1.55;
   }
@@ -1174,13 +1200,15 @@
   text-align: left;
 }
 
-.solution-page .solution-network-section--featured .solution-network-scroll {
+.solution-page .solution-network-section--featured .solution-network-scroll,
+.solution-page .solution-network-section--grid .solution-network-scroll {
   cursor: default;
   overflow: hidden;
   width: 100%;
 }
 
-.solution-page .solution-network-section--featured .solution-network-track {
+.solution-page .solution-network-section--featured .solution-network-track,
+.solution-page .solution-network-section--grid .solution-network-track {
   width: 100%;
 }
 
@@ -1189,6 +1217,20 @@
   width: 100%;
   max-width: none;
   height: clamp(18rem, 56vw, 40rem);
+  border-radius: 1.25rem;
+}
+
+.solution-page .solution-network-section--grid .solution-network-track {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.solution-page .solution-network-section--grid .solution-network-card {
+  flex: none;
+  width: 100%;
+  height: clamp(16rem, 36vw, 28rem);
   border-radius: 1.25rem;
 }
 
@@ -1207,5 +1249,21 @@
     flex: 1 1 100%;
     width: 100%;
     height: clamp(22rem, 42vw, 40rem);
+  }
+
+  .solution-page .solution-network-section--grid .solution-network-card {
+    width: 100%;
+    height: clamp(18rem, 28vw, 28rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .solution-page .solution-network-section--grid .solution-network-track {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .solution-page .solution-network-section--grid .solution-network-card {
+    height: clamp(14rem, 58vw, 20rem);
   }
 }

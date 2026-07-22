@@ -1,20 +1,24 @@
 import { useRef } from 'react'
 
 import {
-  SolutionCapacitySection,
+  // SolutionCapacitySection,
   SolutionCtaSection,
   SolutionExpertiseSection,
   SolutionPageHeroSection,
-  SolutionQualitySection,
-  SolutionSpotlightSection,
+  SolutionProductionNetworkSection,
+  // SolutionQualitySection,
+  // SolutionSpotlightSection,
+  SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
-  embroideryCapacity,
+  // embroideryCapacity,
   embroideryCta,
   embroideryExpertise,
   embroideryHero,
-  embroideryQuality,
-  embroiderySpotlight,
+  embroideryProductionNetwork,
+  // embroideryQuality,
+  // embroiderySpotlight,
+  embroideryWhyItMatters,
 } from '../data/embroidery/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
@@ -33,9 +37,14 @@ export function EmbroideryContent() {
     <div ref={ref} className="solution-page embroidery-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...embroideryHero} />
       <SolutionExpertiseSection idPrefix={ID_PREFIX} {...embroideryExpertise} />
-      <SolutionSpotlightSection idPrefix={ID_PREFIX} content={embroiderySpotlight} />
-      <SolutionCapacitySection idPrefix={ID_PREFIX} content={embroideryCapacity} />
-      <SolutionQualitySection idPrefix={ID_PREFIX} content={embroideryQuality} />
+      <SolutionProductionNetworkSection
+        idPrefix={ID_PREFIX}
+        content={embroideryProductionNetwork}
+      />
+      {/* <SolutionSpotlightSection idPrefix={ID_PREFIX} content={embroiderySpotlight} /> */}
+      {/* <SolutionCapacitySection idPrefix={ID_PREFIX} content={embroideryCapacity} /> */}
+      {/* <SolutionQualitySection idPrefix={ID_PREFIX} content={embroideryQuality} /> */}
+      <SolutionWhyItMattersSection idPrefix={ID_PREFIX} content={embroideryWhyItMatters} />
       <SolutionCtaSection idPrefix={ID_PREFIX} content={embroideryCta} />
     </div>
   )

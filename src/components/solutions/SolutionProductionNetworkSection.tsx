@@ -17,6 +17,8 @@ export type SolutionProductionNetworkContent = {
   title: string
   description: string
   units: SolutionProductionNetworkUnit[]
+  /** Override auto layout: 1=featured, 2=grid, 3+=gallery scroll. */
+  layout?: 'gallery' | 'featured' | 'grid'
 }
 
 type SolutionProductionNetworkSectionProps = {
@@ -24,19 +26,30 @@ type SolutionProductionNetworkSectionProps = {
   content: SolutionProductionNetworkContent
 }
 
+function resolveLayout(
+  unitCount: number,
+  layout?: SolutionProductionNetworkContent['layout'],
+): 'gallery' | 'featured' | 'grid' {
+  if (layout) return layout
+  if (unitCount === 1) return 'featured'
+  if (unitCount === 2) return 'grid'
+  return 'gallery'
+}
+
 export function SolutionProductionNetworkSection({
   idPrefix,
   content,
 }: SolutionProductionNetworkSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
+  const { id, badge, title, description, units, layout } = content
+  const resolvedLayout = resolveLayout(units.length, layout)
   useHorizontalScroll(scrollRef, { enableWheel: false })
 
-  const { id, badge, title, description, units } = content
-  const isFeatured = units.length === 1
   const sectionClassName = [
     'service-inner-section',
     'solution-network-section',
-    isFeatured ? 'solution-network-section--featured' : '',
+    resolvedLayout === 'featured' ? 'solution-network-section--featured' : '',
+    resolvedLayout === 'grid' ? 'solution-network-section--grid' : '',
   ]
     .filter(Boolean)
     .join(' ')
