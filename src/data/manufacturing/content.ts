@@ -1,6 +1,6 @@
 export const manufacturingHero = {
-  title: 'Integrated Manufacturing',
-  description: 'Precision Manufacturing. End to End.',
+  titleLines: [[{ text: 'Integrated' }, { text: 'Manufacturing' }]],
+  subtitle: 'Precision Manufacturing. End to End.',
   ctaLabel: 'Learn More',
   ctaHref: '#mfg-expertise',
   video: '/videos/Person_People_1280x720.mp4',
