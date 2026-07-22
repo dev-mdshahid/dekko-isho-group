@@ -131,41 +131,44 @@ export function ServiceSection() {
                 data-home-animate-index={index}
                 className={`service-list-wrapper ${speciality.wrapperClass} w-dyn-list`}
               >
-                <div role="list" className="service-list w-dyn-items">
-                  <div role="listitem" className="service-list-item w-dyn-item">
-                    <Link
-                      to={speciality.to}
-                      className="service-info-link"
-                      aria-label={speciality.title}
-                    >
-                      <div className="service-info-inner">
-                        <div className="service-image-main">
-                          <div className="service-image-wrap">
-                            <img
-                              src={speciality.image}
-                              loading="lazy"
-                              decoding="async"
-                              sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, 530px"
-                              alt={speciality.title}
-                              className="service-image"
+                {/* Visual card chrome — scaled by cover-cascade; sticky wrapper stays untransformed. */}
+                <div className="service-card-panel">
+                  <div role="list" className="service-list w-dyn-items">
+                    <div role="listitem" className="service-list-item w-dyn-item">
+                      <Link
+                        to={speciality.to}
+                        className="service-info-link"
+                        aria-label={speciality.title}
+                      >
+                        <div className="service-info-inner">
+                          <div className="service-image-main">
+                            <div className="service-image-wrap">
+                              <img
+                                src={speciality.image}
+                                loading="lazy"
+                                decoding="async"
+                                sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, 530px"
+                                alt={speciality.title}
+                                className="service-image"
+                              />
+                            </div>
+                          </div>
+                          <div className="service-content-wrap">
+                            <div className="service-name-wrapper">
+                              <ServiceTitle title={speciality.title} />
+                              <ServiceCardAction />
+                            </div>
+                            <ServiceFeatures
+                              features={speciality.features}
+                              featureLabel={speciality.featureLabel}
                             />
                           </div>
                         </div>
-                        <div className="service-content-wrap">
-                          <div className="service-name-wrapper">
-                            <ServiceTitle title={speciality.title} />
-                            <ServiceCardAction />
-                          </div>
-                          <ServiceFeatures
-                            features={speciality.features}
-                            featureLabel={speciality.featureLabel}
-                          />
-                        </div>
-                      </div>
-                    </Link>
-                    {index < serviceSpecialities.length - 1 ? (
-                      <div className="service-card-divider" aria-hidden="true" />
-                    ) : null}
+                      </Link>
+                      {index < serviceSpecialities.length - 1 ? (
+                        <div className="service-card-divider" aria-hidden="true" />
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </div>
