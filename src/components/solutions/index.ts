@@ -19,6 +19,16 @@ export type {
   SolutionProductionNetworkContent,
   SolutionProductionNetworkUnit,
 } from './SolutionProductionNetworkSection'
+export { SolutionAdvancedFinishingSection } from './SolutionAdvancedFinishingSection'
+export type {
+  SolutionAdvancedFinishingContent,
+  SolutionAdvancedFinishingItem,
+} from './SolutionAdvancedFinishingSection'
+export { SolutionWashingProcessesSection } from './SolutionWashingProcessesSection'
+export type {
+  SolutionWashingProcessesContent,
+  SolutionWashingProcessItem,
+} from './SolutionWashingProcessesSection'
 export { SolutionIntroSections } from './SolutionIntroSections'
 export { SolutionPageHeroSection } from './SolutionPageHeroSection'
 export type { SolutionPageHeroContent } from './SolutionPageHeroSection'

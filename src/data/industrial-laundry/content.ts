@@ -2,11 +2,106 @@ import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
 
 export const industrialLaundryHero = {
   titleLines: [[{ text: 'Washing' }]],
-  subtitle: 'Performance-Driven Washing Solutions',
+  subtitle:
+    'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements – from garment and enzyme washes to specialized denim treatments and dyeing.',
   ctaLabel: 'Learn More',
-  ctaHref: '#il-innovation',
-  video: '/videos/industry%20laundry.mp4',
+  ctaHref: '#il-washing-processes',
+  video: '/videos/industrial-laundry-hero.mp4',
   videoAlt: 'Industrial laundry facility with large washing machines',
+}
+
+const INDUSTRIAL_LAUNDRY_IMAGE_BASE = '/images/industrial-laundry'
+
+export const industrialLaundryWashingProcesses = {
+  id: 'il-washing-processes',
+  badge: 'Comprehensive Washing Capabilities',
+  title: 'Core washing processes',
+  description:
+    'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements. From garment and enzyme washes to specialized denim treatments and dyeing, we ensure consistent quality, repeatable results, and production flexibility across every order.',
+  processes: [
+    {
+      id: 'garment-wash',
+      title: 'Garment Wash',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/garment-wash.png`,
+      imageAlt: 'Blue denim garments in a laundry basket',
+    },
+    {
+      id: 'enzyme-wash',
+      title: 'Enzyme Wash',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/enzyme-wash.png`,
+      imageAlt: 'Stacked denim jeans in varied enzyme wash finishes',
+    },
+    {
+      id: 'dark-wash',
+      title: 'Dark Wash',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dark-wash.png`,
+      imageAlt: 'Stack of dark wash denim garments',
+    },
+    {
+      id: 'mid-wash',
+      title: 'Mid Wash',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/mid-wash.png`,
+      imageAlt: 'Mid wash denim jeans',
+    },
+    {
+      id: 'light-wash',
+      title: 'Light Wash',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/light-wash.png`,
+      imageAlt: 'Light wash denim jeans with product tag',
+    },
+    {
+      id: 'dyeing',
+      title: 'Dyeing',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dyeing.png`,
+      imageAlt: 'Folded garments in assorted dyed colors',
+    },
+  ],
+}
+
+export const industrialLaundryAdvancedFinishing = {
+  id: 'il-advanced-finishing',
+  badge: 'Comprehensive Washing Capabilities',
+  title: 'Advanced Finishing Capabilities',
+  description:
+    'Our integrated finishing facility combines advanced technologies with skilled craftsmanship to create distinctive fashion effects and premium garment finishes. Dedicated process areas and specialized equipment ensure precision, efficiency, and consistency across every production run.',
+  items: [
+    {
+      id: 'advanced-washing',
+      title: 'Advanced Washing',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sanforizing.png`,
+      imageAlt: 'Industrial advanced washing machines in finishing facility',
+    },
+    {
+      id: 'dry-process',
+      title: 'Dry Process',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/laser-finishing.png`,
+      imageAlt: 'Operators performing dry process finishing work',
+    },
+    {
+      id: 'hand-scraping-destroy',
+      title: 'Hand Scraping & Destroy',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers.png`,
+      imageAlt: 'Worker applying hand scraping and destroy effects',
+    },
+    {
+      id: 'laser-finishing',
+      title: 'Laser Finishing',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/advanced-washing.png`,
+      imageAlt: 'Laser finishing process on denim fabric',
+    },
+    {
+      id: 'conveyor-dryers',
+      title: 'Conveyor Dryers',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/hand-scraping-destroy.png`,
+      imageAlt: 'Garments moving through conveyor dryer line',
+    },
+    {
+      id: 'sanforizing',
+      title: 'Sanforizing',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dry-process.png`,
+      imageAlt: 'Sanforizing process area in laundry facility',
+    },
+  ],
 }
 
 export const industrialLaundryExpertise = {

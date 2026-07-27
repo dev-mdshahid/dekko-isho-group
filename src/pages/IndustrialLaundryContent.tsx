@@ -2,6 +2,7 @@ import { useRef } from 'react'
 
 import { ManufacturingCapacitySection } from '../components/manufacturing'
 import {
+  SolutionAdvancedFinishingSection,
   // SolutionCapacitySection,
   SolutionCtaSection,
   SolutionExpertiseSection,
@@ -9,9 +10,11 @@ import {
   SolutionProductionNetworkSection,
   // SolutionQualitySection,
   // SolutionSpotlightSection,
+  SolutionWashingProcessesSection,
   SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
+  industrialLaundryAdvancedFinishing,
   industrialLaundryExpertise,
   industrialLaundryCta,
   industrialLaundryHero,
@@ -19,6 +22,7 @@ import {
   // industrialLaundryQuality,
   // industrialLaundrySpotlight,
   // industrialLaundryWashing,
+  industrialLaundryWashingProcesses,
   industrialLaundryWaterStewardship,
   industrialLaundryWhyItMatters,
 } from '../data/industrial-laundry/content'
@@ -38,6 +42,14 @@ export function IndustrialLaundryContent() {
   return (
     <div ref={ref} className="solution-page industrial-laundry-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...industrialLaundryHero} />
+      <SolutionWashingProcessesSection
+        idPrefix={ID_PREFIX}
+        content={industrialLaundryWashingProcesses}
+      />
+      <SolutionAdvancedFinishingSection
+        idPrefix={ID_PREFIX}
+        content={industrialLaundryAdvancedFinishing}
+      />
       <SolutionExpertiseSection idPrefix={ID_PREFIX} {...industrialLaundryExpertise} />
       <ManufacturingCapacitySection
         idPrefix={ID_PREFIX}

@@ -1358,3 +1358,240 @@
     height: clamp(14rem, 58vw, 20rem);
   }
 }
+
+/* ── Washing processes (image card gallery) ── */
+.solution-page .solution-washing-processes-section {
+  background-color: var(--color--white);
+  overflow: hidden;
+}
+
+.solution-page .solution-washing-processes-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap--gap-9);
+  padding-top: clamp(4rem, 8vw, 6.5rem);
+  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+}
+
+.solution-page .solution-washing-processes-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: var(--gap--gap-5);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: var(--_layout---container-gutter);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.solution-page .solution-washing-processes-section .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
+}
+
+.solution-page .solution-washing-processes-title {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(1.875rem, 3vw, 2.75rem);
+  line-height: 1.1;
+}
+
+.solution-page .solution-washing-processes-description {
+  margin: 0;
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.solution-page .solution-washing-processes-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
+  scrollbar-width: none;
+  cursor: grab;
+  padding-inline: var(--_layout---container-gutter);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.solution-page .solution-washing-processes-scroll.is-dragging {
+  cursor: grabbing;
+}
+
+.solution-page .solution-washing-processes-scroll.is-dragging,
+.solution-page .solution-washing-processes-scroll.is-dragging * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.solution-page .solution-washing-processes-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.solution-page .solution-washing-processes-track {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+.solution-page .solution-washing-process-card {
+  position: relative;
+  flex: 0 0 18.125rem;
+  width: 18.125rem;
+  height: 32rem;
+  overflow: hidden;
+  border: 1px solid #f7f8fa;
+  border-radius: 1.25rem;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.solution-page .solution-washing-process-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.solution-page .solution-washing-process-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 65%);
+  pointer-events: none;
+}
+
+.solution-page .solution-washing-process-card-title {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  margin: 0;
+  padding: 1.5rem;
+  color: var(--color--white);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: left;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  .solution-page .solution-washing-process-card {
+    flex-basis: min(78vw, 18.125rem);
+    width: min(78vw, 18.125rem);
+    height: min(138vw, 32rem);
+  }
+
+  .solution-page .solution-washing-process-card-title {
+    font-size: clamp(1.375rem, 5vw, 1.75rem);
+  }
+}
+
+/* ── Advanced finishing capabilities (grid cards) ── */
+.solution-page .solution-advanced-finishing-section {
+  background-color: var(--color--white);
+}
+
+.solution-page .solution-advanced-finishing-section .container {
+  max-width: 1520px;
+}
+
+.solution-page .solution-advanced-finishing-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap--gap-7);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.solution-page .solution-advanced-finishing-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  max-width: 100%;
+  text-align: left;
+}
+
+.solution-page .solution-advanced-finishing-section .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
+}
+
+.solution-page .solution-advanced-finishing-header .pre-section-title-wrap {
+  margin-bottom: 16px;
+}
+
+.solution-page .solution-advanced-finishing-title {
+  margin: 0 0 20px;
+  text-align: left;
+  font-size: clamp(1.875rem, 3vw, 2.75rem);
+  line-height: 1.1;
+}
+
+.solution-page .solution-advanced-finishing-description {
+  margin: 0;
+  color: var(--color--gray-2);
+  font-size: var(--_typography---body--body-sm);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.solution-page .solution-advanced-finishing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 60px;
+}
+
+.solution-page .solution-advanced-finishing-card {
+  overflow: hidden;
+  background-color: var(--color--white);
+  border: 1px solid #f7f8fa;
+  border-radius: 0.75rem;
+}
+
+.solution-page .solution-advanced-finishing-card-image {
+  display: block;
+  width: 100%;
+  height: 298px;
+  object-fit: cover;
+}
+
+.solution-page .solution-advanced-finishing-card-body {
+  padding: 1rem 1rem 1.875rem;
+}
+
+.solution-page .solution-advanced-finishing-card-title {
+  margin: 0;
+  color: var(--color--dark);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+@media screen and (max-width: 991px) {
+  .solution-page .solution-advanced-finishing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .solution-page .solution-advanced-finishing-grid {
+    grid-template-columns: 1fr;
+  }
+}
