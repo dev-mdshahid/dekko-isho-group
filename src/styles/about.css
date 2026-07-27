@@ -39,6 +39,10 @@
   display: flex;
 }
 
+.about-hero-section .about-hero-title-wrap .pre-section-title {
+  text-transform: none;
+}
+
 .about-hero-section .about-hero-title {
   margin: 0;
   font-family: var(--_typography---font-family--heading);

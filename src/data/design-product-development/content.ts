@@ -1,10 +1,20 @@
 export const designProductDevelopmentHero = {
-  titleLines: [[{ text: 'Design' }, { text: '&' }, { text: 'Development' }]],
-  subtitle: 'Fashion Intelligence to Manufacturing Excellence.',
-  ctaLabel: 'Learn More',
+  badge: 'Fashion is constantly evolving and so are we',
+  titleLines: [
+    [
+      { text: 'Design' },
+      { text: 'Studio' },
+      { text: '&' },
+      { text: 'Product' },
+      { text: 'Development' },
+    ],
+  ],
+  subtitle:
+    'At Dekko ISHO Design Studio, we transform ideas into market-ready collections through creativity, material innovation, and advanced product development. Our designers, product developers, fabric specialists, and technical experts collaborate with global brands to create products that are trend-driven, commercially relevant, and production-ready.',
+  ctaLabel: 'Explore Our Capabilities',
   ctaHref: '#dpd-capabilities',
-  video: '/videos/design%20and%20product%20dev.mp4',
-  videoAlt: 'Design team collaborating in a modern studio',
+  video: '/videos/design-product-development-hero.mp4',
+  videoAlt: 'Design Studio and Product Development at Dekko ISHO',
 }
 
 const CAPABILITY_IMAGE_BASE = '/images/design-product-development'

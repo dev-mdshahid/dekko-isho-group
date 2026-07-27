@@ -7,6 +7,7 @@ import { FadeIn } from '../ui/FadeIn'
 import { PageHeroSection, type PageHeroTitleWord } from '../ui/PageHeroSection'
 
 export type SolutionPageHeroContent = {
+  badge?: string
   titleLines: PageHeroTitleWord[][]
   subtitle: string
   ctaLabel: string
@@ -23,6 +24,7 @@ type SolutionPageHeroSectionProps = SolutionPageHeroContent & {
 export function SolutionPageHeroSection({
   idPrefix,
   className,
+  badge,
   titleLines,
   subtitle,
   ctaLabel,
@@ -47,6 +49,7 @@ export function SolutionPageHeroSection({
   return (
     <PageHeroSection
       className={sectionClassName}
+      badge={badge}
       titleLines={titleLines}
       subtitle={subtitle}
       actions={

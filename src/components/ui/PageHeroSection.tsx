@@ -1,6 +1,7 @@
 import { useRef, type ReactNode } from 'react'
 
 import { useAboutHeroAnimation } from '../../hooks/useAboutHeroAnimation'
+import { PreSectionTitle } from './PreSectionTitle'
 import { NoiseOverlay, SectionLines } from './SectionDecor'
 
 export type PageHeroTitleWord = {
@@ -9,6 +10,7 @@ export type PageHeroTitleWord = {
 }
 
 export type PageHeroSectionProps = {
+  badge?: string
   titleLines: PageHeroTitleWord[][]
   subtitle?: string
   actions?: ReactNode
@@ -17,6 +19,7 @@ export type PageHeroSectionProps = {
 }
 
 export function PageHeroSection({
+  badge,
   titleLines,
   subtitle,
   actions,
@@ -33,6 +36,7 @@ export function PageHeroSection({
       <div className="about-hero-inner">
         <div className="container-full">
           <div className="about-hero-title-wrap">
+            {badge ? <PreSectionTitle title={badge} /> : null}
             <h1 className="about-hero-title">
               {titleLines.map((line) => (
                 <span key={line.map((word) => word.text).join(' ')} className="hero-title-line">
