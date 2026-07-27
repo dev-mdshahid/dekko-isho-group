@@ -1136,6 +1136,27 @@
   z-index: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .design-product-development-page .dpd-journey-roadmap [data-journey-path-mask] {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .design-product-development-page .dpd-journey-roadmap [data-journey-path-ghost] {
+    opacity: 0;
+  }
+
+  .design-product-development-page .dpd-journey-roadmap [data-journey-dot],
+  .design-product-development-page .dpd-journey-roadmap [data-journey-label] {
+    opacity: 0;
+  }
+
+  .design-product-development-page .dpd-journey-mobile [data-journey-mobile-dot],
+  .design-product-development-page .dpd-journey-mobile [data-journey-mobile-label] {
+    opacity: 0;
+  }
+}
+
 .design-product-development-page .dpd-journey-nodes {
   position: absolute;
   inset: 0;

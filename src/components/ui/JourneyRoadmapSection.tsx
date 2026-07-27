@@ -1,3 +1,6 @@
+import { useRef } from 'react'
+
+import { useJourneyRoadmapAnimation } from '../../hooks/useJourneyRoadmapAnimation'
 import { FadeIn } from './FadeIn'
 import { PreSectionTitle } from './PreSectionTitle'
 
@@ -81,10 +84,13 @@ export function JourneyRoadmapSection({
   xPadLeft = DEFAULT_X_PAD,
   xPadRight = DEFAULT_X_PAD,
 }: JourneyRoadmapSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null)
   const pathD = buildPathD(columnCount, xPadLeft, xPadRight)
 
+  useJourneyRoadmapAnimation(sectionRef)
+
   return (
-    <section id={id} className={`${classPrefix}-section`}>
+    <section id={id} ref={sectionRef} className={`${classPrefix}-section`}>
       <div className={`${classPrefix}-container`}>
         <FadeIn id={`${id}-header`} className={`${classPrefix}-header`}>
           <PreSectionTitle title={badge} />
@@ -92,14 +98,29 @@ export function JourneyRoadmapSection({
           {description ? <p className={`${classPrefix}-description`}>{description}</p> : null}
         </FadeIn>
 
-        <FadeIn id={`${id}-roadmap`} className={`${classPrefix}-roadmap`} delay={40}>
+        <div className={`${classPrefix}-roadmap`} data-journey-roadmap>
           <svg
             className={`${classPrefix}-path`}
             viewBox={`0 0 ${VB.w} ${VB.h}`}
             preserveAspectRatio="none"
             aria-hidden="true"
           >
+            <defs>
+              <mask id={`${id}-path-mask`} maskUnits="userSpaceOnUse">
+                <path
+                  data-journey-path-mask
+                  d={pathD}
+                  pathLength={1}
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                />
+              </mask>
+            </defs>
+            {/* Ghost route — shows the full journey faintly before ink draws. */}
             <path
+              data-journey-path-ghost
               d={pathD}
               fill="none"
               stroke="currentColor"
@@ -107,33 +128,63 @@ export function JourneyRoadmapSection({
               strokeDasharray="8 10"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
+              opacity="0"
+            />
+            <path
+              data-journey-path
+              d={pathD}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="8 10"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+              mask={`url(#${id}-path-mask)`}
             />
           </svg>
 
           <ol className={`${classPrefix}-nodes`} aria-label={title}>
-            {stages.map((stage) => (
+            {stages.map((stage, index) => (
               <li
                 key={stage.id}
                 className={`${classPrefix}-node ${classPrefix}-node--${stage.row}`}
                 style={nodeStyle(stage.column, stage.row, columnCount, xPadLeft, xPadRight)}
+                data-journey-node
+                data-journey-step={index}
+                data-journey-row={stage.row}
+                data-journey-column={stage.column}
               >
-                <span className={`${classPrefix}-dot`} aria-hidden="true" />
-                <span className={`${classPrefix}-label`}>{stage.label}</span>
+                <span className={`${classPrefix}-dot`} data-journey-dot aria-hidden="true" />
+                <span className={`${classPrefix}-label`} data-journey-label>
+                  {stage.label}
+                </span>
               </li>
             ))}
           </ol>
-        </FadeIn>
+        </div>
 
-        <FadeIn id={`${id}-mobile`} className={`${classPrefix}-mobile`} delay={40}>
+        <div className={`${classPrefix}-mobile`} data-journey-mobile>
           <ol className={`${classPrefix}-mobile-list`} aria-label={title}>
-            {stages.map((stage) => (
-              <li key={stage.id} className={`${classPrefix}-mobile-item`}>
-                <span className={`${classPrefix}-dot`} aria-hidden="true" />
-                <span className={`${classPrefix}-label`}>{stage.label}</span>
+            {stages.map((stage, index) => (
+              <li
+                key={stage.id}
+                className={`${classPrefix}-mobile-item`}
+                data-journey-mobile-item
+                data-journey-step={index}
+                data-journey-row={stage.row}
+              >
+                <span
+                  className={`${classPrefix}-dot`}
+                  data-journey-mobile-dot
+                  aria-hidden="true"
+                />
+                <span className={`${classPrefix}-label`} data-journey-mobile-label>
+                  {stage.label}
+                </span>
               </li>
             ))}
           </ol>
-        </FadeIn>
+        </div>
       </div>
     </section>
   )

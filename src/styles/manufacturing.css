@@ -1657,6 +1657,27 @@
   z-index: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .manufacturing-page .mfg-journey-roadmap [data-journey-path-mask] {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .manufacturing-page .mfg-journey-roadmap [data-journey-path-ghost] {
+    opacity: 0;
+  }
+
+  .manufacturing-page .mfg-journey-roadmap [data-journey-dot],
+  .manufacturing-page .mfg-journey-roadmap [data-journey-label] {
+    opacity: 0;
+  }
+
+  .manufacturing-page .mfg-journey-mobile [data-journey-mobile-dot],
+  .manufacturing-page .mfg-journey-mobile [data-journey-mobile-label] {
+    opacity: 0;
+  }
+}
+
 .manufacturing-page .mfg-journey-nodes {
   position: absolute;
   inset: 0;
