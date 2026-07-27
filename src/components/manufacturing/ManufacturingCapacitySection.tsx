@@ -27,7 +27,7 @@ export function ManufacturingCapacitySection({
   const { badge, title, description, ctaLabel, ctaHref, stats, pills } = content
 
   return (
-    <section className="service-step-section mfg-capacity-section">
+    <section id={`${idPrefix}-capacity`} className="service-step-section mfg-capacity-section">
       <div className="container">
         <div className="service-step-main section-spacing">
           <div className="mfg-capacity-grid">
