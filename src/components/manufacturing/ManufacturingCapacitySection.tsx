@@ -7,12 +7,12 @@ import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 export type ManufacturingCapacityContent = {
   badge: string
-  titleBefore: string
-  titleAccent: string
-  titleAfter: string
+  title: string
+  description?: string
   ctaLabel: string
   ctaHref: string
   stats: CapacityStat[]
+  pills?: string[]
 }
 
 type ManufacturingCapacitySectionProps = {
@@ -24,7 +24,7 @@ export function ManufacturingCapacitySection({
   content,
   idPrefix = 'mfg',
 }: ManufacturingCapacitySectionProps) {
-  const { badge, titleBefore, titleAccent, titleAfter, ctaLabel, ctaHref, stats } = content
+  const { badge, title, description, ctaLabel, ctaHref, stats, pills } = content
 
   return (
     <section className="service-step-section mfg-capacity-section">
@@ -33,10 +33,10 @@ export function ManufacturingCapacitySection({
           <div className="mfg-capacity-grid">
             <FadeIn id={`${idPrefix}-capacity-left`} className="mfg-capacity-left">
               <PreSectionTitle title={badge} />
-              <h2 className="section-title mfg-capacity-title">
-                {titleBefore}{' '}
-                <span className="mfg-capacity-accent">{titleAccent}</span> {titleAfter}
-              </h2>
+              <h2 className="section-title mfg-capacity-title">{title}</h2>
+              {description && (
+                <p className="mfg-capacity-description">{description}</p>
+              )}
               <div className="mfg-capacity-cta">
                 <ButtonArrow to={ctaHref} label={ctaLabel} />
               </div>
@@ -46,6 +46,16 @@ export function ManufacturingCapacitySection({
               <CapacityStatCircles stats={stats} />
             </FadeIn>
           </div>
+
+          {pills && pills.length > 0 && (
+            <FadeIn id={`${idPrefix}-capacity-pills`} className="mfg-capacity-pills">
+              {pills.map((pill) => (
+                <span key={pill} className="mfg-capacity-pill">
+                  {pill}
+                </span>
+              ))}
+            </FadeIn>
+          )}
         </div>
       </div>
       <SectionLines border="grey" />

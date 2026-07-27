@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import {
   // ManufacturingCapacityDetailsSection,
   ManufacturingCapacitySection,
+  ManufacturingEcosystemSection,
   ManufacturingClientsSection,
   // ManufacturingCuttingPreparationSection,
   ManufacturingProductRangeSection,
@@ -10,6 +11,9 @@ import {
   ManufacturingHeroSection,
   // ManufacturingHowItWorksSection,
   // ManufacturingSewingSection,
+  ManufacturingTechnologySection,
+  ManufacturingOperationSection,
+  ManufacturingJourneySection,
 } from '../components/manufacturing'
 import {
   SolutionCtaSection,
@@ -47,6 +51,10 @@ export function ManufacturingContent() {
       {/* <SolutionExpertiseSection idPrefix={ID_PREFIX} {...manufacturingExpertise} /> */}
       {/* <ManufacturingHowItWorksSection /> */}
       <ManufacturingCapacitySection content={manufacturingCapacity} />
+      <ManufacturingEcosystemSection />
+      <ManufacturingTechnologySection />
+      <ManufacturingOperationSection />
+      <ManufacturingJourneySection />
       <ManufacturingClientsSection />
       <ManufacturingProductRangeSection />
       <SolutionWhyItMattersSection idPrefix={ID_PREFIX} content={manufacturingWhyItMatters} />

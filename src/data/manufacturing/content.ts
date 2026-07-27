@@ -1,12 +1,14 @@
 import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
 
 export const manufacturingHero = {
-  titleLines: [[{ text: 'Integrated' }, { text: 'Manufacturing' }]],
-  subtitle: 'Powering Manufacturing End to End.',
+  badge: 'From Sourcing to Packing',
+  titleLines: [[{ text: 'Integrated' }, { text: 'Apparel' }, { text: 'Manufacturing' }]],
+  subtitle:
+    'At Dekko ISHO, we provide end-to-end apparel manufacturing solutions through a fully integrated ecosystem that connects material sourcing, product development, manufacturing, quality assurance, and packing. Supported by advanced technology, skilled people, and modern production facilities, we help global fashion brands improve speed to market, ensure consistent quality, and build more resilient supply chains.',
   ctaLabel: 'Learn More',
   ctaHref: '#mfg-production-network',
-  video: '/videos/Person_People_1280x720.mp4',
-  videoAlt: 'Apparel manufacturing — person working with fabric',
+  video: '/videos/manufacturing-hero.mp4',
+  videoAlt: 'Apparel manufacturing facility aerial view',
 }
 
 export const manufacturingExpertise = {
@@ -149,51 +151,89 @@ export const manufacturingCuttingPreparation = {
 }
 
 export const manufacturingCapacity = {
-  badge: 'Total Monthly Production Capacity',
-  titleBefore: 'Manufacturing',
-  titleAccent: 'Capacity',
-  titleAfter: 'at Scale',
+  badge: 'Manufacturing at a Glance',
+  title: 'Monthly Production Capacity',
+  description:
+    'Built on vertical integration, advanced manufacturing technologies, and decades of apparel expertise, our production platform delivers consistency, flexibility, and operational excellence. Every stage of manufacturing is carefully managed to ensure reliable execution, superior quality, and on-time delivery.',
   ctaLabel: 'Download Brochure',
   ctaHref: '/docs/Dekko_ISHO_Group.pdf',
   stats: [
     {
-      id: 'production',
-      value: '2.0 M',
-      label: 'Pcs Production Monthly',
+      id: 'total-capacity',
+      value: '3.5 Million',
+      label: 'Total Capacity (Pcs)',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.0 M',
-      label: 'Woven Tops',
+      value: '2.5 Million',
+      label: 'Woven Tops (Pcs)',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '2.0 M',
-      label: 'Woven Bottoms',
-      variant: 'navy',
-    },
-    {
-      id: 'units',
-      value: '7',
-      label: 'Manufacturing Units',
-      variant: 'white',
-    },
-    {
-      id: 'workforce',
-      value: '20,000+',
-      label: 'Workforce',
+      value: '1.0 M',
+      label: 'Woven Bottoms (Pcs)',
       variant: 'pink',
     },
   ] satisfies CapacityStat[],
+  pills: [
+    'Vertically Integrated Manufacturing',
+    'Advanced European Machinery',
+    'Technology-Driven Operations',
+    '3 Dedicated Salesman Sample (SMS) Lines',
+    'Quality Control at Every Stage',
+    'Global Customer Base',
+  ],
+}
+
+export const manufacturingEcosystem = {
+  id: 'mfg-ecosystem',
+  badge: 'Manufacturing Ecosystem',
+  title: 'Everything Connected.\nEvery Process Optimized.',
+  description:
+    'Our vertically integrated manufacturing ecosystem connects every stage of production — from sourcing and product development to manufacturing, quality assurance, and logistics. By bringing every function together under one roof, we eliminate inefficiencies, reduce lead times, and maintain complete control over quality at every step.',
+  image: '/images/manufacturing/manufacturing-ecosystem.jpg',
+  imageAlt: 'Interior view of a large apparel manufacturing floor',
+}
+
+export const manufacturingTechnology = {
+  id: 'mfg-technology',
+  badge: 'Technology-Driven Manufacturing',
+  title: 'Powered by Technology.\nDriven by Efficiency.',
+  description:
+    'Powered by Oracle EBS, Fast React, GPRO, advanced automation, and smart production systems, we optimize planning, production, inventory, and capacity management while maintaining complete operational visibility. Real-time monitoring and digital manufacturing tools enable faster decisions, reduced lead times, and consistent quality at every stage.',
+  items: [
+    {
+      id: 'ebs',
+      title: 'EBS',
+      description: 'Enterprise Resource Planning',
+    },
+    {
+      id: 'fast-react',
+      title: 'Fast React',
+      description: 'Production Planning',
+    },
+    {
+      id: 'gpro',
+      title: 'GPRO',
+      description: 'Production Monitoring',
+    },
+    {
+      id: 'automation',
+      title: 'Automation',
+      description: 'Automated Manufacturing Equipment',
+    },
+  ],
 }
 
 const productRangeImage = (file: string) => `/images/manufacturing/product-range/${file}`
 
 export const manufacturingProductRange = {
-  badge: 'Detailed insight',
-  title: 'Product Range',
+  badge: 'Versatile Manufacturing Capability',
+  title: 'Designed for diverse product categories.',
+  description:
+    'Our integrated manufacturing platform supports a broad portfolio of woven apparel, combining technical expertise, flexible production, and efficient manufacturing processes to meet diverse customer requirements.',
   items: [
     {
       id: 'formal-shirts',
@@ -537,6 +577,110 @@ export const manufacturingProjects = {
       image: '/images/about/laundry.jpg',
       imageAlt: 'Knitwear production line',
     },
+  ],
+}
+
+export const manufacturingOperation = {
+  badge: 'Inside the Operation',
+  title: 'Materials, quality, and sampling – managed end to end.',
+  description:
+    'Three disciplines run in lockstep across every order, keeping production uninterrupted, quality embedded at every stage, and development moving fast.',
+  cards: [
+    {
+      id: 'material-management',
+      number: '01',
+      label: 'Material Management',
+      title: 'Every Great Product Starts with the Right Materials.',
+      description:
+        'A well-managed material warehouse forms the foundation of efficient manufacturing. Through accurate inventory management, complete material traceability, barcode-enabled storage systems, and comprehensive fabric and trim inspections, we ensure uninterrupted production and consistent quality from the very beginning.',
+      image: '/images/manufacturing/material-management.jpg',
+      imageAlt: 'Material management warehouse',
+    },
+    {
+      id: 'quality-assurance',
+      number: '02',
+      label: 'Quality Assurance',
+      title: 'Quality Built into Every Stage.',
+      description:
+        'Quality is embedded throughout our manufacturing process—not simply inspected at the end. Our quality management system integrates incoming material inspections, in-line quality control, laboratory testing using advanced European equipment, and final audits to ensure every garment consistently meets customer expectations and international standards.',
+      image: '/images/manufacturing/quality-assurance.jpg',
+      imageAlt: 'Quality assurance inspection',
+    },
+    {
+      id: 'salesman-sample',
+      number: '03',
+      label: 'Salesman Sample Development',
+      title: 'Accelerating Product Development.',
+      description:
+        'Fast sample development enables faster buying decisions. Our three dedicated Salesman Sample (SMS) production lines support rapid prototype development, fit validation, buyer presentations, and pre-production approvals, helping customers shorten development timelines and accelerate speed to market.',
+      image: '/images/manufacturing/salesman-sample.jpg',
+      imageAlt: 'Salesman sample development',
+    },
+  ],
+}
+
+export const manufacturingClients = {
+  id: 'mfg-clients',
+  badge: 'Global Business Footprint',
+  title: 'Trusted by global fashion brands.',
+  description:
+    'Dekko ISHO proudly partners with leading fashion brands and retailers across Europe, North America, and other international markets — long-term partnerships built on trust, quality, reliability, and responsible manufacturing.',
+  regions: [
+    {
+      id: 'europe',
+      accent: '#F3215D',
+      title: 'Europe',
+      description:
+        'Long-standing partnerships with European brands and retailers across key markets.',
+    },
+    {
+      id: 'north-america',
+      accent: '#449BFF',
+      title: 'North America',
+      description: 'Trusted manufacturing partner to leading North American fashion brands.',
+    },
+    {
+      id: 'international',
+      accent: '#14B253',
+      title: 'International Markets',
+      description: "A growing export footprint serving global consumers' evolving demands.",
+    },
+  ],
+}
+
+export const manufacturingJourney = {
+  id: 'mfg-journey',
+  badge: 'Manufacturing Journey',
+  title: 'From sourcing to packing.',
+  description:
+    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
+  stages: [
+    { id: 'material-sourcing', label: 'Material Sourcing', row: 'top' as const, column: 0 },
+    { id: 'material-inspection', label: 'Material Inspection', row: 'top' as const, column: 1 },
+    {
+      id: 'salesman-sample-development',
+      label: 'Salesman Sample Development',
+      row: 'top' as const,
+      column: 2,
+    },
+    {
+      id: 'pattern-marker-planning',
+      label: 'Pattern & Marker Planning',
+      row: 'top' as const,
+      column: 3,
+    },
+    { id: 'fabric-cutting', label: 'Fabric Cutting', row: 'top' as const, column: 4 },
+    { id: 'sewing-assembly', label: 'Sewing & Assembly', row: 'top' as const, column: 5 },
+    {
+      id: 'inline-quality-control',
+      label: 'In-line Quality Control',
+      row: 'bottom' as const,
+      column: 5,
+    },
+    { id: 'finishing', label: 'Finishing', row: 'bottom' as const, column: 4 },
+    { id: 'final-inspection', label: 'Final Inspection', row: 'bottom' as const, column: 3 },
+    { id: 'packing', label: 'Packing', row: 'bottom' as const, column: 2 },
+    { id: 'shipment', label: 'Shipment', row: 'bottom' as const, column: 1 },
   ],
 }
 

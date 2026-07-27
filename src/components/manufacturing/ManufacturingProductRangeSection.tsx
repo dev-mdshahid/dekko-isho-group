@@ -4,14 +4,15 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 export function ManufacturingProductRangeSection() {
-  const { badge, title, items } = manufacturingProductRange
+  const { badge, title, description, items } = manufacturingProductRange
 
   return (
-    <section className="mfg-product-range-section section-spacing">
+    <section className="mfg-product-range-section">
       <div className="container">
         <FadeIn id="mfg-product-range-header" className="mfg-product-range-header">
           <PreSectionTitle title={badge} />
-          <h2 className="section-title title-center mfg-product-range-title">{title}</h2>
+          <h2 className="mfg-product-range-title">{title}</h2>
+          <p className="mfg-product-range-description">{description}</p>
         </FadeIn>
 
         <div className="mfg-product-range-grid">

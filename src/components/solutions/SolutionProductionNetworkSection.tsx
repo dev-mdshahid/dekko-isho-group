@@ -9,6 +9,8 @@ export type SolutionProductionNetworkUnit = {
   title: string
   image: string
   imageAlt: string
+  monthlyCapacity?: string
+  productionLines?: string
 }
 
 export type SolutionProductionNetworkContent = {
@@ -65,27 +67,71 @@ export function SolutionProductionNetworkSection({
 
         <div ref={scrollRef} className="solution-network-scroll">
           <div className="solution-network-track">
-            {units.map((unit, index) => (
-              <FadeIn
-                key={unit.id}
-                id={`${idPrefix}-network-${unit.id}`}
-                className="solution-network-card"
-                delay={index * 60}
-              >
-                <img
-                  src={unit.image}
-                  loading="lazy"
-                  alt={unit.imageAlt}
-                  width={540}
-                  height={640}
-                  draggable={false}
-                  className="solution-network-card-image"
-                />
-                <div className="solution-network-card-caption">
-                  <h3 className="solution-network-card-title">{unit.title}</h3>
-                </div>
-              </FadeIn>
-            ))}
+            {units.map((unit, index) => {
+              const hasStats = Boolean(unit.monthlyCapacity || unit.productionLines)
+
+              return (
+                <FadeIn
+                  key={unit.id}
+                  id={`${idPrefix}-network-${unit.id}`}
+                  className={`solution-network-card${hasStats ? ' solution-network-card--stats' : ''}`}
+                  delay={index * 60}
+                >
+                  <img
+                    src={unit.image}
+                    loading="lazy"
+                    alt={unit.imageAlt}
+                    width={540}
+                    height={640}
+                    draggable={false}
+                    className="solution-network-card-image"
+                  />
+                  <div className="solution-network-card-caption">
+                    <div className="solution-network-card-panel">
+                      <h3 className="solution-network-card-title">{unit.title}</h3>
+                      {hasStats ? (
+                        <>
+                          <div className="solution-network-card-divider" aria-hidden="true" />
+                          <div className="solution-network-card-stats">
+                            {unit.monthlyCapacity ? (
+                              <div className="solution-network-card-stat">
+                                <span className="solution-network-card-stat-label">
+                                  Production capacity
+                                </span>
+                                <p className="solution-network-card-stat-value">
+                                  <span className="solution-network-card-stat-number">
+                                    {unit.monthlyCapacity}
+                                  </span>
+                                  <span className="solution-network-card-stat-unit">PCS/month</span>
+                                </p>
+                              </div>
+                            ) : null}
+                            {unit.monthlyCapacity && unit.productionLines ? (
+                              <div
+                                className="solution-network-card-stat-separator"
+                                aria-hidden="true"
+                              />
+                            ) : null}
+                            {unit.productionLines ? (
+                              <div className="solution-network-card-stat">
+                                <span className="solution-network-card-stat-label">
+                                  Production lines
+                                </span>
+                                <p className="solution-network-card-stat-value">
+                                  <span className="solution-network-card-stat-number">
+                                    {unit.productionLines}
+                                  </span>
+                                </p>
+                              </div>
+                            ) : null}
+                          </div>
+                        </>
+                      ) : null}
+                    </div>
+                  </div>
+                </FadeIn>
+              )
+            })}
           </div>
         </div>
       </div>
