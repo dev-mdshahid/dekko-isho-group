@@ -2,10 +2,12 @@ import { useRef } from 'react'
 
 import {
   DesignCapabilitiesSection,
+  DesignDigitalDevelopmentSection,
   DesignDigitalImpactSection,
   // DesignExperienceSection,
   // DesignFacilitiesSection,
   DesignFactoryAssuranceSection,
+  DesignStudioSection,
   // DesignPresenceSection,
   // DesignServicesSection,
   // DesignShowroomSection,
@@ -35,6 +37,8 @@ export function DesignProductDevelopmentContent() {
     <div ref={ref} className="solution-page design-product-development-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...designProductDevelopmentHero} />
       <DesignCapabilitiesSection />
+      <DesignStudioSection />
+      <DesignDigitalDevelopmentSection />
       {/* <DesignServicesSection /> */}
       <DesignFactoryAssuranceSection />
       <DesignDigitalImpactSection />

@@ -1,5 +1,7 @@
 export { DesignCapabilitiesSection } from './DesignCapabilitiesSection'
+export { DesignDigitalDevelopmentSection } from './DesignDigitalDevelopmentSection'
 export { DesignDigitalImpactSection } from './DesignDigitalImpactSection'
+export { DesignStudioSection } from './DesignStudioSection'
 export { DesignExperienceSection } from './DesignExperienceSection'
 export { DesignFacilitiesSection } from './DesignFacilitiesSection'
 export { DesignFactoryAssuranceSection } from './DesignFactoryAssuranceSection'
