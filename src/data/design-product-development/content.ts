@@ -97,6 +97,30 @@ export const designProductDevelopmentDigital = {
   ],
 }
 
+export const designProductDevelopmentMaterials = {
+  id: 'dpd-materials',
+  badge: 'Materials',
+  title: 'The Foundation of Inspired Product Development.',
+  items: [
+    {
+      id: 'fabric-library',
+      image: `${CAPABILITY_IMAGE_BASE}/materials-fabric-library.png`,
+      imageAlt: 'Shelves packed with folded fabric samples in the fabric library',
+      title: 'Fabric Library',
+      description:
+        'Our Fabric Library features innovative fabrics, trims, washes, finishes, and sustainable materials sourced from leading mills worldwide, providing continuous inspiration for new collections.',
+    },
+    {
+      id: 'global-sourcing',
+      image: `${CAPABILITY_IMAGE_BASE}/materials-global-sourcing.png`,
+      imageAlt: 'Fabric swatches hanging on racks in the material sourcing room',
+      title: 'Global Fabric Sourcing & Innovation',
+      description:
+        "We don't simply source fabrics – we discover materials that inspire the next generation of fashion. Our Fabric Sourcing & Innovation Team explores global textile fairs and sourcing destinations to identify emerging materials and enrich our Fabric Library with commercially relevant innovations.",
+    },
+  ],
+}
+
 export const designProductDevelopmentServices = {
   id: 'dpd-services',
   badge: 'Our Services',
@@ -139,43 +163,63 @@ export const designProductDevelopmentServices = {
   ],
 }
 
-export const designProductDevelopmentFactoryAssurance = {
-  badge: 'Design excellence infrastructure',
-  titleBefore: 'Built around ',
-  titleAccent: 'designers',
-  titleAfter: ', close to the market',
-  image: '/images/design-product-development/design-excellence-infrastructure.png',
-  imageAlt: 'Designer working at a studio desk with fabric samples and a computer',
+export const designProductDevelopmentGlobalNetwork = {
+  id: 'dpd-global-network',
+  badge: 'Global Design Network',
+  title: 'Close to the market, wherever you are.',
+  description: 'We translate global fashion insights into market-ready collections.',
+  image: '/images/design-product-development/global-design-network.jpg',
+  imageAlt: 'Neutral-toned textured fabrics and knits hanging in a design studio',
   items: [
     {
       id: 'london-showroom',
       number: '01',
-      accent: '#FFC219',
-      title: 'Showroom in London',
+      accent: '#F3215D',
+      title: 'London Showroom',
       description:
-        '94 Harley Street — a dedicated space to explore collections, review samples and collaborate with our design team in person.',
+        'A dedicated space to explore collections, review samples, and collaborate with our design team in person.',
     },
     {
       id: 'european-support',
       number: '02',
-      accent: '#F3215D',
-      title: 'European Designer Support',
+      accent: '#449BFF',
+      title: 'European Design Support',
       description: 'On-the-ground design collaboration with European brands and teams.',
     },
     {
-      id: 'fabric-sourcing',
+      id: 'sourcing-network',
       number: '03',
-      accent: '#449BFF',
-      title: 'Dedicated Fabric Sourcing Team',
-      description: 'Specialists sourcing the right fabric at the right price, faster.',
-    },
-    {
-      id: 'local-support',
-      number: '04',
       accent: '#14B253',
-      title: 'Local Design Support',
-      description: "Ladies' tops, men's tops & bottoms, supported by local design expertise.",
+      title: 'International Sourcing Network',
+      description:
+        'A global sourcing network that keeps materials, trends, and innovation flowing into every collection.',
     },
+  ],
+}
+
+/**
+ * Product Development Journey roadmap.
+ * Desktop layout (from design mock):
+ * - Top L→R: Trend Research → Concept & Design → Fabric Development → 3D Visualization → Pattern Development
+ * - Right U-turn; bottom nodes under columns 2–5 (Trend has none beneath)
+ * - Bottom L→R (visual): Sample Creation → Fit & Technical Review → Buyer Approval → Production Ready
+ * - Dashed path snakes R→L on the bottom row after the curve
+ * - `stages` listed in reading order (top L→R, then bottom L→R)
+ */
+export const designProductDevelopmentJourney = {
+  id: 'dpd-journey',
+  badge: 'From trend research to production ready',
+  title: 'Product Development Journey',
+  stages: [
+    { id: 'trend-research', label: 'Trend Research', row: 'top' as const, column: 0 },
+    { id: 'concept-design', label: 'Concept & Design', row: 'top' as const, column: 1 },
+    { id: 'fabric-development', label: 'Fabric Development', row: 'top' as const, column: 2 },
+    { id: '3d-visualization', label: '3D Visualization', row: 'top' as const, column: 3 },
+    { id: 'pattern-development', label: 'Pattern Development', row: 'top' as const, column: 4 },
+    { id: 'sample-creation', label: 'Sample Creation', row: 'bottom' as const, column: 1 },
+    { id: 'fit-technical-review', label: 'Fit & Technical Review', row: 'bottom' as const, column: 2 },
+    { id: 'buyer-approval', label: 'Buyer Approval', row: 'bottom' as const, column: 3 },
+    { id: 'production-ready', label: 'Production Ready', row: 'bottom' as const, column: 4 },
   ],
 }
 
@@ -343,6 +387,35 @@ export const designProductDevelopmentPresence = {
     src: '/images/design%20and%20product/gallery-banner.png',
     alt: 'Fabric rolls in a design workshop',
   },
+}
+
+/** Asymmetric 3-image gallery (425 / 610 / 425). Copy from existing Photo Gallery / presence content. */
+export const designProductDevelopmentGallery = {
+  id: 'dpd-gallery',
+  badge: 'Photo Gallery',
+  title: 'Design Studio in Action',
+  description:
+    'A visual look at the studio environment, fabric exploration, sketching, sample development, and showroom references that support faster product decisions.',
+  images: [
+    {
+      id: 'garment-detailing',
+      size: 'side' as const,
+      src: `${CAPABILITY_IMAGE_BASE}/gallery-garment-detailing.jpg`,
+      alt: 'Designer pinning trim detail onto a jacket on a dress form',
+    },
+    {
+      id: 'studio-collaboration',
+      size: 'center' as const,
+      src: `${CAPABILITY_IMAGE_BASE}/gallery-studio-collaboration.jpg`,
+      alt: 'Designers collaborating over fashion sketches at a studio table',
+    },
+    {
+      id: 'fabric-review',
+      size: 'side' as const,
+      src: `${CAPABILITY_IMAGE_BASE}/gallery-fabric-review.jpg`,
+      alt: 'Hands reviewing fabric swatches beside a laptop in the design studio',
+    },
+  ],
 }
 
 export const designProductDevelopmentShowroom = {

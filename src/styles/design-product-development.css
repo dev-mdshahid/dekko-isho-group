@@ -16,9 +16,12 @@
  * Individual containers keep their own margin/padding; this only unifies max-width.
  */
 .design-product-development-page .dpd-capabilities-container,
+.design-product-development-page .dpd-materials-container,
 .design-product-development-page .split-content-section-container,
 .design-product-development-page .split-feature-list-container,
-.design-product-development-page .dpd-factory-container,
+.design-product-development-page .dpd-global-network-container,
+.design-product-development-page .dpd-gallery-container,
+.design-product-development-page .dpd-journey-container,
 .design-product-development-page .dpd-facilities-container,
 .design-product-development-page .dpd-experience-container,
 .design-product-development-page .dpd-presence-container,
@@ -186,6 +189,161 @@
   }
 
   .design-product-development-page .dpd-capabilities-card-description {
+    font-size: 1rem;
+  }
+}
+
+/* ── Materials (2 wide image cards) ── */
+.design-product-development-page .dpd-materials-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--neutral-seasalt);
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.design-product-development-page .dpd-materials-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.design-product-development-page .dpd-materials-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.design-product-development-page .dpd-materials-section .pre-section-title-wrap {
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+}
+
+.design-product-development-page .dpd-materials-section .pre-section-title {
+  color: var(--color--neutral-night);
+}
+
+.design-product-development-page .dpd-materials-section .pre-section-title-square {
+  background-color: var(--dpd-brand-start);
+  background-image: var(--dpd-brand-gradient);
+}
+
+.design-product-development-page .dpd-materials-title {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-size: clamp(1.875rem, 3vw, 2.75rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.design-product-development-page .dpd-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.design-product-development-page .dpd-materials-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius--lg);
+  background-color: var(--color--white);
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--color--neutral-night) 6%, transparent);
+}
+
+.design-product-development-page .dpd-materials-card-media {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.design-product-development-page .dpd-materials-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.design-product-development-page .dpd-materials-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 30px;
+  background-color: var(--color--white);
+}
+
+.design-product-development-page .dpd-materials-card-title {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.design-product-development-page .dpd-materials-card-description {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: left;
+}
+
+/* Figma: monotone noise, black @ 8% opacity (site default NoiseOverlay is 4%) */
+.design-product-development-page .dpd-materials-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.design-product-development-page .dpd-materials-section .line-wrapper {
+  z-index: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .design-product-development-page .dpd-materials-container {
+    padding-inline: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .design-product-development-page .dpd-materials-card-media {
+    height: 220px;
+  }
+
+  .design-product-development-page .dpd-materials-card-body {
+    padding: 1.5rem;
+  }
+
+  .design-product-development-page .dpd-materials-card-title {
+    font-size: 1.375rem;
+  }
+
+  .design-product-development-page .dpd-materials-card-description {
     font-size: 1rem;
   }
 }
@@ -588,32 +746,16 @@
   background-color: var(--color--gray-2);
 }
 
-/* ── Factory assurance (4-col process) ── */
-.design-product-development-page .dpd-factory-section {
+/* ── Global Design Network ── */
+.design-product-development-page .dpd-global-network-section {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background-color: var(--color--neutral-seasalt);
-  padding: 200px 0;
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
 }
 
-.design-product-development-page .dpd-factory-section::after {
-  content: '';
-  position: absolute;
-  bottom: -42%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(160%, 90rem);
-  height: 55%;
-  border-radius: 50%;
-  background-color: var(--dpd-brand-start);
-  opacity: 0.1;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.design-product-development-page .dpd-factory-container {
+.design-product-development-page .dpd-global-network-container {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -621,115 +763,471 @@
   padding-inline: var(--_layout---container-gutter);
 }
 
-.design-product-development-page .dpd-factory-header {
+.design-product-development-page .dpd-global-network-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.25rem;
   width: 100%;
-  margin-bottom: 88px;
+  margin-bottom: clamp(2.5rem, 5vw, 5.5rem);
 }
 
-.design-product-development-page .dpd-factory-title-wrap {
-  width: 100%;
-}
-
-.design-product-development-page .dpd-factory-section .pre-section-title-wrap {
+.design-product-development-page .dpd-global-network-section .pre-section-title-wrap {
   background-color: transparent;
   border-color: var(--color--neutral-silver-night);
 }
 
-.design-product-development-page .dpd-factory-section .pre-section-title {
+.design-product-development-page .dpd-global-network-section .pre-section-title {
   color: var(--color--neutral-night);
 }
 
-.design-product-development-page .dpd-factory-section .pre-section-title-square {
+.design-product-development-page .dpd-global-network-section .pre-section-title-square {
   background-color: var(--dpd-brand-start);
   background-image: var(--dpd-brand-gradient);
 }
 
-.design-product-development-page .dpd-factory-title {
+.design-product-development-page .dpd-global-network-title {
   margin: 0;
   width: 100%;
-  font-size: 58px;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-size: clamp(1.875rem, 4vw, 3.625rem);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--color--neutral-night);
+  text-align: left;
 }
 
-.design-product-development-page .dpd-factory-title-accent {
-  color: #f3215d;
+.design-product-development-page .dpd-global-network-description {
+  margin: 0;
+  width: 100%;
+  max-width: 42rem;
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: left;
 }
 
-.design-product-development-page .dpd-factory-media {
+.design-product-development-page .dpd-global-network-media {
   width: 100%;
 }
 
-.design-product-development-page .dpd-factory-image {
+.design-product-development-page .dpd-global-network-image {
   display: block;
   width: 100%;
-  height: 448px;
+  height: clamp(220px, 40vw, 448px);
   object-fit: cover;
   object-position: center;
   border-radius: var(--border-radius--lg);
-  box-shadow: 0 4px 24px color-mix(in srgb, var(--color--neutral-night) 8%, transparent);
 }
 
-.design-product-development-page .dpd-factory-content {
-  width: 100%;
-  padding: 88px 0 0;
-}
-
-.design-product-development-page .dpd-factory-accent-bar {
+.design-product-development-page .dpd-global-network-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   width: 100%;
-  height: 3px;
+  margin-top: clamp(2.5rem, 5vw, 5.5rem);
 }
 
-.design-product-development-page .dpd-factory-accent-segment {
-  display: block;
-  height: 100%;
-}
-
-.design-product-development-page .dpd-factory-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: 1.25rem;
-}
-
-.design-product-development-page .dpd-factory-card {
+.design-product-development-page .dpd-global-network-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
 }
 
-.design-product-development-page .dpd-factory-card-number {
+.design-product-development-page .dpd-global-network-card-accent {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 1.25rem;
+}
+
+.design-product-development-page .dpd-global-network-card-number {
   margin: 0 0 0.75rem;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1;
 }
 
-.design-product-development-page .dpd-factory-card-title {
+.design-product-development-page .dpd-global-network-card-title {
   margin: 0;
+  width: 100%;
   color: var(--color--neutral-night);
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.01em;
+  text-align: left;
 }
 
-.design-product-development-page .dpd-factory-card-description {
+.design-product-development-page .dpd-global-network-card-description {
   margin: 16px 0 0;
+  width: 100%;
   color: var(--color--neutral-outer-space);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.55;
+  text-align: left;
+}
+
+/* Figma: monotone noise, black @ 8% opacity (match Materials) */
+.design-product-development-page .dpd-global-network-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.design-product-development-page .dpd-global-network-section .line-wrapper {
+  z-index: 0;
+}
+
+/* ── Design Studio gallery (asymmetric 425 / 610 / 425) ── */
+.design-product-development-page .dpd-gallery-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--neutral-seasalt);
+  padding: 100px 0;
+}
+
+.design-product-development-page .dpd-gallery-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.design-product-development-page .dpd-gallery-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 88px;
+  text-align: center;
+}
+
+.design-product-development-page .dpd-gallery-section .pre-section-title-wrap {
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+  margin-bottom: 1.25rem;
+}
+
+.design-product-development-page .dpd-gallery-section .pre-section-title {
+  color: var(--color--neutral-night);
+}
+
+.design-product-development-page .dpd-gallery-section .pre-section-title-square {
+  background-color: var(--dpd-brand-start);
+  background-image: var(--dpd-brand-gradient);
+}
+
+.design-product-development-page .dpd-gallery-title {
+  margin: 0 0 20px;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.design-product-development-page .dpd-gallery-description {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 48rem;
+  color: var(--color--neutral-outer-space);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.design-product-development-page .dpd-gallery-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.design-product-development-page .dpd-gallery-item {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.design-product-development-page .dpd-gallery-item--side {
+  width: 425px;
+  height: 425px;
+}
+
+.design-product-development-page .dpd-gallery-item--center {
+  width: 610px;
+  height: 610px;
+}
+
+.design-product-development-page .dpd-gallery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.design-product-development-page .dpd-gallery-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.design-product-development-page .dpd-gallery-section .line-wrapper {
+  z-index: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .design-product-development-page .dpd-gallery-container {
+    padding-inline: 0;
+  }
+}
+
+@media screen and (max-width: 1519px) and (min-width: 992px) {
+  .design-product-development-page .dpd-gallery-row {
+    gap: clamp(16px, 2vw, 30px);
+  }
+
+  .design-product-development-page .dpd-gallery-item--side {
+    width: clamp(260px, 28vw, 425px);
+    height: clamp(260px, 28vw, 425px);
+  }
+
+  .design-product-development-page .dpd-gallery-item--center {
+    width: clamp(360px, 40vw, 610px);
+    height: clamp(360px, 40vw, 610px);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-gallery-section {
+    padding: 72px 0;
+  }
+
+  .design-product-development-page .dpd-gallery-header {
+    margin-bottom: 48px;
+  }
+
+  .design-product-development-page .dpd-gallery-title {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .design-product-development-page .dpd-gallery-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .design-product-development-page .dpd-gallery-item--side {
+    width: min(425px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .design-product-development-page .dpd-gallery-item--center {
+    width: min(610px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-gallery-section {
+    padding: 56px 0;
+  }
+
+  .design-product-development-page .dpd-gallery-header {
+    margin-bottom: 36px;
+  }
+
+  .design-product-development-page .dpd-gallery-title {
+    margin-bottom: 16px;
+    font-size: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-gallery-description {
+    font-size: 1rem;
+  }
+
+  .design-product-development-page .dpd-gallery-item {
+    border-radius: 20px;
+  }
+}
+
+/* ── Product Development Journey roadmap ── */
+.design-product-development-page .dpd-journey-section {
+  --dpd-journey-dot: 32px;
+  --dpd-journey-blue: var(--color--primary);
+  --dpd-journey-line: color-mix(in srgb, var(--color--primary) 42%, white);
+  background-color: var(--color--white);
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.design-product-development-page .dpd-journey-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 50px;
+}
+
+.design-product-development-page .dpd-journey-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  margin-bottom: clamp(2.75rem, 5vw, 4rem);
+}
+
+.design-product-development-page .dpd-journey-section .pre-section-title-wrap {
+  background-color: var(--color--white);
+  border-color: var(--color--neutral-silver-night);
+}
+
+.design-product-development-page .dpd-journey-section .pre-section-title {
+  color: var(--color--neutral-night);
+  text-transform: none;
+}
+
+.design-product-development-page .dpd-journey-section .pre-section-title-square {
+  background-color: var(--dpd-journey-blue);
+  background-image: none;
+}
+
+.design-product-development-page .dpd-journey-title {
+  margin: 0;
+  width: 100%;
+  color: var(--color--neutral-night);
+  font-size: clamp(1.875rem, 3vw, 2.75rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.design-product-development-page .dpd-journey-roadmap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1000 / 280;
+  min-height: 220px;
+}
+
+.design-product-development-page .dpd-journey-path {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--dpd-journey-line);
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.design-product-development-page .dpd-journey-nodes {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1;
+}
+
+.design-product-development-page .dpd-journey-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 11rem;
+  transform: translate(-50%, calc(var(--dpd-journey-dot) / -2));
+  text-align: center;
+}
+
+.design-product-development-page .dpd-journey-dot {
+  flex-shrink: 0;
+  width: var(--dpd-journey-dot);
+  height: var(--dpd-journey-dot);
+  border-radius: 50%;
+  background-color: var(--dpd-journey-blue);
+  box-shadow: 0 0 0 4px var(--color--white);
+}
+
+.design-product-development-page .dpd-journey-label {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--color--neutral-night);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 24px;
+  font-weight: var(--_typography---h6--font-weight-600);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.design-product-development-page .dpd-journey-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-journey-roadmap {
+    display: none;
+  }
+
+  .design-product-development-page .dpd-journey-mobile {
+    display: block;
+  }
+
+  .design-product-development-page .dpd-journey-mobile-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0 0 0 1.15rem;
+    list-style: none;
+  }
+
+  .design-product-development-page .dpd-journey-mobile-list::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    left: calc(1.15rem + 16px - 1px);
+    width: 0;
+    border-left: 2px dashed var(--dpd-journey-line);
+  }
+
+  .design-product-development-page .dpd-journey-mobile-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1;
+  }
+
+  .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
+    margin-top: 0;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-journey-container {
+    padding-inline: 24px;
+  }
 }
 
 /* ── Solutions banner (Figma) ── */
@@ -1281,7 +1779,7 @@
 
 /* ── Responsive ── */
 @media screen and (min-width: 992px) {
-  .design-product-development-page .dpd-factory-container,
+  .design-product-development-page .dpd-global-network-container,
   .design-product-development-page .dpd-facilities-container,
   .design-product-development-page .dpd-experience-container,
   .design-product-development-page .dpd-presence-container,
@@ -1295,28 +1793,13 @@
     grid-template-columns: 1fr;
   }
 
-  .design-product-development-page .dpd-factory-section {
-    padding: 100px 0;
-  }
-
-  .design-product-development-page .dpd-factory-header {
+  .design-product-development-page .dpd-global-network-header {
     margin-bottom: 48px;
   }
 
-  .design-product-development-page .dpd-factory-title {
-    font-size: clamp(1.875rem, 5vw, 2.75rem);
-  }
-
-  .design-product-development-page .dpd-factory-image {
-    height: 280px;
-  }
-
-  .design-product-development-page .dpd-factory-content {
-    padding-top: 48px;
-  }
-
-  .design-product-development-page .dpd-factory-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .design-product-development-page .dpd-global-network-grid {
+    grid-template-columns: 1fr;
+    margin-top: 48px;
   }
 
   .design-product-development-page .dpd-solutions-banner-card {
@@ -1348,7 +1831,6 @@
     height: clamp(18rem, 55vw, 26rem);
   }
 
-  .design-product-development-page .dpd-factory-grid,
   .design-product-development-page .dpd-experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1379,32 +1861,24 @@
 }
 
 @media screen and (max-width: 767px) {
-  .design-product-development-page .dpd-factory-section {
-    padding: 72px 0;
-  }
-
-  .design-product-development-page .dpd-factory-header {
+  .design-product-development-page .dpd-global-network-header {
     margin-bottom: 32px;
   }
 
-  .design-product-development-page .dpd-factory-grid,
+  .design-product-development-page .dpd-global-network-grid,
   .design-product-development-page .dpd-experience-grid {
     grid-template-columns: 1fr;
   }
 
-  .design-product-development-page .dpd-factory-image {
-    height: 220px;
+  .design-product-development-page .dpd-global-network-grid {
+    margin-top: 32px;
   }
 
-  .design-product-development-page .dpd-factory-content {
-    padding-top: 32px;
+  .design-product-development-page .dpd-global-network-card-title {
+    font-size: 1.375rem;
   }
 
-  .design-product-development-page .dpd-factory-card-title {
-    font-size: 1.25rem;
-  }
-
-  .design-product-development-page .dpd-factory-card-description {
+  .design-product-development-page .dpd-global-network-card-description {
     font-size: 1rem;
   }
 

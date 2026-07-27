@@ -6,7 +6,10 @@ import {
   DesignDigitalImpactSection,
   // DesignExperienceSection,
   // DesignFacilitiesSection,
-  DesignFactoryAssuranceSection,
+  DesignGallerySection,
+  DesignGlobalNetworkSection,
+  DesignJourneySection,
+  DesignMaterialsSection,
   DesignStudioSection,
   // DesignPresenceSection,
   // DesignServicesSection,
@@ -39,9 +42,12 @@ export function DesignProductDevelopmentContent() {
       <DesignCapabilitiesSection />
       <DesignStudioSection />
       <DesignDigitalDevelopmentSection />
+      <DesignMaterialsSection />
       {/* <DesignServicesSection /> */}
-      <DesignFactoryAssuranceSection />
+      <DesignGlobalNetworkSection />
+      <DesignJourneySection />
       <DesignDigitalImpactSection />
+      <DesignGallerySection />
       {/* <DesignSolutionsBannerSection /> */}
       {/* <IndustryImageSection className="dpd-concept-section" {...designProductDevelopmentConcept} /> */}
       {/* <DesignFacilitiesSection /> */}
