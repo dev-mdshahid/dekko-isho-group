@@ -3,20 +3,48 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
-export function DesignGlobalNetworkSection() {
-  const { id, badge, title, description, image, imageAlt, items } =
-    designProductDevelopmentGlobalNetwork
+export type DesignGlobalNetworkItem = {
+  id: string
+  number: string
+  accent: string
+  title: string
+  description: string
+}
+
+export type DesignGlobalNetworkContent = {
+  id: string
+  badge?: string
+  title: string
+  description: string
+  image: string
+  imageAlt: string
+  items: DesignGlobalNetworkItem[]
+}
+
+type DesignGlobalNetworkSectionProps = {
+  content?: DesignGlobalNetworkContent
+  className?: string
+  idPrefix?: string
+}
+
+export function DesignGlobalNetworkSection({
+  content = designProductDevelopmentGlobalNetwork,
+  className,
+  idPrefix = 'dpd',
+}: DesignGlobalNetworkSectionProps) {
+  const { id, badge, title, description, image, imageAlt, items } = content
+  const sectionClassName = ['dpd-global-network-section', className].filter(Boolean).join(' ')
 
   return (
-    <section id={id} className="dpd-global-network-section">
+    <section id={id} className={sectionClassName}>
       <div className="dpd-global-network-container">
-        <FadeIn id="dpd-global-network-header" className="dpd-global-network-header">
-          <PreSectionTitle title={badge} />
+        <FadeIn id={`${idPrefix}-global-network-header`} className="dpd-global-network-header">
+          {badge ? <PreSectionTitle title={badge} /> : null}
           <h2 className="dpd-global-network-title">{title}</h2>
           <p className="dpd-global-network-description">{description}</p>
         </FadeIn>
 
-        <FadeIn id="dpd-global-network-media" className="dpd-global-network-media" delay={40}>
+        <FadeIn id={`${idPrefix}-global-network-media`} className="dpd-global-network-media" delay={40}>
           <img src={image} loading="lazy" alt={imageAlt} className="dpd-global-network-image" />
         </FadeIn>
 
@@ -24,7 +52,7 @@ export function DesignGlobalNetworkSection() {
           {items.map((item, index) => (
             <FadeIn
               key={item.id}
-              id={`dpd-global-network-${item.id}`}
+              id={`${idPrefix}-global-network-${item.id}`}
               className="dpd-global-network-card"
               delay={index * 50}
             >
