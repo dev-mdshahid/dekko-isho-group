@@ -294,6 +294,41 @@
   margin: 0 0 1.875rem 0;
 }
 
+.solution-page .mfg-capacity-title-accent {
+  color: var(--solution-brand-start);
+}
+
+.solution-page .mfg-capacity-metrics {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.solution-page .mfg-capacity-metric {
+  min-width: 0;
+}
+
+.solution-page .mfg-capacity-metric + .mfg-capacity-metric {
+  border-left: 1px solid #eceff3;
+  padding-left: 1rem;
+}
+
+.solution-page .mfg-capacity-metric-label {
+  display: block;
+  color: var(--color--gray-2);
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.solution-page .mfg-capacity-metric-value {
+  margin: 0.25rem 0 0;
+  color: var(--color--primary-2);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
 .solution-page .mfg-capacity-cta .button-icon-bg {
   background-color: #2595d5;
   background-image: linear-gradient(180deg, #2595d5 0%, #1c72a3 100%);
@@ -1232,6 +1267,16 @@
 
   .solution-page .mfg-capacity-title {
     font-size: clamp(1.875rem, 7.5vw, 2.75rem);
+  }
+
+  .solution-page .mfg-capacity-metrics {
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .solution-page .mfg-capacity-metric + .mfg-capacity-metric {
+    border-left: 0;
+    padding-left: 0;
   }
 
   .solution-page .mfg-capacity-cta {

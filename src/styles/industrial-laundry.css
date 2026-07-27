@@ -15,8 +15,63 @@
   background-image: var(--il-brand-gradient);
 }
 
+/* Match shared PreSectionTitle styling used by other IL sections */
+.industrial-laundry-page .mfg-capacity-left .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
+}
+
+/* ── Production Capacity section deltas ── */
+.industrial-laundry-page .mfg-capacity-left .pre-section-title-wrap {
+  margin-bottom: 16px;
+}
+
+.industrial-laundry-page .mfg-capacity-title {
+  max-width: 20ch;
+  margin: 0 0 20px;
+}
+
+.industrial-laundry-page .mfg-capacity-title-accent {
+  color: var(--color--primary-gradient-end);
+}
+
+.industrial-laundry-page .mfg-capacity-description {
+  max-width: 58ch;
+  margin: 0 0 60px;
+  font-size: 18px;
+}
+
+.industrial-laundry-page .mfg-capacity-metrics {
+  margin: 0 0 30px;
+  gap: 1.25rem;
+}
+
+.industrial-laundry-page .mfg-capacity-metric + .mfg-capacity-metric {
+  border-left-color: #eceff3;
+  padding-left: 1.25rem;
+}
+
+.industrial-laundry-page .mfg-capacity-metric-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.industrial-laundry-page .mfg-capacity-metric-value {
+  margin-top: 10px;
+  color: var(--color--secondary-amaranth);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
 .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
   --capacity-circle-size: 220px;
+  gap: 0;
+}
+
+.industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circle + .capacity-stat-circle {
+  margin-left: 0;
 }
 
 .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-value {
@@ -26,10 +81,19 @@
 
 .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-label {
   font-size: 18px;
+  font-weight: 500;
   line-height: 1.25;
 }
 
 @media screen and (max-width: 991px) {
+  .industrial-laundry-page .mfg-capacity-description {
+    font-size: 16px;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metric-value {
+    font-size: 24px;
+  }
+
   .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
     --capacity-circle-size: min(220px, 28vw);
   }
@@ -40,5 +104,6 @@
 
   .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-label {
     font-size: clamp(0.75rem, 2.8vw, 18px);
+    font-weight: 500;
   }
 }

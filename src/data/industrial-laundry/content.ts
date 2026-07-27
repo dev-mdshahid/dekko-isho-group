@@ -141,41 +141,44 @@ export const industrialLaundryExpertise = {
 export const industrialLaundryInnovation = industrialLaundryExpertise
 
 export const industrialLaundryWaterStewardship = {
-  badge: 'Responsible Water Management',
-  titleBefore: 'Water',
-  titleAccent: 'Stewardship',
+  badge: 'Monthly Capacity',
+  title: 'Production Capacity at Scale',
+  titleBefore: 'Production',
+  titleAccent: 'Capacity',
   titleAfter: 'at Scale',
+  description:
+    'Designed for high-volume manufacturing, our facility combines advanced machinery, experienced professionals, and efficient production planning to deliver consistent quality while meeting demanding production timelines.',
+  keyMetrics: [
+    {
+      id: 'higg-fem',
+      label: 'Higg FEM Score',
+      value: '71%',
+    },
+    {
+      id: 'gateway-compliance',
+      label: 'Gateway Compliance',
+      value: '100% ZDHC Level 3',
+    },
+  ],
   ctaLabel: 'Download Brochure',
   ctaHref: '/docs/Dekko_ISHO_Group.pdf',
   stats: [
     {
-      id: 'etp',
-      value: '120 m³/hr',
-      label: 'Effluent Treatment Plant',
+      id: 'total-capacity',
+      value: '3.5 Million',
+      label: 'Total Capacity (Pcs)',
       variant: 'blue',
     },
     {
-      id: 'stp',
-      value: '40 m³/hr',
-      label: 'Sewage Treatment Plant',
+      id: 'advanced-washing-machines',
+      value: '28',
+      label: 'Advanced Washing Machines',
       variant: 'sky',
     },
     {
-      id: 'gwt',
-      value: '15 m³/hr',
-      label: 'Ground Water Treatment',
-      variant: 'navy',
-    },
-    {
-      id: 'rainwater',
-      value: 'Rainwater Harvesting',
-      label: 'Several units',
-      variant: 'white',
-    },
-    {
-      id: 'recycling',
-      value: '2%',
-      label: 'Water Recycling',
+      id: 'skilled-professionals',
+      value: '800+',
+      label: 'Skilled Professionals',
       variant: 'pink',
     },
   ] satisfies CapacityStat[],
