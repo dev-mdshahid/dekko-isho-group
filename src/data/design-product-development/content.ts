@@ -392,10 +392,10 @@ export const designProductDevelopmentPresence = {
 /** Asymmetric 3-image gallery (425 / 610 / 425). Copy from existing Photo Gallery / presence content. */
 export const designProductDevelopmentGallery = {
   id: 'dpd-gallery',
-  badge: 'Photo Gallery',
-  title: 'Design Studio in Action',
+  badge: 'Co-Creation & Partnership',
+  title: 'Better products are built together.',
   description:
-    'A visual look at the studio environment, fabric exploration, sketching, sample development, and showroom references that support faster product decisions.',
+    'Our designers, fabric specialists, and product developers work closely with customers throughout every stage of the development journey — from trend exploration and material selection to prototyping, fit refinement, and final approval.',
   images: [
     {
       id: 'garment-detailing',

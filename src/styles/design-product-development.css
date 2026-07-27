@@ -938,9 +938,9 @@
 }
 
 .design-product-development-page .dpd-gallery-description {
-  margin: 0 auto;
+  margin: 0;
   width: 100%;
-  max-width: 48rem;
+  max-width: none;
   color: var(--color--neutral-outer-space);
   font-family: var(--_typography---font-family--body);
   font-size: 18px;

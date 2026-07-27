@@ -3,9 +3,10 @@ import { useRef } from 'react'
 import {
   DesignCapabilitiesSection,
   DesignDigitalDevelopmentSection,
-  DesignDigitalImpactSection,
+  // DesignDigitalImpactSection,
   // DesignExperienceSection,
   // DesignFacilitiesSection,
+  // DesignFactoryAssuranceSection,
   DesignGallerySection,
   DesignGlobalNetworkSection,
   DesignJourneySection,
@@ -45,9 +46,10 @@ export function DesignProductDevelopmentContent() {
       <DesignMaterialsSection />
       {/* <DesignServicesSection /> */}
       <DesignGlobalNetworkSection />
-      <DesignJourneySection />
-      <DesignDigitalImpactSection />
       <DesignGallerySection />
+      <DesignJourneySection />
+      {/* <DesignDigitalImpactSection /> */}
+      {/* <DesignFactoryAssuranceSection /> */}
       {/* <DesignSolutionsBannerSection /> */}
       {/* <IndustryImageSection className="dpd-concept-section" {...designProductDevelopmentConcept} /> */}
       {/* <DesignFacilitiesSection /> */}
