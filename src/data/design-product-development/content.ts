@@ -398,22 +398,22 @@ export const designProductDevelopmentGallery = {
     'Our designers, fabric specialists, and product developers work closely with customers throughout every stage of the development journey — from trend exploration and material selection to prototyping, fit refinement, and final approval.',
   images: [
     {
-      id: 'garment-detailing',
+      id: 'digital-design',
       size: 'side' as const,
-      src: `${CAPABILITY_IMAGE_BASE}/gallery-garment-detailing.jpg`,
-      alt: 'Designer pinning trim detail onto a jacket on a dress form',
+      src: `${CAPABILITY_IMAGE_BASE}/gallery-digital-design.png`,
+      alt: 'Designer reviewing a garment visualization in fashion design software',
     },
     {
       id: 'studio-collaboration',
       size: 'center' as const,
-      src: `${CAPABILITY_IMAGE_BASE}/gallery-studio-collaboration.jpg`,
-      alt: 'Designers collaborating over fashion sketches at a studio table',
+      src: `${CAPABILITY_IMAGE_BASE}/gallery-studio-collaboration.png`,
+      alt: 'Designers collaborating over fabric swatches and documents at a studio table',
     },
     {
       id: 'fabric-review',
       size: 'side' as const,
-      src: `${CAPABILITY_IMAGE_BASE}/gallery-fabric-review.jpg`,
-      alt: 'Hands reviewing fabric swatches beside a laptop in the design studio',
+      src: `${CAPABILITY_IMAGE_BASE}/gallery-fabric-review.png`,
+      alt: 'Product developers reviewing catalogs and fabric samples in the design studio',
     },
   ],
 }

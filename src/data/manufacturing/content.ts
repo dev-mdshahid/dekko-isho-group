@@ -593,7 +593,7 @@ export const manufacturingOperation = {
       title: 'Every Great Product Starts with the Right Materials.',
       description:
         'A well-managed material warehouse forms the foundation of efficient manufacturing. Through accurate inventory management, complete material traceability, barcode-enabled storage systems, and comprehensive fabric and trim inspections, we ensure uninterrupted production and consistent quality from the very beginning.',
-      image: '/images/manufacturing/material-management.jpg',
+      image: '/images/manufacturing/material-management.png',
       imageAlt: 'Material management warehouse',
     },
     {
@@ -603,7 +603,7 @@ export const manufacturingOperation = {
       title: 'Quality Built into Every Stage.',
       description:
         'Quality is embedded throughout our manufacturing process—not simply inspected at the end. Our quality management system integrates incoming material inspections, in-line quality control, laboratory testing using advanced European equipment, and final audits to ensure every garment consistently meets customer expectations and international standards.',
-      image: '/images/manufacturing/quality-assurance.jpg',
+      image: '/images/manufacturing/quality-assurance.png',
       imageAlt: 'Quality assurance inspection',
     },
     {
@@ -613,7 +613,7 @@ export const manufacturingOperation = {
       title: 'Accelerating Product Development.',
       description:
         'Fast sample development enables faster buying decisions. Our three dedicated Salesman Sample (SMS) production lines support rapid prototype development, fit validation, buyer presentations, and pre-production approvals, helping customers shorten development timelines and accelerate speed to market.',
-      image: '/images/manufacturing/salesman-sample.jpg',
+      image: '/images/manufacturing/salesman-sample.png',
       imageAlt: 'Salesman sample development',
     },
   ],

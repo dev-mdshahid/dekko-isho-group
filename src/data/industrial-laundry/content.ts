@@ -68,37 +68,37 @@ export const industrialLaundryAdvancedFinishing = {
     {
       id: 'advanced-washing',
       title: 'Advanced Washing',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sanforizing.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/advanced-washing.png`,
       imageAlt: 'Industrial advanced washing machines in finishing facility',
     },
     {
       id: 'dry-process',
       title: 'Dry Process',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/laser-finishing.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dry-process-operators.png`,
       imageAlt: 'Operators performing dry process finishing work',
     },
     {
       id: 'hand-scraping-destroy',
       title: 'Hand Scraping & Destroy',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/hand-scraping-destroy.png`,
       imageAlt: 'Worker applying hand scraping and destroy effects',
     },
     {
       id: 'laser-finishing',
       title: 'Laser Finishing',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/advanced-washing.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/laser-finishing.png`,
       imageAlt: 'Laser finishing process on denim fabric',
     },
     {
       id: 'conveyor-dryers',
       title: 'Conveyor Dryers',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/hand-scraping-destroy.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers.png`,
       imageAlt: 'Garments moving through conveyor dryer line',
     },
     {
       id: 'sanforizing',
       title: 'Sanforizing',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dry-process.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sanforizing.jpg`,
       imageAlt: 'Sanforizing process area in laundry facility',
     },
   ],
@@ -214,7 +214,7 @@ export const industrialLaundryLaboratory = {
   title: 'Modern Washing Laboratory',
   description:
     'Our modern washing laboratory supports every stage of product development through comprehensive testing and validation. From color consistency to fabric performance, every wash recipe is evaluated before transitioning to bulk production.',
-  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/modern-washing-laboratory.jpg`,
+  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/modern-washing-laboratory.png`,
   imageAlt: 'Technician inspecting fabric samples in a light-controlled washing laboratory',
   items: [
     {
@@ -249,7 +249,7 @@ export const industrialLaundryQualityAssurance = {
     'Quality assurance is embedded throughout our washing operations, from garment receiving to final inspection. Through rigorous process controls and systematic quality checks, we ensure every garment consistently meets customer specifications and international quality standards.',
   highlightTitle: '100% QC Inspection Process',
   highlightDetail: 'In-Process Quality Control • Final Inspection',
-  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/quality-assurance.png`,
+  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/quality-assurance.jpg`,
   imageAlt: 'Quality control team inspecting garments in a laboratory',
 }
 
