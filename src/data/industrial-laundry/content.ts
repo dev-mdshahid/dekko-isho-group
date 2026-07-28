@@ -283,6 +283,48 @@ export const industrialLaundrySustainableTech = {
   ],
 }
 
+export const industrialLaundryEnvironmentalManagement = {
+  id: 'il-environmental-management',
+  badge: 'Responsible Manufacturing',
+  title: 'Environmental & Chemical Management',
+  description:
+    'Our commitment to chemical stewardship and environmental management ensures responsible operations across every washing process — from safe chemical handling to advanced water treatment and efficiency systems.',
+  items: [
+    {
+      id: 'chemical-stewardship',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/chemical-stewardship.jpg`,
+      imageAlt: 'Laboratory jar testing setup with chemical solutions',
+      title: 'Chemical Stewardship',
+      description:
+        'Ensures responsible sourcing, handling, and disposal of all chemicals used in our washing processes, prioritizing safety and environmental sustainability.',
+    },
+    {
+      id: 'effluent-treatment',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/effluent-treatment-plant.png`,
+      imageAlt: 'Effluent treatment bio-tower aeration tank',
+      title: 'Effluent Treatment Plant',
+      description:
+        'Effectively treats wastewater generated during washing operations, removing contaminants to meet stringent environmental regulations before safe discharge or reuse.',
+    },
+    {
+      id: 'sewage-treatment',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sewage-treatment-plant.jpg`,
+      imageAlt: 'Sewage treatment plant tanks and chemical dosing systems',
+      title: 'Sewage Treatment Plant (STP)',
+      description:
+        'Processes all domestic wastewater on-site, ensuring hygienic and eco-friendly treatment to minimize environmental impact and comply with local standards.',
+    },
+    {
+      id: 'water-efficiency',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/water-efficiency.jpg`,
+      imageAlt: 'Industrial water pumps and piping for water efficiency systems',
+      title: 'Water Efficiency',
+      description:
+        'Advanced water efficiency measures, including recycling and optimized usage, to significantly reduce water consumption while maintaining high-quality garment finishes.',
+    },
+  ],
+}
+
 export const industrialLaundryProductionNetwork = {
   badge: 'Our Footprint',
   title: 'Production Network',

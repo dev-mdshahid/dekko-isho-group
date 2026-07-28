@@ -3,22 +3,50 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
-export function DesignMaterialsSection() {
-  const { id, badge, title, items } = designProductDevelopmentMaterials
+export type DesignMaterialsItem = {
+  id: string
+  image: string
+  imageAlt: string
+  title: string
+  description: string
+}
+
+export type DesignMaterialsContent = {
+  id: string
+  badge: string
+  title: string
+  description?: string
+  items: DesignMaterialsItem[]
+}
+
+type DesignMaterialsSectionProps = {
+  content?: DesignMaterialsContent
+  className?: string
+  idPrefix?: string
+}
+
+export function DesignMaterialsSection({
+  content = designProductDevelopmentMaterials,
+  className,
+  idPrefix = 'dpd',
+}: DesignMaterialsSectionProps) {
+  const { id, badge, title, description, items } = content
+  const sectionClassName = ['dpd-materials-section', className].filter(Boolean).join(' ')
 
   return (
-    <section id={id} className="dpd-materials-section">
+    <section id={id} className={sectionClassName}>
       <div className="dpd-materials-container">
-        <FadeIn id="dpd-materials-header" className="dpd-materials-header">
+        <FadeIn id={`${idPrefix}-materials-header`} className="dpd-materials-header">
           <PreSectionTitle title={badge} />
           <h2 className="dpd-materials-title">{title}</h2>
+          {description ? <p className="dpd-materials-description">{description}</p> : null}
         </FadeIn>
 
         <div className="dpd-materials-grid">
           {items.map((item, index) => (
             <FadeIn
               key={item.id}
-              id={`dpd-materials-${item.id}`}
+              id={`${idPrefix}-materials-${item.id}`}
               className="dpd-materials-card"
               delay={index * 40}
             >
@@ -27,6 +55,8 @@ export function DesignMaterialsSection() {
                   src={item.image}
                   loading="lazy"
                   alt={item.imageAlt}
+                  width={494}
+                  height={320}
                   className="dpd-materials-card-image"
                 />
               </div>

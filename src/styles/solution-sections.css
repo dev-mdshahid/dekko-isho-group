@@ -1357,6 +1357,58 @@
   .solution-page .solution-network-section--grid .solution-network-card {
     height: clamp(14rem, 58vw, 20rem);
   }
+
+  .solution-page .solution-network-header {
+    gap: 1rem;
+  }
+
+  .solution-page .solution-network-title {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .solution-page .solution-network-description {
+    font-size: 1rem;
+  }
+
+  .solution-page .solution-network-track {
+    gap: 1rem;
+  }
+
+  .solution-page .solution-network-card {
+    flex: 0 0 min(85vw, 20rem);
+    width: min(85vw, 20rem);
+    height: min(100vw, 24rem);
+    border-radius: 1rem;
+  }
+
+  .solution-page .solution-network-card-panel {
+    padding: 1rem 1.125rem 1.25rem;
+  }
+
+  .solution-page .solution-network-card--stats .solution-network-card-panel {
+    transform: translateY(calc(100% - 3.75rem));
+  }
+
+  .solution-page .solution-network-card-title {
+    font-size: 1.125rem;
+  }
+
+  .solution-page .solution-network-card-divider {
+    margin: 0.875rem 0;
+  }
+
+  .solution-page .solution-network-card-stats {
+    gap: 0.75rem;
+  }
+
+  .solution-page .solution-network-card-stat-number {
+    font-size: 1.375rem;
+  }
+
+  .solution-page .solution-network-card-stat-label,
+  .solution-page .solution-network-card-stat-unit {
+    font-size: 0.75rem;
+  }
 }
 
 /* ── Washing processes (image card gallery) ── */
@@ -1368,9 +1420,9 @@
 .solution-page .solution-washing-processes-main {
   display: flex;
   flex-direction: column;
-  gap: var(--gap--gap-9);
-  padding-top: clamp(4rem, 8vw, 6.5rem);
-  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  gap: 0;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .solution-page .solution-washing-processes-header {
@@ -1378,7 +1430,7 @@
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
-  gap: var(--gap--gap-5);
+  gap: 0;
   width: 100%;
   max-width: none;
   margin: 0;
@@ -1392,18 +1444,29 @@
   background-image: var(--solution-brand-gradient);
 }
 
+.solution-page .solution-washing-processes-header .pre-section-title-wrap {
+  margin-bottom: 16px;
+}
+
 .solution-page .solution-washing-processes-title {
-  margin: 0;
+  margin: 0 0 20px;
+  width: 100%;
+  max-width: none;
   text-align: left;
-  font-size: clamp(1.875rem, 3vw, 2.75rem);
-  line-height: 1.1;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .solution-page .solution-washing-processes-description {
-  margin: 0;
+  margin: 0 0 70px;
+  width: 100%;
+  max-width: none;
   color: var(--color--gray-2);
-  font-size: var(--_typography---body--body-sm);
-  line-height: 1.6;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
   text-align: left;
 }
 
@@ -1501,19 +1564,24 @@
 
 /* ── Advanced finishing capabilities (grid cards) ── */
 .solution-page .solution-advanced-finishing-section {
-  background-color: var(--color--white);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--neutral-seasalt);
 }
 
 .solution-page .solution-advanced-finishing-section .container {
+  position: relative;
+  z-index: 1;
   max-width: 1520px;
 }
 
 .solution-page .solution-advanced-finishing-main {
   display: flex;
   flex-direction: column;
-  gap: var(--gap--gap-7);
-  padding-top: clamp(4rem, 8vw, 6rem);
-  padding-bottom: clamp(4rem, 8vw, 6rem);
+  gap: 0;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .solution-page .solution-advanced-finishing-header {
@@ -1536,24 +1604,31 @@
 
 .solution-page .solution-advanced-finishing-title {
   margin: 0 0 20px;
+  width: 100%;
+  max-width: none;
   text-align: left;
-  font-size: clamp(1.875rem, 3vw, 2.75rem);
-  line-height: 1.1;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .solution-page .solution-advanced-finishing-description {
-  margin: 0;
+  margin: 0 0 70px;
+  width: 100%;
+  max-width: none;
   color: var(--color--gray-2);
-  font-size: var(--_typography---body--body-sm);
-  line-height: 1.6;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
   text-align: left;
 }
 
 .solution-page .solution-advanced-finishing-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin-top: 60px;
+  gap: 20px;
+  margin-top: 0;
 }
 
 .solution-page .solution-advanced-finishing-card {
@@ -1566,18 +1641,18 @@
 .solution-page .solution-advanced-finishing-card-image {
   display: block;
   width: 100%;
-  height: 298px;
+  height: 320px;
   object-fit: cover;
 }
 
 .solution-page .solution-advanced-finishing-card-body {
-  padding: 1rem 1rem 1.875rem;
+  padding: 30px;
 }
 
 .solution-page .solution-advanced-finishing-card-title {
   margin: 0;
   color: var(--color--dark);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -1585,13 +1660,62 @@
 }
 
 @media screen and (max-width: 991px) {
+  .solution-page .solution-advanced-finishing-main {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .solution-page .solution-advanced-finishing-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .solution-page .solution-advanced-finishing-description {
+    margin-bottom: 48px;
+  }
+
   .solution-page .solution-advanced-finishing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .solution-page .solution-advanced-finishing-card-image {
+    height: min(320px, 48vw);
   }
 }
 
 @media screen and (max-width: 767px) {
+  .solution-page .solution-advanced-finishing-main {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .solution-page .solution-advanced-finishing-title {
+    font-size: 1.75rem;
+  }
+
+  .solution-page .solution-advanced-finishing-description {
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
   .solution-page .solution-advanced-finishing-grid {
     grid-template-columns: 1fr;
   }
+
+  .solution-page .solution-advanced-finishing-card-body {
+    padding: 24px;
+  }
+
+  .solution-page .solution-advanced-finishing-card-title {
+    font-size: 1.5rem;
+  }
+}
+
+.solution-page .solution-advanced-finishing-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.solution-page .solution-advanced-finishing-section .line-wrapper {
+  z-index: 0;
 }

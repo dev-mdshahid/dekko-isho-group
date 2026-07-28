@@ -280,7 +280,7 @@
   isolation: isolate;
   overflow: hidden;
   background-color: var(--color--neutral-seasalt);
-  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  padding: 100px 0;
 }
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-container {
@@ -296,25 +296,25 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
+  gap: 0;
   width: 100%;
-  margin-bottom: clamp(2.5rem, 5vw, 5.5rem);
+  margin-bottom: 0;
 }
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
-  margin: 0;
+  margin: 0 0 20px;
   width: 100%;
   max-width: none;
   color: var(--color--neutral-night);
-  font-size: clamp(1.875rem, 4vw, 3.625rem);
+  font-size: 42px;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   text-align: left;
 }
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-description {
-  margin: 0;
+  margin: 0 0 70px;
   width: 100%;
   max-width: none;
   color: var(--color--neutral-outer-space);
@@ -326,6 +326,7 @@
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-media {
   width: 100%;
+  margin-bottom: 0;
 }
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-image {
@@ -720,5 +721,195 @@
 
   .industrial-laundry-page .solution-sustainable-tech-card-title {
     font-size: 1.5rem;
+  }
+}
+
+/* ── Environmental & Chemical Management (DesignMaterialsSection) ── */
+.industrial-laundry-page .dpd-materials-section.il-environmental-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--white);
+  padding: 100px 0;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.industrial-laundry-page .il-environmental-section .pre-section-title-wrap {
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+  margin-bottom: 16px;
+}
+
+.industrial-laundry-page .il-environmental-section .pre-section-title {
+  color: var(--color--neutral-night);
+  text-transform: none;
+}
+
+.industrial-laundry-page .il-environmental-section .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-title {
+  margin: 0 0 20px;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-description {
+  margin: 0 0 70px;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius--lg);
+  background-color: var(--color--white);
+  box-shadow: 0 8px 32px rgba(21, 21, 21, 0.08);
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-card-media {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 30px;
+  background-color: var(--color--white);
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-card-title {
+  margin: 0;
+  width: 100%;
+  color: var(--color--neutral-night);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.industrial-laundry-page .il-environmental-section .dpd-materials-card-description {
+  margin: 0;
+  width: 100%;
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.industrial-laundry-page .il-environmental-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.industrial-laundry-page .il-environmental-section .line-wrapper {
+  z-index: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-media {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .il-environmental-section {
+    padding: 72px 0;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-description {
+    margin-bottom: 48px;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-media {
+    height: min(320px, 58vw);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .il-environmental-section {
+    padding: 56px 0;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-title {
+    font-size: 1.75rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-description {
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-body {
+    padding: 24px;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-title {
+    font-size: 1.5rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-description {
+    font-size: 1rem;
   }
 }

@@ -1,5 +1,6 @@
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
+import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 export type SolutionAdvancedFinishingItem = {
   id: string
@@ -49,8 +50,8 @@ export function SolutionAdvancedFinishingSection({
                   src={item.image}
                   alt={item.imageAlt}
                   loading="lazy"
-                  width={412}
-                  height={298}
+                  width={494}
+                  height={320}
                   className="solution-advanced-finishing-card-image"
                 />
                 <div className="solution-advanced-finishing-card-body">
@@ -61,6 +62,8 @@ export function SolutionAdvancedFinishingSection({
           </div>
         </div>
       </div>
+      <SectionLines border="grey" />
+      <NoiseOverlay />
     </section>
   )
 }
