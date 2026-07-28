@@ -3,40 +3,77 @@ export const embroideryHero = {
   subtitle:
     'Our integrated embroidery facility combines advanced machinery, skilled craftsmanship, and efficient processes to create high-quality embroidery solutions with precision and consistency. From intricate designs to large-scale production, we deliver reliable embroidery capabilities tailored to the needs of global fashion brands.',
   ctaLabel: 'Learn More',
-  ctaHref: '#embroidery-expertise',
+  ctaHref: '#embroidery-capabilities',
   video: '/images/embroidery/embroidery-hero.mp4',
   videoAlt: 'Industrial embroidery machine stitching a floral pattern on fabric',
 }
 
-export const embroideryExpertise = {
-  id: 'embroidery-expertise',
-  badge: 'OUR EXPERTISE',
-  title: 'Crafting Excellence in Every Thread',
-  paragraphs: [
-    'Backed by 70 years of manufacturing experience, Dekko Isho delivers exceptional embroidery solutions using high-speed industrial machinery. Our state-of-the-art facilities offer a comprehensive range of decorative and functional embroidery services for various product categories.',
+const EMBROIDERY_CAPABILITIES_IMAGE_BASE = '/images/embroidery/capabilities'
+
+export const embroideryCapabilities = {
+  id: 'embroidery-capabilities',
+  badge: 'Advanced Embroidery Capabilities',
+  title: 'Precision in every stitch',
+  titleBefore: 'Precision in every',
+  titleAccent: 'stitch',
+  description:
+    'Our embroidery facility offers versatile embroidery solutions for a wide range of garment categories and customer requirements. Combining technical expertise with advanced machinery, we deliver intricate designs with exceptional stitch quality, design accuracy, and production flexibility.',
+  items: [
+    {
+      id: 'logo',
+      title: 'Logo Embroidery',
+      image: `${EMBROIDERY_CAPABILITIES_IMAGE_BASE}/logo-embroidery.png`,
+      imageAlt: 'Industrial embroidery machine stitching a logo onto fabric',
+    },
+    {
+      id: 'badge',
+      title: 'Badge Embroidery',
+      image: `${EMBROIDERY_CAPABILITIES_IMAGE_BASE}/badge-embroidery.png`,
+      imageAlt: 'Collection of embroidered badges and patches',
+    },
+    {
+      id: 'decorative',
+      title: 'Decorative Embroidery',
+      image: `${EMBROIDERY_CAPABILITIES_IMAGE_BASE}/decorative-embroidery.png`,
+      imageAlt: 'Close-up of decorative gold-thread embroidery on fabric',
+    },
+    {
+      id: 'customized',
+      title: 'Customized Embroidery',
+      image: `${EMBROIDERY_CAPABILITIES_IMAGE_BASE}/customized-embroidery.png`,
+      imageAlt: 'Multi-colored customized embroidery being stitched by machine',
+    },
   ],
-  cardMedia: 'photo' as const,
-  features: [
+}
+
+export const embroideryTechnology = {
+  id: 'embroidery-technology',
+  badge: 'Advanced Embroidery Technology',
+  title: 'Technology that Stitches with Precision',
+  description:
+    'Powered by industry-leading Barudan and Maya embroidery machines, our facility delivers high-speed, high-precision embroidery with exceptional consistency across both development and bulk production.',
+  items: [
     {
       id: 'barudan',
-      logo: '/images/embroidery/barudan.png',
-      logoAlt: 'Barudan multi-head embroidery machines',
-      title: 'Barudan',
-      description: 'The ultimate precision embroidery machine.',
+      title: 'Barudan Machines',
+      description:
+        'Industry-leading embroidery machinery delivering high-speed, high-precision output.',
+      image: '/images/embroidery/barudan.png',
+      imageAlt: 'Barudan multi-head embroidery machines',
     },
     {
       id: 'maya',
-      logo: '/images/embroidery/maya.png',
-      logoAlt: 'MAYA dual-head embroidery machine',
-      title: 'MAYA',
-      description: 'Precision, Performance, and Excellence.',
+      title: 'MAYA Machines',
+      description: 'Consistent stitch quality across both development and bulk production.',
+      image: '/images/embroidery/maya.png',
+      imageAlt: 'MAYA dual-head embroidery machine',
     },
     {
-      id: 'in-house',
-      logo: '/images/embroidery/in-house.jpg',
-      logoAlt: 'In-house embroidery production line',
-      title: 'In-House',
-      description: 'Printing Capacity: 0.5 Million.',
+      id: 'multi-head',
+      title: 'Multi-head Embroidery Systems',
+      description: 'Parallel head configurations supporting efficient large-scale runs.',
+      image: '/images/embroidery/in-house.jpg',
+      imageAlt: 'Multi-head industrial embroidery production line',
     },
   ],
 }

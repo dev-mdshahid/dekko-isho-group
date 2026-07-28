@@ -7,10 +7,10 @@ import {
 } from '../components/design-product-development'
 import {
   SolutionAdvancedFinishingSection,
+  SolutionCapabilityCardsSection,
   SolutionCtaSection,
   SolutionPageHeroSection,
   SolutionSustainableTechSection,
-  SolutionWashingProcessesSection,
 } from '../components/solutions'
 import { SplitContentSection } from '../components/ui/SplitContentSection'
 import { SplitFeatureListSection } from '../components/ui/SplitFeatureListSection'
@@ -45,8 +45,9 @@ export function IndustrialLaundryContent() {
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...industrialLaundryHero} />
 
       {/* 2. Core washing processes */}
-      <SolutionWashingProcessesSection
+      <SolutionCapabilityCardsSection
         idPrefix={ID_PREFIX}
+        sectionKey="washing-processes"
         content={industrialLaundryWashingProcesses}
       />
 

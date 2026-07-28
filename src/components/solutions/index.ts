@@ -29,6 +29,11 @@ export type {
   SolutionSustainableTechContent,
   SolutionSustainableTechItem,
 } from './SolutionSustainableTechSection'
+export { SolutionCapabilityCardsSection } from './SolutionCapabilityCardsSection'
+export type {
+  SolutionCapabilityCardsContent,
+  SolutionCapabilityCardItem,
+} from './SolutionCapabilityCardsSection'
 export { SolutionWashingProcessesSection } from './SolutionWashingProcessesSection'
 export type {
   SolutionWashingProcessesContent,

@@ -5,6 +5,7 @@ import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 export type SolutionAdvancedFinishingItem = {
   id: string
   title: string
+  description?: string
   image: string
   imageAlt: string
 }
@@ -51,11 +52,14 @@ export function SolutionAdvancedFinishingSection({
                   alt={item.imageAlt}
                   loading="lazy"
                   width={494}
-                  height={320}
+                  height={245}
                   className="solution-advanced-finishing-card-image"
                 />
                 <div className="solution-advanced-finishing-card-body">
                   <h3 className="solution-advanced-finishing-card-title">{item.title}</h3>
+                  {item.description ? (
+                    <p className="solution-advanced-finishing-card-description">{item.description}</p>
+                  ) : null}
                 </div>
               </FadeIn>
             ))}

@@ -18,7 +18,7 @@ export const industrialLaundryWashingProcesses = {
   title: 'Core washing processes',
   description:
     'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements. From garment and enzyme washes to specialized denim treatments and dyeing, we ensure consistent quality, repeatable results, and production flexibility across every order.',
-  processes: [
+  items: [
     {
       id: 'garment-wash',
       title: 'Garment Wash',

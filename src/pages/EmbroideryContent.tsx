@@ -2,8 +2,9 @@ import { useRef } from 'react'
 
 import {
   // SolutionCapacitySection,
+  SolutionAdvancedFinishingSection,
+  SolutionCapabilityCardsSection,
   SolutionCtaSection,
-  SolutionExpertiseSection,
   SolutionPageHeroSection,
   SolutionProductionNetworkSection,
   // SolutionQualitySection,
@@ -12,12 +13,13 @@ import {
 } from '../components/solutions'
 import {
   // embroideryCapacity,
+  embroideryCapabilities,
   embroideryCta,
-  embroideryExpertise,
   embroideryHero,
   embroideryProductionNetwork,
   // embroideryQuality,
   // embroiderySpotlight,
+  embroideryTechnology,
   embroideryWhyItMatters,
 } from '../data/embroidery/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -36,7 +38,15 @@ export function EmbroideryContent() {
   return (
     <div ref={ref} className="solution-page embroidery-page">
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...embroideryHero} />
-      <SolutionExpertiseSection idPrefix={ID_PREFIX} {...embroideryExpertise} />
+      <SolutionCapabilityCardsSection
+        idPrefix={ID_PREFIX}
+        sectionKey="capabilities"
+        content={embroideryCapabilities}
+      />
+      <SolutionAdvancedFinishingSection
+        idPrefix={ID_PREFIX}
+        content={embroideryTechnology}
+      />
       <SolutionProductionNetworkSection
         idPrefix={ID_PREFIX}
         content={embroideryProductionNetwork}

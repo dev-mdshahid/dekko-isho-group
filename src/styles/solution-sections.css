@@ -1411,13 +1411,13 @@
   }
 }
 
-/* ── Washing processes (image card gallery) ── */
-.solution-page .solution-washing-processes-section {
+/* ── Capability cards (image card gallery) ── */
+.solution-page .solution-capability-cards-section {
   background-color: var(--color--white);
   overflow: hidden;
 }
 
-.solution-page .solution-washing-processes-main {
+.solution-page .solution-capability-cards-main {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1425,7 +1425,7 @@
   padding-bottom: 100px;
 }
 
-.solution-page .solution-washing-processes-header {
+.solution-page .solution-capability-cards-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1439,16 +1439,16 @@
   text-align: left;
 }
 
-.solution-page .solution-washing-processes-section .pre-section-title-square {
+.solution-page .solution-capability-cards-section .pre-section-title-square {
   background-color: var(--solution-brand-start);
   background-image: var(--solution-brand-gradient);
 }
 
-.solution-page .solution-washing-processes-header .pre-section-title-wrap {
+.solution-page .solution-capability-cards-header .pre-section-title-wrap {
   margin-bottom: 16px;
 }
 
-.solution-page .solution-washing-processes-title {
+.solution-page .solution-capability-cards-title {
   margin: 0 0 20px;
   width: 100%;
   max-width: none;
@@ -1459,7 +1459,11 @@
   letter-spacing: -0.02em;
 }
 
-.solution-page .solution-washing-processes-description {
+.solution-page .solution-capability-cards-title-accent {
+  color: var(--color--secondary-amaranth);
+}
+
+.solution-page .solution-capability-cards-description {
   margin: 0 0 70px;
   width: 100%;
   max-width: none;
@@ -1470,7 +1474,7 @@
   text-align: left;
 }
 
-.solution-page .solution-washing-processes-scroll {
+.solution-page .solution-capability-cards-scroll {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -1483,32 +1487,32 @@
   -webkit-user-select: none;
 }
 
-.solution-page .solution-washing-processes-scroll.is-dragging {
+.solution-page .solution-capability-cards-scroll.is-dragging {
   cursor: grabbing;
 }
 
-.solution-page .solution-washing-processes-scroll.is-dragging,
-.solution-page .solution-washing-processes-scroll.is-dragging * {
+.solution-page .solution-capability-cards-scroll.is-dragging,
+.solution-page .solution-capability-cards-scroll.is-dragging * {
   user-select: none;
   -webkit-user-select: none;
 }
 
-.solution-page .solution-washing-processes-scroll::-webkit-scrollbar {
+.solution-page .solution-capability-cards-scroll::-webkit-scrollbar {
   display: none;
 }
 
-.solution-page .solution-washing-processes-track {
+.solution-page .solution-capability-cards-track {
   display: flex;
   justify-content: flex-start;
   gap: 1.5rem;
-  width: max-content;
+  width: 100%;
 }
 
-.solution-page .solution-washing-process-card {
+.solution-page .solution-capability-cards-card {
   position: relative;
-  flex: 0 0 18.125rem;
-  width: 18.125rem;
-  height: 32rem;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 350px;
   overflow: hidden;
   border: 1px solid #f7f8fa;
   border-radius: 1.25rem;
@@ -1516,7 +1520,7 @@
   -webkit-user-select: none;
 }
 
-.solution-page .solution-washing-process-card-image {
+.solution-page .solution-capability-cards-card-image {
   display: block;
   width: 100%;
   height: 100%;
@@ -1528,14 +1532,14 @@
   user-drag: none;
 }
 
-.solution-page .solution-washing-process-card-overlay {
+.solution-page .solution-capability-cards-card-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 65%);
   pointer-events: none;
 }
 
-.solution-page .solution-washing-process-card-title {
+.solution-page .solution-capability-cards-card-title {
   position: absolute;
   inset: auto 0 0;
   z-index: 1;
@@ -1550,15 +1554,32 @@
   pointer-events: none;
 }
 
-@media screen and (max-width: 767px) {
-  .solution-page .solution-washing-process-card {
-    flex-basis: min(78vw, 18.125rem);
-    width: min(78vw, 18.125rem);
-    height: min(138vw, 32rem);
+@media screen and (max-width: 991px) {
+  .solution-page .solution-capability-cards-main {
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
-  .solution-page .solution-washing-process-card-title {
-    font-size: clamp(1.375rem, 5vw, 1.75rem);
+  .solution-page .solution-capability-cards-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .solution-page .solution-capability-cards-description {
+    margin-bottom: 48px;
+  }
+
+  .solution-page .solution-capability-cards-track {
+    width: max-content;
+  }
+
+  .solution-page .solution-capability-cards-card {
+    flex: 0 0 min(70vw, 16.5rem);
+    min-width: min(70vw, 16.5rem);
+  }
+
+  .solution-page .solution-capability-cards-card-title {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+    padding: 1.25rem;
   }
 }
 
@@ -1632,30 +1653,45 @@
 }
 
 .solution-page .solution-advanced-finishing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
   overflow: hidden;
   background-color: var(--color--white);
   border: 1px solid #f7f8fa;
-  border-radius: 0.75rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(21, 21, 21, 0.04);
 }
 
 .solution-page .solution-advanced-finishing-card-image {
   display: block;
   width: 100%;
-  height: 320px;
+  height: 245px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .solution-page .solution-advanced-finishing-card-body {
-  padding: 30px;
+  padding: 0;
 }
 
 .solution-page .solution-advanced-finishing-card-title {
   margin: 0;
   color: var(--color--dark);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.solution-page .solution-advanced-finishing-card-description {
+  margin: 10px 0 0;
+  color: var(--color--gray-2);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
   text-align: left;
 }
 
@@ -1678,7 +1714,7 @@
   }
 
   .solution-page .solution-advanced-finishing-card-image {
-    height: min(320px, 48vw);
+    height: min(245px, 48vw);
   }
 }
 
@@ -1701,12 +1737,17 @@
     grid-template-columns: 1fr;
   }
 
-  .solution-page .solution-advanced-finishing-card-body {
+  .solution-page .solution-advanced-finishing-card {
     padding: 24px;
+    gap: 24px;
   }
 
   .solution-page .solution-advanced-finishing-card-title {
     font-size: 1.5rem;
+  }
+
+  .solution-page .solution-advanced-finishing-card-description {
+    font-size: 1rem;
   }
 }
 
