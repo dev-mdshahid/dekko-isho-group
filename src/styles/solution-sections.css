@@ -654,12 +654,6 @@
   color: var(--color--neutral-outer-space);
 }
 
-@media screen and (min-width: 992px) {
-  .solution-page .solution-capacity-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .solution-page .solution-capacity-layout {
     grid-template-columns: 1fr;
@@ -792,12 +786,6 @@
   object-fit: cover;
   object-position: center;
   display: block;
-}
-
-@media screen and (min-width: 992px) {
-  .solution-page .solution-quality-container {
-    padding-inline: 0;
-  }
 }
 
 @media screen and (max-width: 991px) {
@@ -1023,12 +1011,6 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 1.55;
-}
-
-@media screen and (min-width: 992px) {
-  .solution-page .solution-why-it-matters-container {
-    padding-inline: 0;
-  }
 }
 
 @media screen and (max-width: 991px) {

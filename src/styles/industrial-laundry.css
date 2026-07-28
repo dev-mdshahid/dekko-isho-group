@@ -215,12 +215,6 @@
   line-height: 1.55;
 }
 
-@media screen and (min-width: 992px) {
-  .il-research-section .split-feature-list-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .split-feature-list-section.il-research-section {
     padding: 72px 0;
@@ -668,10 +662,6 @@
 }
 
 @media screen and (min-width: 992px) {
-  .industrial-laundry-page .solution-sustainable-tech-container {
-    padding-inline: 0;
-  }
-
   .industrial-laundry-page .solution-sustainable-tech-card-media {
     width: 494px;
     max-width: 100%;

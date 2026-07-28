@@ -128,12 +128,6 @@
   max-width: 36rem;
 }
 
-@media screen and (min-width: 992px) {
-  .manufacturing-page .mfg-how-it-works-container {
-    padding-inline: 0;
-  }
-}
-
 /* ── Cutting & Preparation: light process card grid ── */
 .manufacturing-page .mfg-cutting-section.service-category-section {
   background-image: none;
@@ -509,12 +503,6 @@
   object-position: center;
 }
 
-@media screen and (min-width: 992px) {
-  .manufacturing-page .mfg-ecosystem-section .split-content-section-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .manufacturing-page .split-content-section.mfg-ecosystem-section {
     padding: 5rem 0;
@@ -668,12 +656,6 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 1.55;
-}
-
-@media screen and (min-width: 992px) {
-  .manufacturing-page .mfg-technology-section .split-feature-list-container {
-    padding-inline: 0;
-  }
 }
 
 @media screen and (max-width: 991px) {

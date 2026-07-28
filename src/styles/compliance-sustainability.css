@@ -470,12 +470,6 @@
   background-color: #a1a1aa;
 }
 
-@media screen and (min-width: 992px) {
-  .compliance-sustainability-page .cs-reporting-container {
-    padding-inline: 0;
-  }
-}
-
 /* ── Improvement list (Figma) ── */
 .compliance-sustainability-page .cs-improvement-section {
   background-color: var(--color--white);
@@ -581,15 +575,6 @@
 }
 
 /* ── Responsive ── */
-@media screen and (min-width: 992px) {
-  .compliance-sustainability-page .cs-risk-container,
-  .compliance-sustainability-page .cs-quality-container,
-  .compliance-sustainability-page .cs-reporting-container,
-  .compliance-sustainability-page .cs-improvement-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .compliance-sustainability-page .cs-feature-grid {
     grid-template-columns: 1fr;

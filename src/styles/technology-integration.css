@@ -471,14 +471,6 @@
 }
 
 /* ── Responsive ── */
-@media screen and (min-width: 992px) {
-  .technology-integration-page .ti-unified-container,
-  .technology-integration-page .ti-growth-container,
-  .technology-integration-page .ti-partners-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .technology-integration-page .ti-feature-grid,
   .technology-integration-page .ti-partners-grid {

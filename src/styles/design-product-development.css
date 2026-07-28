@@ -162,12 +162,6 @@
   text-align: left;
 }
 
-@media screen and (min-width: 992px) {
-  .design-product-development-page .dpd-capabilities-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-capabilities-section {
     padding: var(--dpd-mobile-section-pad) 0;
@@ -380,12 +374,6 @@
   z-index: 0;
 }
 
-@media screen and (min-width: 992px) {
-  .design-product-development-page .dpd-materials-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-materials-section {
     padding: var(--dpd-mobile-section-pad) 0;
@@ -533,12 +521,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-@media screen and (min-width: 992px) {
-  .design-product-development-page .split-content-section-container {
-    padding-inline: 0;
-  }
 }
 
 @media screen and (max-width: 991px) {
@@ -695,12 +677,6 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 1.55;
-}
-
-@media screen and (min-width: 992px) {
-  .design-product-development-page .split-feature-list-container {
-    padding-inline: 0;
-  }
 }
 
 @media screen and (max-width: 991px) {
@@ -1129,12 +1105,6 @@
 
 .design-product-development-page .dpd-gallery-section .line-wrapper {
   z-index: 0;
-}
-
-@media screen and (min-width: 992px) {
-  .design-product-development-page .dpd-gallery-container {
-    padding-inline: 0;
-  }
 }
 
 @media screen and (max-width: 1519px) and (min-width: 992px) {
@@ -2015,16 +1985,6 @@
 }
 
 /* ── Responsive ── */
-@media screen and (min-width: 992px) {
-  .design-product-development-page .dpd-global-network-container,
-  .design-product-development-page .dpd-facilities-container,
-  .design-product-development-page .dpd-experience-container,
-  .design-product-development-page .dpd-presence-container,
-  .design-product-development-page .dpd-concept-section .industry-image-section-container {
-    padding-inline: 0;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-services-steps {
     grid-template-columns: 1fr;
