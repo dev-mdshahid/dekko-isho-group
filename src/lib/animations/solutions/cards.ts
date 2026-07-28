@@ -7,19 +7,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const MAX_TILT = 6
 
-const MEDIA_SELECTORS = [
-  'img',
-  '[data-solution-animate-media]',
-  '.solution-capability-cards-card-image',
-  '.solution-network-card-image',
-  '.solution-advanced-finishing-card-image',
-  '.solution-sustainable-tech-card-image',
-  '.mfg-operation-card-image',
-  '.mfg-product-range-card-image',
-  '.dpd-capabilities-card-image',
-  '.dpd-materials-card-image',
-].join(', ')
-
 /**
  * Staggered opacity/y/scale entrance for `[data-solution-animate="card"]` groups,
  * plus desktop 3D tilt for `[data-solution-animate="tilt-card"]`.
@@ -123,11 +110,9 @@ export function initSolutionCardAnimations(scope: ParentNode): AnimationCleanup 
     })
   })
 
-  // Desktop 3D tilt on image cards
+  // Desktop 3D tilt on image cards (image zoom is CSS-owned for smooth hover)
   if (!isMobileViewport()) {
     scope.querySelectorAll<HTMLElement>('[data-solution-animate="tilt-card"]').forEach((card) => {
-      const media = card.querySelector<HTMLElement>(MEDIA_SELECTORS)
-
       const onMove = (event: MouseEvent) => {
         const rect = card.getBoundingClientRect()
         const x = (event.clientX - rect.left) / rect.width - 0.5
@@ -140,10 +125,6 @@ export function initSolutionCardAnimations(scope: ParentNode): AnimationCleanup 
           duration: 0.35,
           ease: 'power2.out',
         })
-
-        if (media) {
-          gsap.to(media, { scale: 1.05, duration: 0.35, ease: 'power2.out' })
-        }
       }
 
       const onLeave = () => {
@@ -153,9 +134,6 @@ export function initSolutionCardAnimations(scope: ParentNode): AnimationCleanup 
           duration: 0.5,
           ease: 'power2.out',
         })
-        if (media) {
-          gsap.to(media, { scale: 1, duration: 0.5, ease: 'power2.out' })
-        }
       }
 
       card.addEventListener('mousemove', onMove)
@@ -164,7 +142,7 @@ export function initSolutionCardAnimations(scope: ParentNode): AnimationCleanup 
       cleanups.push(() => {
         card.removeEventListener('mousemove', onMove)
         card.removeEventListener('mouseleave', onLeave)
-        gsap.killTweensOf([card, media].filter(Boolean))
+        gsap.killTweensOf(card)
       })
     })
   }
