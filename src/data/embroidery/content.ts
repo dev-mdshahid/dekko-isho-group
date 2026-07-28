@@ -1,7 +1,8 @@
 export const embroideryHero = {
   titleLines: [[{ text: 'Embroidery' }]],
-  subtitle: 'PRECISION IN EVERY STITCH.',
-  ctaLabel: 'OUR WORK',
+  subtitle:
+    'Our integrated embroidery facility combines advanced machinery, skilled craftsmanship, and efficient processes to create high-quality embroidery solutions with precision and consistency. From intricate designs to large-scale production, we deliver reliable embroidery capabilities tailored to the needs of global fashion brands.',
+  ctaLabel: 'Learn More',
   ctaHref: '#embroidery-expertise',
   video: '/images/embroidery/embroidery-hero.mp4',
   videoAlt: 'Industrial embroidery machine stitching a floral pattern on fabric',
