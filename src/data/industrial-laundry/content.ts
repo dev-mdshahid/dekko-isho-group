@@ -184,6 +184,105 @@ export const industrialLaundryWaterStewardship = {
   ] satisfies CapacityStat[],
 }
 
+export const industrialLaundryResearchDevelopment = {
+  id: 'il-research-development',
+  badge: 'Technical Development',
+  title: 'Research & Development',
+  description:
+    'Our dedicated R&D team continuously develops and refines wash recipes, explores innovative finishing techniques, and optimizes production processes to meet evolving customer requirements and fashion trends.',
+  items: [
+    {
+      id: 'wash-recipe',
+      title: 'Wash Recipe Development',
+      description: 'Innovative wash formulas crafted for consistent quality and vibrant finishes.',
+    },
+    {
+      id: 'sample-development',
+      title: 'Sample Development',
+      description: '3D sample previews speed up design approvals and reduce physical samples.',
+    },
+    {
+      id: 'process-optimization',
+      title: 'Process Optimization',
+      description: 'Streamlined processes to enhance efficiency and reduce production time.',
+    },
+  ],
+}
+
+export const industrialLaundryLaboratory = {
+  id: 'il-laboratory',
+  title: 'Modern Washing Laboratory',
+  description:
+    'Our modern washing laboratory supports every stage of product development through comprehensive testing and validation. From color consistency to fabric performance, every wash recipe is evaluated before transitioning to bulk production.',
+  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/modern-washing-laboratory.jpg`,
+  imageAlt: 'Technician inspecting fabric samples in a light-controlled washing laboratory',
+  items: [
+    {
+      id: 'shade-color',
+      number: '01',
+      accent: '#F3215D',
+      title: 'Shade & Color Matching',
+      description: 'Color consistency verified against approved standards before bulk.',
+    },
+    {
+      id: 'performance',
+      number: '02',
+      accent: '#449BFF',
+      title: 'Performance Testing',
+      description: 'Fabric performance evaluated across every wash recipe.',
+    },
+    {
+      id: 'shrinkage',
+      number: '03',
+      accent: '#14B253',
+      title: 'Shrinkage Testing',
+      description: 'Dimensional stability confirmed before production transition.',
+    },
+  ],
+}
+
+export const industrialLaundryQualityAssurance = {
+  id: 'il-quality-assurance',
+  badge: 'Technical Development',
+  title: 'Quality Assurance',
+  description:
+    'Quality assurance is embedded throughout our washing operations, from garment receiving to final inspection. Through rigorous process controls and systematic quality checks, we ensure every garment consistently meets customer specifications and international quality standards.',
+  highlightTitle: '100% QC Inspection Process',
+  highlightDetail: 'In-Process Quality Control • Final Inspection',
+  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/quality-assurance.png`,
+  imageAlt: 'Quality control team inspecting garments in a laboratory',
+}
+
+export const industrialLaundrySustainableTech = {
+  id: 'il-sustainable-tech',
+  title: 'Sustainable Washing Technologies',
+  description:
+    'We integrate advanced washing technologies that improve operational efficiency while reducing water, energy, and chemical consumption. By adopting innovative processes, we deliver premium garment finishes with a lower environmental footprint.',
+  items: [
+    {
+      id: 'eflow',
+      number: '01',
+      title: 'eFlow Technology',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/eflow-technology.jpg`,
+      imageAlt: 'Jeanologia e-Flow K Lab washing technology equipment',
+    },
+    {
+      id: 'ozone',
+      number: '02',
+      title: 'Ozone Processing',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/ozone-processing.png`,
+      imageAlt: 'Jeanologia G2 ozone processing machines',
+    },
+    {
+      id: 'conveyor-dryers',
+      number: '03',
+      title: 'Conveyor Dryers',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers-tech.jpg`,
+      imageAlt: 'Garments moving through an industrial conveyor dryer line',
+    },
+  ],
+}
+
 export const industrialLaundryProductionNetwork = {
   badge: 'Our Footprint',
   title: 'Production Network',

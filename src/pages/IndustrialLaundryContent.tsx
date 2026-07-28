@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 
 import { ManufacturingCapacitySection } from '../components/manufacturing'
+import { DesignGlobalNetworkSection } from '../components/design-product-development'
 import {
   SolutionAdvancedFinishingSection,
   // SolutionCapacitySection,
@@ -10,17 +11,24 @@ import {
   SolutionProductionNetworkSection,
   // SolutionQualitySection,
   // SolutionSpotlightSection,
+  SolutionSustainableTechSection,
   SolutionWashingProcessesSection,
   SolutionWhyItMattersSection,
 } from '../components/solutions'
+import { SplitContentSection } from '../components/ui/SplitContentSection'
+import { SplitFeatureListSection } from '../components/ui/SplitFeatureListSection'
 import {
   industrialLaundryAdvancedFinishing,
   industrialLaundryExpertise,
   industrialLaundryCta,
   industrialLaundryHero,
+  industrialLaundryLaboratory,
   industrialLaundryProductionNetwork,
+  industrialLaundryQualityAssurance,
   // industrialLaundryQuality,
+  industrialLaundryResearchDevelopment,
   // industrialLaundrySpotlight,
+  industrialLaundrySustainableTech,
   // industrialLaundryWashing,
   industrialLaundryWashingProcesses,
   industrialLaundryWaterStewardship,
@@ -54,6 +62,23 @@ export function IndustrialLaundryContent() {
       <ManufacturingCapacitySection
         idPrefix={ID_PREFIX}
         content={industrialLaundryWaterStewardship}
+      />
+      <SplitFeatureListSection
+        className="il-research-section"
+        {...industrialLaundryResearchDevelopment}
+      />
+      <DesignGlobalNetworkSection
+        idPrefix={ID_PREFIX}
+        className="il-laboratory-section"
+        content={industrialLaundryLaboratory}
+      />
+      <SplitContentSection
+        className="il-quality-assurance-section"
+        {...industrialLaundryQualityAssurance}
+      />
+      <SolutionSustainableTechSection
+        idPrefix={ID_PREFIX}
+        content={industrialLaundrySustainableTech}
       />
       <SolutionProductionNetworkSection
         idPrefix={ID_PREFIX}

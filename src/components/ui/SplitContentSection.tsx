@@ -9,6 +9,10 @@ export type SplitContentSectionProps = {
   imageAlt: string
   id?: string
   className?: string
+  /** Optional pink/accent callout below the description */
+  highlightTitle?: string
+  /** Optional supporting line under the highlight */
+  highlightDetail?: string
 }
 
 export function SplitContentSection({
@@ -19,6 +23,8 @@ export function SplitContentSection({
   imageAlt,
   id,
   className,
+  highlightTitle,
+  highlightDetail,
 }: SplitContentSectionProps) {
   return (
     <section
@@ -31,6 +37,12 @@ export function SplitContentSection({
             <PreSectionTitle title={badge} />
             <h2 className="split-content-section-title">{title}</h2>
             <p className="split-content-section-description">{description}</p>
+            {highlightTitle ? (
+              <p className="split-content-section-highlight">{highlightTitle}</p>
+            ) : null}
+            {highlightDetail ? (
+              <p className="split-content-section-highlight-detail">{highlightDetail}</p>
+            ) : null}
           </FadeIn>
 
           <FadeIn

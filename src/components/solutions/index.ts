@@ -24,6 +24,11 @@ export type {
   SolutionAdvancedFinishingContent,
   SolutionAdvancedFinishingItem,
 } from './SolutionAdvancedFinishingSection'
+export { SolutionSustainableTechSection } from './SolutionSustainableTechSection'
+export type {
+  SolutionSustainableTechContent,
+  SolutionSustainableTechItem,
+} from './SolutionSustainableTechSection'
 export { SolutionWashingProcessesSection } from './SolutionWashingProcessesSection'
 export type {
   SolutionWashingProcessesContent,

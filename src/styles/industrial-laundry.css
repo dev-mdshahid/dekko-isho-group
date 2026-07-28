@@ -107,3 +107,618 @@
     font-weight: 500;
   }
 }
+
+/* ── Research & Development (SplitFeatureListSection) ── */
+.industrial-laundry-page .split-feature-list-section.il-research-section {
+  background-color: var(--color--primary-gradient-end);
+  padding: 100px 0;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-container {
+  width: 100%;
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.industrial-laundry-page .il-research-section .pre-section-title-wrap {
+  background-color: var(--color--white);
+  border-color: var(--color--white);
+  margin-bottom: 10px;
+}
+
+.industrial-laundry-page .il-research-section .pre-section-title {
+  color: var(--color--neutral-night);
+  text-transform: none;
+}
+
+.industrial-laundry-page .il-research-section .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-title {
+  margin: 0 0 30px;
+  width: 100%;
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-description {
+  margin: 0;
+  width: 100%;
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-items {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 30px;
+  width: 100%;
+  min-width: 0;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-item {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  column-gap: 30px;
+  align-items: center;
+  padding: 30px 0;
+  border-top: 1px solid rgb(255 255 255 / 20%);
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-item:first-child {
+  border-top: none;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-item-title {
+  margin: 0;
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-item-description {
+  margin: 0;
+  color: var(--color--white);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+@media screen and (min-width: 992px) {
+  .industrial-laundry-page .il-research-section .split-feature-list-container {
+    padding-inline: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .split-feature-list-section.il-research-section {
+    padding: 72px 0;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .split-feature-list-section.il-research-section {
+    padding: 56px 0;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-layout {
+    gap: 1.75rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-title {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-description {
+    font-size: 1rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-items {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-item {
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-item-title {
+    white-space: normal;
+    font-size: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-item-description {
+    font-size: 1rem;
+  }
+}
+
+/* ── Modern Washing Laboratory (DesignGlobalNetworkSection) ── */
+.industrial-laundry-page .dpd-global-network-section.il-laboratory-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--neutral-seasalt);
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-size: clamp(1.875rem, 4vw, 3.625rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-description {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: left;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-media {
+  width: 100%;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-image {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 40vw, 448px);
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius--lg);
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+  margin-top: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-card-accent {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 1.25rem;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-card-number {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-card-title {
+  margin: 0;
+  width: 100%;
+  color: var(--color--neutral-night);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.industrial-laundry-page .il-laboratory-section .dpd-global-network-card-description {
+  margin: 30px 0 0;
+  width: 100%;
+  color: var(--color--neutral-outer-space);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.industrial-laundry-page .il-laboratory-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.industrial-laundry-page .il-laboratory-section .line-wrapper {
+  z-index: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Quality Assurance (SplitContentSection) ── */
+.industrial-laundry-page .split-content-section.il-quality-assurance-section {
+  background-color: var(--color--white);
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-container {
+  width: 100%;
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 0;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .pre-section-title-wrap {
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+  margin-bottom: 16px;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .pre-section-title {
+  color: var(--color--neutral-night);
+  text-transform: none;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .pre-section-title-square {
+  background-color: var(--solution-brand-start);
+  background-image: var(--solution-brand-gradient);
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-title {
+  margin: 0 0 20px;
+  width: 100%;
+  color: var(--color--neutral-night);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-description {
+  margin: 0 0 30px;
+  width: 100%;
+  color: var(--color--neutral-outer-space);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-highlight {
+  margin: 0 0 10px;
+  width: 100%;
+  color: var(--color--secondary-amaranth);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-highlight-detail {
+  margin: 0;
+  width: 100%;
+  color: var(--color--neutral-outer-space);
+  font-family: var(--_typography---font-family--body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-media {
+  min-width: 0;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border-radius: var(--border-radius--lg);
+}
+
+.industrial-laundry-page .il-quality-assurance-section .split-content-section-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-media {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-title {
+    font-size: 1.75rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-description {
+    font-size: 1rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-highlight {
+    font-size: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-media {
+    height: 280px;
+  }
+}
+
+/* ── Sustainable Washing Technologies ── */
+.industrial-laundry-page .solution-sustainable-tech-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--neutral-seasalt);
+  padding: 100px 0;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.industrial-laundry-page .solution-sustainable-tech-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-title {
+  margin: 0 0 20px;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-night);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-description {
+  margin: 0 0 70px;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-outer-space);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: left;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--color--white);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(21, 21, 21, 0.06);
+}
+
+.industrial-laundry-page .solution-sustainable-tech-card-media {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-card-number {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background-color: rgba(25, 25, 25, 0.55);
+  color: var(--color--white);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-card-body {
+  padding: 30px;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-card-title {
+  margin: 0;
+  color: var(--color--neutral-night);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.industrial-laundry-page .solution-sustainable-tech-section .line-wrapper {
+  z-index: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .industrial-laundry-page .solution-sustainable-tech-container {
+    padding-inline: 0;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-media {
+    width: 494px;
+    max-width: 100%;
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-sustainable-tech-section {
+    padding: 72px 0;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-description {
+    margin-bottom: 48px;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-media {
+    height: min(320px, 58vw);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .solution-sustainable-tech-section {
+    padding: 56px 0;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-title {
+    font-size: 1.75rem;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-description {
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-body {
+    padding: 24px;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-title {
+    font-size: 1.5rem;
+  }
+}
