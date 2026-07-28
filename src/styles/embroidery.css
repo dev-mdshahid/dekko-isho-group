@@ -1,0 +1,388 @@
+/* Embroidery page — mobile-first polish. Desktop shared styles stay intact. */
+
+.embroidery-page {
+  --solution-brand-start: var(--color--primary);
+  --solution-brand-end: var(--color--primary-3);
+  --solution-brand-gradient: linear-gradient(
+    180deg,
+    var(--solution-brand-start) 0%,
+    var(--solution-brand-end) 100%
+  );
+}
+
+/* ── Hero ── */
+@media screen and (max-width: 991px) {
+  .embroidery-page .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-bottom: 4.5rem;
+  }
+
+  .embroidery-page .solution-page-hero-video {
+    height: clamp(16rem, 58vw, 26rem);
+  }
+
+  .embroidery-page .solution-page-hero-media-scaler {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .embroidery-page .about-hero-subtitle {
+    max-width: 36ch;
+    margin-inline: auto;
+    padding-inline: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .embroidery-page .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-top: 5.5rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .embroidery-page .solution-page-hero-video {
+    height: clamp(14rem, 68vw, 20rem);
+  }
+
+  .embroidery-page .about-hero-title {
+    font-size: clamp(2rem, 9vw, 2.5rem);
+  }
+
+  .embroidery-page .about-hero-subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  .embroidery-page .solution-page-hero-button {
+    margin-top: 0.25rem;
+  }
+}
+
+/* ── Capabilities ── */
+@media screen and (max-width: 767px) {
+  .embroidery-page .solution-capability-cards-main {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .embroidery-page .solution-capability-cards-header .pre-section-title-wrap {
+    margin-bottom: 30px;
+  }
+
+  .embroidery-page .solution-capability-cards-title {
+    font-size: clamp(1.75rem, 7vw, 2rem);
+    margin-bottom: 16px;
+  }
+
+  .embroidery-page .solution-capability-cards-description {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .embroidery-page .solution-capability-cards-scroll {
+    padding-inline: var(--_layout---container-gutter);
+  }
+
+  .embroidery-page .solution-capability-cards-card {
+    flex: 0 0 min(78vw, 17.5rem);
+    min-width: min(78vw, 17.5rem);
+    height: min(62vw, 300px);
+    border-radius: 1.25rem;
+  }
+
+  .embroidery-page .solution-capability-cards-card-title {
+    font-size: 1.25rem;
+    padding: 1.125rem;
+  }
+}
+
+/* ── Technology (advanced finishing cards) ── */
+@media screen and (max-width: 991px) {
+  .embroidery-page .solution-advanced-finishing-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .embroidery-page .solution-advanced-finishing-header .pre-section-title-wrap {
+    margin-bottom: 30px;
+  }
+
+  .embroidery-page .solution-advanced-finishing-description {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .embroidery-page .solution-advanced-finishing-main {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .embroidery-page .solution-advanced-finishing-title {
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .embroidery-page .solution-advanced-finishing-description {
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+  }
+
+  .embroidery-page .solution-advanced-finishing-card {
+    padding: 1.25rem;
+    gap: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .embroidery-page .solution-advanced-finishing-card-image {
+    height: min(200px, 48vw);
+    border-radius: 0.75rem;
+  }
+
+  .embroidery-page .solution-advanced-finishing-card-title {
+    font-size: 1.375rem;
+  }
+
+  .embroidery-page .solution-advanced-finishing-card-description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ── Production Capacity ── */
+@media screen and (max-width: 991px) {
+  .embroidery-page .mfg-capacity-left .pre-section-title-wrap {
+    margin-bottom: 30px;
+  }
+
+  .embroidery-page .mfg-capacity-title {
+    max-width: none;
+    margin-bottom: 1rem;
+  }
+
+  .embroidery-page .mfg-capacity-description {
+    max-width: none;
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .embroidery-page .mfg-capacity-cta {
+    margin-bottom: 0.5rem;
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: clamp(8.5rem, 38vw, 10.5rem);
+    display: grid;
+    grid-template-columns: repeat(2, var(--capacity-circle-size));
+    justify-content: center;
+    justify-items: center;
+    gap: 0.75rem 1rem;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    flex-wrap: unset;
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-circle {
+    margin-left: 0 !important;
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .embroidery-page .mfg-capacity-section .service-step-main.section-spacing {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .embroidery-page .mfg-capacity-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.125rem);
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: clamp(7.75rem, 40vw, 9.5rem);
+    gap: 0.625rem 0.75rem;
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-label {
+    font-size: clamp(0.6875rem, 2.8vw, 0.875rem);
+  }
+
+  .embroidery-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+    max-width: 88%;
+    gap: 6px;
+  }
+}
+
+/* ── Technical Development ── */
+@media screen and (max-width: 767px) {
+  .embroidery-page .split-feature-list-section.il-research-section {
+    padding: 3.5rem 0;
+  }
+
+  .embroidery-page .il-research-section .split-feature-list-layout {
+    gap: 2rem;
+  }
+
+  .embroidery-page .il-research-section .split-feature-list-title {
+    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .embroidery-page .il-research-section .split-feature-list-description {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .embroidery-page .il-research-section .split-feature-list-item {
+    padding: 1.25rem 0;
+    row-gap: 0.375rem;
+  }
+
+  .embroidery-page .il-research-section .split-feature-list-item-title {
+    font-size: 1.25rem;
+  }
+
+  .embroidery-page .il-research-section .split-feature-list-item-description {
+    font-size: 0.9375rem;
+  }
+}
+
+/* ── Quality Assurance ── */
+@media screen and (max-width: 991px) {
+  .embroidery-page .il-quality-assurance-section .pre-section-title-wrap {
+    margin-bottom: 30px;
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-layout {
+    gap: 2rem;
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-media {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .embroidery-page .split-content-section.il-quality-assurance-section {
+    padding: 3.5rem 0;
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-title {
+    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-description {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-highlight {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-highlight-detail {
+    font-size: 0.875rem;
+  }
+
+  .embroidery-page .il-quality-assurance-section .split-content-section-media {
+    aspect-ratio: 5 / 4;
+    border-radius: 1.25rem;
+  }
+}
+
+/* ── Production Network ── */
+@media screen and (max-width: 991px) {
+  .embroidery-page .solution-network-section--grid .solution-network-track {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .embroidery-page .solution-network-section--grid .solution-network-card {
+    width: 100%;
+    height: clamp(16rem, 72vw, 22rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .embroidery-page .solution-network-main {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .embroidery-page .solution-network-header .pre-section-title-wrap {
+    margin-bottom: 30px;
+  }
+
+  .embroidery-page .solution-network-title {
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .embroidery-page .solution-network-description {
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+  }
+
+  .embroidery-page .solution-network-section--grid .solution-network-card {
+    height: clamp(15rem, 78vw, 20rem);
+    border-radius: 1.25rem;
+  }
+
+  .embroidery-page .solution-network-card-panel {
+    padding: 1.25rem;
+  }
+
+  .embroidery-page .solution-network-card-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* ── CTA ── */
+@media screen and (max-width: 991px) {
+  .embroidery-page .solution-cta-section {
+    padding: 3.5rem 0;
+  }
+
+  .embroidery-page .solution-cta-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1.25rem;
+  }
+
+  .embroidery-page .solution-cta-action {
+    justify-self: start;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .embroidery-page .solution-cta-section {
+    padding: 2.75rem 0;
+  }
+
+  .embroidery-page .solution-cta-card {
+    padding: 2rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .embroidery-page .solution-cta-heading {
+    margin-top: 1rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .embroidery-page .solution-cta-description {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+  }
+}

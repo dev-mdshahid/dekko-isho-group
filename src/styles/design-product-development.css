@@ -9,9 +9,80 @@
   --solution-brand-gradient: var(--dpd-brand-gradient);
   /* Content width from Why Dekko ISHO onward (hero stays full-bleed) */
   --dpd-content-max-width: 1520px;
+  --dpd-mobile-section-pad: 3.5rem;
+  --dpd-mobile-section-pad-sm: 3rem;
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
+}
+
+/* ── Hero (DPD-scoped mobile polish; desktop unchanged) ── */
+@media screen and (max-width: 991px) {
+  .design-product-development-page .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-top: 7.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .design-product-development-page .solution-page-hero .about-hero-title-wrap {
+    gap: 1.25rem;
+    padding-inline: 0.25rem;
+  }
+
+  .design-product-development-page .solution-page-hero .about-hero-title {
+    font-size: clamp(1.875rem, 6.5vw, 2.75rem);
+    line-height: 1.15;
+  }
+
+  .design-product-development-page .solution-page-hero .about-hero-subtitle {
+    max-width: 36rem;
+    margin-inline: auto;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .design-product-development-page .solution-page-hero .pre-section-title-wrap {
+    max-width: min(100%, 22rem);
+    text-align: center;
+  }
+
+  .design-product-development-page .solution-page-hero .pre-section-title {
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .design-product-development-page .solution-page-hero-video {
+    height: min(72dvh, 36rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .design-product-development-page .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-top: 6.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .design-product-development-page .solution-page-hero .about-hero-title-wrap {
+    gap: 1rem;
+  }
+
+  .design-product-development-page .solution-page-hero .about-hero-title {
+    font-size: clamp(1.625rem, 7vw, 2rem);
+  }
+
+  .design-product-development-page .solution-page-hero .about-hero-subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .design-product-development-page .solution-page-hero-button .primary-button {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
+  }
+
+  .design-product-development-page .solution-page-hero-video {
+    height: min(68dvh, 28rem);
+  }
 }
 
 /*
@@ -165,16 +236,32 @@
 }
 
 @media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-capabilities-section {
+    padding: var(--dpd-mobile-section-pad) 0;
+  }
+
+  .design-product-development-page .dpd-capabilities-header {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .design-product-development-page .dpd-capabilities-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+  }
+
   .design-product-development-page .dpd-capabilities-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
   .design-product-development-page .dpd-capabilities-card-media {
-    height: 220px;
+    height: auto;
+    aspect-ratio: 16 / 11;
   }
 
   .design-product-development-page .dpd-capabilities-description {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   .design-product-development-page .dpd-capabilities-card-title {
@@ -183,21 +270,43 @@
 
   .design-product-development-page .dpd-capabilities-card-description {
     font-size: 1rem;
+    line-height: 1.55;
   }
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-capabilities-section {
+    padding: var(--dpd-mobile-section-pad-sm) 0;
+  }
+
+  .design-product-development-page .dpd-capabilities-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-capabilities-title {
+    font-size: 1.75rem;
+  }
+
   .design-product-development-page .dpd-capabilities-grid {
     grid-template-columns: 1fr;
+    gap: 1.125rem;
+  }
+
+  .design-product-development-page .dpd-capabilities-card {
+    border-radius: 1rem;
   }
 
   .design-product-development-page .dpd-capabilities-card-media {
-    height: 200px;
+    aspect-ratio: 16 / 10;
   }
 
   .design-product-development-page .dpd-capabilities-card-body {
-    padding: 1.5rem;
-    gap: 0.75rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    gap: 0.625rem;
+  }
+
+  .design-product-development-page .dpd-capabilities-card-title {
+    font-size: 1.25rem;
   }
 }
 
@@ -250,6 +359,16 @@
   font-weight: var(--_typography---h2--font-weight-600);
   line-height: 1.2;
   letter-spacing: -0.02em;
+}
+
+.design-product-development-page .dpd-materials-description {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--color--neutral-outer-space);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
 }
 
 .design-product-development-page .dpd-materials-grid {
@@ -335,8 +454,26 @@
 }
 
 @media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-materials-section {
+    padding: var(--dpd-mobile-section-pad) 0;
+  }
+
+  .design-product-development-page .dpd-materials-header {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .design-product-development-page .dpd-materials-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+  }
+
+  .design-product-development-page .dpd-materials-grid {
+    gap: 1.25rem;
+  }
+
   .design-product-development-page .dpd-materials-card-media {
-    height: 260px;
+    height: auto;
+    aspect-ratio: 16 / 10;
   }
 
   .design-product-development-page .dpd-materials-card-title {
@@ -345,21 +482,39 @@
 
   .design-product-development-page .dpd-materials-card-description {
     font-size: 1rem;
+    line-height: 1.55;
   }
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-materials-section {
+    padding: var(--dpd-mobile-section-pad-sm) 0;
+  }
+
+  .design-product-development-page .dpd-materials-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-materials-title {
+    font-size: 1.75rem;
+  }
+
   .design-product-development-page .dpd-materials-grid {
     grid-template-columns: 1fr;
+    gap: 1.125rem;
+  }
+
+  .design-product-development-page .dpd-materials-card {
+    border-radius: 1rem;
   }
 
   .design-product-development-page .dpd-materials-card-media {
-    height: 220px;
+    aspect-ratio: 16 / 10;
   }
 
   .design-product-development-page .dpd-materials-card-body {
-    padding: 1.5rem;
-    gap: 0.75rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    gap: 0.625rem;
   }
 
   .design-product-development-page .dpd-materials-card-title {
@@ -454,36 +609,52 @@
 }
 
 @media screen and (max-width: 991px) {
+  .design-product-development-page .split-content-section.dpd-studio-section {
+    padding: var(--dpd-mobile-section-pad) 0;
+  }
+
   .design-product-development-page .split-content-section-layout {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .design-product-development-page .split-content-section-title {
+    margin-bottom: 1rem;
     font-size: clamp(1.75rem, 4vw, 2.25rem);
   }
 
   .design-product-development-page .split-content-section-description {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   .design-product-development-page .split-content-section-media {
-    height: min(360px, 56vw);
+    height: auto;
+    aspect-ratio: 16 / 10;
   }
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .split-content-section.dpd-studio-section {
+    padding: var(--dpd-mobile-section-pad-sm) 0;
+  }
+
   .design-product-development-page .split-content-section-layout {
-    gap: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .design-product-development-page .dpd-studio-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
   }
 
   .design-product-development-page .split-content-section-title {
-    margin-bottom: 1rem;
+    margin-bottom: 0.875rem;
     font-size: 1.75rem;
   }
 
   .design-product-development-page .split-content-section-media {
-    height: min(280px, 70vw);
+    aspect-ratio: 4 / 3;
+    border-radius: 1rem;
   }
 }
 
@@ -601,20 +772,22 @@
 
 @media screen and (max-width: 991px) {
   .design-product-development-page .split-feature-list-section.dpd-digital-section {
-    padding: 72px 0;
+    padding: var(--dpd-mobile-section-pad) 0;
   }
 
   .design-product-development-page .split-feature-list-layout {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .design-product-development-page .split-feature-list-title {
+    margin-bottom: 1rem;
     font-size: clamp(1.75rem, 4vw, 2.25rem);
   }
 
   .design-product-development-page .split-feature-list-description {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   /* Stack feature rows once the section is single-column — avoids nowrap overflow */
@@ -624,8 +797,8 @@
 
   .design-product-development-page .split-feature-list-item {
     grid-template-columns: 1fr;
-    row-gap: 0.5rem;
-    padding: 1.5rem 0;
+    row-gap: 0.375rem;
+    padding: 1.25rem 0;
   }
 
   .design-product-development-page .split-feature-list-item-title {
@@ -635,21 +808,34 @@
 
   .design-product-development-page .split-feature-list-item-description {
     font-size: 1rem;
+    line-height: 1.5;
   }
 }
 
 @media screen and (max-width: 767px) {
   .design-product-development-page .split-feature-list-section.dpd-digital-section {
-    padding: 56px 0;
+    padding: var(--dpd-mobile-section-pad-sm) 0;
   }
 
   .design-product-development-page .split-feature-list-layout {
-    gap: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .design-product-development-page .dpd-digital-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
   }
 
   .design-product-development-page .split-feature-list-title {
-    margin-bottom: 1rem;
+    margin-bottom: 0.875rem;
     font-size: 1.75rem;
+  }
+
+  .design-product-development-page .split-feature-list-item {
+    padding: 1.125rem 0;
+  }
+
+  .design-product-development-page .split-feature-list-item-title {
+    font-size: 1.1875rem;
   }
 }
 
@@ -1036,66 +1222,84 @@
 
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-gallery-section {
-    padding: 72px 0;
+    padding: var(--dpd-mobile-section-pad) 0;
   }
 
   .design-product-development-page .dpd-gallery-header {
-    margin-bottom: 48px;
+    margin-bottom: 2.5rem;
   }
 
   .design-product-development-page .dpd-gallery-title {
-    font-size: clamp(2rem, 6vw, 2.75rem);
+    margin-bottom: 1rem;
+    font-size: clamp(1.875rem, 5.5vw, 2.5rem);
+    line-height: 1.2;
   }
 
   .design-product-development-page .dpd-gallery-description {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   .design-product-development-page .dpd-gallery-row {
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    align-items: stretch;
+    gap: 1rem;
   }
 
-  /* Stack centered; keep middle image larger for emphasis */
-  .design-product-development-page .dpd-gallery-item--side {
-    width: min(72%, 320px);
+  /* Full-width stack; middle image first for mobile hierarchy */
+  .design-product-development-page .dpd-gallery-item--side,
+  .design-product-development-page .dpd-gallery-item--center {
+    width: 100%;
     height: auto;
     aspect-ratio: 1;
   }
 
   .design-product-development-page .dpd-gallery-item--center {
-    width: min(88%, 420px);
-    height: auto;
-    aspect-ratio: 1;
     order: -1;
+  }
+
+  .design-product-development-page .dpd-gallery-item {
+    border-radius: 1.25rem;
   }
 }
 
 @media screen and (max-width: 767px) {
   .design-product-development-page .dpd-gallery-section {
-    padding: 56px 0;
+    padding: var(--dpd-mobile-section-pad-sm) 0;
   }
 
   .design-product-development-page .dpd-gallery-header {
-    margin-bottom: 36px;
+    margin-bottom: 2rem;
+  }
+
+  .design-product-development-page .dpd-gallery-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
   }
 
   .design-product-development-page .dpd-gallery-title {
-    margin-bottom: 16px;
+    margin-bottom: 0.875rem;
     font-size: 1.75rem;
   }
 
+  .design-product-development-page .dpd-gallery-description {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .design-product-development-page .dpd-gallery-row {
+    gap: 0.875rem;
+  }
+
   .design-product-development-page .dpd-gallery-item {
-    border-radius: 20px;
+    border-radius: 1rem;
   }
 
   .design-product-development-page .dpd-gallery-item--side {
-    width: min(78%, 280px);
+    aspect-ratio: 5 / 4;
   }
 
   .design-product-development-page .dpd-gallery-item--center {
-    width: min(100%, 340px);
+    aspect-ratio: 1;
   }
 }
 
@@ -1233,8 +1437,22 @@
 }
 
 @media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-journey-section {
+    --dpd-journey-dot: 28px;
+    padding: var(--dpd-mobile-section-pad) 0;
+  }
+
   .design-product-development-page .dpd-journey-container {
     padding-inline: var(--_layout---container-gutter);
+  }
+
+  .design-product-development-page .dpd-journey-header {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .design-product-development-page .dpd-journey-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
   }
 
   .design-product-development-page .dpd-journey-roadmap {
@@ -1249,18 +1467,18 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.375rem;
     margin: 0;
-    padding: 0 0 0 1.15rem;
+    padding: 0 0 0 0.25rem;
     list-style: none;
   }
 
   .design-product-development-page .dpd-journey-mobile-list::before {
     content: '';
     position: absolute;
-    top: 16px;
-    bottom: 16px;
-    left: calc(1.15rem + 16px - 1px);
+    top: calc(var(--dpd-journey-dot) / 2);
+    bottom: calc(var(--dpd-journey-dot) / 2);
+    left: calc(var(--dpd-journey-dot) / 2 - 1px);
     width: 0;
     border-left: 2px dashed var(--dpd-journey-line);
   }
@@ -1273,24 +1491,46 @@
     z-index: 1;
   }
 
+  .design-product-development-page .dpd-journey-mobile-item .dpd-journey-dot {
+    box-shadow: 0 0 0 4px var(--color--white);
+  }
+
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
     margin-top: 0;
     text-align: left;
     font-size: 1.125rem;
+    line-height: 1.35;
   }
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-journey-section {
+    --dpd-journey-dot: 24px;
+    padding: var(--dpd-mobile-section-pad-sm) 0;
+  }
+
   .design-product-development-page .dpd-journey-container {
     padding-inline: var(--_layout---container-gutter);
+  }
+
+  .design-product-development-page .dpd-journey-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-journey-title {
+    font-size: 1.75rem;
   }
 
   .design-product-development-page .dpd-journey-mobile-list {
     gap: 1.25rem;
   }
 
+  .design-product-development-page .dpd-journey-mobile-item {
+    gap: 0.875rem;
+  }
+
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
-    font-size: 1rem;
+    font-size: 1.0625rem;
   }
 }
 
@@ -1857,32 +2097,59 @@
     grid-template-columns: 1fr;
   }
 
+  .design-product-development-page .dpd-global-network-section {
+    padding: var(--dpd-mobile-section-pad) 0;
+  }
+
   .design-product-development-page .dpd-global-network-header {
-    margin-bottom: 48px;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-global-network-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
   }
 
   .design-product-development-page .dpd-global-network-description {
     max-width: 100%;
     font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .design-product-development-page .dpd-global-network-image {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 1rem;
   }
 
   .design-product-development-page .dpd-global-network-grid {
     grid-template-columns: 1fr;
-    margin-top: 48px;
-    gap: 2rem;
+    margin-top: 2rem;
+    gap: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-global-network-card-accent {
+    margin-bottom: 1rem;
   }
 
   .design-product-development-page .dpd-global-network-card-title {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 
   .design-product-development-page .dpd-global-network-card-description {
+    margin-top: 0.75rem;
     font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .design-product-development-page .solution-cta-section {
+    padding-block: var(--dpd-mobile-section-pad);
   }
 
   .design-product-development-page .solution-cta-card {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+    padding: 1.75rem;
   }
 
   .design-product-development-page .solution-cta-heading {
@@ -1891,11 +2158,18 @@
 
   .design-product-development-page .solution-cta-description {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   .design-product-development-page .solution-cta-action {
-    justify-self: start;
-    align-self: flex-start;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  .design-product-development-page .solution-cta-action .primary-button {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
   }
 
   .design-product-development-page .dpd-solutions-banner-card {
@@ -1957,8 +2231,20 @@
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-global-network-section {
+    padding: var(--dpd-mobile-section-pad-sm) 0;
+  }
+
   .design-product-development-page .dpd-global-network-header {
-    margin-bottom: 32px;
+    margin-bottom: 1.5rem;
+  }
+
+  .design-product-development-page .dpd-global-network-title {
+    font-size: 1.75rem;
+  }
+
+  .design-product-development-page .dpd-global-network-image {
+    aspect-ratio: 4 / 3;
   }
 
   .design-product-development-page .dpd-global-network-grid,
@@ -1967,12 +2253,30 @@
   }
 
   .design-product-development-page .dpd-global-network-grid {
-    margin-top: 32px;
-    gap: 1.75rem;
+    margin-top: 1.75rem;
+    gap: 1.5rem;
   }
 
   .design-product-development-page .dpd-global-network-card-title {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
+  }
+
+  .design-product-development-page .solution-cta-section {
+    padding-block: var(--dpd-mobile-section-pad-sm);
+  }
+
+  .design-product-development-page .solution-cta-card {
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .design-product-development-page .solution-cta-heading {
+    font-size: 1.75rem;
+  }
+
+  .design-product-development-page .solution-cta-action .primary-button {
+    max-width: none;
   }
 
   .design-product-development-page .dpd-presence-gallery-grid {

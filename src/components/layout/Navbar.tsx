@@ -14,49 +14,52 @@ import {
 import { useSplashOptional } from '../../context/SplashContext'
 import { useClickOutside } from '../../hooks/useClickOutside'
 import { MOBILE_NAV_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
+import { useNavDropdowns, type DesktopDropdownId } from '../../hooks/useNavDropdowns'
 import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { ButtonArrow } from '../ui/ButtonArrow'
 
 type NavDropdownProps = {
-  id: string
+  id: DesktopDropdownId
   label: string
   links: readonly NavMenuLink[]
   isOpen: boolean
   onToggle: () => void
   onClose: () => void
-  closeMenu: () => void
 }
 
-function NavDropdown({ id, label, links, isOpen, onToggle, onClose, closeMenu }: NavDropdownProps) {
+function NavDropdown({ id, label, links, isOpen, onToggle, onClose }: NavDropdownProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
   const isActive = isNavGroupActive(pathname, links)
 
   useClickOutside(ref, onClose, isOpen)
 
-  function handleLinkClick() {
-    onClose()
-    closeMenu()
-  }
-
   return (
-    <div ref={ref} className={`dropdown w-dropdown${isOpen ? ' w--open' : ''}`}>
+    <div
+      ref={ref}
+      className={`dropdown nav-dropdown${isOpen ? ' is-open' : ''}`}
+    >
       <button
         type="button"
         id={`${id}-toggle`}
         aria-expanded={isOpen}
+        aria-haspopup="true"
         aria-controls={`${id}-menu`}
-        className={`dropdown-toggle nav-link w-dropdown-toggle${isActive ? ' w--current' : ''}`}
-        onClick={onToggle}
+        className={`dropdown-toggle nav-link${isActive ? ' w--current' : ''}`}
+        onClick={(event) => {
+          event.stopPropagation()
+          onToggle()
+        }}
       >
         <div>{label}</div>
-        <div className="dropdown-icon w-icon-dropdown-toggle" />
+        <div className="dropdown-icon w-icon-dropdown-toggle" aria-hidden="true" />
       </button>
       <nav
         id={`${id}-menu`}
         aria-labelledby={`${id}-toggle`}
-        className={`dropdown-list w-dropdown-list${isOpen ? ' w--open' : ''}`}
+        className="dropdown-list"
+        hidden={!isOpen}
       >
         <div className="dropdown-list-inner">
           <div className="dropdown-link-list">
@@ -66,8 +69,8 @@ function NavDropdown({ id, label, links, isOpen, onToggle, onClose, closeMenu }:
                   <Link
                     key={link.to + link.label}
                     to={link.to}
-                    className={`dropdown-link w-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
-                    onClick={handleLinkClick}
+                    className={`dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
+                    onClick={onClose}
                   >
                     {link.label}
                   </Link>
@@ -85,13 +88,21 @@ type BusinessesNavDropdownProps = {
   isOpen: boolean
   onToggle: () => void
   onClose: () => void
-  closeMenu: () => void
+  expandedGroupId: NavLinkGroup['id'] | null
+  onExpandGroup: (groupId: NavLinkGroup['id']) => void
+  onToggleGroup: (groupId: NavLinkGroup['id']) => void
 }
 
-function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: BusinessesNavDropdownProps) {
+function BusinessesNavDropdown({
+  isOpen,
+  onToggle,
+  onClose,
+  expandedGroupId,
+  onExpandGroup,
+  onToggleGroup,
+}: BusinessesNavDropdownProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
-  const [expandedGroupId, setExpandedGroupId] = useState<NavLinkGroup['id'] | null>(null)
   const expandedGroup = expandedGroupId
     ? businessNavGroups.find((group) => group.id === expandedGroupId)
     : null
@@ -99,38 +110,31 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
 
   useClickOutside(ref, onClose, isOpen)
 
-  useEffect(() => {
-    if (!isOpen) {
-      setExpandedGroupId(null)
-    }
-  }, [isOpen])
-
-  function handleLinkClick() {
-    onClose()
-    closeMenu()
-  }
-
-  function handleGroupClick(groupId: NavLinkGroup['id']) {
-    setExpandedGroupId((current) => (current === groupId ? null : groupId))
-  }
-
   return (
-    <div ref={ref} className={`dropdown w-dropdown nav-dropdown nav-dropdown--nested${isOpen ? ' w--open' : ''}`}>
+    <div
+      ref={ref}
+      className={`dropdown nav-dropdown nav-dropdown--nested${isOpen ? ' is-open' : ''}`}
+    >
       <button
         type="button"
         id="businesses-toggle"
         aria-expanded={isOpen}
+        aria-haspopup="true"
         aria-controls="businesses-menu"
-        className={`dropdown-toggle nav-link w-dropdown-toggle${isActive ? ' w--current' : ''}`}
-        onClick={onToggle}
+        className={`dropdown-toggle nav-link${isActive ? ' w--current' : ''}`}
+        onClick={(event) => {
+          event.stopPropagation()
+          onToggle()
+        }}
       >
         <div>Businesses</div>
-        <div className="dropdown-icon w-icon-dropdown-toggle" />
+        <div className="dropdown-icon w-icon-dropdown-toggle" aria-hidden="true" />
       </button>
       <nav
         id="businesses-menu"
         aria-labelledby="businesses-toggle"
-        className={`dropdown-list w-dropdown-list nav-dropdown-panel${isOpen ? ' w--open' : ''}`}
+        className="dropdown-list nav-dropdown-panel"
+        hidden={!isOpen}
       >
         <div className="nav-dropdown-panel-inner">
           <div className={`nav-nested-dropdown${expandedGroupId ? ' is-expanded' : ''}`}>
@@ -143,7 +147,9 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
                     role="listitem"
                     aria-expanded={expandedGroupId === group.id}
                     className={`nav-nested-dropdown-category${expandedGroupId === group.id ? ' is-active' : ''}`}
-                    onClick={() => handleGroupClick(group.id)}
+                    onClick={() => onToggleGroup(group.id)}
+                    onMouseEnter={() => onExpandGroup(group.id)}
+                    onFocus={() => onExpandGroup(group.id)}
                   >
                     <span>{group.label}</span>
                     <span className="nav-nested-dropdown-chevron" aria-hidden="true">
@@ -169,7 +175,7 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
                   aria-label={expandedGroup.label}
                 >
                   {expandedGroup.links.map((link) => {
-                    const className = `dropdown-link w-dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
+                    const className = `dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
                     const content = <span>{link.label}</span>
 
                     if (link.to.startsWith('http')) {
@@ -180,7 +186,7 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
                           className={className}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={handleLinkClick}
+                          onClick={onClose}
                         >
                           {content}
                         </a>
@@ -192,7 +198,7 @@ function BusinessesNavDropdown({ isOpen, onToggle, onClose, closeMenu }: Busines
                         key={`${expandedGroup.id}-${link.label}`}
                         to={link.to}
                         className={className}
-                        onClick={handleLinkClick}
+                        onClick={onClose}
                       >
                         {content}
                       </Link>
@@ -214,30 +220,22 @@ type MobileNavDropdownProps = {
   links: readonly NavMenuLink[]
   isOpen: boolean
   onToggle: () => void
-  closeMenu: () => void
+  onNavigate: () => void
 }
 
-function MobileNavDropdown({ id, label, links, isOpen, onToggle, closeMenu }: MobileNavDropdownProps) {
+function MobileNavDropdown({ id, label, links, isOpen, onToggle, onNavigate }: MobileNavDropdownProps) {
   const { pathname } = useLocation()
   const isActive = isNavGroupActive(pathname, links)
-
-  function handleLinkClick() {
-    closeMenu()
-  }
-
-  function handleToggle() {
-    onToggle()
-  }
 
   return (
     <div className={`mobile-nav-accordion${isOpen ? ' is-open' : ''}`}>
       <button
         type="button"
-        id={`${id}-toggle`}
+        id={`mobile-${id}-toggle`}
         aria-expanded={isOpen}
-        aria-controls={`${id}-menu`}
+        aria-controls={`mobile-${id}-menu`}
         className={`mobile-nav-link mobile-nav-accordion-trigger${isActive ? ' is-current' : ''}`}
-        onClick={handleToggle}
+        onClick={onToggle}
       >
         <span>{label}</span>
         <span className="mobile-nav-chevron" aria-hidden="true">
@@ -253,9 +251,9 @@ function MobileNavDropdown({ id, label, links, isOpen, onToggle, closeMenu }: Mo
         </span>
       </button>
       <div
-        id={`${id}-menu`}
+        id={`mobile-${id}-menu`}
         className="mobile-nav-accordion-panel"
-        aria-labelledby={`${id}-toggle`}
+        aria-labelledby={`mobile-${id}-toggle`}
         hidden={!isOpen}
       >
         <div className="mobile-nav-accordion-panel-inner">
@@ -264,7 +262,7 @@ function MobileNavDropdown({ id, label, links, isOpen, onToggle, closeMenu }: Mo
               key={link.to + link.label}
               to={link.to}
               className={`mobile-nav-sublink${isNavLinkActive(pathname, link.to) ? ' is-current' : ''}`}
-              onClick={handleLinkClick}
+              onClick={onNavigate}
             >
               {link.label}
             </Link>
@@ -278,10 +276,10 @@ function MobileNavDropdown({ id, label, links, isOpen, onToggle, closeMenu }: Mo
 type MobileBusinessesNavProps = {
   isOpen: boolean
   onToggle: () => void
-  closeMenu: () => void
+  onNavigate: () => void
 }
 
-function MobileBusinessesNav({ isOpen, onToggle, closeMenu }: MobileBusinessesNavProps) {
+function MobileBusinessesNav({ isOpen, onToggle, onNavigate }: MobileBusinessesNavProps) {
   const { pathname } = useLocation()
   const [expandedGroupId, setExpandedGroupId] = useState<NavLinkGroup['id'] | null>(null)
   const isActive = isNavGroupActive(pathname, flattenNavLinks(businessNavGroups))
@@ -291,10 +289,6 @@ function MobileBusinessesNav({ isOpen, onToggle, closeMenu }: MobileBusinessesNa
       setExpandedGroupId(null)
     }
   }, [isOpen])
-
-  function handleLinkClick() {
-    closeMenu()
-  }
 
   function renderLink(group: NavLinkGroup, link: NavMenuLink) {
     const className = `mobile-nav-sublink${isNavLinkActive(pathname, link.to) ? ' is-current' : ''}`
@@ -307,7 +301,7 @@ function MobileBusinessesNav({ isOpen, onToggle, closeMenu }: MobileBusinessesNa
           className={className}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={handleLinkClick}
+          onClick={onNavigate}
         >
           {link.label}
         </a>
@@ -315,25 +309,21 @@ function MobileBusinessesNav({ isOpen, onToggle, closeMenu }: MobileBusinessesNa
     }
 
     return (
-      <Link key={`${group.id}-${link.label}`} to={link.to} className={className} onClick={handleLinkClick}>
+      <Link key={`${group.id}-${link.label}`} to={link.to} className={className} onClick={onNavigate}>
         {link.label}
       </Link>
     )
-  }
-
-  function handleToggle() {
-    onToggle()
   }
 
   return (
     <div className={`mobile-nav-accordion${isOpen ? ' is-open' : ''}`}>
       <button
         type="button"
-        id="businesses-toggle"
+        id="mobile-businesses-toggle"
         aria-expanded={isOpen}
-        aria-controls="businesses-menu"
+        aria-controls="mobile-businesses-menu"
         className={`mobile-nav-link mobile-nav-accordion-trigger${isActive ? ' is-current' : ''}`}
-        onClick={handleToggle}
+        onClick={onToggle}
       >
         <span>Businesses</span>
         <span className="mobile-nav-chevron" aria-hidden="true">
@@ -349,9 +339,9 @@ function MobileBusinessesNav({ isOpen, onToggle, closeMenu }: MobileBusinessesNa
         </span>
       </button>
       <div
-        id="businesses-menu"
+        id="mobile-businesses-menu"
         className="mobile-nav-accordion-panel"
-        aria-labelledby="businesses-toggle"
+        aria-labelledby="mobile-businesses-toggle"
         hidden={!isOpen}
       >
         <div className="mobile-nav-accordion-panel-inner">
@@ -397,10 +387,15 @@ function NavMenuButton({ isOpen, onClick }: { isOpen: boolean; onClick: () => vo
   return (
     <button
       type="button"
-      className={`menu-button w-nav-button mobile-nav-toggle${isOpen ? ' is-open' : ''}`}
+      className={`menu-button mobile-nav-toggle${isOpen ? ' is-open' : ''}`}
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={isOpen}
-      onClick={onClick}
+      aria-controls="mobile-nav-menu"
+      onClick={(event) => {
+        // Keep Webflow's legacy navbar JS from also toggling an overlay.
+        event.stopPropagation()
+        onClick()
+      }}
     >
       <span className="mobile-nav-toggle-icon" aria-hidden="true">
         <span className="mobile-nav-toggle-line" />
@@ -441,30 +436,7 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
         aria-label="Close menu"
         onClick={closeMenu}
       />
-      <div className="mobile-nav-shell">
-        <div className="mobile-nav-header">
-          <Link to="/" className="mobile-nav-brand" onClick={closeMenu}>
-            <img
-              src="/dekko-logo.svg"
-              loading="eager"
-              alt="Dekko Isho Group"
-              className="logo"
-              style={{ width: 'auto', height: '50px', objectFit: 'contain' }}
-            />
-          </Link>
-          <button
-            type="button"
-            className="mobile-nav-close is-open"
-            aria-label="Close menu"
-            onClick={closeMenu}
-          >
-            <span className="mobile-nav-toggle-icon" aria-hidden="true">
-              <span className="mobile-nav-toggle-line" />
-              <span className="mobile-nav-toggle-line" />
-              <span className="mobile-nav-toggle-line" />
-            </span>
-          </button>
-        </div>
+      <div className="mobile-nav-shell" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
         <nav className="mobile-nav-panel" role="navigation" aria-label="Mobile">
           <NavLink
             to="/about"
@@ -479,12 +451,12 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
             links={solutionNavLinks}
             isOpen={openDropdownId === 'solutions'}
             onToggle={() => toggleDropdown('solutions')}
-            closeMenu={closeMenu}
+            onNavigate={closeMenu}
           />
           <MobileBusinessesNav
             isOpen={openDropdownId === 'businesses'}
             onToggle={() => toggleDropdown('businesses')}
-            closeMenu={closeMenu}
+            onNavigate={closeMenu}
           />
           <NavLink
             to="/sustainability"
@@ -506,7 +478,7 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
             links={mediaNavLinks}
             isOpen={openDropdownId === 'media'}
             onToggle={() => toggleDropdown('media')}
-            closeMenu={closeMenu}
+            onNavigate={closeMenu}
           />
           <NavLink
             to="/career"
@@ -528,69 +500,49 @@ export function Navbar() {
   const { isOpen, toggleMenu, closeMenu } = useNavMenu()
   const { pathname } = useLocation()
   const isMobileNav = useMediaQuery(MOBILE_NAV_QUERY)
-  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
+  const {
+    openId,
+    expandedGroupId,
+    isOpen: isDropdownOpen,
+    toggle,
+    closeAll,
+    expandGroup,
+    toggleGroup,
+  } = useNavDropdowns(!isMobileNav)
   const navRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLImageElement>(null)
   const splash = useSplashOptional()
 
-  useEffect(() => {
-    setOpenDropdownId(null)
-  }, [pathname])
-
-  // Expose the navbar logo rect so splash can FLIP into this exact slot.
   useEffect(() => {
     if (!splash) return
     splash.registerLogoTarget(logoRef.current)
     return () => splash.registerLogoTarget(null)
   }, [splash, isMobileNav])
 
-  // Close desktop dropdowns on scroll so panels don't float over moving content.
-  useEffect(() => {
-    if (openDropdownId === null) {
-      return undefined
-    }
-
-    function handleScroll() {
-      setOpenDropdownId(null)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [openDropdownId])
-
-  // Solidify the bar while a desktop dropdown is open so content doesn't show through.
   useStickyNavbar(navRef, {
-    forceSolid: openDropdownId !== null,
+    forceSolid: openId !== null || (isMobileNav && isOpen),
     resetKey: pathname,
   })
 
-  function closeDropdown() {
-    setOpenDropdownId(null)
-  }
-
-  function toggleDropdown(id: string) {
-    setOpenDropdownId((current) => (current === id ? null : id))
+  function handleTopLevelNavClick() {
+    closeAll()
+    closeMenu()
   }
 
   return (
     <div
       ref={navRef}
       data-wf--navbar--variant="base"
-      data-animation="default"
-      data-collapse="medium"
-      data-duration="400"
-      data-easing="ease"
-      data-easing2="ease"
       role="banner"
-      className={`navbar w-nav${isMobileNav && isOpen ? ' is-mobile-menu-open' : ''}`}
+      className={`navbar${isMobileNav && isOpen ? ' is-mobile-menu-open' : ''}`}
     >
-      <div className="container-full w-container">
+      <div className="container-full">
         <div className="w-layout-grid grid-nav">
           <Link
             to="/"
             id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef3f-18a8ef3c"
-            className="brand w-nav-brand"
-            onClick={closeMenu}
+            className="brand"
+            onClick={handleTopLevelNavClick}
           >
             <img
               ref={logoRef}
@@ -606,12 +558,12 @@ export function Navbar() {
             <nav
               role="navigation"
               id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef41-18a8ef3c"
-              className="nav-menu w-nav-menu"
+              className="nav-menu"
             >
               <NavLink
                 to="/about"
                 className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
-                onClick={closeMenu}
+                onClick={handleTopLevelNavClick}
               >
                 About
               </NavLink>
@@ -619,28 +571,29 @@ export function Navbar() {
                 id="solutions"
                 label="Solutions"
                 links={solutionNavLinks}
-                isOpen={openDropdownId === 'solutions'}
-                onToggle={() => toggleDropdown('solutions')}
-                onClose={closeDropdown}
-                closeMenu={closeMenu}
+                isOpen={isDropdownOpen('solutions')}
+                onToggle={() => toggle('solutions')}
+                onClose={closeAll}
               />
               <BusinessesNavDropdown
-                isOpen={openDropdownId === 'businesses'}
-                onToggle={() => toggleDropdown('businesses')}
-                onClose={closeDropdown}
-                closeMenu={closeMenu}
+                isOpen={isDropdownOpen('businesses')}
+                onToggle={() => toggle('businesses')}
+                onClose={closeAll}
+                expandedGroupId={expandedGroupId}
+                onExpandGroup={expandGroup}
+                onToggleGroup={toggleGroup}
               />
               <NavLink
                 to="/sustainability"
                 className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
-                onClick={closeMenu}
+                onClick={handleTopLevelNavClick}
               >
                 Sustainability
               </NavLink>
               <NavLink
                 to="/awards"
                 className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
-                onClick={closeMenu}
+                onClick={handleTopLevelNavClick}
               >
                 Recognition
               </NavLink>
@@ -648,15 +601,14 @@ export function Navbar() {
                 id="media"
                 label="Media"
                 links={mediaNavLinks}
-                isOpen={openDropdownId === 'media'}
-                onToggle={() => toggleDropdown('media')}
-                onClose={closeDropdown}
-                closeMenu={closeMenu}
+                isOpen={isDropdownOpen('media')}
+                onToggle={() => toggle('media')}
+                onClose={closeAll}
               />
               <NavLink
                 to="/career"
                 className={({ isActive }) => `nav-link${isActive ? ' w--current' : ''}`}
-                onClick={closeMenu}
+                onClick={handleTopLevelNavClick}
               >
                 Career
               </NavLink>

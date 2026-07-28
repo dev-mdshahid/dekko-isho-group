@@ -913,3 +913,635 @@
     font-size: 1rem;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mobile-first polish — keeps desktop rules above intact
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Hero ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-bottom: 4.5rem;
+  }
+
+  .industrial-laundry-page .solution-page-hero-video {
+    height: clamp(16rem, 58vw, 26rem);
+  }
+
+  .industrial-laundry-page .solution-page-hero-media-scaler {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .industrial-laundry-page .about-hero-subtitle {
+    max-width: 38ch;
+    margin-inline: auto;
+    padding-inline: 0.5rem;
+    line-height: 1.65;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-top: 5.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .industrial-laundry-page .about-hero-section .about-hero-title-wrap {
+    gap: 1.25rem;
+  }
+
+  .industrial-laundry-page .about-hero-title {
+    font-size: clamp(2.25rem, 10vw, 2.75rem);
+    line-height: 1.1;
+  }
+
+  .industrial-laundry-page .about-hero-subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    max-width: none;
+    padding-inline: 0.25rem;
+  }
+
+  .industrial-laundry-page .solution-page-hero-button {
+    margin-top: 0.35rem;
+  }
+
+  .industrial-laundry-page .solution-page-hero-video {
+    height: clamp(15rem, 72vw, 22rem);
+  }
+}
+
+/* ── 2. Core washing processes ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-capability-cards-header .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-description {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .solution-capability-cards-main {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-header .pre-section-title-wrap {
+    margin-bottom: 0.875rem;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-title {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-description {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-scroll {
+    padding-inline: var(--_layout---container-gutter);
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--_layout---container-gutter);
+  }
+
+  .industrial-laundry-page .solution-capability-cards-track {
+    gap: 0.875rem;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-card {
+    flex: 0 0 min(72vw, 16.5rem);
+    min-width: min(72vw, 16.5rem);
+    height: min(78vw, 22rem);
+    border-radius: 1.25rem;
+    scroll-snap-align: start;
+  }
+
+  .industrial-laundry-page .solution-capability-cards-card-title {
+    font-size: 1.25rem;
+    padding: 1.125rem 1.25rem;
+  }
+}
+
+/* ── 3. Advanced Finishing Capabilities ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-advanced-finishing-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-header .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-description {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .solution-advanced-finishing-main {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-title {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-description {
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-grid {
+    gap: 1.125rem;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-card {
+    padding: 1.25rem;
+    gap: 1.125rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(21, 21, 21, 0.06);
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-card-image {
+    height: min(200px, 52vw);
+    border-radius: 0.75rem;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-card-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .industrial-laundry-page .solution-advanced-finishing-card-description {
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+}
+
+/* ── 4. Production Capacity at Scale ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .mfg-capacity-left .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-title {
+    max-width: none;
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-description {
+    max-width: none;
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metrics {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metric + .mfg-capacity-metric {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metric-label {
+    font-size: 0.8125rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metric-value {
+    margin-top: 0.375rem;
+    font-size: 1.5rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cta {
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cta .primary-button {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster {
+    margin-top: 1.75rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: calc((100% - 0.5rem) / 3);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circle {
+    flex: 0 0 var(--capacity-circle-size);
+    width: var(--capacity-circle-size);
+    max-width: var(--capacity-circle-size);
+    margin-left: 0 !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .mfg-capacity-section .service-step-main.section-spacing {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.125rem);
+    line-height: 1.15;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metrics {
+    gap: 1.125rem;
+    margin-bottom: 1.375rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-metric-value {
+    font-size: 1.375rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster {
+    margin-top: 1.5rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: calc((100% - 0.375rem) / 3);
+    gap: 0.1875rem;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(0.9375rem, 4.2vw, 1.25rem);
+    line-height: 1.1;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-label {
+    font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+    max-width: 86%;
+    gap: 4px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .industrial-laundry-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: calc((100% - 0.25rem) / 3);
+    gap: 0.125rem;
+  }
+}
+
+/* ── 5. Research & Development ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .il-research-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .split-feature-list-section.il-research-section {
+    padding: 3.5rem 0;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-layout {
+    gap: 2rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-title {
+    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-description {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-item {
+    padding: 1.25rem 0;
+    row-gap: 0.375rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-item-title {
+    font-size: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-item-description {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+}
+
+/* ── 6. Modern Washing Laboratory ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .dpd-global-network-section.il-laboratory-section {
+    padding: 4.5rem 0;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
+    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-description {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-grid {
+    margin-top: 2rem;
+    gap: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .dpd-global-network-section.il-laboratory-section {
+    padding: 3.5rem 0;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-description {
+    margin-bottom: 1.75rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-image {
+    aspect-ratio: 4 / 3;
+    border-radius: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-grid {
+    margin-top: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-card-accent {
+    height: 3px;
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-card-number {
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-card-title {
+    font-size: 1.375rem;
+  }
+
+  .industrial-laundry-page .il-laboratory-section .dpd-global-network-card-description {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+}
+
+/* ── 7. Quality Assurance ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .il-quality-assurance-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-layout {
+    gap: 2rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-media {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .split-content-section.il-quality-assurance-section {
+    padding: 3.5rem 0;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-title {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-description {
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-highlight {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-highlight-detail {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .industrial-laundry-page .il-quality-assurance-section .split-content-section-media {
+    aspect-ratio: 5 / 4;
+    border-radius: 1.25rem;
+  }
+}
+
+/* ── 8. Sustainable Washing Technologies ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-sustainable-tech-grid {
+    gap: 1.125rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .solution-sustainable-tech-section {
+    padding: 3.5rem 0;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-title {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-description {
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-grid {
+    gap: 1.125rem;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card {
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(21, 21, 21, 0.06);
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-media {
+    height: min(220px, 56vw);
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-number {
+    top: 12px;
+    left: 12px;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-body {
+    padding: 1.25rem 1.25rem 1.375rem;
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card-title {
+    font-size: 1.375rem;
+  }
+}
+
+/* ── 9. Environmental & Chemical Management ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .dpd-materials-section.il-environmental-section {
+    padding: 4.5rem 0;
+  }
+
+  .industrial-laundry-page .il-environmental-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-description {
+    margin-bottom: 2rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.125rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-media {
+    height: min(320px, 58vw);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .dpd-materials-section.il-environmental-section {
+    padding: 3.5rem 0;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-title {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-description {
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-grid {
+    gap: 1.125rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card {
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 28px rgba(21, 21, 21, 0.08);
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-media {
+    height: min(200px, 52vw);
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-body {
+    gap: 0.75rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-title {
+    font-size: 1.375rem;
+  }
+
+  .industrial-laundry-page .il-environmental-section .dpd-materials-card-description {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+}
+
+/* ── 10. CTA ── */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-cta-section {
+    padding: 3.5rem 0;
+  }
+
+  .industrial-laundry-page .solution-cta-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1.25rem;
+  }
+
+  .industrial-laundry-page .solution-cta-action {
+    justify-self: start;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .industrial-laundry-page .solution-cta-section {
+    padding: 2.75rem 0;
+  }
+
+  .industrial-laundry-page .solution-cta-card {
+    padding: 2rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .industrial-laundry-page .solution-cta-heading {
+    margin-top: 1rem;
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .industrial-laundry-page .solution-cta-description {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+  }
+}

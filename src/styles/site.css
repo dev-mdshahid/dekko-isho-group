@@ -1127,12 +1127,15 @@ figcaption {
 }
 
 .dropdown-link {
+  display: block;
   width: 100%;
   color: var(--color--white);
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 0;
+  text-decoration: none;
   transition: all .3s cubic-bezier(.455, .03, .515, .955);
+  white-space: nowrap;
 }
 
 .dropdown-link:hover, .dropdown-link.w--current {
@@ -1147,19 +1150,48 @@ figcaption {
   place-items: center stretch;
 }
 
+/* React-owned dropdowns (no Webflow .w-dropdown JS binding). */
+.dropdown {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  z-index: 900;
+}
+
+.dropdown.is-open {
+  z-index: 1001;
+}
+
 .dropdown-icon {
   margin-right: 0;
+  transition: transform .25s cubic-bezier(.455, .03, .515, .955);
+}
+
+.dropdown.is-open > .dropdown-toggle .dropdown-icon {
+  transform: rotate(180deg);
 }
 
 .dropdown-list {
   border-radius: var(--border-radius--sm);
   background-color: var(--color--transparent);
+  display: none;
   flex-direction: column;
   left: 0;
   margin-top: .25rem;
-  min-width: 12.5rem;
+  min-width: max-content;
+  width: max-content;
+  position: absolute;
   top: 100%;
   z-index: 1000;
+}
+
+.dropdown.is-open > .dropdown-list,
+.dropdown-list:not([hidden]) {
+  display: block;
+}
+
+.dropdown-list[hidden] {
+  display: none !important;
 }
 
 .dropdown-toggle {
@@ -1174,8 +1206,11 @@ figcaption {
   border: 0;
   color: var(--color--grey-1);
   cursor: pointer;
+  display: inline-flex;
   font-family: inherit;
+  position: relative;
   text-align: left;
+  user-select: none;
 }
 
 .dropdown-toggle:where(.w-variant-9a83067e-2114-aeab-8b10-20c02c30335c), .dropdown-toggle.nav-text-color-white {
@@ -1615,8 +1650,7 @@ figcaption {
   padding: 0;
 }
 
-.nav-dropdown--nested .dropdown-list,
-.nav-dropdown--nested .w-dropdown-list {
+.nav-dropdown--nested .dropdown-list {
   min-width: max-content;
   width: max-content;
 }
@@ -8975,8 +9009,7 @@ a.about-info-box:hover {
     display: block;
   }
 
-  .nav-dropdown--nested .dropdown-list,
-  .nav-dropdown--nested .w-dropdown-list {
+  .nav-dropdown--nested .dropdown-list {
     min-width: 0;
     width: 100%;
   }
@@ -11006,7 +11039,7 @@ a.about-info-box:hover {
 
   .dropdown-link {
     font-size: var(--_typography---body--body-small\<deleted\|variable-3cd03052-6a6e-1cf4-6c9a-2b11970ad536\>);
-    white-space: break-spaces;
+    white-space: nowrap;
   }
 
   .utility-page-content {
@@ -13227,6 +13260,18 @@ a.about-info-box:hover {
 
 /* ── Mobile navigation (max-width: 991px only) ──────────────────────────── */
 
+/* Hidden on desktop; shown inside the mobile media query below. */
+.mobile-nav-toggle {
+  display: none;
+}
+
+/* Kill legacy Webflow navbar overlays — React owns mobile nav. */
+.w-nav-overlay,
+.navbar .w-nav-overlay,
+[data-nav-menu-open] {
+  display: none !important;
+}
+
 @media screen and (max-width: 991px) {
   .mobile-nav-root {
     --mobile-nav-divider: rgba(0, 0, 0, .035);
@@ -13315,90 +13360,66 @@ a.about-info-box:hover {
     transform: rotate(-45deg);
   }
 
-  .mobile-nav-close.is-open .mobile-nav-toggle-line:nth-child(1) {
-    top: calc(50% - .75px);
-    transform: rotate(45deg);
-  }
-
-  .mobile-nav-close.is-open .mobile-nav-toggle-line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-nav-close.is-open .mobile-nav-toggle-line:nth-child(3) {
-    top: calc(50% - .75px);
-    transform: rotate(-45deg);
-  }
-
   .mobile-nav-root {
     inset: 0;
+    pointer-events: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
   }
 
   .mobile-nav-backdrop {
-    background-color: rgba(0, 0, 0, .32);
+    background-color: rgba(15, 23, 42, .28);
     border: 0;
     cursor: pointer;
-    inset: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: 0;
     padding: 0;
+    pointer-events: auto;
     position: absolute;
+    top: var(--navbar-height, 5.5rem);
     z-index: 0;
   }
 
   .mobile-nav-shell {
+    animation: mobile-nav-shell-in .22s cubic-bezier(.22, 1, .36, 1);
     background-color: var(--color--white);
-    display: flex;
-    flex-direction: column;
-    inset: 0;
+    border-bottom: 1px solid rgba(15, 23, 42, .06);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, .12);
+    display: block;
+    left: 0;
+    max-height: min(75dvh, calc(100dvh - var(--navbar-height, 5.5rem)));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    pointer-events: auto;
     position: absolute;
+    right: 0;
+    top: var(--navbar-height, 5.5rem);
     z-index: 1;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .mobile-nav-header {
-    align-items: center;
-    border-bottom: 1px solid var(--mobile-nav-divider);
-    display: flex;
-    flex: none;
-    justify-content: space-between;
-    padding: .875rem 1.25rem;
+  @keyframes mobile-nav-shell-in {
+    from {
+      opacity: 0;
+      transform: translateY(-.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .mobile-nav-brand {
-    display: inline-flex;
-    line-height: 0;
-  }
-
-  .mobile-nav-close {
-    align-items: center;
-    background: none;
-    border: 0;
-    color: var(--color--dark);
-    cursor: pointer;
-    display: inline-flex;
-    height: 2.75rem;
-    justify-content: center;
-    padding: 0;
-    width: 2.75rem;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .mobile-nav-close:focus-visible {
-    outline: 2px solid var(--color--primary-1);
-    outline-offset: 3px;
-  }
-
-  .navbar.is-mobile-menu-open {
-    visibility: hidden;
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav-shell {
+      animation: none;
+    }
   }
 
   .mobile-nav-panel {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    padding: 0 0 2rem;
-    -webkit-overflow-scrolling: touch;
+    padding: 0 0 .5rem;
   }
 
   .mobile-nav-link {
@@ -13413,6 +13434,7 @@ a.about-info-box:hover {
     padding: 1rem 1.25rem;
     text-align: left;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .mobile-nav-panel > .mobile-nav-link,
@@ -13483,6 +13505,7 @@ a.about-info-box:hover {
     font-weight: var(--_typography---body--font-weight-500);
     padding: .8125rem 1.25rem .8125rem 2rem;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .mobile-nav-sublink + .mobile-nav-sublink {
@@ -13511,6 +13534,7 @@ a.about-info-box:hover {
     justify-content: space-between;
     padding: .8125rem 1.25rem .8125rem 2rem;
     text-align: left;
+    white-space: nowrap;
     width: 100%;
   }
 
@@ -13550,10 +13574,6 @@ a.about-info-box:hover {
 }
 
 @media screen and (max-width: 479px) {
-  .mobile-nav-header {
-    padding: .625rem 1rem;
-  }
-
   .mobile-nav-link {
     font-size: 1rem;
     padding: .9375rem 1rem;
@@ -13567,6 +13587,10 @@ a.about-info-box:hover {
 
   .mobile-nav-business-links .mobile-nav-sublink {
     padding-left: 2.25rem;
+  }
+
+  .mobile-nav-contact {
+    padding: 1rem;
   }
 }
 
