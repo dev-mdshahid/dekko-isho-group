@@ -30,6 +30,7 @@ import {
 } from '../data/manufacturing/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
+import { useSolutionAnimations } from '../hooks/useSolutionAnimations'
 import { useWebflowInit } from '../hooks/useWebflowInit'
 
 const ID_PREFIX = 'mfg'
@@ -52,6 +53,7 @@ export function ManufacturingContent() {
 
   useLegacyLinkInterceptor(ref)
   useInViewAnimation(ref)
+  useSolutionAnimations(ref)
   useWebflowInit(ref)
 
   return (

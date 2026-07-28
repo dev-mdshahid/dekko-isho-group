@@ -9,13 +9,22 @@ export function DesignGallerySection() {
   return (
     <section id={id} className="dpd-gallery-section">
       <div className="dpd-gallery-container">
-        <FadeIn id="dpd-gallery-header" className="dpd-gallery-header">
+        <FadeIn
+          id="dpd-gallery-header"
+          className="dpd-gallery-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="dpd-gallery-title">{title}</h2>
           <p className="dpd-gallery-description">{description}</p>
         </FadeIn>
 
-        <FadeIn id="dpd-gallery-row" className="dpd-gallery-row" delay={60}>
+        <FadeIn
+          id="dpd-gallery-row"
+          className="dpd-gallery-row"
+          delay={60}
+          variant="slide-in-bottom"
+        >
           {images.map((image) => (
             <div
               key={image.id}
@@ -26,6 +35,7 @@ export function DesignGallerySection() {
                 loading="lazy"
                 alt={image.alt}
                 className="dpd-gallery-image"
+                data-solution-animate="media-parallax"
               />
             </div>
           ))}

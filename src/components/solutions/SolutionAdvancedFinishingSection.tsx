@@ -33,19 +33,23 @@ export function SolutionAdvancedFinishingSection({
     <section id={id ?? `${idPrefix}-advanced-finishing`} className="solution-advanced-finishing-section">
       <div className="container">
         <div className="solution-advanced-finishing-main">
-          <FadeIn id={`${idPrefix}-advanced-finishing-header`} className="solution-advanced-finishing-header">
+          <FadeIn
+            id={`${idPrefix}-advanced-finishing-header`}
+            className="solution-advanced-finishing-header"
+            variant="slide-in-bottom"
+          >
             <PreSectionTitle title={badge} />
             <h2 className="section-title solution-advanced-finishing-title">{title}</h2>
             <p className="solution-advanced-finishing-description">{description}</p>
           </FadeIn>
 
-          <div className="solution-advanced-finishing-grid">
-            {items.map((item, index) => (
-              <FadeIn
+          <div className="solution-advanced-finishing-grid" data-solution-animate-group>
+            {items.map((item) => (
+              <div
                 key={item.id}
                 id={`${idPrefix}-advanced-finishing-${item.id}`}
                 className="solution-advanced-finishing-card"
-                delay={index * 50}
+                data-solution-animate="tilt-card"
               >
                 <img
                   src={item.image}
@@ -61,7 +65,7 @@ export function SolutionAdvancedFinishingSection({
                     <p className="solution-advanced-finishing-card-description">{item.description}</p>
                   ) : null}
                 </div>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>

@@ -8,19 +8,23 @@ export function DesignCapabilitiesSection() {
   return (
     <section id={id} className="dpd-capabilities-section">
       <div className="dpd-capabilities-container">
-        <FadeIn id="dpd-capabilities-header" className="dpd-capabilities-header">
+        <FadeIn
+          id="dpd-capabilities-header"
+          className="dpd-capabilities-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="dpd-capabilities-title">{title}</h2>
           <p className="dpd-capabilities-description">{description}</p>
         </FadeIn>
 
-        <div className="dpd-capabilities-grid">
-          {items.map((item, index) => (
-            <FadeIn
+        <div className="dpd-capabilities-grid" data-solution-animate-group>
+          {items.map((item) => (
+            <div
               key={item.id}
               id={`dpd-capability-${item.id}`}
               className="dpd-capabilities-card"
-              delay={index * 40}
+              data-solution-animate="tilt-card"
             >
               <div className="dpd-capabilities-card-media">
                 <img
@@ -34,7 +38,7 @@ export function DesignCapabilitiesSection() {
                 <h3 className="dpd-capabilities-card-title">{item.title}</h3>
                 <p className="dpd-capabilities-card-description">{item.description}</p>
               </div>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>

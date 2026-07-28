@@ -4,6 +4,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const COUNTER_BOUND_ATTR = 'data-counter-bound'
 
+function formatCountValue(val: number, decimals: number, suffix: string) {
+  if (decimals > 0) {
+    return `${val.toFixed(decimals)}${suffix}`
+  }
+  return `${Math.floor(val).toLocaleString()}${suffix}`
+}
+
 function initScrollCounters(root: ParentNode = document) {
   gsap.registerPlugin(ScrollTrigger)
   const counters = gsap.utils.toArray<HTMLElement>('.count', root)
@@ -16,7 +23,14 @@ function initScrollCounters(root: ParentNode = document) {
     el.setAttribute(COUNTER_BOUND_ATTR, 'true')
 
     const raw = el.getAttribute('data-target') || '0'
-    const target = parseInt(String(raw).replace(/\D/g, ''), 10) || 0
+    const target = Number.parseFloat(String(raw).replace(/,/g, '')) || 0
+    const decimalsAttr = el.getAttribute('data-decimals')
+    const decimals =
+      decimalsAttr != null && decimalsAttr !== ''
+        ? Number.parseInt(decimalsAttr, 10) || 0
+        : 0
+    const suffix = el.getAttribute('data-suffix') || ''
+
     const customDuration = el.getAttribute('data-duration')
     const duration =
       customDuration != null && customDuration !== ''
@@ -37,7 +51,7 @@ function initScrollCounters(root: ParentNode = document) {
 
     if (!triggerEl) return
 
-    el.textContent = '0'
+    el.textContent = formatCountValue(0, decimals, suffix)
 
     const obj = { val: 0 }
     const tween = gsap.to(obj, {
@@ -47,10 +61,10 @@ function initScrollCounters(root: ParentNode = document) {
       delay,
       paused: true,
       onUpdate: () => {
-        el.textContent = Math.floor(obj.val).toLocaleString()
+        el.textContent = formatCountValue(obj.val, decimals, suffix)
       },
       onComplete: () => {
-        el.textContent = target.toLocaleString()
+        el.textContent = formatCountValue(target, decimals, suffix)
       },
     })
 

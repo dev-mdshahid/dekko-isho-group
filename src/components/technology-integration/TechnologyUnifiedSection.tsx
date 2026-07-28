@@ -9,19 +9,23 @@ export function TechnologyUnifiedSection() {
     <section className="ti-unified-section">
       <div className="ti-unified-glow" aria-hidden="true" />
       <div className="ti-unified-container">
-        <FadeIn id="ti-unified-header" className="ti-unified-header">
+        <FadeIn
+          id="ti-unified-header"
+          className="ti-unified-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} variant="bg-dark" />
           <h2 className="ti-unified-title">{title}</h2>
           <p className="ti-unified-description">{description}</p>
         </FadeIn>
 
-        <div className="ti-unified-grid">
-          {items.map((item, index) => (
-            <FadeIn
+        <div className="ti-unified-grid" data-solution-animate-group>
+          {items.map((item) => (
+            <div
               key={item.id}
               id={`ti-unified-${item.id}`}
               className="ti-unified-card"
-              delay={index * 50}
+              data-solution-animate="card"
             >
               <span
                 className="ti-unified-card-accent"
@@ -33,7 +37,7 @@ export function TechnologyUnifiedSection() {
               </span>
               <h3 className="ti-unified-card-title">{item.title}</h3>
               <p className="ti-unified-card-description">{item.description}</p>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>

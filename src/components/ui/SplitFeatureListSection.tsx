@@ -31,7 +31,11 @@ export function SplitFeatureListSection({
     >
       <div className="split-feature-list-container">
         <div className="split-feature-list-layout">
-          <FadeIn id={`${id ?? 'split-feature'}-intro`} className="split-feature-list-intro">
+          <FadeIn
+            id={`${id ?? 'split-feature'}-intro`}
+            className="split-feature-list-intro"
+            variant="slide-in-bottom"
+          >
             <PreSectionTitle title={badge} />
             <h2 className="split-feature-list-title">{title}</h2>
             <p className="split-feature-list-description">{description}</p>
@@ -41,6 +45,7 @@ export function SplitFeatureListSection({
             id={`${id ?? 'split-feature'}-items`}
             className="split-feature-list-items"
             delay={60}
+            variant="slide-in-bottom"
           >
             {items.map((item) => (
               <div key={item.id} className="split-feature-list-item">

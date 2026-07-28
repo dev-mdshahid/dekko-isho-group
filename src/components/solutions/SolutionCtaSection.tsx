@@ -1,5 +1,4 @@
 import { ButtonArrow } from '../ui/ButtonArrow'
-import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export type SolutionCtaContent = {
@@ -21,7 +20,11 @@ export function SolutionCtaSection({ idPrefix, content }: SolutionCtaSectionProp
   return (
     <section className="solution-cta-section">
       <div className="container">
-        <FadeIn id={`${idPrefix}-cta-card`} className="solution-cta-card">
+        <div
+          id={`${idPrefix}-cta-card`}
+          className="solution-cta-card"
+          data-solution-animate="cta-card"
+        >
           <div className="solution-cta-content">
             <PreSectionTitle title={badge} variant="bg-dark" />
             <h2 className="solution-cta-heading">{heading}</h2>
@@ -30,7 +33,7 @@ export function SolutionCtaSection({ idPrefix, content }: SolutionCtaSectionProp
           <div className="solution-cta-action">
             <ButtonArrow to={buttonHref} label={buttonLabel} variant="button-white-bg" />
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   )

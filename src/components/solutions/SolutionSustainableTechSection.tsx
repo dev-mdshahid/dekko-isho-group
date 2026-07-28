@@ -33,18 +33,22 @@ export function SolutionSustainableTechSection({
       className="solution-sustainable-tech-section"
     >
       <div className="solution-sustainable-tech-container">
-        <FadeIn id={`${idPrefix}-sustainable-tech-header`} className="solution-sustainable-tech-header">
+        <FadeIn
+          id={`${idPrefix}-sustainable-tech-header`}
+          className="solution-sustainable-tech-header"
+          variant="slide-in-bottom"
+        >
           <h2 className="solution-sustainable-tech-title">{title}</h2>
           <p className="solution-sustainable-tech-description">{description}</p>
         </FadeIn>
 
-        <div className="solution-sustainable-tech-grid">
-          {items.map((item, index) => (
-            <FadeIn
+        <div className="solution-sustainable-tech-grid" data-solution-animate-group>
+          {items.map((item) => (
+            <div
               key={item.id}
               id={`${idPrefix}-sustainable-tech-${item.id}`}
               className="solution-sustainable-tech-card"
-              delay={index * 50}
+              data-solution-animate="tilt-card"
             >
               <div className="solution-sustainable-tech-card-media">
                 <img
@@ -60,7 +64,7 @@ export function SolutionSustainableTechSection({
               <div className="solution-sustainable-tech-card-body">
                 <h3 className="solution-sustainable-tech-card-title">{item.title}</h3>
               </div>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>

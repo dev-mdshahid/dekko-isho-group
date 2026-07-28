@@ -33,6 +33,32 @@ const DEFAULT_GRID_LAYOUT: Record<string, CapacityStatLayout> = {
   workforce: { x: 1, y: 1, z: 1 },
 }
 
+/** Parse countable values like "3.5 Million", "71%", "800+", "28". Returns null for complex labels. */
+export function parseCapacityCountValue(value: string): {
+  target: number
+  decimals: number
+  suffix: string
+} | null {
+  const trimmed = value.trim()
+  const match = trimmed.match(/^([\d,]+(?:\.\d+)?)\s*(Million|M|%|\+)?$/i)
+  if (!match) return null
+
+  const numStr = match[1].replace(/,/g, '')
+  const target = Number(numStr)
+  if (!Number.isFinite(target)) return null
+
+  const decimals = numStr.includes('.') ? (numStr.split('.')[1]?.length ?? 0) : 0
+  const rawSuffix = match[2]
+  let suffix = ''
+  if (rawSuffix) {
+    if (/^million$/i.test(rawSuffix)) suffix = ' Million'
+    else if (/^m$/i.test(rawSuffix)) suffix = ' M'
+    else suffix = rawSuffix
+  }
+
+  return { target, decimals, suffix }
+}
+
 function resolveLayout(
   stats: CapacityStat[],
   layout?: Record<string, CapacityStatLayout>,
@@ -78,6 +104,8 @@ export function CapacityStatCircles({
     >
       {stats.map((stat) => {
         const position = resolvedLayout[stat.id] ?? { x: 0, y: 0, z: 1 }
+        const counted = parseCapacityCountValue(stat.value)
+
         return (
           <div
             key={stat.id}
@@ -91,7 +119,20 @@ export function CapacityStatCircles({
             }
           >
             <div className="capacity-stat-circle-inner">
-              <div className="capacity-stat-value">{stat.value}</div>
+              <div className="capacity-stat-value">
+                {counted ? (
+                  <span
+                    className="count"
+                    data-target={String(counted.target)}
+                    data-decimals={counted.decimals > 0 ? String(counted.decimals) : undefined}
+                    data-suffix={counted.suffix || undefined}
+                  >
+                    {stat.value}
+                  </span>
+                ) : (
+                  stat.value
+                )}
+              </div>
               <div className="capacity-stat-label">{stat.label}</div>
             </div>
           </div>

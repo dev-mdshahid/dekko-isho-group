@@ -9,13 +9,22 @@ export function ComplianceQualitySection() {
   return (
     <section className="cs-quality-section">
       <div className="cs-quality-container">
-        <FadeIn id="cs-quality-header" className="cs-quality-header">
+        <FadeIn
+          id="cs-quality-header"
+          className="cs-quality-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="cs-quality-title">{title}</h2>
           <p className="cs-quality-description">{description}</p>
         </FadeIn>
 
-        <FadeIn id="cs-quality-gallery" className="cs-quality-gallery" delay={60}>
+        <FadeIn
+          id="cs-quality-gallery"
+          className="cs-quality-gallery"
+          delay={60}
+          variant="slide-in-bottom"
+        >
           <div className="cs-quality-gallery-row">
             <div className="cs-quality-gallery-primary">
               <img
@@ -23,6 +32,7 @@ export function ComplianceQualitySection() {
                 loading="lazy"
                 alt={primaryImage.alt}
                 className="cs-quality-gallery-image"
+                data-solution-animate="bg-parallax"
               />
             </div>
 
@@ -34,6 +44,7 @@ export function ComplianceQualitySection() {
                     loading="lazy"
                     alt={image.alt}
                     className="cs-quality-gallery-image"
+                    data-solution-animate="media-parallax"
                   />
                 </div>
               ))}
@@ -46,18 +57,19 @@ export function ComplianceQualitySection() {
               loading="lazy"
               alt={bannerImage.alt}
               className="cs-quality-gallery-image"
+              data-solution-animate="bg-parallax"
             />
           </div>
         </FadeIn>
 
         <div className="cs-quality-pillars-wrap">
-          <div className="cs-quality-pillars">
-            {pillars.map((pillar, index) => (
-              <FadeIn
+          <div className="cs-quality-pillars" data-solution-animate-group>
+            {pillars.map((pillar) => (
+              <div
                 key={pillar.id}
                 id={`cs-quality-pillar-${pillar.id}`}
                 className="cs-quality-pillar"
-                delay={index * 50}
+                data-solution-animate="card"
               >
                 <span
                   className="cs-quality-pillar-accent"
@@ -75,7 +87,7 @@ export function ComplianceQualitySection() {
                     </li>
                   ))}
                 </ul>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>

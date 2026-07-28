@@ -1,4 +1,5 @@
 import { manufacturingOperation } from '../../data/manufacturing/content'
+import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export function ManufacturingOperationSection() {
@@ -7,14 +8,22 @@ export function ManufacturingOperationSection() {
   return (
     <section className="mfg-operation-section">
       <div className="mfg-operation-container">
-        <div className="mfg-operation-header">
+        <FadeIn
+          id="mfg-operation-header"
+          className="mfg-operation-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="mfg-operation-title">{title}</h2>
           <p className="mfg-operation-description">{description}</p>
-        </div>
-        <div className="mfg-operation-cards">
+        </FadeIn>
+        <div className="mfg-operation-cards" data-solution-animate-group>
           {cards.map((card) => (
-            <div key={card.id} className="mfg-operation-card">
+            <div
+              key={card.id}
+              className="mfg-operation-card"
+              data-solution-animate="tilt-card"
+            >
               <div className="mfg-operation-card-image-wrapper">
                 <img
                   src={card.image}

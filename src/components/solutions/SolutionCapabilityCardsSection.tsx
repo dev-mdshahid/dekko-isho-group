@@ -43,7 +43,11 @@ export function SolutionCapabilityCardsSection({
   return (
     <section id={id ?? `${idPrefix}-${sectionKey}`} className="solution-capability-cards-section">
       <div className="solution-capability-cards-main">
-        <FadeIn id={`${idPrefix}-${sectionKey}-header`} className="solution-capability-cards-header">
+        <FadeIn
+          id={`${idPrefix}-${sectionKey}-header`}
+          className="solution-capability-cards-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="section-title solution-capability-cards-title">
             {hasAccentTitle ? (
@@ -60,13 +64,13 @@ export function SolutionCapabilityCardsSection({
         </FadeIn>
 
         <div ref={scrollRef} className="solution-capability-cards-scroll">
-          <div className="solution-capability-cards-track">
-            {items.map((item, index) => (
-              <FadeIn
+          <div className="solution-capability-cards-track" data-solution-animate-group>
+            {items.map((item) => (
+              <div
                 key={item.id}
                 id={`${idPrefix}-${sectionKey}-${item.id}`}
                 className="solution-capability-cards-card"
-                delay={index * 60}
+                data-solution-animate="tilt-card"
               >
                 <img
                   src={item.image}
@@ -79,7 +83,7 @@ export function SolutionCapabilityCardsSection({
                 />
                 <div className="solution-capability-cards-card-overlay" aria-hidden="true" />
                 <h3 className="solution-capability-cards-card-title">{item.title}</h3>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>

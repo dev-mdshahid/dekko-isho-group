@@ -10,34 +10,51 @@ export function ComplianceInitiativesSection() {
       <div className="container">
         <div className="more-info-inner cs-initiatives-inner">
           <div className="cs-initiatives-block">
-            <FadeIn id="cs-initiatives-badge" className="cs-initiatives-badge">
+            <FadeIn
+              id="cs-initiatives-badge"
+              className="cs-initiatives-badge"
+              variant="slide-in-bottom"
+            >
               <PreSectionTitle title={badge} />
             </FadeIn>
 
-            <FadeIn id="cs-initiatives-title" className="cs-initiatives-title-wrap">
+            <FadeIn
+              id="cs-initiatives-title"
+              className="cs-initiatives-title-wrap"
+              variant="slide-in-bottom"
+              delay={40}
+            >
               <h2 className="section-title cs-initiatives-title">{title}</h2>
             </FadeIn>
 
-            <FadeIn id="cs-initiatives-copy" className="cs-initiatives-copy" delay={60}>
+            <FadeIn
+              id="cs-initiatives-copy"
+              className="cs-initiatives-copy"
+              delay={80}
+              variant="slide-in-bottom"
+            >
               <p className="cs-initiatives-description">{description}</p>
             </FadeIn>
           </div>
 
           <div className="service-feature-info cs-feature-info">
-            <div className="w-layout-grid grid-feature cs-feature-grid">
-              {features.map((feature, index) => (
-                <FadeIn
+            <div
+              className="w-layout-grid grid-feature cs-feature-grid"
+              data-solution-animate-group
+            >
+              {features.map((feature) => (
+                <div
                   key={feature.id}
                   id={`cs-feature-${feature.id}`}
                   className="feature-main"
-                  delay={index * 60}
+                  data-solution-animate="card"
                 >
                   <div className="feature-icon-wrap">
                     <img src={feature.icon} loading="lazy" alt="" className="feature-icon" />
                   </div>
                   <h2 className="feature-name">{feature.title}</h2>
                   <p className="feature-description">{feature.description}</p>
-                </FadeIn>
+                </div>
               ))}
             </div>
           </div>

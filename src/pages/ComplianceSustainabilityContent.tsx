@@ -16,6 +16,7 @@ import {
 } from '../data/compliance-sustainability/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
+import { useSolutionAnimations } from '../hooks/useSolutionAnimations'
 import { useWebflowInit } from '../hooks/useWebflowInit'
 
 const ID_PREFIX = 'cs'
@@ -25,6 +26,7 @@ export function ComplianceSustainabilityContent() {
 
   useLegacyLinkInterceptor(ref)
   useInViewAnimation(ref)
+  useSolutionAnimations(ref)
   useWebflowInit(ref)
 
   return (

@@ -33,7 +33,11 @@ export function SplitContentSection({
     >
       <div className="split-content-section-container">
         <div className="split-content-section-layout">
-          <FadeIn id={`${id ?? 'split-content'}-copy`} className="split-content-section-copy">
+          <FadeIn
+            id={`${id ?? 'split-content'}-copy`}
+            className="split-content-section-copy"
+            variant="slide-in-bottom"
+          >
             <PreSectionTitle title={badge} />
             <h2 className="split-content-section-title">{title}</h2>
             <p className="split-content-section-description">{description}</p>
@@ -49,12 +53,14 @@ export function SplitContentSection({
             id={`${id ?? 'split-content'}-media`}
             className="split-content-section-media"
             delay={60}
+            variant="slide-in-bottom"
           >
             <img
               src={image}
               loading="lazy"
               alt={imageAlt}
               className="split-content-section-image"
+              data-solution-animate="media-parallax"
             />
           </FadeIn>
         </div>

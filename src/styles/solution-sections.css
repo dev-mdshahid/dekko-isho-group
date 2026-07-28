@@ -1828,3 +1828,64 @@
 .solution-page .solution-advanced-finishing-section .line-wrapper {
   z-index: 0;
 }
+
+/* Card hover polish — homepage-style image zoom + subtle lift */
+@media (hover: hover) and (pointer: fine) {
+  .solution-page .solution-capability-cards-card,
+  .solution-page .solution-advanced-finishing-card,
+  .solution-page .solution-network-card {
+    transition: transform 0.35s ease;
+  }
+
+  .solution-page .solution-capability-cards-card-image,
+  .solution-page .solution-advanced-finishing-card-image,
+  .solution-page .solution-network-card-image {
+    transition: transform 0.45s ease;
+  }
+
+  .solution-page .solution-capability-cards-card:hover .solution-capability-cards-card-image,
+  .solution-page .solution-advanced-finishing-card:hover .solution-advanced-finishing-card-image,
+  .solution-page .solution-network-card:hover .solution-network-card-image {
+    transform: scale(1.05);
+  }
+
+  .solution-page .solution-advanced-finishing-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-page .solution-capability-cards-card,
+  .solution-page .solution-advanced-finishing-card,
+  .solution-page .solution-network-card,
+  .solution-page .solution-capability-cards-card-image,
+  .solution-page .solution-advanced-finishing-card-image,
+  .solution-page .solution-network-card-image {
+    transition: none;
+  }
+
+  .solution-page .solution-capability-cards-card:hover .solution-capability-cards-card-image,
+  .solution-page .solution-advanced-finishing-card:hover .solution-advanced-finishing-card-image,
+  .solution-page .solution-network-card:hover .solution-network-card-image,
+  .solution-page .solution-advanced-finishing-card:hover {
+    transform: none;
+  }
+}
+
+/* Tilt + parallax scaffolding */
+.solution-page [data-solution-animate='tilt-card'] {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.solution-page .split-content-section-media,
+.solution-page .industry-image-section-media,
+.solution-page .dpd-global-network-media,
+.solution-page .dpd-gallery-item,
+.solution-page .ti-dashboard-image-wrap,
+.solution-page .cs-quality-gallery-primary,
+.solution-page .cs-quality-gallery-grid-item,
+.solution-page .cs-quality-gallery-banner {
+  overflow: hidden;
+}
+

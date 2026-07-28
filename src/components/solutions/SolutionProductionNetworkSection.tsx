@@ -65,23 +65,27 @@ export function SolutionProductionNetworkSection({
   return (
     <section id={id ?? `${idPrefix}-production-network`} className={sectionClassName}>
       <div className="solution-network-main">
-        <FadeIn id={`${idPrefix}-network-header`} className="solution-network-header">
+        <FadeIn
+          id={`${idPrefix}-network-header`}
+          className="solution-network-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="section-title solution-network-title">{title}</h2>
           <p className="solution-network-description">{description}</p>
         </FadeIn>
 
         <div ref={scrollRef} className="solution-network-scroll">
-          <div className="solution-network-track">
-            {units.map((unit, index) => {
+          <div className="solution-network-track" data-solution-animate-group>
+            {units.map((unit) => {
               const hasStats = Boolean(unit.monthlyCapacity || unit.productionLines)
 
               return (
-                <FadeIn
+                <div
                   key={unit.id}
                   id={`${idPrefix}-network-${unit.id}`}
                   className={`solution-network-card${hasStats ? ' solution-network-card--stats' : ''}`}
-                  delay={index * 60}
+                  data-solution-animate="tilt-card"
                 >
                   <img
                     src={unit.image}
@@ -139,7 +143,7 @@ export function SolutionProductionNetworkSection({
                       ) : null}
                     </div>
                   </div>
-                </FadeIn>
+                </div>
               )
             })}
           </div>

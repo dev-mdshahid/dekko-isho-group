@@ -35,7 +35,11 @@ export function IndustryImageSection({
     <section className={`industry-image-section${hasAside ? '' : ' industry-image-section--split'}${className ? ` ${className}` : ''}`}>
       <div className="industry-image-section-container">
         <div className="industry-image-section-layout">
-          <FadeIn id="industry-image-copy" className="industry-image-section-copy">
+          <FadeIn
+            id="industry-image-copy"
+            className="industry-image-section-copy"
+            variant="slide-in-bottom"
+          >
             {showBadge && badge ? <PreSectionTitle title={badge} /> : null}
             <h2 className="industry-image-section-title">{title}</h2>
             {description ? (
@@ -43,12 +47,18 @@ export function IndustryImageSection({
             ) : null}
           </FadeIn>
 
-          <FadeIn id="industry-image-media" className="industry-image-section-media" delay={60}>
+          <FadeIn
+            id="industry-image-media"
+            className="industry-image-section-media"
+            delay={60}
+            variant="slide-in-bottom"
+          >
             <img
               src={imageSrc}
               loading="lazy"
               alt={imageAlt}
               className="industry-image-section-photo"
+              data-solution-animate="bg-parallax"
             />
             {hasCaption ? (
               <>

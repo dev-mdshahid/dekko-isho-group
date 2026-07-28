@@ -11,17 +11,33 @@ export function ComplianceReportingSection() {
         <div className="service-category-main cs-reporting-main">
           <div className="service-category-inner">
             <div className="w-layout-grid grid-category-title cs-reporting-header">
-              <FadeIn id="cs-reporting-badge" className="title-grid-left">
+              <FadeIn
+                id="cs-reporting-badge"
+                className="title-grid-left"
+                variant="slide-in-bottom"
+              >
                 <PreSectionTitle title={badge} variant="bg-dark" />
               </FadeIn>
               <div className="cs-reporting-spacer" aria-hidden="true" />
-              <FadeIn id="cs-reporting-title" className="title-grid-right">
+              <FadeIn
+                id="cs-reporting-title"
+                className="title-grid-right"
+                variant="slide-in-bottom"
+                delay={40}
+              >
                 <h2 className="category-title cs-reporting-title">{title}</h2>
               </FadeIn>
             </div>
 
-            <div className="category-content-wrap cs-reporting-table">
-              <FadeIn id="cs-reporting-columns" className="w-layout-grid grid-category-inner">
+            <div
+              className="category-content-wrap cs-reporting-table"
+              data-solution-animate-group
+            >
+              <FadeIn
+                id="cs-reporting-columns"
+                className="w-layout-grid grid-category-inner"
+                variant="slide-in-bottom"
+              >
                 <div className="category-inner-left">
                   <div className="category-text cs-reporting-column-label">
                     {columnLabels.category}
@@ -36,11 +52,11 @@ export function ComplianceReportingSection() {
               </FadeIn>
 
               {items.map((item, index) => (
-                <FadeIn
+                <div
                   key={item.id}
                   id={`cs-reporting-${item.id}`}
                   className={`w-layout-grid grid-category-info cs-reporting-row${index === items.length - 1 ? ' last' : ''}`}
-                  delay={index * 50}
+                  data-solution-animate="card"
                 >
                   <div className="category-name-wrap">
                     <div className="category-name cs-reporting-category">{item.category}</div>
@@ -55,7 +71,7 @@ export function ComplianceReportingSection() {
                       ))}
                     </ul>
                   </div>
-                </FadeIn>
+                </div>
               ))}
             </div>
           </div>

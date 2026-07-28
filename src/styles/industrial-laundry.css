@@ -615,6 +615,21 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.45s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .industrial-laundry-page .solution-sustainable-tech-card:hover .solution-sustainable-tech-card-image {
+    transform: scale(1.05);
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .industrial-laundry-page .solution-sustainable-tech-card {
+    transition: transform 0.35s ease;
+  }
 }
 
 .industrial-laundry-page .solution-sustainable-tech-card-number {

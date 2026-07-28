@@ -8,18 +8,38 @@ export function TechnologyDashboardSection() {
     <section className="ti-dashboard-section">
       <div className="container">
         <div className="ti-dashboard-layout">
-          <FadeIn id="ti-dashboard-title" className="ti-dashboard-title-col">
+          <FadeIn
+            id="ti-dashboard-title"
+            className="ti-dashboard-title-col"
+            variant="slide-in-bottom"
+          >
             <h2 className="ti-dashboard-title">{title}</h2>
           </FadeIn>
 
-          <FadeIn id="ti-dashboard-image" className="ti-dashboard-image-col" delay={60}>
+          <FadeIn
+            id="ti-dashboard-image"
+            className="ti-dashboard-image-col"
+            delay={60}
+            variant="slide-in-bottom"
+          >
             <div className="ti-dashboard-image-wrap">
-              <img src={image} loading="lazy" alt={imageAlt} className="ti-dashboard-image" />
+              <img
+                src={image}
+                loading="lazy"
+                alt={imageAlt}
+                className="ti-dashboard-image"
+                data-solution-animate="media-parallax"
+              />
               <span className="ti-dashboard-image-label">{imageLabel}</span>
             </div>
           </FadeIn>
 
-          <FadeIn id="ti-dashboard-copy" className="ti-dashboard-copy-col" delay={120}>
+          <FadeIn
+            id="ti-dashboard-copy"
+            className="ti-dashboard-copy-col"
+            delay={120}
+            variant="slide-in-bottom"
+          >
             <p className="ti-dashboard-description">{description}</p>
           </FadeIn>
         </div>

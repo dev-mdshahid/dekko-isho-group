@@ -65,7 +65,11 @@ export function ManufacturingCapacitySection({
       <div className="container">
         <div className="service-step-main section-spacing">
           <div className="mfg-capacity-grid">
-            <FadeIn id={`${idPrefix}-capacity-left`} className="mfg-capacity-left">
+            <FadeIn
+              id={`${idPrefix}-capacity-left`}
+              className="mfg-capacity-left"
+              variant="slide-in-bottom"
+            >
               <PreSectionTitle title={badge} />
               <h2 className="section-title mfg-capacity-title">
                 {hasAccentTitle ? (
@@ -105,7 +109,12 @@ export function ManufacturingCapacitySection({
               </div>
             </FadeIn>
 
-            <FadeIn id={`${idPrefix}-capacity-cluster`} className="mfg-capacity-cluster">
+            <FadeIn
+              id={`${idPrefix}-capacity-cluster`}
+              className="mfg-capacity-cluster"
+              variant="slide-in-bottom"
+              delay={60}
+            >
               <CapacityStatCircles stats={stats} />
             </FadeIn>
           </div>

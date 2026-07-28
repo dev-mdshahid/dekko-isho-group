@@ -38,23 +38,38 @@ export function DesignGlobalNetworkSection({
   return (
     <section id={id} className={sectionClassName}>
       <div className="dpd-global-network-container">
-        <FadeIn id={`${idPrefix}-global-network-header`} className="dpd-global-network-header">
+        <FadeIn
+          id={`${idPrefix}-global-network-header`}
+          className="dpd-global-network-header"
+          variant="slide-in-bottom"
+        >
           {badge ? <PreSectionTitle title={badge} /> : null}
           <h2 className="dpd-global-network-title">{title}</h2>
           <p className="dpd-global-network-description">{description}</p>
         </FadeIn>
 
-        <FadeIn id={`${idPrefix}-global-network-media`} className="dpd-global-network-media" delay={40}>
-          <img src={image} loading="lazy" alt={imageAlt} className="dpd-global-network-image" />
+        <FadeIn
+          id={`${idPrefix}-global-network-media`}
+          className="dpd-global-network-media"
+          delay={40}
+          variant="slide-in-bottom"
+        >
+          <img
+            src={image}
+            loading="lazy"
+            alt={imageAlt}
+            className="dpd-global-network-image"
+            data-solution-animate="bg-parallax"
+          />
         </FadeIn>
 
-        <div className="dpd-global-network-grid">
-          {items.map((item, index) => (
-            <FadeIn
+        <div className="dpd-global-network-grid" data-solution-animate-group>
+          {items.map((item) => (
+            <div
               key={item.id}
               id={`${idPrefix}-global-network-${item.id}`}
               className="dpd-global-network-card"
-              delay={index * 50}
+              data-solution-animate="card"
             >
               <span
                 className="dpd-global-network-card-accent"
@@ -66,7 +81,7 @@ export function DesignGlobalNetworkSection({
               </span>
               <h3 className="dpd-global-network-card-title">{item.title}</h3>
               <p className="dpd-global-network-card-description">{item.description}</p>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>

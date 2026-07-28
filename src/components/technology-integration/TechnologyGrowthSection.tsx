@@ -9,22 +9,26 @@ export function TechnologyGrowthSection() {
     <section className="service-category-section ti-growth-section">
       <div className="ti-growth-container">
         <div className="ti-growth-layout">
-          <FadeIn id="ti-growth-intro" className="ti-growth-intro">
+          <FadeIn
+            id="ti-growth-intro"
+            className="ti-growth-intro"
+            variant="slide-in-bottom"
+          >
             <PreSectionTitle title={badge} variant="bg-dark" />
             <h2 className="ti-growth-title">{title}</h2>
           </FadeIn>
 
-          <div className="ti-growth-table">
+          <div className="ti-growth-table" data-solution-animate-group>
             {items.map((item, index) => (
-              <FadeIn
+              <div
                 key={item.id}
                 id={`ti-growth-${item.id}`}
                 className={`ti-growth-row${index === items.length - 1 ? ' last' : ''}`}
-                delay={index * 60}
+                data-solution-animate="card"
               >
                 <h3 className="ti-growth-row-title">{item.title}</h3>
                 <p className="ti-growth-row-description">{item.description}</p>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>

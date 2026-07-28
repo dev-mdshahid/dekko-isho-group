@@ -36,19 +36,23 @@ export function DesignMaterialsSection({
   return (
     <section id={id} className={sectionClassName}>
       <div className="dpd-materials-container">
-        <FadeIn id={`${idPrefix}-materials-header`} className="dpd-materials-header">
+        <FadeIn
+          id={`${idPrefix}-materials-header`}
+          className="dpd-materials-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="dpd-materials-title">{title}</h2>
           {description ? <p className="dpd-materials-description">{description}</p> : null}
         </FadeIn>
 
-        <div className="dpd-materials-grid">
-          {items.map((item, index) => (
-            <FadeIn
+        <div className="dpd-materials-grid" data-solution-animate-group>
+          {items.map((item) => (
+            <div
               key={item.id}
               id={`${idPrefix}-materials-${item.id}`}
               className="dpd-materials-card"
-              delay={index * 40}
+              data-solution-animate="tilt-card"
             >
               <div className="dpd-materials-card-media">
                 <img
@@ -64,7 +68,7 @@ export function DesignMaterialsSection({
                 <h3 className="dpd-materials-card-title">{item.title}</h3>
                 <p className="dpd-materials-card-description">{item.description}</p>
               </div>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>

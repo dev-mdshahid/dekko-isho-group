@@ -9,19 +9,23 @@ export function ManufacturingProductRangeSection() {
   return (
     <section className="mfg-product-range-section">
       <div className="container">
-        <FadeIn id="mfg-product-range-header" className="mfg-product-range-header">
+        <FadeIn
+          id="mfg-product-range-header"
+          className="mfg-product-range-header"
+          variant="slide-in-bottom"
+        >
           <PreSectionTitle title={badge} />
           <h2 className="mfg-product-range-title">{title}</h2>
           <p className="mfg-product-range-description">{description}</p>
         </FadeIn>
 
-        <div className="mfg-product-range-grid">
-          {items.map((item, index) => (
-            <FadeIn
+        <div className="mfg-product-range-grid" data-solution-animate-group>
+          {items.map((item) => (
+            <div
               key={item.id}
               id={`mfg-product-range-${item.id}`}
               className="mfg-product-range-card"
-              delay={index * 40}
+              data-solution-animate="tilt-card"
             >
               <img
                 src={item.image}
@@ -32,7 +36,7 @@ export function ManufacturingProductRangeSection() {
               />
               <div className="mfg-product-range-card-overlay" aria-hidden="true" />
               <h3 className="mfg-product-range-card-label">{item.label}</h3>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>
