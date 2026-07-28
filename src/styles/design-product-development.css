@@ -926,6 +926,8 @@
 
 .design-product-development-page .dpd-global-network-media {
   width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .design-product-development-page .dpd-global-network-image {
@@ -934,7 +936,7 @@
   height: clamp(220px, 40vw, 448px);
   object-fit: cover;
   object-position: center;
-  border-radius: var(--border-radius--lg);
+  border-radius: inherit;
 }
 
 .design-product-development-page .dpd-global-network-grid {
@@ -2012,7 +2014,7 @@
   .design-product-development-page .dpd-global-network-image {
     height: auto;
     aspect-ratio: 16 / 9;
-    border-radius: 1rem;
+    border-radius: inherit;
   }
 
   .design-product-development-page .dpd-global-network-grid {

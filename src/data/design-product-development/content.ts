@@ -168,7 +168,7 @@ export const designProductDevelopmentGlobalNetwork = {
   badge: 'Global Design Network',
   title: 'Close to the market, wherever you are.',
   description: 'We translate global fashion insights into market-ready collections.',
-  image: '/images/design-product-development/global-design-network.jpg',
+  image: '/images/design-product-development/global-design-network.png',
   imageAlt: 'Neutral-toned textured fabrics and knits hanging in a design studio',
   items: [
     {
