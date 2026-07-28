@@ -1,5 +1,6 @@
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
+import { SectionLines } from '../ui/SectionDecor'
 
 export type SolutionCtaContent = {
   badge: string
@@ -35,6 +36,7 @@ export function SolutionCtaSection({ idPrefix, content }: SolutionCtaSectionProp
           </div>
         </div>
       </div>
+      <SectionLines border="grey" />
     </section>
   )
 }

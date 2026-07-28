@@ -16,6 +16,16 @@
   overflow-x: clip;
 }
 
+/* Keep all section guide lines aligned to shared content bounds. */
+.design-product-development-page .line-wrapper {
+  left: max(var(--_layout---container-gutter), calc((100% - var(--dpd-content-max-width)) / 2 + var(--_layout---container-gutter)));
+  right: max(var(--_layout---container-gutter), calc((100% - var(--dpd-content-max-width)) / 2 + var(--_layout---container-gutter)));
+  width: auto;
+  justify-content: space-between;
+  column-gap: 0;
+  row-gap: 0;
+}
+
 /* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
 
 /*

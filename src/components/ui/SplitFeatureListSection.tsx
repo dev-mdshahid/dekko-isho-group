@@ -1,5 +1,6 @@
 import { FadeIn } from './FadeIn'
 import { PreSectionTitle } from './PreSectionTitle'
+import { SectionLines } from './SectionDecor'
 
 export type SplitFeatureListItem = {
   id: string
@@ -56,6 +57,7 @@ export function SplitFeatureListSection({
           </FadeIn>
         </div>
       </div>
+      <SectionLines border="grey" />
     </section>
   )
 }

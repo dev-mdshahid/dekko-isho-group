@@ -1,5 +1,6 @@
 import { FadeIn } from './FadeIn'
 import { PreSectionTitle } from './PreSectionTitle'
+import { SectionLines } from './SectionDecor'
 
 export type SplitContentSectionProps = {
   badge: string
@@ -65,6 +66,7 @@ export function SplitContentSection({
           </FadeIn>
         </div>
       </div>
+      <SectionLines border="grey" />
     </section>
   )
 }

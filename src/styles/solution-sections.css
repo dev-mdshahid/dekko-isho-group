@@ -8,6 +8,43 @@
     var(--solution-brand-start) 0%,
     var(--solution-brand-end) 100%
   );
+  --solution-content-max-width: 1520px;
+}
+
+/* Align section grid-lines to content edges across solution pages. */
+.solution-page .line-wrapper {
+  left: max(var(--_layout---container-gutter), calc((100% - var(--solution-content-max-width)) / 2 + var(--_layout---container-gutter)));
+  right: max(var(--_layout---container-gutter), calc((100% - var(--solution-content-max-width)) / 2 + var(--_layout---container-gutter)));
+  width: auto;
+  justify-content: space-between;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+.solution-page .split-feature-list-section,
+.solution-page .split-content-section,
+.solution-page .solution-capability-cards-section,
+.solution-page .solution-network-section,
+.solution-page .solution-cta-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.solution-page .split-feature-list-container,
+.solution-page .split-content-section-container,
+.solution-page .solution-capability-cards-main,
+.solution-page .solution-network-main,
+.solution-page .solution-cta-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.solution-page .split-feature-list-section .line-wrapper,
+.solution-page .split-content-section .line-wrapper,
+.solution-page .solution-capability-cards-section .line-wrapper,
+.solution-page .solution-network-section .line-wrapper,
+.solution-page .solution-cta-section .line-wrapper {
+  z-index: 0;
 }
 
 /* ── About-style solution page hero (title + CTA + expanding viewport video) ── */
@@ -1829,46 +1866,60 @@
   z-index: 0;
 }
 
-/* Card hover polish — homepage-style image zoom + subtle lift */
+/* Slow image zoom on hover — uses CSS `scale` so it composes with GSAP transforms */
+.solution-page img {
+  scale: 1;
+  transform-origin: center center;
+  transition: scale 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: scale;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .solution-page .solution-capability-cards-card,
-  .solution-page .solution-advanced-finishing-card,
-  .solution-page .solution-network-card {
-    transition: transform 0.35s ease;
-  }
-
-  .solution-page .solution-capability-cards-card-image,
-  .solution-page .solution-advanced-finishing-card-image,
-  .solution-page .solution-network-card-image {
-    transition: transform 0.45s ease;
-  }
-
   .solution-page .solution-capability-cards-card:hover .solution-capability-cards-card-image,
   .solution-page .solution-advanced-finishing-card:hover .solution-advanced-finishing-card-image,
-  .solution-page .solution-network-card:hover .solution-network-card-image {
-    transform: scale(1.05);
-  }
-
-  .solution-page .solution-advanced-finishing-card:hover {
-    transform: translateY(-4px);
+  .solution-page .solution-network-card:hover .solution-network-card-image,
+  .solution-page .solution-sustainable-tech-card:hover .solution-sustainable-tech-card-image,
+  .solution-page .mfg-operation-card:hover .mfg-operation-card-image,
+  .solution-page .mfg-product-range-card:hover .mfg-product-range-card-image,
+  .solution-page .dpd-capabilities-card:hover .dpd-capabilities-card-image,
+  .solution-page .dpd-materials-card:hover .dpd-materials-card-image,
+  .solution-page .dpd-gallery-item:hover .dpd-gallery-image,
+  .solution-page .dpd-global-network-media:hover .dpd-global-network-image,
+  .solution-page .ti-dashboard-image-wrap:hover .ti-dashboard-image,
+  .solution-page .cs-quality-gallery-primary:hover .cs-quality-gallery-image,
+  .solution-page .cs-quality-gallery-grid-item:hover .cs-quality-gallery-image,
+  .solution-page .cs-quality-gallery-banner:hover .cs-quality-gallery-image,
+  .solution-page .split-content-section-media:hover .split-content-section-image,
+  .solution-page .industry-image-section-media:hover .industry-image-section-photo,
+  .solution-page .solution-quality-card:hover .solution-quality-card-image {
+    scale: 1.08;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .solution-page .solution-capability-cards-card,
-  .solution-page .solution-advanced-finishing-card,
-  .solution-page .solution-network-card,
-  .solution-page .solution-capability-cards-card-image,
-  .solution-page .solution-advanced-finishing-card-image,
-  .solution-page .solution-network-card-image {
+  .solution-page img {
     transition: none;
+    will-change: auto;
   }
 
   .solution-page .solution-capability-cards-card:hover .solution-capability-cards-card-image,
   .solution-page .solution-advanced-finishing-card:hover .solution-advanced-finishing-card-image,
   .solution-page .solution-network-card:hover .solution-network-card-image,
-  .solution-page .solution-advanced-finishing-card:hover {
-    transform: none;
+  .solution-page .solution-sustainable-tech-card:hover .solution-sustainable-tech-card-image,
+  .solution-page .mfg-operation-card:hover .mfg-operation-card-image,
+  .solution-page .mfg-product-range-card:hover .mfg-product-range-card-image,
+  .solution-page .dpd-capabilities-card:hover .dpd-capabilities-card-image,
+  .solution-page .dpd-materials-card:hover .dpd-materials-card-image,
+  .solution-page .dpd-gallery-item:hover .dpd-gallery-image,
+  .solution-page .dpd-global-network-media:hover .dpd-global-network-image,
+  .solution-page .ti-dashboard-image-wrap:hover .ti-dashboard-image,
+  .solution-page .cs-quality-gallery-primary:hover .cs-quality-gallery-image,
+  .solution-page .cs-quality-gallery-grid-item:hover .cs-quality-gallery-image,
+  .solution-page .cs-quality-gallery-banner:hover .cs-quality-gallery-image,
+  .solution-page .split-content-section-media:hover .split-content-section-image,
+  .solution-page .industry-image-section-media:hover .industry-image-section-photo,
+  .solution-page .solution-quality-card:hover .solution-quality-card-image {
+    scale: 1;
   }
 }
 
@@ -1878,14 +1929,23 @@
   will-change: transform;
 }
 
-.solution-page .split-content-section-media,
-.solution-page .industry-image-section-media,
-.solution-page .dpd-global-network-media,
+.solution-page .solution-capability-cards-card,
+.solution-page .solution-advanced-finishing-card,
+.solution-page .solution-network-card,
+.solution-page .solution-sustainable-tech-card-media,
+.solution-page .mfg-operation-card-image-wrapper,
+.solution-page .mfg-product-range-card,
+.solution-page .dpd-capabilities-card-media,
+.solution-page .dpd-materials-card-media,
 .solution-page .dpd-gallery-item,
+.solution-page .dpd-global-network-media,
 .solution-page .ti-dashboard-image-wrap,
 .solution-page .cs-quality-gallery-primary,
 .solution-page .cs-quality-gallery-grid-item,
-.solution-page .cs-quality-gallery-banner {
+.solution-page .cs-quality-gallery-banner,
+.solution-page .split-content-section-media,
+.solution-page .industry-image-section-media,
+.solution-page .solution-quality-card {
   overflow: hidden;
 }
 

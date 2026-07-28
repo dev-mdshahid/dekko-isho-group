@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
+import { SectionLines } from '../ui/SectionDecor'
 
 export type SolutionCapabilityCardItem = {
   id: string
@@ -88,6 +89,7 @@ export function SolutionCapabilityCardsSection({
           </div>
         </div>
       </div>
+      <SectionLines border="grey" />
     </section>
   )
 }
