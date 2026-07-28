@@ -16,74 +16,7 @@
   overflow-x: clip;
 }
 
-/* ── Hero (DPD-scoped mobile polish; desktop unchanged) ── */
-@media screen and (max-width: 991px) {
-  .design-product-development-page .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-top: 7.5rem;
-    padding-bottom: 3.5rem;
-  }
-
-  .design-product-development-page .solution-page-hero .about-hero-title-wrap {
-    gap: 1.25rem;
-    padding-inline: 0.25rem;
-  }
-
-  .design-product-development-page .solution-page-hero .about-hero-title {
-    font-size: clamp(1.875rem, 6.5vw, 2.75rem);
-    line-height: 1.15;
-  }
-
-  .design-product-development-page .solution-page-hero .about-hero-subtitle {
-    max-width: 36rem;
-    margin-inline: auto;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .design-product-development-page .solution-page-hero .pre-section-title-wrap {
-    max-width: min(100%, 22rem);
-    text-align: center;
-  }
-
-  .design-product-development-page .solution-page-hero .pre-section-title {
-    white-space: normal;
-    line-height: 1.35;
-  }
-
-  .design-product-development-page .solution-page-hero-video {
-    height: min(72dvh, 36rem);
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .design-product-development-page .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-top: 6.5rem;
-    padding-bottom: 2.5rem;
-  }
-
-  .design-product-development-page .solution-page-hero .about-hero-title-wrap {
-    gap: 1rem;
-  }
-
-  .design-product-development-page .solution-page-hero .about-hero-title {
-    font-size: clamp(1.625rem, 7vw, 2rem);
-  }
-
-  .design-product-development-page .solution-page-hero .about-hero-subtitle {
-    font-size: 0.9375rem;
-    line-height: 1.55;
-  }
-
-  .design-product-development-page .solution-page-hero-button .primary-button {
-    width: 100%;
-    max-width: 20rem;
-    justify-content: center;
-  }
-
-  .design-product-development-page .solution-page-hero-video {
-    height: min(68dvh, 28rem);
-  }
-}
+/* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
 
 /*
  * Shared 1520px content width for all non-hero sections.

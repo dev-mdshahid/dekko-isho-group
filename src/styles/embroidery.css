@@ -10,51 +10,7 @@
   );
 }
 
-/* ── Hero ── */
-@media screen and (max-width: 991px) {
-  .embroidery-page .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-bottom: 4.5rem;
-  }
-
-  .embroidery-page .solution-page-hero-video {
-    height: clamp(16rem, 58vw, 26rem);
-  }
-
-  .embroidery-page .solution-page-hero-media-scaler {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  .embroidery-page .about-hero-subtitle {
-    max-width: 36ch;
-    margin-inline: auto;
-    padding-inline: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .embroidery-page .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-top: 5.5rem;
-    padding-bottom: 2.75rem;
-  }
-
-  .embroidery-page .solution-page-hero-video {
-    height: clamp(14rem, 68vw, 20rem);
-  }
-
-  .embroidery-page .about-hero-title {
-    font-size: clamp(2rem, 9vw, 2.5rem);
-  }
-
-  .embroidery-page .about-hero-subtitle {
-    font-size: 0.9375rem;
-    line-height: 1.65;
-  }
-
-  .embroidery-page .solution-page-hero-button {
-    margin-top: 0.25rem;
-  }
-}
+/* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
 
 /* ── Capabilities ── */
 @media screen and (max-width: 767px) {

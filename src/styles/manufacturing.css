@@ -2062,33 +2062,10 @@
   }
 }
 
-/* ── Manufacturing page: hero + network + capacity mobile polish ── */
+/* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
+
+/* ── Manufacturing page: network + capacity mobile polish ── */
 @media screen and (max-width: 991px) {
-  .manufacturing-page .mfg-hero-section.solution-page-hero.about-hero-section .about-hero-inner {
-    padding-inline: var(--_layout---container-gutter);
-  }
-
-  .manufacturing-page .mfg-hero-section .about-hero-subtitle {
-    max-width: 40rem;
-    margin-inline: auto;
-    line-height: 1.55;
-  }
-
-  .manufacturing-page .solution-page-hero-media {
-    padding-inline: var(--_layout---container-gutter);
-  }
-
-  .manufacturing-page .solution-page-hero-media-scaler {
-    width: 100%;
-    border-radius: var(--border-radius--lg, 1rem);
-    overflow: hidden;
-  }
-
-  .manufacturing-page .solution-page-hero-video {
-    height: min(72vh, 34rem);
-    height: min(72dvh, 34rem);
-  }
-
   .manufacturing-page .solution-network-main {
     gap: 2rem;
     padding-top: 5rem;
@@ -2097,35 +2074,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .manufacturing-page .mfg-hero-section.solution-page-hero.about-hero-section .about-hero-inner {
-    padding-top: 7rem;
-    padding-bottom: 2rem;
-  }
-
-  .manufacturing-page .mfg-hero-section .about-hero-title-wrap {
-    gap: 1.25rem;
-  }
-
-  .manufacturing-page .mfg-hero-section .about-hero-title {
-    font-size: clamp(1.75rem, 8vw, 2.125rem);
-    line-height: 1.15;
-  }
-
-  .manufacturing-page .mfg-hero-section .about-hero-subtitle {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    padding-inline: 0;
-  }
-
-  .manufacturing-page .solution-page-hero-media {
-    padding-inline: 0.75rem;
-  }
-
-  .manufacturing-page .solution-page-hero-video {
-    height: min(68vh, 28rem);
-    height: min(68dvh, 28rem);
-  }
-
   .solution-page .mfg-capacity-section .service-step-main.section-spacing {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
@@ -2498,11 +2446,6 @@
   .solution-page .mfg-capacity-cluster .capacity-stat-circles {
     --capacity-circle-size: clamp(7rem, 41vw, 8.75rem);
     gap: 0.4rem 0.5rem;
-  }
-
-  .manufacturing-page .solution-page-hero-video {
-    height: min(62vh, 24rem);
-    height: min(62dvh, 24rem);
   }
 
   .manufacturing-page .mfg-operation-card-image-wrapper,

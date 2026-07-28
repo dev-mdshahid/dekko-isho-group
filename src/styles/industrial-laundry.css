@@ -918,59 +918,7 @@
    Mobile-first polish — keeps desktop rules above intact
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── 1. Hero ── */
-@media screen and (max-width: 991px) {
-  .industrial-laundry-page .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-bottom: 4.5rem;
-  }
-
-  .industrial-laundry-page .solution-page-hero-video {
-    height: clamp(16rem, 58vw, 26rem);
-  }
-
-  .industrial-laundry-page .solution-page-hero-media-scaler {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  .industrial-laundry-page .about-hero-subtitle {
-    max-width: 38ch;
-    margin-inline: auto;
-    padding-inline: 0.5rem;
-    line-height: 1.65;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .industrial-laundry-page .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-top: 5.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .industrial-laundry-page .about-hero-section .about-hero-title-wrap {
-    gap: 1.25rem;
-  }
-
-  .industrial-laundry-page .about-hero-title {
-    font-size: clamp(2.25rem, 10vw, 2.75rem);
-    line-height: 1.1;
-  }
-
-  .industrial-laundry-page .about-hero-subtitle {
-    font-size: 0.9375rem;
-    line-height: 1.65;
-    max-width: none;
-    padding-inline: 0.25rem;
-  }
-
-  .industrial-laundry-page .solution-page-hero-button {
-    margin-top: 0.35rem;
-  }
-
-  .industrial-laundry-page .solution-page-hero-video {
-    height: clamp(15rem, 72vw, 22rem);
-  }
-}
+/* 1. Hero — mobile styles live in solution-sections.css (shared across all solution pages). */
 
 /* ── 2. Core washing processes ── */
 @media screen and (max-width: 991px) {

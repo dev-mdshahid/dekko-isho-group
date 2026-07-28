@@ -73,15 +73,101 @@
   z-index: 2;
 }
 
+/* Shared mobile/tablet hero — one treatment for all 4 solution pages */
 @media screen and (max-width: 991px) {
   .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-bottom: 120px;
+    padding-top: 7.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .solution-page-hero .about-hero-title-wrap {
+    gap: 1.25rem;
+    padding-inline: 0.25rem;
+  }
+
+  .solution-page-hero.about-hero-section .about-hero-title {
+    font-size: clamp(1.875rem, 6.5vw, 2.75rem);
+    line-height: 1.15;
+  }
+
+  .solution-page-hero .about-hero-subtitle {
+    max-width: 40rem;
+    margin-inline: auto;
+    padding-inline: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .solution-page-hero .pre-section-title-wrap {
+    max-width: min(100%, 22rem);
+    text-align: center;
+  }
+
+  .solution-page-hero .pre-section-title {
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .solution-page-hero-media {
+    padding-inline: var(--_layout---container-gutter);
+  }
+
+  .solution-page-hero-media-scaler {
+    border-radius: var(--border-radius--lg, 1rem);
+    overflow: hidden;
+  }
+
+  .solution-page-hero-video {
+    height: min(72vh, 34rem);
+    height: min(72dvh, 34rem);
   }
 }
 
 @media screen and (max-width: 767px) {
   .solution-page-hero.about-hero-section .about-hero-inner {
-    padding-bottom: 3.5rem;
+    padding-top: 6.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .solution-page-hero .about-hero-title-wrap {
+    gap: 1rem;
+  }
+
+  .solution-page-hero.about-hero-section .about-hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.125rem);
+    line-height: 1.15;
+  }
+
+  .solution-page-hero .about-hero-subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    padding-inline: 0;
+  }
+
+  .solution-page-hero-button {
+    margin-top: 0.25rem;
+  }
+
+  .solution-page-hero-button .primary-button {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
+  }
+
+  .solution-page-hero-media {
+    padding-inline: 0.75rem;
+  }
+
+  .solution-page-hero-video {
+    height: min(68vh, 28rem);
+    height: min(68dvh, 28rem);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .solution-page-hero-video {
+    height: min(62vh, 24rem);
+    height: min(62dvh, 24rem);
   }
 }
 
