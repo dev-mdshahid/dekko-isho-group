@@ -1,3 +1,5 @@
+import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
+
 export const embroideryHero = {
   titleLines: [[{ text: 'Embroidery' }]],
   subtitle:
@@ -78,8 +80,78 @@ export const embroideryTechnology = {
   ],
 }
 
+export const embroideryProductionCapacity = {
+  badge: 'Production Capacity',
+  title: 'Capacity Built for Every Production Schedule',
+  titleLeadingAccent: 'Capacity',
+  titleBefore: 'Built for Every Production',
+  titleAccent: 'Schedule',
+  titleAccentTone: 'amaranth' as const,
+  description:
+    'Designed for high-volume manufacturing, our facility combines advanced machinery, experienced professionals, and efficient production planning to deliver consistent quality while meeting demanding production timelines.',
+  ctaLabel: 'Download Brochure',
+  ctaHref: '/docs/Dekko_ISHO_Group.pdf',
+  stats: [
+    {
+      id: 'monthly-capacity',
+      value: '3,50,000',
+      label: 'Capacity (Pcs/ month)',
+      variant: 'blue',
+    },
+    {
+      id: 'total-machines',
+      value: '06',
+      label: 'Total Machines',
+      variant: 'sky',
+    },
+    {
+      id: 'skilled-professionals',
+      value: '56',
+      label: 'Skilled Professionals',
+      variant: 'pink',
+    },
+  ] satisfies CapacityStat[],
+}
+
+export const embroideryTechnicalDevelopment = {
+  id: 'embroidery-technical-development',
+  badge: 'Technical Development',
+  title: 'Every Design Perfected Before Production',
+  description:
+    'Every embroidery design is digitized, optimized, and sampled before production begins. Our technical team ensures accurate stitch programming, efficient machine performance, and production-ready execution.',
+  items: [
+    {
+      id: 'artwork-optimization',
+      title: 'Artwork Optimization',
+      description: 'Designs digitized and optimized for accurate reproduction',
+    },
+    {
+      id: 'stitch-programming',
+      title: 'Stitch Programming',
+      description: 'Accurate stitch paths for efficient machine performance',
+    },
+    {
+      id: 'sample-development',
+      title: 'Sample Development',
+      description: 'Production-ready execution validated before bulk',
+    },
+  ],
+}
+
+export const embroideryQualityAssurance = {
+  id: 'embroidery-quality-assurance',
+  badge: 'Quality Assurance',
+  title: 'Quality control before a single panel moves.',
+  description:
+    'Every embroidered panel undergoes rigorous quality checks throughout the production process. From design approval and stitch verification to final inspection, we ensure every detail meets customer specifications before moving to the next stage.',
+  highlightTitle: '100% Panel Inspection',
+  highlightDetail: 'Stitch Consistency • Defect Management',
+  image: '/images/embroidery/quality-assurance.jpg',
+  imageAlt: 'Quality audit and sorting tables inspecting embroidered panels',
+}
+
 export const embroideryProductionNetwork = {
-  badge: 'OUR NETWORK',
+  badge: 'Verified scale',
   title: 'Production Network',
   description: 'We operate within a strong, sustainable network for all your needs.',
   units: [
@@ -88,12 +160,22 @@ export const embroideryProductionNetwork = {
       title: 'DGL Embroidery Unit',
       image: '/images/embroidery/dgl-embroidery-unit.png',
       imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
+      monthlyCapacity: '50,00,000',
+      monthlyCapacityLabel: 'Stitching capacity',
+      monthlyCapacityUnit: 'Stitches/day',
+      productionLines: '9',
+      productionLinesLabel: 'Machines',
     },
     {
       id: 'globus',
       title: 'Globus Embroidery',
       image: '/images/embroidery/globus-embroidery.png',
       imageAlt: 'Finished embroidered garments at Globus Embroidery',
+      monthlyCapacity: '350,000',
+      monthlyCapacityLabel: 'Production capacity',
+      monthlyCapacityUnit: 'PCS/month',
+      productionLines: '6',
+      productionLinesLabel: 'Machines',
     },
   ],
 }

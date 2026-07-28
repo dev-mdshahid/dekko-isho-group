@@ -8,8 +8,12 @@ import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 export type ManufacturingCapacityContent = {
   badge: string
   title: string
+  /** Optional leading accent word (Yale Blue). */
+  titleLeadingAccent?: string
   titleBefore?: string
+  /** Optional mid/trailing accent word. Use titleAccentTone when set with titleLeadingAccent. */
   titleAccent?: string
+  titleAccentTone?: 'brand' | 'yale' | 'amaranth'
   titleAfter?: string
   description?: string
   ctaLabel: string
@@ -28,6 +32,12 @@ type ManufacturingCapacitySectionProps = {
   idPrefix?: string
 }
 
+function accentClassName(tone: ManufacturingCapacityContent['titleAccentTone'] = 'brand') {
+  if (tone === 'yale') return 'mfg-capacity-title-accent mfg-capacity-title-accent--yale'
+  if (tone === 'amaranth') return 'mfg-capacity-title-accent mfg-capacity-title-accent--amaranth'
+  return 'mfg-capacity-title-accent'
+}
+
 export function ManufacturingCapacitySection({
   content,
   idPrefix = 'mfg',
@@ -35,8 +45,10 @@ export function ManufacturingCapacitySection({
   const {
     badge,
     title,
+    titleLeadingAccent,
     titleBefore,
     titleAccent,
+    titleAccentTone,
     titleAfter,
     description,
     ctaLabel,
@@ -46,6 +58,8 @@ export function ManufacturingCapacitySection({
     keyMetrics,
   } = content
 
+  const hasAccentTitle = Boolean(titleLeadingAccent || (titleBefore && titleAccent))
+
   return (
     <section id={`${idPrefix}-capacity`} className="service-step-section mfg-capacity-section">
       <div className="container">
@@ -54,10 +68,19 @@ export function ManufacturingCapacitySection({
             <FadeIn id={`${idPrefix}-capacity-left`} className="mfg-capacity-left">
               <PreSectionTitle title={badge} />
               <h2 className="section-title mfg-capacity-title">
-                {titleBefore && titleAccent ? (
+                {hasAccentTitle ? (
                   <>
-                    {titleBefore}{' '}
-                    <span className="mfg-capacity-title-accent">{titleAccent}</span>
+                    {titleLeadingAccent ? (
+                      <>
+                        <span className={accentClassName('yale')}>{titleLeadingAccent}</span>{' '}
+                      </>
+                    ) : null}
+                    {titleBefore ? <>{titleBefore} </> : null}
+                    {titleAccent ? (
+                      <span className={accentClassName(titleAccentTone)}>
+                        {titleAccent}
+                      </span>
+                    ) : null}
                     {titleAfter ? ` ${titleAfter}` : null}
                   </>
                 ) : (

@@ -298,6 +298,14 @@
   color: var(--solution-brand-start);
 }
 
+.solution-page .mfg-capacity-title-accent--yale {
+  color: var(--color--primary-gradient-end);
+}
+
+.solution-page .mfg-capacity-title-accent--amaranth {
+  color: var(--color--secondary-amaranth);
+}
+
 .solution-page .mfg-capacity-metrics {
   display: flex;
   align-items: stretch;

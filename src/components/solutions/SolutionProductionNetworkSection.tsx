@@ -10,7 +10,13 @@ export type SolutionProductionNetworkUnit = {
   image: string
   imageAlt: string
   monthlyCapacity?: string
+  /** Defaults to "Production capacity". */
+  monthlyCapacityLabel?: string
+  /** Defaults to "PCS/month". */
+  monthlyCapacityUnit?: string
   productionLines?: string
+  /** Defaults to "Production lines". */
+  productionLinesLabel?: string
 }
 
 export type SolutionProductionNetworkContent = {
@@ -96,13 +102,17 @@ export function SolutionProductionNetworkSection({
                             {unit.monthlyCapacity ? (
                               <div className="solution-network-card-stat">
                                 <span className="solution-network-card-stat-label">
-                                  Production capacity
+                                  {unit.monthlyCapacityLabel ?? 'Production capacity'}
                                 </span>
                                 <p className="solution-network-card-stat-value">
                                   <span className="solution-network-card-stat-number">
                                     {unit.monthlyCapacity}
                                   </span>
-                                  <span className="solution-network-card-stat-unit">PCS/month</span>
+                                  {unit.monthlyCapacityUnit !== '' ? (
+                                    <span className="solution-network-card-stat-unit">
+                                      {unit.monthlyCapacityUnit ?? 'PCS/month'}
+                                    </span>
+                                  ) : null}
                                 </p>
                               </div>
                             ) : null}
@@ -115,7 +125,7 @@ export function SolutionProductionNetworkSection({
                             {unit.productionLines ? (
                               <div className="solution-network-card-stat">
                                 <span className="solution-network-card-stat-label">
-                                  Production lines
+                                  {unit.productionLinesLabel ?? 'Production lines'}
                                 </span>
                                 <p className="solution-network-card-stat-value">
                                   <span className="solution-network-card-stat-number">
