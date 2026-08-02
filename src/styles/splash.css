@@ -1,12 +1,5 @@
 /* ── Splash screen ───────────────────────────────────────────────── */
 
-html.splash-boot,
-html.splash-boot body,
-html.splash-active,
-html.splash-active body {
-  background: #ffffff;
-}
-
 /* Keep app content invisible until the logo flight begins (backdrop fade reveals it) */
 html.splash-boot #root,
 html.splash-active:not(.splash-revealing):not(.splash-handoff):not(.splash-done) #root {
@@ -38,10 +31,31 @@ html.splash-done #root {
   contain: layout style paint;
 }
 
+/* ── Video splash styles (commented out — logo animation restored) ──
+html.splash-boot,
+html.splash-boot body,
+html.splash-active,
+html.splash-active body {
+  background: #ffffff;
+}
+
 .splash-overlay.is-fading {
   pointer-events: none;
 }
+*/
 
+.splash-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(120% 80% at 50% 40%, rgba(37, 149, 213, 0.06) 0%, transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+/* ── Video splash backdrop / fade (commented out) ──
 .splash-backdrop {
   position: absolute;
   inset: 0;
@@ -56,6 +70,7 @@ html.splash-done #root {
 .splash-overlay.is-fading .splash-video-frame {
   opacity: 0;
 }
+*/
 
 .splash-stage {
   position: relative;
@@ -68,6 +83,7 @@ html.splash-done #root {
   width: min(72vw, 22rem);
 }
 
+/* ── Video splash frame (commented out) ──
 .splash-video-frame {
   position: relative;
   z-index: 1;
@@ -96,10 +112,10 @@ html.splash-done #root {
   border-radius: 0;
   outline: none;
   box-shadow: none;
-  /* Scale past the frame to hide the 1px top/left video edge artifact */
   transform: scale(1.04);
   transform-origin: center center;
 }
+*/
 
 .splash-logo {
   display: block;
