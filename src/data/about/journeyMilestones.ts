@@ -158,11 +158,6 @@ export const journeyMilestones: JourneyMilestone[] = [
     era: 3,
     entries: [
       {
-        title: 'Sprintex',
-        description:
-          'A digital textile printing business specializing in fabric printing solutions.',
-      },
-      {
         title: 'Dekko ISHO Technologies Ltd. (DITECH)',
         description:
           'A strategic technology solutions partner delivering integrated digital infrastructure.',
