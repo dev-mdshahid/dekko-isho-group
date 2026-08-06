@@ -80,27 +80,15 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-color: #191919;
+  background-color: var(--color--white);
+  border: 1px solid rgb(21 21 21 / 0.08);
+  box-shadow: 0 1px 2px rgb(21 21 21 / 0.04);
   flex: 1;
   width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-}
-
-.home-contact-section .page-contact-form-card::before {
-  content: '';
-  position: absolute;
-  right: -18%;
-  bottom: -28%;
-  width: 62%;
-  height: 58%;
-  background: linear-gradient(180deg, var(--color--primary) 0%, var(--color--primary-3) 100%);
-  filter: blur(139.6px);
-  opacity: 0.55;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .home-contact-section .page-contact-form-intro,
@@ -115,9 +103,14 @@
 }
 
 .home-contact-section .page-contact-form-description {
+  color: var(--_color---body-text);
   max-width: 100%;
   white-space: normal;
   overflow-wrap: break-word;
+}
+
+.home-contact-section .page-contact-field-label {
+  color: var(--color--dark);
 }
 
 .home-contact-section .page-contact-form {
@@ -131,6 +124,36 @@
 .home-contact-section .page-contact-textarea {
   max-width: 100%;
   box-sizing: border-box;
+  border: 1px solid rgb(21 21 21 / 0.12);
+  background-color: var(--home-contact-input-bg, #f6f6f6);
+  color: var(--color--dark);
+}
+
+.home-contact-section .page-contact-input::placeholder,
+.home-contact-section .page-contact-textarea::placeholder {
+  color: var(--color--gray-3);
+}
+
+.home-contact-section .page-contact-input:focus,
+.home-contact-section .page-contact-textarea:focus {
+  border-color: var(--home-contact-accent, var(--color--primary));
+  background-color: var(--color--white);
+  outline: 0;
+}
+
+.home-contact-section .page-contact-submit {
+  background-color: var(--home-contact-accent, var(--color--primary));
+  color: var(--color--white);
+}
+
+.home-contact-section .page-contact-submit:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--home-contact-accent, var(--color--primary)) 88%, black);
+  color: var(--color--white);
+}
+
+.home-contact-section .page-contact-form-card .success-message,
+.home-contact-section .page-contact-form-card .error-message {
+  color: var(--color--dark);
 }
 
 .home-contact-section .page-contact-field-row {

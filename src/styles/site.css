@@ -12247,115 +12247,190 @@ a.about-info-box:hover {
 }
 
 .company-section {
-  background-color: #0a0a0a;
-  height: 900px;
+  --company-section-bg: #f7f7f7;
   position: relative;
   overflow: hidden;
+  background-color: var(--company-section-bg);
+  color: var(--color--dark);
+}
+
+.company-section-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/*
+  Studio plate on the right: keeps leaf shadows + soft floor ledge visible
+  (square asset would crop plants if cover-fitted to the full landscape section).
+*/
+.company-section-stage-atmosphere {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(78%, 68rem);
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% 42%;
+  display: block;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%);
+}
+
+.company-section-stage-awards-wrap {
+  position: absolute;
+  right: -2%;
+  bottom: -6%;
+  width: min(82%, 68rem);
+  will-change: transform;
+}
+
+.company-section-stage-awards {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
 }
 
 .company-section-inner {
-  max-width: 82.5rem;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--_layout---container-full-gutter);
-  display: flex;
-  align-items: flex-start;
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  max-width: 82.5rem;
+  min-height: clamp(38rem, 56vw, 46rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(3.5rem, 5vw, 4.75rem) var(--_layout---container-full-gutter)
+    clamp(4rem, 10vw, 7rem);
 }
 
 .company-section-content {
-  max-width: 50rem;
-  width: 55%;
-  padding-top: 0;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 40rem;
+  padding-top: 0.25rem;
 }
 
 .company-section-title {
-  font-size: var(--_typography---h2--h2);
-  line-height: var(--_typography---h2--line-height);
+  color: var(--color--dark);
+  font-size: clamp(2.5rem, 4.6vw, 3.625rem);
+  line-height: 1.08;
   font-weight: var(--_typography---h2--font-weight-600);
+  letter-spacing: -0.02em;
   margin-bottom: 0;
   max-width: none;
 }
 
+.company-section-title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.company-section-accent--pursuit {
+  color: var(--color--secondary-amaranth);
+}
+
+.company-section-accent--difference {
+  color: var(--color--secondary-mint);
+}
+
 .company-section-description {
-  color: var(--color--gray-3);
-  font-size: var(--_typography---body--body-sm);
-  line-height: var(--_typography---body--line-height);
-  max-width: none;
-  margin-top: 1.5rem;
+  color: #6b7280;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  font-weight: var(--_typography---body--font-weight-500);
+  max-width: 28rem;
+  margin-top: 1.35rem;
   margin-bottom: 0;
 }
 
 .company-section-button {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   line-height: var(--_typography---body--line-height-0);
 }
 
+.company-section-button .primary-button {
+  border: 1px solid rgb(21 21 21 / 0.08);
+  box-shadow: 0 10px 28px rgb(21 21 21 / 0.06);
+}
+
 @media screen and (max-width: 991px) {
-  .company-section {
-    background-position: 72% center;
-    height: auto;
-    min-height: 32rem;
+  .company-section-stage-atmosphere {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 22%);
+    object-position: 70% 35%;
+  }
+
+  .company-section-stage-awards-wrap {
+    left: auto;
+    right: -4%;
+    bottom: -2%;
+    width: min(96%, 40rem);
+    margin-inline: 0 0;
   }
 
   .company-section-inner {
-    min-height: 32rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    min-height: 0;
+    padding-top: 3.25rem;
+    padding-bottom: clamp(14rem, 52vw, 20rem);
   }
 
   .company-section-content {
-    max-width: 30rem;
-    width: 100%;
+    max-width: 36rem;
   }
 
   .company-section-title {
-    font-size: var(--font-size--2-125rem\<deleted\|variable-76401e84-c0c5-8355-64d0-16402f07f279\>);
+    font-size: clamp(1.875rem, 4.5vw, 2.5rem);
+  }
+
+  .company-section-title-line {
+    white-space: nowrap;
   }
 
   .company-section-description {
-    margin-top: 1.25rem;
-    max-width: none;
+    margin-top: 1.2rem;
   }
 
   .company-section-button {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .company-section {
-    min-height: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
+  .company-section-stage-atmosphere {
+    opacity: 0.85;
   }
 
-  .company-section::before {
-    display: none;
+  .company-section-stage-awards-wrap {
+    left: 0;
+    right: 0;
+    width: min(120%, 28rem);
+    bottom: 0;
+    margin-inline: auto;
   }
 
   .company-section-inner {
-    order: 1;
-    min-height: auto;
-    height: auto;
     padding-top: 2.5rem;
-    padding-bottom: 1.5rem;
-    align-items: flex-start;
+    padding-bottom: clamp(12rem, 72vw, 18rem);
   }
 
   .company-section-content {
     max-width: 100%;
-    width: 100%;
-    position: relative;
-    z-index: 1;
   }
 
   .company-section-title {
-    font-size: clamp(1.5rem, 6.5vw, 2rem);
-    line-height: 1.15;
+    font-size: clamp(1.5rem, 6.5vw, 1.875rem);
+    line-height: 1.12;
+  }
+
+  .company-section-title-line {
+    white-space: normal;
   }
 
   .company-section-description {
@@ -12368,7 +12443,12 @@ a.about-info-box:hover {
   .company-section-button {
     margin-top: 1.5rem;
   }
+}
 
+@media (prefers-reduced-motion: reduce) {
+  .company-section-stage-awards-wrap {
+    will-change: auto;
+  }
 }
 
 .company-logos-section {

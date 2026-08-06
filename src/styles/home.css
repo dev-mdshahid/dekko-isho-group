@@ -679,46 +679,6 @@
   transition: transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.company-section-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: #0a0a0a;
-  background-image: url('/images/awards/all-awards.png');
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  pointer-events: none;
-}
-
-@media screen and (max-width: 767px) {
-  .company-section-bg {
-    position: relative;
-    inset: auto;
-    order: 2;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background-position: center;
-    background-size: cover;
-  }
-}
-
-.company-section-gradient-text {
-  background-size: 200% auto;
-  animation: company-gradient-shimmer 4s ease-in-out infinite;
-}
-
-@keyframes company-gradient-shimmer {
-  0%,
-  100% {
-    background-position: 0% center;
-  }
-
-  50% {
-    background-position: 100% center;
-  }
-}
-
 .solutions-expertise-card-inner[data-home-animate='solutions-panel'] {
   overflow: hidden;
 }
@@ -734,10 +694,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .company-section-gradient-text {
-    animation: none;
-  }
-
   .about-section .about-business-card[data-home-animate='about-card'] {
     will-change: auto;
   }

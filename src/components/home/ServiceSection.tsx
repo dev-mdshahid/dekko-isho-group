@@ -177,18 +177,6 @@ export function ServiceSection() {
           </div>
         </div>
       </div>
-      <div className="service-section-gradient" aria-hidden="true">
-        <div className="service-section-gradient-spacer" />
-        <div className="service-section-gradient-image-wrap">
-          <img
-            src="/images/backgrounds/gradient-section.png"
-            loading="lazy"
-            decoding="async"
-            alt=""
-            className="service-section-gradient-image"
-          />
-        </div>
-      </div>
     </section>
   )
 }

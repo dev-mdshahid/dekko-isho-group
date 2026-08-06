@@ -7,30 +7,33 @@ gsap.registerPlugin(ScrollTrigger)
 
 export function initCompanyAnimations(scope: ParentNode): AnimationCleanup {
   const section = scope.querySelector<HTMLElement>('.company-section')
-  const bg = scope.querySelector<HTMLElement>('[data-home-animate="company-bg"]')
+  const awards = scope.querySelector<HTMLElement>('[data-home-animate="company-bg"]')
   if (!section) return () => {}
 
   const reduced = prefersReducedMotion()
   const triggers: ScrollTrigger[] = []
   const tweens: gsap.core.Tween[] = []
 
-  if (bg && !reduced) {
-    gsap.set(bg, { scale: 1, transformOrigin: 'center right' })
+  if (awards && !reduced) {
+    gsap.set(awards, { yPercent: 0, transformOrigin: 'center bottom' })
 
-    const bgTween = gsap.to(bg, {
-      scale: 1.08,
-      backgroundPosition: '48% center',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.8,
+    const awardsTween = gsap.fromTo(
+      awards,
+      { yPercent: 4 },
+      {
+        yPercent: -2,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.9,
+        },
       },
-    })
+    )
 
-    if (bgTween.scrollTrigger) triggers.push(bgTween.scrollTrigger)
-    tweens.push(bgTween)
+    if (awardsTween.scrollTrigger) triggers.push(awardsTween.scrollTrigger)
+    tweens.push(awardsTween)
   }
 
   return () => {
