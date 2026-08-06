@@ -4,7 +4,7 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
-const OVERVIEW_IMAGE = '/images/skyview-company.png'
+const OVERVIEW_IMAGE = '/images/about/old-machine.png'
 
 function CapabilityArrow() {
   return (
@@ -44,12 +44,14 @@ export function AboutOverviewSection() {
             <div className="about-three-content">
               <div className="w-layout-grid grid-about-three-content">
                 <FadeIn id="69a2580e-e525-9745-7bb9-9e825aa740ad" className="about-three-author">
-                  <img
-                    src={OVERVIEW_IMAGE}
-                    loading="lazy"
-                    alt="Aerial view of Dekko Isho Group facilities with solar panels"
-                    className="about-author-image"
-                  />
+                  <div className="about-overview-visual">
+                    <img
+                      src={OVERVIEW_IMAGE}
+                      loading="lazy"
+                      alt="Vintage industrial machine representing Dekko Isho Group origins"
+                      className="about-author-image about-overview-machine"
+                    />
+                  </div>
                 </FadeIn>
                 <div className="about-story-info">
                   <FadeIn id="ff2a1434-ba51-2c54-8317-c7a44458a67e" className="about-story-info-inner">

@@ -11,7 +11,6 @@ const STROKE_OPACITY_MIN_MOBILE = 0.22
 const STROKE_OPACITY_MAX_MOBILE = 0.4
 const STROKE_PARALLAX_PX = 36
 const STROKE_PARALLAX_PX_MOBILE = 18
-const FLOURISH_PROGRESS_TRIGGER = 0.88
 const SCROLL_READ_ANCHOR = 0.72
 
 function isMobile() {
@@ -219,61 +218,11 @@ function buildSpinePath(section: HTMLElement): SpineBuild {
   return { pathLen, nodeThresholds, mobile: false }
 }
 
-function prepareFlourish(flourish: SVGElement | null) {
-  if (!flourish) return [] as SVGPathElement[]
-
-  const paths = Array.from(flourish.querySelectorAll('path'))
-  paths.forEach((path) => {
-    const length = path.getTotalLength()
-    path.style.strokeDasharray = `${length}`
-    path.style.strokeDashoffset = `${length}`
-  })
-  flourish.classList.remove('is-drawn')
-  return paths
-}
-
-function drawFlourish(flourish: SVGElement | null, paths: SVGPathElement[]) {
-  if (!flourish || !paths.length || flourish.classList.contains('is-drawn')) return
-  flourish.classList.add('is-drawn')
-
-  gsap.to(flourish, {
-    opacity: isMobile() ? 0.42 : 0.9,
-    y: 0,
-    duration: 0.9,
-    ease: 'power2.out',
-    overwrite: 'auto',
-  })
-
-  gsap.to(paths, {
-    strokeDashoffset: 0,
-    duration: 1.15,
-    ease: 'power2.out',
-    stagger: 0.12,
-    overwrite: 'auto',
-  })
-}
-
-function resetFlourish(flourish: SVGElement | null, paths: SVGPathElement[]) {
-  if (!flourish || !paths.length) return
-
-  gsap.killTweensOf([flourish, ...paths])
-  flourish.classList.remove('is-drawn')
-
-  paths.forEach((path) => {
-    const length = path.getTotalLength()
-    path.style.strokeDasharray = `${length}`
-    path.style.strokeDashoffset = `${length}`
-  })
-
-  gsap.set(flourish, { opacity: isMobile() ? 0.18 : 0.35, y: 18 })
-}
-
 export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
   const flow = section.querySelector<HTMLElement>('[data-journey-flow]')
   const fill = section.querySelector<SVGPathElement>('[data-journey-spine-fill]')
   const mobileFill = section.querySelector<HTMLElement>('[data-journey-mobile-fill]')
   const strokeBg = section.querySelector<HTMLElement>('.about-journey-stroke-bg')
-  const flourish = section.querySelector<SVGElement>('.about-journey-flourish')
   const rows = Array.from(section.querySelectorAll<HTMLElement>('[data-journey-row]'))
   const dots = Array.from(section.querySelectorAll<HTMLElement>('[data-journey-dot]'))
 
@@ -286,13 +235,7 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
   let rafId = 0
   let targetProgress = 0
   let currentProgress = 0
-  let flourishDrawn = false
   const revealObservers: IntersectionObserver[] = []
-  let flourishPaths = prepareFlourish(flourish)
-
-  if (flourish && !prefersReducedMotion()) {
-    gsap.set(flourish, { opacity: isMobile() ? 0.18 : 0.35, y: 18 })
-  }
 
   const setReducedFinalState = () => {
     fill.style.strokeDashoffset = '0'
@@ -303,13 +246,6 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
     if (strokeBg) {
       strokeBg.style.opacity = String(isMobile() ? STROKE_OPACITY_MAX_MOBILE : STROKE_OPACITY_MAX)
       strokeBg.style.transform = ''
-    }
-    if (flourish) {
-      flourish.classList.add('is-drawn')
-      gsap.set(flourish, { clearProps: 'opacity,transform' })
-      flourishPaths.forEach((path) => {
-        path.style.strokeDashoffset = '0'
-      })
     }
   }
 
@@ -363,33 +299,11 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
     const max = mobileMode ? STROKE_OPACITY_MAX_MOBILE : STROKE_OPACITY_MAX
     const parallax = mobileMode ? STROKE_PARALLAX_PX_MOBILE : STROKE_PARALLAX_PX
     const opacity = min + (max - min) * p
-    const y = (0.5 - p) * parallax
+    // Never lift strokes above the section edge — keeps endpoints flush at the bottom
+    const y = Math.max(0, (0.5 - p) * parallax)
 
     strokeBg.style.opacity = String(opacity)
     strokeBg.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`
-  }
-
-  const isFlourishInView = () => {
-    if (!flourish) return false
-    const rect = flourish.getBoundingClientRect()
-    return rect.top <= window.innerHeight * 0.92 && rect.bottom >= 0
-  }
-
-  const updateFlourish = (progress: number) => {
-    if (prefersReducedMotion() || !flourish) return
-
-    const shouldDraw = mobileMode ? isFlourishInView() : progress >= FLOURISH_PROGRESS_TRIGGER
-
-    if (shouldDraw) {
-      if (flourishDrawn) return
-      flourishDrawn = true
-      drawFlourish(flourish, flourishPaths)
-      return
-    }
-
-    if (!flourishDrawn) return
-    flourishDrawn = false
-    resetFlourish(flourish, flourishPaths)
   }
 
   const applyFill = (progress: number) => {
@@ -430,7 +344,6 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
 
     applyFill(currentProgress)
     updateNodes(currentProgress)
-    updateFlourish(currentProgress)
   }
 
   const syncScroll = () => {
@@ -450,15 +363,11 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
     pathLen = built.pathLen
     nodeThresholds = built.nodeThresholds
     mobileMode = built.mobile
-    flourishPaths = prepareFlourish(flourish)
-    flourishDrawn = false
 
     if (prefersReducedMotion()) {
       setReducedFinalState()
       return
     }
-
-    if (flourish) gsap.set(flourish, { opacity: mobileMode ? 0.18 : 0.35, y: 18 })
 
     if (!mobileMode && !pathLen) {
       fill.style.strokeDashoffset = '0'
@@ -543,15 +452,6 @@ export function initJourneyAnimations(section: HTMLElement): AnimationCleanup {
       gsap.set(dot, { clearProps: 'scale' })
       dot.classList.remove('is-active')
     })
-    if (flourish) {
-      gsap.killTweensOf([flourish, ...flourishPaths])
-      gsap.set(flourish, { clearProps: 'opacity,transform' })
-      flourishPaths.forEach((path) => {
-        path.style.strokeDasharray = ''
-        path.style.strokeDashoffset = ''
-      })
-      flourish.classList.remove('is-drawn')
-    }
     if (strokeBg) {
       strokeBg.style.opacity = ''
       strokeBg.style.transform = ''

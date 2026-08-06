@@ -17,7 +17,7 @@ export const strengthItems: StrengthItem[] = [
     title: 'Integrated Manufacturing Ecosystem',
     description:
       'A fully integrated apparel platform encompassing design, sourcing, manufacturing, washing, embroidery, printing, testing, and packaging under one umbrella.',
-    image: '/images/strength/integrated-manufacturing.jpg',
+    image: '/images/strength/integrated-manufacturing.png',
     imageAlt: 'Workers on a garment factory floor with rows of sewing machines',
   },
   {
@@ -71,7 +71,7 @@ export const strengthItems: StrengthItem[] = [
     title: 'Sustainability Leadership',
     description:
       'LEED Gold-certified facilities, renewable energy investments, water recycling, waste reduction programs, circular economy initiatives, and ambitious ESG goals for 2030.',
-    image: '/images/strength/sustainability-leadership.jpg',
+    image: '/images/strength/sustainability-leadership.png',
     imageAlt: 'Aerial view of a green industrial complex with landscaped surroundings',
   },
   {

@@ -112,35 +112,6 @@ export function AboutJourneySection() {
           </div>
         </div>
       </div>
-
-      <svg
-        className="about-journey-flourish"
-        viewBox="0 0 420 220"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <path
-          d="M40 190 C 120 40, 220 40, 320 160"
-          fill="none"
-          stroke={journeyEraColors[1]}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M70 200 C 150 55, 250 55, 360 175"
-          fill="none"
-          stroke={journeyEraColors[2]}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M100 205 C 175 70, 275 70, 390 185"
-          fill="none"
-          stroke={journeyEraColors[3]}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
     </section>
   )
 }
