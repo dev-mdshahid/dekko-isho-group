@@ -67,7 +67,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     title: 'Embroidery',
     description:
       'In-house embroidery capability with quality control, defect management and production-ready finishing.',
-    image: `${SOLUTIONS_IMAGES}/embroidery-unit.jpg`,
+    image: `${SOLUTIONS_IMAGES}/embroidery-unit.png`,
     imageAlt: 'Multi-head industrial embroidery machines',
     features: [
       'Placement & Color Accuracy',
@@ -90,7 +90,7 @@ export const solutionsExpertiseDecorImages = [
     className: 'solutions-expertise-decor--left-bottom',
   },
   {
-    src: `${SOLUTIONS_IMAGES}/embroidery-unit.jpg`,
+    src: `${SOLUTIONS_IMAGES}/embroidery-unit.png`,
     alt: 'Industrial embroidery machines',
     className: 'solutions-expertise-decor--right-top',
   },

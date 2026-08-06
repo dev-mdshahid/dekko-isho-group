@@ -306,7 +306,7 @@
 .about-business-card__overlay {
   pointer-events: none;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.38) 100%);
-  transition: background 0.3s ease;
+  transition: background 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
   position: absolute;
   inset: 0;
 }
@@ -360,7 +360,7 @@
   width: 1.5rem;
   height: 1.5rem;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -465,11 +465,12 @@
 }
 
 .about-section .about-carousel-track {
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.95s cubic-bezier(0.22, 0.61, 0.36, 1);
   will-change: transform;
 }
 
-.about-section .about-carousel-track.is-reduced-motion {
+.about-section .about-carousel-track.is-reduced-motion,
+.about-section .about-carousel-track.is-suppressing-transition {
   transition: none;
 }
 
@@ -675,7 +676,7 @@
 }
 
 .about-section .about-business-card__media {
-  transition: transform 0.35s ease;
+  transition: transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .company-section-bg {

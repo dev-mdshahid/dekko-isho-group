@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type TransitionEvent } from 'react'
 import { Link } from 'react-router-dom'
 
 import { solutionPath } from '../../data/solutions/solutions'
@@ -8,7 +8,7 @@ import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 const ABOUT_CARD_GAP = 40
-const CAROUSEL_INTERVAL_MS = 3000
+const CAROUSEL_INTERVAL_MS = 4800
 
 const INDUSTRY_DESCRIPTION =
   'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.'
@@ -324,26 +324,77 @@ function getVisibleCardCount(viewportWidth: number) {
 export function AboutSection() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const wrapFrameRef = useRef<number | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [slideStep, setSlideStep] = useState(0)
   const [visibleCount, setVisibleCount] = useState(3)
   const [isPaused, setIsPaused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [suppressTransition, setSuppressTransition] = useState(false)
 
-  const slideCount = Math.max(1, industries.length - visibleCount + 1)
-  const maxIndex = slideCount - 1
+  const loopedIndustries = useMemo(
+    () => [...industries, ...industries.slice(0, visibleCount)],
+    [visibleCount],
+  )
 
-  const goToSlide = useCallback((index: number) => {
-    setActiveIndex(((index % slideCount) + slideCount) % slideCount)
-  }, [slideCount])
+  const snapWithoutTransition = useCallback((index: number) => {
+    if (wrapFrameRef.current !== null) {
+      window.cancelAnimationFrame(wrapFrameRef.current)
+    }
+
+    setSuppressTransition(true)
+    setActiveIndex(index)
+
+    wrapFrameRef.current = window.requestAnimationFrame(() => {
+      wrapFrameRef.current = window.requestAnimationFrame(() => {
+        setSuppressTransition(false)
+        wrapFrameRef.current = null
+      })
+    })
+  }, [])
 
   const goToPrevious = useCallback(() => {
-    goToSlide(activeIndex - 1)
-  }, [activeIndex, goToSlide])
+    if (activeIndex === 0) {
+      if (wrapFrameRef.current !== null) {
+        window.cancelAnimationFrame(wrapFrameRef.current)
+      }
+
+      setSuppressTransition(true)
+      setActiveIndex(industries.length)
+
+      wrapFrameRef.current = window.requestAnimationFrame(() => {
+        wrapFrameRef.current = window.requestAnimationFrame(() => {
+          setSuppressTransition(false)
+          setActiveIndex(industries.length - 1)
+          wrapFrameRef.current = null
+        })
+      })
+      return
+    }
+
+    setActiveIndex((current) => current - 1)
+  }, [activeIndex])
 
   const goToNext = useCallback(() => {
-    goToSlide(activeIndex + 1)
-  }, [activeIndex, goToSlide])
+    setActiveIndex((current) => (current >= industries.length ? current : current + 1))
+  }, [])
+
+  const handleTrackTransitionEnd = useCallback(
+    (event: TransitionEvent<HTMLDivElement>) => {
+      if (event.target !== trackRef.current) return
+      if (event.propertyName !== 'transform') return
+      if (activeIndex < industries.length) return
+
+      snapWithoutTransition(0)
+    },
+    [activeIndex, snapWithoutTransition],
+  )
+
+  useEffect(() => {
+    if (!prefersReducedMotion) return
+    if (activeIndex < industries.length) return
+    setActiveIndex(0)
+  }, [activeIndex, prefersReducedMotion])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -377,21 +428,36 @@ export function AboutSection() {
   }, [])
 
   useEffect(() => {
-    setActiveIndex((current) => Math.min(current, maxIndex))
-  }, [maxIndex])
+    setActiveIndex((current) => Math.min(current, industries.length))
+  }, [visibleCount])
 
   useEffect(() => {
-    if (isPaused || prefersReducedMotion || slideCount <= 1) return
+    if (isPaused || prefersReducedMotion || industries.length <= 1) return
 
     const timerId = window.setInterval(() => {
-      setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1))
+      setActiveIndex((current) => (current >= industries.length ? current : current + 1))
     }, CAROUSEL_INTERVAL_MS)
 
     return () => window.clearInterval(timerId)
-  }, [activeIndex, isPaused, maxIndex, prefersReducedMotion, slideCount])
+  }, [activeIndex, isPaused, prefersReducedMotion])
+
+  useEffect(() => {
+    return () => {
+      if (wrapFrameRef.current !== null) {
+        window.cancelAnimationFrame(wrapFrameRef.current)
+      }
+    }
+  }, [])
 
   const pauseCarousel = useCallback(() => setIsPaused(true), [])
   const resumeCarousel = useCallback(() => setIsPaused(false), [])
+
+  const trackMotionClass = [
+    prefersReducedMotion ? 'is-reduced-motion' : '',
+    suppressTransition ? 'is-suppressing-transition' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <section id="About-Section" className="about-section">
@@ -422,16 +488,17 @@ export function AboutSection() {
             >
               <div
                 ref={trackRef}
-                className={`about-info-inner is-scroll about-carousel-track${prefersReducedMotion ? ' is-reduced-motion' : ''}`}
+                className={`about-info-inner is-scroll about-carousel-track${trackMotionClass ? ` ${trackMotionClass}` : ''}`}
                 style={
                   slideStep
                     ? { transform: `translate3d(-${activeIndex * slideStep}px, 0, 0)` }
                     : undefined
                 }
+                onTransitionEnd={handleTrackTransitionEnd}
               >
-                {industries.map((item, index) =>
+                {loopedIndustries.map((item, index) =>
                   item.type === 'text' ? (
-                    <IndustryTextCircle key={item.id} {...item} />
+                    <IndustryTextCircle key={`${item.id}-${index}`} {...item} />
                   ) : (
                     <IndustryImageCircle key={`${item.alt}-${index}`} {...item} />
                   ),

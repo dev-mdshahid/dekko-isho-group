@@ -43,7 +43,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     imageWId: '77cde797-b601-13a8-b976-f135a003b6a3',
     arrowWIds: ['77cde797-b601-13a8-b976-f135a003b6b7', '77cde797-b601-13a8-b976-f135a003b6b8'],
     wrapperClass: 'two',
-    title: 'Visibility Across the Value Chain',
+    title: 'End-to-End Transparency',
     icon: '/images/specialities/visibility-icon.png',
     image: '/images/specialities/visibility.png',
     featureLabel: 'Operational Transparency',

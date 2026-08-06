@@ -20,7 +20,7 @@ export const solutions: Solution[] = [
     title: 'Embroidery Unit',
     description:
       'Precision embroidery and applied decoration, kept in-house with high-capacity Barudan and Maya machines.',
-    image: '/images/solutions/embroidery-unit.jpg',
+    image: '/images/solutions/embroidery-unit.png',
     imageAlt: 'Industrial embroidery machines',
   },
   {
