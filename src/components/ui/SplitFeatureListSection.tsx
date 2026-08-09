@@ -6,6 +6,7 @@ export type SplitFeatureListItem = {
   id: string
   title: string
   description: string
+  icon?: string
 }
 
 export type SplitFeatureListSectionProps = {
@@ -25,6 +26,8 @@ export function SplitFeatureListSection({
   id,
   className,
 }: SplitFeatureListSectionProps) {
+  const hasIcons = items.some((item) => Boolean(item.icon))
+
   return (
     <section
       id={id}
@@ -44,12 +47,23 @@ export function SplitFeatureListSection({
 
           <FadeIn
             id={`${id ?? 'split-feature'}-items`}
-            className="split-feature-list-items"
+            className={`split-feature-list-items${hasIcons ? ' split-feature-list-items--with-icons' : ''}`}
             delay={60}
             variant="slide-in-bottom"
           >
             {items.map((item) => (
               <div key={item.id} className="split-feature-list-item">
+                {hasIcons ? (
+                  <div className="split-feature-list-item-icon-wrap" aria-hidden="true">
+                    {item.icon ? (
+                      <img
+                        src={item.icon}
+                        alt=""
+                        className="split-feature-list-item-icon"
+                      />
+                    ) : null}
+                  </div>
+                ) : null}
                 <h3 className="split-feature-list-item-title">{item.title}</h3>
                 <p className="split-feature-list-item-description">{item.description}</p>
               </div>

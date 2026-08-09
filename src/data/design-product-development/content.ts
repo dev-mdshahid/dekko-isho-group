@@ -42,8 +42,8 @@ export const designProductDevelopmentCapabilities = {
     },
     {
       id: 'material-innovation',
-      image: `${CAPABILITY_IMAGE_BASE}/why-material-innovation.png`,
-      imageAlt: 'Fabric swatches hanging on racks in the material library',
+      image: `${CAPABILITY_IMAGE_BASE}/why-material-innovation.jpg`,
+      imageAlt: 'Colorful fabric rolls and swatches stored on warehouse racks',
       title: 'Material Innovation',
       description: 'Innovative fabrics, trims, washes, and sustainable materials.',
     },
@@ -76,21 +76,25 @@ export const designProductDevelopmentDigital = {
   items: [
     {
       id: 'trend-forecasting',
+      icon: `${CAPABILITY_IMAGE_BASE}/icon-trend-forecasting.svg`,
       title: 'Trend Forecasting',
       description: 'WGSN market and category intelligence',
     },
     {
       id: '3d-visualization',
+      icon: `${CAPABILITY_IMAGE_BASE}/icon-3d-visualization.svg`,
       title: '3D Visualization',
       description: 'True-to-life digital garments in Browzwear & CLO 3D',
     },
     {
       id: 'fabric-pattern',
+      icon: `${CAPABILITY_IMAGE_BASE}/icon-fabric-pattern.svg`,
       title: 'Fabric & Pattern',
       description: 'Textronic and CAD software for rapid design iteration',
     },
     {
       id: 'ai-assisted-workflows',
+      icon: `${CAPABILITY_IMAGE_BASE}/icon-ai-workflows.svg`,
       title: 'AI-assisted Workflows',
       description: 'Faster iteration, fewer physical rounds, quicker approvals',
     },
@@ -401,7 +405,7 @@ export const designProductDevelopmentGallery = {
       id: 'digital-design',
       size: 'side' as const,
       src: `${CAPABILITY_IMAGE_BASE}/gallery-digital-design.png`,
-      alt: 'Designer reviewing a garment visualization in fashion design software',
+      alt: 'Designers collaborating over fabric samples and sketches at a studio table',
     },
     {
       id: 'studio-collaboration',

@@ -655,11 +655,16 @@
   min-width: 0;
 }
 
+.design-product-development-page .split-feature-list-items--with-icons {
+  grid-template-columns: 64px minmax(11rem, auto) minmax(0, 1fr);
+  column-gap: 40px;
+}
+
 .design-product-development-page .split-feature-list-item {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
-  column-gap: 30px;
+  column-gap: inherit;
   align-items: center;
   padding: 30px 0;
   border-top: 1px solid rgb(255 255 255 / 20%);
@@ -667,6 +672,23 @@
 
 .design-product-development-page .split-feature-list-item:first-child {
   border-top: none;
+}
+
+.design-product-development-page .split-feature-list-item-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex: none;
+}
+
+.design-product-development-page .split-feature-list-item-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .design-product-development-page .split-feature-list-item-title {
@@ -714,10 +736,38 @@
     grid-template-columns: 1fr;
   }
 
+  .design-product-development-page .split-feature-list-items--with-icons {
+    grid-template-columns: 64px minmax(0, 1fr);
+    column-gap: 40px;
+  }
+
   .design-product-development-page .split-feature-list-item {
     grid-template-columns: 1fr;
     row-gap: 0.375rem;
     padding: 1.25rem 0;
+  }
+
+  .design-product-development-page .split-feature-list-items--with-icons .split-feature-list-item {
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    align-items: start;
+  }
+
+  .design-product-development-page .split-feature-list-items--with-icons .split-feature-list-item-icon-wrap {
+    grid-row: 1 / span 2;
+    width: 64px;
+    height: 64px;
+    margin-top: 0;
+  }
+
+  .design-product-development-page .split-feature-list-items--with-icons .split-feature-list-item-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .design-product-development-page .split-feature-list-items--with-icons .split-feature-list-item-title,
+  .design-product-development-page .split-feature-list-items--with-icons .split-feature-list-item-description {
+    grid-column: 2;
   }
 
   .design-product-development-page .split-feature-list-item-title {
