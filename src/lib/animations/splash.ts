@@ -3,26 +3,30 @@ import { gsap } from 'gsap'
 import { type AnimationCleanup, prefersReducedMotion } from './prefersReducedMotion'
 
 /**
- * Smooth ease-in-out with a soft landing — reads more fluid than linear Material
- * standard for long shared-element logo flights.
+ * Soft decelerating ease for the shared-element logo flight —
+ * gentle lift-off, fluid mid-path, cushioned seat into the navbar.
  */
-export const LOGO_MOVE_EASE = 'power3.inOut'
+export const LOGO_MOVE_EASE = 'expo.inOut'
 
-const LOGO_APPEAR_DURATION = 0.55
-const PROGRESS_DURATION = 1
-/** Slightly snappy shared-element flight to the navbar. */
-const LOGO_MOVE_DURATION = 0.55
-const PROGRESS_HIDE_DURATION = 0.16
-/** Quick veil clear after the logo has seated. */
-const BACKDROP_FADE_DURATION = 0.22
+/** Zoom-in appear: starts small, blooms to full size. */
+const LOGO_APPEAR_DURATION = 0.9
+const LOGO_APPEAR_FROM_SCALE = 0.62
+/** Diagonal light sweep across the logo mark. */
+const SHINE_DURATION = 1.1
+/** Brief settle after shine before the exit flight. */
+const POST_SHINE_HOLD = 0.28
+/** Shared-element flight to the navbar. */
+const LOGO_MOVE_DURATION = 0.78
+/** Veil clear after the logo has seated. */
+const BACKDROP_FADE_DURATION = 0.42
 
 export type SplashAnimationElements = {
   overlay: HTMLElement
   backdrop: HTMLElement
   stage: HTMLElement
   logo: HTMLElement
-  progressTrack: HTMLElement
-  progressFill: HTMLElement
+  logoWrap?: HTMLElement | null
+  shine?: HTMLElement | null
   getLogoTarget: () => HTMLElement | null
 }
 
@@ -63,16 +67,16 @@ function measureLogoFlight(logo: HTMLElement, target: HTMLElement | null): LogoF
 
 /**
  * Run the full splash sequence:
- * 1) logo appear (fade + scale)
- * 2) progress 0→100 (~1s ease-in-out)
- * 3) FLIP logo from center → navbar target while backdrop fades
+ * 1) logo zoom-in appear
+ * 2) premium shine / shimmer sweep
+ * 3) eased FLIP logo from center → navbar while backdrop fades
  * 4) complete
  */
 export function runSplashAnimation(
   els: SplashAnimationElements,
   callbacks: SplashAnimationCallbacks = {},
 ): AnimationCleanup {
-  const { overlay, backdrop, stage, logo, progressTrack, progressFill, getLogoTarget } = els
+  const { overlay, backdrop, stage, logo, logoWrap, shine, getLogoTarget } = els
 
   if (prefersReducedMotion()) {
     callbacks.onComplete?.()
@@ -83,16 +87,28 @@ export function runSplashAnimation(
   let resizeHandler: (() => void) | null = null
   let moveTween: gsap.core.Tween | null = null
 
-  gsap.set(progressFill, { scaleX: 0, transformOrigin: 'left center' })
-  gsap.set(progressTrack, { opacity: 0 })
+  const killTargets: gsap.TweenTarget[] = [overlay, backdrop, stage, logo]
+  if (logoWrap) killTargets.push(logoWrap)
+  if (shine) killTargets.push(shine)
+
   gsap.set(logo, {
     x: 0,
     y: 0,
-    scale: 0.88,
+    scale: LOGO_APPEAR_FROM_SCALE,
     opacity: 0,
     transformOrigin: 'center center',
     force3D: true,
   })
+  if (shine) {
+    gsap.set(shine, {
+      left: '-50%',
+      skewX: -22,
+      opacity: 0,
+      x: 0,
+      force3D: true,
+    })
+  }
+  gsap.set(logo, { filter: 'brightness(1)' })
   gsap.set(backdrop, { opacity: 1, force3D: true })
   gsap.set([overlay, stage], { force3D: true })
 
@@ -104,51 +120,96 @@ export function runSplashAnimation(
     },
   })
 
-  // ── 1. Logo appear ───────────────────────────────────────────────
+  // ── 1. Zoom-in appear ────────────────────────────────────────────
   tl.to(logo, {
     opacity: 1,
     scale: 1,
     duration: LOGO_APPEAR_DURATION,
-    ease: 'power3.out',
+    ease: 'expo.out',
   })
 
-  // Progress track fades in just as the logo settles.
-  tl.to(
-    progressTrack,
-    {
-      opacity: 1,
-      duration: 0.28,
-      ease: 'power2.out',
-    },
-    '-=0.25',
-  )
+  // Soft settle so the mark feels planted before the shimmer.
+  tl.to({}, { duration: 0.18 })
 
-  // ── 2. Loading progress ──────────────────────────────────────────
-  tl.to(progressFill, {
-    scaleX: 1,
-    duration: PROGRESS_DURATION,
-    ease: 'power2.inOut',
-  })
+  // ── 2. Shine / shimmer sweep ─────────────────────────────────────
+  if (shine) {
+    // Clip the beam to the logo stage for the sweep, then reopen for FLIP.
+    if (logoWrap) {
+      tl.set(logoWrap, { overflow: 'hidden' })
+    }
 
-  // ── 3. Hide progress quickly so the logo flight starts cleanly ───
-  tl.to(
-    progressTrack,
-    {
+    tl.set(shine, {
+      left: '-50%',
+      skewX: -22,
       opacity: 0,
-      duration: PROGRESS_HIDE_DURATION,
-      ease: 'power2.out',
-    },
-    '>-0.08',
-  )
+      visibility: 'visible',
+    })
+
+    // Soft fade-in as the band enters.
+    tl.to(shine, {
+      opacity: 1,
+      duration: 0.22,
+      ease: 'power1.out',
+    })
+
+    // Sweep across the logo (left is % of the wrap — reliably crosses).
+    tl.to(
+      shine,
+      {
+        left: '110%',
+        duration: SHINE_DURATION,
+        ease: 'power2.inOut',
+      },
+      '<',
+    )
+
+    // Companion brightness kiss so the shimmer reads even on pale mark areas.
+    tl.fromTo(
+      logo,
+      { filter: 'brightness(1)' },
+      {
+        filter: 'brightness(1.2)',
+        duration: SHINE_DURATION * 0.5,
+        ease: 'power1.out',
+        yoyo: true,
+        repeat: 1,
+      },
+      '<',
+    )
+
+    // Fade the beam out near the exit edge.
+    tl.to(
+      shine,
+      {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.out',
+      },
+      `-=${0.3}`,
+    )
+
+    tl.set(logo, { filter: 'none' })
+
+    if (logoWrap) {
+      tl.set(logoWrap, { overflow: 'visible' })
+    }
+  }
+
+  tl.to({}, { duration: POST_SHINE_HOLD })
 
   tl.add(() => {
     if (disposed) return
     callbacks.onTransitionStart?.()
   })
 
-  // ── 4. FLIP logo + fade splash backdrop in parallel ──────────────
+  // ── 3. Eased FLIP logo + fade splash backdrop ────────────────────
   tl.add(() => {
     if (disposed) return
+
+    // Ensure shine is fully gone before the flight so it doesn't travel.
+    if (shine) {
+      gsap.set(shine, { opacity: 0, visibility: 'hidden' })
+    }
 
     const flight = measureLogoFlight(logo, getLogoTarget()) ?? {
       x: 0,
@@ -214,11 +275,11 @@ export function runSplashAnimation(
   // Keep the splash fully opaque while the logo flies.
   tl.to({}, { duration: LOGO_MOVE_DURATION })
 
-  // After the logo seats, fade the veil out quickly.
+  // After the logo seats, ease the veil out.
   tl.to(backdrop, {
     opacity: 0,
     duration: BACKDROP_FADE_DURATION,
-    ease: 'power2.out',
+    ease: 'power3.out',
   })
 
   tl.set(overlay, { pointerEvents: 'none' })
@@ -230,6 +291,6 @@ export function runSplashAnimation(
     }
     tl.kill()
     moveTween?.kill()
-    gsap.killTweensOf([overlay, backdrop, stage, logo, progressTrack, progressFill])
+    gsap.killTweensOf(killTargets)
   }
 }

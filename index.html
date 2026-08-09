@@ -58,8 +58,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 1.75rem;
         width: min(72vw, 22rem);
+      }
+
+      #boot-splash .splash-logo-wrap {
+        position: relative;
+        display: block;
+        width: 100%;
       }
 
       #boot-splash .splash-logo {
@@ -69,40 +74,17 @@
         max-height: min(28vh, 9rem);
         object-fit: contain;
         opacity: 0;
-        transform: scale(0.88);
+        transform: scale(0.62);
         transform-origin: center center;
-      }
-
-      #boot-splash .splash-progress {
-        width: min(100%, 11rem);
-        height: 3px;
-        border-radius: 999px;
-        background-color: rgba(21, 21, 21, 0.12);
-        overflow: hidden;
-        opacity: 0;
-      }
-
-      #boot-splash .splash-progress-fill {
-        width: 100%;
-        height: 100%;
-        border-radius: inherit;
-        background: linear-gradient(90deg, #2595d5 0%, #3aade0 100%);
-        transform: scaleX(0);
-        transform-origin: left center;
       }
 
       @media (max-width: 991px) {
         #boot-splash .splash-stage {
           width: min(78vw, 16rem);
-          gap: 1.35rem;
         }
 
         #boot-splash .splash-logo {
           max-height: min(22vh, 6.5rem);
-        }
-
-        #boot-splash .splash-progress {
-          width: min(100%, 8.5rem);
         }
       }
 
@@ -133,17 +115,16 @@
     <div id="boot-splash" role="status" aria-live="polite" aria-label="Loading Dekko Isho Group">
       <div class="splash-backdrop" aria-hidden="true"></div>
       <div class="splash-stage">
-        <img
-          class="splash-logo"
-          src="/dekko-logo.svg"
-          alt="Dekko Isho Group"
-          width="320"
-          height="128"
-          decoding="sync"
-          fetchpriority="high"
-        />
-        <div class="splash-progress" aria-hidden="true">
-          <div class="splash-progress-fill"></div>
+        <div class="splash-logo-wrap">
+          <img
+            class="splash-logo"
+            src="/dekko-logo.svg"
+            alt="Dekko Isho Group"
+            width="320"
+            height="128"
+            decoding="sync"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </div>

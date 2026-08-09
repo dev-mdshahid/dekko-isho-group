@@ -17,7 +17,7 @@ function removeBootSplash() {
 }
 
 /**
- * Full-viewport splash: centered brand logo → progress → FLIP into navbar logo.
+ * Full-viewport splash: centered brand logo (zoom-in → shine → FLIP into navbar).
  * A matching #boot-splash in index.html covers first paint; this component takes over
  * in useLayoutEffect so the page never flashes underneath.
  */
@@ -26,9 +26,9 @@ export function SplashScreen() {
   const overlayRef = useRef<HTMLDivElement>(null)
   const backdropRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
+  const logoWrapRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLImageElement>(null)
-  const progressTrackRef = useRef<HTMLDivElement>(null)
-  const progressFillRef = useRef<HTMLDivElement>(null)
+  const shineRef = useRef<HTMLSpanElement>(null)
   const [logoReady, setLogoReady] = useState(false)
   const startedRef = useRef(false)
   const finishedRef = useRef(false)
@@ -85,11 +85,11 @@ export function SplashScreen() {
     const overlay = overlayRef.current
     const backdrop = backdropRef.current
     const stage = stageRef.current
+    const logoWrap = logoWrapRef.current
     const logo = logoRef.current
-    const progressTrack = progressTrackRef.current
-    const progressFill = progressFillRef.current
+    const shine = shineRef.current
 
-    if (!overlay || !backdrop || !stage || !logo || !progressTrack || !progressFill) return
+    if (!overlay || !backdrop || !stage || !logo) return
 
     startedRef.current = true
     setPhaseRef.current('loading')
@@ -100,8 +100,8 @@ export function SplashScreen() {
         backdrop,
         stage,
         logo,
-        progressTrack,
-        progressFill,
+        logoWrap,
+        shine,
         getLogoTarget: () => logoTargetRef.current,
       },
       {
@@ -204,20 +204,20 @@ export function SplashScreen() {
     >
       <div ref={backdropRef} className="splash-backdrop" aria-hidden="true" />
       <div ref={stageRef} className="splash-stage">
-        <img
-          ref={logoRef}
-          src={LOGO_SRC}
-          alt="Dekko Isho Group"
-          className="splash-logo"
-          width={320}
-          height={128}
-          decoding="async"
-          fetchPriority="high"
-          onLoad={() => setLogoReady(true)}
-          onError={() => setLogoReady(true)}
-        />
-        <div ref={progressTrackRef} className="splash-progress" aria-hidden="true">
-          <div ref={progressFillRef} className="splash-progress-fill" />
+        <div ref={logoWrapRef} className="splash-logo-wrap">
+          <img
+            ref={logoRef}
+            src={LOGO_SRC}
+            alt="Dekko Isho Group"
+            className="splash-logo"
+            width={320}
+            height={128}
+            decoding="async"
+            fetchPriority="high"
+            onLoad={() => setLogoReady(true)}
+            onError={() => setLogoReady(true)}
+          />
+          <span ref={shineRef} className="splash-logo-shine" aria-hidden="true" />
         </div>
       </div>
       {/* ── Video splash markup (commented out) ──
