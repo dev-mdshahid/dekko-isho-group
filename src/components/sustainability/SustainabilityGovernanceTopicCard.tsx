@@ -5,6 +5,8 @@ type Props = {
 }
 
 export function SustainabilityGovernanceTopicCard({ topic }: Props) {
+  const isPng = topic.icon.toLowerCase().endsWith('.png')
+
   return (
     <article className="sustain-governance-topic-card">
       <div className="sustain-governance-topic-content">
@@ -16,7 +18,11 @@ export function SustainabilityGovernanceTopicCard({ topic }: Props) {
         loading="lazy"
         alt=""
         aria-hidden="true"
-        className="sustain-governance-topic-icon"
+        className={
+          isPng
+            ? 'sustain-governance-topic-icon sustain-governance-topic-icon--png'
+            : 'sustain-governance-topic-icon'
+        }
       />
     </article>
   )

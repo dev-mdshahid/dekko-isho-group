@@ -2258,17 +2258,23 @@
 }
 
 .sustain-governance-topic-icon {
-  bottom: -28px;
+  bottom: -10px;
   display: block;
-  height: 175px;
+  filter: grayscale(1);
+  height: 140px;
   object-fit: contain;
-  opacity: 0.3;
+  opacity: 1;
   pointer-events: none;
   position: absolute;
-  right: -24px;
+  right: 0;
   user-select: none;
-  width: 175px;
+  width: 140px;
   z-index: 0;
+}
+
+/* Client PNG wrappers ship on black; invert so the field matches white cards */
+.sustain-governance-topic-icon--png {
+  filter: grayscale(1) invert(1);
 }
 
 .sustain-governance-topic-title {
@@ -2832,10 +2838,10 @@
   }
 
   .sustain-governance-topic-icon {
-    bottom: -28px;
-    height: 175px;
-    right: -24px;
-    width: 175px;
+    bottom: -10px;
+    height: 160px;
+    right: 0;
+    width: 160px;
   }
 
   .sustain-reports-grid {
@@ -3294,10 +3300,10 @@
   }
 
   .sustain-governance-topic-icon {
-    bottom: -24px;
-    height: 175px;
-    right: -20px;
-    width: 175px;
+    bottom: -10px;
+    height: 160px;
+    right: 0;
+    width: 160px;
   }
 
   .sustain-governance-topic-title {
