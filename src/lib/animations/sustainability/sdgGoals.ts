@@ -5,43 +5,21 @@ import { type AnimationCleanup, prefersReducedMotion } from '../prefersReducedMo
 
 gsap.registerPlugin(ScrollTrigger)
 
-const APPEAR_DURATION = 0.28
+const APPEAR_DURATION = 0.34
 const VIEWPORT_START = 'top 88%'
 
 function resetVisible(container: HTMLElement) {
   const animated = container.querySelectorAll<HTMLElement>('[data-sdg-animate]')
-  animated.forEach((el) => gsap.set(el, { clearProps: 'opacity,transform,clipPath' }))
-}
-
-function revealRow(tl: gsap.core.Timeline, pillar: HTMLElement) {
-  const bar = pillar.querySelector<HTMLElement>('[data-sdg-animate="bar"]')
-
-  tl.to(pillar, {
-    opacity: 1,
-    y: 0,
-    duration: APPEAR_DURATION,
-    ease: 'power3.out',
-  })
-
-  if (bar) {
-    tl.to(
-      bar,
-      {
-        scaleX: 1,
-        duration: APPEAR_DURATION * 0.85,
-        ease: 'power3.out',
-      },
-      '<',
-    )
-  }
+  animated.forEach((el) => gsap.set(el, { clearProps: 'opacity,transform' }))
 }
 
 export function setupSdgFrameworkAnimations(container: HTMLElement): AnimationCleanup {
   const title = container.querySelector<HTMLElement>('[data-sdg-animate="title"]')
   const description = container.querySelector<HTMLElement>('[data-sdg-animate="description"]')
-  const pillars = Array.from(container.querySelectorAll<HTMLElement>('[data-sdg-animate="pillar"]'))
+  const grid = container.querySelector<HTMLElement>('[data-sdg-animate="pillar"]')
+  const cards = Array.from(container.querySelectorAll<HTMLElement>('.sustain-sdg-card'))
 
-  if (!title && !description && !pillars.length) return () => {}
+  if (!title && !description && !grid) return () => {}
 
   if (prefersReducedMotion()) {
     resetVisible(container)
@@ -67,7 +45,7 @@ export function setupSdgFrameworkAnimations(container: HTMLElement): AnimationCl
       y: 0,
       duration: APPEAR_DURATION,
       ease: 'power3.out',
-      stagger: 0.05,
+      stagger: 0.06,
     })
 
     cleanups.push(() => {
@@ -76,26 +54,45 @@ export function setupSdgFrameworkAnimations(container: HTMLElement): AnimationCl
     })
   }
 
-  pillars.forEach((pillar) => {
-    const bar = pillar.querySelector<HTMLElement>('[data-sdg-animate="bar"]')
-    gsap.set(pillar, { opacity: 0, y: 22 })
-    if (bar) gsap.set(bar, { scaleX: 0, transformOrigin: 'left center' })
+  if (grid) {
+    gsap.set(grid, { opacity: 0, y: 24 })
+    if (cards.length) gsap.set(cards, { opacity: 0, y: 16, scale: 0.97 })
 
-    const pillarTl = gsap.timeline({
+    const gridTl = gsap.timeline({
       scrollTrigger: {
-        trigger: pillar,
+        trigger: grid,
         start: VIEWPORT_START,
         toggleActions: 'play none none reverse',
       },
     })
 
-    revealRow(pillarTl, pillar)
+    gridTl.to(grid, {
+      opacity: 1,
+      y: 0,
+      duration: APPEAR_DURATION,
+      ease: 'power3.out',
+    })
+
+    if (cards.length) {
+      gridTl.to(
+        cards,
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: APPEAR_DURATION,
+          ease: 'power3.out',
+          stagger: 0.035,
+        },
+        '-=0.12',
+      )
+    }
 
     cleanups.push(() => {
-      pillarTl.scrollTrigger?.kill()
-      pillarTl.kill()
+      gridTl.scrollTrigger?.kill()
+      gridTl.kill()
     })
-  })
+  }
 
   ScrollTrigger.refresh()
 

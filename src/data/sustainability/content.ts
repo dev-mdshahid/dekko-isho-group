@@ -26,212 +26,230 @@ export const strategySection = {
   titleSuffix: 'Goals — 2030',
   description:
     'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — extending beyond our own operations to our entire value chain.',
+  backgroundImage: '/images/sustainability/goals/sdg-section-bg.png',
 }
 
-export type SdgLogo = {
-  src: string
-  alt: string
-}
-
-export type SdgGoal = {
-  highlight?: string
-  text: string
-}
-
-export type SdgGoalGroup = {
-  id: string
-  title: string
-  logos: SdgLogo[]
-  goals: SdgGoal[]
-}
-
-export type SdgPillar = {
-  id: 'environment' | 'social' | 'governance'
+export type SdgStat = {
+  value: string
   label: string
-  description: string
-  groups: SdgGoalGroup[]
 }
 
-const sdgImage = (file: string) => `/images/sustainability/goals/${file}`
+export type SdgInteractiveGoal = {
+  number: number
+  color: string
+  title: string
+  stats: SdgStat[]
+  stillSrc: string
+  animSrc: string
+}
 
-export const sdgGoals: SdgPillar[] = [
+const sdgAsset = (file: string) => `/images/sustainability/goals/${file}`
+
+export const sdgInteractiveGoals: SdgInteractiveGoal[] = [
   {
-    id: 'environment',
-    label: 'Environmental',
-    description: 'Energy, water, waste, chemistry and land stewardship.',
-    groups: [
-      {
-        id: 'env-energy',
-        title: 'Decarbonization',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-07.png'), alt: 'SDG 7 Affordable and Clean Energy' },
-          { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
-          { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
-        ],
-        goals: [
-          { highlight: 'Renewable Energy 80%', text: '' },
-          { text: 'Energy Efficiency 20%' },
-          { text: '50% GHG Emission Scope-3' },
-        ],
-      },
-      {
-        id: 'env-water',
-        title: 'Blue Impact',
-        logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
-        goals: [
-          { highlight: 'Blue Water Reduction 40%', text: '' },
-          { text: 'Water Efficiency 20%' },
-        ],
-      },
-      {
-        id: 'env-waste',
-        title: 'Circularity',
-        logos: [{ src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' }],
-        goals: [
-          { highlight: 'Waste Recycle 40%', text: '' },
-          { text: 'Waste Water Recycle 70%' },
-          { text: 'ZDHC Level 3 Compliant 100%' },
-        ],
-      },
-      {
-        id: 'env-land',
-        title: 'EcoSphere',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-09.png'), alt: 'SDG 9 Industry, Innovation and Infrastructure' },
-          { src: sdgImage('E-WEB-Goal-13.png'), alt: 'SDG 13 Climate Action' },
-          { src: sdgImage('E-WEB-Goal-15.png'), alt: 'SDG 15 Life on Land' },
-        ],
-        goals: [
-          { highlight: 'Brand COC Completion 100%', text: '' },
-          { text: 'Green Landscape 15%' },
-          { text: 'Tree Plantation 10K' },
-          { text: 'Plastic Free Office' },
-          { text: 'Paperless Office' },
-          { text: 'Sustainability Awareness Training & Practices' },
-        ],
-      },
+    number: 1,
+    color: '#ea1c2d',
+    title: 'No Poverty',
+    stillSrc: sdgAsset('sdg-1.svg'),
+    animSrc: sdgAsset('sdg-1.gif'),
+    stats: [
+      { value: 'Fair', label: 'Living Wages' },
+      { value: '100%', label: 'Timely Payroll' },
+      { value: 'Financial', label: 'Employee Support' },
+      { value: 'Livelihood', label: 'Community Programs' },
+      { value: 'Emergency', label: 'Relief Fund' },
+      { value: 'Income', label: 'Enhancement Programs' },
     ],
   },
   {
-    id: 'social',
-    label: 'Social',
-    description: 'Rights, safety, equity and community wellbeing.',
-    groups: [
-      {
-        id: 'soc-rights',
-        title: 'Wellbeing',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
-          { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
-        ],
-        goals: [
-          { highlight: '0% Human Rights Violation', text: '' },
-          { text: 'Low Human Rights Due Diligence risk' },
-          { text: '0% Work Related Accidents' },
-          { text: '0% Work Related Illness' },
-        ],
-      },
-      {
-        id: 'soc-training',
-        title: 'Upskill',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-08.png'), alt: 'SDG 8 Decent Work and Economic Growth' },
-          { src: sdgImage('E-WEB-Goal-01.png'), alt: 'SDG 1 No Poverty' },
-        ],
-        goals: [
-          { highlight: 'Avg. Training 20 hrs/person', text: '' },
-          { text: 'Employee Engagement ≥ 80%' },
-          { text: 'Resignation Rate < 10%/yr; < 4% in high performers' },
-        ],
-      },
-      {
-        id: 'soc-diversity',
-        title: 'Inclusion',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-03.png'), alt: 'SDG 3 Good Health and Well-Being' },
-          { src: sdgImage('E-WEB-Goal-05.png'), alt: 'SDG 5 Gender Equality' },
-          { src: sdgImage('E-WEB-Goal-10.png'), alt: 'SDG 10 Reduced Inequalities' },
-        ],
-        goals: [
-          { highlight: 'Free Sanitary Napkin for Workers', text: '' },
-          { text: 'Workplace Diversity & Inclusion' },
-          { text: 'Ensuring Nutrition' },
-          { text: '100% Sexual Harassment Protection' },
-          { text: 'Gender Parity in Management: 40% Female' },
-        ],
-      },
-      {
-        id: 'soc-community',
-        title: 'Community',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
-          { src: sdgImage('E-WEB-Goal-06.png'), alt: 'SDG 6 Clean Water and Sanitation' },
-          { src: sdgImage('E-WEB-Goal-04.png'), alt: 'SDG 4 Quality Education' },
-        ],
-        goals: [
-          { highlight: '100% Workers Accessible to Healthcare', text: '' },
-          { text: 'Clean Water & Energy for Local Community' },
-          { text: 'Primary Education Centers for Local Community' },
-          { text: 'Primary Health Care Facility for Local Community' },
-        ],
-      },
+    number: 3,
+    color: '#2c9947',
+    title: 'Good Health and Well-being',
+    stillSrc: sdgAsset('sdg-3.svg'),
+    animSrc: sdgAsset('sdg-3.gif'),
+    stats: [
+      { value: '100%', label: 'Healthcare Access' },
+      { value: 'Free', label: 'Sanitary Napkins' },
+      { value: '0', label: 'Work-related Illness' },
+      { value: '100%', label: 'Harassment Protection' },
     ],
   },
   {
-    id: 'governance',
-    label: 'Governance',
-    description: 'Ethics, transparency and continuous improvement.',
-    groups: [
-      {
-        id: 'gov-suppliers',
-        title: 'Compliance',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
-          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
-        ],
-        goals: [
-          { highlight: '100% suppliers agree with Code of Conduct', text: '' },
-          { text: '100% Supplier Training Session' },
-        ],
-      },
-      {
-        id: 'gov-ethics',
-        title: 'Integrity',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-16.png'), alt: 'SDG 16 Peace, Justice and Strong Institutions' },
-          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
-        ],
-        goals: [
-          { highlight: 'Business Ethics', text: '' },
-          { text: 'Anti-Corruption Training' },
-        ],
-      },
-      {
-        id: 'gov-traceability',
-        title: 'Transparency',
-        logos: [
-          { src: sdgImage('E-WEB-Goal-17.png'), alt: 'SDG 17 Partnerships for the Goals' },
-          { src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' },
-          { src: sdgImage('E-WEB-Goal-12.png'), alt: 'SDG 12 Responsible Consumption and Production' },
-        ],
-        goals: [
-          {
-            highlight: '100% Traceability & Transparency',
-            text: ' in upstream & downstream supply chain',
-          },
-          { text: 'Digital Product Passport Integration' },
-        ],
-      },
-      {
-        id: 'gov-innovation',
-        title: 'Innovation',
-        logos: [{ src: sdgImage('E-WEB-Goal-11.png'), alt: 'SDG 11 Sustainable Cities and Communities' }],
-        goals: [
-          { highlight: 'Development of Innovation & Cooperation', text: '' },
-          { text: 'Reduce ≥ 5 work steps via 5S & KAIZEN' },
-          { text: 'Reduce process time ≥ 25%' },
-        ],
-      },
+    number: 4,
+    color: '#c22033',
+    title: 'Quality Education',
+    stillSrc: sdgAsset('sdg-4.svg'),
+    animSrc: sdgAsset('sdg-4.gif'),
+    stats: [
+      { value: 'Primary', label: 'Education Centers' },
+      { value: '20 hrs', label: 'Annual Training' },
+      { value: '100%', label: 'Supplier Training' },
+    ],
+  },
+  {
+    number: 5,
+    color: '#ee402a',
+    title: 'Gender Equality',
+    stillSrc: sdgAsset('sdg-5.svg'),
+    animSrc: sdgAsset('sdg-5.gif'),
+    stats: [
+      { value: '100%', label: 'Sexual Harassment Protection' },
+      { value: '40%', label: 'Female in Management for Gender Parity' },
+    ],
+  },
+  {
+    number: 6,
+    color: '#00acd7',
+    title: 'Clean Water and Sanitation',
+    stillSrc: sdgAsset('sdg-6.svg'),
+    animSrc: sdgAsset('sdg-6.gif'),
+    stats: [
+      { value: '40%', label: 'Blue Water Reduction' },
+      { value: '20%', label: 'Water Efficiency' },
+      { value: '70%', label: 'Wastewater Recycling' },
+      { value: '100%', label: 'Community Clean Water' },
+    ],
+  },
+  {
+    number: 7,
+    color: '#fcb614',
+    title: 'Affordable and Clean Energy',
+    stillSrc: sdgAsset('sdg-7.svg'),
+    animSrc: sdgAsset('sdg-7.gif'),
+    stats: [
+      { value: '80%', label: 'Renewable Energy' },
+      { value: '20%', label: 'Energy Efficiency' },
+    ],
+  },
+  {
+    number: 8,
+    color: '#8e1837',
+    title: 'Decent Work and Economic Growth',
+    stillSrc: sdgAsset('sdg-8.svg'),
+    animSrc: sdgAsset('sdg-8.gif'),
+    stats: [
+      { value: '0', label: 'Human Rights Violations' },
+      { value: 'Low Risk', label: 'HRDD Assessment' },
+      { value: '20 hrs', label: 'Employee Training' },
+      { value: '80%', label: 'Employee Engagement' },
+      { value: '<10%', label: 'Annual Attrition' },
+      { value: '<4%', label: 'High Performer Attrition' },
+      { value: '0', label: 'Workplace Accidents' },
+    ],
+  },
+  {
+    number: 9,
+    color: '#f26e24',
+    title: 'Industry, Innovation and Infrastructure',
+    stillSrc: sdgAsset('sdg-9.svg'),
+    animSrc: sdgAsset('sdg-9.gif'),
+    stats: [
+      { value: '100%', label: 'Brand CoC Completion' },
+      { value: '5+', label: 'Process Improvements' },
+      { value: '25%', label: 'Faster Processes' },
+      { value: 'Innovation', label: 'Cross-team Collaboration' },
+      { value: 'Digital', label: 'Product Passport' },
+    ],
+  },
+  {
+    number: 10,
+    color: '#df1a82',
+    title: 'Reduced Inequalities',
+    stillSrc: sdgAsset('sdg-10.svg'),
+    animSrc: sdgAsset('sdg-10.gif'),
+    stats: [
+      { value: 'Inclusive', label: 'Workplace Culture' },
+      { value: '40%', label: 'Women Leaders' },
+      { value: '100%', label: 'Harassment Protection' },
+      { value: 'Equal', label: 'Growth Opportunities' },
+    ],
+  },
+  {
+    number: 11,
+    color: '#f89c25',
+    title: 'Sustainable Cities and Communities',
+    stillSrc: sdgAsset('sdg-11.svg'),
+    animSrc: sdgAsset('sdg-11.gif'),
+    stats: [
+      { value: '15%', label: 'Green Landscaping' },
+      { value: '10K', label: 'Trees Planted' },
+      { value: '100%', label: 'Community Healthcare' },
+      { value: 'Primary', label: 'Education Centers' },
+      { value: '100%', label: 'Community Clean Water' },
+    ],
+  },
+  {
+    number: 12,
+    color: '#cc8b2a',
+    title: 'Responsible Consumption and Production',
+    stillSrc: sdgAsset('sdg-12.svg'),
+    animSrc: sdgAsset('sdg-12.gif'),
+    stats: [
+      { value: '40%', label: 'Waste Recycling' },
+      { value: '70%', label: 'Wastewater Recycling' },
+      { value: '100%', label: 'ZDHC Level 3' },
+      { value: 'Plastic-Free', label: 'Offices' },
+      { value: 'Paperless', label: 'Operations' },
+      { value: 'Digital', label: 'Product Passport' },
+      { value: '100%', label: 'Supplier Training' },
+      { value: '5+', label: 'Kaizen Improvements' },
+      { value: '25%', label: 'Faster Processes' },
+    ],
+  },
+  {
+    number: 13,
+    color: '#48773c',
+    title: 'Climate Action',
+    stillSrc: sdgAsset('sdg-13.svg'),
+    animSrc: sdgAsset('sdg-13.gif'),
+    stats: [
+      { value: '50%', label: 'Scope 3 Reduction' },
+      { value: '80%', label: 'Renewable Energy' },
+      { value: '20%', label: 'Energy Efficiency' },
+      { value: '10K', label: 'Trees Planted' },
+      { value: '15%', label: 'Green Landscaping' },
+      { value: 'Climate', label: 'Awareness Programs' },
+    ],
+  },
+  {
+    number: 15,
+    color: '#3ead49',
+    title: 'Life on Land',
+    stillSrc: sdgAsset('sdg-15.svg'),
+    animSrc: sdgAsset('sdg-15.gif'),
+    stats: [
+      { value: '10K', label: 'Trees Planted' },
+      { value: '15%', label: 'Green Landscaping' },
+    ],
+  },
+  {
+    number: 16,
+    color: '#005589',
+    title: 'Peace, Justice and Strong Institutions',
+    stillSrc: sdgAsset('sdg-16.svg'),
+    animSrc: sdgAsset('sdg-16.gif'),
+    stats: [
+      { value: '100%', label: 'Supplier CoC' },
+      { value: '100%', label: 'Brand CoC Completion' },
+      { value: '0', label: 'Human Rights Violations' },
+      { value: 'Low Risk', label: 'HRDD Assessment' },
+      { value: 'Business', label: 'Ethics Training' },
+      { value: 'Anti-Corruption', label: 'Training Across all the Units' },
+      { value: '100%', label: 'Harassment Protection' },
+    ],
+  },
+  {
+    number: 17,
+    color: '#1b3668',
+    title: 'Partnerships for the Goals',
+    stillSrc: sdgAsset('sdg-17.svg'),
+    animSrc: sdgAsset('sdg-17.gif'),
+    stats: [
+      { value: '100%', label: 'Supply Chain Traceability' },
+      { value: 'Digital', label: 'Product Passport' },
+      { value: 'Innovation', label: 'Strategic Partnerships' },
+      { value: '100%', label: 'Supplier Training' },
+      { value: '100%', label: 'Supplier CoC' },
     ],
   },
 ]
