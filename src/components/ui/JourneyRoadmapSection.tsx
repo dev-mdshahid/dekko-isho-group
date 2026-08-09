@@ -9,6 +9,8 @@ export type JourneyRoadmapStage = {
   label: string
   row: 'top' | 'bottom'
   column: number
+  /** Optional step icon (shown below the timeline node). */
+  icon?: string
 }
 
 export type JourneyRoadmapSectionProps = {
@@ -155,6 +157,17 @@ export function JourneyRoadmapSection({
                 data-journey-column={stage.column}
               >
                 <span className={`${classPrefix}-dot`} data-journey-dot aria-hidden="true" />
+                {stage.icon ? (
+                  <img
+                    className={`${classPrefix}-icon`}
+                    src={stage.icon}
+                    alt=""
+                    width={64}
+                    height={64}
+                    data-journey-icon
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <span className={`${classPrefix}-label`} data-journey-label>
                   {stage.label}
                 </span>
@@ -178,6 +191,17 @@ export function JourneyRoadmapSection({
                   data-journey-mobile-dot
                   aria-hidden="true"
                 />
+                {stage.icon ? (
+                  <img
+                    className={`${classPrefix}-icon`}
+                    src={stage.icon}
+                    alt=""
+                    width={64}
+                    height={64}
+                    data-journey-mobile-icon
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <span className={`${classPrefix}-label`} data-journey-mobile-label>
                   {stage.label}
                 </span>

@@ -75,17 +75,21 @@ function resetVisible(section: HTMLElement) {
   const maskPath = section.querySelector<SVGPathElement>('[data-journey-path-mask]')
   const ghost = section.querySelector<SVGPathElement>('[data-journey-path-ghost]')
   const dots = section.querySelectorAll<HTMLElement>('[data-journey-dot]')
+  const icons = section.querySelectorAll<HTMLElement>('[data-journey-icon]')
   const labels = section.querySelectorAll<HTMLElement>('[data-journey-label]')
   const mobileItems = section.querySelectorAll<HTMLElement>('[data-journey-mobile-item]')
   const mobileDots = section.querySelectorAll<HTMLElement>('[data-journey-mobile-dot]')
+  const mobileIcons = section.querySelectorAll<HTMLElement>('[data-journey-mobile-icon]')
   const mobileLabels = section.querySelectorAll<HTMLElement>('[data-journey-mobile-label]')
 
   if (maskPath) gsap.set(maskPath, { clearProps: 'strokeDasharray,strokeDashoffset' })
   if (ghost) gsap.set(ghost, { clearProps: 'opacity' })
   gsap.set(dots, { clearProps: 'opacity,transform' })
+  gsap.set(icons, { clearProps: 'opacity,transform' })
   gsap.set(labels, { clearProps: 'opacity,transform' })
   gsap.set(mobileItems, { clearProps: 'opacity,transform' })
   gsap.set(mobileDots, { clearProps: 'opacity,transform' })
+  gsap.set(mobileIcons, { clearProps: 'opacity,transform' })
   gsap.set(mobileLabels, { clearProps: 'opacity,transform' })
 }
 
@@ -95,6 +99,7 @@ function revealNode(
   label: HTMLElement | null,
   at: number,
   isFinale: boolean,
+  icon?: HTMLElement | null,
 ) {
   if (dot) {
     tl.to(
@@ -130,6 +135,19 @@ function revealNode(
     )
   }
 
+  if (icon) {
+    tl.to(
+      icon,
+      {
+        opacity: 1,
+        y: 0,
+        duration: LABEL_IN,
+        ease: 'power3.out',
+      },
+      at + LABEL_LAG,
+    )
+  }
+
   if (label) {
     tl.to(
       label,
@@ -139,7 +157,7 @@ function revealNode(
         duration: isFinale ? LABEL_IN + 0.08 : LABEL_IN,
         ease: 'power3.out',
       },
-      at + LABEL_LAG,
+      at + LABEL_LAG + (icon ? 0.06 : 0),
     )
   }
 }
@@ -183,9 +201,11 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
 
     mobileItems.forEach((item) => {
       const dot = item.querySelector<HTMLElement>('[data-journey-mobile-dot]')
+      const icon = item.querySelector<HTMLElement>('[data-journey-mobile-icon]')
       const label = item.querySelector<HTMLElement>('[data-journey-mobile-label]')
       gsap.set(item, { opacity: 1, y: 0 })
       if (dot) gsap.set(dot, { opacity: 0, scale: 0.4, transformOrigin: '50% 50%' })
+      if (icon) gsap.set(icon, { opacity: 0, y: 12 })
       if (label) gsap.set(label, { opacity: 0, y: 12 })
     })
 
@@ -193,8 +213,9 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
       const item = mobileItems[beat.index]
       if (!item) return
       const dot = item.querySelector<HTMLElement>('[data-journey-mobile-dot]')
+      const icon = item.querySelector<HTMLElement>('[data-journey-mobile-icon]')
       const label = item.querySelector<HTMLElement>('[data-journey-mobile-label]')
-      revealNode(tl, dot, label, beat.time, beat.isFinale)
+      revealNode(tl, dot, label, beat.time, beat.isFinale, icon)
     })
   } else {
     const rows = nodes.map(
@@ -204,9 +225,11 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
     const count = Math.max(nodes.length, 1)
 
     const dots = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-dot]'))
+    const icons = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-icon]'))
     const labels = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-label]'))
 
     gsap.set(dots.filter(Boolean), { opacity: 0, scale: 0.4, transformOrigin: '50% 50%' })
+    gsap.set(icons.filter(Boolean), { opacity: 0, y: 12 })
     gsap.set(labels.filter(Boolean), { opacity: 0, y: 16 })
 
     if (ghost) {
@@ -260,7 +283,14 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
 
     beats.forEach((beat) => {
       const landAt = beat.time + Math.max(ARRIVE - LAND_LEAD, 0)
-      revealNode(tl, dots[beat.index] ?? null, labels[beat.index] ?? null, landAt, beat.isFinale)
+      revealNode(
+        tl,
+        dots[beat.index] ?? null,
+        labels[beat.index] ?? null,
+        landAt,
+        beat.isFinale,
+        icons[beat.index] ?? null,
+      )
     })
   }
 

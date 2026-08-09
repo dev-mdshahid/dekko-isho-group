@@ -340,6 +340,13 @@
   object-position: center;
 }
 
+/* Zoom into hanging swatches; crop floor pile at bottom-right */
+.design-product-development-page #dpd-materials-global-sourcing .dpd-materials-card-image {
+  object-position: 18% 22%;
+  transform: scale(1.5);
+  transform-origin: 18% 22%;
+}
+
 .design-product-development-page .dpd-materials-card-body {
   display: flex;
   flex-direction: column;
@@ -1320,8 +1327,8 @@
 .design-product-development-page .dpd-journey-roadmap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1000 / 280;
-  min-height: 220px;
+  aspect-ratio: 1000 / 360;
+  min-height: 280px;
 }
 
 .design-product-development-page .dpd-journey-path {
@@ -1346,11 +1353,13 @@
   }
 
   .design-product-development-page .dpd-journey-roadmap [data-journey-dot],
+  .design-product-development-page .dpd-journey-roadmap [data-journey-icon],
   .design-product-development-page .dpd-journey-roadmap [data-journey-label] {
     opacity: 0;
   }
 
   .design-product-development-page .dpd-journey-mobile [data-journey-mobile-dot],
+  .design-product-development-page .dpd-journey-mobile [data-journey-mobile-icon],
   .design-product-development-page .dpd-journey-mobile [data-journey-mobile-label] {
     opacity: 0;
   }
@@ -1371,7 +1380,7 @@
   flex-direction: column;
   align-items: center;
   width: max-content;
-  max-width: 11rem;
+  max-width: 12rem;
   transform: translate(-50%, calc(var(--dpd-journey-dot) / -2));
   text-align: center;
 }
@@ -1385,13 +1394,22 @@
   box-shadow: 0 0 0 4px var(--color--white);
 }
 
+.design-product-development-page .dpd-journey-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  margin-top: 0.75rem;
+  object-fit: contain;
+}
+
 .design-product-development-page .dpd-journey-label {
   display: block;
-  margin-top: 0.75rem;
+  margin-top: 20px;
   color: var(--color--neutral-night);
   font-family: var(--_typography---font-family--heading);
   font-size: 24px;
-  font-weight: var(--_typography---h6--font-weight-600);
+  font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.01em;
   text-align: center;
@@ -1460,10 +1478,17 @@
     box-shadow: 0 0 0 4px var(--color--white);
   }
 
+  .design-product-development-page .dpd-journey-mobile-item .dpd-journey-icon {
+    width: 48px;
+    height: 48px;
+    margin-top: 0;
+  }
+
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
     margin-top: 0;
     text-align: left;
     font-size: 1.125rem;
+    font-weight: 600;
     line-height: 1.35;
   }
 }

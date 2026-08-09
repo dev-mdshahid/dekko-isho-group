@@ -174,7 +174,7 @@ export const manufacturingCapacity = {
       id: 'woven-bottoms',
       value: '1.0 M',
       label: 'Woven Bottoms (Pcs)',
-      variant: 'pink',
+      variant: 'navy',
     },
   ] satisfies CapacityStat[],
   pills: [
@@ -192,8 +192,8 @@ export const manufacturingEcosystem = {
   badge: 'Manufacturing Ecosystem',
   title: 'Everything Connected.\nEvery Process Optimized.',
   description:
-    'Our vertically integrated manufacturing ecosystem connects every stage of production — from sourcing and product development to manufacturing, quality assurance, and logistics. By bringing every function together under one roof, we eliminate inefficiencies, reduce lead times, and maintain complete control over quality at every step.',
-  image: '/images/manufacturing/manufacturing-ecosystem.jpg',
+    'Our vertically integrated manufacturing ecosystem connects every stage of production—from sourcing and product development to manufacturing, quality assurance, and logistics. By bringing every function together under one coordinated platform, we enhance collaboration, improve visibility, and deliver greater efficiency throughout the manufacturing journey.',
+  image: '/images/manufacturing/ecosystem-connected.png',
   imageAlt: 'Interior view of a large apparel manufacturing floor',
 }
 
@@ -648,6 +648,16 @@ export const manufacturingClients = {
   ],
 }
 
+const JOURNEY_ICON_BASE = '/images/manufacturing/journey'
+
+/**
+ * Manufacturing Journey roadmap.
+ * Desktop layout:
+ * - Top L→R: Material Sourcing → … → Sewing & Assembly (6 columns)
+ * - Right U-turn; bottom nodes under columns 1–5 (Material Sourcing has none beneath)
+ * - Bottom R→L (path order): In-line QC → Finishing → Final Inspection → Packing → Shipment
+ * - `stages` listed in reading order (top L→R, then bottom R→L along the path)
+ */
 export const manufacturingJourney = {
   id: 'mfg-journey',
   badge: 'Manufacturing Journey',
@@ -655,32 +665,83 @@ export const manufacturingJourney = {
   description:
     'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
   stages: [
-    { id: 'material-sourcing', label: 'Material Sourcing', row: 'top' as const, column: 0 },
-    { id: 'material-inspection', label: 'Material Inspection', row: 'top' as const, column: 1 },
+    {
+      id: 'material-sourcing',
+      label: 'Material Sourcing',
+      row: 'top' as const,
+      column: 0,
+      icon: `${JOURNEY_ICON_BASE}/icon-material-sourcing.svg`,
+    },
+    {
+      id: 'material-inspection',
+      label: 'Material Inspection',
+      row: 'top' as const,
+      column: 1,
+      icon: `${JOURNEY_ICON_BASE}/icon-material-inspection.svg`,
+    },
     {
       id: 'salesman-sample-development',
       label: 'Salesman Sample Development',
       row: 'top' as const,
       column: 2,
+      icon: `${JOURNEY_ICON_BASE}/icon-salesman-sample-development.svg`,
     },
     {
       id: 'pattern-marker-planning',
       label: 'Pattern & Marker Planning',
       row: 'top' as const,
       column: 3,
+      icon: `${JOURNEY_ICON_BASE}/icon-pattern-marker-planning.svg`,
     },
-    { id: 'fabric-cutting', label: 'Fabric Cutting', row: 'top' as const, column: 4 },
-    { id: 'sewing-assembly', label: 'Sewing & Assembly', row: 'top' as const, column: 5 },
+    {
+      id: 'fabric-cutting',
+      label: 'Fabric Cutting',
+      row: 'top' as const,
+      column: 4,
+      icon: `${JOURNEY_ICON_BASE}/icon-fabric-cutting.svg`,
+    },
+    {
+      id: 'sewing-assembly',
+      label: 'Sewing & Assembly',
+      row: 'top' as const,
+      column: 5,
+      icon: `${JOURNEY_ICON_BASE}/icon-sewing-assembly.svg`,
+    },
     {
       id: 'inline-quality-control',
       label: 'In-line Quality Control',
       row: 'bottom' as const,
       column: 5,
+      icon: `${JOURNEY_ICON_BASE}/icon-inline-quality-control.svg`,
     },
-    { id: 'finishing', label: 'Finishing', row: 'bottom' as const, column: 4 },
-    { id: 'final-inspection', label: 'Final Inspection', row: 'bottom' as const, column: 3 },
-    { id: 'packing', label: 'Packing', row: 'bottom' as const, column: 2 },
-    { id: 'shipment', label: 'Shipment', row: 'bottom' as const, column: 1 },
+    {
+      id: 'finishing',
+      label: 'Finishing',
+      row: 'bottom' as const,
+      column: 4,
+      icon: `${JOURNEY_ICON_BASE}/icon-finishing.svg`,
+    },
+    {
+      id: 'final-inspection',
+      label: 'Final Inspection',
+      row: 'bottom' as const,
+      column: 3,
+      icon: `${JOURNEY_ICON_BASE}/icon-final-inspection.svg`,
+    },
+    {
+      id: 'packing',
+      label: 'Packing',
+      row: 'bottom' as const,
+      column: 2,
+      icon: `${JOURNEY_ICON_BASE}/icon-packing.svg`,
+    },
+    {
+      id: 'shipment',
+      label: 'Shipment',
+      row: 'bottom' as const,
+      column: 1,
+      icon: `${JOURNEY_ICON_BASE}/icon-shipment.svg`,
+    },
   ],
 }
 

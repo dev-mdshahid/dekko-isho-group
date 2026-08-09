@@ -201,6 +201,8 @@ export const designProductDevelopmentGlobalNetwork = {
   ],
 }
 
+const JOURNEY_ICON_BASE = `${CAPABILITY_IMAGE_BASE}/journey`
+
 /**
  * Product Development Journey roadmap.
  * Desktop layout (from design mock):
@@ -215,15 +217,69 @@ export const designProductDevelopmentJourney = {
   badge: 'From trend research to production ready',
   title: 'Product Development Journey',
   stages: [
-    { id: 'trend-research', label: 'Trend Research', row: 'top' as const, column: 0 },
-    { id: 'concept-design', label: 'Concept & Design', row: 'top' as const, column: 1 },
-    { id: 'fabric-development', label: 'Fabric Development', row: 'top' as const, column: 2 },
-    { id: '3d-visualization', label: '3D Visualization', row: 'top' as const, column: 3 },
-    { id: 'pattern-development', label: 'Pattern Development', row: 'top' as const, column: 4 },
-    { id: 'sample-creation', label: 'Sample Creation', row: 'bottom' as const, column: 1 },
-    { id: 'fit-technical-review', label: 'Fit & Technical Review', row: 'bottom' as const, column: 2 },
-    { id: 'buyer-approval', label: 'Buyer Approval', row: 'bottom' as const, column: 3 },
-    { id: 'production-ready', label: 'Production Ready', row: 'bottom' as const, column: 4 },
+    {
+      id: 'trend-research',
+      label: 'Trend Research',
+      row: 'top' as const,
+      column: 0,
+      icon: `${JOURNEY_ICON_BASE}/icon-trend-research.svg`,
+    },
+    {
+      id: 'concept-design',
+      label: 'Concept & Design',
+      row: 'top' as const,
+      column: 1,
+      icon: `${JOURNEY_ICON_BASE}/icon-concept-design.svg`,
+    },
+    {
+      id: 'fabric-development',
+      label: 'Fabric Development',
+      row: 'top' as const,
+      column: 2,
+      icon: `${JOURNEY_ICON_BASE}/icon-fabric-development.svg`,
+    },
+    {
+      id: '3d-visualization',
+      label: '3D Visualization',
+      row: 'top' as const,
+      column: 3,
+      icon: `${JOURNEY_ICON_BASE}/icon-3d-visualization.svg`,
+    },
+    {
+      id: 'pattern-development',
+      label: 'Pattern Development',
+      row: 'top' as const,
+      column: 4,
+      icon: `${JOURNEY_ICON_BASE}/icon-pattern-development.svg`,
+    },
+    {
+      id: 'sample-creation',
+      label: 'Sample Creation',
+      row: 'bottom' as const,
+      column: 1,
+      icon: `${JOURNEY_ICON_BASE}/icon-sample-creation.svg`,
+    },
+    {
+      id: 'fit-technical-review',
+      label: 'Fit & Technical Review',
+      row: 'bottom' as const,
+      column: 2,
+      icon: `${JOURNEY_ICON_BASE}/icon-fit-technical-review.svg`,
+    },
+    {
+      id: 'buyer-approval',
+      label: 'Buyer Approval',
+      row: 'bottom' as const,
+      column: 3,
+      icon: `${JOURNEY_ICON_BASE}/icon-buyer-approval.svg`,
+    },
+    {
+      id: 'production-ready',
+      label: 'Production Ready',
+      row: 'bottom' as const,
+      column: 4,
+      icon: `${JOURNEY_ICON_BASE}/icon-production-ready.svg`,
+    },
   ],
 }
 
