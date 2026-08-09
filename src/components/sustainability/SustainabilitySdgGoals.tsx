@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react'
 
 import type { SdgInteractiveGoal } from '../../data/sustainability/content'
 
@@ -88,52 +88,71 @@ function SdgGoalRow({
   onToggle: (rowIndex: number, goalIndex: number) => void
 }) {
   const gridRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const clipRef = useRef<HTMLDivElement>(null)
   const arrowRef = useRef<HTMLSpanElement>(null)
   const isRowOpen = active?.rowIndex === rowIndex
   const activeGoalIndex = isRowOpen ? active.goalIndex : -1
   const [panelGoal, setPanelGoal] = useState<SdgInteractiveGoal | null>(null)
   const [panelGoalIndex, setPanelGoalIndex] = useState(-1)
 
-  useEffect(() => {
-    if (isRowOpen && activeGoalIndex >= 0) {
-      setPanelGoal(goals[activeGoalIndex] ?? null)
+  if (isRowOpen && activeGoalIndex >= 0) {
+    const nextGoal = goals[activeGoalIndex] ?? null
+    if (nextGoal && (panelGoal?.number !== nextGoal.number || panelGoalIndex !== activeGoalIndex)) {
+      setPanelGoal(nextGoal)
       setPanelGoalIndex(activeGoalIndex)
     }
-  }, [activeGoalIndex, goals, isRowOpen])
+  }
 
-  const updateArrow = useCallback(() => {
+  const syncPanelGeometry = useCallback(() => {
+    const panel = panelRef.current
+    const clip = clipRef.current
     const grid = gridRef.current
     const arrow = arrowRef.current
-    if (!grid || !arrow || panelGoalIndex < 0) return
+    if (!panel || !clip) return
 
-    const card = grid.querySelectorAll<HTMLElement>('.sustain-sdg-card')[panelGoalIndex]
-    if (!card) return
+    if (isRowOpen && panelGoal && panelGoalIndex >= 0) {
+      if (grid && arrow) {
+        const card = grid.querySelectorAll<HTMLElement>('.sustain-sdg-card')[panelGoalIndex]
+        if (card) {
+          const centerX = card.offsetLeft + card.offsetWidth / 2
+          arrow.style.left = `${centerX - 6.5}px`
+        }
+      }
+      panel.style.height = `${clip.offsetHeight}px`
+    } else {
+      panel.style.height = '0px'
+    }
+  }, [isRowOpen, panelGoal, panelGoalIndex])
 
-    const centerX = card.offsetLeft + card.offsetWidth / 2
-    arrow.style.left = `${centerX - 7}px`
-  }, [panelGoalIndex])
+  useLayoutEffect(() => {
+    syncPanelGeometry()
+  }, [syncPanelGeometry])
 
   useEffect(() => {
-    updateArrow()
-  }, [updateArrow, panelGoal, isRowOpen])
-
-  useEffect(() => {
-    window.addEventListener('resize', updateArrow)
-    return () => window.removeEventListener('resize', updateArrow)
-  }, [updateArrow])
+    const onResize = () => {
+      if (isRowOpen) syncPanelGeometry()
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [isRowOpen, syncPanelGeometry])
 
   const panelStyle = panelGoal
     ? {
         background: hexToRgba(panelGoal.color, 0.05),
-        borderColor: hexToRgba(panelGoal.color, 0.3),
+        borderColor: hexToRgba(panelGoal.color, 0.28),
       }
     : undefined
 
   const arrowStyle = panelGoal
     ? {
         background: hexToRgba(panelGoal.color, 0.05),
-        borderColor: hexToRgba(panelGoal.color, 0.3),
+        borderColor: hexToRgba(panelGoal.color, 0.28),
       }
+    : undefined
+
+  const dividerStyle = panelGoal
+    ? { background: hexToRgba(panelGoal.color, 0.25) }
     : undefined
 
   return (
@@ -150,16 +169,17 @@ function SdgGoalRow({
         ))}
       </div>
 
-      <div className={`sustain-sdg-panel${isRowOpen && panelGoal ? ' is-open' : ''}`} aria-hidden={!isRowOpen}>
-        <div className="sustain-sdg-panel-inner" style={panelStyle}>
+      <div
+        className={`sustain-sdg-panel${isRowOpen && panelGoal ? ' is-open' : ''}`}
+        ref={panelRef}
+        aria-hidden={!isRowOpen}
+      >
+        <div className="sustain-sdg-panel-clip" ref={clipRef}>
           <span className="sustain-sdg-panel-arrow" ref={arrowRef} style={arrowStyle} aria-hidden="true" />
-          {panelGoal ? (
-            <>
-              <div className="sustain-sdg-panel-body">
-                <div
-                  className="sustain-sdg-panel-goal"
-                  style={{ borderRightColor: hexToRgba(panelGoal.color, 0.25) }}
-                >
+          <div className="sustain-sdg-panel-inner" style={panelStyle}>
+            {panelGoal ? (
+              <>
+                <div className="sustain-sdg-panel-goal">
                   <span className="sustain-sdg-panel-number" style={{ color: panelGoal.color }}>
                     {panelGoal.number}
                   </span>
@@ -167,6 +187,7 @@ function SdgGoalRow({
                     {panelGoal.title}
                   </span>
                 </div>
+                <span className="sustain-sdg-panel-div" style={dividerStyle} aria-hidden="true" />
                 <div className="sustain-sdg-panel-stats">
                   {panelGoal.stats.map((stat) => (
                     <div className="sustain-sdg-stat" key={`${panelGoal.number}-${stat.value}-${stat.label}`}>
@@ -177,10 +198,10 @@ function SdgGoalRow({
                     </div>
                   ))}
                 </div>
-              </div>
-              <img className="sustain-sdg-panel-mark" src={panelGoal.stillSrc} alt="" aria-hidden="true" />
-            </>
-          ) : null}
+                <img className="sustain-sdg-panel-mark" src={panelGoal.stillSrc} alt="" aria-hidden="true" />
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
