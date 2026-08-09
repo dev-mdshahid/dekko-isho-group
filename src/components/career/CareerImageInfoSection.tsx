@@ -4,8 +4,7 @@ import { careerBanner } from '../../data/career/content'
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
-
-const CAREER_HERO_IMAGE = '/images/career-bg.png'
+import { CareerHeroCarousel } from './CareerHeroCarousel'
 
 export function CareerImageInfoSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -38,13 +37,7 @@ export function CareerImageInfoSection() {
               </div>
             </div>
             <div className="career-image-right">
-              <img
-                src={CAREER_HERO_IMAGE}
-                loading="eager"
-                decoding="async"
-                alt="Renewable innovation manufacturing facility"
-                className="about-image"
-              />
+              <CareerHeroCarousel images={careerBanner.heroCarousel} />
             </div>
           </div>
         </div>

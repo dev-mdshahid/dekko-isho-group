@@ -4,6 +4,7 @@ import {
   CareerApplyCTASection,
   CareerEmployeeVoicesSection,
   CareerHeroSection,
+  CareerLifeSection,
   CareerOpenPositionsSection,
   CareerStatsSection,
   CareerWhySection,
@@ -24,6 +25,7 @@ export function CareerContent() {
       <CareerHeroSection />
       <CareerWhySection />
       <CareerStatsSection />
+      <CareerLifeSection />
       <CareerOpenPositionsSection />
       <CareerEmployeeVoicesSection />
       <CareerApplyCTASection />

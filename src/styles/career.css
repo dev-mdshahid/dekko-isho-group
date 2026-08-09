@@ -46,10 +46,20 @@
   line-height: 1.1;
   text-align: center;
   color: var(--color--dark);
+  white-space: nowrap;
 }
 
 .career-hero-section .career-hero-title-wrap .pre-section-title {
   text-transform: none;
+  white-space: nowrap;
+}
+
+.career-hero-section .hero-title-line {
+  display: inline;
+}
+
+.career-hero-section .hero-title-line + .hero-title-line {
+  margin-left: 0.28em;
 }
 
 .career-hero-section .hero-title-word {
@@ -82,15 +92,139 @@
   .career-hero-section .career-hero-title {
     font-size: clamp(1.625rem, 7.5vw, 2.25rem);
     line-height: 1.15;
+    white-space: normal;
+  }
+
+  .career-hero-section .hero-title-line {
+    display: block;
+  }
+
+  .career-hero-section .hero-title-line + .hero-title-line {
+    margin-left: 0;
   }
 }
 
 /* Career page — image + info section */
 
 .image-info-career .career-image-right {
+  position: relative;
   width: 100%;
   overflow: hidden;
   background-color: #d9e4ee;
+}
+
+.image-info-career .career-hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 590px;
+  overflow: hidden;
+}
+
+.image-info-career .career-hero-carousel__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image-info-career .career-hero-carousel__image.is-active {
+  opacity: 1;
+  z-index: 1;
+  transform: scale(1);
+}
+
+.image-info-career .career-hero-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--color--white);
+  color: var(--color--dark);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.image-info-career .career-hero-carousel__arrow:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.image-info-career .career-hero-carousel__arrow:focus-visible {
+  outline: 2px solid var(--color--dark);
+  outline-offset: 2px;
+}
+
+.image-info-career .career-hero-carousel__arrow--prev {
+  left: 16px;
+}
+
+.image-info-career .career-hero-carousel__arrow--next {
+  right: 16px;
+}
+
+.image-info-career .career-hero-carousel__dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.image-info-career .career-hero-carousel__dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.image-info-career .career-hero-carousel__dot.is-active {
+  width: 24px;
+  background-color: var(--color--white);
+}
+
+.image-info-career .career-hero-carousel__dot:focus-visible {
+  outline: 2px solid var(--color--white);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-info-career .career-hero-carousel__image,
+  .image-info-career .career-hero-carousel__dot,
+  .image-info-career .career-hero-carousel__arrow {
+    transition: none;
+  }
 }
 
 .image-info-career {
@@ -185,9 +319,23 @@
     min-width: 0;
   }
 
-  .image-info-career .about-image {
+  .image-info-career .about-image,
+  .image-info-career .career-hero-carousel {
     height: clamp(14rem, 42vw, 24rem);
     object-fit: cover;
+  }
+
+  .image-info-career .career-hero-carousel__arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .image-info-career .career-hero-carousel__arrow--prev {
+    left: 10px;
+  }
+
+  .image-info-career .career-hero-carousel__arrow--next {
+    right: 10px;
   }
 
   .image-info-career .about-hero-content {
@@ -241,7 +389,8 @@
     padding: 1.75rem 1.25rem 1.25rem;
   }
 
-  .image-info-career .about-image {
+  .image-info-career .about-image,
+  .image-info-career .career-hero-carousel {
     height: clamp(12rem, 52vw, 18rem);
   }
 }
@@ -1047,5 +1196,174 @@
 
   .career-banner-image {
     min-height: 320px;
+  }
+}
+
+/* ── Life at Dekko ISHO ── */
+.career-life-section {
+  background-color: var(--color--white);
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.career-life-header {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--gap--gap-5);
+  margin-bottom: 48px;
+}
+
+.career-life-title {
+  margin: 0;
+  max-width: 20ch;
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(2.25rem, 4vw, 3.625rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color--dark);
+}
+
+.career-life-subtitle {
+  margin: 0;
+  max-width: 46rem;
+  font-family: var(--_typography---font-family--body);
+  font-size: 1.125rem;
+  font-weight: var(--_typography---body--font-weight-500);
+  line-height: 1.65;
+  color: var(--color--neutral-outer-space, #3d3d4e);
+}
+
+.career-life-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.career-life-card {
+  position: relative;
+  grid-column: span 2;
+  min-height: 22rem;
+  border-radius: var(--border-radius--lg, 1rem);
+  overflow: hidden;
+}
+
+.career-life-card--wide {
+  grid-column: span 3;
+  min-height: 24rem;
+}
+
+.career-life-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.career-life-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 38%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+}
+
+.career-life-card-content {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+}
+
+.career-life-card-title {
+  margin: 0;
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color--white);
+}
+
+.career-life-card-description {
+  margin: 0;
+  max-width: 42ch;
+  font-family: var(--_typography---font-family--body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 88%);
+}
+
+@media screen and (max-width: 991px) {
+  .career-life-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .career-life-header {
+    margin-bottom: 2rem;
+  }
+
+  .career-life-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+
+  .career-life-card,
+  .career-life-card--wide {
+    grid-column: span 1;
+    min-height: 18rem;
+  }
+
+  .career-life-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .career-life-card-content {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .career-life-section {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .career-life-subtitle {
+    font-size: 1rem;
+  }
+
+  .career-life-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .career-life-card,
+  .career-life-card--wide,
+  .career-life-card:last-child:nth-child(odd) {
+    grid-column: span 1;
+    min-height: 16.5rem;
+  }
+
+  .career-life-card-content {
+    left: 1.125rem;
+    right: 1.125rem;
+    bottom: 1.125rem;
+  }
+
+  .career-life-card-title {
+    font-size: 1.25rem;
+  }
+
+  .career-life-card-description {
+    font-size: 0.875rem;
   }
 }

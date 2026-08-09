@@ -19,30 +19,21 @@ export function CareerHeroSection() {
             <h1 className="career-hero-title">
               <span className="hero-title-line">
                 <span className="hero-title-word" data-about-animate="hero-word">
-                  Join
+                  Growing
                 </span>{' '}
                 <span className="hero-title-word" data-about-animate="hero-word">
-                  a
-                </span>{' '}
-                <span className="hero-title-word" data-about-animate="hero-word">
-                  Team
-                </span>{' '}
-                <span className="hero-title-word" data-about-animate="hero-word">
-                  That
+                  Together,
                 </span>
               </span>
               <span className="hero-title-line">
                 <span className="hero-title-word" data-about-animate="hero-word">
-                  Shapes
-                </span>{' '}
-                <span className="hero-title-word" data-about-animate="hero-word">
-                  the
+                  Every
                 </span>{' '}
                 <span
                   className="hero-title-word hero-title-accent hero-title-accent--primary"
                   data-about-animate="hero-word"
                 >
-                  Future
+                  Day.
                 </span>
               </span>
             </h1>
