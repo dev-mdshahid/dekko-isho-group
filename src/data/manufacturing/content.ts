@@ -475,7 +475,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-garments',
       title: 'Dekko Garments Ltd.',
-      image: mfgProductNetworkImage('dekko-garments.png'),
+      image: mfgProductNetworkImage('network-dgl.png'),
       imageAlt: 'Colorful garments hanging on production racks',
       productionLines: '46',
       monthlyCapacity: '14,40,000',
@@ -488,7 +488,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-readywears',
       title: 'Dekko Readywears Ltd.',
-      image: mfgProductNetworkImage('dekko-readywears.png'),
+      image: mfgProductNetworkImage('network-drl.png'),
       imageAlt: 'Readywear garments on studio hanging system',
       productionLines: '24',
       monthlyCapacity: '7,50,000',

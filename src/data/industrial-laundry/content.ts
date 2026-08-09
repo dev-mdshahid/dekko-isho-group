@@ -263,7 +263,7 @@ export const industrialLaundrySustainableTech = {
       id: 'eflow',
       number: '01',
       title: 'eFlow Technology',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/eflow-technology.jpg`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/tech-eflow.png`,
       imageAlt: 'Jeanologia e-Flow K Lab washing technology equipment',
     },
     {
@@ -277,7 +277,7 @@ export const industrialLaundrySustainableTech = {
       id: 'conveyor-dryers',
       number: '03',
       title: 'Conveyor Dryers',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers-tech.jpg`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/tech-conveyor-dryers.png`,
       imageAlt: 'Garments moving through an industrial conveyor dryer line',
     },
   ],
@@ -292,7 +292,7 @@ export const industrialLaundryEnvironmentalManagement = {
   items: [
     {
       id: 'chemical-stewardship',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/chemical-stewardship.jpg`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/env-chemical-stewardship.png`,
       imageAlt: 'Laboratory jar testing setup with chemical solutions',
       title: 'Chemical Stewardship',
       description:
@@ -300,7 +300,7 @@ export const industrialLaundryEnvironmentalManagement = {
     },
     {
       id: 'effluent-treatment',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/effluent-treatment-plant.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/env-effluent-treatment.png`,
       imageAlt: 'Effluent treatment bio-tower aeration tank',
       title: 'Effluent Treatment Plant',
       description:
@@ -308,7 +308,7 @@ export const industrialLaundryEnvironmentalManagement = {
     },
     {
       id: 'sewage-treatment',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sewage-treatment-plant.jpg`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/env-sewage-treatment.png`,
       imageAlt: 'Sewage treatment plant tanks and chemical dosing systems',
       title: 'Sewage Treatment Plant (STP)',
       description:

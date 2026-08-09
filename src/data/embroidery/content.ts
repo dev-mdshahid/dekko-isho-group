@@ -74,7 +74,7 @@ export const embroideryTechnology = {
       id: 'multi-head',
       title: 'Multi-head Embroidery Systems',
       description: 'Parallel head configurations supporting efficient large-scale runs.',
-      image: '/images/embroidery/in-house.jpg',
+      image: '/images/embroidery/multi-head.png',
       imageAlt: 'Multi-head industrial embroidery production line',
     },
   ],
@@ -94,19 +94,19 @@ export const embroideryProductionCapacity = {
   stats: [
     {
       id: 'monthly-capacity',
-      value: '3,50,000',
-      label: 'Capacity (Pcs/ month)',
+      value: '5,03,50,000',
+      label: 'Stitches/Day',
       variant: 'blue',
     },
     {
       id: 'total-machines',
-      value: '06',
+      value: '15',
       label: 'Total Machines',
       variant: 'sky',
     },
     {
       id: 'skilled-professionals',
-      value: '56',
+      value: '142',
       label: 'Skilled Professionals',
       variant: 'pink',
     },
@@ -146,7 +146,7 @@ export const embroideryQualityAssurance = {
     'Every embroidered panel undergoes rigorous quality checks throughout the production process. From design approval and stitch verification to final inspection, we ensure every detail meets customer specifications before moving to the next stage.',
   highlightTitle: '100% Panel Inspection',
   highlightDetail: 'Stitch Consistency • Defect Management',
-  image: '/images/embroidery/quality-assurance.jpg',
+  image: '/images/embroidery/quality-control.png',
   imageAlt: 'Quality audit and sorting tables inspecting embroidered panels',
 }
 
@@ -158,7 +158,7 @@ export const embroideryProductionNetwork = {
     {
       id: 'dgl',
       title: 'DGL Embroidery Unit',
-      image: '/images/embroidery/dgl-embroidery-unit.png',
+      image: '/images/embroidery/network-dgl.png',
       imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
       monthlyCapacity: '50,00,000',
       monthlyCapacityLabel: 'Stitching capacity',
