@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { footerSocialLinks } from '../../data/footer/footerContent'
 import {
   businessNavGroups,
   flattenNavLinks,
@@ -17,7 +18,82 @@ import { MOBILE_NAV_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 import { useNavDropdowns, type DesktopDropdownId } from '../../hooks/useNavDropdowns'
 import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
+import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
+
+const navSocialLinks = [
+  {
+    ...footerSocialLinks[0],
+    label: 'Facebook',
+    brand: 'facebook' as const,
+  },
+  {
+    ...footerSocialLinks[1],
+    label: 'LinkedIn',
+    brand: 'linkedin' as const,
+  },
+  {
+    ...footerSocialLinks[2],
+    label: 'X (Twitter)',
+    brand: 'x' as const,
+  },
+  {
+    ...footerSocialLinks[3],
+    label: 'YouTube',
+    brand: 'youtube' as const,
+  },
+]
+
+function socialIconSrc(icon: string) {
+  return icon.startsWith('/') ? icon : legacyImage(icon)
+}
+
+function NavContactExpand() {
+  return (
+    <div className="nav-contact-expand">
+      <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
+      <div className="nav-contact-expand__menu" aria-label="Social media">
+        {navSocialLinks.map((social, index) => (
+          <a
+            key={social.href}
+            href={social.href}
+            target="_blank"
+            rel="noreferrer"
+            className={`nav-social-pill nav-social-pill--${social.brand}`}
+            style={{ '--nav-social-i': index } as CSSProperties}
+          >
+            <span className="nav-social-pill__label">{social.label}</span>
+            <span className="nav-social-pill__icon" aria-hidden="true">
+              <img src={socialIconSrc(social.icon)} alt="" />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function MobileNavSocialLinks({ closeMenu }: { closeMenu: () => void }) {
+  return (
+    <div className="mobile-nav-social" aria-label="Social media">
+      {navSocialLinks.map((social) => (
+        <a
+          key={social.href}
+          href={social.href}
+          target="_blank"
+          rel="noreferrer"
+          className={`nav-social-pill nav-social-pill--${social.brand}`}
+          onClick={closeMenu}
+        >
+          <span className="nav-social-pill__label">{social.label}</span>
+          <span className="nav-social-pill__icon" aria-hidden="true">
+            <img src={socialIconSrc(social.icon)} alt="" />
+          </span>
+        </a>
+      ))}
+    </div>
+  )
+}
 
 type NavDropdownProps = {
   id: DesktopDropdownId
@@ -489,6 +565,7 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
           </NavLink>
           <div className="mobile-nav-contact">
             <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
+            <MobileNavSocialLinks closeMenu={closeMenu} />
           </div>
         </nav>
       </div>
@@ -616,7 +693,7 @@ export function Navbar() {
           )}
           <div id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef64-18a8ef3c" className="right-nav">
             <div className="nav-button-wrap">
-              <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
+              <NavContactExpand />
             </div>
             <NavMenuButton isOpen={isOpen} onClick={toggleMenu} />
           </div>
