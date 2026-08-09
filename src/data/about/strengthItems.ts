@@ -72,7 +72,7 @@ export const strengthItems: StrengthItem[] = [
     description:
       'LEED Gold-certified facilities, renewable energy investments, water recycling, waste reduction programs, circular economy initiatives, and ambitious ESG goals for 2030.',
     image: '/images/strength/sustainability-leadership.png',
-    imageAlt: 'Aerial view of a green industrial complex with landscaped surroundings',
+    imageAlt: 'Aerial view of a factory rooftop covered with solar panels amid greenery',
   },
   {
     id: 'about-strength-08',

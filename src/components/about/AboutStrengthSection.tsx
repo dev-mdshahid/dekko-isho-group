@@ -68,9 +68,17 @@ function StrengthCard({
   )
 }
 
+const STRENGTH_SECTION_BG = '/images/backgrounds/strength-section-bg.jpg'
+
 export function AboutStrengthSection() {
   return (
     <section className="about-strength-section about-strength-section--about section-spacing">
+      <img
+        src={STRENGTH_SECTION_BG}
+        alt=""
+        aria-hidden="true"
+        className="about-strength-section-bg"
+      />
       <div className="container about-strength-container">
         <div className="about-strength-main">
           <FadeIn id="about-strength-header" className="about-strength-header">
