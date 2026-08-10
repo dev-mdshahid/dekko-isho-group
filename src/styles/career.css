@@ -1336,6 +1336,7 @@
   background-color: var(--color--white);
   padding-top: 120px;
   padding-bottom: 120px;
+  overflow: hidden;
 }
 
 .career-life-header {
@@ -1368,23 +1369,50 @@
   color: var(--color--neutral-outer-space, #3d3d4e);
 }
 
-.career-life-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1rem;
+.career-life-scroll {
+  overflow: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
+  cursor: grab;
+  padding-inline: var(--_layout---container-full-gutter);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.career-life-scroll:focus-visible {
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color--primary-1, #1a1a2e) 35%, transparent);
+}
+
+.career-life-scroll.is-dragging {
+  cursor: grabbing;
+}
+
+.career-life-scroll.is-dragging,
+.career-life-scroll.is-dragging * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.career-life-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  padding-right: var(--_layout---container-full-gutter);
+  box-sizing: content-box;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .career-life-card {
   position: relative;
-  grid-column: span 2;
-  min-height: 22rem;
-  border-radius: var(--border-radius--lg, 1rem);
+  flex: 0 0 auto;
+  width: 480px;
+  height: 900px;
+  border-radius: 1.5rem;
   overflow: hidden;
-}
-
-.career-life-card--wide {
-  grid-column: span 3;
-  min-height: 24rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .career-life-card-image {
@@ -1393,43 +1421,67 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 .career-life-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 38%, rgba(0, 0, 0, 0.72) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.78) 100%);
   pointer-events: none;
 }
 
 .career-life-card-content {
   position: absolute;
-  left: 1.5rem;
-  right: 1.5rem;
-  bottom: 1.5rem;
+  inset: auto 0 0;
   z-index: 1;
   display: flex;
   flex-flow: column;
-  gap: 0.5rem;
+  gap: 10px;
+  padding: 40px;
+  pointer-events: none;
 }
 
 .career-life-card-title {
   margin: 0;
   font-family: var(--_typography---font-family--heading);
-  font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+  font-size: 28px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--color--white);
 }
 
 .career-life-card-description {
   margin: 0;
-  max-width: 42ch;
   font-family: var(--_typography---font-family--body);
-  font-size: 0.9375rem;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 1.5;
-  color: rgb(255 255 255 / 88%);
+  line-height: 1.55;
+  color: rgb(255 255 255 / 92%);
+}
+
+@media screen and (max-width: 1199px) {
+  .career-life-card {
+    width: 400px;
+    height: 750px;
+  }
+
+  .career-life-card-content {
+    padding: 32px;
+  }
+
+  .career-life-card-title {
+    font-size: 24px;
+  }
+
+  .career-life-card-description {
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -1442,25 +1494,27 @@
     margin-bottom: 2rem;
   }
 
-  .career-life-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.875rem;
+  .career-life-track {
+    gap: 1.25rem;
   }
 
-  .career-life-card,
-  .career-life-card--wide {
-    grid-column: span 1;
-    min-height: 18rem;
-  }
-
-  .career-life-card:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
+  .career-life-card {
+    width: 340px;
+    height: 638px;
+    border-radius: 1.25rem;
   }
 
   .career-life-card-content {
-    left: 1.25rem;
-    right: 1.25rem;
-    bottom: 1.25rem;
+    padding: 28px;
+    gap: 8px;
+  }
+
+  .career-life-card-title {
+    font-size: 22px;
+  }
+
+  .career-life-card-description {
+    font-size: 15px;
   }
 }
 
@@ -1474,28 +1528,27 @@
     font-size: 1rem;
   }
 
-  .career-life-grid {
-    grid-template-columns: 1fr;
+  .career-life-track {
+    gap: 1rem;
   }
 
-  .career-life-card,
-  .career-life-card--wide,
-  .career-life-card:last-child:nth-child(odd) {
-    grid-column: span 1;
-    min-height: 16.5rem;
+  .career-life-card {
+    width: min(78vw, 300px);
+    height: auto;
+    aspect-ratio: 480 / 900;
+    border-radius: 1.125rem;
   }
 
   .career-life-card-content {
-    left: 1.125rem;
-    right: 1.125rem;
-    bottom: 1.125rem;
+    padding: 24px;
+    gap: 8px;
   }
 
   .career-life-card-title {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 
   .career-life-card-description {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 }

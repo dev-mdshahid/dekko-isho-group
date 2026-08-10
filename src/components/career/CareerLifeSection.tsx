@@ -1,8 +1,14 @@
+import { useRef } from 'react'
+
 import { careerLifeAt } from '../../data/career/content'
+import { useMomentumCarousel } from '../../hooks/useMomentumCarousel'
 import { FadeIn } from '../ui/FadeIn'
 
 export function CareerLifeSection() {
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const { title, subtitle, cards } = careerLifeAt
+  useMomentumCarousel(viewportRef, trackRef)
 
   return (
     <section className="career-life-section" aria-labelledby="career-life-title">
@@ -13,20 +19,27 @@ export function CareerLifeSection() {
           </h2>
           <p className="career-life-subtitle">{subtitle}</p>
         </FadeIn>
+      </div>
 
-        <div className="career-life-grid">
-          {cards.map((card, index) => (
-            <FadeIn
-              key={card.id}
-              id={card.id}
-              className={`career-life-card${index < 2 ? ' career-life-card--wide' : ''}`}
-              delay={index * 50}
-            >
+      <div
+        ref={viewportRef}
+        className="career-life-scroll"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={title}
+        tabIndex={0}
+      >
+        <div ref={trackRef} className="career-life-track">
+          {cards.map((card) => (
+            <article key={card.id} id={card.id} className="career-life-card">
               <img
                 src={card.image}
                 alt={card.imageAlt}
+                width={480}
+                height={900}
                 loading="lazy"
                 decoding="async"
+                draggable={false}
                 className="career-life-card-image"
               />
               <div className="career-life-card-overlay" aria-hidden="true" />
@@ -34,7 +47,7 @@ export function CareerLifeSection() {
                 <h3 className="career-life-card-title">{card.title}</h3>
                 <p className="career-life-card-description">{card.description}</p>
               </div>
-            </FadeIn>
+            </article>
           ))}
         </div>
       </div>
