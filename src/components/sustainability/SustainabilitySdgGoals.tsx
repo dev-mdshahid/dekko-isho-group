@@ -11,7 +11,7 @@ import {
 import type { SdgInteractiveGoal } from '../../data/sustainability/content'
 import { splitTitleIntoTwoLines } from '../../lib/splitTitleIntoTwoLines'
 
-const DESKTOP_COLUMNS = 5
+const DESKTOP_COLUMNS = 6
 const TABLET_COLUMNS = 3
 const MOBILE_COLUMNS = 2
 const TABLET_MQ = '(max-width: 980px)'
@@ -246,15 +246,13 @@ function SdgGoalRow({
 }
 
 export function SustainabilitySdgGoals({ goals }: SustainabilitySdgGoalsProps) {
-  const [active, setActive] = useState<ActiveGoal | null>(() =>
-    goals.length > 0 ? { rowIndex: 0, goalIndex: 0 } : null,
-  )
+  const [active, setActive] = useState<ActiveGoal | null>(null)
   const rootRef = useRef<HTMLDivElement>(null)
   const columns = useSdgColumns()
   const rows = chunkGoals(goals, columns)
 
   useEffect(() => {
-    setActive(goals.length > 0 ? { rowIndex: 0, goalIndex: 0 } : null)
+    setActive(null)
   }, [columns, goals.length])
 
   const selectGoal = useCallback((rowIndex: number, goalIndex: number) => {
