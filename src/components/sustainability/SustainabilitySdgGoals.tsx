@@ -1,8 +1,20 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+} from 'react'
 
 import type { SdgInteractiveGoal } from '../../data/sustainability/content'
 
-const GOALS_PER_ROW = 4
+const DESKTOP_COLUMNS = 5
+const TABLET_COLUMNS = 3
+const MOBILE_COLUMNS = 2
+const TABLET_MQ = '(max-width: 980px)'
+const MOBILE_MQ = '(max-width: 560px)'
 
 type SustainabilitySdgGoalsProps = {
   goals: SdgInteractiveGoal[]
@@ -19,6 +31,28 @@ function hexToRgba(hex: string, alpha: number) {
   const g = Number.parseInt(value.slice(2, 4), 16)
   const b = Number.parseInt(value.slice(4, 6), 16)
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
+function getSdgColumns() {
+  if (typeof window === 'undefined') return DESKTOP_COLUMNS
+  if (window.matchMedia(MOBILE_MQ).matches) return MOBILE_COLUMNS
+  if (window.matchMedia(TABLET_MQ).matches) return TABLET_COLUMNS
+  return DESKTOP_COLUMNS
+}
+
+function useSdgColumns() {
+  const [columns, setColumns] = useState(getSdgColumns)
+
+  useEffect(() => {
+    const update = () => setColumns(getSdgColumns())
+    update()
+
+    const mediaQueries = [window.matchMedia(MOBILE_MQ), window.matchMedia(TABLET_MQ)]
+    mediaQueries.forEach((mq) => mq.addEventListener('change', update))
+    return () => mediaQueries.forEach((mq) => mq.removeEventListener('change', update))
+  }, [])
+
+  return columns
 }
 
 function chunkGoals(goals: SdgInteractiveGoal[], size: number) {
@@ -41,6 +75,11 @@ function SdgGoalCard({
   onToggle: () => void
 }) {
   const animRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    const preload = new Image()
+    preload.src = goal.animSrc
+  }, [goal.animSrc])
 
   useEffect(() => {
     const anim = animRef.current
@@ -66,8 +105,14 @@ function SdgGoalCard({
         onToggle()
       }}
     >
-      <img className="sustain-sdg-card-still" src={goal.stillSrc} alt="" loading="lazy" draggable={false} />
-      <img className="sustain-sdg-card-anim" ref={animRef} alt="" aria-hidden="true" draggable={false} />
+      <span className="sustain-sdg-card-inner" aria-hidden="true">
+        <span className="sustain-sdg-card-face sustain-sdg-card-face--front">
+          <img className="sustain-sdg-card-still" src={goal.stillSrc} alt="" loading="lazy" draggable={false} />
+        </span>
+        <span className="sustain-sdg-card-face sustain-sdg-card-face--back">
+          <img className="sustain-sdg-card-anim" ref={animRef} alt="" draggable={false} />
+        </span>
+      </span>
     </button>
   )
 }
@@ -210,7 +255,12 @@ function SdgGoalRow({
 
 export function SustainabilitySdgGoals({ goals }: SustainabilitySdgGoalsProps) {
   const [active, setActive] = useState<ActiveGoal | null>(null)
-  const rows = chunkGoals(goals, GOALS_PER_ROW)
+  const columns = useSdgColumns()
+  const rows = chunkGoals(goals, columns)
+
+  useEffect(() => {
+    setActive(null)
+  }, [columns])
 
   const openGoal = useCallback((rowIndex: number, goalIndex: number) => {
     setActive({ rowIndex, goalIndex })
