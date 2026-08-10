@@ -1,3 +1,5 @@
+import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
+
 export type CareerWhyItem = {
   id: string
   number: string
@@ -281,6 +283,51 @@ export const careerLifeAt = {
       imageAlt: 'Team members celebrating together at a sports tournament',
     },
   ] satisfies CareerLifeCard[],
+}
+
+export const careerGrowthTogether = {
+  badge: 'Growth',
+  title: 'Growing Together in Numbers',
+  description:
+    'Behind every milestone is a shared commitment to learning, collaboration, and continuous growth.',
+  stats: [
+    {
+      id: 'people',
+      value: '20,000+',
+      label: 'People Growing Together',
+      variant: 'blue',
+    },
+    {
+      id: 'years',
+      value: '70+',
+      label: 'Years of Building Trust',
+      variant: 'sky',
+    },
+    {
+      id: 'verticals',
+      value: 'Multiple',
+      label: 'Business Verticals',
+      variant: 'navy',
+    },
+    {
+      id: 'leadership',
+      value: 'Leadership',
+      label: 'Development Initiatives',
+      variant: 'pink',
+    },
+    {
+      id: 'learning',
+      value: 'Continuous',
+      label: 'Learning & Development Programs',
+      variant: 'white',
+    },
+    {
+      id: 'careers',
+      value: 'Diverse',
+      label: 'Career Opportunities',
+      variant: 'dark',
+    },
+  ] satisfies CapacityStat[],
 }
 
 export const careerApplyCta = {

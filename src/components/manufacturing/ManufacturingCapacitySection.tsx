@@ -16,8 +16,8 @@ export type ManufacturingCapacityContent = {
   titleAccentTone?: 'brand' | 'yale' | 'amaranth'
   titleAfter?: string
   description?: string
-  ctaLabel: string
-  ctaHref: string
+  ctaLabel?: string
+  ctaHref?: string
   stats: CapacityStat[]
   pills?: string[]
   keyMetrics?: Array<{
@@ -104,9 +104,11 @@ export function ManufacturingCapacitySection({
                   ))}
                 </div>
               ) : null}
-              <div className="mfg-capacity-cta">
-                <ButtonArrow to={ctaHref} label={ctaLabel} />
-              </div>
+              {ctaLabel && ctaHref ? (
+                <div className="mfg-capacity-cta">
+                  <ButtonArrow to={ctaHref} label={ctaLabel} />
+                </div>
+              ) : null}
             </FadeIn>
 
             <FadeIn

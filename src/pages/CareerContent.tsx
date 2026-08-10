@@ -6,10 +6,12 @@ import {
   CareerHeroSection,
   CareerLifeSection,
   CareerOpenPositionsSection,
-  CareerStatsSection,
-  CareerWhySection,
+  // CareerStatsSection,
+  // CareerWhySection,
   CareerWorkplaceSection,
 } from '../components/career'
+import { ManufacturingCapacitySection } from '../components/manufacturing'
+import { careerGrowthTogether } from '../data/career/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -25,9 +27,10 @@ export function CareerContent() {
     <div ref={ref} className="career-page">
       <CareerHeroSection />
       <CareerWorkplaceSection />
-      <CareerWhySection />
-      <CareerStatsSection />
+      {/* <CareerWhySection /> */}
+      {/* <CareerStatsSection /> */}
       <CareerLifeSection />
+      <ManufacturingCapacitySection idPrefix="career" content={careerGrowthTogether} />
       <CareerOpenPositionsSection />
       <CareerEmployeeVoicesSection />
       <CareerApplyCTASection />

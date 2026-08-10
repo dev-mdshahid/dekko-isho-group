@@ -1405,12 +1405,14 @@
 }
 
 .career-life-card {
+  --career-life-card-height: min(900px, calc(100dvh - var(--navbar-height) - 60px));
   position: relative;
   flex: 0 0 auto;
-  width: 480px;
-  height: 900px;
+  height: var(--career-life-card-height);
+  width: calc(var(--career-life-card-height) * 480 / 900);
   border-radius: 1.5rem;
   overflow: hidden;
+  container-type: size;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -1442,14 +1444,14 @@
   display: flex;
   flex-flow: column;
   gap: 10px;
-  padding: 40px;
+  padding: clamp(1.25rem, 5.5cqh, 40px);
   pointer-events: none;
 }
 
 .career-life-card-title {
   margin: 0;
   font-family: var(--_typography---font-family--heading);
-  font-size: 28px;
+  font-size: clamp(1.125rem, 3.1cqh, 28px);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -1459,29 +1461,10 @@
 .career-life-card-description {
   margin: 0;
   font-family: var(--_typography---font-family--body);
-  font-size: 18px;
+  font-size: clamp(0.875rem, 2cqh, 18px);
   font-weight: 500;
   line-height: 1.55;
   color: rgb(255 255 255 / 92%);
-}
-
-@media screen and (max-width: 1199px) {
-  .career-life-card {
-    width: 400px;
-    height: 750px;
-  }
-
-  .career-life-card-content {
-    padding: 32px;
-  }
-
-  .career-life-card-title {
-    font-size: 24px;
-  }
-
-  .career-life-card-description {
-    font-size: 16px;
-  }
 }
 
 @media screen and (max-width: 991px) {
@@ -1499,22 +1482,11 @@
   }
 
   .career-life-card {
-    width: 340px;
-    height: 638px;
     border-radius: 1.25rem;
   }
 
   .career-life-card-content {
-    padding: 28px;
     gap: 8px;
-  }
-
-  .career-life-card-title {
-    font-size: 22px;
-  }
-
-  .career-life-card-description {
-    font-size: 15px;
   }
 }
 
@@ -1533,22 +1505,174 @@
   }
 
   .career-life-card {
-    width: min(78vw, 300px);
-    height: auto;
-    aspect-ratio: 480 / 900;
     border-radius: 1.125rem;
   }
 
   .career-life-card-content {
-    padding: 24px;
     gap: 8px;
   }
+}
 
-  .career-life-card-title {
-    font-size: 20px;
+/* ── Growing Together in Numbers (ManufacturingCapacitySection) ── */
+.career-page .mfg-capacity-section {
+  background-color: #fff;
+  overflow: visible;
+}
+
+.career-page .mfg-capacity-section .service-step-main,
+.career-page .mfg-capacity-section .container {
+  overflow: visible;
+}
+
+.career-page .mfg-capacity-section .container {
+  max-width: 1520px;
+  width: 100%;
+  padding-left: var(--_layout---container-gutter);
+  padding-right: var(--_layout---container-gutter);
+}
+
+.career-page .mfg-capacity-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 660px;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  overflow: visible;
+}
+
+.career-page .mfg-capacity-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.career-page .mfg-capacity-left .pre-section-title-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+}
+
+.career-page .mfg-capacity-left .pre-section-title {
+  color: var(--color--neutral-night);
+}
+
+.career-page .mfg-capacity-left .pre-section-title-square {
+  margin-bottom: 0;
+  background-color: var(--color--primary-gradient-end);
+  background-image: none;
+}
+
+.career-page .mfg-capacity-title {
+  width: 100%;
+  max-width: none;
+  text-align: left;
+  font-size: clamp(2rem, 4vw, 3.625rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+  color: var(--color--primary-gradient-end);
+  text-wrap: balance;
+}
+
+.career-page .mfg-capacity-description {
+  width: 100%;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color--gray-2);
+  margin: 0;
+}
+
+.career-page .mfg-capacity-cluster {
+  width: 100%;
+  min-width: 0;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.career-page .mfg-capacity-cluster .capacity-stat-circles {
+  --capacity-circle-size: 220px;
+  width: calc(var(--capacity-circle-size) * var(--capacity-cols));
+  max-width: none;
+  flex-shrink: 0;
+}
+
+.career-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+  max-width: 84%;
+  gap: 10px;
+  padding: clamp(0.5rem, 2cqi, 0.9rem);
+}
+
+.career-page .mfg-capacity-cluster .capacity-stat-value {
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 100%;
+}
+
+.career-page .mfg-capacity-cluster .capacity-stat-label {
+  font-size: 18px;
+  line-height: 1.2;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .career-page .mfg-capacity-section .service-step-main.section-spacing {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
   }
 
-  .career-life-card-description {
-    font-size: 14px;
+  .career-page .mfg-capacity-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .career-page .mfg-capacity-title {
+    font-size: clamp(1.875rem, 7.5vw, 2.5rem);
+  }
+
+  .career-page .mfg-capacity-description {
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: none;
+  }
+
+  .career-page .mfg-capacity-cluster {
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: clamp(8rem, 28vw, 10.5rem);
+    margin-inline: auto;
+    max-width: 100%;
+    flex-shrink: 1;
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(0.875rem, 11cqi, 1.25rem);
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-label {
+    font-size: clamp(0.625rem, 6cqi, 0.875rem);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .career-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-size: clamp(6.75rem, 30vw, 8.5rem);
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(0.75rem, 10cqi, 1.0625rem);
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-label {
+    font-size: clamp(0.5rem, 5cqi, 0.6875rem);
   }
 }
