@@ -9,6 +9,7 @@ import {
 } from 'react'
 
 import type { SdgInteractiveGoal } from '../../data/sustainability/content'
+import { splitTitleIntoTwoLines } from '../../lib/splitTitleIntoTwoLines'
 
 const DESKTOP_COLUMNS = 5
 const TABLET_COLUMNS = 3
@@ -23,14 +24,6 @@ type SustainabilitySdgGoalsProps = {
 type ActiveGoal = {
   rowIndex: number
   goalIndex: number
-}
-
-function hexToRgba(hex: string, alpha: number) {
-  const value = hex.replace('#', '')
-  const r = Number.parseInt(value.slice(0, 2), 16)
-  const g = Number.parseInt(value.slice(2, 4), 16)
-  const b = Number.parseInt(value.slice(4, 6), 16)
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
 function getSdgColumns() {
@@ -65,16 +58,16 @@ function chunkGoals(goals: SdgInteractiveGoal[], size: number) {
 
 function SdgGoalCard({
   goal,
-  isActive,
-  onActivate,
-  onToggle,
+  isExpanded,
+  onSelect,
 }: {
   goal: SdgInteractiveGoal
-  isActive: boolean
-  onActivate: () => void
-  onToggle: () => void
+  isExpanded: boolean
+  onSelect: () => void
 }) {
   const animRef = useRef<HTMLImageElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const isFlipped = isHovered || isExpanded
 
   useEffect(() => {
     const preload = new Image()
@@ -85,24 +78,24 @@ function SdgGoalCard({
     const anim = animRef.current
     if (!anim) return
 
-    if (isActive) {
+    if (isFlipped) {
       anim.src = `${goal.animSrc}?r=${Date.now()}`
     } else {
       anim.removeAttribute('src')
     }
-  }, [goal.animSrc, isActive])
+  }, [goal.animSrc, isFlipped])
 
   return (
     <button
       type="button"
-      className={`sustain-sdg-card${isActive ? ' is-active' : ''}`}
+      className={`sustain-sdg-card${isFlipped ? ' is-flipped' : ''}${isExpanded ? ' is-active' : ''}`}
       aria-label={`SDG ${goal.number} — ${goal.title}`}
-      aria-expanded={isActive}
-      onMouseEnter={onActivate}
-      onFocus={onActivate}
+      aria-expanded={isExpanded}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onClick={(event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
-        onToggle()
+        onSelect()
       }}
     >
       <span className="sustain-sdg-card-inner" aria-hidden="true">
@@ -121,16 +114,12 @@ function SdgGoalRow({
   goals,
   rowIndex,
   active,
-  onOpen,
-  onClose,
-  onToggle,
+  onSelect,
 }: {
   goals: SdgInteractiveGoal[]
   rowIndex: number
   active: ActiveGoal | null
-  onOpen: (rowIndex: number, goalIndex: number) => void
-  onClose: () => void
-  onToggle: (rowIndex: number, goalIndex: number) => void
+  onSelect: (rowIndex: number, goalIndex: number) => void
 }) {
   const gridRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -140,12 +129,14 @@ function SdgGoalRow({
   const activeGoalIndex = isRowOpen ? active.goalIndex : -1
   const [panelGoal, setPanelGoal] = useState<SdgInteractiveGoal | null>(null)
   const [panelGoalIndex, setPanelGoalIndex] = useState(-1)
+  const [contentKey, setContentKey] = useState(0)
 
   if (isRowOpen && activeGoalIndex >= 0) {
     const nextGoal = goals[activeGoalIndex] ?? null
     if (nextGoal && (panelGoal?.number !== nextGoal.number || panelGoalIndex !== activeGoalIndex)) {
       setPanelGoal(nextGoal)
       setPanelGoalIndex(activeGoalIndex)
+      setContentKey((key) => key + 1)
     }
   }
 
@@ -161,7 +152,7 @@ function SdgGoalRow({
         const card = grid.querySelectorAll<HTMLElement>('.sustain-sdg-card')[panelGoalIndex]
         if (card) {
           const centerX = card.offsetLeft + card.offsetWidth / 2
-          arrow.style.left = `${centerX - 6.5}px`
+          arrow.style.left = `${centerX - 9}px`
         }
       }
       panel.style.height = `${clip.offsetHeight}px`
@@ -172,7 +163,7 @@ function SdgGoalRow({
 
   useLayoutEffect(() => {
     syncPanelGeometry()
-  }, [syncPanelGeometry])
+  }, [syncPanelGeometry, contentKey])
 
   useEffect(() => {
     const onResize = () => {
@@ -184,32 +175,30 @@ function SdgGoalRow({
 
   const panelStyle = panelGoal
     ? {
-        background: hexToRgba(panelGoal.color, 0.05),
-        borderColor: hexToRgba(panelGoal.color, 0.28),
+        background: '#fff',
+        borderColor: panelGoal.color,
       }
     : undefined
 
   const arrowStyle = panelGoal
     ? {
-        background: hexToRgba(panelGoal.color, 0.05),
-        borderColor: hexToRgba(panelGoal.color, 0.28),
+        borderBottomColor: panelGoal.color,
       }
     : undefined
 
   const dividerStyle = panelGoal
-    ? { background: hexToRgba(panelGoal.color, 0.25) }
+    ? { background: panelGoal.color }
     : undefined
 
   return (
-    <div className="sustain-sdg-row" onMouseLeave={onClose}>
+    <div className="sustain-sdg-row">
       <div className="sustain-sdg-grid" ref={gridRef}>
         {goals.map((goal, goalIndex) => (
           <SdgGoalCard
             key={goal.number}
             goal={goal}
-            isActive={isRowOpen && activeGoalIndex === goalIndex}
-            onActivate={() => onOpen(rowIndex, goalIndex)}
-            onToggle={() => onToggle(rowIndex, goalIndex)}
+            isExpanded={isRowOpen && activeGoalIndex === goalIndex}
+            onSelect={() => onSelect(rowIndex, goalIndex)}
           />
         ))}
       </div>
@@ -223,13 +212,17 @@ function SdgGoalRow({
           <span className="sustain-sdg-panel-arrow" ref={arrowRef} style={arrowStyle} aria-hidden="true" />
           <div className="sustain-sdg-panel-inner" style={panelStyle}>
             {panelGoal ? (
-              <>
+              <div className="sustain-sdg-panel-content" key={`${panelGoal.number}-${contentKey}`}>
                 <div className="sustain-sdg-panel-goal">
                   <span className="sustain-sdg-panel-number" style={{ color: panelGoal.color }}>
                     {panelGoal.number}
                   </span>
                   <span className="sustain-sdg-panel-title" style={{ color: panelGoal.color }}>
-                    {panelGoal.title}
+                    {splitTitleIntoTwoLines(panelGoal.title).map((line, index) => (
+                      <span className="sustain-sdg-panel-title-line" key={`${panelGoal.number}-line-${index}`}>
+                        {line}
+                      </span>
+                    ))}
                   </span>
                 </div>
                 <span className="sustain-sdg-panel-div" style={dividerStyle} aria-hidden="true" />
@@ -243,8 +236,7 @@ function SdgGoalRow({
                     </div>
                   ))}
                 </div>
-                <img className="sustain-sdg-panel-mark" src={panelGoal.stillSrc} alt="" aria-hidden="true" />
-              </>
+              </div>
             ) : null}
           </div>
         </div>
@@ -254,23 +246,18 @@ function SdgGoalRow({
 }
 
 export function SustainabilitySdgGoals({ goals }: SustainabilitySdgGoalsProps) {
-  const [active, setActive] = useState<ActiveGoal | null>(null)
+  const [active, setActive] = useState<ActiveGoal | null>(() =>
+    goals.length > 0 ? { rowIndex: 0, goalIndex: 0 } : null,
+  )
+  const rootRef = useRef<HTMLDivElement>(null)
   const columns = useSdgColumns()
   const rows = chunkGoals(goals, columns)
 
   useEffect(() => {
-    setActive(null)
-  }, [columns])
+    setActive(goals.length > 0 ? { rowIndex: 0, goalIndex: 0 } : null)
+  }, [columns, goals.length])
 
-  const openGoal = useCallback((rowIndex: number, goalIndex: number) => {
-    setActive({ rowIndex, goalIndex })
-  }, [])
-
-  const closeGoal = useCallback(() => {
-    setActive(null)
-  }, [])
-
-  const toggleGoal = useCallback((rowIndex: number, goalIndex: number) => {
+  const selectGoal = useCallback((rowIndex: number, goalIndex: number) => {
     setActive((current) =>
       current?.rowIndex === rowIndex && current.goalIndex === goalIndex
         ? null
@@ -278,21 +265,38 @@ export function SustainabilitySdgGoals({ goals }: SustainabilitySdgGoalsProps) {
     )
   }, [])
 
+  const closeGoal = useCallback(() => {
+    setActive(null)
+  }, [])
+
+  useEffect(() => {
+    if (!active) return
+
+    const onPointerDown = (event: PointerEvent) => {
+      const root = rootRef.current
+      if (!root) return
+      if (event.target instanceof Node && !root.contains(event.target)) {
+        closeGoal()
+      }
+    }
+
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => document.removeEventListener('pointerdown', onPointerDown)
+  }, [active, closeGoal])
+
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') closeGoal()
   }
 
   return (
-    <div className="sustain-sdg-goals" onKeyDown={handleKeyDown}>
+    <div className="sustain-sdg-goals" ref={rootRef} onKeyDown={handleKeyDown}>
       {rows.map((rowGoals, rowIndex) => (
         <SdgGoalRow
           key={rowGoals.map((goal) => goal.number).join('-')}
           goals={rowGoals}
           rowIndex={rowIndex}
           active={active}
-          onOpen={openGoal}
-          onClose={closeGoal}
-          onToggle={toggleGoal}
+          onSelect={selectGoal}
         />
       ))}
     </div>
