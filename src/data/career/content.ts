@@ -92,6 +92,19 @@ export const careerBanner = {
   ] satisfies CareerHeroCarouselSlide[],
 }
 
+export const careerWorkplace = {
+  id: 'career-workplace',
+  badge: 'Our Culture',
+  title: 'More Than a Workplace',
+  description: [
+    "Because careers aren't built by titles alone. They're built by people who inspire you, challenges that push you forward, and a culture that helps you become your best.",
+    "Here, you'll find opportunities to learn continuously, collaborate across businesses, celebrate achievements, and create lasting impact.",
+  ],
+  image: '/images/career/more-than-a-workplace.png',
+  imageAlt:
+    'Dekko Isho team members gathered at a company exhibition booth discussing opportunities',
+}
+
 export const careerWhy = {
   badge: 'Why Dekko Isho',
   heading: 'More Than just a Job.',

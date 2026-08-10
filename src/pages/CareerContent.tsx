@@ -8,6 +8,7 @@ import {
   CareerOpenPositionsSection,
   CareerStatsSection,
   CareerWhySection,
+  CareerWorkplaceSection,
 } from '../components/career'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
@@ -21,8 +22,9 @@ export function CareerContent() {
   useWebflowInit(ref)
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="career-page">
       <CareerHeroSection />
+      <CareerWorkplaceSection />
       <CareerWhySection />
       <CareerStatsSection />
       <CareerLifeSection />

@@ -5,7 +5,7 @@ import { SectionLines } from './SectionDecor'
 export type SplitContentSectionProps = {
   badge: string
   title: string
-  description: string
+  description: string | string[]
   image: string
   imageAlt: string
   id?: string
@@ -27,6 +27,8 @@ export function SplitContentSection({
   highlightTitle,
   highlightDetail,
 }: SplitContentSectionProps) {
+  const paragraphs = Array.isArray(description) ? description : [description]
+
   return (
     <section
       id={id}
@@ -41,7 +43,11 @@ export function SplitContentSection({
           >
             <PreSectionTitle title={badge} />
             <h2 className="split-content-section-title">{title}</h2>
-            <p className="split-content-section-description">{description}</p>
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph} className="split-content-section-description">
+                {paragraph}
+              </p>
+            ))}
             {highlightTitle ? (
               <p className="split-content-section-highlight">{highlightTitle}</p>
             ) : null}

@@ -8,6 +8,138 @@
   padding-left: var(--_layout---container-full-gutter);
 }
 
+/* ── More Than a Workplace (SplitContentSection) ── */
+.career-page .split-content-section.career-workplace-section {
+  background-color: var(--color--neutral-seasalt);
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.career-page .career-workplace-section .split-content-section-container {
+  width: 100%;
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.career-page .career-workplace-section .split-content-section-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+}
+
+.career-page .career-workplace-section .split-content-section-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 0;
+}
+
+.career-page .career-workplace-section .pre-section-title-wrap {
+  background-color: transparent;
+  border-color: var(--color--neutral-silver-night);
+  margin-bottom: 1.25rem;
+}
+
+.career-page .career-workplace-section .pre-section-title {
+  color: var(--color--neutral-night);
+}
+
+.career-page .career-workplace-section .pre-section-title-square {
+  background-color: var(--color--primary-2);
+  background-image: linear-gradient(-45deg, var(--color--primary-2), var(--color--primary-1));
+}
+
+.career-page .career-workplace-section .split-content-section-title {
+  margin: 0 0 20px;
+  width: 100%;
+  color: var(--color--neutral-night);
+  font-family: var(--_typography---font-family--heading);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.career-page .career-workplace-section .split-content-section-description {
+  margin: 0;
+  width: 100%;
+  color: var(--color--neutral-outer-space);
+  font-family: var(--_typography---font-family--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.career-page .career-workplace-section .split-content-section-description + .split-content-section-description {
+  margin-top: 1rem;
+}
+
+.career-page .career-workplace-section .split-content-section-media {
+  min-width: 0;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border-radius: var(--border-radius--lg);
+}
+
+.career-page .career-workplace-section .split-content-section-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 991px) {
+  .career-page .split-content-section.career-workplace-section {
+    padding: 5rem 0;
+  }
+
+  .career-page .career-workplace-section .split-content-section-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .career-page .career-workplace-section .split-content-section-title {
+    font-size: clamp(1.875rem, 4.5vw, 2.5rem);
+  }
+
+  .career-page .career-workplace-section .split-content-section-description {
+    font-size: 1rem;
+  }
+
+  .career-page .career-workplace-section .split-content-section-media {
+    height: clamp(16rem, 48vw, 22.5rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .career-page .split-content-section.career-workplace-section {
+    padding: 3.75rem 0;
+  }
+
+  .career-page .career-workplace-section .split-content-section-layout {
+    gap: 1.75rem;
+  }
+
+  .career-page .career-workplace-section .pre-section-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .career-page .career-workplace-section .split-content-section-title {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .career-page .career-workplace-section .split-content-section-media {
+    height: 16rem;
+    border-radius: var(--border-radius--md, 0.75rem);
+  }
+}
+
 /* Career page — hero section */
 
 .career-hero-section {
