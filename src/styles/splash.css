@@ -143,8 +143,9 @@ html.splash-active body {
 }
 
 /*
- * Diagonal light beam. No CSS mask — dekko-logo.svg embeds a PNG and
- * fails as mask-image in browsers, which made the shimmer invisible.
+ * Diagonal light beam sweeping left → right. No CSS mask —
+ * dekko-logo.svg embeds a PNG and fails as mask-image in browsers,
+ * which made the shimmer invisible.
  */
 .splash-logo-shine {
   position: absolute;
@@ -165,7 +166,7 @@ html.splash-active body {
     transparent 100%
   );
   opacity: 0;
-  /* GSAP owns transform (skew + travel); keep a static fallback for first paint */
+  /* GSAP owns transform (skew + travel); static fallback for first paint */
   transform: skewX(-22deg);
   will-change: transform, opacity, left;
 }

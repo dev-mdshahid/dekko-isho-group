@@ -9,15 +9,16 @@ import { type AnimationCleanup, prefersReducedMotion } from './prefersReducedMot
 export const LOGO_MOVE_EASE = 'expo.inOut'
 
 /**
- * Fast appear → brief hold (shimmer at the end) → immediate navbar exit.
+ * Zoom in → static hold with shimmer → immediate navbar exit.
  */
-const LOGO_APPEAR_FROM_SCALE = 0.55
-const LOGO_APPEAR_DURATION = 0.34
-/** Hold time on-screen for the mark / shimmer beat. */
-const LOGO_HOLD_DURATION = 1
-/** Short shimmer at the very end of the hold, then exit. */
-const SHINE_DURATION = 0.4
-const SHINE_START_AT = LOGO_APPEAR_DURATION + LOGO_HOLD_DURATION - SHINE_DURATION
+const LOGO_ZOOM_FROM_SCALE = 0.55
+/** Zoom-in beat (ease-in: slow → fast). */
+const LOGO_ZOOM_DURATION = 0.5
+/** Static hold while shimmer plays. */
+const LOGO_HOLD_DURATION = 1.125
+/** Shimmer spans the full static hold. */
+const SHINE_DURATION = LOGO_HOLD_DURATION
+const SHINE_START_AT = LOGO_ZOOM_DURATION
 /** Shared-element flight to the navbar. */
 const LOGO_MOVE_DURATION = 0.58
 /** Veil clear after the logo has seated. */
@@ -70,8 +71,8 @@ function measureLogoFlight(logo: HTMLElement, target: HTMLElement | null): LogoF
 
 /**
  * Run the full splash sequence:
- * 1) logo appears really fast
- * 2) holds ~1s with shimmer at the last stage
+ * 1) logo zooms in
+ * 2) holds still while shimmer plays
  * 3) immediate FLIP into the navbar while backdrop fades
  * 4) complete
  */
@@ -97,7 +98,7 @@ export function runSplashAnimation(
   gsap.set(logo, {
     x: 0,
     y: 0,
-    scale: LOGO_APPEAR_FROM_SCALE,
+    scale: LOGO_ZOOM_FROM_SCALE,
     opacity: 0,
     transformOrigin: 'center center',
     force3D: true,
@@ -105,9 +106,12 @@ export function runSplashAnimation(
   if (shine) {
     gsap.set(shine, {
       left: '-50%',
+      top: '-30%',
       skewX: -22,
+      rotation: 0,
       opacity: 0,
       x: 0,
+      y: 0,
       force3D: true,
     })
   }
@@ -123,15 +127,28 @@ export function runSplashAnimation(
     },
   })
 
-  // ── 1. Fast appear ───────────────────────────────────────────────
-  tl.to(logo, {
-    opacity: 1,
-    scale: 1,
-    duration: LOGO_APPEAR_DURATION,
-    ease: 'power3.out',
-  })
+  // ── 1. Zoom in (fade early, scale with ease-in) ──────────────────
+  tl.to(
+    logo,
+    {
+      opacity: 1,
+      duration: LOGO_ZOOM_DURATION * 0.25,
+      ease: 'power2.out',
+    },
+    0,
+  )
 
-  // ── 2. Hold ~1s; shimmer at the very last stage ──────────────────
+  tl.to(
+    logo,
+    {
+      scale: 1,
+      duration: LOGO_ZOOM_DURATION,
+      ease: 'power3.in',
+    },
+    0,
+  )
+
+  // ── 2. Static hold + shimmer ─────────────────────────────────────
   if (shine) {
     if (logoWrap) {
       tl.set(logoWrap, { overflow: 'hidden' }, SHINE_START_AT)
@@ -141,7 +158,9 @@ export function runSplashAnimation(
       shine,
       {
         left: '-50%',
+        top: '-30%',
         skewX: -22,
+        rotation: 0,
         opacity: 0,
         visibility: 'visible',
       },
@@ -198,8 +217,8 @@ export function runSplashAnimation(
     }
   }
 
-  // Exit immediately after the hold (shimmer ends with it).
-  const exitAt = LOGO_APPEAR_DURATION + LOGO_HOLD_DURATION
+  // Exit immediately after the static shimmer hold.
+  const exitAt = LOGO_ZOOM_DURATION + LOGO_HOLD_DURATION
 
   tl.add(() => {
     if (disposed) return
