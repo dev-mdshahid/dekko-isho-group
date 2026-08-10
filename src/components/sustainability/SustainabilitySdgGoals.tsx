@@ -56,6 +56,26 @@ function chunkGoals(goals: SdgInteractiveGoal[], size: number) {
   return rows
 }
 
+function preloadSdgAssets(goals: SdgInteractiveGoal[]) {
+  const urls = new Set<string>()
+  for (const goal of goals) {
+    urls.add(goal.stillSrc)
+    urls.add(goal.animSrc)
+  }
+
+  urls.forEach((src) => {
+    const image = new Image()
+    image.decoding = 'async'
+    image.src = src
+  })
+}
+
+function restartGifFromCache(image: HTMLImageElement, src: string) {
+  // Reassign the same URL so the GIF restarts from browser cache (no network refetch).
+  image.src = ''
+  image.src = src
+}
+
 function SdgGoalCard({
   goal,
   isExpanded,
@@ -66,23 +86,18 @@ function SdgGoalCard({
   onSelect: () => void
 }) {
   const animRef = useRef<HTMLImageElement>(null)
+  const wasFlippedRef = useRef(false)
   const [isHovered, setIsHovered] = useState(false)
   const isFlipped = isHovered || isExpanded
-
-  useEffect(() => {
-    const preload = new Image()
-    preload.src = goal.animSrc
-  }, [goal.animSrc])
 
   useEffect(() => {
     const anim = animRef.current
     if (!anim) return
 
-    if (isFlipped) {
-      anim.src = `${goal.animSrc}?r=${Date.now()}`
-    } else {
-      anim.removeAttribute('src')
+    if (isFlipped && !wasFlippedRef.current) {
+      restartGifFromCache(anim, goal.animSrc)
     }
+    wasFlippedRef.current = isFlipped
   }, [goal.animSrc, isFlipped])
 
   return (
@@ -100,10 +115,25 @@ function SdgGoalCard({
     >
       <span className="sustain-sdg-card-inner" aria-hidden="true">
         <span className="sustain-sdg-card-face sustain-sdg-card-face--front">
-          <img className="sustain-sdg-card-still" src={goal.stillSrc} alt="" loading="lazy" draggable={false} />
+          <img
+            className="sustain-sdg-card-still"
+            src={goal.stillSrc}
+            alt=""
+            loading="eager"
+            decoding="async"
+            draggable={false}
+          />
         </span>
         <span className="sustain-sdg-card-face sustain-sdg-card-face--back">
-          <img className="sustain-sdg-card-anim" ref={animRef} alt="" draggable={false} />
+          <img
+            className="sustain-sdg-card-anim"
+            ref={animRef}
+            src={goal.animSrc}
+            alt=""
+            loading="eager"
+            decoding="async"
+            draggable={false}
+          />
         </span>
       </span>
     </button>
@@ -250,6 +280,10 @@ export function SustainabilitySdgGoals({ goals }: SustainabilitySdgGoalsProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const columns = useSdgColumns()
   const rows = chunkGoals(goals, columns)
+
+  useEffect(() => {
+    preloadSdgAssets(goals)
+  }, [goals])
 
   useEffect(() => {
     setActive(null)
