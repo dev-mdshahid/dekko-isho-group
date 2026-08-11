@@ -1451,7 +1451,7 @@
 .career-life-card-title {
   margin: 0;
   font-family: var(--_typography---font-family--heading);
-  font-size: clamp(1.125rem, 3.1cqh, 28px);
+  font-size: 28px;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -1461,7 +1461,7 @@
 .career-life-card-description {
   margin: 0;
   font-family: var(--_typography---font-family--body);
-  font-size: clamp(0.875rem, 2cqh, 18px);
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.55;
   color: rgb(255 255 255 / 92%);
@@ -1486,7 +1486,7 @@
   }
 
   .career-life-card-content {
-    gap: 8px;
+    gap: 10px;
   }
 }
 
@@ -1509,7 +1509,7 @@
   }
 
   .career-life-card-content {
-    gap: 8px;
+    gap: 10px;
   }
 }
 
