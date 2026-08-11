@@ -1405,11 +1405,11 @@
 }
 
 .career-life-card {
-  --career-life-card-height: min(900px, calc(100dvh - var(--navbar-height) - 60px));
+  --career-life-card-height: min(720px, calc(100dvh - var(--navbar-height) - 60px));
   position: relative;
   flex: 0 0 auto;
   height: var(--career-life-card-height);
-  width: calc(var(--career-life-card-height) * 480 / 900);
+  width: calc(var(--career-life-card-height) * 480 / 720);
   border-radius: 1.5rem;
   overflow: hidden;
   container-type: size;
@@ -1535,7 +1535,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 660px;
   align-items: center;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: 60px;
   overflow: visible;
 }
 
@@ -1579,7 +1579,7 @@
 
 .career-page .mfg-capacity-description {
   width: 100%;
-  max-width: 34rem;
+  max-width: none;
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: 500;
   line-height: 1.6;

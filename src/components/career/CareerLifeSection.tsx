@@ -36,7 +36,7 @@ export function CareerLifeSection() {
                 src={card.image}
                 alt={card.imageAlt}
                 width={480}
-                height={900}
+                height={720}
                 loading="lazy"
                 decoding="async"
                 draggable={false}
