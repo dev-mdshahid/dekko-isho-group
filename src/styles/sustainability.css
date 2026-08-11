@@ -532,14 +532,14 @@
 .sustain-sdg-panel-clip {
   position: relative;
   padding-top: 12px;
+  padding-bottom: 2px;
 }
 
 .sustain-sdg-panel-inner {
   position: relative;
   border-radius: 12px;
   border: 1.5px solid var(--sdg-line);
-  background: #fff;
-  overflow: hidden;
+  background: transparent;
   transition: border-color 0.35s ease;
 }
 
