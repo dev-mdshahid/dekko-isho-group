@@ -3025,7 +3025,7 @@ a.about-info-box:hover {
 .service-section {
   padding-top: 80px;
   padding-bottom: 0;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
   position: relative;
 }
 
@@ -12456,6 +12456,17 @@ a.about-info-box:hover {
   pointer-events: none;
 }
 
+/* Fades the studio backdrop into the white section above so the seam disappears. */
+.company-section-stage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12.5rem;
+  background: linear-gradient(180deg, #fff 0%, rgb(255 255 255 / 0) 100%);
+}
+
 /*
   Studio plate on the right: keeps leaf shadows + soft floor ledge visible
   (square asset would crop plants if cover-fitted to the full landscape section).
@@ -12499,7 +12510,7 @@ a.about-info-box:hover {
   max-width: 82.5rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 200px var(--_layout---container-full-gutter) 600px;
+  padding: 150px var(--_layout---container-full-gutter) 600px;
 }
 
 .company-section-content {
