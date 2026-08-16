@@ -9,6 +9,8 @@ import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 const ABOUT_CARD_GAP = 40
 const CAROUSEL_INTERVAL_MS = 2200
+// Shorter lead-in so the carousel shows it moves soon after it comes into view.
+const CAROUSEL_LEAD_IN_MS = 900
 
 const INDUSTRY_DESCRIPTION =
   'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.'
@@ -331,10 +333,12 @@ export function AboutSection() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const wrapFrameRef = useRef<number | null>(null)
+  const hasAdvancedRef = useRef(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [slideStep, setSlideStep] = useState(0)
   const [visibleCount, setVisibleCount] = useState(3)
   const [isPaused, setIsPaused] = useState(false)
+  const [isInView, setIsInView] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [suppressTransition, setSuppressTransition] = useState(false)
 
@@ -438,15 +442,55 @@ export function AboutSection() {
   }, [visibleCount])
 
   useEffect(() => {
-    if (isPaused || prefersReducedMotion || industries.length <= 1) return
+    const viewport = viewportRef.current
+    if (!viewport) return
 
-    // Free-running so the silent wrap-around snap doesn't restart the cadence.
-    const timerId = window.setInterval(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsInView(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return
+        setIsInView(true)
+        observer.disconnect()
+      },
+      { threshold: 0.25 },
+    )
+
+    observer.observe(viewport)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isInView || isPaused || prefersReducedMotion || industries.length <= 1) return
+
+    const advance = () =>
       setActiveIndex((current) => (current >= industries.length ? current : current + 1))
-    }, CAROUSEL_INTERVAL_MS)
 
-    return () => window.clearInterval(timerId)
-  }, [isPaused, prefersReducedMotion])
+    let intervalId = 0
+    // Free-running so the silent wrap-around snap doesn't restart the cadence.
+    const startCadence = () => {
+      intervalId = window.setInterval(advance, CAROUSEL_INTERVAL_MS)
+    }
+
+    let leadInId = 0
+    if (hasAdvancedRef.current) {
+      startCadence()
+    } else {
+      leadInId = window.setTimeout(() => {
+        hasAdvancedRef.current = true
+        advance()
+        startCadence()
+      }, CAROUSEL_LEAD_IN_MS)
+    }
+
+    return () => {
+      window.clearTimeout(leadInId)
+      window.clearInterval(intervalId)
+    }
+  }, [isInView, isPaused, prefersReducedMotion])
 
   useEffect(() => {
     return () => {
