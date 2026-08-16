@@ -17,7 +17,7 @@ function removeBootSplash() {
 }
 
 /**
- * Full-viewport splash: centered brand logo (zoom in → static shimmer → FLIP into navbar).
+ * Full-viewport splash: centered brand logo (settle → diagonal shimmer → FLIP into navbar).
  * A matching #boot-splash in index.html covers first paint; this component takes over
  * in useLayoutEffect so the page never flashes underneath.
  */

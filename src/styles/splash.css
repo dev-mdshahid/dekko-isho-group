@@ -134,7 +134,7 @@ html.splash-active body {
   position: relative;
   z-index: 1;
   opacity: 0;
-  transform: translateZ(0) scale(0.55);
+  transform: translateZ(0) translateY(8px) scale(0.92);
   transform-origin: center center;
   backface-visibility: hidden;
   will-change: transform, opacity;
@@ -143,32 +143,32 @@ html.splash-active body {
 }
 
 /*
- * Diagonal light beam sweeping left → right. No CSS mask —
+ * Diagonal gleam traveling bottom-left → top-right. No CSS mask —
  * dekko-logo.svg embeds a PNG and fails as mask-image in browsers,
  * which made the shimmer invisible.
  */
 .splash-logo-shine {
   position: absolute;
-  top: -30%;
-  left: -50%;
+  top: 72%;
+  left: -48%;
   z-index: 2;
-  width: 42%;
-  height: 160%;
+  width: 28%;
+  height: 220%;
   pointer-events: none;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0) 18%,
-    rgba(255, 255, 255, 0.35) 42%,
-    rgba(255, 255, 255, 0.85) 50%,
-    rgba(255, 255, 255, 0.35) 58%,
-    rgba(255, 255, 255, 0) 82%,
+    rgba(255, 255, 255, 0) 22%,
+    rgba(255, 255, 255, 0.16) 42%,
+    rgba(255, 255, 255, 0.46) 50%,
+    rgba(255, 255, 255, 0.16) 58%,
+    rgba(255, 255, 255, 0) 78%,
     transparent 100%
   );
   opacity: 0;
-  /* GSAP owns transform (skew + travel); static fallback for first paint */
-  transform: skewX(-22deg);
-  will-change: transform, opacity, left;
+  /* GSAP owns transform (rotation + travel); static fallback for first paint */
+  transform: rotate(-38deg);
+  will-change: transform, opacity, left, top;
 }
 
 /* Hide the real navbar logo until splash handoff / completion */

@@ -6,23 +6,25 @@ import { type AnimationCleanup, prefersReducedMotion } from './prefersReducedMot
  * Soft decelerating ease for the shared-element logo flight —
  * gentle lift-off, fluid mid-path, cushioned seat into the navbar.
  */
-export const LOGO_MOVE_EASE = 'expo.inOut'
+export const LOGO_MOVE_EASE = 'power3.inOut'
 
 /**
- * Zoom in → static hold with shimmer → immediate navbar exit.
+ * Quiet settle into place → diagonal shimmer → navbar seat.
  */
-const LOGO_ZOOM_FROM_SCALE = 0.55
-/** Zoom-in beat (ease-in: slow → fast). */
-const LOGO_ZOOM_DURATION = 0.5
+const LOGO_ZOOM_FROM_SCALE = 0.92
+/** Subtle rise while settling (px). */
+const LOGO_SETTLE_FROM_Y = 8
+/** Appearance beat (ease-out: arrive, then rest). */
+const LOGO_ZOOM_DURATION = 0.95
 /** Static hold while shimmer plays. */
-const LOGO_HOLD_DURATION = 1.125
+const LOGO_HOLD_DURATION = 1.2
 /** Shimmer spans the full static hold. */
 const SHINE_DURATION = LOGO_HOLD_DURATION
 const SHINE_START_AT = LOGO_ZOOM_DURATION
 /** Shared-element flight to the navbar. */
-const LOGO_MOVE_DURATION = 0.58
+const LOGO_MOVE_DURATION = 0.76
 /** Veil clear after the logo has seated. */
-const BACKDROP_FADE_DURATION = 0.32
+const BACKDROP_FADE_DURATION = 0.4
 
 export type SplashAnimationElements = {
   overlay: HTMLElement
@@ -71,9 +73,9 @@ function measureLogoFlight(logo: HTMLElement, target: HTMLElement | null): LogoF
 
 /**
  * Run the full splash sequence:
- * 1) logo zooms in
- * 2) holds still while shimmer plays
- * 3) immediate FLIP into the navbar while backdrop fades
+ * 1) logo settles into place
+ * 2) holds still while a diagonal shimmer travels bottom-left → top-right
+ * 3) eased FLIP into the navbar while backdrop fades
  * 4) complete
  */
 export function runSplashAnimation(
@@ -97,7 +99,7 @@ export function runSplashAnimation(
 
   gsap.set(logo, {
     x: 0,
-    y: 0,
+    y: LOGO_SETTLE_FROM_Y,
     scale: LOGO_ZOOM_FROM_SCALE,
     opacity: 0,
     transformOrigin: 'center center',
@@ -105,10 +107,10 @@ export function runSplashAnimation(
   })
   if (shine) {
     gsap.set(shine, {
-      left: '-50%',
-      top: '-30%',
-      skewX: -22,
-      rotation: 0,
+      left: '-48%',
+      top: '72%',
+      rotation: -38,
+      skewX: 0,
       opacity: 0,
       x: 0,
       y: 0,
@@ -127,13 +129,13 @@ export function runSplashAnimation(
     },
   })
 
-  // ── 1. Zoom in (fade early, scale with ease-in) ──────────────────
+  // ── 1. Quiet settle (fade + slight scale/lift) ───────────────────
   tl.to(
     logo,
     {
       opacity: 1,
-      duration: LOGO_ZOOM_DURATION * 0.25,
-      ease: 'power2.out',
+      duration: LOGO_ZOOM_DURATION * 0.55,
+      ease: 'power1.out',
     },
     0,
   )
@@ -142,13 +144,14 @@ export function runSplashAnimation(
     logo,
     {
       scale: 1,
+      y: 0,
       duration: LOGO_ZOOM_DURATION,
-      ease: 'power3.in',
+      ease: 'power2.out',
     },
     0,
   )
 
-  // ── 2. Static hold + shimmer ─────────────────────────────────────
+  // ── 2. Static hold + diagonal shimmer (bottom-left → top-right) ──
   if (shine) {
     if (logoWrap) {
       tl.set(logoWrap, { overflow: 'hidden' }, SHINE_START_AT)
@@ -157,10 +160,10 @@ export function runSplashAnimation(
     tl.set(
       shine,
       {
-        left: '-50%',
-        top: '-30%',
-        skewX: -22,
-        rotation: 0,
+        left: '-48%',
+        top: '72%',
+        rotation: -38,
+        skewX: 0,
         opacity: 0,
         visibility: 'visible',
       },
@@ -171,7 +174,7 @@ export function runSplashAnimation(
       shine,
       {
         opacity: 1,
-        duration: 0.1,
+        duration: 0.22,
         ease: 'power1.out',
       },
       SHINE_START_AT,
@@ -180,9 +183,10 @@ export function runSplashAnimation(
     tl.to(
       shine,
       {
-        left: '110%',
+        left: '118%',
+        top: '-78%',
         duration: SHINE_DURATION,
-        ease: 'power2.inOut',
+        ease: 'sine.inOut',
       },
       SHINE_START_AT,
     )
@@ -191,9 +195,9 @@ export function runSplashAnimation(
       logo,
       { filter: 'brightness(1)' },
       {
-        filter: 'brightness(1.22)',
+        filter: 'brightness(1.08)',
         duration: SHINE_DURATION * 0.5,
-        ease: 'power1.out',
+        ease: 'sine.inOut',
         yoyo: true,
         repeat: 1,
       },
@@ -204,10 +208,10 @@ export function runSplashAnimation(
       shine,
       {
         opacity: 0,
-        duration: 0.12,
+        duration: 0.28,
         ease: 'power2.out',
       },
-      SHINE_START_AT + SHINE_DURATION - 0.12,
+      SHINE_START_AT + SHINE_DURATION - 0.28,
     )
 
     tl.set(logo, { filter: 'none' }, SHINE_START_AT + SHINE_DURATION)
