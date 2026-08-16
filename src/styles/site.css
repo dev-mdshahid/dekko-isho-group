@@ -3024,6 +3024,7 @@ a.about-info-box:hover {
 .service-section {
   padding-top: 80px;
   padding-bottom: 0;
+  margin-bottom: 200px;
   position: relative;
 }
 
