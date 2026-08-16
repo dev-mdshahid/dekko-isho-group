@@ -91,7 +91,7 @@ export function SustainabilityHeroImageSection() {
             </p>
           </header>
 
-          <div data-sdg-animate="pillar">
+          <div className="sustain-sdg-framework" data-sdg-animate="pillar">
             <SustainabilitySdgGoals goals={sdgInteractiveGoals} />
           </div>
         </div>

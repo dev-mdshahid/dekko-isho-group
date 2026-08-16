@@ -76,6 +76,10 @@ function restartGifFromCache(image: HTMLImageElement, src: string) {
   image.src = src
 }
 
+function canHover() {
+  return typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches
+}
+
 function SdgGoalCard({
   goal,
   isExpanded,
@@ -106,7 +110,9 @@ function SdgGoalCard({
       className={`sustain-sdg-card${isFlipped ? ' is-flipped' : ''}${isExpanded ? ' is-active' : ''}`}
       aria-label={`SDG ${goal.number} — ${goal.title}`}
       aria-expanded={isExpanded}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => {
+        if (canHover()) setIsHovered(true)
+      }}
       onMouseLeave={() => setIsHovered(false)}
       onClick={(event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -182,7 +188,8 @@ function SdgGoalRow({
         const card = grid.querySelectorAll<HTMLElement>('.sustain-sdg-card')[panelGoalIndex]
         if (card) {
           const centerX = card.offsetLeft + card.offsetWidth / 2
-          arrow.style.left = `${centerX - 9}px`
+          const maxLeft = Math.max(0, clip.offsetWidth - 18)
+          arrow.style.left = `${Math.min(Math.max(centerX - 9, 0), maxLeft)}px`
         }
       }
       panel.style.height = `${clip.offsetHeight}px`
@@ -196,16 +203,22 @@ function SdgGoalRow({
   }, [syncPanelGeometry, contentKey])
 
   useEffect(() => {
-    const onResize = () => {
-      if (isRowOpen) syncPanelGeometry()
+    const clip = clipRef.current
+    if (!clip) return
+
+    const observer = new ResizeObserver(() => {
+      syncPanelGeometry()
+    })
+    observer.observe(clip)
+    window.addEventListener('resize', syncPanelGeometry)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', syncPanelGeometry)
     }
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
-  }, [isRowOpen, syncPanelGeometry])
+  }, [syncPanelGeometry])
 
   const panelStyle = panelGoal
     ? {
-        background: '#fff',
         borderColor: panelGoal.color,
       }
     : undefined

@@ -417,6 +417,16 @@
   width: 100%;
 }
 
+.sustain-sdg-framework,
+.sustain-sdg-goals,
+.sustain-sdg-row,
+.sustain-sdg-panel,
+.sustain-sdg-panel-clip,
+.sustain-sdg-panel-inner {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .sustain-sdg-goals {
   --sdg-columns: 6;
   width: 100%;
@@ -435,22 +445,28 @@
   grid-template-columns: repeat(var(--sdg-columns, 6), minmax(0, 1fr));
   gap: clamp(12px, 1.4vw, 20px);
   width: 100%;
-  perspective: 1400px;
+  min-width: 0;
 }
 
 .sustain-sdg-card {
   --sdg-flip-duration: 0.72s;
   --sdg-flip-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Matches the rounded frame baked into the SDG artwork so the container clip
+     aligns with the artwork corners instead of slicing across them. */
+  --sdg-card-radius: 5.4%;
   position: relative;
+  isolation: isolate;
   border: none;
   background: none;
   padding: 0;
   cursor: pointer;
   display: block;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
-  border-radius: 12px;
+  border-radius: var(--sdg-card-radius);
   perspective: 1400px;
   -webkit-perspective: 1400px;
   overflow: visible;
@@ -462,7 +478,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: var(--sdg-card-radius);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transition:
@@ -476,7 +492,7 @@
   position: absolute;
   inset: 0;
   display: block;
-  border-radius: 12px;
+  border-radius: var(--sdg-card-radius);
   overflow: hidden;
   background: transparent;
   -webkit-backface-visibility: hidden;
@@ -485,12 +501,12 @@
 }
 
 .sustain-sdg-card-face--front {
-  transform: rotateY(0deg) translateZ(1px);
+  transform: rotateY(0deg);
 }
 
 .sustain-sdg-card-face--back {
   background: #fff;
-  transform: rotateY(180deg) translateZ(1px);
+  transform: rotateY(180deg);
 }
 
 .sustain-sdg-card img {
@@ -499,8 +515,9 @@
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--sdg-card-radius);
 }
 
 .sustain-sdg-card-anim {
@@ -537,6 +554,7 @@
 
 .sustain-sdg-panel-inner {
   position: relative;
+  width: 100%;
   border-radius: 12px;
   border: 1.5px solid var(--sdg-line);
   background: transparent;
@@ -547,6 +565,8 @@
   display: flex;
   align-items: center;
   gap: 0;
+  width: 100%;
+  min-width: 0;
   padding: 48px;
   animation: sustain-sdg-panel-in 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -769,7 +789,58 @@
   }
 
   .sustain-sdg-inner {
-    padding: var(--sdg-pad-top) 20px var(--sdg-pad-bottom);
+    padding: var(--sdg-pad-top) max(20px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)) var(--sdg-pad-bottom);
+  }
+
+  .sustain-sdg-grid,
+  .sustain-sdg-card {
+    perspective: none;
+    -webkit-perspective: none;
+  }
+
+  .sustain-sdg-card {
+    overflow: hidden;
+  }
+
+  .sustain-sdg-card-inner {
+    transform: none;
+    transform-style: flat;
+    -webkit-transform-style: flat;
+    will-change: auto;
+    transition: box-shadow 0.28s ease;
+  }
+
+  .sustain-sdg-card.is-flipped .sustain-sdg-card-inner {
+    transform: none;
+    box-shadow: 0 10px 26px -14px rgb(20 21 25 / 40%);
+  }
+
+  .sustain-sdg-card-face {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    transform: none;
+    transition: opacity 0.28s ease;
+  }
+
+  .sustain-sdg-card-face--front {
+    transform: none;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .sustain-sdg-card-face--back {
+    opacity: 0;
+    transform: none;
+    z-index: 0;
+  }
+
+  .sustain-sdg-card.is-flipped .sustain-sdg-card-face--back {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .sustain-sdg-card.is-flipped .sustain-sdg-card-face--front {
+    opacity: 0;
   }
 
   .sustain-sdg-head {
@@ -841,6 +912,10 @@
     margin-bottom: 12px;
   }
 
+  .sustain-sdg-grid {
+    gap: 10px;
+  }
+
   .sustain-sdg-title {
     font-size: clamp(1.75rem, 7vw, 2.25rem);
   }
@@ -850,32 +925,33 @@
   }
 
   .sustain-sdg-panel-content {
-    padding: 22px;
+    padding: 18px 16px;
   }
 
   .sustain-sdg-panel-number {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .sustain-sdg-panel-goal {
-    --sdg-title-size: 24px;
+    --sdg-title-size: 20px;
+    gap: 10px;
   }
 
   .sustain-sdg-panel-div {
-    margin: 22px 0;
+    margin: 18px 0;
   }
 
   .sustain-sdg-panel-stats {
     grid-template-columns: 1fr;
-    row-gap: 20px;
+    row-gap: 16px;
   }
 
   .sustain-sdg-stat-value {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .sustain-sdg-stat-label {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 

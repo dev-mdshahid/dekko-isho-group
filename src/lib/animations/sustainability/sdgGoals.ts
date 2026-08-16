@@ -56,7 +56,7 @@ export function setupSdgFrameworkAnimations(container: HTMLElement): AnimationCl
 
   if (grid) {
     gsap.set(grid, { opacity: 0, y: 24 })
-    if (cards.length) gsap.set(cards, { opacity: 0, y: 16, scale: 0.97 })
+    if (cards.length) gsap.set(cards, { opacity: 0, y: 16 })
 
     const gridTl = gsap.timeline({
       scrollTrigger: {
@@ -79,7 +79,6 @@ export function setupSdgFrameworkAnimations(container: HTMLElement): AnimationCl
         {
           opacity: 1,
           y: 0,
-          scale: 1,
           duration: APPEAR_DURATION,
           ease: 'power3.out',
           stagger: 0.035,
