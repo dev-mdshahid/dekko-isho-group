@@ -1510,6 +1510,108 @@ figcaption {
 .nav-button-wrap {
   position: relative;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Invisible bridge across the gap between the buttons and the pills below them, so
+   the pointer can reach the pills from either button. It is deliberately only as
+   tall as that gap: anything larger would keep the menu open whenever the cursor
+   sits below the CTA. */
+.nav-button-wrap::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0;
+  transition: height 0s linear 0.42s;
+}
+
+.nav-button-wrap:hover::before,
+.nav-button-wrap:focus-within::before {
+  height: 0.625rem;
+  transition-delay: 0s;
+}
+
+.nav-social-cycle {
+  --nav-cycle-brand: #1877f2;
+  --nav-cycle-ease: cubic-bezier(0.33, 1, 0.68, 1);
+  position: relative;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid rgba(25, 25, 25, 0.14);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--color--grey-1);
+  display: flex;
+  text-decoration: none;
+  transition:
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s var(--nav-cycle-ease);
+}
+
+.nav-social-cycle:hover,
+.nav-social-cycle:focus-visible {
+  border-color: var(--nav-cycle-brand);
+  background-color: rgba(25, 25, 25, 0.03);
+  color: var(--nav-cycle-brand);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.nav-social-cycle__stack {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+}
+
+.nav-social-cycle__icon {
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(0.72) translateY(28%);
+  transition:
+    opacity 0.5s var(--nav-cycle-ease),
+    filter 0.5s var(--nav-cycle-ease),
+    transform 0.5s var(--nav-cycle-ease);
+  will-change: opacity, filter, transform;
+}
+
+.nav-social-cycle__icon.is-active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1) translateY(0);
+}
+
+/* The outgoing glyph blurs upward so the cycle reads as one continuous motion. */
+.nav-social-cycle__icon.is-leaving {
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(1.2) translateY(-28%);
+}
+
+.nav-social-cycle__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  display: block;
+}
+
+/* The YouTube mark is wide and short, so it needs a nudge to match the other glyphs. */
+.nav-social-cycle__icon--youtube svg {
+  transform: scale(1.16);
 }
 
 .nav-contact-expand {
@@ -1522,7 +1624,8 @@ figcaption {
 .nav-contact-expand__menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  /* Right-aligned under the social cycle circle, i.e. one gap left of the CTA. */
+  right: calc(100% + 12px);
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -1536,8 +1639,9 @@ figcaption {
   transition: visibility 0s linear 0.42s;
 }
 
-.nav-contact-expand:hover .nav-contact-expand__menu,
-.nav-contact-expand:focus-within .nav-contact-expand__menu {
+/* Both the Contact CTA and the social cycle button open the social menu. */
+.nav-button-wrap:hover .nav-contact-expand__menu,
+.nav-button-wrap:focus-within .nav-contact-expand__menu {
   pointer-events: auto;
   visibility: visible;
   transition-delay: 0s;
@@ -1568,13 +1672,13 @@ figcaption {
     opacity 0.22s var(--nav-social-ease-in),
     transform 0.28s var(--nav-social-ease-in),
     box-shadow 0.2s ease;
-  /* Exit: bottom items leave first (collapse toward Contact) */
+  /* Exit: bottom items leave first (collapse toward the circle) */
   transition-delay: calc((3 - var(--nav-social-i)) * var(--nav-social-stagger));
   will-change: opacity, transform;
 }
 
-.nav-contact-expand:hover .nav-social-pill,
-.nav-contact-expand:focus-within .nav-social-pill {
+.nav-button-wrap:hover .nav-social-pill,
+.nav-button-wrap:focus-within .nav-social-pill {
   opacity: 1;
   pointer-events: auto;
   transform: translate3d(0, 0, 0) scale(1);
@@ -1584,6 +1688,25 @@ figcaption {
     box-shadow 0.2s ease;
   /* Enter: top items appear first */
   transition-delay: calc(var(--nav-social-i) * var(--nav-social-stagger) + 40ms);
+}
+
+/* Once a link is clicked the menu closes even though hover/focus still sit on it.
+   These override the open state above, so they have to come after it. */
+.nav-button-wrap.is-dismissed .nav-contact-expand__menu {
+  pointer-events: none;
+  visibility: hidden;
+  transition-delay: 0s;
+}
+
+.nav-button-wrap.is-dismissed .nav-social-pill {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, -0.85rem, 0) scale(0.9);
+  transition-delay: 0s;
+}
+
+.nav-button-wrap.is-dismissed::before {
+  height: 0;
 }
 
 .nav-social-pill:hover,
@@ -1686,8 +1809,8 @@ figcaption {
 @media (prefers-reduced-motion: reduce) {
   .nav-contact-expand__menu,
   .nav-social-pill,
-  .nav-contact-expand:hover .nav-social-pill,
-  .nav-contact-expand:focus-within .nav-social-pill {
+  .nav-button-wrap:hover .nav-social-pill,
+  .nav-button-wrap:focus-within .nav-social-pill {
     transition: none;
     transition-delay: 0s;
   }
@@ -1696,8 +1819,16 @@ figcaption {
     transform: none;
   }
 
-  .nav-contact-expand:not(:hover):not(:focus-within) .nav-social-pill {
+  .nav-button-wrap:not(:hover):not(:focus-within) .nav-social-pill {
     opacity: 0;
+  }
+
+  .nav-social-cycle__icon,
+  .nav-social-cycle__icon.is-active,
+  .nav-social-cycle__icon.is-leaving {
+    filter: none;
+    transform: none;
+    transition: opacity 0.2s linear;
   }
 }
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { footerSocialLinks } from '../../data/footer/footerContent'
@@ -20,6 +20,7 @@ import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
+import { NavSocialCycle } from './NavSocialCycle'
 
 const navSocialLinks = [
   {
@@ -69,6 +70,37 @@ function NavContactExpand() {
           </a>
         ))}
       </div>
+    </div>
+  )
+}
+
+/**
+ * Holds the social cycle circle and the Contact CTA, which share one hover target.
+ * The reveal itself is CSS-driven, so a click has to be dismissed explicitly:
+ * otherwise the clicked link keeps focus (and the pointer keeps hovering) and the
+ * menu stays open behind the newly opened tab.
+ */
+function NavButtonCluster() {
+  const [isDismissed, setIsDismissed] = useState(false)
+
+  function handleClick(event: MouseEvent<HTMLDivElement>) {
+    setIsDismissed(true)
+
+    // Pointer clicks leave focus behind; keyboard activation keeps it where it is.
+    if (event.detail > 0 && event.target instanceof HTMLElement) {
+      event.target.closest<HTMLElement>('a')?.blur()
+    }
+  }
+
+  return (
+    <div
+      className={`nav-button-wrap${isDismissed ? ' is-dismissed' : ''}`}
+      onClick={handleClick}
+      onFocus={() => setIsDismissed(false)}
+      onMouseLeave={() => setIsDismissed(false)}
+    >
+      <NavSocialCycle />
+      <NavContactExpand />
     </div>
   )
 }
@@ -692,9 +724,7 @@ export function Navbar() {
             </nav>
           )}
           <div id="w-node-e6ff9f79-f479-fa42-6f69-a3df18a8ef64-18a8ef3c" className="right-nav">
-            <div className="nav-button-wrap">
-              <NavContactExpand />
-            </div>
+            <NavButtonCluster />
             <NavMenuButton isOpen={isOpen} onClick={toggleMenu} />
           </div>
         </div>
