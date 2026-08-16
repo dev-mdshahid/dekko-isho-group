@@ -8,7 +8,7 @@ import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 const ABOUT_CARD_GAP = 40
-const CAROUSEL_INTERVAL_MS = 4800
+const CAROUSEL_INTERVAL_MS = 2200
 
 const INDUSTRY_DESCRIPTION =
   'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.'
@@ -201,7 +201,13 @@ function IndustryImageCircle({ src, alt, variant = 'default', logo, logoId, href
   if (variant === 'business' && src) {
     const card = (
       <>
-        <img src={src} loading="lazy" alt="" className="about-business-card__media" />
+        <img
+          src={src}
+          loading="eager"
+          decoding="async"
+          alt=""
+          className="about-business-card__media"
+        />
         <div className="about-business-card__overlay" aria-hidden="true" />
         {logo ? (
           <img
@@ -434,12 +440,13 @@ export function AboutSection() {
   useEffect(() => {
     if (isPaused || prefersReducedMotion || industries.length <= 1) return
 
+    // Free-running so the silent wrap-around snap doesn't restart the cadence.
     const timerId = window.setInterval(() => {
       setActiveIndex((current) => (current >= industries.length ? current : current + 1))
     }, CAROUSEL_INTERVAL_MS)
 
     return () => window.clearInterval(timerId)
-  }, [activeIndex, isPaused, prefersReducedMotion])
+  }, [isPaused, prefersReducedMotion])
 
   useEffect(() => {
     return () => {

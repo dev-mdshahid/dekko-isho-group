@@ -2035,7 +2035,7 @@
   font-family: var(--_typography---font-family--body);
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.35;
   color: var(--color--neutral-outer-space);
 }
 
@@ -2132,7 +2132,7 @@
 
   .about-chairman-section--about .about-chairman-paragraph {
     font-size: 0.9375rem;
-    line-height: 1.55;
+    line-height: 1.35;
   }
 
   .about-chairman-section--about .about-chairman-name {

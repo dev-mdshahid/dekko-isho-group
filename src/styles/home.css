@@ -465,8 +465,11 @@
 }
 
 .about-section .about-carousel-track {
-  transition: transform 0.95s cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* easeInOutQuart: eases out of rest, glides, then settles — reads as one smooth sweep */
+  transition: transform 1.15s cubic-bezier(0.76, 0, 0.24, 1);
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .about-section .about-carousel-track.is-reduced-motion,

@@ -296,7 +296,7 @@
 }
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
-  margin: 0 0 20px;
+  margin: 0 0 12px;
   width: 100%;
   max-width: none;
   color: var(--color--neutral-night);
@@ -337,7 +337,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.5rem, 3vw, 2.5rem);
   width: 100%;
-  margin-top: clamp(2.5rem, 5vw, 5.5rem);
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
 }
 
 .industrial-laundry-page .il-laboratory-section .dpd-global-network-card {
@@ -1208,7 +1208,7 @@
   }
 
   .industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
-    margin-bottom: 1rem;
+    margin-bottom: 0.625rem;
     font-size: clamp(1.75rem, 4vw, 2.25rem);
   }
 
@@ -1225,7 +1225,7 @@
   }
 
   .industrial-laundry-page .il-laboratory-section .dpd-global-network-grid {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     gap: 1.75rem;
   }
 }
@@ -1236,7 +1236,7 @@
   }
 
   .industrial-laundry-page .il-laboratory-section .dpd-global-network-title {
-    margin-bottom: 0.875rem;
+    margin-bottom: 0.5rem;
     font-size: clamp(1.75rem, 7vw, 2rem);
   }
 
@@ -1250,7 +1250,7 @@
   }
 
   .industrial-laundry-page .il-laboratory-section .dpd-global-network-grid {
-    margin-top: 1.75rem;
+    margin-top: 1.25rem;
     gap: 1.5rem;
   }
 
