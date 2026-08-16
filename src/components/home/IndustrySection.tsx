@@ -10,9 +10,9 @@ export function IndustrySection() {
       <div className="container">
         <div className="industry-info-main section-spacing">
           <FadeIn id="cd4d3bf3-e255-714a-a12d-0490dd2d2cf9" variant="slide-in-bottom" className="section-title-center">
-            <PreSectionTitle title="Built for every industry" />
+            <PreSectionTitle title="Built for Every Industry" />
             <h2 className="section-title title-center">
-              Manufacturing <span className="text-linear-gradient">solutions</span> for every industry
+              Manufacturing <span className="text-linear-gradient">Solutions</span> for Every Industry
             </h2>
           </FadeIn>
           <div

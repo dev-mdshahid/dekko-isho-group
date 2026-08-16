@@ -3,7 +3,7 @@ import type { IndustryLocationProps } from '../../components/industry'
 export const dekkoIshoLocations: IndustryLocationProps = {
   id: 'dekko-isho-locations',
   badge: 'Cyber Defense',
-  title: 'Secure your business with DITECH.',
+  title: 'Secure Your Business with DITECH.',
   description:
     'DITECH helps modern organizations strengthen digital resilience through proactive cybersecurity, threat monitoring, vulnerability assessment, and response-focused protection for critical business systems.',
   locations: [

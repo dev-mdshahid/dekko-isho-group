@@ -9,8 +9,8 @@ export function AboutLeadershipSection() {
         <FadeIn id="about-leadership-header" className="about-leadership-header">
           <PreSectionTitle title="Leadership" />
           <h2 className="about-leadership-title">
-            The people setting the{' '}
-            <span className="about-leadership-title-accent">direction</span>.
+            The People Setting the{' '}
+            <span className="about-leadership-title-accent">Direction</span>.
           </h2>
         </FadeIn>
 

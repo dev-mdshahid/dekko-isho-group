@@ -5,7 +5,7 @@ const DEKKO_ISHO_IMAGE_BASE = '/images/dekko-isho'
 export const dekkoIshoFeatureGallery: IndustryFeatureGalleryProps = {
   id: 'dekko-isho-feature-gallery',
   badge: 'Cybersecurity Solutions',
-  title: 'Risk-aware protection for modern enterprise environments.',
+  title: 'Risk-Aware Protection for Modern Enterprise Environments.',
   descriptions: [
     'DITECH focuses on infrastructure security, network security, risk management, cloud security, cybersecurity services, and managed support — helping organizations keep business continuity and operational confidence.',
   ],

@@ -3,7 +3,7 @@ import type { IndustryLocationProps } from '../../components/industry'
 export const izakayaLocations: IndustryLocationProps = {
   id: 'izakaya-locations',
   badge: 'Restaurants',
-  title: 'Visit IZAKAYA across Dhaka.',
+  title: 'Visit IZAKAYA Across Dhaka.',
   description:
     "Experience IZAKAYA's Japanese-inspired dining across Dhaka, where sushi, ramen, small plates, and fusion flavors come together in a warm, modern restaurant atmosphere.",
   locations: [

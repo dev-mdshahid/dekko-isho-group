@@ -9,11 +9,11 @@ export function CaseStudySection() {
               <div data-wf--pre-section-title--variant="base" className="pre-section-title-wrap">
                 <div className="pre-section-title-inner">
                   <div className="pre-section-title-square"></div>
-                  <div className="pre-section-title">Real-world success</div>
+                  <div className="pre-section-title">Real-World Success</div>
                 </div>
               </div>
               <div className="section-title-wrap one">
-                <h2 data-w-id="9d872462-3a61-1c11-5760-a0f5066f94a7" data-fade-in className="section-title">Real <span className="text-linear-gradient">results</span> from real projects</h2>
+                <h2 data-w-id="9d872462-3a61-1c11-5760-a0f5066f94a7" data-fade-in className="section-title">Real <span className="text-linear-gradient">Results</span> from Real Projects</h2>
               </div>
             </div>
             <div className="case-study-info">
@@ -265,7 +265,7 @@ export function CaseStudySection() {
                     <div className="help-info-inner">
                       <div className="help-line-image-wrap"><img src={legacyImage('testimonial-images-3_1testimonial-images-3.png')} loading="lazy" alt="Help Line Image" className="help-line-image" /><img src={legacyImage('testimonial-images-1_1testimonial-images-1.png')} loading="lazy" alt="Help Line Image" className="help-line-image one" /></div>
                       <div className="help-line-content-wrap">
-                        <h3 className="help-line-title">Need some help?</h3>
+                        <h3 className="help-line-title">Need Some Help?</h3>
                         <div className="help-line-text">We’re here to provide support and assistance.</div>
                       </div>
                     </div>

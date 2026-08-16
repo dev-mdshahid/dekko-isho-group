@@ -7,7 +7,7 @@ export type TopExecutive = {
 }
 
 export const topExecutivesIntro =
-  'The leaders executing the vision'
+  'The Leaders Executing the Vision'
 
 export const topExecutives: TopExecutive[] = [
   {
@@ -62,7 +62,7 @@ export const topExecutives: TopExecutive[] = [
   {
     id: 'about-top-executive-rafiqul',
     name: 'Md Rafiqul Islam',
-    title: 'Group Chief GM-HRAC & Head Of Compliance, RMG Division',
+    title: 'Group Chief GM-HRAC & Head of Compliance, RMG Division',
     image: '/images/top-executives/rafiqul.png',
     imageAlt: 'Md Rafiqul Islam, Group Chief GM-HRAC & Head Of Compliance, RMG Division',
   },

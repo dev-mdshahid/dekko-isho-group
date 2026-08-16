@@ -15,7 +15,7 @@ const INDUSTRIAL_LAUNDRY_IMAGE_BASE = '/images/industrial-laundry'
 export const industrialLaundryWashingProcesses = {
   id: 'il-washing-processes',
   badge: 'Comprehensive Washing Capabilities',
-  title: 'Core washing processes',
+  title: 'Core Washing Processes',
   description:
     'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements. From garment and enzyme washes to specialized denim treatments and dyeing, we ensure consistent quality, repeatable results, and production flexibility across every order.',
   items: [
@@ -107,7 +107,7 @@ export const industrialLaundryAdvancedFinishing = {
 export const industrialLaundryExpertise = {
   id: 'il-innovation',
   badge: 'Our Approach to Wash',
-  title: 'Sustainable washing for premium garment finishes.',
+  title: 'Sustainable Washing for Premium Garment Finishes.',
   paragraphs: [
     'Our washing facilities combine innovation, process control, and responsible manufacturing to deliver premium finishes across a wide range of denim and garment applications, while reducing environmental impact through efficient water management.',
   ],
@@ -347,12 +347,12 @@ export const industrialLaundryWhyItMatters = {
   items: [
     {
       id: 'finishes',
-      title: 'Premium garment finishes',
+      title: 'Premium Garment Finishes',
       description: 'Exceptional quality and durability for every garment.',
     },
     {
       id: 'efficiency',
-      title: 'Improved resource efficiency',
+      title: 'Improved Resource Efficiency',
       description: 'Optimized processes that reduce water and energy consumption.',
     },
     {
@@ -365,7 +365,7 @@ export const industrialLaundryWhyItMatters = {
 
 export const industrialLaundryCta = {
   badge: "Let's Connect",
-  heading: "And build what's next, together",
+  heading: "And Build What's Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or upcoming projects. We will be back to you with solutions.',
   buttonLabel: 'Contact us now',
@@ -375,7 +375,7 @@ export const industrialLaundryCta = {
 /** @deprecated Not used on the current laundry page design. */
 export const industrialLaundrySpotlight = {
   badge: 'Creative Capability',
-  title: 'From idea reference to sample-ready fashion development.',
+  title: 'From Idea Reference to Sample-Ready Fashion Development.',
   description:
     'Agami Washing Ltd, a sister concern of Dekko ISHO Group, started its journey in 2015 at Gazipur. It is a fully compliance and green model factory. The company accomplished all parameters set by Accord and Alliance.',
   image: '/images/industrial-laundry/development-section.png',
@@ -389,7 +389,7 @@ export const industrialLaundryDevelopment = industrialLaundrySpotlight
 /** @deprecated Not used on the current laundry page design. */
 export const industrialLaundryWashing = {
   badge: 'Process',
-  title: 'Industrial washing with controlled finish and repeatability.',
+  title: 'Industrial Washing with Controlled Finish and Repeatability.',
   description:
     'The washing unit supports a wide range of denim and garment treatments through laboratory-led recipe control, technical review and bulk production consistency.',
   rows: [
@@ -430,14 +430,14 @@ export const industrialLaundryWashing = {
 /** @deprecated Not used on the current laundry page design. */
 export const industrialLaundryQuality = {
   badge: 'Washing QA Process',
-  title: 'Quality control from sorting to final dispatch.',
+  title: 'Quality Control from Sorting to Final Dispatch.',
   description:
     'The QA process fits naturally after the wet and dry process section because it explains how each wash output is checked, reviewed, tested, and approved before garments move to dispatch.',
   items: [
     {
       id: 'sorting',
       number: '01',
-      title: 'Before wash Inspection & sorting',
+      title: 'Before Wash Inspection & Sorting',
       description:
         'Inspect garments for conformity to specifications (stitching, cleanliness & appearance). Random inspection of critical spec points, before processing.',
       image: '/images/industrial-laundry/quality/01-sorting.png',
@@ -446,7 +446,7 @@ export const industrialLaundryQuality = {
     {
       id: 'bulk-review',
       number: '02',
-      title: 'First Bulk wash Review',
+      title: 'First Bulk Wash Review',
       description:
         'Color wise review of first output garments for conformity to fine tune the bulk recipe. Having Pre-Production Meeting to discuss technical points for consistency in bulk.',
       image: '/images/industrial-laundry/quality/02-bulk-review.png',
@@ -464,7 +464,7 @@ export const industrialLaundryQuality = {
     {
       id: 'final',
       number: '04',
-      title: 'Final Inspection / Audit prior to dispatch',
+      title: 'Final Inspection / Audit Prior to Dispatch',
       description:
         'Ensure garments are inspected / audited (AQL 1.5 std) for wash standards.',
       image: '/images/industrial-laundry/quality/04-final-inspection.png',

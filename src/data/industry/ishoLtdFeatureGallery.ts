@@ -5,7 +5,7 @@ const ISHO_LTD_IMAGE_BASE = '/images/isho-ltd'
 export const ishoLtdFeatureGallery: IndustryFeatureGalleryProps = {
   id: 'isho-ltd-feature-gallery',
   badge: 'Commitment',
-  title: 'Unlocking the potential of space through functional design.',
+  title: 'Unlocking the Potential of Space Through Functional Design.',
   descriptions: [
     'From pushing boundaries to create sustainable designs, to our concept studio, and innovation lab, we love nothing more than unlocking the potential of space. Our commitment is steadfast in ensuring our designs are functional and efficient whilst never undermining aesthetics.',
     'Our goal is a simple one and that is to bridge the gap between what is desired in modern living and what is available in the market.',

@@ -13,7 +13,7 @@ export function BlogSection() {
                     <div className="pre-section-title">Insights & Article</div>
                   </div>
                 </div>
-                <h2 className="section-title">Latest from our <span className="text-linear-gradient">blog</span></h2>
+                <h2 className="section-title">Latest from Our <span className="text-linear-gradient">Blog</span></h2>
                 <div className="blog-button">
                   <a data-wf--button-arrow--variant="base" href="/press" className="primary-button w-inline-block">
                     <div className="button-primary-inner">

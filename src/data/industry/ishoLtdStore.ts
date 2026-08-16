@@ -1,6 +1,6 @@
 export const ishoLtdStore = {
   badge: 'Visit ISHO Store',
-  title: 'Explore furniture and homeware in person.',
+  title: 'Explore Furniture and Homeware in Person.',
   description:
     'Feel free to visit the ISHO store with your family and friends, and enjoy our wide selection of high-quality products.',
   addressTitle: 'ISHO Store Address',

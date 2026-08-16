@@ -9,7 +9,7 @@ const logoSrc = (assetNumber: number) =>
 
 export const awardsGridContent = {
   tag: 'Global Certifications',
-  title: 'Certified for responsible excellence',
+  title: 'Certified for Responsible Excellence',
   description:
     'Our certifications reflect our unwavering commitment to safety, sustainability and transparency across every fiber, process and partnership.',
 } as const

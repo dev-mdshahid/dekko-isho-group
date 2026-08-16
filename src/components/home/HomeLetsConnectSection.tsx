@@ -126,7 +126,7 @@ export function HomeLetsConnectSection() {
               <div className="page-contact-form-card w-form" data-home-animate="contact-form-card">
                 <div className="page-contact-form-intro">
                   <h3 className="page-contact-form-title" data-home-animate="contact-field">
-                    Send us a Message
+                    Send Us a Message
                   </h3>
                   <p className="page-contact-form-description" data-home-animate="contact-field">
                     Complete the form below, and the appropriate team will get back to you as soon as possible.

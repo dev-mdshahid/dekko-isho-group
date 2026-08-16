@@ -155,7 +155,7 @@ export function Footer() {
                   variant="slide-in-bottom"
                   delay={350}
                 >
-                  <h2 className="footer-title">Contact info.</h2>
+                  <h2 className="footer-title">Contact Info.</h2>
                   <div className="footer-contact-item">
                     <div className="footer-address">{footerContact.address}</div>
                     <a href={footerContact.phone.href} className="footer-link">

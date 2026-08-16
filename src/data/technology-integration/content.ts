@@ -11,7 +11,7 @@ export const technologyIntegrationHero = {
 export const technologyIntegrationIntro = {
   id: 'ti-intro',
   badge: 'Digital Backbone',
-  title: 'Integrated technology for smarter, faster, and more resilient businesses.',
+  title: 'Integrated Technology for Smarter, Faster, and More Resilient Businesses.',
   description:
     'Technology Integration covers the seamless flow and management of digital assets across departments, locations, and partners — providing shared intelligence to improve production, quality control, supply management, HR, and business reporting. By connecting factories, systems, warehouses, and teams, Dekko ISHO transforms individual point solutions into one resilient digital backbone that helps the business operate with greater visibility, efficiency, and confidence.',
   features: [
@@ -40,7 +40,7 @@ export const technologyIntegrationIntro = {
 }
 
 export const technologyIntegrationDashboard = {
-  title: 'From factory floor to digital dashboard',
+  title: 'From Factory Floor to Digital Dashboard',
   description:
     'Live production signals, quality checkpoints and planning data flow into centralized views — giving teams one source of truth from line to leadership.',
   image: '/images/technology-integration/dashboard-systems.png',
@@ -50,7 +50,7 @@ export const technologyIntegrationDashboard = {
 
 export const technologyIntegrationUnified = {
   badge: 'Our Approach',
-  title: 'A unified approach across data, automation, cloud, and security.',
+  title: 'A Unified Approach Across Data, Automation, Cloud, and Security.',
   description:
     'Every integration is planned around business outcomes — with architecture, governance and support designed for long-term reliability.',
   items: [
@@ -91,7 +91,7 @@ export const technologyIntegrationUnified = {
 
 export const technologyIntegrationGrowth = {
   badge: 'Digital Workflow',
-  title: 'Technology that supports every stage of operational growth.',
+  title: 'Technology That Supports Every Stage of Operational Growth.',
   items: [
     {
       id: 'assess',
@@ -179,7 +179,7 @@ export const technologyIntegrationPartners = {
 
 export const technologyIntegrationCta = {
   badge: "Let's Connect",
-  heading: "And build what's next, together",
+  heading: "And Build What's Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',

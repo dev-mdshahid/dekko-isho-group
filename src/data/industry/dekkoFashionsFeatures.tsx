@@ -3,7 +3,7 @@ import { industryFeatureIcons } from './industryFeatureIcons'
 
 export const dekkoFashionsFeatures: IndustryFeaturesProps = {
   badge: 'Fashion Manufacturing Partner',
-  title: 'Fashion-led apparel manufacturing for modern global brands.',
+  title: 'Fashion-Led Apparel Manufacturing for Modern Global Brands.',
   description:
     'Dekko Fashions Ltd. supports international buyers with export-ready woven apparel manufacturing, design-aware production, and quality-focused execution for fashion collections that demand precision and consistency. From fabric coordination and technical preparation to cutting, sewing, finishing, inspection, and shipment readiness, Dekko Fashions Ltd. delivers reliable manufacturing support for trend-driven apparel programs.',
   features: [

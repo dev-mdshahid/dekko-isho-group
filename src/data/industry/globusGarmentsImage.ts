@@ -2,7 +2,7 @@ import type { IndustryImageSectionProps } from '../../components/industry'
 
 export const globusGarmentsImage: IndustryImageSectionProps = {
   badge: 'Operational Focus',
-  title: 'Built around people, process, and production control.',
+  title: 'Built Around People, Process, and Production Control.',
   aside:
     'Globus Garments LTD, a Dekko Group company, produces over 300,000 woven garments monthly for clients like Bestseller and Tom Tailor.',
   imageSrc: '/images/globus-garments-img.png',

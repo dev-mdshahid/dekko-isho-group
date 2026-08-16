@@ -19,13 +19,13 @@ export function AboutJourneySection() {
       <div className="about-journey-main section-spacing">
         <div className="container">
           <FadeIn id="about-journey-header" className="about-journey-header">
-            <PreSectionTitle title="Our journey" />
+            <PreSectionTitle title="Our Journey" />
             <h2 className="section-title about-journey-title">
-              A story of{' '}
-              <span className="about-journey-accent about-journey-accent--blue">innovation</span>,{' '}
-              <span className="about-journey-accent about-journey-accent--pink">diversification</span>{' '}
+              A Story of{' '}
+              <span className="about-journey-accent about-journey-accent--blue">Innovation</span>,{' '}
+              <span className="about-journey-accent about-journey-accent--pink">Diversification</span>{' '}
               &amp;{' '}
-              <span className="about-journey-accent about-journey-accent--green">growth</span>
+              <span className="about-journey-accent about-journey-accent--green">Growth</span>
             </h2>
           </FadeIn>
 

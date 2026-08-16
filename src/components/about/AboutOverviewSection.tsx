@@ -55,11 +55,11 @@ export function AboutOverviewSection() {
                 </FadeIn>
                 <div className="about-story-info">
                   <FadeIn id="ff2a1434-ba51-2c54-8317-c7a44458a67e" className="about-story-info-inner">
-                    <h3 className="about-story-title">Our story</h3>
+                    <h3 className="about-story-title">Our Story</h3>
                     <p className="about-story-description last">{aboutOverviewStory}</p>
                   </FadeIn>
                   <FadeIn id="9fc530be-4a2d-4d89-45e9-fe7251a5290a" className="service-info-three">
-                    <h3 className="about-service-title">Our capabilities</h3>
+                    <h3 className="about-service-title">Our Capabilities</h3>
                     <div className="service-list-three">
                       <div className="service-three-list-wrapper">
                         <div role="list" className="service-three-list">

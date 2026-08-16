@@ -6,7 +6,7 @@ export type GlobusGarmentsOperationalStrengthItem = {
 
 export const globusGarmentsOperationalStrengthIntro = {
   badge: 'Operational Strength',
-  title: 'Production reliability backed by planning, people, and process control.',
+  title: 'Production Reliability Backed by Planning, People, and Process Control.',
 }
 
 export const globusGarmentsOperationalStrengthItems: GlobusGarmentsOperationalStrengthItem[] = [

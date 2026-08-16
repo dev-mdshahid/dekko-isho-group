@@ -3,7 +3,7 @@ import { industryFeatureIcons } from './industryFeatureIcons'
 
 export const dekkoGarmentsFeatures: IndustryFeaturesProps = {
   badge: 'One-Stop Apparel Partner',
-  title: 'Sustainable apparel manufacturing for global fashion brands.',
+  title: 'Sustainable Apparel Manufacturing for Global Fashion Brands.',
   description:
     'Dekko Garments Ltd. supports international fashion brands with export-ready apparel manufacturing, sustainable production practices, reliable sourcing, and quality-focused execution across the full apparel development journey. From fabric sourcing and technical development to cutting, sewing, finishing, quality control, and shipment readiness, Dekko Garments Ltd. delivers dependable manufacturing solutions for growing apparel businesses.',
   features: [

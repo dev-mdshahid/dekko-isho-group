@@ -46,7 +46,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   },
   {
     id: 'industrial-laundry',
-    label: 'Industrial laundry',
+    label: 'Industrial Laundry',
     tag: 'Sustainable Finish',
     title: 'Industrial Laundry',
     description:

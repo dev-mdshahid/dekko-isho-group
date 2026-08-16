@@ -38,7 +38,7 @@ export function PressRecentSection({ currentSlug }: Props) {
         <div className="resent-blog-main">
           <FadeIn id="38c0f327-dd16-5341-9be8-15e3a9179d25" className="section-title-center">
             <PreSectionTitle title="Insights & Article" />
-            <h2 className="section-title title-center">Recent press</h2>
+            <h2 className="section-title title-center">Recent Press</h2>
           </FadeIn>
           <div role="list" className="blog-list-one _01">
             {recentPosts.map((post, index) => (

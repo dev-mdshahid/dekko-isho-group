@@ -41,7 +41,7 @@ export const agamiWashingCapabilityProcesses: AgamiWashingCapabilityProcess[] = 
 ]
 
 export const agamiWashingCapabilityCta = {
-  title: 'Need some help?',
+  title: 'Need Some Help?',
   description: 'We\u2019re here to provide support and assistance.',
   buttonLabel: 'Contact us now',
   buttonHref: '/contact',

@@ -10,7 +10,7 @@ export type DekkoFashionsCategoryItem = {
 const DEKKO_FASHIONS_CATEGORIES_BASE = '/images/dekko-fashions'
 
 export const dekkoFashionsCategoriesIntro = {
-  title: 'Fashion categories shaped for modern global collections.',
+  title: 'Fashion Categories Shaped for Modern Global Collections.',
   footer:
     'The unit is positioned to support woven fashion programs where construction detail, fabric behavior, finishing quality, and visual consistency are essential.',
 }

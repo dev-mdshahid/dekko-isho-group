@@ -9,9 +9,9 @@ export function AboutClientsSection() {
         <div className="client-main">
           <div className="client-title">
             <FadeIn id="fe5fdc30-0977-ab3c-0ac8-efd3fd77d71c" className="section-title-center">
-              <PreSectionTitle title="Our clients" />
+              <PreSectionTitle title="Our Clients" />
               <h2 className="section-title title-center">
-                Trusted by <span className="text-linear-gradient">industry</span> leaders
+                Trusted by <span className="text-linear-gradient">Industry</span> Leaders
               </h2>
             </FadeIn>
           </div>
@@ -29,8 +29,8 @@ export function AboutClientsSection() {
               className="award-title-wrap"
             >
               <h3 className="award-title">
-                <span className="text-linear-gradient">20 Years</span> of manufacturing excellence
-                &amp; recognition
+                <span className="text-linear-gradient">20 Years</span> of Manufacturing Excellence
+                &amp; Recognition
               </h3>
             </FadeIn>
             <div className="award-image-wrap">

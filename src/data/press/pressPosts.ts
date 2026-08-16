@@ -13,7 +13,7 @@ export type PressPost = {
 export const pressPosts: PressPost[] = [
   {
     slug: 'dekko-isho-invested-in-fashol',
-    title: 'Dekko ISHO invested in Fashol: A leading agri-tech startup',
+    title: 'Dekko ISHO Invested in Fashol: A Leading Agri-Tech Startup',
     category: 'Agri-tech startup',
     date: 'October 16, 2021',
     excerpt:
@@ -49,7 +49,7 @@ export const pressPosts: PressPost[] = [
   },
   {
     slug: 'signing-ceremony-for-dekko-isho-group-and-markopolo-ai',
-    title: 'Signing ceremony for Dekko ISHO Group and Markopolo.ai',
+    title: 'Signing Ceremony for Dekko ISHO Group and Markopolo.ai',
     category: 'Technology',
     date: 'August 10, 2021',
     excerpt:
@@ -66,7 +66,7 @@ export const pressPosts: PressPost[] = [
   },
   {
     slug: 'dekko-isho-group-invests-in-ecovia',
-    title: 'Dekko ISHO Group invests in Ecovia: A green tech startup',
+    title: 'Dekko ISHO Group Invests in Ecovia: A Green Tech Startup',
     category: 'Ecovia',
     date: 'August 10, 2021',
     excerpt:
@@ -80,7 +80,7 @@ export const pressPosts: PressPost[] = [
   },
   {
     slug: 'dekko-isho-group-joins-hands-with-markopolo-ai-to-contribute-to-it-industry-growth',
-    title: 'Dekko ISHO Group joins hands with Markopolo.ai to contribute to IT industry growth',
+    title: 'Dekko ISHO Group Joins Hands with Markopolo.ai to Contribute to IT Industry Growth',
     category: 'Technology',
     date: 'August 10, 2021',
     excerpt:

@@ -3,7 +3,7 @@ import { industryFeatureIcons } from './industryFeatureIcons'
 
 export const agamiWashingFeatures: IndustryFeaturesProps = {
   badge: 'Industrial Laundry Partner',
-  title: 'Advanced garment washing and finishing for fashion-ready apparel.',
+  title: 'Advanced Garment Washing and Finishing for Fashion-Ready Apparel.',
   description:
     'Agami Washing Ltd. supports Dekko ISHO Group\u2019s apparel ecosystem with modern industrial laundry capability, denim washing, garment finishing, and value-added wash effects for export-ready fashion products. With advanced laboratory support, OZONE fading technology, nano bubble technology, wet process, dry process, and quality-controlled bulk wash review, Agami Washing Ltd. delivers consistent shade, finish, appearance, and dispatch-ready wash quality.',
   features: [

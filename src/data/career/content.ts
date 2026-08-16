@@ -109,7 +109,7 @@ export const careerWorkplace = {
 
 export const careerWhy = {
   badge: 'Why Dekko Isho',
-  heading: 'More Than just a Job.',
+  heading: 'More Than Just a Job.',
   items: [
     {
       id: 'career-why-01',
@@ -332,7 +332,7 @@ export const careerGrowthTogether = {
 
 export const careerApplyCta = {
   badge: 'Career',
-  heading: 'Ready to Grow With Us?',
+  heading: 'Ready to Grow with Us?',
   description: "Send us your profile and let's start a conversation about your future.",
   buttonLabel: 'Apply Now',
   buttonHref: '/contact',

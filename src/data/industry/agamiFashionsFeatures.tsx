@@ -3,7 +3,7 @@ import { industryFeatureIcons } from './industryFeatureIcons'
 
 export const agamiFashionsFeatures: IndustryFeaturesProps = {
   badge: 'Integrated Apparel Partner',
-  title: 'Agile apparel manufacturing with integrated washing support.',
+  title: 'Agile Apparel Manufacturing with Integrated Washing Support.',
   description:
     'Agami Fashions Ltd. supports global apparel buyers with export-ready manufacturing, flexible production execution, and strong coordination across garment development, production, finishing, and quality control. With integrated support from Agami Washing Ltd., the unit strengthens value-added garment finishing, denim wash capability, inspection discipline, and shipment readiness for fashion programs that require speed, consistency, and reliable delivery.',
   features: [

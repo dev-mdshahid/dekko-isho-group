@@ -10,9 +10,9 @@ export function AboutTeamSection() {
           <div className="w-layout-grid grid-team">
             <div className="team-left-info">
               <FadeIn id="9d95fe37-36d6-4041-059e-7691c894a0b2" className="team-section-title">
-                <PreSectionTitle title="Meet our experts" />
+                <PreSectionTitle title="Meet Our Experts" />
                 <h2 className="section-title">
-                  Leaders in <span className="text-linear-gradient">precision</span> work
+                  Leaders in <span className="text-linear-gradient">Precision</span> Work
                 </h2>
               </FadeIn>
             </div>

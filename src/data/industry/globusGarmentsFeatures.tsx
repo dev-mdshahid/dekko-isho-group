@@ -3,7 +3,7 @@ import { industryFeatureIcons } from './industryFeatureIcons'
 
 export const globusGarmentsFeatures: IndustryFeaturesProps = {
   badge: 'Export Apparel Partner',
-  title: 'Scalable apparel manufacturing for dependable global supply.',
+  title: 'Scalable Apparel Manufacturing for Dependable Global Supply.',
   description:
     'Globus Garments Ltd. supports international apparel buyers with export-oriented manufacturing, coordinated production planning, and reliable garment execution across the full apparel supply journey. From material preparation and technical alignment to cutting, sewing, finishing, inspection, and shipment readiness, Globus Garments Ltd. delivers consistent quality, production discipline, and dependable delivery performance.',
   features: [

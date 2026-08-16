@@ -8,8 +8,8 @@ export function DekkoGarmentsFeaturedSection() {
     <section className="dekko-garments-featured">
       <div className="dekko-garments-featured-container">
         <FadeIn id="dekko-garments-featured-header" className="dekko-garments-featured-header">
-          <PreSectionTitle title="Watch our Excellence" />
-          <h2 className="dekko-garments-featured-title">See The work that defines us</h2>
+          <PreSectionTitle title="Watch Our Excellence" />
+          <h2 className="dekko-garments-featured-title">See the Work That Defines Us</h2>
         </FadeIn>
 
         <FadeIn id="dekko-garments-featured-media" className="dekko-garments-featured-media" delay={60}>

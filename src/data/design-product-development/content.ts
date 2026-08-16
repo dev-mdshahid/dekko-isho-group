@@ -1,5 +1,5 @@
 export const designProductDevelopmentHero = {
-  badge: 'Fashion is constantly evolving and so are we',
+  badge: 'Fashion Is Constantly Evolving and So Are We',
   titleLines: [
     [
       { text: 'Design' },
@@ -22,7 +22,7 @@ const CAPABILITY_IMAGE_BASE = '/images/design-product-development'
 export const designProductDevelopmentCapabilities = {
   id: 'dpd-capabilities',
   badge: 'Why Dekko ISHO',
-  title: 'Why leading brands partner with us.',
+  title: 'Why Leading Brands Partner with Us.',
   description:
     "We combine creativity, technology, material expertise, and integrated manufacturing to simplify product development. From concept creation and fabric innovation to digital sampling and production readiness, our Design Studio works as an extension of our customers' teams.",
   items: [
@@ -60,7 +60,7 @@ export const designProductDevelopmentCapabilities = {
 export const designProductDevelopmentStudio = {
   id: 'dpd-studio',
   badge: 'Design Studio',
-  title: 'Creativity backed by expertise.',
+  title: 'Creativity Backed by Expertise.',
   description:
     'Our Design Studio brings together fashion designers, textile specialists, product developers, and technical experts who turn concepts into commercially successful products through creativity, technical excellence, and manufacturing knowledge.',
   image: `${CAPABILITY_IMAGE_BASE}/design-studio-team.png`,
@@ -69,8 +69,8 @@ export const designProductDevelopmentStudio = {
 
 export const designProductDevelopmentDigital = {
   id: 'dpd-digital',
-  badge: 'Smarter design. Faster decisions.',
-  title: 'Digital Product Development',
+  badge: 'Smarter Design. Faster Decisions.',
+  title: 'Digital Product\nDevelopment',
   description:
     'Using AI-assisted workflows, WGSN, Browzwear, CLO 3D, Textronic, and CAD software, we improve fit accuracy, reduce physical sampling, shorten lead times, and enable faster collaboration.',
   items: [
@@ -170,7 +170,7 @@ export const designProductDevelopmentServices = {
 export const designProductDevelopmentGlobalNetwork = {
   id: 'dpd-global-network',
   badge: 'Global Design Network',
-  title: 'Close to the market, wherever you are.',
+  title: 'Close to the Market, Wherever You Are.',
   description: 'We translate global fashion insights into market-ready collections.',
   image: '/images/design-product-development/global-design-network.png',
   imageAlt: 'Neutral-toned textured fabrics and knits hanging in a design studio',
@@ -214,7 +214,7 @@ const JOURNEY_ICON_BASE = `${CAPABILITY_IMAGE_BASE}/journey`
  */
 export const designProductDevelopmentJourney = {
   id: 'dpd-journey',
-  badge: 'From trend research to production ready',
+  badge: 'From Trend Research to Production Ready',
   title: 'Product Development Journey',
   stages: [
     {
@@ -285,29 +285,29 @@ export const designProductDevelopmentJourney = {
 
 export const designProductDevelopmentDigitalImpact = {
   id: 'dpd-digital-impact',
-  badge: 'Design excellence infrastructure',
-  title: 'Digital-first development, measurable impact.',
+  badge: 'Design Excellence Infrastructure',
+  title: 'Digital-First Development, Measurable Impact.',
   description:
     'Digital product development minimizes physical sampling, accelerates decision-making, and helps brands launch collections faster while reducing material waste.',
   items: [
     {
       id: 'fewer-samples',
-      title: 'Fewer physical samples',
+      title: 'Fewer Physical Samples',
       description: 'Virtual sampling replaces costly physical rounds.',
     },
     {
       id: 'faster-decisions',
-      title: 'Faster decision-making',
+      title: 'Faster Decision-Making',
       description: '3D visualization accelerates approvals across the lifecycle.',
     },
     {
       id: 'faster-launches',
-      title: 'Faster collection launches',
+      title: 'Faster Collection Launches',
       description: 'Styles reach market sooner, with greater accuracy.',
     },
     {
       id: 'reduced-waste',
-      title: 'Reduced material waste',
+      title: 'Reduced Material Waste',
       description: 'Digital iteration cuts fabric consumption before production.',
     },
   ],
@@ -315,7 +315,7 @@ export const designProductDevelopmentDigitalImpact = {
 
 export const designProductDevelopmentSolutionsBanner = {
   badge: 'Product Development',
-  title: 'Unique design solutions for modern apparel customers.',
+  title: 'Unique Design Solutions for Modern Apparel Customers.',
   descriptions: [
     'Our product development studio that can help you create new styles and new garments. We can start with a sketch, a picture, or a verbal idea. We provide fashion design, sourcing, pattern making, and sample making.',
     'Our Design studio was established to provide unique design solution to our customer. To be a key player, we recognize the need to invest in design and hence our own specialized Design studio.',
@@ -328,7 +328,7 @@ export const designProductDevelopmentSolutionsBanner = {
 
 export const designProductDevelopmentConcept = {
   badge: 'Creative Capability',
-  title: 'From idea reference to sample-ready fashion development.',
+  title: 'From Idea Reference to Sample-Ready Fashion Development.',
   description:
     'Our Design Studio offers unique design solutions, focusing on fashion design, sourcing, pattern making, and sample creation. We aim to turn initial concepts into production-ready garments and collections.',
   imageSrc: '/images/design%20and%20product/design-studio.png',
@@ -338,7 +338,7 @@ export const designProductDevelopmentConcept = {
 
 export const designProductDevelopmentFacilities = {
   badge: 'People & Facilities',
-  title: 'Design value focused on specialized people and facilities.',
+  title: 'Design Value Focused on Specialized People and Facilities.',
   columnLabels: {
     category: 'Focus Area',
     details: 'Details',
@@ -382,8 +382,8 @@ export const designProductDevelopmentFacilities = {
 export const designProductDevelopmentExperience = {
   badge: 'Customer Advantages',
   titleBefore: 'Dependable ',
-  titleAccent: 'design',
-  titleAfter: ' and sourcing solutions for your supply chain.',
+  titleAccent: 'Design',
+  titleAfter: ' and Sourcing Solutions for Your Supply Chain.',
   items: [
     {
       id: 'vertical',
@@ -453,7 +453,7 @@ export const designProductDevelopmentPresence = {
 export const designProductDevelopmentGallery = {
   id: 'dpd-gallery',
   badge: 'Co-Creation & Partnership',
-  title: 'Better products are built together.',
+  title: 'Better Products Are Built Together.',
   description:
     'Our designers, fabric specialists, and product developers work closely with customers throughout every stage of the development journey — from trend exploration and material selection to prototyping, fit refinement, and final approval.',
   images: [
@@ -492,7 +492,7 @@ export const designProductDevelopmentShowroom = {
 
 export const designProductDevelopmentCta = {
   badge: "Let's Connect",
-  heading: "And build what's next, together",
+  heading: "And Build What's Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',

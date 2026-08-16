@@ -14,7 +14,7 @@ export const manufacturingHero = {
 export const manufacturingExpertise = {
   id: 'mfg-expertise',
   badge: 'One-Stop Apparel Partner',
-  title: 'Sustainable apparel manufacturing for growing fashion brands.',
+  title: 'Sustainable Apparel Manufacturing for Growing Fashion Brands.',
   paragraphs: [
     'Dekko ISHO Group supports fashion brands as an apparel manufacturing partner with sustainable, organic, and production-ready solutions across the apparel development journey.',
     'From idea planning and technical design to fabric sourcing, pattern making, sampling, and eco-friendly production, the manufacturing system is built to help brands stop worrying about production and focus on growing.',
@@ -231,7 +231,7 @@ const productRangeImage = (file: string) => `/images/manufacturing/product-range
 
 export const manufacturingProductRange = {
   badge: 'Versatile Manufacturing Capability',
-  title: 'Designed for diverse product categories.',
+  title: 'Designed for Diverse Product Categories.',
   description:
     'Our integrated manufacturing platform supports a broad portfolio of woven apparel, combining technical expertise, flexible production, and efficient manufacturing processes to meet diverse customer requirements.',
   items: [
@@ -285,22 +285,22 @@ export const manufacturingWhyItMatters = {
   items: [
     {
       id: 'customization',
-      title: 'Improved customization',
+      title: 'Improved Customization',
       description: "It's all about providing quality products for better value.",
     },
     {
       id: 'cycles',
-      title: 'Shorter development cycles',
+      title: 'Shorter Development Cycles',
       description: 'At the speed of fast fashion, getting a product to market.',
     },
     {
       id: 'complexity',
-      title: 'Reduced operational complexity',
+      title: 'Reduced Operational Complexity',
       description: 'Single point contact ensures manageable workflow.',
     },
     {
       id: 'quality',
-      title: 'Consistent product quality',
+      title: 'Consistent Product Quality',
       description: 'Highly skilled workforce ensures top-tier apparel production.',
     },
   ],
@@ -355,7 +355,7 @@ export const manufacturingCapacityDetails = {
 
 export const manufacturingQuality = {
   badge: 'Quality & Compliance',
-  title: 'Built on standards you can trust',
+  title: 'Built on Standards You Can Trust',
   description:
     'Every facility operates under internationally recognised certifications — from social compliance to environmental management.',
   items: [
@@ -467,7 +467,7 @@ const mfgProductNetworkImage = (file: string) =>
   `/images/manufacturing/product-network/${file}`
 
 export const manufacturingProductionNetwork = {
-  badge: 'Verified scale',
+  badge: 'Verified Scale',
   title: 'Production Network',
   description:
     'Our production units ensure better efficiency with their capacity, immense product mix, and compliance standards.',
@@ -582,7 +582,7 @@ export const manufacturingProjects = {
 
 export const manufacturingOperation = {
   badge: 'Inside the Operation',
-  title: 'Materials, quality, and sampling – managed end to end.',
+  title: 'Materials, Quality, and Sampling – Managed End to End.',
   description:
     'Three disciplines run in lockstep across every order, keeping production uninterrupted, quality embedded at every stage, and development moving fast.',
   cards: [
@@ -622,7 +622,7 @@ export const manufacturingOperation = {
 export const manufacturingClients = {
   id: 'mfg-clients',
   badge: 'Global Business Footprint',
-  title: 'Trusted by global fashion brands.',
+  title: 'Trusted by Global Fashion Brands.',
   description:
     'Dekko ISHO proudly partners with leading fashion brands and retailers across Europe, North America, and other international markets — long-term partnerships built on trust, quality, reliability, and responsible manufacturing.',
   regions: [
@@ -661,7 +661,7 @@ const JOURNEY_ICON_BASE = '/images/manufacturing/journey'
 export const manufacturingJourney = {
   id: 'mfg-journey',
   badge: 'Manufacturing Journey',
-  title: 'From sourcing to packing.',
+  title: 'From Sourcing to Packing.',
   description:
     'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
   stages: [
@@ -747,7 +747,7 @@ export const manufacturingJourney = {
 
 export const manufacturingCta = {
   badge: "Let's Connect",
-  heading: "And build what's next, together",
+  heading: "And Build What's Next, Together",
   description:
     "Get in touch with us. Start the conversation by telling us about your ideas & let's get down to work together.",
   buttonLabel: 'Send us a message',

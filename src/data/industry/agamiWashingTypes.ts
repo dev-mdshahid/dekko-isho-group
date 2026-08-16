@@ -6,7 +6,7 @@ export type AgamiWashingTypeItem = {
 
 export const agamiWashingTypesIntro = {
   badge: 'Washing Types',
-  title: 'Wet and dry treatment options for expressive garment finishes.',
+  title: 'Wet and Dry Treatment Options for Expressive Garment Finishes.',
   description:
     'Agami Washing supports a wide range of apparel washing and processing techniques, from basic garment wash to advanced denim effects, dye treatments, bleaching, scraping, grinding, crinkle, and stone enzyme finishes.',
 }

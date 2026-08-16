@@ -11,9 +11,9 @@ export function TestimonialSection() {
       <div className="container-full">
         <div className="testimonial-info-main">
           <FadeIn id="70c67abc-bbb2-0225-8b62-b34415172d4c" variant="slide-in-bottom" className="section-title-center _01">
-            <PreSectionTitle title="Built on trust" />
+            <PreSectionTitle title="Built on Trust" />
             <h2 className="section-title title-center">
-              Trusted by <span className="text-linear-gradient">clients</span>, proven by results
+              Trusted by <span className="text-linear-gradient">Clients</span>, Proven by Results
             </h2>
           </FadeIn>
           <div className="w-layout-grid grid-testimonial">
@@ -116,7 +116,7 @@ export function TestimonialSection() {
                 <div className="support-info-inner">
                   <img src={legacyImage('Icon.svg')} loading="lazy" alt="Support Icon" className="support-icon" />
                   <div>
-                    <h3 className="support-title">Need help choosing the right product?</h3>
+                    <h3 className="support-title">Need Help Choosing the Right Product?</h3>
                     <p className="support-description">
                       Always ready with guidance, product details, and after-sales support.
                     </p>

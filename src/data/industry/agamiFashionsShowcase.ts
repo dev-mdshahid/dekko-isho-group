@@ -19,7 +19,7 @@ export const agamiFashionsShowcaseBanner = {
 
 export const agamiFashionsShowcaseIntro = {
   badge: 'Agami Fashions Ltd.',
-  title: 'Future-ready fashion manufacturing for modern buyers.',
+  title: 'Future-Ready Fashion Manufacturing for Modern Buyers.',
 }
 
 export const agamiFashionsShowcaseCategories: AgamiFashionsShowcaseCategory[] = [

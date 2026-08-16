@@ -5,7 +5,7 @@ const KLUBHAUS_IMAGE_BASE = '/images/klubhaus'
 export const klubhausFeatureGallery: IndustryFeatureGalleryProps = {
   id: 'klubhaus-feature-gallery',
   badge: 'Identity & Values',
-  title: 'A fashion identity shaped by optimism, culture, and bold ethics.',
+  title: 'A Fashion Identity Shaped by Optimism, Culture, and Bold Ethics.',
   descriptions: [
     'Klubhaus seamlessly blends the warmth of home with contemporary fashion. Its unique designs convey messages of positivity, self-confidence, and cultural significance, all while remaining attuned to the trends of modern retail. Each piece reflects a commitment to uplifting the spirit and embracing a lifestyle that resonates with today\u2019s consumers.',
   ],

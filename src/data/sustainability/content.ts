@@ -534,7 +534,7 @@ export const pillar01 = {
     },
   ] satisfies InitiativeCard[],
   snapshotBadge: 'Performance snapshot',
-  snapshotHeadline: 'Measuring what Matters, Reducing what Counts',
+  snapshotHeadline: 'Measuring What Matters, Reducing What Counts',
   snapshotKpis: [
     {
       id: 'irec',
@@ -590,8 +590,8 @@ export type PerformanceSnapshotCard = {
 }
 
 export const performanceSnapshot = {
-  badge: 'Our progress',
-  headline: 'Measuring what Matters, Reducing what Counts',
+  badge: 'Our Progress',
+  headline: 'Measuring What Matters, Reducing What Counts',
   cards: [
     {
       id: 'energy',
@@ -744,7 +744,7 @@ export const pillar02 = {
     },
   ] satisfies SocialCard[],
   governanceBadge: 'Governance',
-  governanceTitle: 'A framework for every decision',
+  governanceTitle: 'A Framework for Every Decision',
   governanceRows: [
     // {
     //   id: 'environmental',
@@ -830,7 +830,7 @@ export const pillar03 = {
     { id: 'us-cotton', name: 'US Cotton', percentage: 5 },
     { id: 'regen-agri', name: 'Regen Agri Cotton', percentage: 5 },
   ] satisfies MaterialBar[],
-  traceabilityTitle: 'Traceability platforms',
+  traceabilityTitle: 'Traceability Platforms',
   traceabilityLogos: [
     {
       id: 'textile-genesis',
@@ -863,7 +863,7 @@ export const pillar03 = {
       alt: 'Extranet',
     },
   ] satisfies SustainabilityLogo[],
-  standardsTitle: 'Certified to global standards',
+  standardsTitle: 'Certified to Global Standards',
   standardsLogos: [
     {
       id: 'regenagri',
@@ -991,7 +991,7 @@ export { certifications, externalAffiliations } from '../certifications/content'
 
 export const sustainabilityCta = {
   badge: "Let's Connect",
-  heading: "And build what's next, together",
+  heading: "And Build What's Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',

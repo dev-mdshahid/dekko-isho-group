@@ -31,7 +31,7 @@ export function WhyChooseSection() {
               data-fade-in
               data-fade-variant="slide-in-bottom"
             >
-              Manufacturing solutions you can count on
+              Manufacturing Solutions You Can Count On
             </h2>
             <div className="why-choose-list">
               {whyChooseItems.map((item, index) => (

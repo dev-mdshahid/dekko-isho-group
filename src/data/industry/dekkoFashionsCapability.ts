@@ -7,7 +7,7 @@ export type DekkoFashionsCapabilityItem = {
 
 export const dekkoFashionsCapabilityIntro = {
   badge: 'Core Capability',
-  title: 'Built for woven apparel programs that demand precision.',
+  title: 'Built for Woven Apparel Programs That Demand Precision.',
   description:
     'Dekko Fashions Ltd. supports global buyers with design-aware manufacturing, quality-focused execution, and reliable production coordination across modern woven fashion categories.',
 }

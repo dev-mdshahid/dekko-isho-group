@@ -10,15 +10,15 @@ export type GlobusGarmentsProcessItem = {
 }
 
 export const globusGarmentsProcessIntro = {
-  badge: 'From fabric to shipment',
-  title: 'One controlled flow, end to end',
+  badge: 'From Fabric to Shipment',
+  title: 'One Controlled Flow, End to End',
 }
 
 export const globusGarmentsProcessItems: GlobusGarmentsProcessItem[] = [
   {
     id: 'material',
     icon: globusGarmentsProcessIcons.material,
-    title: 'Material & sourcing',
+    title: 'Material & Sourcing',
     description:
       'Fabric and trims sourced through a local & global mill network, aligned to buyer tech packs.',
   },
@@ -37,7 +37,7 @@ export const globusGarmentsProcessItems: GlobusGarmentsProcessItem[] = [
   {
     id: 'washing',
     icon: globusGarmentsProcessIcons.washing,
-    title: 'Washing & finishing',
+    title: 'Washing & Finishing',
     description: 'Garment wash, pressing and finishing — enzyme, dark, mid and light wash.',
   },
   {
@@ -49,7 +49,7 @@ export const globusGarmentsProcessItems: GlobusGarmentsProcessItem[] = [
   {
     id: 'packing',
     icon: globusGarmentsProcessIcons.packing,
-    title: 'Packing & shipment',
+    title: 'Packing & Shipment',
     description: 'Final QC, packing and export dispatch readiness on schedule.',
   },
 ]

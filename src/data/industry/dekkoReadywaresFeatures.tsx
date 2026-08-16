@@ -3,7 +3,7 @@ import { industryFeatureIcons } from './industryFeatureIcons'
 
 export const dekkoReadywaresFeatures: IndustryFeaturesProps = {
   badge: 'One-Stop Apparel Partner',
-  title: 'Reliable apparel manufacturing for global fashion brands.',
+  title: 'Reliable Apparel Manufacturing for Global Fashion Brands.',
   description:
     'Dekko Readywears Ltd. supports international apparel buyers with structured manufacturing, dependable production planning, and export-ready garment solutions across the apparel development journey. From sourcing and technical preparation to cutting, sewing, finishing, inspection, and shipment readiness, Dekko Readywears Ltd. delivers consistent quality, scalable capacity, and reliable on-time execution.',
   features: [

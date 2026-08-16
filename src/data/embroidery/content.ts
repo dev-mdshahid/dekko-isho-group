@@ -15,9 +15,9 @@ const EMBROIDERY_CAPABILITIES_IMAGE_BASE = '/images/embroidery/capabilities'
 export const embroideryCapabilities = {
   id: 'embroidery-capabilities',
   badge: 'Advanced Embroidery Capabilities',
-  title: 'Precision in every stitch',
-  titleBefore: 'Precision in every',
-  titleAccent: 'stitch',
+  title: 'Precision in Every Stitch',
+  titleBefore: 'Precision in Every',
+  titleAccent: 'Stitch',
   description:
     'Our embroidery facility offers versatile embroidery solutions for a wide range of garment categories and customer requirements. Combining technical expertise with advanced machinery, we deliver intricate designs with exceptional stitch quality, design accuracy, and production flexibility.',
   items: [
@@ -51,7 +51,7 @@ export const embroideryCapabilities = {
 export const embroideryTechnology = {
   id: 'embroidery-technology',
   badge: 'Advanced Embroidery Technology',
-  title: 'Technology that Stitches with Precision',
+  title: 'Technology That Stitches with Precision',
   description:
     'Powered by industry-leading Barudan and Maya embroidery machines, our facility delivers high-speed, high-precision embroidery with exceptional consistency across both development and bulk production.',
   items: [
@@ -72,7 +72,7 @@ export const embroideryTechnology = {
     },
     {
       id: 'multi-head',
-      title: 'Multi-head Embroidery Systems',
+      title: 'Multi-Head Embroidery Systems',
       description: 'Parallel head configurations supporting efficient large-scale runs.',
       image: '/images/embroidery/multi-head.png',
       imageAlt: 'Multi-head industrial embroidery production line',
@@ -141,7 +141,7 @@ export const embroideryTechnicalDevelopment = {
 export const embroideryQualityAssurance = {
   id: 'embroidery-quality-assurance',
   badge: 'Quality Assurance',
-  title: 'Quality control before a single panel moves.',
+  title: 'Quality Control Before a Single Panel Moves.',
   description:
     'Every embroidered panel undergoes rigorous quality checks throughout the production process. From design approval and stitch verification to final inspection, we ensure every detail meets customer specifications before moving to the next stage.',
   highlightTitle: '100% Panel Inspection',
@@ -151,7 +151,7 @@ export const embroideryQualityAssurance = {
 }
 
 export const embroideryProductionNetwork = {
-  badge: 'Verified scale',
+  badge: 'Verified Scale',
   title: 'Production Network',
   description: 'We operate within a strong, sustainable network for all your needs.',
   units: [
@@ -187,7 +187,7 @@ export const embroideryWhyItMatters = {
   items: [
     {
       id: 'craftsmanship',
-      title: 'Exceptional craftsmanship',
+      title: 'Exceptional Craftsmanship',
       description: 'A testament to artistry and technical precision.',
     },
     {
@@ -204,8 +204,8 @@ export const embroideryWhyItMatters = {
 }
 
 export const embroideryCta = {
-  badge: 'Get in touch',
-  heading: "And build what's next, together",
+  badge: 'Get in Touch',
+  heading: "And Build What's Next, Together",
   description:
     'Get in touch with us to find out how our high quality embroidery and production network can help your brand grow.',
   buttonLabel: 'Shoot us a line',
@@ -215,7 +215,7 @@ export const embroideryCta = {
 /** @deprecated Not used on the current embroidery page design. */
 export const embroiderySpotlight = {
   badge: 'Applied Decoration',
-  title: 'From approved artwork to embroidered bulk.',
+  title: 'From Approved Artwork to Embroidered Bulk.',
   description:
     "Globus Embroidery Ltd., a sister concern of Dekko ISHO Group, extends the group's decoration capacity alongside the DGL unit. Together with Sprintex Enterprise's digital textile printing, decoration stays inside the group – from logos and badges to prints on voile, viscose, and twill.",
   image: '/images/embroidery/embroidery-machines.jpg',
@@ -225,7 +225,7 @@ export const embroiderySpotlight = {
 /** @deprecated Not used on the current embroidery page design. */
 export const embroideryQuality = {
   badge: 'Embroidery QA Process',
-  title: 'Quality control before a single panel moves.',
+  title: 'Quality Control Before a Single Panel Moves.',
   description:
     'Every embroidered panel passes through in-process quality control – from the placement standard set before bulk to a 100% check before panels reach the production floor.',
   items: [
@@ -271,7 +271,7 @@ export const embroideryQuality = {
 /** @deprecated Not used on the current embroidery page design. */
 export const embroideryCapacity = {
   badge: 'Capacity',
-  title: 'Embroidery capacity at a glance.',
+  title: 'Embroidery Capacity at a Glance.',
   description:
     'Two dedicated embroidery units and a digital printing line give the group flexible decoration capacity, matched to bulk production schedules.',
   rows: [

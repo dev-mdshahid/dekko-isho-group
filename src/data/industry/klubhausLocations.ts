@@ -3,7 +3,7 @@ import type { IndustryLocationProps } from '../../components/industry'
 export const klubhausLocations: IndustryLocationProps = {
   id: 'klubhaus-locations',
   badge: 'Stores',
-  title: 'Visit Klubhaus across Dhaka.',
+  title: 'Visit Klubhaus Across Dhaka.',
   description:
     'Feel free to visit the Klubhaus store with your family and friends, and enjoy our wide selection of high-quality products.',
   locations: [

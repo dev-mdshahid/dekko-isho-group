@@ -27,7 +27,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image one',
     contentClass: 'team-info-content _01',
     name: 'James anderson',
-    title: 'Head of operations',
+    title: 'Head of Operations',
     social: [
       { href: 'https://www.instagram.com/', icon: legacyImage('social-icon-2.svg'), alt: 'Social Icon' },
       { href: 'https://www.linkedin.com/', icon: legacyImage('social-icon-3.svg'), alt: 'Social Icon' },
@@ -42,7 +42,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image two',
     contentClass: 'team-info-content _02',
     name: 'Michael turner',
-    title: 'Lead CNC engineer',
+    title: 'Lead CNC Engineer',
     social: [
       { href: 'https://www.linkedin.com/', icon: legacyImage('social-icon-3.svg'), alt: 'Social Icon' },
       { href: 'https://x.com/', icon: legacyImage('social-icon-1.svg'), alt: 'Social Icon' },
@@ -56,7 +56,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image three',
     contentClass: 'team-info-content _03',
     name: 'Olivia bennett',
-    title: 'Quality manager',
+    title: 'Quality Manager',
     social: [
       { href: 'https://www.instagram.com/', icon: legacyImage('social-icon-2.svg'), alt: 'Social Icon' },
       { href: 'https://x.com/', icon: legacyImage('social-icon-1.svg'), alt: 'Social Icon' },
@@ -70,7 +70,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image four',
     contentClass: 'team-info-content _04',
     name: 'William harris',
-    title: 'Production supervisor',
+    title: 'Production Supervisor',
     social: [
       { href: 'https://www.instagram.com/', icon: legacyImage('social-icon-2.svg'), alt: 'Social Icon' },
       { href: 'https://www.linkedin.com/', icon: legacyImage('social-icon-3.svg'), alt: 'Social Icon' },
@@ -84,7 +84,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image five',
     contentClass: 'team-info-content _05',
     name: 'Sophie walker',
-    title: 'Client relations manager',
+    title: 'Client Relations Manager',
     social: [
       { href: 'https://www.instagram.com/', icon: legacyImage('social-icon-2.svg'), alt: 'Social Icon' },
       { href: 'https://www.linkedin.com/', icon: legacyImage('social-icon-3.svg'), alt: 'Social Icon' },
@@ -99,7 +99,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image six',
     contentClass: 'team-info-content _06',
     name: 'William carter',
-    title: 'Project manager',
+    title: 'Project Manager',
     social: [
       { href: 'https://www.linkedin.com/', icon: legacyImage('social-icon-3.svg'), alt: 'Social Icon' },
       { href: 'https://x.com/', icon: legacyImage('social-icon-1.svg'), alt: 'Social Icon' },
@@ -113,7 +113,7 @@ export const teamMembers: TeamMember[] = [
     imageClass: 'team-image seven',
     contentClass: 'team-info-content _07',
     name: 'Emily carter',
-    title: 'Operations specialist',
+    title: 'Operations Specialist',
     social: [{ href: 'https://x.com/', icon: legacyImage('social-icon-1.svg'), alt: 'Social Icon' }],
   },
 ]

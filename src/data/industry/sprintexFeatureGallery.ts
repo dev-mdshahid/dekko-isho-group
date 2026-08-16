@@ -5,7 +5,7 @@ const SPRINTEX_IMAGE_BASE = '/images/sprintex'
 export const sprintexFeatureGallery: IndustryFeatureGalleryProps = {
   id: 'sprintex-feature-gallery',
   badge: 'Machine Features',
-  title: 'Advanced printing technology built for speed, precision, and efficiency.',
+  title: 'Advanced Printing Technology Built for Speed, Precision, and Efficiency.',
   descriptions: [
     'Sprintex operates with 24-hour printing production, high-precision industrial print heads, variable drop size, higher ink concentration for greater economy, intelligent output, and ink consumption management — delivering consistent quality across custom textile runs.',
   ],

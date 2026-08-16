@@ -12,7 +12,7 @@ export function DekkoReadywaresGallerySection() {
         <FadeIn id="dekko-readywares-gallery-header" className="dekko-readywares-gallery-header">
           <PreSectionTitle title="Photo Gallery" variant="bg-dark" />
           <h2 className="dekko-readywares-gallery-title">
-            Visual production journey from sample to packed garment.
+            Visual Production Journey from Sample to Packed Garment.
           </h2>
           <p className="dekko-readywares-gallery-description">
             Image-focused sections make the page stronger by showing the readywear process, product

@@ -14,7 +14,7 @@ export const complianceSustainabilityHero = {
 export const complianceSustainabilityInitiatives = {
   id: 'cs-initiatives',
   badge: 'Compliance & Occupational Health',
-  title: 'Compliance and occupational health & safety',
+  title: 'Compliance and Occupational Health & Safety',
   description:
     'Dekko ISHO champions compliant and sustainable growth through REACH-compliant raw materials, ISO 14001:2004 certified sourcing, strict internal and external audits, and strong occupational health and safety practices covering emergency equipment, first aid, filtered drinking water, daycare facilities, group insurance, provident fund support, and protective gear for workplace safety.',
   features: [
@@ -44,7 +44,7 @@ export const complianceSustainabilityInitiatives = {
 
 export const complianceSustainabilitySafety = {
   badge: 'Health & Safety',
-  title: 'Safe factories, prepared teams, and protected workers',
+  title: 'Safe Factories, Prepared Teams, and Protected Workers',
   aside:
     'Training, supervision and facility standards help ensure teams are prepared for daily production while maintaining safe, compliant working environments.',
   imageSrc: '/images/compliance-sustainability/safety-section.png',
@@ -54,33 +54,33 @@ export const complianceSustainabilitySafety = {
 }
 
 export const complianceSustainabilityRisk = {
-  title: 'Risk-aware protection for modern enterprise environments.',
+  title: 'Risk-Aware Protection for Modern Enterprise Environments.',
   items: [
     {
       id: 'risk-analysis',
       accent: '#f5c518',
-      title: 'Risk analysis',
+      title: 'Risk Analysis',
       description:
         'Identification and assessment of operational, chemical and supply-chain risks before they affect production or compliance standing.',
     },
     {
       id: 'compliance-reviews',
       accent: '#1c72a3',
-      title: 'Compliance reviews',
+      title: 'Compliance Reviews',
       description:
         'Periodic review of buyer requirements, certification scopes and internal controls against current standards.',
     },
     {
       id: 'incident-response',
       accent: '#2595d5',
-      title: 'Incident response',
+      title: 'Incident Response',
       description:
         'Documented escalation paths, root-cause analysis and preventive measures for safety or quality incidents.',
     },
     {
       id: 'continuous-monitoring',
       accent: '#22c55e',
-      title: 'Continuous monitoring',
+      title: 'Continuous Monitoring',
       description:
         'Ongoing tracking of KPIs, audit findings and improvement actions across facilities and business units.',
     },
@@ -89,7 +89,7 @@ export const complianceSustainabilityRisk = {
 
 export const complianceSustainabilityQuality = {
   badge: 'Packing & Dispatch Stage',
-  title: 'Controlled packing flow before shipment release.',
+  title: 'Controlled Packing Flow Before Shipment Release.',
   description:
     'This section logically follows finishing QA, because once garments pass visual and measurement control, the next critical checkpoint is moisture, metal detection, packing accuracy, and shipping verification.',
   primaryImage: {
@@ -149,7 +149,7 @@ export const complianceSustainabilityQuality = {
 
 export const complianceSustainabilityReporting = {
   badge: 'Final Inspection & Testing Process',
-  title: 'Certified reporting and continuous improvement.',
+  title: 'Certified Reporting and Continuous Improvement.',
   columnLabels: {
     category: 'Category',
     details: 'Details',
@@ -178,7 +178,7 @@ export const complianceSustainabilityReporting = {
 
 export const complianceSustainabilityImprovement = {
   badge: 'Continuous Improvements',
-  title: 'Strengthening quality through everyday improvement.',
+  title: 'Strengthening Quality Through Everyday Improvement.',
   items: [
     {
       id: 'tools',
@@ -206,7 +206,7 @@ export const complianceSustainabilityImprovement = {
 
 export const complianceSustainabilityCta = {
   badge: "Let's Connect",
-  heading: "And build what's next, together",
+  heading: "And Build What's Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',

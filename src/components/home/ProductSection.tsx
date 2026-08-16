@@ -11,7 +11,7 @@ export function ProductSection() {
         <div className="container">
           <div className="products-counter-main">
             <FadeIn id="5dc285f3-2c1b-5d8e-a87b-8fc080957d58" variant="slide-in-bottom" className="products-counter-wrap">
-              <PreSectionTitle title="What we manufacture" variant="bg-dark" />
+              <PreSectionTitle title="What We Manufacture" variant="bg-dark" />
               <div className="products-counter-inner">
                 <div className="inner-number like-score">
                   <div className="numbers-counts">
@@ -74,7 +74,7 @@ export function ProductSection() {
         <div className="container">
           <div className="product-inner-info">
             <FadeIn id="272f39e4-51eb-e15a-5d52-d0b9bb610f28" variant="slide-in-bottom" className="product-info-title">
-              <h3>Explore our complete product range across industries.</h3>
+              <h3>Explore Our Complete Product Range Across Industries.</h3>
             </FadeIn>
           </div>
         </div>

@@ -38,7 +38,7 @@ export function AboutContactSection() {
     <section className="cta-section about-contact-section about-contact-section--about">
       <div className="cta-info">
         <FadeIn id="about-contact-header" className="section-title-center _02 about-contact-header">
-          <PreSectionTitle title="Get in touch" variant="bg-dark" />
+          <PreSectionTitle title="Get in Touch" variant="bg-dark" />
           <h2 className="section-title title-center text-white about-contact-title">
             Connect with Our <span className="text-linear-gradient">Team</span>
           </h2>

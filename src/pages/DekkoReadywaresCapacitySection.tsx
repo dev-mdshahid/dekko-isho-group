@@ -12,8 +12,8 @@ export function DekkoReadywaresCapacitySection() {
         <FadeIn id="dekko-readywares-capacity-header" className="dekko-readywares-capacity-header">
           <PreSectionTitle title="Capacity Snapshot" />
           <h2 className="dekko-readywares-capacity-title">
-            Built for reliable volume and{' '}
-            <span className="dekko-readywares-capacity-title-accent">controlled execution.</span>
+            Built for Reliable Volume and{' '}
+            <span className="dekko-readywares-capacity-title-accent">Controlled Execution.</span>
           </h2>
         </FadeIn>
 
