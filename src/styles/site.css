@@ -1515,26 +1515,6 @@ figcaption {
   gap: 12px;
 }
 
-/* Invisible bridge across the gap between the buttons and the pills below them, so
-   the pointer can reach the pills from either button. It is deliberately only as
-   tall as that gap: anything larger would keep the menu open whenever the cursor
-   sits below the CTA. */
-.nav-button-wrap::before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 0;
-  transition: height 0s linear 0.42s;
-}
-
-.nav-button-wrap:hover::before,
-.nav-button-wrap:focus-within::before {
-  height: 0.625rem;
-  transition-delay: 0s;
-}
-
 .nav-social-cycle {
   --nav-cycle-brand: #1877f2;
   --nav-cycle-ease: cubic-bezier(0.33, 1, 0.68, 1);
@@ -1639,9 +1619,8 @@ figcaption {
   transition: visibility 0s linear 0.42s;
 }
 
-/* Both the Contact CTA and the social cycle button open the social menu. */
-.nav-button-wrap:hover .nav-contact-expand__menu,
-.nav-button-wrap:focus-within .nav-contact-expand__menu {
+/* Opened by the social cycle circle only — see NavButtonCluster. */
+.nav-button-wrap.is-social-open .nav-contact-expand__menu {
   pointer-events: auto;
   visibility: visible;
   transition-delay: 0s;
@@ -1677,8 +1656,7 @@ figcaption {
   will-change: opacity, transform;
 }
 
-.nav-button-wrap:hover .nav-social-pill,
-.nav-button-wrap:focus-within .nav-social-pill {
+.nav-button-wrap.is-social-open .nav-social-pill {
   opacity: 1;
   pointer-events: auto;
   transform: translate3d(0, 0, 0) scale(1);
@@ -1688,25 +1666,6 @@ figcaption {
     box-shadow 0.2s ease;
   /* Enter: top items appear first */
   transition-delay: calc(var(--nav-social-i) * var(--nav-social-stagger) + 40ms);
-}
-
-/* Once a link is clicked the menu closes even though hover/focus still sit on it.
-   These override the open state above, so they have to come after it. */
-.nav-button-wrap.is-dismissed .nav-contact-expand__menu {
-  pointer-events: none;
-  visibility: hidden;
-  transition-delay: 0s;
-}
-
-.nav-button-wrap.is-dismissed .nav-social-pill {
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(0, -0.85rem, 0) scale(0.9);
-  transition-delay: 0s;
-}
-
-.nav-button-wrap.is-dismissed::before {
-  height: 0;
 }
 
 .nav-social-pill:hover,
@@ -1781,36 +1740,61 @@ figcaption {
 
 .mobile-nav-social {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 0.75rem;
-  margin-top: 0.75rem;
+  margin-top: 0.875rem;
+  width: auto;
+}
+
+.mobile-nav-social-icon {
+  --nav-social-brand: #1877f2;
+  align-items: center;
+  background-color: var(--nav-social-brand);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex: none;
+  height: 3.25rem;
+  justify-content: center;
+  text-decoration: none;
+  transform: translateZ(0);
+  transition: filter 0.2s ease, transform 0.2s ease;
+  width: 3.25rem;
+}
+
+.mobile-nav-social-icon:hover,
+.mobile-nav-social-icon:focus-visible {
+  filter: brightness(1.08);
+  outline: none;
+  transform: scale(1.05);
+}
+
+.mobile-nav-social-icon__glyph {
+  align-items: center;
+  display: flex;
+  height: 1.25rem;
+  justify-content: center;
+  width: 1.25rem;
+}
+
+.mobile-nav-social-icon__glyph svg {
+  display: block;
+  fill: currentColor;
+  height: 100%;
   width: 100%;
 }
 
-.mobile-nav-social .nav-social-pill {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateZ(0);
-  transform-origin: center;
-  will-change: auto;
-  width: 100%;
-  border-radius: 999px;
-  border-top-left-radius: 999px;
-  border-top-right-radius: 999px;
-  border-bottom-right-radius: 999px;
-  border-bottom-left-radius: 999px;
-  isolation: isolate;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
-  transition: box-shadow 0.2s ease, filter 0.2s ease;
+.mobile-nav-social-icon--youtube .mobile-nav-social-icon__glyph {
+  height: 1.25rem;
+  width: 1.25rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .nav-contact-expand__menu,
   .nav-social-pill,
-  .nav-button-wrap:hover .nav-social-pill,
-  .nav-button-wrap:focus-within .nav-social-pill {
+  .nav-button-wrap.is-social-open .nav-social-pill {
     transition: none;
     transition-delay: 0s;
   }
@@ -1819,7 +1803,7 @@ figcaption {
     transform: none;
   }
 
-  .nav-button-wrap:not(:hover):not(:focus-within) .nav-social-pill {
+  .nav-button-wrap:not(.is-social-open) .nav-social-pill {
     opacity: 0;
   }
 
@@ -1829,6 +1813,13 @@ figcaption {
     filter: none;
     transform: none;
     transition: opacity 0.2s linear;
+  }
+
+  .mobile-nav-social-icon,
+  .mobile-nav-social-icon:hover,
+  .mobile-nav-social-icon:focus-visible {
+    transform: none;
+    transition: none;
   }
 }
 
@@ -13986,19 +13977,15 @@ a.about-info-box:hover {
   }
 
   .mobile-nav-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 0;
     padding: 1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-contact .primary-button.nav-contact-button {
-    width: 100%;
-    border-radius: 999px;
-  }
-
-  .mobile-nav-contact .primary-button.nav-contact-button .button-primary-inner {
-    justify-content: space-between;
-    width: 100%;
-    border-radius: 999px;
+    width: fit-content;
   }
 }
 

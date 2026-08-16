@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { footerSocialLinks } from '../../data/footer/footerContent'
@@ -20,7 +20,7 @@ import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
-import { NavSocialCycle } from './NavSocialCycle'
+import { NavSocialCycle, navSocialBrands } from './NavSocialCycle'
 
 const navSocialLinks = [
   {
@@ -74,30 +74,34 @@ function NavContactExpand() {
   )
 }
 
+/** The circle and the menu it opens; pointing at anything else closes the menu. */
+const SOCIAL_REVEAL_PARTS = '.nav-social-cycle, .nav-contact-expand__menu'
+
 /**
- * Holds the social cycle circle and the Contact CTA, which share one hover target.
- * The reveal itself is CSS-driven, so a click has to be dismissed explicitly:
- * otherwise the clicked link keeps focus (and the pointer keeps hovering) and the
- * menu stays open behind the newly opened tab.
+ * Holds the social cycle circle and the Contact CTA side by side. Only the circle
+ * (and the revealed menu itself) opens the social links, so the state is tracked
+ * here rather than with :hover — CSS cannot express "hovering this sibling but not
+ * that one", and hover/focus left behind by a click would keep the menu open.
  */
 function NavButtonCluster() {
-  const [isDismissed, setIsDismissed] = useState(false)
+  const [isSocialOpen, setIsSocialOpen] = useState(false)
 
-  function handleClick(event: MouseEvent<HTMLDivElement>) {
-    setIsDismissed(true)
-
-    // Pointer clicks leave focus behind; keyboard activation keeps it where it is.
-    if (event.detail > 0 && event.target instanceof HTMLElement) {
-      event.target.closest<HTMLElement>('a')?.blur()
-    }
+  function syncFromTarget(target: EventTarget | null) {
+    setIsSocialOpen(target instanceof Element && target.closest(SOCIAL_REVEAL_PARTS) !== null)
   }
 
   return (
     <div
-      className={`nav-button-wrap${isDismissed ? ' is-dismissed' : ''}`}
-      onClick={handleClick}
-      onFocus={() => setIsDismissed(false)}
-      onMouseLeave={() => setIsDismissed(false)}
+      className={`nav-button-wrap${isSocialOpen ? ' is-social-open' : ''}`}
+      onMouseOver={(event) => syncFromTarget(event.target)}
+      onMouseLeave={() => setIsSocialOpen(false)}
+      onFocus={(event) => syncFromTarget(event.target)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setIsSocialOpen(false)
+        }
+      }}
+      onClick={() => setIsSocialOpen(false)}
     >
       <NavSocialCycle />
       <NavContactExpand />
@@ -108,18 +112,19 @@ function NavButtonCluster() {
 function MobileNavSocialLinks({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="mobile-nav-social" aria-label="Social media">
-      {navSocialLinks.map((social) => (
+      {navSocialBrands.map((social) => (
         <a
           key={social.href}
           href={social.href}
           target="_blank"
           rel="noreferrer"
-          className={`nav-social-pill nav-social-pill--${social.brand}`}
+          className={`mobile-nav-social-icon mobile-nav-social-icon--${social.id}`}
+          aria-label={social.label}
+          style={{ '--nav-social-brand': social.brandColor } as CSSProperties}
           onClick={closeMenu}
         >
-          <span className="nav-social-pill__label">{social.label}</span>
-          <span className="nav-social-pill__icon" aria-hidden="true">
-            <img src={socialIconSrc(social.icon)} alt="" />
+          <span className="mobile-nav-social-icon__glyph" aria-hidden="true">
+            {social.icon}
           </span>
         </a>
       ))}

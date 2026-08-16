@@ -11,7 +11,7 @@ type NavSocialBrand = {
   icon: ReactNode
 }
 
-const navSocialBrands: readonly NavSocialBrand[] = [
+export const navSocialBrands: readonly NavSocialBrand[] = [
   {
     id: 'facebook',
     href: footerSocialLinks[0].href,
