@@ -19,9 +19,9 @@ export function initCompanyAnimations(scope: ParentNode): AnimationCleanup {
 
     const awardsTween = gsap.fromTo(
       awards,
-      { yPercent: 4 },
+      { yPercent: 1.5 },
       {
-        yPercent: -2,
+        yPercent: -1.5,
         ease: 'none',
         scrollTrigger: {
           trigger: section,

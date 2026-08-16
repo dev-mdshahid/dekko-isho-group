@@ -6,6 +6,7 @@ export { ManufacturingCuttingPreparationSection } from './ManufacturingCuttingPr
 export { ManufacturingCapacitySection } from './ManufacturingCapacitySection'
 export type { ManufacturingCapacityContent } from './ManufacturingCapacitySection'
 export { ManufacturingEcosystemSection } from './ManufacturingEcosystemSection'
+export { ManufacturingAutomationSection } from './ManufacturingAutomationSection'
 export { ManufacturingTechnologySection } from './ManufacturingTechnologySection'
 export { ManufacturingClientsSection } from './ManufacturingClientsSection'
 export { ManufacturingProductRangeSection } from './ManufacturingProductRangeSection'

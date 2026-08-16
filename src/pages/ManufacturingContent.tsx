@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 
 import {
+  ManufacturingAutomationSection,
   ManufacturingCapacitySection,
   ManufacturingClientsSection,
   ManufacturingEcosystemSection,
@@ -40,13 +41,14 @@ const ID_PREFIX = 'mfg'
  * 1. Hero
  * 2. Monthly Production Capacity
  * 3. Manufacturing Ecosystem
- * 4. Technology-Driven Manufacturing
- * 5. Inside the Operation
- * 6. Product Range
- * 7. Manufacturing Journey
- * 8. Global Business Footprint (Clients)
- * 9. Production Network
- * 10. CTA
+ * 4. Integrating Automation For Enhanced Precision
+ * 5. Technology-Driven Manufacturing
+ * 6. Inside the Operation
+ * 7. Product Range
+ * 8. Manufacturing Journey
+ * 9. Global Business Footprint (Clients)
+ * 10. Production Network
+ * 11. CTA
  */
 export function ManufacturingContent() {
   const ref = useRef<HTMLDivElement>(null)
@@ -61,6 +63,7 @@ export function ManufacturingContent() {
       <ManufacturingHeroSection />
       <ManufacturingCapacitySection content={manufacturingCapacity} />
       <ManufacturingEcosystemSection />
+      <ManufacturingAutomationSection />
       <ManufacturingTechnologySection />
       <ManufacturingOperationSection />
       <ManufacturingProductRangeSection />

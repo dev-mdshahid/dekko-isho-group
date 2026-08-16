@@ -197,6 +197,58 @@ export const manufacturingEcosystem = {
   imageAlt: 'Interior view of a large apparel manufacturing floor',
 }
 
+const automationImage = (file: string) => `/images/manufacturing/automation/${file}`
+
+export const manufacturingAutomation = {
+  id: 'mfg-automation',
+  description:
+    'By combining intelligent technologies with advanced machinery, we deliver superior precision, optimized performance, and dependable manufacturing outcomes.',
+  items: [
+    {
+      id: 'fabric-spreader',
+      label: 'Fabric Spreader Machine',
+      image: automationImage('fabric-spreader-machine.png'),
+      imageAlt: 'Fabric spreader machine on the cutting floor',
+    },
+    {
+      id: 'auto-fabric-relaxation',
+      label: 'Auto Fabric Relaxation Machine',
+      image: automationImage('auto-fabric-relaxation-machine.png'),
+      imageAlt: 'Auto fabric relaxation machine processing layered fabric',
+    },
+    {
+      id: 'auto-fabric-cutting',
+      label: 'Auto Fabric Cutting',
+      image: automationImage('auto-fabric-cutting.png'),
+      imageAlt: 'Automated fabric cutting machine',
+    },
+    {
+      id: 'auto-pocket-welt',
+      label: 'Auto Pocket Welt Machine',
+      image: automationImage('auto-pocket-welt-machine.png'),
+      imageAlt: 'Auto pocket welt sewing machine',
+    },
+    {
+      id: 'auto-collar-cuff',
+      label: 'Auto Collar & Cuff Make Machine',
+      image: automationImage('auto-collar-cuff-make-machine.png'),
+      imageAlt: 'Auto collar and cuff make machine',
+    },
+    {
+      id: 'belt-loop-attach',
+      label: 'Automatic Belt Loop Attach Machine',
+      image: automationImage('automatic-belt-loop-attach-machine.png'),
+      imageAlt: 'Automatic belt loop attach machine',
+    },
+    {
+      id: 'belt-setter-douglas',
+      label: 'Automatic Belt Setter (Douglas)',
+      image: automationImage('automatic-belt-setter-douglas.png'),
+      imageAlt: 'Automatic belt setter Douglas machine',
+    },
+  ],
+}
+
 export const manufacturingTechnology = {
   id: 'mfg-technology',
   badge: 'Technology-Driven Manufacturing',
