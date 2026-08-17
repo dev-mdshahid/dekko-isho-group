@@ -1443,7 +1443,8 @@
 
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 28px;
+    --dpd-journey-dot: 64px;
+    --dpd-journey-icon-size: 36px;
     padding: var(--dpd-mobile-section-pad) 0;
   }
 
@@ -1485,24 +1486,30 @@
     bottom: calc(var(--dpd-journey-dot) / 2);
     left: calc(var(--dpd-journey-dot) / 2 - 1px);
     width: 0;
-    border-left: 2px dashed var(--dpd-journey-line);
+    border-left: 1.5px dashed var(--dpd-journey-line);
   }
 
   .design-product-development-page .dpd-journey-mobile-item {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.125rem;
     z-index: 1;
   }
 
+  /* Same outlined circle as the desktop roadmap, laid out down the page. */
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-dot {
-    box-shadow: 0 0 0 4px var(--color--white);
+    background-color: var(--color--white);
+    border: 1px solid var(--dpd-journey-ring);
+    box-shadow: 0 0 0 6px var(--color--white);
   }
 
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-icon {
-    width: 48px;
-    height: 48px;
+    position: absolute;
+    top: calc(50% - var(--dpd-journey-icon-size) / 2);
+    left: calc((var(--dpd-journey-dot) - var(--dpd-journey-icon-size)) / 2);
+    width: var(--dpd-journey-icon-size);
+    height: var(--dpd-journey-icon-size);
     margin-top: 0;
   }
 
@@ -1518,7 +1525,8 @@
 
 @media screen and (max-width: 767px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 24px;
+    --dpd-journey-dot: 56px;
+    --dpd-journey-icon-size: 32px;
     padding: var(--dpd-mobile-section-pad-sm) 0;
   }
 
