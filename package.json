@@ -11,6 +11,7 @@
     "build:firebase": "npm run build",
     "deploy:live": "node scripts/prepare-firebase-hosting.mjs && npm run build && FIREBASE_SKIP_UPDATE_CHECK=true firebase deploy --only hosting",
     "deploy:firebase": "npm run deploy:live",
+    "optimize:video": "node scripts/optimize-video.mjs",
     "extract:home": "node scripts/extract-home-body.mjs",
     "convert:home": "node scripts/extract-home-body.mjs && node scripts/convert-home-to-tsx.mjs"
   },
@@ -36,6 +37,7 @@
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "ffmpeg-static": "^5.3.0",
     "firebase-tools": "^15.22.4",
     "globals": "^17.6.0",
     "typescript": "~6.0.2",

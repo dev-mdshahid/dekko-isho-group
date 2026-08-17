@@ -540,8 +540,77 @@
   min-height: 0;
   object-fit: contain;
   flex: 0 1 auto;
-  /* Knock out the asset's solid black backdrop so the graphic sits on the section */
-  mix-blend-mode: lighten;
+}
+
+/* Shared footprint for the still and the animation so swapping them never shifts layout */
+.about-three-section .about-overview-media {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1080 / 1459;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.about-three-section .about-overview-media .about-overview-machine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 400ms ease;
+}
+
+.about-three-section .about-overview-media[data-video-visible='true'] .about-overview-machine {
+  opacity: 0;
+}
+
+/* The clip is 9:16 with wide empty margins, so it is overscaled to match the still's framing */
+.about-three-section .about-overview-machine-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 138%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+  filter: url(#about-overview-luma-key);
+}
+
+.about-three-section .about-overview-media[data-video-visible='true'] .about-overview-machine-video {
+  opacity: 1;
+}
+
+.about-overview-luma-key {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Without the luma key the clip would render as a black block, so keep the still instead */
+@supports not (filter: url(#about-overview-luma-key)) {
+  .about-three-section .about-overview-machine-video {
+    display: none;
+  }
+
+  .about-three-section .about-overview-media[data-video-visible='true'] .about-overview-machine {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-three-section .about-overview-machine-video {
+    display: none;
+  }
+
+  .about-three-section .about-overview-media .about-overview-machine {
+    opacity: 1;
+    transition: none;
+  }
 }
 
 .about-three-section .about-story-title,
