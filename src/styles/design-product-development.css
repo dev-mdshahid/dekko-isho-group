@@ -1272,9 +1272,11 @@
 
 /* ── Product Development Journey roadmap ── */
 .design-product-development-page .dpd-journey-section {
-  --dpd-journey-dot: 32px;
+  --dpd-journey-dot: 122px;
+  --dpd-journey-icon-size: 64px;
   --dpd-journey-blue: var(--color--primary);
-  --dpd-journey-line: color-mix(in srgb, var(--color--primary) 42%, white);
+  --dpd-journey-ring: var(--color--neutral-silver-night);
+  --dpd-journey-line: var(--color--neutral-silver-night);
   background-color: var(--color--white);
   padding: clamp(4rem, 8vw, 6.5rem) 0;
 }
@@ -1291,7 +1293,7 @@
   align-items: flex-start;
   gap: 1.25rem;
   width: 100%;
-  margin-bottom: clamp(2.75rem, 5vw, 4rem);
+  margin-bottom: clamp(3rem, 6vw, 7.25rem);
 }
 
 .design-product-development-page .dpd-journey-section .pre-section-title-wrap {
@@ -1322,8 +1324,15 @@
 .design-product-development-page .dpd-journey-roadmap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1000 / 360;
+  aspect-ratio: 1000 / 270;
   min-height: 280px;
+}
+
+/* Fine dashes, matching the roadmap's hairline nodes. */
+.design-product-development-page .dpd-journey-roadmap [data-journey-path],
+.design-product-development-page .dpd-journey-roadmap [data-journey-path-ghost] {
+  stroke-width: 1.25;
+  stroke-dasharray: 5 6;
 }
 
 .design-product-development-page .dpd-journey-path {
@@ -1389,6 +1398,13 @@
   box-shadow: 0 0 0 4px var(--color--white);
 }
 
+/* Desktop stages read as outlined circles with the icon sitting inside them. */
+.design-product-development-page .dpd-journey-roadmap .dpd-journey-dot {
+  background-color: var(--color--white);
+  border: 1px solid var(--dpd-journey-ring);
+  box-shadow: 0 0 0 6px var(--color--white);
+}
+
 .design-product-development-page .dpd-journey-icon {
   display: block;
   flex-shrink: 0;
@@ -1398,16 +1414,27 @@
   object-fit: contain;
 }
 
+/* Centered inside the circle without a transform, so the reveal animation can still translate it. */
+.design-product-development-page .dpd-journey-roadmap .dpd-journey-icon {
+  position: absolute;
+  top: calc((var(--dpd-journey-dot) - var(--dpd-journey-icon-size)) / 2);
+  left: calc(50% - var(--dpd-journey-icon-size) / 2);
+  width: var(--dpd-journey-icon-size);
+  height: var(--dpd-journey-icon-size);
+  margin-top: 0;
+}
+
 .design-product-development-page .dpd-journey-label {
   display: block;
-  margin-top: 20px;
+  margin-top: 8px;
   color: var(--color--neutral-night);
   font-family: var(--_typography---font-family--heading);
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.2;
   letter-spacing: -0.01em;
   text-align: center;
+  white-space: pre-line;
 }
 
 .design-product-development-page .dpd-journey-mobile {
@@ -1485,6 +1512,7 @@
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.35;
+    white-space: normal;
   }
 }
 

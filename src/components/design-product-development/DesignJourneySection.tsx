@@ -6,6 +6,9 @@ export function DesignJourneySection() {
     <JourneyRoadmapSection
       classPrefix="dpd-journey"
       columnCount={5}
+      xPadLeft={54}
+      xPadRight={90}
+      curveOffset={0}
       {...designProductDevelopmentJourney}
     />
   )

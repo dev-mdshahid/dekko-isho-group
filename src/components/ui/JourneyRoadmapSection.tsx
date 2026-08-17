@@ -25,6 +25,8 @@ export type JourneyRoadmapSectionProps = {
   xPadLeft?: number
   /** Right inset so the U-turn curve fits (default 100). */
   xPadRight?: number
+  /** Distance past the last column where the U-turn starts, in viewBox units (default 80). */
+  curveOffset?: number
 }
 
 const VB = { w: 1000, h: 280 }
@@ -44,12 +46,17 @@ function columnCenterX(
   return xPadLeft + (column / lastColumn) * usable
 }
 
-function buildPathD(columnCount: number, xPadLeft: number, xPadRight: number) {
+function buildPathD(
+  columnCount: number,
+  xPadLeft: number,
+  xPadRight: number,
+  curveOffset: number,
+) {
   const lastColumn = columnCount - 1
   const x0 = columnCenterX(0, columnCount, xPadLeft, xPadRight)
   const xLast = columnCenterX(lastColumn, columnCount, xPadLeft, xPadRight)
   const x1 = columnCenterX(1, columnCount, xPadLeft, xPadRight)
-  const curveX = Math.min(xLast + CURVE_R, VB.w - 4)
+  const curveX = Math.min(xLast + curveOffset, VB.w - 4)
 
   return [
     `M ${x0} ${TOP_Y}`,
@@ -85,9 +92,10 @@ export function JourneyRoadmapSection({
   classPrefix,
   xPadLeft = DEFAULT_X_PAD,
   xPadRight = DEFAULT_X_PAD,
+  curveOffset = CURVE_R,
 }: JourneyRoadmapSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
-  const pathD = buildPathD(columnCount, xPadLeft, xPadRight)
+  const pathD = buildPathD(columnCount, xPadLeft, xPadRight, curveOffset)
 
   useJourneyRoadmapAnimation(sectionRef)
 
