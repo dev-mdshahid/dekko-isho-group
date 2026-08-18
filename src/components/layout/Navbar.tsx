@@ -33,10 +33,15 @@ function NavContactExpand() {
             rel="noreferrer"
             aria-label={social.label}
             className={`nav-social-pill nav-social-pill--${social.id}`}
-            style={{ '--nav-social-i': index } as CSSProperties}
+            style={
+              {
+                '--nav-social-i': index,
+                '--nav-social-brand': social.brandColor,
+              } as CSSProperties
+            }
           >
             <span className="nav-social-pill__label">{social.label}</span>
-            <span className="nav-social-pill__icon" aria-hidden="true">
+            <span className="nav-social-pill__icon" id={`nav-social-pill__icon-${social.id}`} aria-hidden="true">
               {social.icon}
             </span>
           </a>

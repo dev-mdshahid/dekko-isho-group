@@ -1591,6 +1591,7 @@ figcaption {
 
 /* The YouTube mark is wide and short, so it needs a nudge to match the other glyphs. */
 .nav-social-cycle__icon--youtube svg {
+  border-radius: 0.25rem;
   transform: scale(1.16);
 }
 
@@ -1677,8 +1678,9 @@ figcaption {
 
 .nav-social-pill:hover,
 .nav-social-pill:focus-visible {
-  border-color: rgba(25, 25, 25, 0.42);
+  border-color: var(--nav-social-brand);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+  color: var(--nav-social-brand);
   transform: translate3d(0, -1px, 0) scale(1);
 }
 
@@ -1705,8 +1707,12 @@ figcaption {
   height: 1.25rem;
   justify-content: center;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 1.25rem;
+}
+#nav-social-pill__icon-facebook, #nav-social-pill__icon-linkedin {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
 }
 
 .nav-social-pill__icon svg {
@@ -1717,6 +1723,7 @@ figcaption {
 }
 
 .nav-social-pill--youtube .nav-social-pill__icon svg {
+  border-radius: 0.25rem;
   transform: scale(1.16);
 }
 
