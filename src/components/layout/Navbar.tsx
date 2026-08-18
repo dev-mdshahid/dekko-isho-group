@@ -60,6 +60,7 @@ function NavContactExpand() {
             href={social.href}
             target="_blank"
             rel="noreferrer"
+            aria-label={social.label}
             className={`nav-social-pill nav-social-pill--${social.brand}`}
             style={{ '--nav-social-i': index } as CSSProperties}
           >
@@ -103,8 +104,8 @@ function NavButtonCluster() {
       }}
       onClick={() => setIsSocialOpen(false)}
     >
-      <NavSocialCycle />
       <NavContactExpand />
+      <NavSocialCycle />
     </div>
   )
 }
