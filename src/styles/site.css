@@ -1637,7 +1637,7 @@ figcaption {
   border: 1px solid rgba(25, 25, 25, 0.14);
   border-radius: 50%;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-  color: var(--nav-social-brand);
+  color: var(--color--grey-1);
   display: flex;
   gap: 0;
   height: 3.25rem;
@@ -1677,13 +1677,13 @@ figcaption {
 
 .nav-social-pill:hover,
 .nav-social-pill:focus-visible {
-  border-color: var(--nav-social-brand);
+  border-color: rgba(25, 25, 25, 0.42);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
   transform: translate3d(0, -1px, 0) scale(1);
 }
 
 .nav-social-pill:focus-visible {
-  outline: 2px solid var(--nav-social-brand);
+  outline: 2px solid var(--color--grey-1);
   outline-offset: 3px;
 }
 
@@ -1702,51 +1702,22 @@ figcaption {
   background-color: transparent;
   display: flex;
   flex: none;
-  height: 100%;
+  height: 1.25rem;
   justify-content: center;
   margin: 0;
   overflow: hidden;
-  width: 100%;
-}
-
-.nav-social-pill__icon img {
-  display: block;
-  height: 1.25rem;
-  object-fit: contain;
   width: 1.25rem;
 }
 
-.nav-social-pill--facebook {
-  --nav-social-brand: #1877f2;
+.nav-social-pill__icon svg {
+  display: block;
+  fill: currentColor;
+  height: 100%;
+  width: 100%;
 }
 
-.nav-social-pill--facebook .nav-social-pill__icon img {
-  filter: invert(32%) sepia(98%) saturate(1800%) hue-rotate(196deg) brightness(96%) contrast(96%);
-}
-
-.nav-social-pill--linkedin {
-  --nav-social-brand: #0a66c2;
-}
-
-.nav-social-pill--linkedin .nav-social-pill__icon img {
-  filter: invert(28%) sepia(86%) saturate(1600%) hue-rotate(186deg) brightness(92%) contrast(95%);
-}
-
-.nav-social-pill--x {
-  --nav-social-brand: #111111;
-}
-
-.nav-social-pill--x .nav-social-pill__icon img {
-  filter: invert(0) brightness(0);
-}
-
-.nav-social-pill--youtube {
-  --nav-social-brand: #ff0000;
-}
-
-.nav-social-pill--youtube .nav-social-pill__icon img {
-  height: 1.125rem;
-  width: 1.125rem;
+.nav-social-pill--youtube .nav-social-pill__icon svg {
+  transform: scale(1.16);
 }
 
 .mobile-nav-social {
