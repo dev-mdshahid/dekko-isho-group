@@ -8,9 +8,9 @@ import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
 const ABOUT_CARD_GAP = 40
-const CAROUSEL_INTERVAL_MS = 2200
+const CAROUSEL_INTERVAL_MS = 2000
 // Shorter lead-in so the carousel shows it moves soon after it comes into view.
-const CAROUSEL_LEAD_IN_MS = 900
+const CAROUSEL_LEAD_IN_MS = 300
 
 const INDUSTRY_DESCRIPTION =
   'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.'
