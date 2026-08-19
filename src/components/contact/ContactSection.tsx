@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from 'react'
+import { type CSSProperties, type FormEvent, useState } from 'react'
 
 import {
   contactEmail,
@@ -7,12 +7,16 @@ import {
   socialLinks,
 } from '../../data/contact/contactInfo'
 import { legacyImage } from '../../lib/assets'
+import { navSocialBrands } from '../layout/NavSocialCycle'
 import { FadeIn } from '../ui/FadeIn'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
+const contactSocialBrands = new Map(navSocialBrands.map((brand) => [brand.href, brand]))
+
 export function ContactSection() {
   const [status, setStatus] = useState<FormStatus>('idle')
+  const primaryOffice = officeLocations[0]
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -21,6 +25,7 @@ export function ContactSection() {
 
     const name = String(data.get('name') ?? '').trim()
     const email = String(data.get('email-address') ?? '').trim()
+    const phone = String(data.get('phone-number') ?? '').trim()
     const message = String(data.get('message') ?? '').trim()
 
     if (!name || !email || !message) {
@@ -35,9 +40,10 @@ export function ContactSection() {
       console.log('contactForm', {
         name,
         email,
-        phone: String(data.get('phone-number') ?? '').trim(),
+        phone,
         message,
       })
+
       setStatus('success')
       form.reset()
     } catch {
@@ -46,79 +52,137 @@ export function ContactSection() {
   }
 
   return (
-    <section className="contact-section page-contact-section">
+    <section className="contact-section page-contact-section page-contact-section--modern">
       <div className="page-contact-main section-spacing">
         <div className="container-full">
           <div className="page-contact-grid">
             <div className="page-contact-left">
-              <FadeIn id="de00b61c-1ece-35fa-f76b-0f658df5c5c0" delay={100} className="page-contact-hero">
+              <FadeIn
+                id="de00b61c-1ece-35fa-f76b-0f658df5c5c0"
+                delay={100}
+                className="page-contact-hero"
+              >
                 <h1 className="page-contact-title">
-                  Let&apos;s <span className="page-contact-accent">Connect</span>
+                  We are always ready to help you and answer your questions
                 </h1>
+
                 <p className="page-contact-description">
-                  Whether you have a business inquiry, partnership opportunity, or general question, our team is here to
-                  help. Reach out through your preferred channel.
+                  Whether you have a business inquiry, partnership opportunity,
+                  or general question, our team is here to help. Reach out through
+                  your preferred channel.
                 </p>
               </FadeIn>
 
-              <FadeIn id="51462de8-daa5-0e47-b122-e655531d26e6" delay={150} className="page-contact-details">
+              <FadeIn
+                id="51462de8-daa5-0e47-b122-e655531d26e6"
+                delay={150}
+                className="page-contact-details"
+              >
                 <div className="page-contact-details-col">
                   <div className="page-contact-block">
-                    <div className="page-contact-label">// Contact us //</div>
+                    <div className="page-contact-label">
+                      Call Center
+                    </div>
+
                     <div className="page-contact-lines">
-                      <a href={contactPhone.href} className="page-contact-text-link">
+                      <a
+                        href={contactPhone.href}
+                        className="page-contact-text-link"
+                      >
                         {contactPhone.label}
-                      </a>
-                      <a href={contactEmail.href} className="page-contact-text-link">
-                        {contactEmail.label}
                       </a>
                     </div>
                   </div>
+
                   <div className="page-contact-block">
-                    <div className="page-contact-label">// Socials //</div>
+                    <div className="page-contact-label">
+                      Email
+                    </div>
+
                     <div className="page-contact-lines">
-                      {socialLinks.map((social) => (
-                        <a
-                          key={social.href}
-                          href={social.href}
-                          className="page-contact-text-link"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {social.label}
-                        </a>
-                      ))}
+                      <a
+                        href={contactEmail.href}
+                        className="page-contact-text-link"
+                      >
+                        {contactEmail.label}
+                      </a>
                     </div>
                   </div>
                 </div>
 
                 <div className="page-contact-details-col">
                   <div className="page-contact-block">
-                    <div className="page-contact-label">// Find us //</div>
-                    <div className="page-contact-locations">
-                      {officeLocations.map((office) => (
-                        <div key={office.name} className="page-contact-location">
-                          <div className="page-contact-location-name">{office.name}</div>
-                          {office.lines.map((line) => (
-                            <div key={line} className="page-contact-location-line">
-                              {line}
-                            </div>
-                          ))}
-                          {office.phone ? (
-                            <a href={office.phone.href} className="page-contact-text-link">
-                              {office.phone.label}
-                            </a>
-                          ) : null}
+                    <div className="page-contact-label">
+                      Our Location
+                    </div>
+
+                    {primaryOffice ? (
+                      <div className="page-contact-location">
+                        <a
+                          href={primaryOffice.mapsUrl}
+                          className="page-contact-location-name"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {primaryOffice.name}
+                        </a>
+
+                        {primaryOffice.lines.map((line) => (
+                          <div
+                            key={line}
+                            className="page-contact-location-line"
+                          >
+                            {line}
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="page-contact-block">
+                    <div className="page-contact-label">
+                      Social network
+                    </div>
+
+                    <div
+                      className="page-contact-socials"
+                      aria-label="Social network"
+                    >
+                      {socialLinks.map((social) => {
+                        const brand = contactSocialBrands.get(
+                          social.href,
+                        )
+
+                        return (
                           <a
-                            href={office.mapsUrl}
-                            className="page-contact-maps-link"
+                            key={social.href}
+                            href={social.href}
+                            className="page-contact-social-link"
                             target="_blank"
                             rel="noreferrer"
+                            aria-label={social.label}
+                            style={
+                              brand
+                                ? ({
+                                  '--page-contact-social-brand':
+                                    brand.brandColor,
+                                } as CSSProperties)
+                                : undefined
+                            }
                           >
-                            Open in Maps
+                            {brand ? (
+                              <span
+                                className="page-contact-social-icon"
+                                aria-hidden="true"
+                              >
+                                {brand.icon}
+                              </span>
+                            ) : (
+                              social.label
+                            )}
                           </a>
-                        </div>
-                      ))}
+                        )
+                      })}
                     </div>
                   </div>
                 </div>
@@ -126,11 +190,15 @@ export function ContactSection() {
             </div>
 
             <div className="page-contact-right">
-              <FadeIn id="857de6dc-794f-f6cb-7a70-22bab7c6291d" delay={200} className="page-contact-form-card w-form">
+              <FadeIn
+                id="857de6dc-794f-f6cb-7a70-22bab7c6291d"
+                delay={200}
+                className="page-contact-form-card w-form"
+              >
                 <div className="page-contact-form-intro">
-                  <h2 className="page-contact-form-title">Send Us a Message</h2>
                   <p className="page-contact-form-description">
-                    Complete the form below, and the appropriate team will get back to you as soon as possible.
+                    Define your goals and identify areas where Dekko Isho
+                    can add value to your business.
                   </p>
                 </div>
 
@@ -143,72 +211,82 @@ export function ContactSection() {
                   data-wf-page-id="6a26a196936d1b3aae320d4c"
                   data-wf-element-id="857de6dc-794f-f6cb-7a70-22bab7c6291e"
                   onSubmit={handleSubmit}
-                  style={status === 'success' ? { display: 'none' } : undefined}
+                  style={
+                    status === 'success'
+                      ? { display: 'none' }
+                      : undefined
+                  }
                   noValidate
                 >
-                  <img
-                    src={legacyImage('shadow_1.png')}
-                    loading="lazy"
-                    sizes="(max-width: 1071px) 100vw, 1071px"
-                    srcSet={`${legacyImage('shadow_1-p-500.png')} 500w, ${legacyImage('shadow_1-p-800.png')} 800w, ${legacyImage('shadow_1.png')} 1071w`}
-                    alt="Contact Form Shadow"
-                    className="contact-form-shadow"
-                  />
-
                   <div className="page-contact-field">
-                    <label htmlFor="contact-name" className="page-contact-field-label">
-                      Name
+                    <label
+                      htmlFor="contact-name"
+                      className="page-contact-field-label"
+                    >
+                      Full name
                     </label>
+
                     <input
                       className="page-contact-input w-input"
                       maxLength={256}
                       name="name"
                       data-name="name"
-                      placeholder=""
+                      placeholder="Full name"
                       type="text"
                       id="contact-name"
                       required
                     />
                   </div>
 
-                  <div className="page-contact-field-row">
-                    <div className="page-contact-field">
-                      <label htmlFor="email-address" className="page-contact-field-label">
-                        Email address *
-                      </label>
-                      <input
-                        className="page-contact-input w-input"
-                        maxLength={256}
-                        name="email-address"
-                        data-name="email address"
-                        placeholder=""
-                        type="email"
-                        id="email-address"
-                        required
-                      />
-                    </div>
-                    <div className="page-contact-field">
-                      <label htmlFor="phone-number" className="page-contact-field-label">
-                        Phone number
-                      </label>
-                      <input
-                        className="page-contact-input w-input"
-                        maxLength={256}
-                        name="phone-number"
-                        data-name="phone number"
-                        placeholder=""
-                        type="tel"
-                        id="phone-number"
-                      />
-                    </div>
+                  <div className="page-contact-field">
+                    <label
+                      htmlFor="email-address"
+                      className="page-contact-field-label"
+                    >
+                      Email
+                    </label>
+
+                    <input
+                      className="page-contact-input w-input"
+                      maxLength={256}
+                      name="email-address"
+                      data-name="email address"
+                      placeholder="Email"
+                      type="email"
+                      id="email-address"
+                      required
+                    />
                   </div>
 
                   <div className="page-contact-field">
-                    <label htmlFor="message" className="page-contact-field-label">
+                    <label
+                      htmlFor="phone-number"
+                      className="page-contact-field-label"
+                    >
+                      Phone Number
+                    </label>
+
+                    <input
+                      className="page-contact-input w-input"
+                      maxLength={256}
+                      name="phone-number"
+                      data-name="phone number"
+                      placeholder="Phone Number"
+                      type="tel"
+                      id="phone-number"
+                    />
+                  </div>
+
+                  <div className="page-contact-field">
+                    <label
+                      htmlFor="message"
+                      className="page-contact-field-label"
+                    >
                       Message
                     </label>
+
                     <textarea
-                      placeholder=""
+                      placeholder="Message"
                       maxLength={5000}
                       id="message"
                       name="message"
@@ -218,34 +296,82 @@ export function ContactSection() {
                     />
                   </div>
 
-                  <input
+                  <button
                     type="submit"
                     data-wait="Please wait..."
-                    aria-label="button"
-                    className="page-contact-submit w-button"
-                    value={status === 'submitting' ? 'Please wait...' : 'Submit'}
+                    className="primary-button w-inline-block"
                     disabled={status === 'submitting'}
-                  />
+                    style={{ width: 'fit-content', alignSelf: 'flex-start' }}
+                  >
+                    <div className="button-primary-inner">
+                      <div className="button-text-wrap">
+                        <div className="button-text-inner">
+                          <div className="button-text">
+                            {status === 'submitting'
+                              ? 'Please wait...'
+                              : 'Send a message'}
+                          </div>
+
+                          <div className="button-hover-text">
+                            {status === 'submitting'
+                              ? 'Please wait...'
+                              : 'Send a message'}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="button-icon-bg">
+                        <img
+                          src={legacyImage('button-icon.svg')}
+                          loading="eager"
+                          alt=""
+                          aria-hidden="true"
+                          className="button-icon"
+                        />
+
+                        <img
+                          src={legacyImage('button-icon.svg')}
+                          loading="lazy"
+                          alt=""
+                          aria-hidden="true"
+                          className="button-icon-hover"
+                        />
+                      </div>
+                    </div>
+                  </button>
                 </form>
 
                 <div
                   className="success-message w-form-done"
-                  style={status === 'success' ? { display: 'block' } : undefined}
+                  style={
+                    status === 'success'
+                      ? { display: 'block' }
+                      : undefined
+                  }
                 >
-                  <div>Thank you! Your submission has been received!</div>
+                  <div>
+                    Thank you! Your submission has been received!
+                  </div>
                 </div>
+
                 <div
                   className="error-message w-form-fail"
-                  style={status === 'error' ? { display: 'block' } : undefined}
+                  style={
+                    status === 'error'
+                      ? { display: 'block' }
+                      : undefined
+                  }
                 >
-                  <div>Oops! Something went wrong while submitting the form.</div>
+                  <div>
+                    Oops! Something went wrong while submitting the form.
+                  </div>
                 </div>
               </FadeIn>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* <ContactMarquee /> */}
       {/* <SectionLines border="grey" /> */}
       {/* <NoiseOverlay /> */}

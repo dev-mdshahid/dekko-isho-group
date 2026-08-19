@@ -10,8 +10,9 @@ export const contactEmail = {
 
 export const socialLinks = [
   { href: 'https://www.facebook.com/share/1HoDreUv8S/', label: 'facebook.com/share/1HoDreUv8S' },
-  { href: 'https://www.linkedin.com/company/dekkoishogroup/', label: 'linkedin.com/company/dekkoishogroup' },
   { href: 'https://x.com/dekkoisho', label: 'x.com/dekkoisho' },
+  { href: 'https://www.linkedin.com/company/dekkoishogroup/', label: 'linkedin.com/company/dekkoishogroup' },
+  { href: 'https://www.youtube.com/@dekkoishogroup9251', label: 'Youtube' },
 ] as const
 
 export type OfficeLocation = {

@@ -124,7 +124,7 @@ export const journeyMilestones: JourneyMilestone[] = [
       {
         title: 'KLUBHAUS',
         description:
-          'A vibrant dining destination bringing elevated hospitality into the group’s portfolio.',
+          'A fashion & lifestyle brand blending global influences with local culture to shape style beyond trends.',
       },
     ],
   },
