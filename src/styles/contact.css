@@ -419,7 +419,7 @@
 .page-contact-section--modern .page-contact-title {
   width: 100%;
   max-width: none;
-  font-size: clamp(3.5rem, 5.15vw, 5.55rem);
+  font-size: clamp(3.5rem, 5.15vw, 4.5rem);
   font-weight: var(--_typography---h1--font-weight-600);
   line-height: .98;
 }
