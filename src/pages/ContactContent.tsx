@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { ContactFactoryLocationsSection, ContactSection } from '../components/contact'
+import { ContactFactoryLocationsSection, ContactLocationMapSection, ContactSection } from '../components/contact'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useWebflowInit } from '../hooks/useWebflowInit'
@@ -15,6 +15,7 @@ export function ContactContent() {
   return (
     <div ref={ref}>
       <ContactSection />
+      <ContactLocationMapSection />
       <ContactFactoryLocationsSection />
     </div>
   )
