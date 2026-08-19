@@ -19,11 +19,13 @@ import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { NavSocialCycle, navSocialBrands } from './NavSocialCycle'
+import { Button } from '../ui/Button'
 
 function NavContactExpand() {
   return (
     <div className="nav-contact-expand">
-      <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
+      {/* <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" /> */}
+      <Button to="/contact" label="Contact" variant="button-nav-contact" />
       <div className="nav-contact-expand__menu" aria-label="Social media">
         {navSocialBrands.map((social, index) => (
           <a
