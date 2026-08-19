@@ -209,6 +209,9 @@ export function ContactSection() {
                 className="page-contact-form-card w-form"
               >
                 <div className="page-contact-form-intro">
+                  <h4 className="page-contact-form-title">
+                    Send Us a Message
+                  </h4>
                   <p className="page-contact-form-description">
                     Define your goals and identify areas
                     where Dekko Isho can add value to your
@@ -252,9 +255,6 @@ export function ContactSection() {
                     />
                   </div>
 
-                  {/* CHANGED:
-                                                          Email and Phone Number are now
-                                                          placed in the same row. */}
                   <div className="page-contact-field-row">
                     <div className="page-contact-field">
                       <label
