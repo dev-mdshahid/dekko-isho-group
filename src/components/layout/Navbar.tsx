@@ -139,7 +139,7 @@ function NavButtonCluster() {
   return (
     <div className={`nav-button-wrap${isSocialOpen ? ' is-social-open' : ''}`}>
       {/* <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" /> */}
-      <Button to="/contact" label="Contact" variant="button-nav-contact" />
+      <Button to="/contact" label="Contact us" variant="button-nav-contact" />
 
       <div
         className={`nav-social-control${isChevronVisible ? ' is-chevron-visible' : ''}`}
