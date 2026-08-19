@@ -7,6 +7,10 @@ import { runSplashAnimation } from '../../lib/animations/splash'
 const LOGO_SRC = '/dekko-logo.svg'
 const BOOT_SPLASH_ID = 'boot-splash'
 
+// NEW: Smooth logo entrance configuration.
+const LOGO_APPEAR_MS = 1100
+const LOGO_APPEAR_EASING = 'cubic-bezier(0.22, 1, 0.36, 1)'
+
 // ── Video splash (commented out — logo animation restored per client request) ──
 // const SPLASH_VIDEO_SRC = '/videos/splash-intro.mp4'
 // const FADE_OUT_MS = 320
@@ -17,21 +21,39 @@ function removeBootSplash() {
 }
 
 /**
- * Full-viewport splash: centered brand logo (settle → diagonal shimmer → FLIP into navbar).
+ * Full-viewport splash:
+ *
+ * Logo appearance:
+ * opacity 0 → 1
+ * scale 0.92 → 1
+ *
+ * Then:
+ * settle → diagonal shimmer → FLIP into navbar.
+ *
  * A matching #boot-splash in index.html covers first paint; this component takes over
  * in useLayoutEffect so the page never flashes underneath.
  */
 export function SplashScreen() {
-  const { phase, setPhase, isActive, logoTargetRef, completeSplash } = useSplash()
+  const {
+    phase,
+    setPhase,
+    isActive,
+    logoTargetRef,
+    completeSplash,
+  } = useSplash()
+
   const overlayRef = useRef<HTMLDivElement>(null)
   const backdropRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const logoWrapRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLImageElement>(null)
   const shineRef = useRef<HTMLSpanElement>(null)
+
   const [logoReady, setLogoReady] = useState(false)
+
   const startedRef = useRef(false)
   const finishedRef = useRef(false)
+
   const setPhaseRef = useRef(setPhase)
   const completeSplashRef = useRef(completeSplash)
 
@@ -58,8 +80,12 @@ export function SplashScreen() {
   // Cached images may skip the load event.
   useLayoutEffect(() => {
     if (phase === 'skipped' || phase === 'complete') return
+
     const logo = logoRef.current
-    if (logo?.complete) setLogoReady(true)
+
+    if (logo?.complete) {
+      setLogoReady(true)
+    }
   }, [phase])
 
   // ── Video splash: cached media ready check (commented out) ──
@@ -89,46 +115,130 @@ export function SplashScreen() {
     const logo = logoRef.current
     const shine = shineRef.current
 
-    if (!overlay || !backdrop || !stage || !logo) return
+    if (!overlay || !backdrop || !stage || !logoWrap || !logo) {
+      return
+    }
 
     startedRef.current = true
     setPhaseRef.current('loading')
 
-    const cleanup = runSplashAnimation(
+    let splashCleanup: (() => void) | undefined
+    let splashStarted = false
+
+    // NEW:
+    // Start with the logo completely invisible and slightly smaller.
+    // The transform returns to scale(1), so the logo reaches its
+    // exact/original dimensions before the existing splash animation begins.
+    logoWrap.style.opacity = '0'
+    logoWrap.style.transform = 'scale(0.92)'
+    logoWrap.style.transformOrigin = 'center center'
+    logoWrap.style.willChange = 'opacity, transform'
+
+    const startSplashSequence = () => {
+      if (splashStarted || finishedRef.current) return
+
+      splashStarted = true
+
+      // Clean up temporary styles from the entrance animation.
+      logoWrap.style.opacity = ''
+      logoWrap.style.transform = ''
+      logoWrap.style.transformOrigin = ''
+      logoWrap.style.willChange = ''
+
+      splashCleanup = runSplashAnimation(
+        {
+          overlay,
+          backdrop,
+          stage,
+          logo,
+          logoWrap,
+          shine,
+          getLogoTarget: () => logoTargetRef.current,
+        },
+        {
+          onTransitionStart: () => {
+            setPhaseRef.current('transitioning')
+
+            // Reveal page under the fading backdrop while the logo flies.
+            document.documentElement.classList.add(
+              'splash-revealing',
+            )
+          },
+
+          onHandoff: () => {
+            document.documentElement.classList.add(
+              'splash-handoff',
+            )
+          },
+
+          onComplete: () => {
+            finishedRef.current = true
+
+            document.documentElement.classList.add(
+              'splash-done',
+            )
+
+            document.documentElement.classList.remove(
+              'splash-handoff',
+              'splash-active',
+              'splash-boot',
+              'splash-revealing',
+            )
+
+            completeSplashRef.current()
+          },
+        },
+      )
+    }
+
+    // NEW:
+    // Smooth logo reveal:
+    //
+    // 0%   -> invisible + slightly scaled down
+    // 65%  -> almost fully visible
+    // 100% -> exact/original logo size and full opacity
+    const appearanceAnimation = logoWrap.animate(
+      [
+        {
+          opacity: 0,
+          transform: 'scale(0.92)',
+          offset: 0,
+        },
+        {
+          opacity: 0.7,
+          transform: 'scale(0.985)',
+          offset: 0.65,
+        },
+        {
+          opacity: 1,
+          transform: 'scale(1)',
+          offset: 1,
+        },
+      ],
       {
-        overlay,
-        backdrop,
-        stage,
-        logo,
-        logoWrap,
-        shine,
-        getLogoTarget: () => logoTargetRef.current,
-      },
-      {
-        onTransitionStart: () => {
-          setPhaseRef.current('transitioning')
-          // Reveal page under the fading backdrop while the logo flies.
-          document.documentElement.classList.add('splash-revealing')
-        },
-        onHandoff: () => {
-          document.documentElement.classList.add('splash-handoff')
-        },
-        onComplete: () => {
-          finishedRef.current = true
-          document.documentElement.classList.add('splash-done')
-          document.documentElement.classList.remove(
-            'splash-handoff',
-            'splash-active',
-            'splash-boot',
-            'splash-revealing',
-          )
-          completeSplashRef.current()
-        },
+        duration: LOGO_APPEAR_MS,
+        easing: LOGO_APPEAR_EASING,
+        fill: 'forwards',
       },
     )
 
+    appearanceAnimation.onfinish = () => {
+      startSplashSequence()
+    }
+
     return () => {
-      cleanup()
+      appearanceAnimation.onfinish = null
+      appearanceAnimation.cancel()
+
+      if (splashCleanup) {
+        splashCleanup()
+      }
+
+      logoWrap.style.opacity = ''
+      logoWrap.style.transform = ''
+      logoWrap.style.transformOrigin = ''
+      logoWrap.style.willChange = ''
+
       if (!finishedRef.current) {
         startedRef.current = false
       }
@@ -202,9 +312,20 @@ export function SplashScreen() {
       aria-busy={isActive}
       aria-label="Loading Dekko Isho Group"
     >
-      <div ref={backdropRef} className="splash-backdrop" aria-hidden="true" />
-      <div ref={stageRef} className="splash-stage">
-        <div ref={logoWrapRef} className="splash-logo-wrap">
+      <div
+        ref={backdropRef}
+        className="splash-backdrop"
+        aria-hidden="true"
+      />
+
+      <div
+        ref={stageRef}
+        className="splash-stage"
+      >
+        <div
+          ref={logoWrapRef}
+          className="splash-logo-wrap"
+        >
           <img
             ref={logoRef}
             src={LOGO_SRC}
@@ -217,37 +338,43 @@ export function SplashScreen() {
             onLoad={() => setLogoReady(true)}
             onError={() => setLogoReady(true)}
           />
-          <span ref={shineRef} className="splash-logo-shine" aria-hidden="true" />
+
+          <span
+            ref={shineRef}
+            className="splash-logo-shine"
+            aria-hidden="true"
+          />
         </div>
       </div>
+
       {/* ── Video splash markup (commented out) ──
-      <div className={`splash-video-frame${videoReady ? ' is-ready' : ''}`}>
-        <video
-          ref={videoRef}
-          className="splash-video"
-          src={SPLASH_VIDEO_SRC}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          onCanPlay={() => setVideoReady(true)}
-          onLoadedData={() => setVideoReady(true)}
-          onError={() => {
-            setVideoReady(true)
-            if (!completedRef.current) {
-              completedRef.current = true
-              document.documentElement.classList.add('splash-done')
-              document.documentElement.classList.remove(
-                'splash-active',
-                'splash-boot',
-                'splash-revealing',
-              )
-              completeSplash()
-            }
-          }}
-        />
-      </div>
-      */}
+                  <div className={`splash-video-frame${videoReady ? ' is-ready' : ''}`}>
+                    <video
+                      ref={videoRef}
+                      className="splash-video"
+                      src={SPLASH_VIDEO_SRC}
+                      autoPlay
+                      muted
+                      playsInline
+                      preload="auto"
+                      onCanPlay={() => setVideoReady(true)}
+                      onLoadedData={() => setVideoReady(true)}
+                      onError={() => {
+                        setVideoReady(true)
+                        if (!completedRef.current) {
+                          completedRef.current = true
+                          document.documentElement.classList.add('splash-done')
+                          document.documentElement.classList.remove(
+                            'splash-active',
+                            'splash-boot',
+                            'splash-revealing',
+                          )
+                          completeSplash()
+                        }
+                      }}
+                    />
+                  </div>
+                  */}
     </div>,
     document.body,
   )
