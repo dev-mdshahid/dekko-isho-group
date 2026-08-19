@@ -1,9 +1,11 @@
-import { ExternalLink } from 'lucide-react'
+import "./contact.css"
+import { ExternalLink, MapPin } from 'lucide-react'
 
 const CONTACT_MAP_URL = 'https://maps.app.goo.gl/7sU6Ei8CPtQCaVNNA'
 const CONTACT_MAP_LAT = 23.7701868
 const CONTACT_MAP_LNG = 90.4069737
-const CONTACT_MAP_ZOOM = 16
+
+const CONTACT_MAP_ZOOM = 12
 
 function getContactMapEmbedUrl() {
   const params = new URLSearchParams({
@@ -20,12 +22,57 @@ function getContactMapEmbedUrl() {
 
 export function ContactLocationMapSection() {
   return (
-    <section className="page-contact-map-section" aria-label="Dekko Isho Group location map">
+    <section
+      className="page-contact-map-section"
+      aria-label="Dekko Isho Group location map"
+    >
       <div className="page-contact-map-wrap">
-        <a className="page-contact-map-link" href={CONTACT_MAP_URL} target="_blank" rel="noreferrer">
-          <span>Open in Maps</span>
-          <ExternalLink className="page-contact-map-link-icon" aria-hidden="true" />
-        </a>
+        <div className="page-contact-map-overlay">
+          <div className="page-contact-map-overlay-content">
+            <div className="page-contact-map-overlay-text">
+              <h3 className="page-contact-map-overlay-title">
+                Dekko Isho Group
+              </h3>
+
+              <p className="page-contact-map-overlay-address">
+                Dhaka, Bangladesh
+              </p>
+
+              <a
+                href={CONTACT_MAP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="page-contact-map-overlay-link"
+              >
+                View larger map
+              </a>
+            </div>
+
+            <a
+              href={CONTACT_MAP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="page-contact-map-overlay-action"
+              aria-label="Open Dekko Isho Group location in Google Maps"
+            >
+              <ExternalLink
+                className="page-contact-map-overlay-action-icon"
+                aria-hidden="true"
+              />
+
+              <span>Directions</span>
+            </a>
+          </div>
+
+          <div className="page-contact-map-overlay-location">
+            <MapPin
+              className="page-contact-map-overlay-pin"
+              aria-hidden="true"
+            />
+
+            <span>Dekko Isho Group</span>
+          </div>
+        </div>
 
         <iframe
           title="Dekko Isho Group location map"
