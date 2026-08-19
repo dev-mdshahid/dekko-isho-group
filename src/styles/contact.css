@@ -433,7 +433,8 @@
 
 .page-contact-section--modern .page-contact-details {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 4vw, 4.5rem);
+  gap: clamp(1.75rem, 3vw, 3.25rem);
+  width: min(100%, 34rem);
 }
 
 .page-contact-section--modern .page-contact-details-col {
