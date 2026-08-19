@@ -13124,6 +13124,7 @@ a.about-info-box:hover {
 
 /* Contact page hero */
 .page-contact-main.section-spacing {
+  margin-top: 2rem;
   z-index: 1;
   position: relative;
   padding-bottom: 0;

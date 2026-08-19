@@ -278,3 +278,313 @@
   margin: 0;
   display: block;
 }
+/* Contact page - modern layout */
+.page-contact-section--modern {
+  background-color: var(--color--white);
+  color: var(--color--dark);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.page-contact-section--modern::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, transparent calc(25% - .5px), rgb(17 17 17 / .08) 25%, transparent calc(25% + .5px)),
+    linear-gradient(to right, transparent calc(50% - .5px), rgb(17 17 17 / .08) 50%, transparent calc(50% + .5px)),
+    linear-gradient(to right, transparent calc(75% - .5px), rgb(17 17 17 / .08) 75%, transparent calc(75% + .5px));
+}
+
+.page-contact-section--modern .page-contact-main.section-spacing {
+  width: 100%;
+  padding-top: clamp(4.5rem, 8vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.page-contact-section--modern .container-full {
+  width: 100%;
+  max-width: none;
+}
+
+.page-contact-section--modern .page-contact-grid {
+  grid-template-columns: minmax(0, .94fr) minmax(22rem, 1fr);
+  grid-column-gap: clamp(4rem, 9vw, 8.5rem);
+  align-items: center;
+  width: 100%;
+}
+
+.page-contact-section--modern .page-contact-left {
+  gap: clamp(3.5rem, 6vw, 5rem);
+}
+
+.page-contact-section--modern .page-contact-hero {
+  gap: clamp(1.75rem, 3vw, 2.6rem);
+}
+
+.page-contact-section--modern .page-contact-title {
+  width: 100%;
+  max-width: none;
+  font-size: clamp(3.5rem, 5.15vw, 5.55rem);
+  font-weight: var(--_typography---h1--font-weight-600);
+  line-height: .98;
+}
+
+.page-contact-section--modern .page-contact-description {
+  color: var(--color--dark);
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.page-contact-section--modern .page-contact-details {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
+}
+
+.page-contact-section--modern .page-contact-details-col {
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.page-contact-section--modern .page-contact-block {
+  gap: 1.15rem;
+}
+
+.page-contact-section--modern .page-contact-label {
+  color: var(--color--dark);
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.page-contact-section--modern .page-contact-lines {
+  gap: .35rem;
+}
+
+.page-contact-section--modern .page-contact-text-link,
+.page-contact-section--modern .page-contact-location-name,
+.page-contact-section--modern .page-contact-location-line {
+  color: var(--color--dark);
+  font-size: .95rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.page-contact-section--modern .page-contact-location-name {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.page-contact-section--modern .page-contact-text-link:hover,
+.page-contact-section--modern .page-contact-location-name:hover,
+.page-contact-section--modern .page-contact-social-link:hover {
+  color: var(--color--primary);
+}
+
+.page-contact-section--modern .page-contact-socials {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.page-contact-section--modern .page-contact-social-link {
+  color: var(--color--dark);
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: color .25s cubic-bezier(.455, .03, .515, .955);
+}
+
+.page-contact-section--modern .page-contact-social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  background-color: currentColor;
+  -webkit-mask: var(--page-contact-social-icon) center / contain no-repeat;
+  mask: var(--page-contact-social-icon) center / contain no-repeat;
+}
+
+.page-contact-section--modern .page-contact-social-link--facebook {
+  --page-contact-social-icon: url("/legacy/images/facebook.svg");
+}
+
+.page-contact-section--modern .page-contact-social-link--x {
+  --page-contact-social-icon: url("/legacy/images/twitter-x.svg");
+}
+
+.page-contact-section--modern .page-contact-social-link--linkedin {
+  --page-contact-social-icon: url("/legacy/images/linkedin.svg");
+}
+
+.page-contact-section--modern .page-contact-social-link--youtube {
+  --page-contact-social-icon: url("/youtube-logo.svg");
+}
+
+.page-contact-section--modern .page-contact-right {
+  align-items: center;
+  width: 100%;
+}
+
+.page-contact-section--modern .page-contact-right > [data-fade-in] {
+  width: 100%;
+}
+
+.page-contact-section--modern .page-contact-form-card {
+  background-color: #f0f2f4;
+  border-radius: 1.5rem;
+  width: 100%;
+  padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4.75rem);
+  min-height: clamp(35rem, 60vw, 41rem);
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page-contact-section--modern .page-contact-form-intro {
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.page-contact-section--modern .page-contact-form-description {
+  color: var(--color--dark);
+  width: 100%;
+  max-width: 28rem;
+  font-size: .98rem;
+  line-height: 1.75;
+}
+
+.page-contact-section--modern .page-contact-form {
+  gap: 1.45rem;
+  width: 100%;
+}
+
+.page-contact-section--modern .page-contact-field {
+  position: relative;
+}
+
+.page-contact-section--modern .page-contact-field-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page-contact-section--modern .page-contact-input,
+.page-contact-section--modern .page-contact-textarea {
+  border: 0;
+  border-bottom: 1px solid #a9aeb4;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--color--dark);
+  min-height: 3.2rem;
+  padding: .55rem 0 .85rem;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.page-contact-section--modern .page-contact-input::placeholder,
+.page-contact-section--modern .page-contact-textarea::placeholder {
+  color: #85898f;
+}
+
+.page-contact-section--modern .page-contact-input:focus,
+.page-contact-section--modern .page-contact-textarea:focus {
+  border-color: var(--color--dark);
+  background-color: transparent;
+  outline: 0;
+}
+
+.page-contact-section--modern .page-contact-textarea {
+  min-height: 7.25rem;
+  resize: vertical;
+}
+
+.page-contact-section--modern .page-contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  border-radius: 999px;
+  background-color: #333333;
+  color: var(--color--white);
+  min-height: 2.85rem;
+  margin-top: .45rem;
+  padding: .78rem 1.45rem;
+}
+
+.page-contact-section--modern .page-contact-submit:hover:not(:disabled) {
+  background-color: var(--color--dark);
+}
+
+.page-contact-section--modern .page-contact-submit-icon {
+  width: .95rem;
+  height: .95rem;
+  stroke-width: 2.5;
+}
+
+.page-contact-section--modern .page-contact-form-card .success-message,
+.page-contact-section--modern .page-contact-form-card .error-message {
+  color: var(--color--dark);
+  background-color: transparent;
+  padding: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .page-contact-section--modern::before {
+    background-image: linear-gradient(to right, transparent calc(50% - .5px), rgb(17 17 17 / .08) 50%, transparent calc(50% + .5px));
+  }
+
+  .page-contact-section--modern .page-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .page-contact-section--modern .page-contact-title {
+    font-size: clamp(3rem, 10vw, 4.75rem);
+  }
+
+  .page-contact-section--modern .page-contact-description {
+    max-width: 44rem;
+  }
+
+  .page-contact-section--modern .page-contact-form-card {
+    min-height: auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-contact-section--modern::before {
+    display: none;
+  }
+
+  .page-contact-section--modern .page-contact-main.section-spacing {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .page-contact-section--modern .page-contact-title {
+    font-size: clamp(2.65rem, 13vw, 3.75rem);
+  }
+
+  .page-contact-section--modern .page-contact-details {
+    grid-template-columns: 1fr;
+  }
+
+  .page-contact-section--modern .page-contact-form-card {
+    border-radius: 1.15rem;
+    padding: 2rem 1.5rem;
+  }
+}
