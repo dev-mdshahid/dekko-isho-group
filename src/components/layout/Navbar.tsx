@@ -19,12 +19,80 @@ import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { NavSocialCycle, navSocialBrands } from './NavSocialCycle'
+import { Button } from '../ui/Button'
 
-function NavContactExpand() {
+function ChevronRightIcon() {
   return (
-    <div className="nav-contact-expand">
-      <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
-      <div className="nav-contact-expand__menu" aria-label="Social media">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 640"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z" />
+    </svg>
+  )
+}
+
+function ChevronDownIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 640"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z" />
+    </svg>
+  )
+}
+
+type NavContactExpandProps = {
+  isOpen: boolean
+  onOpen: () => void
+  onClose: () => void
+}
+
+function NavContactExpand({
+  isOpen,
+  onOpen,
+  onClose,
+}: NavContactExpandProps) {
+  return (
+    <div
+      className="nav-contact-expand"
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
+      onFocus={onOpen}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          onClose()
+        }
+      }}
+    >
+      <button
+        type="button"
+        className={`nav-social-reveal-toggle${isOpen ? ' is-open' : ''}`}
+        aria-label={isOpen ? 'Hide social media links' : 'Show social media links'}
+        aria-expanded={isOpen}
+        aria-controls="nav-social-reveal-menu"
+      >
+        <span className="nav-social-reveal-toggle__icons" aria-hidden="true">
+          <span className="nav-social-reveal-toggle__icon nav-social-reveal-toggle__icon--right">
+            <ChevronRightIcon />
+          </span>
+
+          <span className="nav-social-reveal-toggle__icon nav-social-reveal-toggle__icon--down">
+            <ChevronDownIcon />
+          </span>
+        </span>
+      </button>
+
+      <div
+        id="nav-social-reveal-menu"
+        className="nav-contact-expand__menu"
+        aria-label="Social media"
+      >
         {navSocialBrands.map((social, index) => (
           <a
             key={social.href}
@@ -41,7 +109,12 @@ function NavContactExpand() {
             }
           >
             <span className="nav-social-pill__label">{social.label}</span>
-            <span className="nav-social-pill__icon" id={`nav-social-pill__icon-${social.id}`} aria-hidden="true">
+
+            <span
+              className="nav-social-pill__icon"
+              id={`nav-social-pill__icon-${social.id}`}
+              aria-hidden="true"
+            >
               {social.icon}
             </span>
           </a>
@@ -51,37 +124,50 @@ function NavContactExpand() {
   )
 }
 
-/** The circle and the menu it opens; pointing at anything else closes the menu. */
-const SOCIAL_REVEAL_PARTS = '.nav-social-cycle, .nav-contact-expand__menu'
-
 /**
- * Holds the social cycle circle and the Contact CTA side by side. Only the circle
- * (and the revealed menu itself) opens the social links, so the state is tracked
- * here rather than with :hover — CSS cannot express "hovering this sibling but not
- * that one", and hover/focus left behind by a click would keep the menu open.
+ * Contact stays visible.
+ * The social icon keeps cycling automatically in the default state.
+ * Hovering/focusing the social control replaces the social icon with the chevron.
+ * Hovering/focusing the chevron keeps the control active and opens the social stack.
  */
 function NavButtonCluster() {
   const [isSocialOpen, setIsSocialOpen] = useState(false)
+  const [isSocialHovered, setIsSocialHovered] = useState(false)
 
-  function syncFromTarget(target: EventTarget | null) {
-    setIsSocialOpen(target instanceof Element && target.closest(SOCIAL_REVEAL_PARTS) !== null)
-  }
+  const isChevronVisible = isSocialHovered || isSocialOpen
 
   return (
-    <div
-      className={`nav-button-wrap${isSocialOpen ? ' is-social-open' : ''}`}
-      onMouseOver={(event) => syncFromTarget(event.target)}
-      onMouseLeave={() => setIsSocialOpen(false)}
-      onFocus={(event) => syncFromTarget(event.target)}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
+    <div className={`nav-button-wrap${isSocialOpen ? ' is-social-open' : ''}`}>
+      {/* <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" /> */}
+      <Button to="/contact" label="Contact" variant="button-nav-contact" />
+
+      <div
+        className={`nav-social-control${isChevronVisible ? ' is-chevron-visible' : ''}`}
+        onMouseEnter={() => setIsSocialHovered(true)}
+        onMouseLeave={() => {
+          setIsSocialHovered(false)
           setIsSocialOpen(false)
-        }
-      }}
-      onClick={() => setIsSocialOpen(false)}
-    >
-      <NavContactExpand />
-      <NavSocialCycle />
+        }}
+        onFocus={() => setIsSocialHovered(true)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) {
+            setIsSocialHovered(false)
+            setIsSocialOpen(false)
+          }
+        }}
+      >
+        <div className="nav-social-control__cycle">
+          <NavSocialCycle />
+        </div>
+
+        <div className="nav-social-control__chevron">
+          <NavContactExpand
+            isOpen={isSocialOpen}
+            onOpen={() => setIsSocialOpen(true)}
+            onClose={() => setIsSocialOpen(false)}
+          />
+        </div>
+      </div>
     </div>
   )
 }
