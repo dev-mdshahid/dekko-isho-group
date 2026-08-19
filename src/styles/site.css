@@ -1710,10 +1710,6 @@ figcaption {
   /* overflow: hidden; */
   width: 1.25rem;
 }
-#nav-social-pill__icon-facebook, #nav-social-pill__icon-linkedin {
-  width: 1.75rem !important;
-  height: 1.75rem !important;
-}
 
 .nav-social-pill__icon svg {
   display: block;
