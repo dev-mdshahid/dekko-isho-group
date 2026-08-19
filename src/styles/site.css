@@ -14184,26 +14184,119 @@ html.lenis body {
   overscroll-behavior: contain;
 }
 
-.nav-contact-expand {
+.nav-social-control {
   position: relative;
+
+  width: 3.25rem;
+  height: 3.25rem;
+
   flex: none;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
-/* ========================================
-   NAV SOCIAL REVEAL CHEVRON
-======================================== */
+/* ==============================
+   CYCLING SOCIAL ICON
+============================== */
+
+.nav-social-control__cycle {
+  position: absolute;
+  inset: 0;
+
+  opacity: 1;
+  visibility: visible;
+
+  transform: scale(1);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+
+  z-index: 2;
+}
+
+
+/* ==============================
+   CHEVRON
+============================== */
+
+.nav-social-control__chevron {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: scale(0.75);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.3s;
+
+  z-index: 3;
+}
+
+
+/* ==============================
+   HOVER STATE
+============================== */
+
+.nav-social-control.is-chevron-visible .nav-social-control__cycle {
+  opacity: 0;
+  visibility: hidden;
+
+  transform: scale(0.75);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.25s;
+}
+
+.nav-social-control.is-chevron-visible .nav-social-control__chevron {
+  opacity: 1;
+  visibility: visible;
+
+  transform: scale(1);
+
+  pointer-events: auto;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+
+
+/* ==============================
+   CONTACT EXPAND
+============================== */
+
+.nav-contact-expand {
+  position: relative;
+
+  width: 3.25rem;
+  height: 3.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==============================
+   CHEVRON BUTTON
+============================== */
 
 .nav-social-reveal-toggle {
-  --nav-social-toggle-ease: cubic-bezier(0.22, 1, 0.36, 1);
-
   position: relative;
 
   display: inline-flex;
-  flex: none;
   align-items: center;
   justify-content: center;
 
@@ -14223,8 +14316,7 @@ html.lenis body {
   transition:
     border-color 0.3s ease,
     background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.35s var(--nav-social-toggle-ease);
+    color 0.3s ease;
 }
 
 .nav-social-reveal-toggle:hover,
@@ -14240,17 +14332,17 @@ html.lenis body {
 }
 
 
-/* ========================================
-   CHEVRON TRANSITION
-======================================== */
+/* ==============================
+   CHEVRON ICON TRANSITION
+============================== */
 
 .nav-social-reveal-toggle__icons {
   position: relative;
 
-  display: block;
-
   width: 1rem;
   height: 1rem;
+
+  display: block;
 }
 
 .nav-social-reveal-toggle__icon {
@@ -14262,10 +14354,8 @@ html.lenis body {
   justify-content: center;
 
   transition:
-    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: opacity, transform;
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-social-reveal-toggle__icon svg {
@@ -14278,42 +14368,42 @@ html.lenis body {
 }
 
 
-/* Closed state: right chevron */
+/* Right arrow */
 
 .nav-social-reveal-toggle__icon--right {
   opacity: 1;
-  transform:
-    rotate(0deg) scale(1);
+  transform: scale(1);
 }
+
+
+/* Down arrow */
 
 .nav-social-reveal-toggle__icon--down {
   opacity: 0;
-  transform:
-    rotate(-35deg) scale(0.65);
+  transform: scale(0.65);
 }
 
 
-/* Open state: down chevron */
+/* Open */
 
 .nav-social-reveal-toggle.is-open .nav-social-reveal-toggle__icon--right {
   opacity: 0;
-  transform:
-    rotate(35deg) scale(0.65);
+  transform: scale(0.65);
 }
 
 .nav-social-reveal-toggle.is-open .nav-social-reveal-toggle__icon--down {
   opacity: 1;
-  transform:
-    rotate(0deg) scale(1);
+  transform: scale(1);
 }
 
 
-/* ========================================
-   COLLAPSIBLE SOCIAL MENU
-======================================== */
+/* ==============================
+   COLLAPSIBLE SOCIAL LINKS
+============================== */
 
 .nav-contact-expand__menu {
   position: absolute;
+
   top: 100%;
   right: 0;
   left: auto;
@@ -14327,44 +14417,64 @@ html.lenis body {
   gap: 0.75rem;
 
   width: 3.25rem;
-  min-width: 0;
 
-  /*
-       * This padding bridges the hover area between
-       * the chevron and the first social icon.
-       */
   padding-top: 0.625rem;
 
-  pointer-events: none;
   visibility: hidden;
+  pointer-events: none;
 
   transition:
     visibility 0s linear 0.42s;
 }
 
 .nav-button-wrap.is-social-open .nav-contact-expand__menu {
-  pointer-events: auto;
   visibility: visible;
+  pointer-events: auto;
 
   transition-delay: 0s;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* ========================================
+   TEXT-ONLY BUTTON
+======================================== */
 
-  .nav-contact-expand__menu,
-  .nav-social-pill,
-  .nav-button-wrap.is-social-open .nav-social-pill,
-  .nav-social-reveal-toggle,
-  .nav-social-reveal-toggle__icon {
-    transition: none;
-    transition-delay: 0s;
-  }
+.primary-button.button-no-icon {
+      display: inline-block;
+      width: auto;
+}
 
-  .nav-social-pill {
-    transform: none;
-  }
+.button-primary-inner--no-icon {
+      gap: 0;
+      width: auto;
+}
 
-  .nav-button-wrap:not(.is-social-open) .nav-social-pill {
-    opacity: 0;
-  }
+
+/*
+ * Original .button-text-wrap only has left padding
+ * because it was designed to sit beside an icon.
+ */
+.button-text-wrap--no-icon {
+      padding-top: 0.938rem;
+      padding-right: 1.5rem;
+      padding-bottom: 0.938rem;
+      padding-left: 1.5rem;
+}
+
+
+/* ========================================
+   NAV CONTACT TEXT-ONLY BUTTON
+======================================== */
+
+.primary-button.nav-contact-button.button-no-icon
+.button-primary-inner--no-icon {
+      gap: 0;
+      border-radius: 999px;
+}
+
+.primary-button.nav-contact-button.button-no-icon
+.button-text-wrap--no-icon {
+      padding-top: 0.875rem;
+      padding-right: 1.75rem;
+      padding-bottom: 0.875rem;
+      padding-left: 1.75rem;
 }

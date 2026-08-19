@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, PropsWithChildren } from 'react'
+import type { AnchorHTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
 
 type Variant =
@@ -8,21 +8,21 @@ type Variant =
     | 'button-nav-contact'
 
 const variantClass: Record<Variant, string> = {
-    base: 'primary-button w-inline-block',
+    base: 'primary-button button-no-icon w-inline-block',
     'button-primary-bg':
-        'primary-button w-variant-5ae0b7d1-2e18-9989-4375-c73c98041680 w-inline-block',
+        'primary-button button-no-icon w-variant-5ae0b7d1-2e18-9989-4375-c73c98041680 w-inline-block',
     'button-white-bg':
-        'primary-button w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block',
+        'primary-button button-no-icon w-variant-e5ebfb29-ba2d-88c3-9b4e-1bbc038e3a15 w-inline-block',
     'button-nav-contact':
-        'primary-button nav-contact-button w-inline-block',
+        'primary-button button-no-icon nav-contact-button w-inline-block',
 }
 
-type Props = PropsWithChildren<{
+type Props = {
     to: string
     label: string
     variant?: Variant
     className?: string
-}>
+}
 
 export function Button({
     to,
@@ -30,11 +30,13 @@ export function Button({
     variant = 'base',
     className,
 }: Props) {
-    const classes = className ?? variantClass[variant]
+    const classes = className
+        ? `${className} button-no-icon`
+        : variantClass[variant]
 
     const inner = (
         <div className="button-primary-inner button-primary-inner--no-icon">
-            <div className="button-text-wrap">
+            <div className="button-text-wrap button-text-wrap--no-icon">
                 <div className="button-text-inner">
                     <div className="button-text">
                         {label}

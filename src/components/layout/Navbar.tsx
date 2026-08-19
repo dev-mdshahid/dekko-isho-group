@@ -18,7 +18,7 @@ import { useNavDropdowns, type DesktopDropdownId } from '../../hooks/useNavDropd
 import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
 import { ButtonArrow } from '../ui/ButtonArrow'
-import { navSocialBrands } from './NavSocialCycle'
+import { NavSocialCycle, navSocialBrands } from './NavSocialCycle'
 import { Button } from '../ui/Button'
 
 function ChevronRightIcon() {
@@ -53,7 +53,11 @@ type NavContactExpandProps = {
   onClose: () => void
 }
 
-function NavContactExpand({ isOpen, onOpen, onClose }: NavContactExpandProps) {
+function NavContactExpand({
+  isOpen,
+  onOpen,
+  onClose,
+}: NavContactExpandProps) {
   return (
     <div
       className="nav-contact-expand"
@@ -66,7 +70,6 @@ function NavContactExpand({ isOpen, onOpen, onClose }: NavContactExpandProps) {
         }
       }}
     >
-      {/* CHANGED: social reveal is now controlled by a dedicated chevron button. */}
       <button
         type="button"
         className={`nav-social-reveal-toggle${isOpen ? ' is-open' : ''}`}
@@ -122,24 +125,49 @@ function NavContactExpand({ isOpen, onOpen, onClose }: NavContactExpandProps) {
 }
 
 /**
- * Contact CTA + dedicated social reveal chevron.
- *
- * Hover/focus on the chevron zone opens the social stack. Moving into the
- * revealed social links keeps it open because the menu is a child of that zone.
+ * Contact stays visible.
+ * The social icon keeps cycling automatically in the default state.
+ * Hovering/focusing the social control replaces the social icon with the chevron.
+ * Hovering/focusing the chevron keeps the control active and opens the social stack.
  */
 function NavButtonCluster() {
   const [isSocialOpen, setIsSocialOpen] = useState(false)
+  const [isSocialHovered, setIsSocialHovered] = useState(false)
+
+  const isChevronVisible = isSocialHovered || isSocialOpen
 
   return (
     <div className={`nav-button-wrap${isSocialOpen ? ' is-social-open' : ''}`}>
       {/* <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" /> */}
       <Button to="/contact" label="Contact" variant="button-nav-contact" />
 
-      <NavContactExpand
-        isOpen={isSocialOpen}
-        onOpen={() => setIsSocialOpen(true)}
-        onClose={() => setIsSocialOpen(false)}
-      />
+      <div
+        className={`nav-social-control${isChevronVisible ? ' is-chevron-visible' : ''}`}
+        onMouseEnter={() => setIsSocialHovered(true)}
+        onMouseLeave={() => {
+          setIsSocialHovered(false)
+          setIsSocialOpen(false)
+        }}
+        onFocus={() => setIsSocialHovered(true)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) {
+            setIsSocialHovered(false)
+            setIsSocialOpen(false)
+          }
+        }}
+      >
+        <div className="nav-social-control__cycle">
+          <NavSocialCycle />
+        </div>
+
+        <div className="nav-social-control__chevron">
+          <NavContactExpand
+            isOpen={isSocialOpen}
+            onOpen={() => setIsSocialOpen(true)}
+            onClose={() => setIsSocialOpen(false)}
+          />
+        </div>
+      </div>
     </div>
   )
 }
