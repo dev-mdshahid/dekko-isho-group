@@ -1,3 +1,4 @@
+import "./contact.css"
 import { type CSSProperties, type FormEvent, useState } from 'react'
 
 import {
@@ -12,7 +13,9 @@ import { FadeIn } from '../ui/FadeIn'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
-const contactSocialBrands = new Map(navSocialBrands.map((brand) => [brand.href, brand]))
+const contactSocialBrands = new Map(
+  navSocialBrands.map((brand) => [brand.href, brand]),
+)
 
 export function ContactSection() {
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -20,6 +23,7 @@ export function ContactSection() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
     const form = event.currentTarget
     const data = new FormData(form)
 
@@ -63,12 +67,20 @@ export function ContactSection() {
                 className="page-contact-hero"
               >
                 <h1 className="page-contact-title">
-                  Let's <span style={{color: "#2595D5"}}>Connect</span>
+                  Let's{' '}
+                  <span
+                    style={{
+                      color: '#2595D5',
+                    }}
+                  >
+                    Connect
+                  </span>
                 </h1>
 
                 <p className="page-contact-description">
-                  Whether you have a business inquiry, partnership opportunity,
-                  or general question, our team is here to help. Reach out through
+                  Whether you have a business inquiry,
+                  partnership opportunity, or general question,
+                  our team is here to help. Reach out through
                   your preferred channel.
                 </p>
               </FadeIn>
@@ -149,9 +161,10 @@ export function ContactSection() {
                       aria-label="Social network"
                     >
                       {socialLinks.map((social) => {
-                        const brand = contactSocialBrands.get(
-                          social.href,
-                        )
+                        const brand =
+                          contactSocialBrands.get(
+                            social.href,
+                          )
 
                         return (
                           <a
@@ -197,8 +210,9 @@ export function ContactSection() {
               >
                 <div className="page-contact-form-intro">
                   <p className="page-contact-form-description">
-                    Define your goals and identify areas where Dekko Isho
-                    can add value to your business.
+                    Define your goals and identify areas
+                    where Dekko Isho can add value to your
+                    business.
                   </p>
                 </div>
 
@@ -238,43 +252,48 @@ export function ContactSection() {
                     />
                   </div>
 
-                  <div className="page-contact-field">
-                    <label
-                      htmlFor="email-address"
-                      className="page-contact-field-label"
-                    >
-                      Email
-                    </label>
+                  {/* CHANGED:
+                                                          Email and Phone Number are now
+                                                          placed in the same row. */}
+                  <div className="page-contact-field-row">
+                    <div className="page-contact-field">
+                      <label
+                        htmlFor="email-address"
+                        className="page-contact-field-label"
+                      >
+                        Email
+                      </label>
 
-                    <input
-                      className="page-contact-input w-input"
-                      maxLength={256}
-                      name="email-address"
-                      data-name="email address"
-                      placeholder="Email"
-                      type="email"
-                      id="email-address"
-                      required
-                    />
-                  </div>
+                      <input
+                        className="page-contact-input w-input"
+                        maxLength={256}
+                        name="email-address"
+                        data-name="email address"
+                        placeholder="Email"
+                        type="email"
+                        id="email-address"
+                        required
+                      />
+                    </div>
 
-                  <div className="page-contact-field">
-                    <label
-                      htmlFor="phone-number"
-                      className="page-contact-field-label"
-                    >
-                      Phone Number
-                    </label>
+                    <div className="page-contact-field">
+                      <label
+                        htmlFor="phone-number"
+                        className="page-contact-field-label"
+                      >
+                        Phone Number
+                      </label>
 
-                    <input
-                      className="page-contact-input w-input"
-                      maxLength={256}
-                      name="phone-number"
-                      data-name="phone number"
-                      placeholder="Phone Number"
-                      type="tel"
-                      id="phone-number"
-                    />
+                      <input
+                        className="page-contact-input w-input"
+                        maxLength={256}
+                        name="phone-number"
+                        data-name="phone number"
+                        placeholder="Phone Number"
+                        type="tel"
+                        id="phone-number"
+                      />
+                    </div>
                   </div>
 
                   <div className="page-contact-field">
@@ -301,7 +320,10 @@ export function ContactSection() {
                     data-wait="Please wait..."
                     className="primary-button w-inline-block"
                     disabled={status === 'submitting'}
-                    style={{ width: 'fit-content', alignSelf: 'flex-start' }}
+                    style={{
+                      width: 'fit-content',
+                      alignSelf: 'flex-start',
+                    }}
                   >
                     <div className="button-primary-inner">
                       <div className="button-text-wrap">
@@ -322,7 +344,9 @@ export function ContactSection() {
 
                       <div className="button-icon-bg">
                         <img
-                          src={legacyImage('button-icon.svg')}
+                          src={legacyImage(
+                            'button-icon.svg',
+                          )}
                           loading="eager"
                           alt=""
                           aria-hidden="true"
@@ -330,7 +354,9 @@ export function ContactSection() {
                         />
 
                         <img
-                          src={legacyImage('button-icon.svg')}
+                          src={legacyImage(
+                            'button-icon.svg',
+                          )}
                           loading="lazy"
                           alt=""
                           aria-hidden="true"
@@ -350,7 +376,8 @@ export function ContactSection() {
                   }
                 >
                   <div>
-                    Thank you! Your submission has been received!
+                    Thank you! Your submission has been
+                    received!
                   </div>
                 </div>
 
@@ -363,7 +390,8 @@ export function ContactSection() {
                   }
                 >
                   <div>
-                    Oops! Something went wrong while submitting the form.
+                    Oops! Something went wrong while
+                    submitting the form.
                   </div>
                 </div>
               </FadeIn>
