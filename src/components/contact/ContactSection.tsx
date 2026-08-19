@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react'
-import { type FormEvent, useState } from 'react'
+import { type CSSProperties, type FormEvent, useState } from 'react'
 
 import {
   contactEmail,
@@ -7,16 +7,12 @@ import {
   officeLocations,
   socialLinks,
 } from '../../data/contact/contactInfo'
+import { navSocialBrands } from '../layout/NavSocialCycle'
 import { FadeIn } from '../ui/FadeIn'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
-const socialIconClasses = new Map([
-  ['facebook.com/share/1HoDreUv8S', 'facebook'],
-  ['x.com/dekkoisho', 'x'],
-  ['linkedin.com/company/dekkoishogroup', 'linkedin'],
-  ['Youtube', 'youtube'],
-])
+const contactSocialBrands = new Map(navSocialBrands.map((brand) => [brand.href, brand]))
 
 export function ContactSection() {
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -115,18 +111,29 @@ export function ContactSection() {
                     <div className="page-contact-label">Social network</div>
                     <div className="page-contact-socials" aria-label="Social network">
                       {socialLinks.map((social) => {
-                        const iconClass = socialIconClasses.get(social.label)
+                        const brand = contactSocialBrands.get(social.href)
 
                         return (
                           <a
                             key={social.href}
                             href={social.href}
-                            className={`page-contact-social-link${iconClass ? ` page-contact-social-link--${iconClass}` : ''}`}
+                            className="page-contact-social-link"
                             target="_blank"
                             rel="noreferrer"
                             aria-label={social.label}
+                            style={
+                              brand
+                                ? ({ '--page-contact-social-brand': brand.brandColor } as CSSProperties)
+                                : undefined
+                            }
                           >
-                            {iconClass ? <span className="page-contact-social-icon" aria-hidden="true" /> : social.label}
+                            {brand ? (
+                              <span className="page-contact-social-icon" aria-hidden="true">
+                                {brand.icon}
+                              </span>
+                            ) : (
+                              social.label
+                            )}
                           </a>
                         )
                       })}
