@@ -63,7 +63,7 @@ export function ContactSection() {
                 className="page-contact-hero"
               >
                 <h1 className="page-contact-title">
-                  We are always ready to help you and answer your questions
+                  Let's <span style={{color: "#2595D5"}}>Connect</span>
                 </h1>
 
                 <p className="page-contact-description">
