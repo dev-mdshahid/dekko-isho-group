@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 const OVERVIEW_IMAGE = '/images/about/old-machine.png'
-const OVERVIEW_VIDEO = '/videos/about-overview-machine.mp4'
+const OVERVIEW_VIDEO = '/videos/about-overview-machine2.webm'
 const OVERVIEW_ALT = 'Vintage industrial machine representing Dekko Isho Group origins'
 const LUMA_KEY_FILTER_ID = 'about-overview-luma-key'
 const SLOW_CONNECTIONS = new Set(['slow-2g', '2g'])

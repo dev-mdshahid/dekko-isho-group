@@ -1,7 +1,9 @@
 import "./contact.css"
+
 import { ExternalLink, MapPin } from 'lucide-react'
 
-const CONTACT_MAP_URL = 'https://maps.app.goo.gl/7sU6Ei8CPtQCaVNNA'
+const CONTACT_MAP_URL = 'https://maps.app.goo.gl/w3dVU7SA7K4Ghn3X8'
+
 const CONTACT_MAP_LAT = 23.7701868
 const CONTACT_MAP_LNG = 90.4069737
 

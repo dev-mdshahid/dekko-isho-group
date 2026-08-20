@@ -179,9 +179,9 @@ export const manufacturingCapacity = {
   ] satisfies CapacityStat[],
   pills: [
     'Vertically Integrated Manufacturing',
-    'Advanced European Machinery',
+    'Advanced Global Machinery Brands',
     'Technology-Driven Operations',
-    '3 Dedicated Salesman Sample (SMS) Lines',
+    'Dedicated Salesman Samples (SMS) Line',
     'Quality Control at Every Stage',
     'Global Customer Base',
   ],
