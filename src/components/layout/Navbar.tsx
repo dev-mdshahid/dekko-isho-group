@@ -17,7 +17,6 @@ import { MOBILE_NAV_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 import { useNavDropdowns, type DesktopDropdownId } from '../../hooks/useNavDropdowns'
 import { useNavMenu } from '../../hooks/useNavMenu'
 import { useStickyNavbar } from '../../hooks/useStickyNavbar'
-import { ButtonArrow } from '../ui/ButtonArrow'
 import { NavSocialCycle, navSocialBrands } from './NavSocialCycle'
 import { Button } from '../ui/Button'
 
@@ -183,10 +182,17 @@ function MobileNavSocialLinks({ closeMenu }: { closeMenu: () => void }) {
           rel="noreferrer"
           className={`mobile-nav-social-icon mobile-nav-social-icon--${social.id}`}
           aria-label={social.label}
-          style={{ '--nav-social-brand': social.brandColor } as CSSProperties}
+          style={
+            {
+              '--nav-social-brand': social.brandColor,
+            } as CSSProperties
+          }
           onClick={closeMenu}
         >
-          <span className="mobile-nav-social-icon__glyph" aria-hidden="true">
+          <span
+            className="mobile-nav-social-icon__glyph"
+            aria-hidden="true"
+          >
             {social.icon}
           </span>
         </a>
@@ -664,7 +670,8 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
             Career
           </NavLink>
           <div className="mobile-nav-contact">
-            <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" />
+            {/* <ButtonArrow to="/contact" label="Contact" variant="button-nav-contact" /> */}
+            <Button to="/contact" label="Contact Us" variant="button-nav-contact" />
             <MobileNavSocialLinks closeMenu={closeMenu} />
           </div>
         </nav>

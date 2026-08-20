@@ -14439,13 +14439,13 @@ html.lenis body {
 ======================================== */
 
 .primary-button.button-no-icon {
-      display: inline-block;
-      width: auto;
+  display: inline-block;
+  width: auto;
 }
 
 .button-primary-inner--no-icon {
-      gap: 0;
-      width: auto;
+  gap: 0;
+  width: auto;
 }
 
 
@@ -14454,10 +14454,10 @@ html.lenis body {
  * because it was designed to sit beside an icon.
  */
 .button-text-wrap--no-icon {
-      padding-top: 0.938rem;
-      padding-right: 1.5rem;
-      padding-bottom: 0.938rem;
-      padding-left: 1.5rem;
+  padding-top: 0.938rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.938rem;
+  padding-left: 1.5rem;
 }
 
 
@@ -14465,16 +14465,180 @@ html.lenis body {
    NAV CONTACT TEXT-ONLY BUTTON
 ======================================== */
 
-.primary-button.nav-contact-button.button-no-icon
-.button-primary-inner--no-icon {
-      gap: 0;
-      border-radius: 999px;
+.primary-button.nav-contact-button.button-no-icon .button-primary-inner--no-icon {
+  gap: 0;
+  border-radius: 999px;
 }
 
-.primary-button.nav-contact-button.button-no-icon
-.button-text-wrap--no-icon {
-      padding-top: 0.875rem;
-      padding-right: 1.75rem;
-      padding-bottom: 0.875rem;
-      padding-left: 1.75rem;
+.primary-button.nav-contact-button.button-no-icon .button-text-wrap--no-icon {
+  padding-top: 0.875rem;
+  padding-right: 1.75rem;
+  padding-bottom: 0.875rem;
+  padding-left: 1.75rem;
+}
+
+.mobile-nav-social {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.625rem;
+  margin-top: 0;
+  width: auto;
+}
+
+
+/* ========================================
+   MOBILE SOCIAL ICON
+======================================== */
+
+.mobile-nav-social-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  color: var(--color--grey-1);
+
+  text-decoration: none;
+
+  transform: translateZ(0);
+
+  transition:
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.mobile-nav-social-icon:hover,
+.mobile-nav-social-icon:focus-visible {
+  background-color: transparent;
+
+  /* CHANGED: corresponding brand color on hover */
+  color: var(--nav-social-brand);
+
+  outline: none;
+
+  transform: scale(1.05);
+}
+
+
+/* ========================================
+   MOBILE SOCIAL GLYPH
+======================================== */
+
+.mobile-nav-social-icon__glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1rem;
+  height: 1rem;
+}
+
+.mobile-nav-social-icon__glyph svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  fill: currentColor;
+}
+
+
+/*
+ * YouTube SVG is naturally wider.
+ */
+.mobile-nav-social-icon--youtube .mobile-nav-social-icon__glyph {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+
+/* ========================================
+   MOBILE CONTACT + SOCIAL ROW
+======================================== */
+
+@media screen and (max-width: 991px) {
+  .mobile-nav-contact {
+    display: flex;
+
+    /*
+             * CHANGED:
+             * Contact Us and socials are now
+             * horizontally aligned.
+             */
+    flex-direction: row;
+
+    align-items: center;
+
+    /*
+             * CHANGED:
+             * Contact stays left,
+             * social icons stay right.
+             */
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    width: 100%;
+
+    margin-top: 0;
+
+    padding:
+      1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-nav-contact .primary-button.nav-contact-button {
+    flex: none;
+    width: fit-content;
+  }
+
+  .mobile-nav-contact .mobile-nav-social {
+    flex: none;
+    margin-top: 0;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media screen and (max-width: 479px) {
+  .mobile-nav-contact {
+    gap: 0.75rem;
+
+    padding:
+      1rem 1rem max(1.25rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-nav-social {
+    gap: 0.5rem;
+  }
+
+  .mobile-nav-social-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .mobile-nav-social-icon__glyph {
+    width: 0.9375rem;
+    height: 0.9375rem;
+  }
+
+  .mobile-nav-social-icon--youtube .mobile-nav-social-icon__glyph {
+    width: 1rem;
+    height: 1rem;
+  }
 }
