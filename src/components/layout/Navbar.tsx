@@ -2,14 +2,12 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import {
-  businessNavGroups,
-  flattenNavLinks,
+  dekkoBusinessNav,
   isNavGroupActive,
   isNavLinkActive,
   mediaNavLinks,
   solutionNavLinks,
   type NavLink as NavMenuLink,
-  type NavLinkGroup,
 } from '../../data/navigation/navLinks'
 import { useSplashOptional } from '../../context/SplashContext'
 import { useClickOutside } from '../../hooks/useClickOutside'
@@ -266,138 +264,8 @@ function NavDropdown({ id, label, links, isOpen, onToggle, onClose }: NavDropdow
   )
 }
 
-type BusinessesNavDropdownProps = {
-  isOpen: boolean
-  onToggle: () => void
-  onClose: () => void
-  expandedGroupId: NavLinkGroup['id'] | null
-  onExpandGroup: (groupId: NavLinkGroup['id']) => void
-  onToggleGroup: (groupId: NavLinkGroup['id']) => void
-}
-
-function BusinessesNavDropdown({
-  isOpen,
-  onToggle,
-  onClose,
-  expandedGroupId,
-  onExpandGroup,
-  onToggleGroup,
-}: BusinessesNavDropdownProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const { pathname } = useLocation()
-  const expandedGroup = expandedGroupId
-    ? businessNavGroups.find((group) => group.id === expandedGroupId)
-    : null
-  const isActive = isNavGroupActive(pathname, flattenNavLinks(businessNavGroups))
-
-  useClickOutside(ref, onClose, isOpen)
-
-  return (
-    <div
-      ref={ref}
-      className={`dropdown nav-dropdown nav-dropdown--nested${isOpen ? ' is-open' : ''}`}
-    >
-      <button
-        type="button"
-        id="businesses-toggle"
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        aria-controls="businesses-menu"
-        className={`dropdown-toggle nav-link${isActive ? ' w--current' : ''}`}
-        onClick={(event) => {
-          event.stopPropagation()
-          onToggle()
-        }}
-      >
-        <div>Businesses</div>
-        <div className="dropdown-icon w-icon-dropdown-toggle" aria-hidden="true" />
-      </button>
-      <nav
-        id="businesses-menu"
-        aria-labelledby="businesses-toggle"
-        className="dropdown-list nav-dropdown-panel"
-        hidden={!isOpen}
-      >
-        <div className="nav-dropdown-panel-inner">
-          <div className={`nav-nested-dropdown${expandedGroupId ? ' is-expanded' : ''}`}>
-            <div className="nav-nested-dropdown-panel">
-              <div className="nav-nested-dropdown-categories" role="list" aria-label="Business categories">
-                {businessNavGroups.map((group) => (
-                  <button
-                    key={group.id}
-                    type="button"
-                    role="listitem"
-                    aria-expanded={expandedGroupId === group.id}
-                    className={`nav-nested-dropdown-category${expandedGroupId === group.id ? ' is-active' : ''}`}
-                    onClick={() => onToggleGroup(group.id)}
-                    onMouseEnter={() => onExpandGroup(group.id)}
-                    onFocus={() => onExpandGroup(group.id)}
-                  >
-                    <span>{group.label}</span>
-                    <span className="nav-nested-dropdown-chevron" aria-hidden="true">
-                      <svg viewBox="0 0 16 16" fill="none">
-                        <path
-                          d="M6 4.5L10 8L6 11.5"
-                          stroke="currentColor"
-                          strokeWidth="1.25"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            {expandedGroup && (
-              <div className="nav-nested-dropdown-panel">
-                <div
-                  className="nav-nested-dropdown-links"
-                  role="region"
-                  aria-label={expandedGroup.label}
-                >
-                  {expandedGroup.links.map((link) => {
-                    const className = `dropdown-link nav-nested-dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`
-                    const content = <span>{link.label}</span>
-
-                    if (link.to.startsWith('http')) {
-                      return (
-                        <a
-                          key={`${expandedGroup.id}-${link.label}`}
-                          href={link.to}
-                          className={className}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={onClose}
-                        >
-                          {content}
-                        </a>
-                      )
-                    }
-
-                    return (
-                      <Link
-                        key={`${expandedGroup.id}-${link.label}`}
-                        to={link.to}
-                        className={className}
-                        onClick={onClose}
-                      >
-                        {content}
-                      </Link>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-    </div>
-  )
-}
-
 type MobileNavDropdownProps = {
-  id: string
+  id: DesktopDropdownId
   label: string
   links: readonly NavMenuLink[]
   isOpen: boolean
@@ -449,116 +317,6 @@ function MobileNavDropdown({ id, label, links, isOpen, onToggle, onNavigate }: M
               {link.label}
             </Link>
           ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-type MobileBusinessesNavProps = {
-  isOpen: boolean
-  onToggle: () => void
-  onNavigate: () => void
-}
-
-function MobileBusinessesNav({ isOpen, onToggle, onNavigate }: MobileBusinessesNavProps) {
-  const { pathname } = useLocation()
-  const [expandedGroupId, setExpandedGroupId] = useState<NavLinkGroup['id'] | null>(null)
-  const isActive = isNavGroupActive(pathname, flattenNavLinks(businessNavGroups))
-
-  useEffect(() => {
-    if (!isOpen) {
-      setExpandedGroupId(null)
-    }
-  }, [isOpen])
-
-  function renderLink(group: NavLinkGroup, link: NavMenuLink) {
-    const className = `mobile-nav-sublink${isNavLinkActive(pathname, link.to) ? ' is-current' : ''}`
-
-    if (link.to.startsWith('http')) {
-      return (
-        <a
-          key={`${group.id}-${link.label}`}
-          href={link.to}
-          className={className}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={onNavigate}
-        >
-          {link.label}
-        </a>
-      )
-    }
-
-    return (
-      <Link key={`${group.id}-${link.label}`} to={link.to} className={className} onClick={onNavigate}>
-        {link.label}
-      </Link>
-    )
-  }
-
-  return (
-    <div className={`mobile-nav-accordion${isOpen ? ' is-open' : ''}`}>
-      <button
-        type="button"
-        id="mobile-businesses-toggle"
-        aria-expanded={isOpen}
-        aria-controls="mobile-businesses-menu"
-        className={`mobile-nav-link mobile-nav-accordion-trigger${isActive ? ' is-current' : ''}`}
-        onClick={onToggle}
-      >
-        <span>Businesses</span>
-        <span className="mobile-nav-chevron" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none">
-            <path
-              d="M4 6L8 10L12 6"
-              stroke="currentColor"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      </button>
-      <div
-        id="mobile-businesses-menu"
-        className="mobile-nav-accordion-panel"
-        aria-labelledby="mobile-businesses-toggle"
-        hidden={!isOpen}
-      >
-        <div className="mobile-nav-accordion-panel-inner">
-          {businessNavGroups.map((group) => {
-            const isGroupExpanded = expandedGroupId === group.id
-
-            return (
-              <div key={group.id} className={`mobile-nav-business-group${isGroupExpanded ? ' is-expanded' : ''}`}>
-                <button
-                  type="button"
-                  aria-expanded={isGroupExpanded}
-                  className="mobile-nav-business-trigger"
-                  onClick={() => setExpandedGroupId((current) => (current === group.id ? null : group.id))}
-                >
-                  <span>{group.label}</span>
-                  <span className="mobile-nav-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 16 16" fill="none">
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="1.25"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </button>
-                <div className="mobile-nav-business-links" hidden={!isGroupExpanded}>
-                  <div className="mobile-nav-business-links-inner">
-                    {group.links.map((link) => renderLink(group, link))}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
         </div>
       </div>
     </div>
@@ -635,7 +393,10 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
             onToggle={() => toggleDropdown('solutions')}
             onNavigate={closeMenu}
           />
-          <MobileBusinessesNav
+          <MobileNavDropdown
+            id="businesses"
+            label="Businesses"
+            links={dekkoBusinessNav}
             isOpen={openDropdownId === 'businesses'}
             onToggle={() => toggleDropdown('businesses')}
             onNavigate={closeMenu}
@@ -686,12 +447,9 @@ export function Navbar() {
   const isMobileNav = useMediaQuery(MOBILE_NAV_QUERY)
   const {
     openId,
-    expandedGroupId,
     isOpen: isDropdownOpen,
     toggle,
     closeAll,
-    expandGroup,
-    toggleGroup,
   } = useNavDropdowns(!isMobileNav)
   const navRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLImageElement>(null)
@@ -759,13 +517,13 @@ export function Navbar() {
                 onToggle={() => toggle('solutions')}
                 onClose={closeAll}
               />
-              <BusinessesNavDropdown
+              <NavDropdown
+                id="businesses"
+                label="Businesses"
+                links={dekkoBusinessNav}
                 isOpen={isDropdownOpen('businesses')}
                 onToggle={() => toggle('businesses')}
                 onClose={closeAll}
-                expandedGroupId={expandedGroupId}
-                onExpandGroup={expandGroup}
-                onToggleGroup={toggleGroup}
               />
               <NavLink
                 to="/sustainability"
