@@ -22,10 +22,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     image: `${SOLUTIONS_IMAGES}/design-studio.png`,
     imageAlt: 'Fashion designer working in a design studio',
     features: [
-      'Trend Research & Fashion Forecasting',
-      'Fabric Library (Sourcing & R&D)',
-      'Smart Design Integration',
-      'Co-Design Approach',
+      'Replace Smart Design Integration with Digital Integration'
     ],
   },
   {
@@ -38,11 +35,11 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     image: `${SOLUTIONS_IMAGES}/integrated-manufacturing.png`,
     imageAlt: 'Garment worker operating an industrial sewing machine',
     features: [
-      'Cutting, Sewing & Finishing',
-      'In-Process Quality Control',
-      'Scalable Production Capacity',
-      'Multi-Unit Manufacturing Network',
-    ],
+      "Increasing use of automated machines",
+      "Focus on energy conservation",
+      "Quality-focused production process",
+      "Multiproduct capabilities",
+    ]
   },
   {
     id: 'industrial-laundry',
@@ -54,11 +51,12 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     image: `${SOLUTIONS_IMAGES}/industrial-laundry.png`,
     imageAlt: 'Industrial laundry machines in a washing facility',
     features: [
-      'Wet & Dry Wash Processes',
-      'Advanced Laundry Technology',
-      'Denim Washing Capacity',
-      'Sample to Bulk Wash Development',
-    ],
+      "Advanced garment washing and finishing",
+      "Ensuring a sustainable process",
+      "State-of-the-art European machine setup",
+      "Garment dye and denim washing facility",
+      "Sustainable dyeing and finishing facilities",
+    ]
   },
   {
     id: 'embroidery',
@@ -70,10 +68,8 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     image: `${SOLUTIONS_IMAGES}/embroidery-unit.png`,
     imageAlt: 'Multi-head industrial embroidery machines',
     features: [
-      'Placement & Color Accuracy',
-      'Stitching Consistency Across Heads',
-      'In-Process Quality Control',
-      'Defect Management & Correction',
+      '16 Color embroidery head',
+      'Schiffli new machine',
     ],
   },
 ]
