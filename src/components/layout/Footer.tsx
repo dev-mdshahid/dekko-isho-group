@@ -192,7 +192,7 @@ export function Footer() {
               variant="slide-in-bottom"
               delay={600}
             >
-              <p className="footer-copyright">© 2026 Dekko Isho Group</p>
+              <p className="footer-copyright">&copy; 2026 Dekko ISHO Group</p>
             </FadeIn>
             <FadeIn
               id="9807520c-65b7-e828-71bd-909a6cfe1841"
