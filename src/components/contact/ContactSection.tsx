@@ -93,7 +93,7 @@ export function ContactSection() {
                 <div className="page-contact-details-col">
                   <div className="page-contact-block">
                     <div className="page-contact-label">
-                      Call Center
+                      Hotline
                     </div>
 
                     <div className="page-contact-lines">
@@ -128,27 +128,17 @@ export function ContactSection() {
                       Our Location
                     </div>
 
-                    {primaryOffice ? (
-                      <div className="page-contact-location">
-                        <a
-                          href={primaryOffice.mapsUrl}
-                          className="page-contact-location-name"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {primaryOffice.name}
-                        </a>
-
-                        {primaryOffice.lines.map((line) => (
-                          <div
-                            key={line}
-                            className="page-contact-location-line"
-                          >
-                            {line}
-                          </div>
-                        ))}
+                    <div className="page-contact-location">
+                      <div className="page-contact-location-line">
+                        The Forum, West Tower, Level: 16-19, 187, 188/B,
                       </div>
-                    ) : null}
+                      <div className="page-contact-location-line">
+                        Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208,
+                      </div>
+                      <div className="page-contact-location-line">
+                        Bangladesh.
+                      </div>
+                    </div>
                   </div>
 
                   <div className="page-contact-block">
