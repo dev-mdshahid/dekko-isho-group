@@ -26,7 +26,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     imageWId: 'd4d290b2-cf1f-2b7c-1c15-7a88dddc2d17',
     arrowWIds: ['6c3d66a0-b420-e0a5-aade-cb7ede5a2f49', '1b0d8c68-7925-4e4c-b357-5d041e365520'],
     wrapperClass: 'one',
-    title: 'Versatility at Scale',
+    title: 'Manufacturing Capability & Capacity',
     icon: '/images/specialities/versatility-icon.png',
     image: '/images/specialities/versatility.png',
     featureLabel: 'Manufacturing Capacity',
@@ -43,11 +43,11 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     imageWId: '77cde797-b601-13a8-b976-f135a003b6a3',
     arrowWIds: ['77cde797-b601-13a8-b976-f135a003b6b7', '77cde797-b601-13a8-b976-f135a003b6b8'],
     wrapperClass: 'two',
-    title: 'End-to-End Transparency',
+    title: 'Ensuring Traceability and Transparency',
     icon: '/images/specialities/visibility-icon.png',
     image: '/images/specialities/visibility.png',
     featureLabel: 'Operational Transparency',
-    features: ['Responsible Sourcing', 'End-to-End Traceability', 'Compliance Monitoring'],
+    features: ['Versatile Sourcing', 'End-to-End Traceability', 'Compliance Monitoring'],
     to: solutionPath('compliance-sustainability'),
   },
   {
@@ -61,8 +61,8 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     image: '/images/specialities/strategical.png',
     featureLabel: 'Strategic Presence',
     features: [
-      'Prime Manufacturing Locations in the Dhaka & Gazipur Region',
-      'Liaison Offices and Display Centers in the USA and Europe',
+      'Strategically Diverse Manufacturing Locations in the Dhaka & Gazipur Region',
+      'Display Centers in the USA and Europe',
       'Efficient Logistics and Export Network',
     ],
     to: '/contact',
@@ -80,11 +80,9 @@ export const serviceSpecialities: ServiceSpeciality[] = [
       {
         group: 'Sustainability Impact (As of 2025)',
         items: [
-          '80% Scope 2 GHG Reduction',
-          '81% Sustainable Materials Used',
-          '40% Textile Waste Recycled',
-          '19,374 m³ Water Reused',
-          '613 MWh Solar Energy Generated',
+          'Continuous striving to reduce energy consumption',
+          'Reducing carbon footprint ',
+          'Giving back to nature',
         ],
       },
       // {
