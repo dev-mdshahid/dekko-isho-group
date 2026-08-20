@@ -4,7 +4,6 @@ import { type CSSProperties, type FormEvent, useState } from 'react'
 import {
   contactEmail,
   contactPhone,
-  officeLocations,
   socialLinks,
 } from '../../data/contact/contactInfo'
 import { legacyImage } from '../../lib/assets'
@@ -19,7 +18,6 @@ const contactSocialBrands = new Map(
 
 export function ContactSection() {
   const [status, setStatus] = useState<FormStatus>('idle')
-  const primaryOffice = officeLocations[0]
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
