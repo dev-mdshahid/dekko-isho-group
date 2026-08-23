@@ -106,28 +106,34 @@ export const businessNavGroups: NavLinkGroup[] = [
  */
 export const dekkoBusinessNav: NavLink[] = [
   {
-    to: '/dekko-garments',
-    label: 'Dekko Garments Ltd.',
+    to: '/isho-ltd',
+    label: 'ISHO Limited',
+    showExternalIcon: true,
   },
   {
-    to: '/dekko-readywares',
-    label: 'Dekko Readywear Ltd.',
+    to: 'https://www.di.vc/',
+    label: 'DIVC',
+    showExternalIcon: true,
   },
   {
-    to: '/dekko-fashions',
-    label: 'Dekko Fashions Ltd.',
+    to: '/dekko-isho',
+    label: 'DITECH',
+    showExternalIcon: true,
   },
   {
-    to: '/globus-garments',
-    label: 'Globus Garments Ltd.',
+    to: '/klubhaus',
+    label: 'Klubhaus',
+    showExternalIcon: true,
   },
   {
-    to: '/agami-fashions',
-    label: 'Agami Fashions Ltd.',
+    to: '/izakaya',
+    label: 'IZAKAYA',
+    showExternalIcon: true,
   },
   {
-    to: '/agami-washing',
-    label: 'Agami Washing Ltd.',
+    to: 'https://www.ecoviaglobal.com/',
+    label: 'Ecovia Limited',
+    showExternalIcon: true,
   },
 ]
 
