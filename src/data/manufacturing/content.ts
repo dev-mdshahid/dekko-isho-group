@@ -797,6 +797,93 @@ export const manufacturingJourney = {
   ],
 }
 
+export const manufacturingJourneyRoadmap = {
+  id: 'mfg-journey',
+  badge: 'Manufacturing Journey',
+  title: 'From Sourcing to Packing.',
+  description:
+    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
+  stages: [
+    {
+      id: 'material-sourcing',
+      label: 'Material\nSourcing',
+      row: 'top' as const,
+      column: 0,
+      icon: `${JOURNEY_ICON_BASE}/icon-material-sourcing.svg`,
+    },
+    {
+      id: 'material-inspection',
+      label: 'Material\nInspection',
+      row: 'top' as const,
+      column: 1,
+      icon: `${JOURNEY_ICON_BASE}/icon-material-inspection.svg`,
+    },
+    {
+      id: 'sample-development',
+      label: 'Sample\nDevelopment',
+      row: 'top' as const,
+      column: 2,
+      icon: `${JOURNEY_ICON_BASE}/icon-salesman-sample-development.svg`,
+    },
+    {
+      id: 'pattern-marker',
+      label: 'Pattern\n& Marker',
+      row: 'top' as const,
+      column: 3,
+      icon: `${JOURNEY_ICON_BASE}/icon-pattern-marker-planning.svg`,
+    },
+    {
+      id: 'fabric-cutting',
+      label: 'Fabric\nCutting',
+      row: 'top' as const,
+      column: 4,
+      icon: `${JOURNEY_ICON_BASE}/icon-fabric-cutting.svg`,
+    },
+    {
+      id: 'sewing-assembly',
+      label: 'Sewing\n& Assembly',
+      row: 'top' as const,
+      column: 5,
+      icon: `${JOURNEY_ICON_BASE}/icon-sewing-assembly.svg`,
+    },
+    {
+      id: 'inline-qc',
+      label: 'In-line\nQC',
+      row: 'bottom' as const,
+      column: 5,
+      icon: `${JOURNEY_ICON_BASE}/icon-inline-quality-control.svg`,
+    },
+    {
+      id: 'finishing',
+      label: 'Finishing',
+      row: 'bottom' as const,
+      column: 4,
+      icon: `${JOURNEY_ICON_BASE}/icon-finishing.svg`,
+    },
+    {
+      id: 'final-inspection',
+      label: 'Final\nInspection',
+      row: 'bottom' as const,
+      column: 3,
+      icon: `${JOURNEY_ICON_BASE}/icon-final-inspection.svg`,
+    },
+    {
+      id: 'packing',
+      label: 'Packing',
+      row: 'bottom' as const,
+      column: 2,
+      icon: `${JOURNEY_ICON_BASE}/icon-packing.svg`,
+    },
+    {
+      id: 'shipment',
+      label: 'Shipment',
+      row: 'bottom' as const,
+      column: 1,
+      icon: `${JOURNEY_ICON_BASE}/icon-shipment.svg`,
+    },
+  ],
+}
+
 export const manufacturingCta = {
   badge: "Let's Connect",
   heading: "And Build What's Next, Together",

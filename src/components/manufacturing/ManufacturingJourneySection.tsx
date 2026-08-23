@@ -1,4 +1,4 @@
-import { manufacturingJourney } from '../../data/manufacturing/content'
+import { manufacturingJourneyRoadmap } from '../../data/manufacturing/content'
 import { JourneyRoadmapSection } from '../ui/JourneyRoadmapSection'
 
 export function ManufacturingJourneySection() {
@@ -8,7 +8,7 @@ export function ManufacturingJourneySection() {
       columnCount={6}
       xPadLeft={36}
       xPadRight={100}
-      {...manufacturingJourney}
+      {...manufacturingJourneyRoadmap}
     />
   )
 }
