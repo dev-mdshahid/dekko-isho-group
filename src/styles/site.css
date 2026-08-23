@@ -6595,7 +6595,7 @@ a.about-info-box:hover {
 .about-chairman-name {
   color: var(--color--dark);
   font-family: var(--_typography---font-family--heading);
-  font-size: 1.75rem !important;
+  font-size: 1.40rem !important;
   font-weight: var(--_typography---h1--font-weight-700);
   letter-spacing: var(--_typography---body--letter-spacing);
   line-height: 1.1;
@@ -6606,7 +6606,7 @@ a.about-info-box:hover {
 .about-chairman-role {
   color: var(--color--primary-1);
   font-family: var(--_typography---font-family--body);
-  font-size: 1.125rem;
+  font-size: 1rem !important;
   font-weight: var(--_typography---body--font-weight-500);
   letter-spacing: var(--_typography---body--letter-spacing);
   line-height: 1.4;

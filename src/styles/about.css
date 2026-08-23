@@ -2120,7 +2120,7 @@
 .about-chairman-section--about .about-chairman-name {
   margin: 0;
   font-family: var(--_typography---font-family--heading);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1.50rem, 3vw, 2.5rem);
   font-weight: var(--_typography---h1--font-weight-700);
   line-height: 1.1;
   color: var(--color--dark);
