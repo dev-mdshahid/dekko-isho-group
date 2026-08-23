@@ -5915,6 +5915,14 @@ a.about-info-box:hover {
   align-items: stretch;
 }
 
+.grid-about-five-content {
+  grid-column-gap: var(--gap--gap-11);
+  grid-row-gap: var(--gap--gap-11);
+  grid-template-rows: auto;
+  grid-template-columns: minmax(0, .5fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+
 .about-story-info {
   grid-column-gap: var(--gap--gap-10);
   grid-row-gap: var(--gap--gap-10);

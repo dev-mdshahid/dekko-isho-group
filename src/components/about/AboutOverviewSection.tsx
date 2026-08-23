@@ -41,7 +41,7 @@ export function AboutOverviewSection() {
               </h2>
             </FadeIn>
             <div className="about-three-content">
-              <div className="w-layout-grid grid-about-three-content">
+              <div className="w-layout-grid grid-about-five-content">
                 <FadeIn id="69a2580e-e525-9745-7bb9-9e825aa740ad" className="about-three-author">
                   <AboutOverviewVisual />
                 </FadeIn>
