@@ -1,12 +1,12 @@
 import { type FormEvent, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import {
-  footerBusinessLinks,
+  FOOTER_BUSINESS_LINKS,
   footerContact,
   footerMainLinks,
   footerSocialLinks,
 } from '../../data/footer/footerContent'
-import { solutions, solutionPath } from '../../data/solutions/solutions'
+import { solutionPath, FOOTER_SOLUTIONS_LINKS } from '../../data/solutions/solutions'
 import { useFooterAnimations } from '../../hooks/useFooterAnimations'
 import { submitSubscribeForm } from '../../lib/forms'
 import { legacyImage } from '../../lib/assets'
@@ -138,13 +138,13 @@ export function Footer() {
                 >
                   <h2 className="footer-title">Solutions</h2>
                   <div className="footer-links">
-                    {solutions.map((solution) => (
+                    {FOOTER_SOLUTIONS_LINKS.map((solution) => (
                       <Link
                         key={solution.slug}
-                        to={solutionPath(solution.slug)}
+                        to={solution.to}
                         className={footerLinkClass(pathname, solutionPath(solution.slug))}
                       >
-                        {solution.title}
+                        {solution.label}
                       </Link>
                     ))}
                   </div>
@@ -174,7 +174,7 @@ export function Footer() {
                 >
                   <h2 className="footer-title">Businesses</h2>
                   <div className="footer-links">
-                    {footerBusinessLinks.map((link) => (
+                    {FOOTER_BUSINESS_LINKS.map((link) => (
                       <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
                         {link.label}
                       </Link>

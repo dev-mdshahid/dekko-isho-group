@@ -1,9 +1,9 @@
-import { solutions, solutionPath } from '../solutions/solutions'
 
 export const footerMainLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: solutionPath(solutions[0].slug), label: 'Solutions' },
+  { to: '/sustainability', label: 'Sustainability' },
+  { to: '/awards', label: 'Recognition' },
   { to: '/career', label: 'Career' },
   { to: '/press', label: 'Blog' },
 ] as const
@@ -12,6 +12,39 @@ export const footerBusinessLinks = [
   { to: '/solutions/manufacturing', label: 'Ready Made Garments' },
   { to: '/dekko-fashions', label: 'Retail Fashion' },
   { to: '/about', label: 'Strategic Investment' },
+] as const
+
+export const FOOTER_BUSINESS_LINKS = [
+  {
+    to: '/isho-ltd',
+    label: 'ISHO Limited',
+    showExternalIcon: true,
+  },
+  {
+    to: 'https://www.di.vc/',
+    label: 'DIVC',
+    showExternalIcon: true,
+  },
+  {
+    to: '/dekko-isho',
+    label: 'DITECH',
+    showExternalIcon: true,
+  },
+  {
+    to: '/klubhaus',
+    label: 'Klubhaus',
+    showExternalIcon: true,
+  },
+  {
+    to: '/izakaya',
+    label: 'IZAKAYA',
+    showExternalIcon: true,
+  },
+  {
+    to: 'https://www.ecoviaglobal.com/',
+    label: 'Ecovia Limited',
+    showExternalIcon: true,
+  },
 ] as const
 
 export const footerContact = {

@@ -6,6 +6,12 @@ export type Solution = {
   imageAlt: string
 }
 
+export type SolutionLink = {
+  slug: string
+  to: string
+  label: string
+}
+
 export const solutions: Solution[] = [
   {
     slug: 'manufacturing',
@@ -54,6 +60,29 @@ export const solutions: Solution[] = [
       'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.',
     image: '/images/about/integration.jpg',
     imageAlt: 'Technology integration',
+  },
+]
+
+export const FOOTER_SOLUTIONS_LINKS: SolutionLink[] = [
+  {
+    slug: 'design-product-development',
+    to: '/solutions/design-product-development',
+    label: 'Design Studio'
+  },
+  {
+    slug: 'manufacturing',
+    to: '/solutions/manufacturing',
+    label: 'Integrated Manufacturing'
+  },
+  {
+    slug: 'industrial-laundry',
+    to: '/solutions/industrial-laundry',
+    label: 'Industrial Laundry'
+  },
+  {
+    slug: 'embroidery',
+    to: '/solutions/embroidery',
+    label: 'Embroidery Unit'
   },
 ]
 
