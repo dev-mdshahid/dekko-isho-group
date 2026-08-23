@@ -18,10 +18,10 @@ gsap.registerPlugin(ScrollTrigger)
 const ARRIVE = 0.4
 const HOLD = 0.16
 const TURN_BREATH = 0.48
+const TURN_ARRIVE = 0.64
 const DOT_IN = 0.5
 const LABEL_IN = 0.44
 const LABEL_LAG = 0.1
-const LAND_LEAD = 0.14
 const GHOST_IN = 0.55
 const FINALE_HOLD = 0.32
 const PULSE = 0.22
@@ -72,8 +72,7 @@ function orderDesktopNodes(nodes: HTMLElement[]): HTMLElement[] {
 }
 
 function resetVisible(section: HTMLElement) {
-  const maskPath = section.querySelector<SVGPathElement>('[data-journey-path-mask]')
-  const ghost = section.querySelector<SVGPathElement>('[data-journey-path-ghost]')
+  const maskPaths = section.querySelectorAll<SVGPathElement>('[data-journey-path-mask]')
   const dots = section.querySelectorAll<HTMLElement>('[data-journey-dot]')
   const icons = section.querySelectorAll<HTMLElement>('[data-journey-icon]')
   const labels = section.querySelectorAll<HTMLElement>('[data-journey-label]')
@@ -82,8 +81,7 @@ function resetVisible(section: HTMLElement) {
   const mobileIcons = section.querySelectorAll<HTMLElement>('[data-journey-mobile-icon]')
   const mobileLabels = section.querySelectorAll<HTMLElement>('[data-journey-mobile-label]')
 
-  if (maskPath) gsap.set(maskPath, { clearProps: 'strokeDasharray,strokeDashoffset' })
-  if (ghost) gsap.set(ghost, { clearProps: 'opacity' })
+  gsap.set(maskPaths, { clearProps: 'strokeDasharray,strokeDashoffset' })
   gsap.set(dots, { clearProps: 'opacity,transform' })
   gsap.set(icons, { clearProps: 'opacity,transform' })
   gsap.set(labels, { clearProps: 'opacity,transform' })
@@ -165,8 +163,10 @@ function revealNode(
 export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCleanup {
   const roadmap = section.querySelector<HTMLElement>('[data-journey-roadmap]')
   const mobile = section.querySelector<HTMLElement>('[data-journey-mobile]')
-  const maskPath = section.querySelector<SVGPathElement>('[data-journey-path-mask]')
-  const ghost = section.querySelector<SVGPathElement>('[data-journey-path-ghost]')
+  const maskPaths = Array.from(
+    section.querySelectorAll<SVGPathElement>('[data-journey-path-mask]'),
+  )
+  const connectorPaths = Array.from(section.querySelectorAll<SVGPathElement>('[data-journey-path]'))
   const nodes = orderDesktopNodes(
     Array.from(section.querySelectorAll<HTMLElement>('[data-journey-node]')),
   )
@@ -218,12 +218,6 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
       revealNode(tl, dot, label, beat.time, beat.isFinale, icon)
     })
   } else {
-    const rows = nodes.map(
-      (node) => (node.dataset.journeyRow === 'bottom' ? 'bottom' : 'top') as 'top' | 'bottom',
-    )
-    const { beats, total } = buildBeats(rows)
-    const count = Math.max(nodes.length, 1)
-
     const dots = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-dot]'))
     const icons = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-icon]'))
     const labels = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-label]'))
@@ -231,66 +225,43 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
     gsap.set(dots.filter(Boolean), { opacity: 0, scale: 0.4, transformOrigin: '50% 50%' })
     gsap.set(icons.filter(Boolean), { opacity: 0, y: 12 })
     gsap.set(labels.filter(Boolean), { opacity: 0, y: 16 })
+    gsap.set(maskPaths, { strokeDasharray: 1, strokeDashoffset: 1 })
 
-    if (ghost) {
-      gsap.set(ghost, { opacity: 0 })
-      tl.to(
-        ghost,
-        {
-          opacity: 0.28,
-          duration: GHOST_IN,
-          ease: 'power2.out',
-        },
-        0,
+    let cursor = GHOST_IN * 0.35
+
+    nodes.forEach((_node, index) => {
+      revealNode(
+        tl,
+        dots[index] ?? null,
+        labels[index] ?? null,
+        cursor,
+        index === nodes.length - 1,
+        icons[index] ?? null,
       )
-    }
 
-    if (maskPath) {
-      gsap.set(maskPath, {
-        strokeDasharray: 1,
-        strokeDashoffset: 1,
-      })
+      const maskPath = maskPaths[index]
+      if (!maskPath) {
+        cursor += DOT_IN + HOLD
+        return
+      }
 
-      // Path advances in story beats: each segment arrives just as its node lands.
-      let prevProgress = 0
-      beats.forEach((beat) => {
-        const progress = (beat.index + 1) / count
-        const segmentStart = beat.time
-        tl.fromTo(
-          maskPath,
-          { strokeDashoffset: 1 - prevProgress },
-          {
-            strokeDashoffset: 1 - progress,
-            duration: ARRIVE,
-            ease: 'power2.inOut',
-          },
-          segmentStart,
-        )
-        prevProgress = progress
-      })
+      const connectorPath = connectorPaths[index]
+      const isTurn = connectorPath?.dataset.journeyTurn === 'true'
+      const duration = isTurn ? TURN_ARRIVE : ARRIVE
 
-      // Ensure path is fully drawn by the end even if timing drifts.
+      cursor += DOT_IN + HOLD
+
       tl.to(
         maskPath,
         {
           strokeDashoffset: 0,
-          duration: 0.2,
-          ease: 'power1.out',
+          duration,
+          ease: 'power2.inOut',
         },
-        Math.max(total - 0.2, beats[beats.length - 1]?.time ?? 0),
+        cursor,
       )
-    }
 
-    beats.forEach((beat) => {
-      const landAt = beat.time + Math.max(ARRIVE - LAND_LEAD, 0)
-      revealNode(
-        tl,
-        dots[beat.index] ?? null,
-        labels[beat.index] ?? null,
-        landAt,
-        beat.isFinale,
-        icons[beat.index] ?? null,
-      )
+      cursor += duration + (isTurn ? TURN_BREATH : HOLD)
     })
   }
 

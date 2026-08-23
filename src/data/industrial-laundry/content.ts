@@ -335,6 +335,14 @@ export const industrialLaundryEnvironmentalManagement = {
       description:
         'Advanced water efficiency measures, including recycling and optimized usage, to significantly reduce water consumption while maintaining high-quality garment finishes.',
     },
+    {
+      id: 'biomass-broile',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/Biomass-Boiler.png`,
+      title: 'Biomass Boiler',
+      imageAlt: 'biomass-broile',
+      description:
+        '---',
+    },
   ],
 }
 
