@@ -22,7 +22,10 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     image: `${SOLUTIONS_IMAGES}/design-studio.png`,
     imageAlt: 'Fashion designer working in a design studio',
     features: [
-      'Replace Smart Design Integration with Digital Integration'
+      'Trend Research & Fashion Forecasting',
+      'Fabric Library (Sourcing & R&D)',
+      'Digital Integration',
+      'Co-Design Approach',
     ],
   },
   {
