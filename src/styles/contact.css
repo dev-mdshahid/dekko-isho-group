@@ -482,8 +482,9 @@
 }
 
 .page-contact-section--modern .page-contact-social-link {
-  color: var(--color--dark);
   --page-contact-social-brand: var(--color--primary);
+  color: var(--page-contact-social-brand);
+  opacity: 1;
   width: 1.25rem;
   height: 1.25rem;
   display: inline-flex;
@@ -493,12 +494,14 @@
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
-  transition: color .25s cubic-bezier(.455, .03, .515, .955);
+  transition:
+    color .25s cubic-bezier(.455, .03, .515, .955),
+    opacity .25s cubic-bezier(.455, .03, .515, .955);
 }
 
 .page-contact-section--modern .page-contact-social-link:hover,
 .page-contact-section--modern .page-contact-social-link:focus-visible {
-  color: var(--page-contact-social-brand);
+  opacity: 0.65;
 }
 
 .page-contact-section--modern .page-contact-social-icon {
