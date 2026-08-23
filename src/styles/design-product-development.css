@@ -1277,6 +1277,12 @@
   --dpd-journey-blue: var(--color--primary);
   --dpd-journey-ring: var(--color--neutral-silver-night);
   --dpd-journey-line: var(--color--neutral-silver-night);
+  --journey-roadmap-dot: var(--dpd-journey-dot);
+  --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
+  --journey-roadmap-accent: var(--dpd-journey-blue);
+  --journey-roadmap-ring: var(--dpd-journey-ring);
+  --journey-roadmap-line: var(--dpd-journey-line);
+  --journey-roadmap-bg: var(--color--white);
   background-color: var(--color--white);
   padding: clamp(4rem, 8vw, 6.5rem) 0;
 }
@@ -1445,6 +1451,8 @@
   .design-product-development-page .dpd-journey-section {
     --dpd-journey-dot: 64px;
     --dpd-journey-icon-size: 36px;
+    --journey-roadmap-dot: var(--dpd-journey-dot);
+    --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
     padding: var(--dpd-mobile-section-pad) 0;
   }
 
@@ -1527,6 +1535,8 @@
   .design-product-development-page .dpd-journey-section {
     --dpd-journey-dot: 56px;
     --dpd-journey-icon-size: 32px;
+    --journey-roadmap-dot: var(--dpd-journey-dot);
+    --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
     padding: var(--dpd-mobile-section-pad-sm) 0;
   }
 
@@ -1556,6 +1566,46 @@
 }
 
 /* ── Solutions banner (Figma) ── */
+@media screen and (max-width: 479px) {
+  .design-product-development-page .dpd-journey-section {
+    --dpd-journey-dot: 44px;
+    --dpd-journey-icon-size: 26px;
+    --journey-roadmap-dot: var(--dpd-journey-dot);
+    --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
+    padding: 3rem 0;
+  }
+
+  .design-product-development-page .dpd-journey-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .design-product-development-page .dpd-journey-title {
+    font-size: clamp(1.625rem, 7vw, 1.875rem);
+  }
+
+  .design-product-development-page .dpd-journey-mobile-list {
+    gap: 1rem;
+    padding-left: 0;
+  }
+
+  .design-product-development-page .dpd-journey-mobile-list::before {
+    left: calc(var(--dpd-journey-dot) / 2 - 1px);
+  }
+
+  .design-product-development-page .dpd-journey-mobile-item {
+    gap: 0.75rem;
+  }
+
+  .design-product-development-page .dpd-journey-mobile-item .dpd-journey-dot {
+    box-shadow: 0 0 0 3px var(--color--white);
+  }
+
+  .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+}
+
 .design-product-development-page .dpd-solutions-banner-section {
   position: relative;
   overflow: hidden;

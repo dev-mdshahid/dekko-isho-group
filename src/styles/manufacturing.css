@@ -1946,6 +1946,12 @@
   --mfg-journey-blue: var(--color--primary);
   --mfg-journey-ring: var(--color--neutral-silver-night);
   --mfg-journey-line: color-mix(in srgb, var(--color--primary) 42%, white);
+  --journey-roadmap-dot: var(--mfg-journey-dot);
+  --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
+  --journey-roadmap-accent: var(--mfg-journey-blue);
+  --journey-roadmap-ring: var(--mfg-journey-ring);
+  --journey-roadmap-line: var(--mfg-journey-line);
+  --journey-roadmap-bg: var(--color--white);
   background-color: var(--color--white);
   padding: 100px 0;
 }
@@ -2127,6 +2133,8 @@
   .manufacturing-page .mfg-journey-section {
     --mfg-journey-dot: 64px;
     --mfg-journey-icon-size: 36px;
+    --journey-roadmap-dot: var(--mfg-journey-dot);
+    --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
     padding: 5rem 0;
   }
 
@@ -2207,6 +2215,8 @@
   .manufacturing-page .mfg-journey-section {
     --mfg-journey-dot: 56px;
     --mfg-journey-icon-size: 32px;
+    --journey-roadmap-dot: var(--mfg-journey-dot);
+    --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
     padding: 3.75rem 0;
   }
 
@@ -2457,6 +2467,10 @@
 
   /* Journey */
   .manufacturing-page .mfg-journey-section {
+    --mfg-journey-dot: 44px;
+    --mfg-journey-icon-size: 26px;
+    --journey-roadmap-dot: var(--mfg-journey-dot);
+    --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
     padding: 3.5rem 0;
   }
 
@@ -2488,12 +2502,10 @@
   }
 
   .manufacturing-page .mfg-journey-mobile-list::before {
-    left: 13px;
+    left: calc(var(--mfg-journey-dot) / 2 - 1px);
   }
 
   .manufacturing-page .mfg-journey-mobile .mfg-journey-dot {
-    width: 1.75rem;
-    height: 1.75rem;
     box-shadow: 0 0 0 3px var(--color--white);
   }
 

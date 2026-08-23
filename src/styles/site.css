@@ -14706,3 +14706,218 @@ html.lenis body {
   position: relative;
   z-index: 2;
 }
+
+/* Shared journey roadmap layout */
+.journey-roadmap-section {
+  --journey-roadmap-dot: 122px;
+  --journey-roadmap-icon-size: 64px;
+  --journey-roadmap-line: var(--color--neutral-silver-night);
+  --journey-roadmap-ring: var(--color--neutral-silver-night);
+  --journey-roadmap-accent: var(--color--primary);
+  --journey-roadmap-bg: var(--color--white);
+}
+
+.journey-roadmap-roadmap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1000 / 270;
+  min-height: 280px;
+  overflow: visible;
+}
+
+.journey-roadmap-path {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--journey-roadmap-line);
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.journey-roadmap-roadmap [data-journey-path],
+.journey-roadmap-roadmap [data-journey-path-ghost] {
+  stroke-width: 1.25;
+  stroke-dasharray: 5 6;
+}
+
+.journey-roadmap-nodes {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.journey-roadmap-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 12rem;
+  transform: translate(-50%, calc(var(--journey-roadmap-dot) / -2));
+  text-align: center;
+}
+
+.journey-roadmap-dot {
+  flex-shrink: 0;
+  width: var(--journey-roadmap-dot);
+  height: var(--journey-roadmap-dot);
+  border-radius: 50%;
+  background-color: var(--journey-roadmap-accent);
+  box-shadow: 0 0 0 4px var(--journey-roadmap-bg);
+}
+
+.journey-roadmap-roadmap .journey-roadmap-dot,
+.journey-roadmap-mobile-item .journey-roadmap-dot {
+  background-color: var(--journey-roadmap-bg);
+  border: 1px solid var(--journey-roadmap-ring);
+  box-shadow: 0 0 0 6px var(--journey-roadmap-bg);
+}
+
+.journey-roadmap-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  margin-top: 0.75rem;
+  object-fit: contain;
+}
+
+.journey-roadmap-roadmap .journey-roadmap-icon {
+  position: absolute;
+  top: calc((var(--journey-roadmap-dot) - var(--journey-roadmap-icon-size)) / 2);
+  left: calc(50% - var(--journey-roadmap-icon-size) / 2);
+  width: var(--journey-roadmap-icon-size);
+  height: var(--journey-roadmap-icon-size);
+  margin-top: 0;
+}
+
+.journey-roadmap-label {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.journey-roadmap-mobile {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .journey-roadmap-roadmap [data-journey-path-mask] {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .journey-roadmap-roadmap [data-journey-dot],
+  .journey-roadmap-roadmap [data-journey-icon],
+  .journey-roadmap-roadmap [data-journey-label],
+  .journey-roadmap-mobile [data-journey-mobile-dot],
+  .journey-roadmap-mobile [data-journey-mobile-icon],
+  .journey-roadmap-mobile [data-journey-mobile-label] {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .journey-roadmap-section {
+    --journey-roadmap-dot: 64px;
+    --journey-roadmap-icon-size: 36px;
+  }
+
+  .journey-roadmap-roadmap {
+    display: none;
+  }
+
+  .journey-roadmap-mobile {
+    display: block;
+  }
+
+  .journey-roadmap-mobile-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.375rem;
+    margin: 0;
+    padding: 0 0 0 0.25rem;
+    list-style: none;
+  }
+
+  .journey-roadmap-mobile-list::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--journey-roadmap-dot) / 2);
+    bottom: calc(var(--journey-roadmap-dot) / 2);
+    left: calc(var(--journey-roadmap-dot) / 2 - 1px);
+    width: 0;
+    border-left: 1.5px dashed var(--journey-roadmap-line);
+  }
+
+  .journey-roadmap-mobile-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+    z-index: 1;
+  }
+
+  .journey-roadmap-mobile-item .journey-roadmap-icon {
+    position: absolute;
+    top: calc(50% - var(--journey-roadmap-icon-size) / 2);
+    left: calc((var(--journey-roadmap-dot) - var(--journey-roadmap-icon-size)) / 2);
+    width: var(--journey-roadmap-icon-size);
+    height: var(--journey-roadmap-icon-size);
+    margin-top: 0;
+  }
+
+  .journey-roadmap-mobile-item .journey-roadmap-label {
+    min-width: 0;
+    margin-top: 0;
+    text-align: left;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .journey-roadmap-section {
+    --journey-roadmap-dot: 56px;
+    --journey-roadmap-icon-size: 32px;
+  }
+
+  .journey-roadmap-mobile-list {
+    gap: 1.25rem;
+  }
+
+  .journey-roadmap-mobile-item {
+    gap: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .journey-roadmap-section {
+    --journey-roadmap-dot: 44px;
+    --journey-roadmap-icon-size: 26px;
+  }
+
+  .journey-roadmap-mobile-list {
+    gap: 1rem;
+    padding-left: 0;
+  }
+
+  .journey-roadmap-mobile-item {
+    gap: 0.75rem;
+  }
+
+  .journey-roadmap-roadmap .journey-roadmap-dot,
+  .journey-roadmap-mobile-item .journey-roadmap-dot {
+    box-shadow: 0 0 0 3px var(--journey-roadmap-bg);
+  }
+}

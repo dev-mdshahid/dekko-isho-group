@@ -160,17 +160,25 @@ export function JourneyRoadmapSection({
   useJourneyRoadmapAnimation(sectionRef)
 
   return (
-    <section id={id} ref={sectionRef} className={`${classPrefix}-section`}>
-      <div className={`${classPrefix}-container`}>
-        <FadeIn id={`${id}-header`} className={`${classPrefix}-header`}>
+    <section
+      id={id}
+      ref={sectionRef}
+      className={`journey-roadmap-section ${classPrefix}-section`}
+    >
+      <div className={`journey-roadmap-container ${classPrefix}-container`}>
+        <FadeIn id={`${id}-header`} className={`journey-roadmap-header ${classPrefix}-header`}>
           <PreSectionTitle title={badge} />
-          <h2 className={`${classPrefix}-title`}>{title}</h2>
-          {description ? <p className={`${classPrefix}-description`}>{description}</p> : null}
+          <h2 className={`journey-roadmap-title ${classPrefix}-title`}>{title}</h2>
+          {description ? (
+            <p className={`journey-roadmap-description ${classPrefix}-description`}>
+              {description}
+            </p>
+          ) : null}
         </FadeIn>
 
-        <div className={`${classPrefix}-roadmap`} data-journey-roadmap>
+        <div className={`journey-roadmap-roadmap ${classPrefix}-roadmap`} data-journey-roadmap>
           <svg
-            className={`${classPrefix}-path`}
+            className={`journey-roadmap-path ${classPrefix}-path`}
             viewBox={`0 0 ${VB.w} ${VB.h}`}
             preserveAspectRatio="none"
             aria-hidden="true"
@@ -211,21 +219,33 @@ export function JourneyRoadmapSection({
             ))}
           </svg>
 
-          <ol className={`${classPrefix}-nodes`} aria-label={title}>
+          <ol
+            className={`journey-roadmap-nodes ${classPrefix}-nodes`}
+            aria-label={title}
+          >
             {stages.map((stage, index) => (
               <li
                 key={stage.id}
-                className={`${classPrefix}-node ${classPrefix}-node--${stage.row}`}
+                className={[
+                  'journey-roadmap-node',
+                  `journey-roadmap-node--${stage.row}`,
+                  `${classPrefix}-node`,
+                  `${classPrefix}-node--${stage.row}`,
+                ].join(' ')}
                 style={nodeStyle(stage.column, stage.row, columnCount, xPadLeft, xPadRight)}
                 data-journey-node
                 data-journey-step={index}
                 data-journey-row={stage.row}
                 data-journey-column={stage.column}
               >
-                <span className={`${classPrefix}-dot`} data-journey-dot aria-hidden="true" />
+                <span
+                  className={`journey-roadmap-dot ${classPrefix}-dot`}
+                  data-journey-dot
+                  aria-hidden="true"
+                />
                 {stage.icon ? (
                   <img
-                    className={`${classPrefix}-icon`}
+                    className={`journey-roadmap-icon ${classPrefix}-icon`}
                     src={stage.icon}
                     alt=""
                     width={64}
@@ -234,7 +254,7 @@ export function JourneyRoadmapSection({
                     aria-hidden="true"
                   />
                 ) : null}
-                <span className={`${classPrefix}-label`} data-journey-label>
+                <span className={`journey-roadmap-label ${classPrefix}-label`} data-journey-label>
                   {stage.label}
                 </span>
               </li>
@@ -242,24 +262,27 @@ export function JourneyRoadmapSection({
           </ol>
         </div>
 
-        <div className={`${classPrefix}-mobile`} data-journey-mobile>
-          <ol className={`${classPrefix}-mobile-list`} aria-label={title}>
+        <div className={`journey-roadmap-mobile ${classPrefix}-mobile`} data-journey-mobile>
+          <ol
+            className={`journey-roadmap-mobile-list ${classPrefix}-mobile-list`}
+            aria-label={title}
+          >
             {stages.map((stage, index) => (
               <li
                 key={stage.id}
-                className={`${classPrefix}-mobile-item`}
+                className={`journey-roadmap-mobile-item ${classPrefix}-mobile-item`}
                 data-journey-mobile-item
                 data-journey-step={index}
                 data-journey-row={stage.row}
               >
                 <span
-                  className={`${classPrefix}-dot`}
+                  className={`journey-roadmap-dot ${classPrefix}-dot`}
                   data-journey-mobile-dot
                   aria-hidden="true"
                 />
                 {stage.icon ? (
                   <img
-                    className={`${classPrefix}-icon`}
+                    className={`journey-roadmap-icon ${classPrefix}-icon`}
                     src={stage.icon}
                     alt=""
                     width={64}
@@ -268,7 +291,10 @@ export function JourneyRoadmapSection({
                     aria-hidden="true"
                   />
                 ) : null}
-                <span className={`${classPrefix}-label`} data-journey-mobile-label>
+                <span
+                  className={`journey-roadmap-label ${classPrefix}-label`}
+                  data-journey-mobile-label
+                >
                   {stage.label}
                 </span>
               </li>
