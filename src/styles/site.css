@@ -944,7 +944,7 @@ figcaption {
   grid-column-gap: var(--gap--gap-5);
   grid-row-gap: var(--gap--gap-5);
   grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr 1.2fr 1fr;
+  grid-template-columns: .9fr 1.25fr 1.2fr 1fr;
   position: relative;
   overflow: hidden;
 }
@@ -8726,7 +8726,7 @@ a.about-info-box:hover {
   .grid-footer-menu {
     grid-column-gap: var(--gap--gap-12);
     grid-row-gap: var(--gap--gap-12);
-    grid-template-columns: .8fr .8fr 1.2fr 1fr;
+    grid-template-columns: .75fr 1.1fr 1.2fr 1fr;
   }
 
   .grid-footer {
@@ -9165,7 +9165,7 @@ a.about-info-box:hover {
   }
 
   .grid-footer-menu {
-    grid-template-columns: .8fr 1fr 1fr 1fr;
+    grid-template-columns: .75fr 1.2fr 1fr 1fr;
   }
 
   .grid-footer {
