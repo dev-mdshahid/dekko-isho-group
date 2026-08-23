@@ -2154,6 +2154,31 @@
   }
 }
 
+@media screen and (max-width: 1435px) {
+  .about-chairman-section--about .about-chairman-container {
+    order: 1;
+  }
+
+  .about-chairman-section--about .about-chairman-visual {
+    position: relative;
+    inset: auto;
+    order: 2;
+    width: 100%;
+    height: clamp(26rem, 45vw, 40rem);
+    margin-top: 2rem;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-image {
+    object-position: right bottom;
+    mix-blend-mode: lighten;
+  }
+
+  .about-chairman-section--about .about-chairman-message {
+    width: 100%;
+    max-width: min(100%, 56rem);
+  }
+}
+
 @media screen and (max-width: 767px) {
   .about-chairman-section--about.section-spacing {
     padding-top: 3rem;
