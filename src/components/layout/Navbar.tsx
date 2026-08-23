@@ -387,7 +387,7 @@ function MobileNavDrawer({ isOpen, closeMenu }: MobileNavDrawerProps) {
           </NavLink>
           <MobileNavDropdown
             id="solutions"
-            label="Solutions"
+            label="Apparel Solutions"
             links={solutionNavLinks}
             isOpen={openDropdownId === 'solutions'}
             onToggle={() => toggleDropdown('solutions')}
@@ -511,7 +511,7 @@ export function Navbar() {
               </NavLink>
               <NavDropdown
                 id="solutions"
-                label="Solutions"
+                label="Apparel Solutions"
                 links={solutionNavLinks}
                 isOpen={isDropdownOpen('solutions')}
                 onToggle={() => toggle('solutions')}

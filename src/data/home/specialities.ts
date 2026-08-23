@@ -102,13 +102,13 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     imageWId: 'service-speciality-05-image',
     arrowWIds: ['service-speciality-05-arrow-1', 'service-speciality-05-arrow-2'],
     wrapperClass: 'five',
-    title: 'Intelligence in Every Process',
+    title: 'Digitalization in Every Process',
     icon: '/images/specialities/intelligence-icon.png',
     image: '/images/specialities/intelligence.png',
     features: [
       {
         group: 'Technology & Innovation',
-        items: ['GPRO', 'BROWZWEAR & CLO', 'TEXTRONIC', 'Automatic Machines'],
+        items: ['GPRO', 'BROWZWEAR & CLO', 'TEXTRONIC', 'Automatic Machines', 'Virtual Showroom'],
       },
     ],
     to: solutionPath('technology-integration'),

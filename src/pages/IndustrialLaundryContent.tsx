@@ -59,7 +59,7 @@ export function IndustrialLaundryContent() {
         content={industrialLaundryAdvancedFinishing}
       />
 
-      {/* 4. Production Capacity at Scale */}
+      {/* 4. Washing Capacity at Scale */}
       <ManufacturingCapacitySection
         idPrefix={ID_PREFIX}
         content={industrialLaundryWaterStewardship}

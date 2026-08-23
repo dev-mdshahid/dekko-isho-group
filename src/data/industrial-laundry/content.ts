@@ -26,6 +26,12 @@ export const industrialLaundryWashingProcesses = {
       imageAlt: 'Blue denim garments in a laundry basket',
     },
     {
+      id: 'dyeing',
+      title: 'Dyeing',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dyeing.png`,
+      imageAlt: 'Folded garments in assorted dyed colors',
+    },
+    {
       id: 'enzyme-wash',
       title: 'Enzyme Wash',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/enzyme-wash.png`,
@@ -49,12 +55,7 @@ export const industrialLaundryWashingProcesses = {
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/light-wash.png`,
       imageAlt: 'Light wash denim jeans with product tag',
     },
-    {
-      id: 'dyeing',
-      title: 'Dyeing',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dyeing.png`,
-      imageAlt: 'Folded garments in assorted dyed colors',
-    },
+    
   ],
 }
 
@@ -67,20 +68,20 @@ export const industrialLaundryAdvancedFinishing = {
   items: [
     {
       id: 'advanced-washing',
-      title: 'Advanced Washing',
+      title: 'Washing',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/advanced-washing.png`,
       imageAlt: 'Industrial advanced washing machines in finishing facility',
     },
     {
       id: 'dry-process',
       title: 'Dry Process',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dry-process-operators.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dry-process-image.png`,
       imageAlt: 'Operators performing dry process finishing work',
     },
     {
       id: 'hand-scraping-destroy',
       title: 'Hand Scraping & Destroy',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/hand-scraping-destroy.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/hand-scraping-destroy2.png`,
       imageAlt: 'Worker applying hand scraping and destroy effects',
     },
     {
@@ -92,14 +93,26 @@ export const industrialLaundryAdvancedFinishing = {
     {
       id: 'conveyor-dryers',
       title: 'Conveyor Dryers',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers2.png`,
       imageAlt: 'Garments moving through conveyor dryer line',
     },
     {
       id: 'sanforizing',
-      title: 'Sanforizing',
+      title: 'Research & Development',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sanforizing.jpg`,
       imageAlt: 'Sanforizing process area in laundry facility',
+    },
+    {
+      id: 'curing-chamber-machine',
+      title: 'Curing chamber/machine',
+      image: ``,
+      imageAlt: 'curing-chamber-machine',
+    },
+    {
+      id: 'ozone-wash',
+      title: 'Ozone Wash',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/jeanologia-ozone -washing.png`,
+      imageAlt: 'ozone-wash',
     },
   ],
 }
@@ -142,8 +155,8 @@ export const industrialLaundryInnovation = industrialLaundryExpertise
 
 export const industrialLaundryWaterStewardship = {
   badge: 'Monthly Capacity',
-  title: 'Production Capacity at Scale',
-  titleBefore: 'Production',
+  title: 'Washing Capacity at Scale',
+  titleBefore: 'Washing',
   titleAccent: 'Capacity',
   titleAfter: 'at Scale',
   description:
@@ -235,7 +248,7 @@ export const industrialLaundryLaboratory = {
       id: 'shrinkage',
       number: '03',
       accent: '#14B253',
-      title: 'Shrinkage Testing',
+      title: 'Physical & Chemical Parameter Testing',
       description: 'Dimensional stability confirmed before production transition.',
     },
   ],

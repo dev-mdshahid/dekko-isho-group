@@ -958,7 +958,8 @@ figcaption {
 
 .footer-title {
   color: var(--color--white);
-  font-size: var(--_typography---h6--h6);
+  /* font-size: var(--_typography---h6--h6); */
+  font-size: 1.5rem;
   margin-bottom: 0;
 }
 

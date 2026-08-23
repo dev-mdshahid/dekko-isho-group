@@ -136,7 +136,7 @@ export function Footer() {
                   variant="slide-in-bottom"
                   delay={250}
                 >
-                  <h2 className="footer-title">Solutions</h2>
+                  <h2 className="footer-title">Apparel Solutions</h2>
                   <div className="footer-links">
                     {FOOTER_SOLUTIONS_LINKS.map((solution) => (
                       <Link
@@ -172,7 +172,7 @@ export function Footer() {
                   variant="slide-in-bottom"
                   delay={450}
                 >
-                  <h2 className="footer-title">Businesses</h2>
+                  <h2 className="footer-title">Other Businesses</h2>
                   <div className="footer-links">
                     {FOOTER_BUSINESS_LINKS.map((link) => (
                       <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
