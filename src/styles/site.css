@@ -14513,7 +14513,7 @@ html.lenis body {
 
   padding: 0;
 
-  border: 0;
+  border: 1px solid rgba(16, 24, 40, 0.18);
   border-radius: 50%;
 
   background-color: transparent;
@@ -14534,6 +14534,7 @@ html.lenis body {
   background-color: transparent;
 
   /* CHANGED: corresponding brand color on hover */
+  border-color: var(--nav-social-brand);
   color: var(--nav-social-brand);
 
   outline: none;
