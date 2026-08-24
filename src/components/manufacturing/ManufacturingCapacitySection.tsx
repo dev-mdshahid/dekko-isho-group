@@ -20,6 +20,10 @@ export type ManufacturingCapacityContent = {
   ctaHref?: string
   stats: CapacityStat[]
   pills?: string[]
+  pillsWithIcons?: Array<{
+    icon: string
+    label: string
+  }>
   keyMetrics?: Array<{
     id: string
     label: string
@@ -55,10 +59,12 @@ export function ManufacturingCapacitySection({
     ctaHref,
     stats,
     pills,
+    pillsWithIcons,
     keyMetrics,
   } = content
 
   const hasAccentTitle = Boolean(titleLeadingAccent || (titleBefore && titleAccent))
+  const hasIconPills = Boolean(pillsWithIcons && pillsWithIcons.length > 0)
 
   return (
     <section id={`${idPrefix}-capacity`} className="service-step-section mfg-capacity-section">
@@ -121,7 +127,25 @@ export function ManufacturingCapacitySection({
             </FadeIn>
           </div>
 
-          {pills && pills.length > 0 && (
+          {hasIconPills ? (
+            <FadeIn
+              id={`${idPrefix}-capacity-icon-pills`}
+              className="mfg-capacity-icon-pills"
+            >
+              {pillsWithIcons?.map((pill) => (
+                <div key={`${pill.icon}-${pill.label}`} className="mfg-capacity-icon-pill">
+                  <img
+                    className="mfg-capacity-icon-pill-image"
+                    src={pill.icon}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                  <span className="mfg-capacity-icon-pill-label">{pill.label}</span>
+                </div>
+              ))}
+            </FadeIn>
+          ) : pills && pills.length > 0 ? (
             <FadeIn id={`${idPrefix}-capacity-pills`} className="mfg-capacity-pills">
               {pills.map((pill) => (
                 <span key={pill} className="mfg-capacity-pill">
@@ -129,7 +153,7 @@ export function ManufacturingCapacitySection({
                 </span>
               ))}
             </FadeIn>
-          )}
+          ) : null}
         </div>
       </div>
       <SectionLines border="grey" />

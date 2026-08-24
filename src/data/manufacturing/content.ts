@@ -187,6 +187,62 @@ export const manufacturingCapacity = {
   ],
 }
 
+export const MANUFACTURING_CAPACITY = {
+  badge: 'Monthly Production Capacity',
+  title: 'Manufacturing Capacity at Scale',
+  description:
+    'Built on vertical integration, advanced manufacturing technologies, and decades of apparel expertise, our production platform delivers consistency, flexibility, and operational excellence. Every stage of manufacturing is carefully managed to ensure reliable execution, superior quality, and on-time delivery.',
+  ctaLabel: 'Download Brochure',
+  ctaHref: '/docs/Dekko_ISHO_Group.pdf',
+  stats: [
+    {
+      id: 'total-capacity',
+      value: '3.5 Million',
+      label: 'Total Capacity (Pcs)',
+      variant: 'blue',
+    },
+    {
+      id: 'woven-tops',
+      value: '2.5 Million',
+      label: 'Woven Tops (Pcs)',
+      variant: 'sky',
+    },
+    {
+      id: 'woven-bottoms',
+      value: '1.0 M',
+      label: 'Woven Bottoms (Pcs)',
+      variant: 'navy',
+    },
+  ] satisfies CapacityStat[],
+  pills: [],
+  pillsWithIcons: [
+    {
+      icon: "/images/manufacturing/manufacturing-capacity/vertically-integrated-manufacturing.svg",
+      label: 'Vertically Integrated Manufacturing',
+    },
+    {
+      icon: "/images/manufacturing/manufacturing-capacity/advanced-european-machinery.svg",
+      label: 'Advanced European Machinery',
+    },
+    {
+      icon: "/images/manufacturing/manufacturing-capacity/technology-driven-operations.svg",
+      label: 'Technology-Driven Operations',
+    },
+    {
+      icon: "/images/manufacturing/manufacturing-capacity/3-dedicated-salesman-sample-lines.svg",
+      label: '3 Dedicated Salesman Sample Lines',
+    },
+    {
+      icon: "/images/manufacturing/manufacturing-capacity/quality-control-at-every-stage.svg",
+      label: 'Quality Control at Every Stage',
+    },
+    {
+      icon: "/images/manufacturing/manufacturing-capacity/global-customer-base.svg",
+      label: 'Global Customer Base',
+    },
+  ],
+}
+
 export const manufacturingEcosystem = {
   id: 'mfg-ecosystem',
   badge: 'Manufacturing Ecosystem',

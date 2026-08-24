@@ -23,7 +23,7 @@ import {
   // SolutionWhyItMattersSection,
 } from '../components/solutions'
 import {
-  manufacturingCapacity,
+  MANUFACTURING_CAPACITY,
   manufacturingCta,
   manufacturingProductionNetwork,
   // manufacturingExpertise,
@@ -61,7 +61,7 @@ export function ManufacturingContent() {
   return (
     <div ref={ref} className="solution-page manufacturing-page">
       <ManufacturingHeroSection />
-      <ManufacturingCapacitySection content={manufacturingCapacity} />
+      <ManufacturingCapacitySection content={MANUFACTURING_CAPACITY} />
       <ManufacturingEcosystemSection />
       <ManufacturingAutomationSection />
       <ManufacturingTechnologySection />
