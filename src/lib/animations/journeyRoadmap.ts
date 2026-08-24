@@ -23,9 +23,9 @@ const DOT_IN = 0.5
 const LABEL_IN = 0.44
 const LABEL_LAG = 0.1
 const GHOST_IN = 0.55
-const FINALE_HOLD = 0.32
 const PULSE = 0.22
 const MOBILE_CONNECTOR_IN = 0.68
+const NEXT_NODE_REVEAL_PROGRESS = 0.65
 
 /** Desktop flow: top row L→R, then bottom row R→L (follows the U-turn path). */
 function orderDesktopNodes(nodes: HTMLElement[]): HTMLElement[] {
@@ -196,18 +196,28 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
     })
 
     let cursor = GHOST_IN * 0.35
+    const firstMobileItem = mobileItems[0]
 
-    mobileItems.forEach((item, index) => {
-      const dot = item.querySelector<HTMLElement>('[data-journey-mobile-dot]')
-      const icon = item.querySelector<HTMLElement>('[data-journey-mobile-icon]')
-      const label = item.querySelector<HTMLElement>('[data-journey-mobile-label]')
+    if (firstMobileItem) {
+      revealNode(
+        tl,
+        firstMobileItem.querySelector<HTMLElement>('[data-journey-mobile-dot]'),
+        firstMobileItem.querySelector<HTMLElement>('[data-journey-mobile-label]'),
+        cursor,
+        mobileItems.length === 1,
+        firstMobileItem.querySelector<HTMLElement>('[data-journey-mobile-icon]'),
+      )
+      cursor += DOT_IN + HOLD
+    }
+
+    mobileItems.slice(0, -1).forEach((_item, index) => {
       const connector = mobileConnectors[index]
-      const isFinale = index === mobileItems.length - 1
-
-      revealNode(tl, dot, label, cursor, isFinale, icon)
-      cursor += DOT_IN + (isFinale ? FINALE_HOLD : HOLD)
+      const nextItem = mobileItems[index + 1]
 
       if (connector) {
+        const connectorStart = cursor
+        const nextRevealAt = connectorStart + MOBILE_CONNECTOR_IN * NEXT_NODE_REVEAL_PROGRESS
+
         tl.to(
           connector,
           {
@@ -215,9 +225,33 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
             duration: MOBILE_CONNECTOR_IN,
             ease: 'power2.inOut',
           },
-          cursor,
+          connectorStart,
         )
-        cursor += MOBILE_CONNECTOR_IN + HOLD
+
+        revealNode(
+          tl,
+          nextItem.querySelector<HTMLElement>('[data-journey-mobile-dot]'),
+          nextItem.querySelector<HTMLElement>('[data-journey-mobile-label]'),
+          nextRevealAt,
+          index + 1 === mobileItems.length - 1,
+          nextItem.querySelector<HTMLElement>('[data-journey-mobile-icon]'),
+        )
+
+        cursor = Math.max(
+          connectorStart + MOBILE_CONNECTOR_IN + HOLD,
+          nextRevealAt + DOT_IN + HOLD,
+        )
+      } else {
+        cursor += HOLD
+        revealNode(
+          tl,
+          nextItem.querySelector<HTMLElement>('[data-journey-mobile-dot]'),
+          nextItem.querySelector<HTMLElement>('[data-journey-mobile-label]'),
+          cursor,
+          index + 1 === mobileItems.length - 1,
+          nextItem.querySelector<HTMLElement>('[data-journey-mobile-icon]'),
+        )
+        cursor += DOT_IN + HOLD
       }
     })
   } else {
@@ -238,18 +272,29 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
 
     let cursor = GHOST_IN * 0.35
 
-    nodes.forEach((_node, index) => {
+    if (nodes[0]) {
       revealNode(
         tl,
-        dots[index] ?? null,
-        labels[index] ?? null,
+        dots[0] ?? null,
+        labels[0] ?? null,
         cursor,
-        index === nodes.length - 1,
-        icons[index] ?? null,
+        nodes.length === 1,
+        icons[0] ?? null,
       )
+      cursor += DOT_IN + HOLD
+    }
 
+    nodes.slice(0, -1).forEach((_node, index) => {
       const maskPath = maskPaths[index]
       if (!maskPath) {
+        revealNode(
+          tl,
+          dots[index + 1] ?? null,
+          labels[index + 1] ?? null,
+          cursor,
+          index + 1 === nodes.length - 1,
+          icons[index + 1] ?? null,
+        )
         cursor += DOT_IN + HOLD
         return
       }
@@ -257,8 +302,8 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
       const connectorPath = connectorPaths[index]
       const isTurn = connectorPath?.dataset.journeyTurn === 'true'
       const duration = isTurn ? TURN_ARRIVE : ARRIVE
-
-      cursor += DOT_IN + HOLD
+      const connectorStart = cursor
+      const nextRevealAt = connectorStart + duration * NEXT_NODE_REVEAL_PROGRESS
 
       tl.to(
         maskPath,
@@ -267,10 +312,22 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
           duration,
           ease: 'power2.inOut',
         },
-        cursor,
+        connectorStart,
       )
 
-      cursor += duration + (isTurn ? TURN_BREATH : HOLD)
+      revealNode(
+        tl,
+        dots[index + 1] ?? null,
+        labels[index + 1] ?? null,
+        nextRevealAt,
+        index + 1 === nodes.length - 1,
+        icons[index + 1] ?? null,
+      )
+
+      cursor = Math.max(
+        connectorStart + duration + (isTurn ? TURN_BREATH : HOLD),
+        nextRevealAt + DOT_IN + HOLD,
+      )
     })
   }
 

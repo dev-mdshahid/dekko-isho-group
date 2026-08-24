@@ -14837,9 +14837,9 @@ html.lenis body {
 
 @media screen and (max-width: 991px) {
   .journey-roadmap-section {
-    --journey-roadmap-dot: clamp(3.5rem, 8vw, 4rem);
-    --journey-roadmap-icon-size: clamp(2rem, 4.5vw, 2.25rem);
-    --journey-roadmap-label-size: clamp(1rem, 2.2vw, 1.125rem);
+    --journey-roadmap-dot: clamp(4rem, 8.5vw, 4.5rem);
+    --journey-roadmap-icon-size: clamp(2.5rem, 5.2vw, 2.75rem);
+    --journey-roadmap-label-size: clamp(1.0625rem, 2.2vw, 1.125rem);
     --journey-roadmap-mobile-gap: 1.375rem;
   }
 
@@ -14907,9 +14907,9 @@ html.lenis body {
 
 @media screen and (max-width: 767px) {
   .journey-roadmap-section {
-    --journey-roadmap-dot: clamp(3rem, 11vw, 3.5rem);
-    --journey-roadmap-icon-size: clamp(1.75rem, 6vw, 2rem);
-    --journey-roadmap-label-size: clamp(0.9375rem, 3vw, 1.0625rem);
+    --journey-roadmap-dot: clamp(3.75rem, 12vw, 4.25rem);
+    --journey-roadmap-icon-size: clamp(2.375rem, 7.5vw, 2.625rem);
+    --journey-roadmap-label-size: clamp(1rem, 3vw, 1.125rem);
     --journey-roadmap-mobile-gap: 1.25rem;
   }
 
@@ -14924,9 +14924,9 @@ html.lenis body {
 
 @media screen and (max-width: 479px) {
   .journey-roadmap-section {
-    --journey-roadmap-dot: clamp(2.75rem, 13vw, 3rem);
-    --journey-roadmap-icon-size: clamp(1.5rem, 7vw, 1.75rem);
-    --journey-roadmap-label-size: 1rem;
+    --journey-roadmap-dot: clamp(3.5rem, 15vw, 4rem);
+    --journey-roadmap-icon-size: clamp(2.25rem, 9vw, 2.5rem);
+    --journey-roadmap-label-size: 1.0625rem;
     --journey-roadmap-mobile-gap: 1rem;
   }
 

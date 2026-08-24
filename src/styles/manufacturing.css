@@ -2137,9 +2137,9 @@
 
 @media screen and (max-width: 991px) {
   .manufacturing-page .mfg-journey-section {
-    --mfg-journey-dot: clamp(3.5rem, 8vw, 4rem);
-    --mfg-journey-icon-size: clamp(2rem, 4.5vw, 2.25rem);
-    --mfg-journey-label-size: clamp(1rem, 2.2vw, 1.125rem);
+    --mfg-journey-dot: clamp(4rem, 8.5vw, 4.5rem);
+    --mfg-journey-icon-size: clamp(2.5rem, 5.2vw, 2.75rem);
+    --mfg-journey-label-size: clamp(1.0625rem, 2.2vw, 1.125rem);
     --mfg-journey-mobile-gap: 1.375rem;
     --journey-roadmap-dot: var(--mfg-journey-dot);
     --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
@@ -2229,9 +2229,9 @@
 
 @media screen and (max-width: 767px) {
   .manufacturing-page .mfg-journey-section {
-    --mfg-journey-dot: clamp(3rem, 11vw, 3.5rem);
-    --mfg-journey-icon-size: clamp(1.75rem, 6vw, 2rem);
-    --mfg-journey-label-size: clamp(0.9375rem, 3vw, 1.0625rem);
+    --mfg-journey-dot: clamp(3.75rem, 12vw, 4.25rem);
+    --mfg-journey-icon-size: clamp(2.375rem, 7.5vw, 2.625rem);
+    --mfg-journey-label-size: clamp(1rem, 3vw, 1.125rem);
     --mfg-journey-mobile-gap: 1.25rem;
     --journey-roadmap-dot: var(--mfg-journey-dot);
     --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
@@ -2487,9 +2487,9 @@
 
   /* Journey */
   .manufacturing-page .mfg-journey-section {
-    --mfg-journey-dot: clamp(2.75rem, 13vw, 3rem);
-    --mfg-journey-icon-size: clamp(1.5rem, 7vw, 1.75rem);
-    --mfg-journey-label-size: 1rem;
+    --mfg-journey-dot: clamp(3.5rem, 15vw, 4rem);
+    --mfg-journey-icon-size: clamp(2.25rem, 9vw, 2.5rem);
+    --mfg-journey-label-size: 1.0625rem;
     --mfg-journey-mobile-gap: 1.125rem;
     --journey-roadmap-dot: var(--mfg-journey-dot);
     --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
