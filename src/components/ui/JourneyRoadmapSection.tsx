@@ -193,7 +193,6 @@ export function JourneyRoadmapSection({
                   <path
                     data-journey-path-mask
                     d={connector.d}
-                    pathLength={1}
                     fill="none"
                     stroke="white"
                     strokeWidth="8"
@@ -297,6 +296,13 @@ export function JourneyRoadmapSection({
                 >
                   {stage.label}
                 </span>
+                {index < stages.length - 1 ? (
+                  <span
+                    className={`journey-roadmap-mobile-connector ${classPrefix}-mobile-connector`}
+                    data-journey-mobile-connector
+                    aria-hidden="true"
+                  />
+                ) : null}
               </li>
             ))}
           </ol>

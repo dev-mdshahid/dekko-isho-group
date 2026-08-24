@@ -1272,13 +1272,19 @@
 
 /* ── Product Development Journey roadmap ── */
 .design-product-development-page .dpd-journey-section {
-  --dpd-journey-dot: 122px;
-  --dpd-journey-icon-size: 64px;
+  --dpd-journey-dot: clamp(5.25rem, 7.4vw, 7.625rem);
+  --dpd-journey-icon-size: clamp(2.75rem, 4vw, 4rem);
+  --dpd-journey-label-size: clamp(0.9375rem, 1.12vw, 1.125rem);
+  --dpd-journey-node-width: clamp(8.5rem, 11vw, 12rem);
+  --dpd-journey-mobile-gap: 1.375rem;
   --dpd-journey-blue: var(--color--primary);
   --dpd-journey-ring: var(--color--neutral-silver-night);
   --dpd-journey-line: var(--color--neutral-silver-night);
   --journey-roadmap-dot: var(--dpd-journey-dot);
   --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
+  --journey-roadmap-label-size: var(--dpd-journey-label-size);
+  --journey-roadmap-node-width: var(--dpd-journey-node-width);
+  --journey-roadmap-mobile-gap: var(--dpd-journey-mobile-gap);
   --journey-roadmap-accent: var(--dpd-journey-blue);
   --journey-roadmap-ring: var(--dpd-journey-ring);
   --journey-roadmap-line: var(--dpd-journey-line);
@@ -1354,8 +1360,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .design-product-development-page .dpd-journey-roadmap [data-journey-path-mask] {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
   }
 
   .design-product-development-page .dpd-journey-roadmap [data-journey-path-ghost] {
@@ -1390,7 +1396,7 @@
   flex-direction: column;
   align-items: center;
   width: max-content;
-  max-width: 12rem;
+  max-width: var(--dpd-journey-node-width);
   transform: translate(-50%, calc(var(--dpd-journey-dot) / -2));
   text-align: center;
 }
@@ -1414,8 +1420,8 @@
 .design-product-development-page .dpd-journey-icon {
   display: block;
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  width: var(--dpd-journey-icon-size);
+  height: var(--dpd-journey-icon-size);
   margin-top: 0.75rem;
   object-fit: contain;
 }
@@ -1435,7 +1441,7 @@
   margin-top: 8px;
   color: var(--color--neutral-night);
   font-family: var(--_typography---font-family--heading);
-  font-size: 18px;
+  font-size: var(--dpd-journey-label-size);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -1449,10 +1455,14 @@
 
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 64px;
-    --dpd-journey-icon-size: 36px;
+    --dpd-journey-dot: clamp(3.5rem, 8vw, 4rem);
+    --dpd-journey-icon-size: clamp(2rem, 4.5vw, 2.25rem);
+    --dpd-journey-label-size: clamp(1rem, 2.2vw, 1.125rem);
+    --dpd-journey-mobile-gap: 1.375rem;
     --journey-roadmap-dot: var(--dpd-journey-dot);
     --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
+    --journey-roadmap-label-size: var(--dpd-journey-label-size);
+    --journey-roadmap-mobile-gap: var(--dpd-journey-mobile-gap);
     padding: var(--dpd-mobile-section-pad) 0;
   }
 
@@ -1481,20 +1491,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1.375rem;
+    gap: var(--dpd-journey-mobile-gap);
     margin: 0;
     padding: 0 0 0 0.25rem;
     list-style: none;
   }
 
   .design-product-development-page .dpd-journey-mobile-list::before {
-    content: '';
-    position: absolute;
-    top: calc(var(--dpd-journey-dot) / 2);
-    bottom: calc(var(--dpd-journey-dot) / 2);
-    left: calc(var(--dpd-journey-dot) / 2 - 1px);
-    width: 0;
-    border-left: 1.5px dashed var(--dpd-journey-line);
+    content: none;
   }
 
   .design-product-development-page .dpd-journey-mobile-item {
@@ -1503,6 +1507,17 @@
     align-items: center;
     gap: 1.125rem;
     z-index: 1;
+  }
+
+  .design-product-development-page .dpd-journey-mobile-connector {
+    position: absolute;
+    top: calc(var(--dpd-journey-dot) / 2);
+    left: calc(var(--dpd-journey-dot) / 2 - 1px);
+    width: 0;
+    height: calc(100% + var(--dpd-journey-mobile-gap));
+    border-left: 1.5px dashed var(--dpd-journey-line);
+    transform-origin: 50% 0%;
+    z-index: -1;
   }
 
   /* Same outlined circle as the desktop roadmap, laid out down the page. */
@@ -1524,19 +1539,24 @@
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
     margin-top: 0;
     text-align: left;
-    font-size: 1.125rem;
+    font-size: var(--dpd-journey-label-size);
     font-weight: 600;
     line-height: 1.35;
     white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 
 @media screen and (max-width: 767px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 56px;
-    --dpd-journey-icon-size: 32px;
+    --dpd-journey-dot: clamp(3rem, 11vw, 3.5rem);
+    --dpd-journey-icon-size: clamp(1.75rem, 6vw, 2rem);
+    --dpd-journey-label-size: clamp(0.9375rem, 3vw, 1.0625rem);
+    --dpd-journey-mobile-gap: 1.25rem;
     --journey-roadmap-dot: var(--dpd-journey-dot);
     --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
+    --journey-roadmap-label-size: var(--dpd-journey-label-size);
+    --journey-roadmap-mobile-gap: var(--dpd-journey-mobile-gap);
     padding: var(--dpd-mobile-section-pad-sm) 0;
   }
 
@@ -1553,7 +1573,7 @@
   }
 
   .design-product-development-page .dpd-journey-mobile-list {
-    gap: 1.25rem;
+    gap: var(--dpd-journey-mobile-gap);
   }
 
   .design-product-development-page .dpd-journey-mobile-item {
@@ -1561,17 +1581,21 @@
   }
 
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
-    font-size: 1.0625rem;
+    font-size: var(--dpd-journey-label-size);
   }
 }
 
 /* ── Solutions banner (Figma) ── */
 @media screen and (max-width: 479px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 44px;
-    --dpd-journey-icon-size: 26px;
+    --dpd-journey-dot: clamp(2.75rem, 13vw, 3rem);
+    --dpd-journey-icon-size: clamp(1.5rem, 7vw, 1.75rem);
+    --dpd-journey-label-size: 1rem;
+    --dpd-journey-mobile-gap: 1rem;
     --journey-roadmap-dot: var(--dpd-journey-dot);
     --journey-roadmap-icon-size: var(--dpd-journey-icon-size);
+    --journey-roadmap-label-size: var(--dpd-journey-label-size);
+    --journey-roadmap-mobile-gap: var(--dpd-journey-mobile-gap);
     padding: 3rem 0;
   }
 
@@ -1584,12 +1608,12 @@
   }
 
   .design-product-development-page .dpd-journey-mobile-list {
-    gap: 1rem;
+    gap: var(--dpd-journey-mobile-gap);
     padding-left: 0;
   }
 
   .design-product-development-page .dpd-journey-mobile-list::before {
-    left: calc(var(--dpd-journey-dot) / 2 - 1px);
+    content: none;
   }
 
   .design-product-development-page .dpd-journey-mobile-item {
@@ -1601,7 +1625,7 @@
   }
 
   .design-product-development-page .dpd-journey-mobile-item .dpd-journey-label {
-    font-size: 1rem;
+    font-size: var(--dpd-journey-label-size);
     line-height: 1.35;
   }
 }

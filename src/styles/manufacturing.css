@@ -1941,13 +1941,19 @@
 
 /* ── Manufacturing Journey roadmap ── */
 .manufacturing-page .mfg-journey-section {
-  --mfg-journey-dot: 122px;
-  --mfg-journey-icon-size: 64px;
+  --mfg-journey-dot: clamp(5.25rem, 7.4vw, 7.625rem);
+  --mfg-journey-icon-size: clamp(2.75rem, 4vw, 4rem);
+  --mfg-journey-label-size: clamp(0.9375rem, 1.12vw, 1.125rem);
+  --mfg-journey-node-width: clamp(8.5rem, 11vw, 12rem);
+  --mfg-journey-mobile-gap: 1.375rem;
   --mfg-journey-blue: var(--color--primary);
   --mfg-journey-ring: var(--color--neutral-silver-night);
   --mfg-journey-line: color-mix(in srgb, var(--color--primary) 42%, white);
   --journey-roadmap-dot: var(--mfg-journey-dot);
   --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
+  --journey-roadmap-label-size: var(--mfg-journey-label-size);
+  --journey-roadmap-node-width: var(--mfg-journey-node-width);
+  --journey-roadmap-mobile-gap: var(--mfg-journey-mobile-gap);
   --journey-roadmap-accent: var(--mfg-journey-blue);
   --journey-roadmap-ring: var(--mfg-journey-ring);
   --journey-roadmap-line: var(--mfg-journey-line);
@@ -2037,8 +2043,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .manufacturing-page .mfg-journey-roadmap [data-journey-path-mask] {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
   }
 
   .manufacturing-page .mfg-journey-roadmap [data-journey-path-ghost] {
@@ -2074,7 +2080,7 @@
   flex-direction: column;
   align-items: center;
   width: max-content;
-  max-width: 12rem;
+  max-width: var(--mfg-journey-node-width);
   transform: translate(-50%, calc(var(--mfg-journey-dot) / -2));
   text-align: center;
 }
@@ -2117,7 +2123,7 @@
   margin-top: 8px;
   color: var(--color--neutral-night);
   font-family: var(--_typography---font-family--heading);
-  font-size: 18px;
+  font-size: var(--mfg-journey-label-size);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -2131,10 +2137,14 @@
 
 @media screen and (max-width: 991px) {
   .manufacturing-page .mfg-journey-section {
-    --mfg-journey-dot: 64px;
-    --mfg-journey-icon-size: 36px;
+    --mfg-journey-dot: clamp(3.5rem, 8vw, 4rem);
+    --mfg-journey-icon-size: clamp(2rem, 4.5vw, 2.25rem);
+    --mfg-journey-label-size: clamp(1rem, 2.2vw, 1.125rem);
+    --mfg-journey-mobile-gap: 1.375rem;
     --journey-roadmap-dot: var(--mfg-journey-dot);
     --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
+    --journey-roadmap-label-size: var(--mfg-journey-label-size);
+    --journey-roadmap-mobile-gap: var(--mfg-journey-mobile-gap);
     padding: 5rem 0;
   }
 
@@ -2162,20 +2172,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1.375rem;
+    gap: var(--mfg-journey-mobile-gap);
     margin: 0;
     padding: 0 0 0 0.25rem;
     list-style: none;
   }
 
   .manufacturing-page .mfg-journey-mobile-list::before {
-    content: '';
-    position: absolute;
-    top: calc(var(--mfg-journey-dot) / 2);
-    bottom: calc(var(--mfg-journey-dot) / 2);
-    left: calc(var(--mfg-journey-dot) / 2 - 1px);
-    width: 0;
-    border-left: 1.5px dashed var(--mfg-journey-line);
+    content: none;
   }
 
   .manufacturing-page .mfg-journey-mobile-item {
@@ -2184,6 +2188,17 @@
     align-items: center;
     gap: 1rem;
     z-index: 1;
+  }
+
+  .manufacturing-page .mfg-journey-mobile-connector {
+    position: absolute;
+    top: calc(var(--mfg-journey-dot) / 2);
+    left: calc(var(--mfg-journey-dot) / 2 - 1px);
+    width: 0;
+    height: calc(100% + var(--mfg-journey-mobile-gap));
+    border-left: 1.5px dashed var(--mfg-journey-line);
+    transform-origin: 50% 0%;
+    z-index: -1;
   }
 
   .manufacturing-page .mfg-journey-mobile-item .mfg-journey-dot {
@@ -2204,19 +2219,24 @@
   .manufacturing-page .mfg-journey-mobile-item .mfg-journey-label {
     margin-top: 0;
     text-align: left;
-    font-size: 1.125rem;
+    font-size: var(--mfg-journey-label-size);
     font-weight: 600;
     line-height: 1.35;
     white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 
 @media screen and (max-width: 767px) {
   .manufacturing-page .mfg-journey-section {
-    --mfg-journey-dot: 56px;
-    --mfg-journey-icon-size: 32px;
+    --mfg-journey-dot: clamp(3rem, 11vw, 3.5rem);
+    --mfg-journey-icon-size: clamp(1.75rem, 6vw, 2rem);
+    --mfg-journey-label-size: clamp(0.9375rem, 3vw, 1.0625rem);
+    --mfg-journey-mobile-gap: 1.25rem;
     --journey-roadmap-dot: var(--mfg-journey-dot);
     --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
+    --journey-roadmap-label-size: var(--mfg-journey-label-size);
+    --journey-roadmap-mobile-gap: var(--mfg-journey-mobile-gap);
     padding: 3.75rem 0;
   }
 
@@ -2230,7 +2250,7 @@
   }
 
   .manufacturing-page .mfg-journey-mobile-list {
-    gap: 1.25rem;
+    gap: var(--mfg-journey-mobile-gap);
   }
 
   .manufacturing-page .mfg-journey-mobile-item {
@@ -2238,7 +2258,7 @@
   }
 
   .manufacturing-page .mfg-journey-mobile-item .mfg-journey-label {
-    font-size: 1.0625rem;
+    font-size: var(--mfg-journey-label-size);
   }
 }
 
@@ -2467,10 +2487,14 @@
 
   /* Journey */
   .manufacturing-page .mfg-journey-section {
-    --mfg-journey-dot: 44px;
-    --mfg-journey-icon-size: 26px;
+    --mfg-journey-dot: clamp(2.75rem, 13vw, 3rem);
+    --mfg-journey-icon-size: clamp(1.5rem, 7vw, 1.75rem);
+    --mfg-journey-label-size: 1rem;
+    --mfg-journey-mobile-gap: 1.125rem;
     --journey-roadmap-dot: var(--mfg-journey-dot);
     --journey-roadmap-icon-size: var(--mfg-journey-icon-size);
+    --journey-roadmap-label-size: var(--mfg-journey-label-size);
+    --journey-roadmap-mobile-gap: var(--mfg-journey-mobile-gap);
     padding: 3.5rem 0;
   }
 
@@ -2497,12 +2521,12 @@
   }
 
   .manufacturing-page .mfg-journey-mobile-list {
-    gap: 1.125rem;
+    gap: var(--mfg-journey-mobile-gap);
     padding-left: 0.15rem;
   }
 
   .manufacturing-page .mfg-journey-mobile-list::before {
-    left: calc(var(--mfg-journey-dot) / 2 - 1px);
+    content: none;
   }
 
   .manufacturing-page .mfg-journey-mobile .mfg-journey-dot {
@@ -2514,7 +2538,7 @@
   }
 
   .manufacturing-page .mfg-journey-mobile-item .mfg-journey-label {
-    font-size: 1rem;
+    font-size: var(--mfg-journey-label-size);
     line-height: 1.35;
   }
 

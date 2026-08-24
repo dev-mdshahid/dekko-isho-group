@@ -15,44 +15,17 @@ gsap.registerPlugin(ScrollTrigger)
  * For each stage: path advances → node lands → brief hold → next.
  * At the top→bottom turn, a longer breath marks the handoff.
  */
-const ARRIVE = 0.4
+const ARRIVE = 0.72
 const HOLD = 0.16
 const TURN_BREATH = 0.48
-const TURN_ARRIVE = 0.64
+const TURN_ARRIVE = 1
 const DOT_IN = 0.5
 const LABEL_IN = 0.44
 const LABEL_LAG = 0.1
 const GHOST_IN = 0.55
 const FINALE_HOLD = 0.32
 const PULSE = 0.22
-
-type Beat = {
-  index: number
-  time: number
-  isFinale: boolean
-}
-
-function buildBeats(rows: Array<'top' | 'bottom'>): { beats: Beat[]; total: number } {
-  const beats: Beat[] = []
-  let time = GHOST_IN * 0.35
-
-  rows.forEach((row, index) => {
-    const prev = rows[index - 1]
-    if (prev === 'top' && row === 'bottom') {
-      time += TURN_BREATH
-    }
-
-    beats.push({
-      index,
-      time,
-      isFinale: index === rows.length - 1,
-    })
-
-    time += ARRIVE + (index === rows.length - 1 ? FINALE_HOLD : HOLD)
-  })
-
-  return { beats, total: time }
-}
+const MOBILE_CONNECTOR_IN = 0.68
 
 /** Desktop flow: top row L→R, then bottom row R→L (follows the U-turn path). */
 function orderDesktopNodes(nodes: HTMLElement[]): HTMLElement[] {
@@ -77,6 +50,7 @@ function resetVisible(section: HTMLElement) {
   const icons = section.querySelectorAll<HTMLElement>('[data-journey-icon]')
   const labels = section.querySelectorAll<HTMLElement>('[data-journey-label]')
   const mobileItems = section.querySelectorAll<HTMLElement>('[data-journey-mobile-item]')
+  const mobileConnectors = section.querySelectorAll<HTMLElement>('[data-journey-mobile-connector]')
   const mobileDots = section.querySelectorAll<HTMLElement>('[data-journey-mobile-dot]')
   const mobileIcons = section.querySelectorAll<HTMLElement>('[data-journey-mobile-icon]')
   const mobileLabels = section.querySelectorAll<HTMLElement>('[data-journey-mobile-label]')
@@ -86,9 +60,18 @@ function resetVisible(section: HTMLElement) {
   gsap.set(icons, { clearProps: 'opacity,transform' })
   gsap.set(labels, { clearProps: 'opacity,transform' })
   gsap.set(mobileItems, { clearProps: 'opacity,transform' })
+  gsap.set(mobileConnectors, { clearProps: 'opacity,transform,transformOrigin' })
   gsap.set(mobileDots, { clearProps: 'opacity,transform' })
   gsap.set(mobileIcons, { clearProps: 'opacity,transform' })
   gsap.set(mobileLabels, { clearProps: 'opacity,transform' })
+}
+
+function pathLength(path: SVGPathElement) {
+  try {
+    return path.getTotalLength()
+  } catch {
+    return 1
+  }
 }
 
 function revealNode(
@@ -173,6 +156,9 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
   const mobileItems = Array.from(
     section.querySelectorAll<HTMLElement>('[data-journey-mobile-item]'),
   ).sort((a, b) => Number(a.dataset.journeyStep ?? 0) - Number(b.dataset.journeyStep ?? 0))
+  const mobileConnectors = mobileItems.map((item) =>
+    item.querySelector<HTMLElement>('[data-journey-mobile-connector]'),
+  )
 
   if (!roadmap && !mobile) return () => {}
 
@@ -194,11 +180,6 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
   })
 
   if (mobileMode) {
-    const rows = mobileItems.map(
-      (item) => (item.dataset.journeyRow === 'bottom' ? 'bottom' : 'top') as 'top' | 'bottom',
-    )
-    const { beats } = buildBeats(rows)
-
     mobileItems.forEach((item) => {
       const dot = item.querySelector<HTMLElement>('[data-journey-mobile-dot]')
       const icon = item.querySelector<HTMLElement>('[data-journey-mobile-icon]')
@@ -208,14 +189,36 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
       if (icon) gsap.set(icon, { opacity: 0, y: 12 })
       if (label) gsap.set(label, { opacity: 0, y: 12 })
     })
+    gsap.set(mobileConnectors.filter(Boolean), {
+      opacity: 1,
+      scaleY: 0,
+      transformOrigin: '50% 0%',
+    })
 
-    beats.forEach((beat) => {
-      const item = mobileItems[beat.index]
-      if (!item) return
+    let cursor = GHOST_IN * 0.35
+
+    mobileItems.forEach((item, index) => {
       const dot = item.querySelector<HTMLElement>('[data-journey-mobile-dot]')
       const icon = item.querySelector<HTMLElement>('[data-journey-mobile-icon]')
       const label = item.querySelector<HTMLElement>('[data-journey-mobile-label]')
-      revealNode(tl, dot, label, beat.time, beat.isFinale, icon)
+      const connector = mobileConnectors[index]
+      const isFinale = index === mobileItems.length - 1
+
+      revealNode(tl, dot, label, cursor, isFinale, icon)
+      cursor += DOT_IN + (isFinale ? FINALE_HOLD : HOLD)
+
+      if (connector) {
+        tl.to(
+          connector,
+          {
+            scaleY: 1,
+            duration: MOBILE_CONNECTOR_IN,
+            ease: 'power2.inOut',
+          },
+          cursor,
+        )
+        cursor += MOBILE_CONNECTOR_IN + HOLD
+      }
     })
   } else {
     const dots = nodes.map((node) => node.querySelector<HTMLElement>('[data-journey-dot]'))
@@ -225,7 +228,13 @@ export function initJourneyRoadmapAnimations(section: HTMLElement): AnimationCle
     gsap.set(dots.filter(Boolean), { opacity: 0, scale: 0.4, transformOrigin: '50% 50%' })
     gsap.set(icons.filter(Boolean), { opacity: 0, y: 12 })
     gsap.set(labels.filter(Boolean), { opacity: 0, y: 16 })
-    gsap.set(maskPaths, { strokeDasharray: 1, strokeDashoffset: 1 })
+    maskPaths.forEach((maskPath) => {
+      const length = pathLength(maskPath)
+      gsap.set(maskPath, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+      })
+    })
 
     let cursor = GHOST_IN * 0.35
 
