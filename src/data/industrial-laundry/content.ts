@@ -105,7 +105,7 @@ export const industrialLaundryAdvancedFinishing = {
     {
       id: 'curing-chamber-machine',
       title: 'Curing chamber/machine',
-      image: ``,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/curing-chamber-machine.png`,
       imageAlt: 'curing-chamber-machine',
     },
     {
