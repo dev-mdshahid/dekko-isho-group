@@ -222,7 +222,7 @@ export const MANUFACTURING_CAPACITY = {
     },
     {
       icon: "/images/manufacturing/manufacturing-capacity/advanced-european-machinery.svg",
-      label: 'Advanced European Machinery',
+      label: 'Advanced Global Machinery Brands',
     },
     {
       icon: "/images/manufacturing/manufacturing-capacity/technology-driven-operations.svg",
@@ -230,7 +230,7 @@ export const MANUFACTURING_CAPACITY = {
     },
     {
       icon: "/images/manufacturing/manufacturing-capacity/3-dedicated-salesman-sample-lines.svg",
-      label: '3 Dedicated Salesman Sample Lines',
+      label: 'Dedicated Salesman Samples (SMS) Line',
     },
     {
       icon: "/images/manufacturing/manufacturing-capacity/quality-control-at-every-stage.svg",
