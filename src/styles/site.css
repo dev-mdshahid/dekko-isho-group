@@ -14142,6 +14142,7 @@ a.about-info-box:hover {
 
   .capacity-stat-circle-inner {
     padding: clamp(0.45rem, 2.2cqi, 1.1rem);
+    font-family: var(--_typography---font-family--heading);
   }
 }
 
