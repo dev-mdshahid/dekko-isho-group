@@ -20,14 +20,14 @@ export const industrialLaundryWashingProcesses = {
     'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements. From garment and enzyme washes to specialized denim treatments and dyeing, we ensure consistent quality, repeatable results, and production flexibility across every order.',
   items: [
     {
-      id: 'garment-wash',
-      title: 'Garment Wash',
+      id: 'garment-dyeing',
+      title: 'Garment Dyeing',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/garment-wash.png`,
       imageAlt: 'Blue denim garments in a laundry basket',
     },
     {
-      id: 'dyeing',
-      title: 'Dyeing',
+      id: 'denim-wash',
+      title: 'Denim Wash',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dyeing.png`,
       imageAlt: 'Folded garments in assorted dyed colors',
     },
