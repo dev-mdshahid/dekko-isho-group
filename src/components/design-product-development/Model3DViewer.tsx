@@ -203,7 +203,7 @@ const Model3DViewer = ({
           style={{
             width: '100%',
             height: '100%',
-            borderRadius: '1.5rem',
+            borderRadius: '1rem',
           }}
         >
           {/* Canvas background */}
