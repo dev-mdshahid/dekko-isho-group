@@ -1,5 +1,4 @@
 
-import { ArrowUpRight } from 'lucide-react'
 import type { CSSProperties } from 'react'
 
 import { designProductDevelopmentProductRange } from '../../data/design-product-development/content'
@@ -47,9 +46,7 @@ const ProductRange = () => {
               <div className="dpd-product-range-card-body">
                 <h3 className="dpd-product-range-card-title">
                   <span>{item.label}</span>
-                  <ArrowUpRight aria-hidden="true" className="dpd-product-range-card-icon" />
                 </h3>
-                <p className="dpd-product-range-card-meta">{item.meta}</p>
               </div>
             </article>
           ))}

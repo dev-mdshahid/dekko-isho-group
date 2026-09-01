@@ -27,7 +27,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'formal-shirts',
       label: 'Formal Shirts',
-      meta: 'Product category',
       image: '',
       imageAlt: '3D object visual for formal shirts',
       background: '#9fc0f4',
@@ -35,7 +34,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'casual-shirts',
       label: 'Casual Shirts',
-      meta: 'Product category',
       image: '',
       imageAlt: '3D object visual for casual shirts',
       background: '#d7e96a',
@@ -43,7 +41,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'pants',
       label: 'Pants',
-      meta: 'Product category',
       image: '',
       imageAlt: '3D object visual for pants',
       background: '#e6dc8e',
@@ -51,7 +48,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'denim-twill-jackets',
       label: 'Denim & Twill Jackets',
-      meta: 'Product category',
       image: '',
       imageAlt: '3D object visual for denim and twill jackets',
       background: '#efa5b9',
@@ -59,7 +55,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'quilted-shirts-jackets',
       label: 'Quilted Shirts & Jackets',
-      meta: 'Product category',
       image: '',
       imageAlt: '3D object visual for quilted shirts and jackets',
       background: '#adcbb2',
@@ -67,7 +62,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'shakets',
       label: 'Shakets',
-      meta: 'Product category',
       image: '',
       imageAlt: '3D object visual for shakets',
       background: '#9fb3c8',
@@ -75,7 +69,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'ladies-blouse',
       label: "Ladies' Blouse",
-      meta: 'Product category',
       image: '',
       imageAlt: "3D object visual for ladies' blouse",
       background: '#f1cf86',
@@ -83,7 +76,6 @@ export const designProductDevelopmentProductRange = {
     {
       id: 'ladies-dress',
       label: "Ladies' Dress",
-      meta: 'Product category',
       image: '',
       imageAlt: "3D object visual for ladies' dress",
       background: '#c4a7df',

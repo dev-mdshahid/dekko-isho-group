@@ -111,14 +111,14 @@
 
 .design-product-development-page .dpd-product-range-card {
   --dpd-product-card-bg: #9fc0f4;
-  --dpd-product-card-panel: #102235;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   min-width: 0;
-  overflow: hidden;
-  border-radius: 1.5rem;
-  background-color: var(--dpd-product-card-panel);
-  box-shadow: 0 1.25rem 3.5rem rgb(25 31 36 / 16%);
+  padding: 0.5rem 0.5rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--color--neutral-night) 12%, transparent);
+  border-radius: 1.75rem;
+  background-color: rgb(255 255 255 / 42%);
 }
 
 .design-product-development-page .dpd-product-range-card-visual {
@@ -129,10 +129,11 @@
   width: 100%;
   aspect-ratio: 1 / 1.18;
   overflow: hidden;
-  border-radius: 1.5rem 1.5rem 1.25rem 1.25rem;
+  border-radius: 1.5rem;
   background:
     radial-gradient(circle at 50% 80%, rgb(255 255 255 / 34%) 0 16%, transparent 44%),
     linear-gradient(145deg, color-mix(in srgb, var(--dpd-product-card-bg) 82%, white), var(--dpd-product-card-bg));
+  box-shadow: 0 1.25rem 3.5rem rgb(25 31 36 / 12%);
 }
 
 .design-product-development-page .dpd-product-range-card-placeholder {
@@ -157,47 +158,13 @@
   filter: drop-shadow(0 1.5rem 1.75rem rgb(0 0 0 / 18%));
 }
 
-.design-product-development-page .dpd-product-range-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.375rem 1.5rem 1.5rem;
-  border-top: 1px solid rgb(255 255 255 / 8%);
-  background:
-    linear-gradient(135deg, rgb(37 149 213 / 16%) 0%, transparent 42%),
-    linear-gradient(180deg, #142944 0%, var(--dpd-product-card-panel) 100%);
-}
-
 .design-product-development-page .dpd-product-range-card-title {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.75rem;
   margin: 0;
-  color: var(--color--white);
+  padding-inline: 0.125rem;
+  color: var(--color--neutral-night);
   font-size: clamp(1rem, 1.4vw, 1.125rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.35;
-}
-
-.design-product-development-page .dpd-product-range-card-title span {
-  min-width: 0;
-}
-
-.design-product-development-page .dpd-product-range-card-icon {
-  width: 1rem;
-  height: 1rem;
-  flex: none;
-  color: currentColor;
-  stroke-width: 1.8;
-}
-
-.design-product-development-page .dpd-product-range-card-meta {
-  margin: 0;
-  color: #9eb9cc;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  line-height: 1.45;
 }
 
 .design-product-development-page .dpd-product-range-section .noise-overlay {
@@ -253,16 +220,14 @@
   }
 
   .design-product-development-page .dpd-product-range-card {
-    border-radius: 1.125rem;
+    gap: 0.75rem;
+    padding: 0.375rem 0.375rem 0.75rem;
+    border-radius: 1.375rem;
   }
 
   .design-product-development-page .dpd-product-range-card-visual {
     aspect-ratio: 16 / 11;
-    border-radius: 1.125rem 1.125rem 1rem 1rem;
-  }
-
-  .design-product-development-page .dpd-product-range-card-body {
-    padding: 1.125rem 1.25rem 1.25rem;
+    border-radius: 1.125rem;
   }
 
   .design-product-development-page .dpd-product-range-card-title {
