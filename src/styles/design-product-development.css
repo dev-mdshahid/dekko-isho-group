@@ -57,7 +57,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: var(--color--neutral-seasalt);
+  /* background-color: var(--color--neutral-seasalt); */
   padding: clamp(4rem, 8vw, 6.5rem) 0;
 }
 
@@ -174,8 +174,9 @@
   width: 100%;
   height: 100%;
   border-radius: 1.5rem;
-  background-color: #ffffff;
   overflow: hidden;
+  padding: 8px;
+  border: 1px solid #909090;
 }
 
 .design-product-development-page .dpd-product-range-card--3d .dpd-product-range-card-visual {
