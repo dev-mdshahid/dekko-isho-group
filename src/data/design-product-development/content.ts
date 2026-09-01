@@ -30,6 +30,7 @@ export const designProductDevelopmentProductRange = {
       image: '',
       imageAlt: '3D object visual for formal shirts',
       background: '#9fc0f4',
+      model3d: '/images/design-product-development/3d-objects/3d-half-sheeve-shirt-white.fbx',
     },
     {
       id: 'casual-shirts',
@@ -37,6 +38,7 @@ export const designProductDevelopmentProductRange = {
       image: '',
       imageAlt: '3D object visual for casual shirts',
       background: '#d7e96a',
+      model3d: '/images/design-product-development/3d-objects/3d-half-sleeve-white-shirt.obj',
     },
     {
       id: 'pants',
@@ -44,6 +46,7 @@ export const designProductDevelopmentProductRange = {
       image: '',
       imageAlt: '3D object visual for pants',
       background: '#e6dc8e',
+      model3d: '/images/design-product-development/3d-objects/3d-half-sheeve-shirt-white.fbx',
     },
     {
       id: 'denim-twill-jackets',
@@ -51,8 +54,9 @@ export const designProductDevelopmentProductRange = {
       image: '',
       imageAlt: '3D object visual for denim and twill jackets',
       background: '#efa5b9',
+      model3d: '/images/design-product-development/3d-objects/3d-half-sleeve-white-shirt.obj',
     },
-    {
+    /*{
       id: 'quilted-shirts-jackets',
       label: 'Quilted Shirts & Jackets',
       image: '',
@@ -79,7 +83,7 @@ export const designProductDevelopmentProductRange = {
       image: '',
       imageAlt: "3D object visual for ladies' dress",
       background: '#c4a7df',
-    },
+    },*/
   ],
 }
 

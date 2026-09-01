@@ -5,6 +5,7 @@ import { designProductDevelopmentProductRange } from '../../data/design-product-
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
+import Model3DViewer from './Model3DViewer'
 
 const ProductRange = () => {
   const { id, badge, title, items } = designProductDevelopmentProductRange
@@ -26,12 +27,14 @@ const ProductRange = () => {
             <article
               key={item.id}
               id={`dpd-product-range-${item.id}`}
-              className="dpd-product-range-card"
+              className={`dpd-product-range-card ${item.model3d ? 'dpd-product-range-card--3d' : ''}`}
               style={{ '--dpd-product-card-bg': item.background } as CSSProperties}
               data-solution-animate="card"
             >
               <div className="dpd-product-range-card-visual">
-                {item.image ? (
+                {item.model3d ? (
+                  <Model3DViewer modelPath={item.model3d} label={item.label} />
+                ) : item.image ? (
                   <img
                     src={item.image}
                     alt={item.imageAlt}
