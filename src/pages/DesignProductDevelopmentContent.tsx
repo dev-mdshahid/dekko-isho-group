@@ -28,6 +28,7 @@ import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useSolutionAnimations } from '../hooks/useSolutionAnimations'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+import ProductRange from '../components/design-product-development/ProductRange'
 
 const ID_PREFIX = 'dpd'
 
@@ -44,6 +45,7 @@ export function DesignProductDevelopmentContent() {
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...designProductDevelopmentHero} />
       <DesignCapabilitiesSection />
       <DesignStudioSection />
+      <ProductRange />
       <DesignDigitalDevelopmentSection />
       <DesignMaterialsSection />
       {/* <DesignServicesSection /> */}

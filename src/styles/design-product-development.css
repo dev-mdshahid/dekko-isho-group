@@ -33,6 +33,7 @@
  * Individual containers keep their own margin/padding; this only unifies max-width.
  */
 .design-product-development-page .dpd-capabilities-container,
+.design-product-development-page .dpd-product-range-container,
 .design-product-development-page .dpd-materials-container,
 .design-product-development-page .split-content-section-container,
 .design-product-development-page .split-feature-list-container,
@@ -49,6 +50,224 @@
 .design-product-development-page .dpd-showroom-section .container,
 .design-product-development-page .solution-cta-section .container {
   max-width: var(--dpd-content-max-width);
+}
+
+/* Product Range (3D-ready dark cards) */
+.design-product-development-page .dpd-product-range-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color--neutral-seasalt);
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.design-product-development-page .dpd-product-range-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--_layout---container-gutter);
+}
+
+.design-product-development-page .dpd-product-range-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.125rem;
+  width: 100%;
+  margin-bottom: clamp(2.75rem, 5vw, 5rem);
+  text-align: center;
+}
+
+.design-product-development-page .dpd-product-range-section .pre-section-title-wrap {
+  background-color: var(--color--white);
+  border-color: var(--color--neutral-silver-night);
+}
+
+.design-product-development-page .dpd-product-range-section .pre-section-title {
+  color: var(--color--neutral-night);
+}
+
+.design-product-development-page .dpd-product-range-section .pre-section-title-square {
+  background-color: var(--dpd-brand-start);
+  background-image: var(--dpd-brand-gradient);
+}
+
+.design-product-development-page .dpd-product-range-title {
+  margin: 0;
+  color: var(--color--neutral-night);
+  font-size: clamp(2.5rem, 5vw, 3.875rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.design-product-development-page .dpd-product-range-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.875rem, 1.6vw, 1.5rem);
+  width: 100%;
+}
+
+.design-product-development-page .dpd-product-range-card {
+  --dpd-product-card-bg: #9fc0f4;
+  --dpd-product-card-panel: #102235;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background-color: var(--dpd-product-card-panel);
+  box-shadow: 0 1.25rem 3.5rem rgb(25 31 36 / 16%);
+}
+
+.design-product-development-page .dpd-product-range-card-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1.18;
+  overflow: hidden;
+  border-radius: 1.5rem 1.5rem 1.25rem 1.25rem;
+  background:
+    radial-gradient(circle at 50% 80%, rgb(255 255 255 / 34%) 0 16%, transparent 44%),
+    linear-gradient(145deg, color-mix(in srgb, var(--dpd-product-card-bg) 82%, white), var(--dpd-product-card-bg));
+}
+
+.design-product-development-page .dpd-product-range-card-placeholder {
+  width: min(48%, 9rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 30%, rgb(255 255 255 / 76%) 0 11%, transparent 12%),
+    radial-gradient(circle at 60% 62%, color-mix(in srgb, var(--dpd-product-card-bg) 62%, black) 0 19%, transparent 20%),
+    color-mix(in srgb, var(--dpd-product-card-bg) 74%, white);
+  box-shadow:
+    inset -1.25rem -1.5rem 2.5rem rgb(0 0 0 / 12%),
+    0 2rem 2.5rem rgb(0 0 0 / 16%);
+}
+
+.design-product-development-page .dpd-product-range-card-image {
+  display: block;
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 1.5rem 1.75rem rgb(0 0 0 / 18%));
+}
+
+.design-product-development-page .dpd-product-range-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.375rem 1.5rem 1.5rem;
+  border-top: 1px solid rgb(255 255 255 / 8%);
+  background:
+    linear-gradient(135deg, rgb(37 149 213 / 16%) 0%, transparent 42%),
+    linear-gradient(180deg, #142944 0%, var(--dpd-product-card-panel) 100%);
+}
+
+.design-product-development-page .dpd-product-range-card-title {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  color: var(--color--white);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.design-product-development-page .dpd-product-range-card-title span {
+  min-width: 0;
+}
+
+.design-product-development-page .dpd-product-range-card-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  color: currentColor;
+  stroke-width: 1.8;
+}
+
+.design-product-development-page .dpd-product-range-card-meta {
+  margin: 0;
+  color: #9eb9cc;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.design-product-development-page .dpd-product-range-section .noise-overlay {
+  opacity: 0.08;
+  border-radius: 0;
+  z-index: 0;
+}
+
+.design-product-development-page .dpd-product-range-section .line-wrapper {
+  z-index: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-product-range-section {
+    padding: var(--dpd-mobile-section-pad) 0;
+  }
+
+  .design-product-development-page .dpd-product-range-header {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .design-product-development-page .dpd-product-range-title {
+    font-size: clamp(2rem, 5.5vw, 2.75rem);
+  }
+
+  .design-product-development-page .dpd-product-range-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .design-product-development-page .dpd-product-range-card-visual {
+    aspect-ratio: 16 / 13;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-product-range-section {
+    padding: var(--dpd-mobile-section-pad-sm) 0;
+  }
+
+  .design-product-development-page .dpd-product-range-header {
+    margin-bottom: 1.875rem;
+  }
+
+  .design-product-development-page .dpd-product-range-title {
+    font-size: 2rem;
+  }
+
+  .design-product-development-page .dpd-product-range-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .design-product-development-page .dpd-product-range-card {
+    border-radius: 1.125rem;
+  }
+
+  .design-product-development-page .dpd-product-range-card-visual {
+    aspect-ratio: 16 / 11;
+    border-radius: 1.125rem 1.125rem 1rem 1rem;
+  }
+
+  .design-product-development-page .dpd-product-range-card-body {
+    padding: 1.125rem 1.25rem 1.25rem;
+  }
+
+  .design-product-development-page .dpd-product-range-card-title {
+    font-size: 1rem;
+  }
 }
 
 /* ── Why Dekko ISHO (4 image cards) ── */

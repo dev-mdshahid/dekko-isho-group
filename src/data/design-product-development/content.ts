@@ -19,6 +19,78 @@ export const designProductDevelopmentHero = {
 
 const CAPABILITY_IMAGE_BASE = '/images/design-product-development'
 
+export const designProductDevelopmentProductRange = {
+  id: 'dpd-product-range',
+  badge: 'Detailed insight',
+  title: 'Product Range',
+  items: [
+    {
+      id: 'formal-shirts',
+      label: 'Formal Shirts',
+      meta: 'Product category',
+      image: '',
+      imageAlt: '3D object visual for formal shirts',
+      background: '#9fc0f4',
+    },
+    {
+      id: 'casual-shirts',
+      label: 'Casual Shirts',
+      meta: 'Product category',
+      image: '',
+      imageAlt: '3D object visual for casual shirts',
+      background: '#d7e96a',
+    },
+    {
+      id: 'pants',
+      label: 'Pants',
+      meta: 'Product category',
+      image: '',
+      imageAlt: '3D object visual for pants',
+      background: '#e6dc8e',
+    },
+    {
+      id: 'denim-twill-jackets',
+      label: 'Denim & Twill Jackets',
+      meta: 'Product category',
+      image: '',
+      imageAlt: '3D object visual for denim and twill jackets',
+      background: '#efa5b9',
+    },
+    {
+      id: 'quilted-shirts-jackets',
+      label: 'Quilted Shirts & Jackets',
+      meta: 'Product category',
+      image: '',
+      imageAlt: '3D object visual for quilted shirts and jackets',
+      background: '#adcbb2',
+    },
+    {
+      id: 'shakets',
+      label: 'Shakets',
+      meta: 'Product category',
+      image: '',
+      imageAlt: '3D object visual for shakets',
+      background: '#9fb3c8',
+    },
+    {
+      id: 'ladies-blouse',
+      label: "Ladies' Blouse",
+      meta: 'Product category',
+      image: '',
+      imageAlt: "3D object visual for ladies' blouse",
+      background: '#f1cf86',
+    },
+    {
+      id: 'ladies-dress',
+      label: "Ladies' Dress",
+      meta: 'Product category',
+      image: '',
+      imageAlt: "3D object visual for ladies' dress",
+      background: '#c4a7df',
+    },
+  ],
+}
+
 export const designProductDevelopmentCapabilities = {
   id: 'dpd-capabilities',
   badge: 'Why Dekko ISHO',
