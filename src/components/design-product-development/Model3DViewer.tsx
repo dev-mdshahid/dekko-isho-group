@@ -8,11 +8,78 @@ import * as THREE from 'three'
 interface Model3DViewerProps {
   modelPath: string
   label: string
+  color?: ProductModelColor
+}
+
+type ProductModelColor = 'default' | 'cyan' | 'magenta' | 'yellow'
+
+type MaterialWithColor = THREE.Material & {
+  color?: THREE.Color
+}
+
+const PRODUCT_MODEL_COLORS: Record<Exclude<ProductModelColor, 'default'>, string> = {
+  cyan: '#00d5ff',
+  magenta: '#ff2fc3',
+  yellow: '#ffd91a',
+}
+
+const cloneMaterialWithOriginalColor = (material: THREE.Material): THREE.Material => {
+  const clonedMaterial = material.clone() as MaterialWithColor
+
+  if (clonedMaterial.color) {
+    clonedMaterial.userData.dpdOriginalColor = clonedMaterial.color.clone()
+  }
+
+  return clonedMaterial
+}
+
+const cloneMeshMaterials = (mesh: THREE.Mesh) => {
+  if (Array.isArray(mesh.material)) {
+    mesh.material = mesh.material.map(cloneMaterialWithOriginalColor)
+    return
+  }
+
+  mesh.material = cloneMaterialWithOriginalColor(mesh.material)
+}
+
+const applyModelColor = (model: THREE.Object3D, color: ProductModelColor) => {
+  model.traverse((child) => {
+    if (!(child instanceof THREE.Mesh)) return
+
+    const materials = Array.isArray(child.material) ? child.material : [child.material]
+
+    materials.forEach((material) => {
+      const materialWithColor = material as MaterialWithColor
+
+      if (!materialWithColor.color) return
+
+      const originalColor = materialWithColor.userData.dpdOriginalColor as
+        | THREE.Color
+        | undefined
+
+      if (color === 'default') {
+        if (originalColor) {
+          materialWithColor.color.copy(originalColor)
+        }
+
+        return
+      }
+
+      materialWithColor.color.set(PRODUCT_MODEL_COLORS[color])
+    })
+  })
 }
 
 // Model loading wrapper component
-const ModelContent = ({ modelPath }: { modelPath: string }) => {
+const ModelContent = ({
+  modelPath,
+  color = 'default',
+}: {
+  modelPath: string
+  color?: ProductModelColor
+}) => {
   const groupRef = useRef<THREE.Group>(null)
+  const latestColorRef = useRef<ProductModelColor>(color)
 
   const fileExtension = modelPath.split('.').pop()?.toLowerCase()
 
@@ -26,6 +93,14 @@ const ModelContent = ({ modelPath }: { modelPath: string }) => {
       console.error('Error loading GLTF model:', error)
     }
   }
+
+  useEffect(() => {
+    latestColorRef.current = color
+
+    if (groupRef.current) {
+      applyModelColor(groupRef.current, color)
+    }
+  }, [color])
 
   useEffect(() => {
     if (!modelPath || !groupRef.current) return
@@ -93,8 +168,11 @@ const ModelContent = ({ modelPath }: { modelPath: string }) => {
           if (child instanceof THREE.Mesh) {
             child.castShadow = true
             child.receiveShadow = true
+            cloneMeshMaterials(child)
           }
         })
+
+        applyModelColor(model, latestColorRef.current)
 
         groupRef.current.add(model)
       } catch (error) {
@@ -174,6 +252,7 @@ const ModelLoader = () => {
 const Model3DViewer = ({
   modelPath,
   label,
+  color = 'default',
 }: Model3DViewerProps) => {
   if (!modelPath) {
     return (
@@ -209,7 +288,7 @@ const Model3DViewer = ({
           {/* Canvas background */}
           <color attach="background" args={['#909090']} />
 
-          <ModelContent modelPath={modelPath} />
+          <ModelContent modelPath={modelPath} color={color} />
         </Canvas>
       </Suspense>
     </div>

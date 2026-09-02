@@ -169,6 +169,99 @@
   line-height: 1.2;
 }
 
+.design-product-development-page .dpd-product-range-color-picker {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.design-product-development-page .dpd-product-range-color-trigger,
+.design-product-development-page .dpd-product-range-color-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background-color: rgba(17, 24, 39, 0.36);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.design-product-development-page .dpd-product-range-color-trigger:hover,
+.design-product-development-page .dpd-product-range-color-option:hover {
+  transform: translateY(-1px);
+  border-color: var(--color--white);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.24);
+}
+
+.design-product-development-page .dpd-product-range-color-trigger:focus-visible,
+.design-product-development-page .dpd-product-range-color-option:focus-visible {
+  outline: 2px solid var(--color--white);
+  outline-offset: 3px;
+}
+
+.design-product-development-page .dpd-product-range-color-swatch {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.22);
+  border-radius: 999px;
+  background-color: var(--dpd-product-color);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32);
+}
+
+.design-product-development-page .dpd-product-range-color-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background-color: rgba(17, 24, 39, 0.58);
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.design-product-development-page .dpd-product-range-color-option {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
+}
+
+.design-product-development-page .dpd-product-range-color-option .dpd-product-range-color-swatch {
+  width: 18px;
+  height: 18px;
+}
+
+.design-product-development-page .dpd-product-range-color-option.is-selected {
+  border-color: var(--color--white);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.28);
+}
+
+.design-product-development-page .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .design-product-development-page .dpd-product-range-card-3d-viewer {
   position: relative;
   display: flex;
@@ -242,6 +335,11 @@
     right: 24px;
     bottom: 24px;
     font-size: 18px;
+  }
+
+  .design-product-development-page .dpd-product-range-color-picker {
+    top: 14px;
+    right: 14px;
   }
 }
 
