@@ -1659,8 +1659,8 @@
 
 @media screen and (max-width: 991px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 11.25rem;
-    --dpd-journey-icon-size: 7.5rem;
+    --dpd-journey-dot: 7.5rem;
+    --dpd-journey-icon-size: 5rem;
     --dpd-journey-label-size: clamp(1rem, 2.2vw, 1.125rem);
     --dpd-journey-mobile-gap: 1.375rem;
     --journey-roadmap-dot: var(--dpd-journey-dot);
@@ -1753,8 +1753,8 @@
 
 @media screen and (max-width: 767px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 11.25rem;
-    --dpd-journey-icon-size: 7.5rem;
+    --dpd-journey-dot: 7.5rem;
+    --dpd-journey-icon-size: 5rem;
     --dpd-journey-label-size: clamp(0.9375rem, 3vw, 1.0625rem);
     --dpd-journey-mobile-gap: 1.25rem;
     --journey-roadmap-dot: var(--dpd-journey-dot);
@@ -1792,8 +1792,8 @@
 /* ── Solutions banner (Figma) ── */
 @media screen and (max-width: 479px) {
   .design-product-development-page .dpd-journey-section {
-    --dpd-journey-dot: 11.25rem;
-    --dpd-journey-icon-size: 7.5rem;
+    --dpd-journey-dot: 7.5rem;
+    --dpd-journey-icon-size: 5rem;
     --dpd-journey-label-size: 1rem;
     --dpd-journey-mobile-gap: 1rem;
     --journey-roadmap-dot: var(--dpd-journey-dot);
