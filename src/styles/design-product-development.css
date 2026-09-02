@@ -171,9 +171,13 @@
 
 .design-product-development-page .dpd-product-range-color-picker {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 14px;
+  right: 14px;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32px;
   pointer-events: auto;
 }
 
@@ -183,13 +187,13 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 999px;
-  background-color: rgba(17, 24, 39, 0.36);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+  background-color: rgba(31, 35, 40, 0.42);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
   cursor: pointer;
   transition:
     border-color 160ms ease,
@@ -199,9 +203,8 @@
 
 .design-product-development-page .dpd-product-range-color-trigger:hover,
 .design-product-development-page .dpd-product-range-color-option:hover {
-  transform: translateY(-1px);
   border-color: var(--color--white);
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.24);
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.22);
 }
 
 .design-product-development-page .dpd-product-range-color-trigger:focus-visible,
@@ -211,8 +214,8 @@
 }
 
 .design-product-development-page .dpd-product-range-color-swatch {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: 1px solid rgba(15, 23, 42, 0.22);
   border-radius: 999px;
   background-color: var(--dpd-product-color);
@@ -220,35 +223,37 @@
 }
 
 .design-product-development-page .dpd-product-range-color-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 2px;
+  position: static;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  align-items: center;
+  gap: 6px;
+  width: 32px;
+  margin-top: 6px;
+  padding: 5px 0;
+  /* border: 1px solid rgba(255, 255, 255, 0.72); */
   border-radius: 999px;
-  background-color: rgba(17, 24, 39, 0.58);
-  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.28);
-  backdrop-filter: blur(14px);
+  background-color: rgba(31, 35, 40, 0.5);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
+  backdrop-filter: blur(10px);
 }
 
 .design-product-development-page .dpd-product-range-color-option {
-  width: 30px;
-  height: 30px;
-  background-color: rgba(255, 255, 255, 0.16);
+  width: 24px;
+  height: 24px;
+  border-color: rgba(255, 255, 255, 0.58);
+  background-color: transparent;
   box-shadow: none;
 }
 
 .design-product-development-page .dpd-product-range-color-option .dpd-product-range-color-swatch {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
 }
 
 .design-product-development-page .dpd-product-range-color-option.is-selected {
   border-color: var(--color--white);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
 }
 
 .design-product-development-page .sr-only {
