@@ -111,59 +111,62 @@
 
 .design-product-development-page .dpd-product-range-card {
   --dpd-product-card-bg: #9fc0f4;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
   min-width: 0;
-  padding: 0;
-  background-color: transparent;
+  overflow: hidden;
+  border-radius: var(--border-radius--lg, 1rem);
+  background-color: var(--dpd-product-card-bg);
+  box-shadow: 0 4px 128px 0 rgba(64, 73, 80, 0.16);
 }
 
 .design-product-development-page .dpd-product-range-card-visual {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  aspect-ratio: 1 / 1.18;
+  height: 100%;
   overflow: hidden;
-  border-radius: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--color--neutral-night) 12%, transparent);
-  /* background:
-    radial-gradient(circle at 50% 80%, rgb(220 220 220 / 34%) 0 16%, transparent 44%),
-    linear-gradient(145deg, color-mix(in srgb, var(--dpd-product-card-bg) 82%, rgb(240 240 240)), var(--dpd-product-card-bg)); */
-  box-shadow: 0 1.25rem 3.5rem rgb(25 31 36 / 12%);
 }
 
 .design-product-development-page .dpd-product-range-card-placeholder {
-  width: min(48%, 9rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  /* background:
-    radial-gradient(circle at 34% 30%, rgb(255 255 255 / 76%) 0 11%, transparent 12%),
-    radial-gradient(circle at 60% 62%, color-mix(in srgb, var(--dpd-product-card-bg) 62%, black) 0 19%, transparent 20%),
-    color-mix(in srgb, var(--dpd-product-card-bg) 74%, white); */
-  box-shadow:
-    inset -1.25rem -1.5rem 2.5rem rgb(0 0 0 / 12%),
-    0 2rem 2.5rem rgb(0 0 0 / 16%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--dpd-product-card-bg) 72%, white), var(--dpd-product-card-bg));
 }
 
 .design-product-development-page .dpd-product-range-card-image {
   display: block;
-  width: 88%;
-  height: 88%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-  filter: drop-shadow(0 1.5rem 1.75rem rgb(0 0 0 / 18%));
+}
+
+.design-product-development-page .dpd-product-range-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
 }
 
 .design-product-development-page .dpd-product-range-card-title {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  z-index: 2;
+  pointer-events: none;
   margin: 0;
   padding: 0;
-  color: var(--color--neutral-night);
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
-  font-weight: 600;
-  line-height: 1.35;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .design-product-development-page .dpd-product-range-card-3d-viewer {
@@ -173,10 +176,8 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: 1.5rem;
+  border-radius: 0;
   overflow: hidden;
-  padding: 8px;
-  border: 1px solid #d8d8d8;
 }
 
 .design-product-development-page .dpd-product-range-card--3d .dpd-product-range-card-visual {
@@ -216,9 +217,6 @@
     gap: 1.25rem;
   }
 
-  .design-product-development-page .dpd-product-range-card-visual {
-    aspect-ratio: 16 / 13;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -239,19 +237,11 @@
     gap: 1rem;
   }
 
-  .design-product-development-page .dpd-product-range-card {
-    gap: 0.75rem;
-    padding: 0.375rem 0.375rem 0.75rem;
-    border-radius: 1.375rem;
-  }
-
-  .design-product-development-page .dpd-product-range-card-visual {
-    aspect-ratio: 16 / 11;
-    border-radius: 1.125rem;
-  }
-
   .design-product-development-page .dpd-product-range-card-title {
-    font-size: 1rem;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    font-size: 18px;
   }
 }
 

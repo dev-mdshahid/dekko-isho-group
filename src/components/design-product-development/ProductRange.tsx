@@ -29,7 +29,6 @@ const ProductRange = () => {
               id={`dpd-product-range-${item.id}`}
               className={`dpd-product-range-card ${item.model3d ? 'dpd-product-range-card--3d' : ''}`}
               style={{ '--dpd-product-card-bg': item.background } as CSSProperties}
-              data-solution-animate="card"
             >
               <div className="dpd-product-range-card-visual">
                 {item.model3d ? (
@@ -46,11 +45,8 @@ const ProductRange = () => {
                   <div className="dpd-product-range-card-placeholder" aria-hidden="true" />
                 )}
               </div>
-              <div className="dpd-product-range-card-body">
-                <h3 className="dpd-product-range-card-title">
-                  <span>{item.label}</span>
-                </h3>
-              </div>
+              <div className="dpd-product-range-card-overlay" aria-hidden="true" />
+              <h3 className="dpd-product-range-card-title">{item.label}</h3>
             </article>
           ))}
         </div>
