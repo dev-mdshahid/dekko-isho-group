@@ -9,11 +9,12 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 import Model3DViewer from './Model3DViewer'
 
 type ProductColorId = 'default' | 'cyan' | 'magenta' | 'yellow'
+type ProductColorValue = ProductColorId | `#${string}`
 
 const PRODUCT_COLORS: {
   id: ProductColorId
   label: string
-  value: string
+  value: `#${string}`
 }[] = [
   { id: 'default', label: 'Default', value: '#f5f5f5' },
   { id: 'cyan', label: 'Cyan', value: '#00d5ff' },
@@ -21,9 +22,26 @@ const PRODUCT_COLORS: {
   { id: 'yellow', label: 'Yellow', value: '#ffd91a' },
 ]
 
+const CUSTOM_COLOR_FALLBACK = '#ffffff' as const
+
+const isHexColor = (selectedColor: unknown): selectedColor is `#${string}` =>
+  typeof selectedColor === 'string' && /^#[0-9a-fA-F]{6}$/.test(selectedColor)
+
+const getSelectedColorValue = (selectedColor: ProductColorValue): `#${string}` => {
+  if (isHexColor(selectedColor)) return selectedColor
+
+  return (
+    PRODUCT_COLORS.find((colorOption) => colorOption.id === selectedColor)?.value ??
+    CUSTOM_COLOR_FALLBACK
+  )
+}
+
+const isPresetColor = (selectedColor: ProductColorValue): selectedColor is ProductColorId =>
+  PRODUCT_COLORS.some((colorOption) => colorOption.id === selectedColor)
+
 const ProductRange = () => {
   const { id, badge, title, items } = designProductDevelopmentProductRange
-  const [selectedColors, setSelectedColors] = useState<Record<string, ProductColorId>>({})
+  const [selectedColors, setSelectedColors] = useState<Record<string, ProductColorValue>>({})
   const [openPickerId, setOpenPickerId] = useState<string | null>(null)
   const pickerRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
@@ -57,6 +75,15 @@ const ProductRange = () => {
     event.stopPropagation()
   }
 
+  const updateCustomColor = (itemId: string, colorValue: string | null | undefined) => {
+    if (!isHexColor(colorValue)) return
+
+    setSelectedColors((currentColors) => ({
+      ...currentColors,
+      [itemId]: colorValue,
+    }))
+  }
+
   return (
     <section id={id} className="dpd-product-range-section">
       <div className="dpd-product-range-container">
@@ -70,7 +97,14 @@ const ProductRange = () => {
         </FadeIn>
 
         <div className="dpd-product-range-grid" data-solution-animate-group>
-          {items.map((item) => (
+          {items.map((item) => {
+            const selectedColor = selectedColors[item.id] ?? 'default'
+            const selectedColorValue = getSelectedColorValue(selectedColor)
+            const customInputValue = isHexColor(selectedColor)
+              ? selectedColor
+              : CUSTOM_COLOR_FALLBACK
+
+            return (
             <article
               key={item.id}
               id={`dpd-product-range-${item.id}`}
@@ -82,7 +116,7 @@ const ProductRange = () => {
                   <Model3DViewer
                     modelPath={item.model3d}
                     label={item.label}
-                    color={selectedColors[item.id] ?? 'default'}
+                    color={selectedColor === 'default' ? 'default' : selectedColorValue}
                   />
                 ) : item.image ? (
                   <img
@@ -118,10 +152,7 @@ const ProductRange = () => {
                     <span
                       className="dpd-product-range-color-swatch"
                       style={{
-                        '--dpd-product-color': PRODUCT_COLORS.find(
-                          (colorOption) =>
-                            colorOption.id === (selectedColors[item.id] ?? 'default'),
-                        )?.value,
+                        '--dpd-product-color': selectedColorValue,
                       } as CSSProperties}
                       aria-hidden="true"
                     />
@@ -135,8 +166,7 @@ const ProductRange = () => {
                       aria-label={`Color options for ${item.label}`}
                     >
                       {PRODUCT_COLORS.map((colorOption) => {
-                        const isSelected =
-                          (selectedColors[item.id] ?? 'default') === colorOption.id
+                        const isSelected = selectedColor === colorOption.id
 
                         return (
                           <button
@@ -169,6 +199,39 @@ const ProductRange = () => {
                           </button>
                         )
                       })}
+                      <label
+                        className={`dpd-product-range-color-option dpd-product-range-color-custom ${
+                          !isPresetColor(selectedColor) ? 'is-selected' : ''
+                        }`}
+                        aria-label={`Select custom color for ${item.label}`}
+                        aria-checked={!isPresetColor(selectedColor)}
+                        role="menuitemradio"
+                      >
+                        <input
+                          type="color"
+                          className="dpd-product-range-color-input"
+                          value={customInputValue}
+                          aria-label={`Select custom color for ${item.label}`}
+                          onInput={(event) => {
+                            updateCustomColor(item.id, event.currentTarget?.value)
+                          }}
+                          onChange={(event) => {
+                            updateCustomColor(item.id, event.currentTarget?.value)
+                          }}
+                        />
+                        <span
+                          className={`dpd-product-range-color-swatch ${
+                            !isPresetColor(selectedColor) ? '' : 'is-custom'
+                          }`}
+                          style={
+                            {
+                              '--dpd-product-color': customInputValue,
+                            } as CSSProperties
+                          }
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Custom</span>
+                      </label>
                     </div>
                   ) : null}
                 </div>
@@ -176,7 +239,8 @@ const ProductRange = () => {
               <div className="dpd-product-range-card-overlay" aria-hidden="true" />
               <h3 className="dpd-product-range-card-title">{item.label}</h3>
             </article>
-          ))}
+            )
+          })}
         </div>
       </div>
 

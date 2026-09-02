@@ -11,17 +11,14 @@ interface Model3DViewerProps {
   color?: ProductModelColor
 }
 
-type ProductModelColor = 'default' | 'cyan' | 'magenta' | 'yellow'
+type ProductModelColor = 'default' | `#${string}`
 
 type MaterialWithColor = THREE.Material & {
   color?: THREE.Color
 }
 
-const PRODUCT_MODEL_COLORS: Record<Exclude<ProductModelColor, 'default'>, string> = {
-  cyan: '#00d5ff',
-  magenta: '#ff2fc3',
-  yellow: '#ffd91a',
-}
+const isModelHexColor = (color: ProductModelColor): color is `#${string}` =>
+  /^#[0-9a-fA-F]{6}$/.test(color)
 
 const cloneMaterialWithOriginalColor = (material: THREE.Material): THREE.Material => {
   const clonedMaterial = material.clone() as MaterialWithColor
@@ -65,7 +62,9 @@ const applyModelColor = (model: THREE.Object3D, color: ProductModelColor) => {
         return
       }
 
-      materialWithColor.color.set(PRODUCT_MODEL_COLORS[color])
+      if (isModelHexColor(color)) {
+        materialWithColor.color.set(color)
+      }
     })
   })
 }

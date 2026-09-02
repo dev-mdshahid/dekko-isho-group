@@ -190,7 +190,7 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  border: 1px solid transparent;
   border-radius: 999px;
   background-color: rgba(31, 35, 40, 0.42);
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
@@ -203,7 +203,7 @@
 
 .design-product-development-page .dpd-product-range-color-trigger:hover,
 .design-product-development-page .dpd-product-range-color-option:hover {
-  border-color: var(--color--white);
+  border-color: transparent;
   box-shadow: 0 7px 18px rgba(15, 23, 42, 0.22);
 }
 
@@ -216,10 +216,10 @@
 .design-product-development-page .dpd-product-range-color-swatch {
   width: 18px;
   height: 18px;
-  border: 1px solid rgba(15, 23, 42, 0.22);
+  border: 0;
   border-radius: 999px;
   background-color: var(--dpd-product-color);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32);
+  box-shadow: none;
 }
 
 .design-product-development-page .dpd-product-range-color-menu {
@@ -239,11 +239,39 @@
 }
 
 .design-product-development-page .dpd-product-range-color-option {
+  position: relative;
   width: 24px;
   height: 24px;
-  border-color: rgba(255, 255, 255, 0.58);
+  border-color: transparent;
   background-color: transparent;
   box-shadow: none;
+}
+
+.design-product-development-page .dpd-product-range-color-custom {
+  overflow: hidden;
+}
+
+.design-product-development-page .dpd-product-range-color-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.design-product-development-page .dpd-product-range-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.design-product-development-page .dpd-product-range-color-input::-webkit-color-swatch {
+  border: 0;
+}
+
+.design-product-development-page .dpd-product-range-color-input::-moz-color-swatch {
+  border: 0;
 }
 
 .design-product-development-page .dpd-product-range-color-option .dpd-product-range-color-swatch {
@@ -251,9 +279,21 @@
   height: 15px;
 }
 
+.design-product-development-page .dpd-product-range-color-option .dpd-product-range-color-swatch.is-custom {
+  background:
+    conic-gradient(
+      from 0deg,
+      #ff2fc3,
+      #ffd91a,
+      #00d5ff,
+      #7c3cff,
+      #ff2fc3
+    );
+}
+
 .design-product-development-page .dpd-product-range-color-option.is-selected {
-  border-color: var(--color--white);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .design-product-development-page .sr-only {
