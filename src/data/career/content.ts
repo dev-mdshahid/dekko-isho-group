@@ -282,6 +282,14 @@ export const careerLifeAt = {
       image: '/images/career/life-moments-that-bring-us-together.jpg',
       imageAlt: 'Team members celebrating together at a sports tournament',
     },
+    {
+      id: 'career-life-06',
+      title: 'Learning and Development Investing in People',
+      description:
+        'We believe in nurturing talent and fostering growth. Our comprehensive learning and development programs empower employees to reach their full potential.',
+      image: '',
+      imageAlt: '',
+    },
   ] satisfies CareerLifeCard[],
 }
 
