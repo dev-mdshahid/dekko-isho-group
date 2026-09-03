@@ -103,7 +103,7 @@ export const designProductDevelopmentCapabilities = {
     },
     {
       id: 'creative-design',
-      image: `${CAPABILITY_IMAGE_BASE}/why-creative-design.png`,
+      image: `https://placehold.co/600x400/red/white`,
       imageAlt: 'Designer working at a desk surrounded by clothing racks in the design studio',
       title: 'Creative Design',
       description: 'Original concepts turned into commercially relevant products.',
@@ -122,6 +122,13 @@ export const designProductDevelopmentCapabilities = {
       title: 'Digital Development',
       description: 'Digital sampling and 3D workflows from first sketch to approval.',
     },
+    {
+      id: 'exploring-global-inspiration',
+      image: `https://placehold.co/600x400/red/white`,
+      imageAlt: 'Laptop displaying 3D fashion avatar and digital sampling software',
+      title: 'Exploring Global Inspiration',
+      description: 'Drawing inspiration from global trends and cultural influences.',
+    },
   ],
 }
 
@@ -131,7 +138,7 @@ export const designProductDevelopmentStudio = {
   title: 'Creativity Backed by Expertise.',
   description:
     'Our Design Studio brings together fashion designers, textile specialists, product developers, and technical experts who turn concepts into commercially successful products through creativity, technical excellence, and manufacturing knowledge.',
-  image: `${CAPABILITY_IMAGE_BASE}/design-studio-team.png`,
+  image: `https://placehold.co/600x400/red/white`,
   imageAlt: 'Design Studio team collaborating at a communal desk',
 }
 
@@ -176,7 +183,7 @@ export const designProductDevelopmentMaterials = {
   items: [
     {
       id: 'fabric-library',
-      image: `${CAPABILITY_IMAGE_BASE}/materials-fabric-library.png`,
+      image: `https://placehold.co/600x400/red/white`,
       imageAlt: 'Shelves packed with folded fabric samples in the fabric library',
       title: 'Fabric Library',
       description:
@@ -184,7 +191,7 @@ export const designProductDevelopmentMaterials = {
     },
     {
       id: 'global-sourcing',
-      image: `${CAPABILITY_IMAGE_BASE}/materials-global-sourcing.png`,
+      image: `https://placehold.co/600x400/red/white`,
       imageAlt: 'Fabric swatches hanging on racks in the material sourcing room',
       title: 'Global Fabric Sourcing & Innovation',
       description:
@@ -240,7 +247,7 @@ export const designProductDevelopmentGlobalNetwork = {
   badge: 'Global Design Network',
   title: 'Close to the Market, Wherever You Are.',
   description: 'We translate global fashion insights into market-ready collections.',
-  image: '/images/design-product-development/global-design-network.png',
+  image: 'https://placehold.co/600x400/red/white',
   imageAlt: 'Neutral-toned textured fabrics and knits hanging in a design studio',
   items: [
     {
@@ -529,19 +536,19 @@ export const designProductDevelopmentGallery = {
     {
       id: 'digital-design',
       size: 'side' as const,
-      src: `${CAPABILITY_IMAGE_BASE}/gallery-digital-design.png`,
+      src: `https://placehold.co/600x400/red/white`,
       alt: 'Designers collaborating over fabric samples and sketches at a studio table',
     },
     {
       id: 'studio-collaboration',
       size: 'center' as const,
-      src: `${CAPABILITY_IMAGE_BASE}/gallery-studio-collaboration.png`,
+      src: `https://placehold.co/600x400/red/white`,
       alt: 'Designers collaborating over fabric swatches and documents at a studio table',
     },
     {
       id: 'fabric-review',
       size: 'side' as const,
-      src: `${CAPABILITY_IMAGE_BASE}/gallery-fabric-review.png`,
+      src: `https://placehold.co/600x400/red/white`,
       alt: 'Product developers reviewing catalogs and fabric samples in the design studio',
     },
   ],
