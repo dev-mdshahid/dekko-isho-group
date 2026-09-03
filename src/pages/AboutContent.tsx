@@ -10,6 +10,7 @@ import {
   AboutTopExecutivesSection,
   AboutOverviewSection,
   AboutStrengthSection,
+  AboutTurnoverSection,
   AboutVideoSection,
 } from '../components/about'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
@@ -27,6 +28,7 @@ export function AboutContent() {
     <div ref={ref} className="about-content">
       <AboutHeroSection />
       <AboutOverviewSection />
+      <AboutTurnoverSection />
       <AboutIntegritySection />
       <AboutVideoSection />
       <AboutJourneySection />
