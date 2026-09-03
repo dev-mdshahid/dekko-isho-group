@@ -101,4 +101,13 @@ export const strengthItems: StrengthItem[] = [
     image: '/images/strength/global-market.jpg',
     imageAlt: 'Professionals gathered at an international partner seminar',
   },
+  {
+    id: 'about-strength-11',
+    number: '11',
+    title: 'Traceability',
+    description:
+      '',
+    image: '',
+    imageAlt: 'Professionals gathered at an international traceability seminar',
+  },
 ]
