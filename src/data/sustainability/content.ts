@@ -442,6 +442,24 @@ export const pillar01FocusAreas: FocusAreaCard[] = [
       },
     ],
   },
+  {
+    id: 'tree-plantation',
+    title: 'Tree Plantation',
+    images: [
+      {
+        src: pillar1Image('', ''),
+        alt: '',
+      },
+      {
+        src: pillar1Image('', ''),
+        alt: '',
+      },
+      {
+        src: pillar1Image('', ''),
+        alt: '',
+      },
+    ],
+  },
 ]
 
 export type SnapshotKpi =
