@@ -97,52 +97,42 @@ export function SolutionProductionNetworkSection({
                     draggable={false}
                     className="solution-network-card-image"
                   />
+                  <div className="solution-network-card-overlay" aria-hidden="true" />
                   <div className="solution-network-card-caption">
-                    <div className="solution-network-card-panel">
-                      <h3 className="solution-network-card-title">{unit.title}</h3>
-                      {hasStats ? (
-                        <>
-                          <div className="solution-network-card-divider" aria-hidden="true" />
-                          <div className="solution-network-card-stats">
-                            {unit.monthlyCapacity ? (
-                              <div className="solution-network-card-stat">
-                                <span className="solution-network-card-stat-label">
-                                  {unit.monthlyCapacityLabel ?? 'Production capacity'}
+                    <h3 className="solution-network-card-title">{unit.title}</h3>
+                    {hasStats ? (
+                      <div className="solution-network-card-stats">
+                        {unit.monthlyCapacity ? (
+                          <div className="solution-network-card-stat">
+                            <span className="solution-network-card-stat-label">
+                              {unit.monthlyCapacityLabel ?? 'Production capacity'}
+                            </span>
+                            <p className="solution-network-card-stat-value">
+                              <span className="solution-network-card-stat-number">
+                                {unit.monthlyCapacity}
+                              </span>
+                              {unit.monthlyCapacityUnit !== '' ? (
+                                <span className="solution-network-card-stat-unit">
+                                  {unit.monthlyCapacityUnit ?? 'PCS/month'}
                                 </span>
-                                <p className="solution-network-card-stat-value">
-                                  <span className="solution-network-card-stat-number">
-                                    {unit.monthlyCapacity}
-                                  </span>
-                                  {unit.monthlyCapacityUnit !== '' ? (
-                                    <span className="solution-network-card-stat-unit">
-                                      {unit.monthlyCapacityUnit ?? 'PCS/month'}
-                                    </span>
-                                  ) : null}
-                                </p>
-                              </div>
-                            ) : null}
-                            {unit.monthlyCapacity && unit.productionLines ? (
-                              <div
-                                className="solution-network-card-stat-separator"
-                                aria-hidden="true"
-                              />
-                            ) : null}
-                            {unit.productionLines ? (
-                              <div className="solution-network-card-stat">
-                                <span className="solution-network-card-stat-label">
-                                  {unit.productionLinesLabel ?? 'Production lines'}
-                                </span>
-                                <p className="solution-network-card-stat-value">
-                                  <span className="solution-network-card-stat-number">
-                                    {unit.productionLines}
-                                  </span>
-                                </p>
-                              </div>
-                            ) : null}
+                              ) : null}
+                            </p>
                           </div>
-                        </>
-                      ) : null}
-                    </div>
+                        ) : null}
+                        {unit.productionLines ? (
+                          <div className="solution-network-card-stat">
+                            <span className="solution-network-card-stat-label">
+                              {unit.productionLinesLabel ?? 'Production lines'}
+                            </span>
+                            <p className="solution-network-card-stat-value">
+                              <span className="solution-network-card-stat-number">
+                                {unit.productionLines}
+                              </span>
+                            </p>
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               )

@@ -2720,12 +2720,8 @@
     border-radius: 1rem;
   }
 
-  .manufacturing-page .solution-network-card-panel {
-    padding: 1rem 1.125rem 1.125rem;
-  }
-
-  .manufacturing-page .solution-network-card--stats .solution-network-card-panel {
-    transform: translateY(calc(100% - 3.5rem));
+  .manufacturing-page .solution-network-card-caption {
+    padding: 1rem;
   }
 
   .manufacturing-page .solution-network-card-title {
