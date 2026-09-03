@@ -29,7 +29,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     title: 'Manufacturing Capability & Capacity',
     icon: '/images/specialities/versatility-icon.png',
     image: '/images/specialities/versatility.png',
-    featureLabel: 'Manufacturing Capacity',
+    featureLabel: '',
     features: [
       'High-quality woven and denim garments, including bottoms, tops, outerwear, and accessories for men, women, and children.',
       '3.5 million pieces/month',
@@ -46,7 +46,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     title: 'Ensuring Traceability and Transparency',
     icon: '/images/specialities/visibility-icon.png',
     image: '/images/specialities/visibility.png',
-    featureLabel: 'Operational Transparency',
+    featureLabel: '',
     features: ['Versatile Sourcing', 'End-to-End Traceability', 'Compliance Monitoring'],
     to: solutionPath('compliance-sustainability'),
   },
@@ -59,7 +59,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     title: 'Strategically Connected',
     icon: '/images/specialities/strategically-icon.png',
     image: '/images/specialities/strategical.png',
-    featureLabel: 'Strategic Presence',
+    featureLabel: '',
     features: [
       'Strategically Diverse Manufacturing Locations in Dhaka and Gazipur',
       'Easily Accessible Manufacturing Facilities Near the International Airport',
@@ -79,7 +79,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     image: '/images/specialities/responsibility.png',
     features: [
       {
-        group: 'Sustainability Impact (As of 2025)',
+        group: '',
         items: [
           'Continuous striving to reduce energy consumption',
           'Reducing carbon footprint ',
@@ -108,7 +108,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     image: '/images/specialities/intelligence.png',
     features: [
       {
-        group: 'Technology & Innovation',
+        group: '',
         items: ['GPRO', 'BROWZWEAR & CLO', 'TEXTRONIC', 'Automatic Machines', 'Virtual Showroom'],
       },
     ],
