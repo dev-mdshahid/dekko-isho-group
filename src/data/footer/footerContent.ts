@@ -17,7 +17,7 @@ export const footerBusinessLinks = [
 export const FOOTER_BUSINESS_LINKS = [
   {
     to: '/isho-ltd',
-    label: 'ISHO Limited',
+    label: 'ISHO',
     showExternalIcon: true,
   },
   {
@@ -42,7 +42,7 @@ export const FOOTER_BUSINESS_LINKS = [
   },
   {
     to: 'https://www.ecoviaglobal.com/',
-    label: 'Ecovia Limited',
+    label: 'Ecovia',
     showExternalIcon: true,
   },
 ] as const
