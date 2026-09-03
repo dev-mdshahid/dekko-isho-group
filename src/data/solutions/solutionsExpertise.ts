@@ -42,6 +42,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
       "Focus on energy conservation",
       "Quality-focused production process",
       "Multiproduct capabilities",
+      "Sustainability"
     ]
   },
   {
@@ -72,7 +73,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     imageAlt: 'Multi-head industrial embroidery machines',
     features: [
       '16 Color embroidery head',
-      'Schiffli new machine',
+      'Schiffli Machinery',
     ],
   },
 ]
