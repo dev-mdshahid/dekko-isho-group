@@ -104,7 +104,7 @@ export const industrialLaundryAdvancedFinishing = {
     },
     {
       id: 'curing-chamber-machine',
-      title: 'Curing chamber/machine',
+      title: 'Curing Chamber',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/curing-chamber-machine.png`,
       imageAlt: 'curing-chamber-machine',
     },
@@ -113,6 +113,12 @@ export const industrialLaundryAdvancedFinishing = {
       title: 'Ozone Wash',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/jeanologia-ozone -washing.png`,
       imageAlt: 'ozone-wash',
+    },
+    {
+      id: 'repairing',
+      title: 'Repairing',
+      image: '',
+      imageAlt: 'repairing',
     },
   ],
 }
