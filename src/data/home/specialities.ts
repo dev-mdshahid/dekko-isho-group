@@ -61,7 +61,8 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     image: '/images/specialities/strategical.png',
     featureLabel: 'Strategic Presence',
     features: [
-      'Strategically Diverse Manufacturing Locations in the Dhaka & Gazipur Region',
+      'Strategically Diverse Manufacturing Locations in Dhaka and Gazipur',
+      'Easily Accessible Manufacturing Facilities Near the International Airport',
       'Display Centers in the USA and Europe',
       'Efficient Logistics and Export Network',
     ],
