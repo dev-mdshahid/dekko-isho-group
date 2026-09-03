@@ -51,6 +51,10 @@ export const careerBanner = {
   ctaHref: '#open-positions',
   watermark: 'SINCE 1953',
   heroCarousel: [
+     {
+      src: '/images/career/hero-carousel-03.png',
+      alt: 'Award ceremony celebrating team excellence at Dekko Isho',
+    },
     {
       src: '/images/career/hero-carousel-01.png',
       alt: 'Dekko Isho team members together at a workplace gathering',
@@ -58,10 +62,6 @@ export const careerBanner = {
     {
       src: '/images/career/hero-carousel-02.png',
       alt: 'Employees collaborating on the factory floor',
-    },
-    {
-      src: '/images/career/hero-carousel-03.png',
-      alt: 'Award ceremony celebrating team excellence at Dekko Isho',
     },
     {
       src: '/images/career/hero-carousel-04.png',
