@@ -107,7 +107,7 @@ export const businessNavGroups: NavLinkGroup[] = [
 export const dekkoBusinessNav: NavLink[] = [
   {
     to: '/isho-ltd',
-    label: 'ISHO Limited',
+    label: 'ISHO',
     showExternalIcon: true,
   },
   {
@@ -132,7 +132,7 @@ export const dekkoBusinessNav: NavLink[] = [
   },
   {
     to: 'https://www.ecoviaglobal.com/',
-    label: 'Ecovia Limited',
+    label: 'Ecovia',
     showExternalIcon: true,
   },
 ]
