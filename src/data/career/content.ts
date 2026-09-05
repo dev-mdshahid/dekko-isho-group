@@ -51,9 +51,13 @@ export const careerBanner = {
   ctaHref: '#open-positions',
   watermark: 'SINCE 1953',
   heroCarousel: [
-     {
+    {
       src: '/images/career/hero-carousel-03.png',
       alt: 'Award ceremony celebrating team excellence at Dekko Isho',
+    },
+    {
+      src: '/images/career/hero-carousel-04.png',
+      alt: 'Colleagues receiving recognition at an award giving event',
     },
     {
       src: '/images/career/hero-carousel-01.png',
@@ -62,10 +66,6 @@ export const careerBanner = {
     {
       src: '/images/career/hero-carousel-02.png',
       alt: 'Employees collaborating on the factory floor',
-    },
-    {
-      src: '/images/career/hero-carousel-04.png',
-      alt: 'Colleagues receiving recognition at an award giving event',
     },
     {
       src: '/images/career/hero-carousel-05.png',
@@ -284,11 +284,19 @@ export const careerLifeAt = {
     },
     {
       id: 'career-life-06',
-      title: 'Learning and Development Investing in People',
+      title: 'Learning and Development',
       description:
         'We believe in nurturing talent and fostering growth. Our comprehensive learning and development programs empower employees to reach their full potential.',
-      image: '',
-      imageAlt: '',
+      image: 'https://placehold.co/600x400/red/white',
+      imageAlt: 'Employees participating in a training session',
+    },
+    {
+      id: 'career-life-07',
+      title: 'Investing in People',
+      description:
+        'We prioritize the well-being and growth of our employees. Through mentorship, coaching, and career advancement opportunities, we invest in our people for long-term success.',
+      image: 'https://placehold.co/600x400/red/white',
+      imageAlt: 'Employees engaged in a mentorship program',
     },
   ] satisfies CareerLifeCard[],
 }

@@ -107,7 +107,7 @@ export const strengthItems: StrengthItem[] = [
     title: 'Traceability',
     description:
       '',
-    image: '',
+    image: 'https://placehold.co/600x400/red/white',
     imageAlt: 'Professionals gathered at an international traceability seminar',
   },
 ]
