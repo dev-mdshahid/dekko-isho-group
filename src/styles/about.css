@@ -1512,6 +1512,20 @@
     box-shadow 0.4s ease;
 }
 
+.about-journey-section .about-journey-logo {
+  display: block;
+  width: min(100%, 180px);
+  height: 48px;
+  margin: 0 0 18px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.about-journey-section .about-journey-entry-stack--right .about-journey-logo {
+  margin-left: auto;
+  object-position: right center;
+}
+
 .about-journey-section .about-journey-entry-stack .about-journey-card:nth-of-type(1) {
   transition-delay: 0ms;
 }
@@ -1706,6 +1720,12 @@
     transform: translate3d(var(--journey-reveal-x, 36px), var(--journey-reveal-y, 18px), 0);
   }
 
+  .about-journey-section .about-journey-logo {
+    width: min(100%, 160px);
+    height: 42px;
+    margin-bottom: 16px;
+  }
+
   .about-journey-section .about-journey-entry-stack .about-journey-card:nth-of-type(2) {
     transition-delay: 110ms;
   }
@@ -1759,6 +1779,12 @@
 
   .about-journey-section .about-journey-card {
     padding: 20px;
+  }
+
+  .about-journey-section .about-journey-logo {
+    width: min(100%, 140px);
+    height: 38px;
+    margin-bottom: 14px;
   }
 
   .about-journey-section .about-journey-item-title {

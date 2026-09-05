@@ -1,6 +1,7 @@
 export type JourneyEntry = {
   title: string
-  description?: string
+  description?: string,
+  companyLogo?: string
 }
 
 export type JourneyEra = 1 | 2 | 3
@@ -120,11 +121,13 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'IZAKAYA',
         description:
           'Contemporary Japanese dining — authentic flavors with a modern culinary experience.',
+        companyLogo: "/images/about/company-logo/izakaya-logo.svg",
       },
       {
         title: 'KLUBHAUS',
         description:
           'A fashion & lifestyle brand blending global influences with local culture to shape style beyond trends.',
+        companyLogo: "/images/about/company-logo/klubhaus-logo.svg",
       },
     ],
   },
@@ -137,6 +140,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'ISHO',
         description:
           'A furniture and lifestyle brand, redefining modern living through contemporary design and innovation.',
+        companyLogo: "/images/about/company-logo/isho-logo.svg",
       },
     ],
   },
@@ -149,6 +153,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Ecovia',
         description:
           'A sustainability-driven business transforming textile waste into compostable packaging solutions.',
+        companyLogo: "/images/about/company-logo/ecovia-logo.svg",
       },
     ],
   },
@@ -161,6 +166,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Dekko ISHO Technologies Ltd. (DITECH)',
         description:
           'A strategic technology solutions partner delivering integrated digital infrastructure.',
+        companyLogo: "/images/about/company-logo/ditech-logo.svg",
       },
     ],
   },

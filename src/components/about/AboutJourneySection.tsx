@@ -134,6 +134,9 @@ function MilestoneCards({
       {showYear ? <YearPill year={milestone.year} className="about-journey-year--mobile" /> : null}
       {milestone.entries.map((entry) => (
         <article key={entry.title} className="about-journey-card">
+          {entry.companyLogo ? (
+            <img src={entry.companyLogo} alt={entry.title} className="about-journey-logo" />
+          ) : null}
           <h3 className="about-journey-item-title">{entry.title}</h3>
           {entry.description ? (
             <p className="about-journey-description">{entry.description}</p>
