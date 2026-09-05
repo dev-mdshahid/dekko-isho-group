@@ -5,6 +5,7 @@ export function DesignDigitalDevelopmentSection() {
   return (
     <SplitFeatureListSection
       className="dpd-digital-section"
+      variant="carousel"
       {...designProductDevelopmentDigital}
     />
   )

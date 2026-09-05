@@ -1147,6 +1147,260 @@
   }
 }
 
+/* Digital Product Development — opt-in image carousel */
+.design-product-development-page .dpd-digital-section.split-feature-list-section--carousel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.design-product-development-page
+  .dpd-digital-section.split-feature-list-section--carousel
+  .split-feature-list-layout {
+  grid-template-columns: minmax(0, 45%) minmax(0, 55%);
+  gap: 0;
+  min-height: 560px;
+  align-items: stretch;
+}
+
+.design-product-development-page
+  .dpd-digital-section.split-feature-list-section--carousel
+  .split-feature-list-intro {
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+  padding: 80px 64px 80px 0;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-dots {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: var(--color--white);
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #d8d8df;
+  cursor: pointer;
+  transition: background-color 220ms ease, transform 220ms ease;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-dot:hover,
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-dot.is-active {
+  background: var(--dpd-brand-start);
+  transform: scale(1.15);
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-dot:focus-visible {
+  outline: 2px solid var(--color--white);
+  outline-offset: 4px;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel {
+  min-width: 0;
+  margin-right: calc(var(--_layout---container-gutter) * -1);
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport {
+  position: relative;
+  height: 100%;
+  min-height: 560px;
+  overflow: hidden;
+  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
+  touch-action: pan-y;
+  background: #8d1111;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport:focus-visible {
+  outline: 3px solid var(--color--white);
+  outline-offset: -6px;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(2%);
+  transition: opacity 600ms ease, transform 600ms ease, visibility 600ms;
+  pointer-events: none;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-active {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
+  position: absolute;
+  right: clamp(32px, 5vw, 76px);
+  bottom: 42px;
+  left: clamp(72px, 9vw, 142px);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  max-width: 620px;
+  padding: 20px 24px;
+  color: var(--color--white);
+  background: rgb(6 20 42 / 86%);
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-icon {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  object-fit: contain;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-copy {
+  min-width: 0;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-title {
+  margin: 0 0 5px;
+  color: inherit;
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-description {
+  margin: 0;
+  color: inherit;
+  font-family: var(--_typography---font-family--body);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 1199px) {
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-layout {
+    grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+    min-height: 500px;
+  }
+
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-intro {
+    padding-right: 44px;
+  }
+
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-title {
+    font-size: clamp(2.25rem, 4.2vw, 3rem);
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport {
+    min-height: 500px;
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-layout {
+    grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+    gap: 0;
+    min-height: 460px;
+  }
+
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-intro {
+    padding: 56px 32px 56px 0;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport {
+    min-height: 460px;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
+    right: 24px;
+    bottom: 28px;
+    left: 54px;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-icon {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-layout {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-intro {
+    padding: var(--dpd-mobile-section-pad-sm) 0 32px;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel {
+    margin-inline: calc(var(--_layout---container-gutter) * -1);
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport {
+    height: auto;
+    min-height: clamp(340px, 75vw, 500px);
+    clip-path: none;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
+    right: var(--_layout---container-gutter);
+    bottom: 24px;
+    left: var(--_layout---container-gutter);
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-title {
+    font-size: 1.25rem;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-description {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide,
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-dot {
+    transition: none;
+  }
+}
+
+
 /* ── Services (image + feature cards) ── */
 .design-product-development-page .dpd-services-section {
   background-color: var(--color--white);
