@@ -7,7 +7,6 @@ import {
 } from '../components/design-product-development'
 import {
   SolutionAdvancedFinishingSection,
-  SolutionCapabilityCardsSection,
   SolutionCtaSection,
   SolutionPageHeroSection,
   SolutionSustainableTechSection,
@@ -23,13 +22,14 @@ import {
   industrialLaundryQualityAssurance,
   industrialLaundryResearchDevelopment,
   industrialLaundrySustainableTech,
-  industrialLaundryWashingProcesses,
+  industrialLaundryWashingProcessesV2,
   industrialLaundryWaterStewardship,
 } from '../data/industrial-laundry/content'
 import { useInViewAnimation } from '../hooks/useInViewAnimation'
 import { useLegacyLinkInterceptor } from '../hooks/useLegacyLinkInterceptor'
 import { useSolutionAnimations } from '../hooks/useSolutionAnimations'
 import { useWebflowInit } from '../hooks/useWebflowInit'
+import { IndustrialLaundryWashingProcessesSection } from '../components/solutions/IndustrialLaundryWashingProcessesSection'
 
 const ID_PREFIX = 'il'
 
@@ -47,10 +47,9 @@ export function IndustrialLaundryContent() {
       <SolutionPageHeroSection idPrefix={ID_PREFIX} {...industrialLaundryHero} />
 
       {/* 2. Core washing processes */}
-      <SolutionCapabilityCardsSection
+      <IndustrialLaundryWashingProcessesSection
         idPrefix={ID_PREFIX}
-        sectionKey="washing-processes"
-        content={industrialLaundryWashingProcesses}
+        content={industrialLaundryWashingProcessesV2}
       />
 
       {/* 3. Advanced Finishing Capabilities */}

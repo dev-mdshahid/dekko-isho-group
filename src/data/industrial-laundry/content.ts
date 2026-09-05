@@ -12,50 +12,124 @@ export const industrialLaundryHero = {
 
 const INDUSTRIAL_LAUNDRY_IMAGE_BASE = '/images/industrial-laundry'
 
-export const industrialLaundryWashingProcesses = {
+// export const industrialLaundryWashingProcesses = {
+//   id: 'il-washing-processes',
+//   badge: 'Comprehensive Washing Capabilities',
+//   title: 'Core Washing Processes',
+//   description:
+//     'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements. From garment and enzyme washes to specialized denim treatments and dyeing, we ensure consistent quality, repeatable results, and production flexibility across every order.',
+//   items: [
+//     {
+//       id: 'garment-dyeing',
+//       title: 'Garment Dyeing',
+//       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/garment-wash.png`,
+//       imageAlt: 'Blue denim garments in a laundry basket',
+//     },
+//     {
+//       id: 'denim-wash',
+//       title: 'Denim Wash',
+//       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dyeing.png`,
+//       imageAlt: 'Folded garments in assorted dyed colors',
+//     },
+//     {
+//       id: 'enzyme-wash',
+//       title: 'Enzyme Wash',
+//       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/enzyme-wash.png`,
+//       imageAlt: 'Stacked denim jeans in varied enzyme wash finishes',
+//     },
+//     {
+//       id: 'dark-wash',
+//       title: 'Dark Wash',
+//       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dark-wash.png`,
+//       imageAlt: 'Stack of dark wash denim garments',
+//     },
+//     {
+//       id: 'mid-wash',
+//       title: 'Mid Wash',
+//       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/mid-wash.png`,
+//       imageAlt: 'Mid wash denim jeans',
+//     },
+//     {
+//       id: 'light-wash',
+//       title: 'Light Wash',
+//       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/light-wash.png`,
+//       imageAlt: 'Light wash denim jeans with product tag',
+//     },
+
+//   ],
+// }
+
+export const industrialLaundryWashingProcessesV2 = {
   id: 'il-washing-processes',
+
   badge: 'Comprehensive Washing Capabilities',
+
   title: 'Core Washing Processes',
+
   description:
     'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements. From garment and enzyme washes to specialized denim treatments and dyeing, we ensure consistent quality, repeatable results, and production flexibility across every order.',
+
   items: [
     {
       id: 'garment-dyeing',
+      number: '01',
       title: 'Garment Dyeing',
+      description:
+        'Vibrant and consistent colors across a diverse range of garment types.',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/garment-wash.png`,
       imageAlt: 'Blue denim garments in a laundry basket',
+      featured: true,
     },
+
     {
       id: 'denim-wash',
+      number: '02',
       title: 'Denim Wash',
+      description:
+        'Distinctive washed finishes developed for modern denim products.',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dyeing.png`,
       imageAlt: 'Folded garments in assorted dyed colors',
     },
+
     {
       id: 'enzyme-wash',
+      number: '03',
       title: 'Enzyme Wash',
+      description:
+        'A softer hand feel with natural and controlled washed effects.',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/enzyme-wash.png`,
       imageAlt: 'Stacked denim jeans in varied enzyme wash finishes',
     },
+
     {
       id: 'dark-wash',
+      number: '04',
       title: 'Dark Wash',
+      description:
+        'Rich, deep denim tones while maintaining lasting color character.',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/dark-wash.png`,
       imageAlt: 'Stack of dark wash denim garments',
     },
+
     {
       id: 'mid-wash',
+      number: '05',
       title: 'Mid Wash',
+      description:
+        'Balanced washed tones designed for versatile denim applications.',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/mid-wash.png`,
       imageAlt: 'Mid wash denim jeans',
     },
+
     {
       id: 'light-wash',
+      number: '06',
       title: 'Light Wash',
+      description:
+        'Clean and lighter denim finishes with a casual visual character.',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/light-wash.png`,
       imageAlt: 'Light wash denim jeans with product tag',
     },
-    
   ],
 }
 

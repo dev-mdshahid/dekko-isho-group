@@ -3,11 +3,9 @@
 .solution-page {
   --solution-brand-start: var(--color--primary);
   --solution-brand-end: var(--color--primary-3);
-  --solution-brand-gradient: linear-gradient(
-    180deg,
-    var(--solution-brand-start) 0%,
-    var(--solution-brand-end) 100%
-  );
+  --solution-brand-gradient: linear-gradient(180deg,
+      var(--solution-brand-start) 0%,
+      var(--solution-brand-end) 100%);
   --solution-content-max-width: 1520px;
 }
 
@@ -1110,7 +1108,7 @@
   overflow: hidden;
 }
 
-.solution-page .solution-cta-card > * {
+.solution-page .solution-cta-card>* {
   position: relative;
   z-index: 1;
 }
@@ -1395,6 +1393,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .solution-page .solution-network-card,
   .solution-page .solution-network-card-overlay {
     transition: none;
@@ -1878,6 +1877,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+
   .solution-page .solution-capability-cards-card:hover .solution-capability-cards-card-image,
   .solution-page .solution-advanced-finishing-card:hover .solution-advanced-finishing-card-image,
   .solution-page .solution-network-card:hover .solution-network-card-image,
@@ -1952,3 +1952,466 @@
   overflow: hidden;
 }
 
+/* =========================================================
+   INDUSTRIAL LAUNDRY — WASHING PROCESSES
+========================================================= */
+
+.il-washing-processes {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.il-washing-processes__main {
+  position: relative;
+  z-index: 1;
+
+  padding: 88px 20px 100px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.il-washing-processes__header {
+  width: 100%;
+  max-width: 1780px;
+
+  margin: 0 auto 64px;
+}
+
+.il-washing-processes__title {
+  margin-top: 20px;
+  margin-bottom: 18px;
+}
+
+.il-washing-processes__description {
+  max-width: 1720px;
+
+  margin: 0;
+
+  color: #4f5967;
+
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   HORIZONTAL SCROLL
+========================================================= */
+
+.il-washing-processes__scroll {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding-bottom: 10px;
+
+  cursor: grab;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+}
+
+.il-washing-processes__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.il-washing-processes__scroll:active {
+  cursor: grabbing;
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.il-washing-processes__track {
+  display: flex;
+  align-items: stretch;
+
+  width: max-content;
+
+  gap: 14px;
+
+  padding-left: max(20px,
+      calc((100vw - 1780px) / 2));
+
+  padding-right: max(20px,
+      calc((100vw - 1780px) / 2));
+}
+
+
+/* =========================================================
+   STANDARD CARD
+========================================================= */
+
+.il-washing-processes__card {
+  position: relative;
+
+  flex: 0 0 242px;
+
+  height: 440px;
+
+  overflow: hidden;
+
+  border: 1px solid #dce1e7;
+
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 1px 2px rgba(20, 30, 45, 0.02),
+    0 6px 20px rgba(20, 30, 45, 0.025);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.il-washing-processes__card:hover {
+  transform: translateY(-4px);
+
+  border-color: #cbd3dd;
+
+  box-shadow:
+    0 12px 32px rgba(20, 30, 45, 0.08);
+}
+
+
+/* =========================================================
+   STANDARD IMAGE
+========================================================= */
+
+.il-washing-processes__image-area {
+  position: relative;
+
+  width: 100%;
+  height: 292px;
+
+  overflow: hidden;
+
+  background: #edf0f3;
+}
+
+.il-washing-processes__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.il-washing-processes__card:hover .il-washing-processes__image {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.il-washing-processes__number {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  z-index: 3;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 55px;
+  height: 42px;
+
+  padding: 0 15px;
+
+  border-radius: 100px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  color: #142136;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  box-shadow: 0 4px 16px rgba(18, 31, 48, 0.08);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.il-washing-processes__content {
+  padding: 24px 22px;
+}
+
+.il-washing-processes__card-title {
+  margin: 0;
+
+  color: #111b2c;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
+}
+
+.il-washing-processes__card-description {
+  margin: 10px 0 0;
+
+  color: #747d8c;
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FEATURED CARD
+========================================================= */
+
+.il-washing-processes__card--featured {
+  flex-basis: 520px;
+
+  background: #0d2233;
+
+  border-color: rgba(20, 50, 70, 0.1);
+}
+
+.il-washing-processes__featured-image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.il-washing-processes__card--featured:hover .il-washing-processes__featured-image {
+  transform: scale(1.035);
+}
+
+
+/* =========================================================
+   FEATURED OVERLAY
+========================================================= */
+
+.il-washing-processes__featured-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(180deg,
+      rgba(5, 19, 30, 0.02) 10%,
+      rgba(5, 19, 30, 0.1) 42%,
+      rgba(5, 19, 30, 0.92) 100%);
+}
+
+
+/* =========================================================
+   FEATURED NUMBER
+========================================================= */
+
+.il-washing-processes__number--featured {
+  background: #3778e8;
+
+  color: #fff;
+
+  box-shadow: 0 6px 18px rgba(55, 120, 232, 0.3);
+}
+
+
+/* =========================================================
+   FEATURED CONTENT
+========================================================= */
+
+.il-washing-processes__featured-content {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 28px;
+  right: 28px;
+  bottom: 30px;
+}
+
+.il-washing-processes__featured-title {
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.03em;
+}
+
+.il-washing-processes__featured-description {
+  max-width: 350px;
+
+  margin: 12px 0 0;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1600px) {
+  .il-washing-processes__card {
+    flex-basis: 250px;
+  }
+
+  .il-washing-processes__card--featured {
+    flex-basis: 525px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1199px) {
+  .il-washing-processes__main {
+    padding-top: 76px;
+    padding-bottom: 80px;
+  }
+
+  .il-washing-processes__header {
+    margin-bottom: 48px;
+  }
+
+  .il-washing-processes__card {
+    flex-basis: 248px;
+
+    height: 420px;
+  }
+
+  .il-washing-processes__card--featured {
+    flex-basis: 430px;
+  }
+
+  .il-washing-processes__image-area {
+    height: 274px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .il-washing-processes__main {
+    padding: 60px 16px 68px;
+  }
+
+  .il-washing-processes__header {
+    margin-bottom: 36px;
+  }
+
+  .il-washing-processes__description {
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .il-washing-processes__track {
+    gap: 12px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .il-washing-processes__card {
+    flex-basis: 240px;
+
+    height: 400px;
+
+    border-radius: 14px;
+  }
+
+  .il-washing-processes__card--featured {
+    flex-basis: min(86vw, 360px);
+  }
+
+  .il-washing-processes__image-area {
+    height: 258px;
+  }
+
+  .il-washing-processes__content {
+    padding: 20px 18px;
+  }
+
+  .il-washing-processes__card-title {
+    font-size: 19px;
+  }
+
+  .il-washing-processes__card-description {
+    margin-top: 7px;
+
+    font-size: 14px;
+  }
+
+  .il-washing-processes__number {
+    top: 15px;
+    left: 15px;
+
+    min-width: 50px;
+    height: 38px;
+
+    font-size: 14px;
+  }
+
+  .il-washing-processes__featured-content {
+    left: 22px;
+    right: 22px;
+    bottom: 24px;
+  }
+
+  .il-washing-processes__featured-title {
+    font-size: 26px;
+  }
+
+  .il-washing-processes__featured-description {
+    font-size: 14px;
+  }
+}
