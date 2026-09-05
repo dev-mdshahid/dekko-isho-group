@@ -185,7 +185,7 @@ export const industrialLaundryWaterStewardship = {
     {
       id: 'total-capacity',
       value: '3.5 Million',
-      label: 'Total Capacity (Pcs)',
+      label: 'Total Capacity (units)',
       variant: 'blue',
     },
     {
