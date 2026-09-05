@@ -5,6 +5,7 @@ export function ManufacturingTechnologySection() {
   return (
     <SplitFeatureListSection
       className="mfg-technology-section"
+      variant="carousel"
       {...manufacturingTechnology}
     />
   )
