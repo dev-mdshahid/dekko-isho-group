@@ -349,7 +349,7 @@ export const manufacturingTechnology = {
   ],
 }
 
-const productRangeImage = (file: string) => `/images/manufacturing/product-range/${file}`
+// const productRangeImage = (file: string) => `/images/manufacturing/product-range/${file}`
 
 export const manufacturingProductRange = {
   badge: 'Versatile Manufacturing Capability',
