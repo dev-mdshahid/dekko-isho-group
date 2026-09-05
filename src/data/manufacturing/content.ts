@@ -352,42 +352,50 @@ export const manufacturingProductRange = {
     {
       id: 'formal-shirts',
       label: 'Formal Shirts',
-      image: productRangeImage('formal-shirts.png'),
+      // image: productRangeImage('formal-shirts.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'casual-shirts',
       label: 'Casual Shirts',
-      image: productRangeImage('casual-shirts.png'),
+      // image: productRangeImage('casual-shirts.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'pants',
       label: 'Pants',
-      image: productRangeImage('pants.png'),
+      // image: productRangeImage('pants.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'denim-twill-jackets',
       label: 'Denim & Twill Jackets',
-      image: productRangeImage('denim-twill-jackets.png'),
+      // image: productRangeImage('denim-twill-jackets.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'quilted-shirts-jackets',
       label: 'Quilted Shirts & Jackets',
-      image: productRangeImage('quilted-shirts-jackets.png'),
+      // image: productRangeImage('quilted-shirts-jackets.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'shakets',
       label: 'Shakets',
-      image: productRangeImage('shakets.png'),
+      // image: productRangeImage('shakets.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'ladies-blouse',
       label: "Ladies' Blouse",
-      image: productRangeImage('ladies-blouse.png'),
+      // image: productRangeImage('ladies-blouse.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'ladies-dress',
       label: "Ladies' Dress",
-      image: productRangeImage('ladies-dress.png'),
+      // image: productRangeImage('ladies-dress.png'),
+      image: 'https://placehold.co/600x400/red/white',
     },
   ],
 }
@@ -707,7 +715,7 @@ export const manufacturingOperation = {
       title: 'Every Great Product Starts with the Right Materials.',
       description:
         'A well-managed material warehouse forms the foundation of efficient manufacturing. Through accurate inventory management, complete material traceability, barcode-enabled storage systems, and comprehensive fabric and trim inspections, we ensure uninterrupted production and consistent quality from the very beginning.',
-      image: '/images/manufacturing/material-management.png',
+      image: 'https://placehold.co/600x400/red/white',
       imageAlt: 'Material management warehouse',
     },
     {
@@ -727,7 +735,7 @@ export const manufacturingOperation = {
       title: 'Accelerating Product Development.',
       description:
         'Fast sample development enables faster buying decisions. Our three dedicated Salesman Sample (SMS) production lines support rapid prototype development, fit validation, buyer presentations, and pre-production approvals, helping customers shorten development timelines and accelerate speed to market.',
-      image: '/images/manufacturing/salesman-sample.png',
+      image: 'https://placehold.co/600x400/red/white',
       imageAlt: 'Salesman sample development',
     },
   ],
