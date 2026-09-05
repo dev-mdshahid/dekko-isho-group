@@ -302,6 +302,12 @@ export const manufacturingAutomation = {
       image: automationImage('automatic-belt-setter-douglas.png'),
       imageAlt: 'Automatic belt setter Douglas machine',
     },
+    {
+      id: 'moisture-machine',
+      label: 'Moisture Machine',
+      image: 'https://placehold.co/600x400/red/white',
+      imageAlt: 'Moisture machine for fabric treatment',
+    },
   ],
 }
 
