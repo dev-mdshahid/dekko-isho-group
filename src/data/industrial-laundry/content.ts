@@ -191,7 +191,7 @@ export const industrialLaundryAdvancedFinishing = {
     {
       id: 'repairing',
       title: 'Repairing',
-      image: '',
+      image: 'https://placehold.co/600x400/red/white',
       imageAlt: 'repairing',
     },
   ],

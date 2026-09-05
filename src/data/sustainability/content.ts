@@ -447,15 +447,15 @@ export const pillar01FocusAreas: FocusAreaCard[] = [
     title: 'Tree Plantation',
     images: [
       {
-        src: pillar1Image('', ''),
+        src: 'https://placehold.co/600x400/red/white',
         alt: '',
       },
       {
-        src: pillar1Image('', ''),
+        src: 'https://placehold.co/600x400/red/white',
         alt: '',
       },
       {
-        src: pillar1Image('', ''),
+        src: 'https://placehold.co/600x400/red/white',
         alt: '',
       },
     ],
