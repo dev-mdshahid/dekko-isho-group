@@ -136,8 +136,8 @@ function MilestoneCards({
         <article key={entry.title} className="about-journey-card">
           {entry.companyLogo ? (
             <img src={entry.companyLogo} alt={entry.title} className="about-journey-logo" />
-          ) : null}
-          <h3 className="about-journey-item-title">{entry.title}</h3>
+          ) : <h3 className="about-journey-item-title">{entry.title}</h3>}
+
           {entry.description ? (
             <p className="about-journey-description">{entry.description}</p>
           ) : null}
