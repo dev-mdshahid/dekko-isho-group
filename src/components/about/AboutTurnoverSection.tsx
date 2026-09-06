@@ -13,14 +13,16 @@ export function AboutTurnoverSection() {
             <div className="about-turnover-heading">
               <span className="about-turnover-heading-line" aria-hidden="true" />
               <h2 id="about-turnover-title" className="about-turnover-title">
-                Annual Growth
+                Annual Turnover
               </h2>
               <span className="about-turnover-heading-line" aria-hidden="true" />
             </div>
 
             <GrowthComboChart />
 
-            <p className="about-turnover-caption">Qty Growth (PCS) and Value Growth (USD)</p>
+            <p className="about-turnover-caption">
+              Total Business Turnover in Millions (M)
+            </p>
           </div>
         </div>
       </div>
