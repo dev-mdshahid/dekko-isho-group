@@ -79,7 +79,7 @@ function ServiceFeatures({
     <div className="service-feature-list service-feature-list--grouped">
       {(features as ServiceFeatureGroup[]).map((group) => (
         <div key={group.group} className="service-feature-group">
-          <div className="service-feature-text">{group.group}</div>
+          {/* <div className="service-feature-text">{group.group}</div> */}
           <div className="service-feature-group-items feature-list-item">
             {group.items.map((item) => (
               <ServiceFeatureItem key={item} label={item} />
