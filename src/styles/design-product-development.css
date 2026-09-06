@@ -1260,7 +1260,12 @@
   max-width: 620px;
   padding: 20px 24px;
   color: var(--color--white);
-  background: rgb(6 20 42 / 86%);
+  background-color: var(--color--primary-gradient-end);
+  background-image: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--dpd-brand-start) 72%, var(--color--primary-gradient-end)) 0%,
+    var(--color--primary-gradient-end) 100%
+  );
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-icon {
