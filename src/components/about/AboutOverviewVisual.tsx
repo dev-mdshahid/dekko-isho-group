@@ -191,7 +191,7 @@ export function AboutOverviewVisual() {
         )}
       </div>
 
-      {showVideo && <LumaKeyFilter />}
+      {/* {showVideo && <LumaKeyFilter />} */}
     </div>
   )
 }
