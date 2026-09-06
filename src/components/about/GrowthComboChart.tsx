@@ -126,7 +126,7 @@ export function GrowthComboChart() {
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={chartData}
-              margin={{ top: 52, right: 18, bottom: 18, left: 8 }}
+              margin={{ top: 52, right: 36, bottom: 18, left: 36 }}
             >
               <defs>
                 <linearGradient id={strokeId} x1="0" y1="0" x2="1" y2="0">
