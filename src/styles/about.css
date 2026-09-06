@@ -3156,8 +3156,8 @@
 
 .about-contact-section--about .about-contact-input,
 .about-contact-section--about .about-contact-textarea {
-  border: 1px solid rgb(255 255 255 / 28%);
-  background-color: rgb(38 40 42 / 96%);
+  border: 1px solid rgb(255 255 255 / 32%);
+  background-color: rgb(255 255 255 / 11%);
   box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
   color: var(--color--white);
   padding: 0.75rem 1rem;
@@ -3169,20 +3169,20 @@
 
 .about-contact-section--about .about-contact-input::placeholder,
 .about-contact-section--about .about-contact-textarea::placeholder {
-  color: #b8bec3;
+  color: rgb(255 255 255 / 68%);
   opacity: 1;
 }
 
 .about-contact-section--about .about-contact-input:hover,
 .about-contact-section--about .about-contact-textarea:hover {
-  border-color: rgb(255 255 255 / 42%);
-  background-color: rgb(46 48 50 / 98%);
+  border-color: rgb(255 255 255 / 48%);
+  background-color: rgb(255 255 255 / 15%);
 }
 
 .about-contact-section--about .about-contact-input:focus,
 .about-contact-section--about .about-contact-textarea:focus {
   border-color: var(--color--primary-2);
-  background-color: #303234;
+  background-color: rgb(255 255 255 / 17%);
   box-shadow: 0 0 0 3px rgb(44 158 215 / 24%), 0 8px 24px rgb(0 0 0 / 22%);
   outline: 0;
 }
