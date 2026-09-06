@@ -4,9 +4,22 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+type FieldName = 'name' | 'email' | 'message'
+type FieldErrors = Partial<Record<FieldName, string>>
 
 export function AboutContactSection() {
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
+
+  const clearFieldError = (field: FieldName) => {
+    setFieldErrors((current) => {
+      if (!current[field]) return current
+
+      const next = { ...current }
+      delete next[field]
+      return next
+    })
+  }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -17,11 +30,23 @@ export function AboutContactSection() {
     const email = String(data.get('email') ?? '').trim()
     const message = String(data.get('message') ?? '').trim()
 
-    if (!name || !email || !message) {
-      setStatus('error')
+    const nextErrors: FieldErrors = {}
+
+    if (!name) nextErrors.name = 'Please enter your full name.'
+    if (!email) {
+      nextErrors.email = 'Please enter your email address.'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      nextErrors.email = 'Please enter a valid email address.'
+    }
+    if (!message) nextErrors.message = 'Please enter a message.'
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFieldErrors(nextErrors)
+      setStatus('idle')
       return
     }
 
+    setFieldErrors({})
     setStatus('submitting')
 
     try {
@@ -55,24 +80,53 @@ export function AboutContactSection() {
               noValidate
             >
               <div className="cta-form-input about-contact-form-left">
-                <input
-                  className="form-input bg-change w-input"
-                  maxLength={256}
-                  name="name"
-                  placeholder="Full Name"
-                  type="text"
-                  id="about-contact-name"
-                  required
-                />
-                <input
-                  className="form-input bg-change w-input"
-                  maxLength={256}
-                  name="email"
-                  placeholder="Email"
-                  type="email"
-                  id="about-contact-email"
-                  required
-                />
+                <div className="about-contact-field" id="about-contact-name-field">
+                  <label className="about-contact-label" htmlFor="about-contact-name">
+                    Full Name
+                  </label>
+                  <input
+                    className="form-input bg-change w-input about-contact-input"
+                    maxLength={256}
+                    name="name"
+                    placeholder="e.g. Alex Morgan"
+                    type="text"
+                    id="about-contact-name"
+                    autoComplete="name"
+                    aria-invalid={Boolean(fieldErrors.name)}
+                    aria-describedby={fieldErrors.name ? 'about-contact-name-error' : undefined}
+                    onChange={() => clearFieldError('name')}
+                    required
+                  />
+                  {fieldErrors.name && (
+                    <span className="about-contact-field-error" id="about-contact-name-error">
+                      {fieldErrors.name}
+                    </span>
+                  )}
+                </div>
+
+                <div className="about-contact-field" id="about-contact-email-field">
+                  <label className="about-contact-label" htmlFor="about-contact-email">
+                    Email
+                  </label>
+                  <input
+                    className="form-input bg-change w-input about-contact-input"
+                    maxLength={256}
+                    name="email"
+                    placeholder="name@company.com"
+                    type="email"
+                    id="about-contact-email"
+                    autoComplete="email"
+                    aria-invalid={Boolean(fieldErrors.email)}
+                    aria-describedby={fieldErrors.email ? 'about-contact-email-error' : undefined}
+                    onChange={() => clearFieldError('email')}
+                    required
+                  />
+                  {fieldErrors.email && (
+                    <span className="about-contact-field-error" id="about-contact-email-error">
+                      {fieldErrors.email}
+                    </span>
+                  )}
+                </div>
                 <input
                   type="submit"
                   aria-label="Send contact form"
@@ -82,26 +136,41 @@ export function AboutContactSection() {
                 />
               </div>
               <div className="cta-form-textarea about-contact-form-right">
-                <textarea
-                  placeholder="Message"
-                  maxLength={5000}
-                  id="about-contact-message"
-                  name="message"
-                  className="form-input bg-change form-textarea w-input about-contact-textarea"
-                  required
-                />
+                <div className="about-contact-field about-contact-message-field">
+                  <label className="about-contact-label" htmlFor="about-contact-message">
+                    Message
+                  </label>
+                  <textarea
+                    placeholder="Tell us how we can help"
+                    maxLength={5000}
+                    id="about-contact-message"
+                    name="message"
+                    className="form-input bg-change form-textarea w-input about-contact-textarea"
+                    aria-invalid={Boolean(fieldErrors.message)}
+                    aria-describedby={fieldErrors.message ? 'about-contact-message-error' : undefined}
+                    onChange={() => clearFieldError('message')}
+                    required
+                  />
+                  {fieldErrors.message && (
+                    <span className="about-contact-field-error" id="about-contact-message-error">
+                      {fieldErrors.message}
+                    </span>
+                  )}
+                </div>
               </div>
             </form>
 
             <div
               className="success-message w-form-done"
               style={status === 'success' ? { display: 'block' } : undefined}
+              role="status"
             >
               <div>Thank you! Your submission has been received!</div>
             </div>
             <div
               className="error-message w-form-fail"
               style={status === 'error' ? { display: 'block' } : undefined}
+              role="alert"
             >
               <div>Oops! Something went wrong while submitting the form.</div>
             </div>
