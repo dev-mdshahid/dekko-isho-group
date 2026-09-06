@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useId, useRef } from 'react'
 import {
-  Bar,
+  Area,
   CartesianGrid,
   ComposedChart,
   Line,
+  ReferenceDot,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -41,6 +42,12 @@ const growthSummary = chartData
       `${year}: Qty Growth ${qtyGrowth} PCS and Value Growth ${valueGrowth} USD`,
   )
   .join('; ')
+const minValueDatum = chartData.reduce((minimum, datum) =>
+  datum.valueGrowth < minimum.valueGrowth ? datum : minimum,
+)
+const maxValueDatum = chartData.reduce((maximum, datum) =>
+  datum.valueGrowth > maximum.valueGrowth ? datum : maximum,
+)
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(value)
@@ -57,14 +64,43 @@ function GrowthTooltip({ active, label, payload }: TooltipContentProps) {
   return (
     <div className="about-growth-tooltip">
       <p className="about-growth-tooltip-year">Year: {label}</p>
-      <p>Qty Growth (PCS): {formatNumber(qtyValue)}</p>
+      <p>Qty Growth (units): {formatNumber(qtyValue)}</p>
       <p>Value Growth (USD): {formatNumber(valueValue)}</p>
     </div>
   )
 }
 
+type GrowthCalloutProps = {
+  cx?: number
+  cy?: number
+  value: number
+  tone: 'start' | 'end'
+}
+
+function GrowthCallout({ cx, cy, value, tone }: GrowthCalloutProps) {
+  if (typeof cx !== 'number' || typeof cy !== 'number') return null
+
+  const label = `$${formatNumber(value)}`
+  const width = Math.max(52, label.length * 7 + 20)
+  const pillY = cy - 42
+
+  return (
+    <g className={`about-growth-chart-callout about-growth-chart-callout--${tone}`}>
+      <line x1={cx} y1={cy - 5} x2={cx} y2={pillY + 24} className="about-growth-chart-callout-line" />
+      <rect x={cx - width / 2} y={pillY} width={width} height={24} rx={12} />
+      <text x={cx} y={pillY + 16} textAnchor="middle">
+        {label}
+      </text>
+    </g>
+  )
+}
+
 export function GrowthComboChart() {
   const viewportRef = useRef<HTMLDivElement>(null)
+  const gradientId = useId().replace(/:/g, '')
+  const qtyStrokeId = `${gradientId}-qty-stroke`
+  const valueStrokeId = `${gradientId}-value-stroke`
+  const valueAreaId = `${gradientId}-value-area`
   const { isRevealed, reduceMotion } = useGrowthChartReveal(viewportRef)
   const animateSeries = isRevealed && !reduceMotion
 
@@ -84,10 +120,23 @@ export function GrowthComboChart() {
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={chartData}
-              margin={{ top: 24, right: 10, bottom: 18, left: 4 }}
-              barCategoryGap="40%"
+              margin={{ top: 54, right: 16, bottom: 18, left: 8 }}
             >
-              <CartesianGrid horizontal={false} stroke="#dfe4ea" strokeOpacity={0.75} />
+              <defs>
+                <linearGradient id={qtyStrokeId} x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="var(--color--primary)" />
+                  <stop offset="100%" stopColor="var(--color--primary-gradient-end)" />
+                </linearGradient>
+                <linearGradient id={valueStrokeId} x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="var(--color--secondary-amaranth)" />
+                  <stop offset="100%" stopColor="var(--color--secondary-purple)" />
+                </linearGradient>
+                <linearGradient id={valueAreaId} x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="var(--color--secondary-amaranth)" stopOpacity={0.2} />
+                  <stop offset="100%" stopColor="var(--color--secondary-purple)" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid vertical={false} stroke="#dfe4ea" strokeOpacity={0.68} />
               <XAxis
                 dataKey="year"
                 axisLine={{ stroke: '#cfd5dc' }}
@@ -120,16 +169,33 @@ export function GrowthComboChart() {
                 cursor={{ fill: 'rgb(37 149 213 / 6%)' }}
                 animationDuration={180}
               />
-              <Bar
+              <Area
+                yAxisId="value"
+                type="monotone"
+                dataKey="valueGrowth"
+                stroke="none"
+                fill={`url(#${valueAreaId})`}
+                isAnimationActive={animateSeries}
+                animationBegin={260}
+                animationDuration={1250}
+                animationEasing="ease-out"
+                legendType="none"
+                tooltipType="none"
+              />
+              <Line
                 yAxisId="qty"
                 dataKey="qtyGrowth"
                 name="Qty Growth (PCS)"
-                fill="#2595d5"
-                maxBarSize={34}
-                radius={[3, 3, 0, 0]}
+                type="monotone"
+                stroke={`url(#${qtyStrokeId})`}
+                strokeWidth={3}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                dot={false}
+                activeDot={{ r: 5, fill: 'var(--color--primary)', stroke: '#fff', strokeWidth: 2 }}
                 isAnimationActive={animateSeries}
                 animationBegin={100}
-                animationDuration={1000}
+                animationDuration={1250}
                 animationEasing="ease-out"
               />
               <Line
@@ -137,14 +203,38 @@ export function GrowthComboChart() {
                 type="monotone"
                 dataKey="valueGrowth"
                 name="Value Growth (USD)"
-                stroke="#f3215d"
-                strokeWidth={3}
-                dot={{ r: 4, fill: '#fff', stroke: '#f3215d', strokeWidth: 2.5 }}
-                activeDot={{ r: 6, fill: '#f3215d', stroke: '#fff', strokeWidth: 2 }}
+                stroke={`url(#${valueStrokeId})`}
+                strokeWidth={3.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                dot={false}
+                activeDot={{ r: 6, fill: 'var(--color--secondary-amaranth)', stroke: '#fff', strokeWidth: 2 }}
                 isAnimationActive={animateSeries}
-                animationBegin={160}
-                animationDuration={1100}
+                animationBegin={240}
+                animationDuration={1350}
                 animationEasing="ease-out"
+              />
+              <ReferenceDot
+                yAxisId="value"
+                x={minValueDatum.year}
+                y={minValueDatum.valueGrowth}
+                r={4.5}
+                fill="var(--color--secondary-amaranth)"
+                stroke="var(--color--white)"
+                strokeWidth={2}
+                shape={<GrowthCallout value={minValueDatum.valueGrowth} tone="start" />}
+                ifOverflow="extendDomain"
+              />
+              <ReferenceDot
+                yAxisId="value"
+                x={maxValueDatum.year}
+                y={maxValueDatum.valueGrowth}
+                r={4.5}
+                fill="var(--color--secondary-purple)"
+                stroke="var(--color--white)"
+                strokeWidth={2}
+                shape={<GrowthCallout value={maxValueDatum.valueGrowth} tone="end" />}
+                ifOverflow="extendDomain"
               />
             </ComposedChart>
           </ResponsiveContainer>
