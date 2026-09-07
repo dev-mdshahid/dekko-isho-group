@@ -28,40 +28,40 @@ function prefersLightweightMedia() {
  * inward past that rim. Interior shading is untouched because it is already fully
  * opaque before the blur.
  */
-function LumaKeyFilter() {
-  return (
-    <svg className="about-overview-luma-key" aria-hidden="true" focusable="false">
-      <defs>
-        <filter
-          id={LUMA_KEY_FILTER_ID}
-          colorInterpolationFilters="sRGB"
-          x="0%"
-          y="0%"
-          width="100%"
-          height="100%"
-        >
-          <feColorMatrix
-            in="SourceGraphic"
-            type="matrix"
-            values="0 0 0 0 0
-                    0 0 0 0 0
-                    0 0 0 0 0
-                    0.2126 0.7152 0.0722 0 0"
-            result="luminance"
-          />
-          <feComponentTransfer in="luminance" result="silhouette">
-            <feFuncA type="linear" slope="8" intercept="-0.08" />
-          </feComponentTransfer>
-          <feGaussianBlur in="silhouette" stdDeviation="1" result="spread" />
-          <feComponentTransfer in="spread" result="matte">
-            <feFuncA type="linear" slope="4" intercept="-2.4" />
-          </feComponentTransfer>
-          <feComposite in="SourceGraphic" in2="matte" operator="in" />
-        </filter>
-      </defs>
-    </svg>
-  )
-}
+// function LumaKeyFilter() {
+//   return (
+//     <svg className="about-overview-luma-key" aria-hidden="true" focusable="false">
+//       <defs>
+//         <filter
+//           id={LUMA_KEY_FILTER_ID}
+//           colorInterpolationFilters="sRGB"
+//           x="0%"
+//           y="0%"
+//           width="100%"
+//           height="100%"
+//         >
+//           <feColorMatrix
+//             in="SourceGraphic"
+//             type="matrix"
+//             values="0 0 0 0 0
+//                     0 0 0 0 0
+//                     0 0 0 0 0
+//                     0.2126 0.7152 0.0722 0 0"
+//             result="luminance"
+//           />
+//           <feComponentTransfer in="luminance" result="silhouette">
+//             <feFuncA type="linear" slope="8" intercept="-0.08" />
+//           </feComponentTransfer>
+//           <feGaussianBlur in="silhouette" stdDeviation="1" result="spread" />
+//           <feComponentTransfer in="spread" result="matte">
+//             <feFuncA type="linear" slope="4" intercept="-2.4" />
+//           </feComponentTransfer>
+//           <feComposite in="SourceGraphic" in2="matte" operator="in" />
+//         </filter>
+//       </defs>
+//     </svg>
+//   )
+// }
 
 export function AboutOverviewVisual() {
   const mediaRef = useRef<HTMLDivElement>(null)
