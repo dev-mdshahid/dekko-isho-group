@@ -103,7 +103,7 @@ export const designProductDevelopmentCapabilities = {
     },
     {
       id: 'creative-design',
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/creative-design-card.png`,
       imageAlt: 'Designer working at a desk surrounded by clothing racks in the design studio',
       title: 'Creative Design',
       description: 'Original concepts turned into commercially relevant products.',
@@ -138,7 +138,7 @@ export const designProductDevelopmentStudio = {
   title: 'Creativity Backed by Expertise.',
   description:
     'Our Design Studio brings together fashion designers, textile specialists, product developers, and technical experts who turn concepts into commercially successful products through creativity, technical excellence, and manufacturing knowledge.',
-  image: `https://placehold.co/600x400/red/white`,
+  image: `${CAPABILITY_IMAGE_BASE}/creativity-backed-by-expertise.png`,
   imageAlt: 'Design Studio team collaborating at a communal desk',
 }
 
@@ -152,7 +152,7 @@ export const designProductDevelopmentDigital = {
     {
       id: 'trend-forecasting',
       icon: `${CAPABILITY_IMAGE_BASE}/icon-trend-forecasting.svg`,
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/trend-forecasting.png`,
       imageAlt: 'Trend forecasting digital workspace placeholder',
       title: 'Trend Forecasting',
       description: 'WGSN market and category intelligence',
@@ -160,7 +160,7 @@ export const designProductDevelopmentDigital = {
     {
       id: '3d-visualization',
       icon: `${CAPABILITY_IMAGE_BASE}/icon-3d-visualization.svg`,
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/3D-visualization.png`,
       imageAlt: '3D garment visualization placeholder',
       title: '3D Visualization',
       description: 'True-to-life digital garments in Browzwear & CLO 3D',
@@ -168,7 +168,7 @@ export const designProductDevelopmentDigital = {
     {
       id: 'fabric-pattern',
       icon: `${CAPABILITY_IMAGE_BASE}/icon-fabric-pattern.svg`,
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/fabric-and-pattern.png`,
       imageAlt: 'Digital fabric and pattern development placeholder',
       title: 'Fabric & Pattern',
       description: 'Textronic and CAD software for rapid design iteration',
@@ -176,7 +176,7 @@ export const designProductDevelopmentDigital = {
     {
       id: 'ai-assisted-workflows',
       icon: `${CAPABILITY_IMAGE_BASE}/icon-ai-workflows.svg`,
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/ai-assisted-workflows.png`,
       imageAlt: 'AI-assisted product development workflow placeholder',
       title: 'AI-assisted Workflows',
       description: 'Faster iteration, fewer physical rounds, quicker approvals',
@@ -191,7 +191,7 @@ export const designProductDevelopmentMaterials = {
   items: [
     {
       id: 'fabric-library',
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/fabric-library.png`,
       imageAlt: 'Shelves packed with folded fabric samples in the fabric library',
       title: 'Fabric Library',
       description:
@@ -199,7 +199,7 @@ export const designProductDevelopmentMaterials = {
     },
     {
       id: 'global-sourcing',
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/global-fabric-sourcing-and-innovation.png`,
       imageAlt: 'Fabric swatches hanging on racks in the material sourcing room',
       title: 'Global Fabric Sourcing & Innovation',
       description:
