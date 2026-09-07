@@ -29,6 +29,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Roxy Paints Ltd.',
         description:
           "Three young entrepreneurs invest in a new idea. Bangladesh's first color paint manufacturer is born — and a 70-year legacy of innovation begins.",
+        companyLogo: "/images/about/company-logo/roxy-paints-logo.png",
       },
     ],
   },
@@ -127,7 +128,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'KLUBHAUS',
         description:
           'A fashion & lifestyle brand blending global influences with local culture to shape style beyond trends.',
-        companyLogo: "/images/about/company-logo/klubhaus-logo.svg",
+        companyLogo: "/images/about/company-logo/klubhaus-logo.png",
       },
     ],
   },
@@ -179,6 +180,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Dekko ISHO Venture Capital',
         description:
           'A venture capital firm investing in and nurturing high-potential startups and emerging businesses.',
+        companyLogo: "/images/about/company-logo/divc-logo.svg",
       },
     ],
   },

@@ -1640,11 +1640,16 @@
 
 .about-journey-section .about-journey-logo {
   display: block;
-  width: min(100%, 180px);
+  width: 160px;
   height: 48px;
-  margin: 0 0 18px;
   object-fit: contain;
   object-position: left center;
+  margin: 0 0 16px;
+}
+
+.about-journey-section .about-journey-entry-stack--right .about-journey-logo {
+  margin-left: auto;
+  object-position: right center;
 }
 
 .about-journey-section .about-journey-entry-stack--right .about-journey-logo {
