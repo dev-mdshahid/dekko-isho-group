@@ -106,8 +106,8 @@ export const strengthItems: StrengthItem[] = [
     number: '11',
     title: 'Traceability',
     description:
-      '',
-    image: 'https://placehold.co/600x400/red/white',
+      'Comprehensive traceability systems that track materials, processes, and products throughout the supply chain, ensuring transparency, accountability, and sustainability.',
+    image: '/images/strength/traceability.png',
     imageAlt: 'Professionals gathered at an international traceability seminar',
   },
 ]
