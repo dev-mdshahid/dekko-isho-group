@@ -311,6 +311,8 @@ export const manufacturingAutomation = {
   ],
 }
 
+const productRangeImage = (file: string) => `/images/manufacturing/powered-by-technology/${file}`
+
 export const manufacturingTechnology = {
   id: 'mfg-technology',
   badge: 'Technology-Driven Manufacturing',
@@ -320,28 +322,28 @@ export const manufacturingTechnology = {
   items: [
     {
       id: 'ebs',
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage('EBS.png'),
       imageAlt: 'Enterprise resource planning technology placeholder',
       title: 'EBS',
       description: 'Enterprise Resource Planning',
     },
     {
       id: 'fast-react',
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage('FastReact.png'),
       imageAlt: 'Fast React production planning technology placeholder',
       title: 'Fast React',
       description: 'Production Planning',
     },
     {
       id: 'gpro',
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage('GPRO.png'),
       imageAlt: 'GPRO production monitoring technology placeholder',
       title: 'GPRO',
       description: 'Production Monitoring',
     },
     {
       id: 'automation',
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage('Automation.png'),
       imageAlt: 'Automated manufacturing equipment placeholder',
       title: 'Automation',
       description: 'Automated Manufacturing Equipment',

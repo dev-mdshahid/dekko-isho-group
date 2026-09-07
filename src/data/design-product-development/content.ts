@@ -544,19 +544,19 @@ export const designProductDevelopmentGallery = {
     {
       id: 'digital-design',
       size: 'side' as const,
-      src: `https://placehold.co/600x400/red/white`,
+      src: `/images/design-product-development/better-products-are-built-together-1.png`,
       alt: 'Designers collaborating over fabric samples and sketches at a studio table',
     },
     {
       id: 'studio-collaboration',
       size: 'center' as const,
-      src: `https://placehold.co/600x400/red/white`,
+      src: `/images/design-product-development/better-products-are-built-together-2.png`,
       alt: 'Designers collaborating over fabric swatches and documents at a studio table',
     },
     {
       id: 'fabric-review',
       size: 'side' as const,
-      src: `https://placehold.co/600x400/red/white`,
+      src: `/images/design-product-development/better-products-are-built-together-3.png`,
       alt: 'Product developers reviewing catalogs and fabric samples in the design studio',
     },
   ],
