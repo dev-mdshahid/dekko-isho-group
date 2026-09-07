@@ -10,7 +10,7 @@ function clientLogo(filename: string, alt: string) {
 export const companyLogos = [
   clientLogo('Ralph Lauren.png', 'Ralph Lauren'),
   clientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
-  clientLogo('zara-logo.png', 'Zara'),
+  clientLogo('Zara_Logo.svg', 'Zara'),
   clientLogo('Inditex.png', 'Inditex'),
   clientLogo('Bestseller.png', 'Bestseller'),
   clientLogo('Levi_s.png', "Levi's"),
