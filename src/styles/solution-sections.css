@@ -2415,3 +2415,343 @@
     font-size: 14px;
   }
 }
+
+/* =========================================================
+   INDUSTRIAL LAUNDRY — WASHING PROCESSES V2
+========================================================= */
+
+.il-washing-processes__main {
+  padding: 88px clamp(20px, 2.8vw, 55px) 100px;
+}
+
+.il-washing-processes__header,
+.il-washing-processes__groups {
+  width: 100%;
+  max-width: 1860px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.il-washing-processes__header {
+  margin-bottom: 34px;
+}
+
+.il-washing-processes__groups {
+  display: grid;
+  gap: 10px;
+}
+
+.il-washing-processes__feature,
+.il-washing-processes__lead {
+  display: grid;
+  grid-template-columns: 88px 1px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 39px;
+}
+
+.il-washing-processes__feature {
+  min-height: 194px;
+  padding: 36px 40px;
+  border: 1px solid #d6ebfa;
+  border-radius: 15px;
+  background: linear-gradient(105deg, #eef9ff 0%, #edf8ff 48%, #e8f5fd 100%);
+}
+
+.il-washing-processes__number {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  min-width: 88px;
+  height: 88px;
+  padding: 0;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.il-washing-processes__number--primary {
+  background: linear-gradient(145deg, #2d83f5, #176fee);
+}
+
+.il-washing-processes__number--secondary {
+  background: linear-gradient(145deg, #49b747, #2c9d35);
+}
+
+.il-washing-processes__divider {
+  width: 1px;
+  height: 84px;
+  background: #c9d4dc;
+}
+
+.il-washing-processes__feature-copy,
+.il-washing-processes__lead-copy {
+  min-width: 0;
+}
+
+.il-washing-processes__feature-title,
+.il-washing-processes__lead-title,
+.il-washing-processes__card-title {
+  margin: 0;
+  color: #090d16;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.il-washing-processes__feature-title,
+.il-washing-processes__lead-title {
+  font-size: clamp(28px, 2vw, 38px);
+}
+
+.il-washing-processes__feature-description,
+.il-washing-processes__lead-description,
+.il-washing-processes__card-description {
+  margin: 12px 0 0;
+  color: #52698b;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.il-washing-processes__feature-description {
+  max-width: 500px;
+}
+
+.il-washing-processes__secondary-group {
+  display: grid;
+  grid-template-columns: minmax(480px, 0.92fr) minmax(0, 2.08fr);
+  gap: 26px;
+  min-height: 276px;
+  padding: 18px 16px 18px 40px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: linear-gradient(105deg, #f1fbf3 0%, #effaf1 55%, #eaf8ee 100%);
+}
+
+.il-washing-processes__lead {
+  grid-template-columns: 88px 1px minmax(0, 1fr);
+  column-gap: 39px;
+}
+
+.il-washing-processes__cards-scroll {
+  min-width: 0;
+  overflow: visible;
+}
+
+.il-washing-processes__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  height: 100%;
+}
+
+.il-washing-processes__card {
+  position: relative;
+  display: flex;
+  flex: initial;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 238px;
+  padding: 28px 27px;
+  overflow: visible;
+  scroll-snap-align: start;
+  border: 1px solid #dce2e5;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(20, 30, 45, 0.025);
+  transition: none;
+}
+
+.il-washing-processes__card:hover {
+  transform: none;
+  border-color: #dce2e5;
+  box-shadow: 0 2px 8px rgba(20, 30, 45, 0.025);
+}
+
+.il-washing-processes__card-title {
+  font-size: clamp(21px, 1.45vw, 28px);
+}
+
+.il-washing-processes__card-description {
+  font-size: 17px;
+}
+
+.il-washing-processes__cards-scroll:focus-visible {
+  outline: 3px solid rgba(45, 131, 245, 0.45);
+  outline-offset: 4px;
+}
+
+@media (max-width: 1199px) {
+  .il-washing-processes__main {
+    padding-top: 76px;
+    padding-bottom: 80px;
+  }
+
+  .il-washing-processes__header {
+    margin-bottom: 40px;
+  }
+
+  .il-washing-processes__feature {
+    min-height: 180px;
+  }
+
+  .il-washing-processes__secondary-group {
+    grid-template-columns: minmax(330px, 0.8fr) minmax(0, 1.2fr);
+    gap: 22px;
+  }
+
+  .il-washing-processes__feature,
+  .il-washing-processes__lead {
+    grid-template-columns: 72px 1px minmax(0, 1fr);
+    column-gap: 26px;
+  }
+
+  .il-washing-processes__number {
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+    font-size: 23px;
+  }
+
+  .il-washing-processes__cards-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -ms-overflow-style: none;
+  }
+
+  .il-washing-processes__cards-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .il-washing-processes__cards-scroll.is-dragging {
+    cursor: grabbing;
+  }
+
+  .il-washing-processes__cards {
+    display: flex;
+    width: max-content;
+    padding-right: 36px;
+  }
+
+  .il-washing-processes__card {
+    flex: 0 0 clamp(230px, 31vw, 280px);
+  }
+}
+
+@media (max-width: 767px) {
+  .il-washing-processes__main {
+    padding: 60px 16px 68px;
+  }
+
+  .il-washing-processes__header {
+    margin-bottom: 30px;
+  }
+
+  .il-washing-processes__feature {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 0;
+    padding: 26px 20px;
+    border-radius: 13px;
+  }
+
+  .il-washing-processes__feature .il-washing-processes__divider {
+    display: none;
+  }
+
+  .il-washing-processes__number {
+    width: 58px;
+    min-width: 58px;
+    height: 58px;
+    font-size: 19px;
+  }
+
+  .il-washing-processes__feature-title,
+  .il-washing-processes__lead-title {
+    font-size: 25px;
+  }
+
+  .il-washing-processes__feature-description,
+  .il-washing-processes__lead-description {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .il-washing-processes__secondary-group {
+    display: block;
+    min-height: 0;
+    padding: 24px 0 20px 20px;
+    border-radius: 13px;
+  }
+
+  .il-washing-processes__lead {
+    grid-template-columns: 58px 1px minmax(0, 1fr);
+    column-gap: 18px;
+    padding-right: 20px;
+  }
+
+  .il-washing-processes__lead .il-washing-processes__divider {
+    height: 70px;
+  }
+
+  .il-washing-processes__cards-scroll {
+    margin-top: 24px;
+  }
+
+  .il-washing-processes__cards {
+    gap: 10px;
+    padding-right: 46px;
+  }
+
+  .il-washing-processes__card {
+    flex-basis: min(74vw, 270px);
+    min-height: 190px;
+    padding: 24px 22px;
+    border-radius: 11px;
+  }
+
+  .il-washing-processes__card-title {
+    font-size: 22px;
+  }
+
+  .il-washing-processes__card-description {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 420px) {
+  .il-washing-processes__feature {
+    align-items: start;
+  }
+
+  .il-washing-processes__lead {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .il-washing-processes__lead .il-washing-processes__divider {
+    display: none;
+  }
+
+  .il-washing-processes__number {
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+    font-size: 17px;
+  }
+}

@@ -36,6 +36,10 @@ export function IndustrialLaundryWashingProcessesSection({
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const { id, badge, title, description, items } = content
+  const featuredItem = items.find((item) => item.featured) ?? items[0]
+  const secondaryItems = items.filter((item) => item !== featuredItem)
+  const leadItem = secondaryItems[0]
+  const cardItems = secondaryItems.slice(1)
 
   useHorizontalScroll(scrollRef, {
     enableWheel: false,
@@ -47,8 +51,6 @@ export function IndustrialLaundryWashingProcessesSection({
       className="il-washing-processes"
     >
       <div className="il-washing-processes__main">
-        {/* Header */}
-
         <FadeIn
           id={`${idPrefix}-washing-processes-header`}
           className="il-washing-processes__header"
@@ -65,96 +67,82 @@ export function IndustrialLaundryWashingProcessesSection({
           </p>
         </FadeIn>
 
-        {/* Processes */}
-
         <div
-          ref={scrollRef}
-          className="il-washing-processes__scroll"
+          className="il-washing-processes__groups"
+          data-solution-animate-group
         >
-          <div
-            className="il-washing-processes__track"
-            data-solution-animate-group
-          >
-            {items.map((item) => {
-              if (item.featured) {
-                return (
-                  <article
-                    key={item.id}
-                    id={`${idPrefix}-washing-process-${item.id}`}
-                    className="
-                      il-washing-processes__card
-                      il-washing-processes__card--featured
-                    "
-                    data-solution-animate="tilt-card"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt}
-                      width={620}
-                      height={500}
-                      loading="lazy"
-                      draggable={false}
-                      className="il-washing-processes__featured-image"
-                    />
+          {featuredItem && (
+            <article
+              id={`${idPrefix}-washing-process-${featuredItem.id}`}
+              className="il-washing-processes__feature"
+              data-solution-animate="card"
+            >
+              <span className="il-washing-processes__number il-washing-processes__number--primary">
+                {featuredItem.number}
+              </span>
+              <span className="il-washing-processes__divider" aria-hidden="true" />
+              <div className="il-washing-processes__feature-copy">
+                <h3 className="il-washing-processes__feature-title">
+                  {featuredItem.title}
+                </h3>
+                <p className="il-washing-processes__feature-description">
+                  {featuredItem.description}
+                </p>
+              </div>
+            </article>
+          )}
 
-                    <div
-                      className="il-washing-processes__featured-overlay"
-                      aria-hidden="true"
-                    />
+          {leadItem && (
+            <div
+              className="il-washing-processes__secondary-group"
+              data-solution-animate="card"
+            >
+              <article
+                id={`${idPrefix}-washing-process-${leadItem.id}`}
+                className="il-washing-processes__lead"
+              >
+                <span className="il-washing-processes__number il-washing-processes__number--secondary">
+                  {leadItem.number}
+                </span>
+                <span className="il-washing-processes__divider" aria-hidden="true" />
+                <div className="il-washing-processes__lead-copy">
+                  <h3 className="il-washing-processes__lead-title">
+                    {leadItem.title}
+                  </h3>
+                  <p className="il-washing-processes__lead-description">
+                    {leadItem.description}
+                  </p>
+                </div>
+              </article>
 
-                    <span className="il-washing-processes__number il-washing-processes__number--featured">
-                      {item.number}
-                    </span>
-
-                    <div className="il-washing-processes__featured-content">
-                      <h3 className="il-washing-processes__featured-title">
-                        {item.title}
-                      </h3>
-
-                      <p className="il-washing-processes__featured-description">
-                        {item.description}
-                      </p>
-                    </div>
-                  </article>
-                )
-              }
-
-              return (
-                <article
-                  key={item.id}
-                  id={`${idPrefix}-washing-process-${item.id}`}
-                  className="il-washing-processes__card"
-                  data-solution-animate="tilt-card"
+              {cardItems.length > 0 && (
+                <div
+                  ref={scrollRef}
+                  className="il-washing-processes__cards-scroll"
+                  role="region"
+                  aria-label="Additional washing processes"
+                  tabIndex={0}
                 >
-                  <div className="il-washing-processes__image-area">
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt}
-                      width={400}
-                      height={350}
-                      loading="lazy"
-                      draggable={false}
-                      className="il-washing-processes__image"
-                    />
-
-                    <span className="il-washing-processes__number">
-                      {item.number}
-                    </span>
+                  <div className="il-washing-processes__cards">
+                    {cardItems.map((item) => (
+                      <article
+                        key={item.id}
+                        id={`${idPrefix}-washing-process-${item.id}`}
+                        className="il-washing-processes__card"
+                      >
+                        <h3 className="il-washing-processes__card-title">
+                          {item.title}
+                        </h3>
+                        <p className="il-washing-processes__card-description">
+                          {item.description}
+                        </p>
+                      </article>
+                    ))}
                   </div>
-
-                  <div className="il-washing-processes__content">
-                    <h3 className="il-washing-processes__card-title">
-                      {item.title}
-                    </h3>
-
-                    <p className="il-washing-processes__card-description">
-                      {item.description}
-                    </p>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
