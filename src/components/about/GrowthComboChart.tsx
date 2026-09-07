@@ -105,7 +105,6 @@ function TurnoverDot({
 export function GrowthComboChart() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const gradientId = useId().replace(/:/g, '')
-  const strokeId = `${gradientId}-turnover-stroke`
   const areaId = `${gradientId}-turnover-area`
   const { isRevealed, reduceMotion } = useGrowthChartReveal(viewportRef)
   const animateSeries = isRevealed && !reduceMotion
@@ -129,13 +128,9 @@ export function GrowthComboChart() {
               margin={{ top: 52, right: 36, bottom: 18, left: 36 }}
             >
               <defs>
-                <linearGradient id={strokeId} x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="var(--color--secondary-amaranth)" />
-                  <stop offset="100%" stopColor="var(--color--secondary-purple)" />
-                </linearGradient>
                 <linearGradient id={areaId} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--color--secondary-amaranth)" stopOpacity={0.2} />
-                  <stop offset="100%" stopColor="var(--color--secondary-purple)" stopOpacity={0.015} />
+                  <stop offset="0%" stopColor="#2595D5" stopOpacity={0.2} />
+                  <stop offset="100%" stopColor="#2595D5" stopOpacity={0.015} />
                 </linearGradient>
               </defs>
               <CartesianGrid vertical={false} stroke="#dfe4ea" strokeOpacity={0.68} />
@@ -174,7 +169,7 @@ export function GrowthComboChart() {
                 type="monotone"
                 dataKey="turnover"
                 name="Annual turnover"
-                stroke={`url(#${strokeId})`}
+                stroke="#2595D5"
                 strokeWidth={3.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
