@@ -255,7 +255,7 @@ export const designProductDevelopmentGlobalNetwork = {
   badge: 'Global Design Network',
   title: 'Close to the Market, Wherever You Are.',
   description: 'We translate global fashion insights into market-ready collections.',
-  image: 'https://placehold.co/600x400/red/white',
+  image: `${CAPABILITY_IMAGE_BASE}/london-office.jpg`,
   imageAlt: 'Neutral-toned textured fabrics and knits hanging in a design studio',
   items: [
     {
