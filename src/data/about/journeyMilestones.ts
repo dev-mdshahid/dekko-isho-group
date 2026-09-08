@@ -29,7 +29,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Roxy Paints Ltd.',
         description:
           "Three young entrepreneurs invest in a new idea. Bangladesh's first color paint manufacturer is born — and a 70-year legacy of innovation begins.",
-        companyLogo: "/images/about/company-logo/roxy-paints-logo.png",
+        companyLogo: "/images/about/company-logo/roxy-paints2.svg",
       },
     ],
   },
@@ -122,13 +122,13 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'IZAKAYA',
         description:
           'Contemporary Japanese dining — authentic flavors with a modern culinary experience.',
-        companyLogo: "/images/about/company-logo/izakaya-logo.svg",
+        companyLogo: "/images/about/company-logo/izakaya2.svg",
       },
       {
         title: 'KLUBHAUS',
         description:
           'A fashion & lifestyle brand blending global influences with local culture to shape style beyond trends.',
-        companyLogo: "/images/about/company-logo/klubhaus-logo.png",
+        companyLogo: "/images/about/company-logo/klubhaus2.svg",
       },
     ],
   },
@@ -141,7 +141,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'ISHO',
         description:
           'A furniture and lifestyle brand, redefining modern living through contemporary design and innovation.',
-        companyLogo: "/images/about/company-logo/isho-logo.svg",
+        companyLogo: "/images/about/company-logo/isho2.svg",
       },
     ],
   },
@@ -154,7 +154,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Ecovia',
         description:
           'A sustainability-driven business transforming textile waste into compostable packaging solutions.',
-        companyLogo: "/images/about/company-logo/ecovia-logo.svg",
+        companyLogo: "/images/about/company-logo/ecovia2.svg",
       },
     ],
   },
@@ -167,7 +167,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Dekko ISHO Technologies Ltd. (DITECH)',
         description:
           'A strategic technology solutions partner delivering integrated digital infrastructure.',
-        companyLogo: "/images/about/company-logo/ditech-logo.svg",
+        companyLogo: "/images/about/company-logo/ditech2.svg",
       },
     ],
   },
@@ -180,7 +180,7 @@ export const journeyMilestones: JourneyMilestone[] = [
         title: 'Dekko ISHO Venture Capital',
         description:
           'A venture capital firm investing in and nurturing high-potential startups and emerging businesses.',
-        companyLogo: "/images/about/company-logo/divc-logo.svg",
+        companyLogo: "/images/about/company-logo/divc2.svg",
       },
     ],
   },
