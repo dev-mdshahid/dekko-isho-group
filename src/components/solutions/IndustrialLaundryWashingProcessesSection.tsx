@@ -77,10 +77,6 @@ export function IndustrialLaundryWashingProcessesSection({
               className="il-washing-processes__feature"
               data-solution-animate="card"
             >
-              <span className="il-washing-processes__number il-washing-processes__number--primary">
-                {featuredItem.number}
-              </span>
-              <span className="il-washing-processes__divider" aria-hidden="true" />
               <div className="il-washing-processes__feature-copy">
                 <h3 className="il-washing-processes__feature-title">
                   {featuredItem.title}
@@ -101,10 +97,6 @@ export function IndustrialLaundryWashingProcessesSection({
                 id={`${idPrefix}-washing-process-${leadItem.id}`}
                 className="il-washing-processes__lead"
               >
-                <span className="il-washing-processes__number il-washing-processes__number--secondary">
-                  {leadItem.number}
-                </span>
-                <span className="il-washing-processes__divider" aria-hidden="true" />
                 <div className="il-washing-processes__lead-copy">
                   <h3 className="il-washing-processes__lead-title">
                     {leadItem.title}
