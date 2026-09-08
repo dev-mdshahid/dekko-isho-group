@@ -2683,3 +2683,196 @@
     align-items: flex-start;
   }
 }
+
+/* =========================================================
+   INDUSTRIAL LAUNDRY — WASHING PROCESSES IMAGE GRID
+========================================================= */
+
+.il-washing-processes__groups {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1vw, 18px);
+  align-items: stretch;
+}
+
+.il-washing-processes__feature,
+.il-washing-processes__lead {
+  position: relative;
+  justify-content: flex-end;
+  aspect-ratio: 8 / 5;
+  min-height: clamp(380px, 30vw, 570px);
+  padding: clamp(24px, 2vw, 34px);
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #263328;
+  isolation: isolate;
+}
+
+.il-washing-processes__visual-image,
+.il-washing-processes__visual-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.il-washing-processes__visual-image {
+  z-index: -2;
+  display: block;
+  object-fit: cover;
+}
+
+.il-washing-processes__visual-overlay {
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 18, 8, 0) 43%,
+    rgba(4, 18, 8, 0.58) 72%,
+    rgba(2, 12, 4, 0.94) 100%
+  );
+  pointer-events: none;
+}
+
+.il-washing-processes__feature-copy,
+.il-washing-processes__lead-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.il-washing-processes__lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(280px, 40%, 340px);
+  gap: clamp(14px, 1.5vw, 24px);
+  align-items: end;
+}
+
+.il-washing-processes__lead-copy {
+  align-self: end;
+}
+
+.il-washing-processes__feature-title,
+.il-washing-processes__lead-title {
+  color: #fff;
+  font-size: clamp(25px, 1.75vw, 34px);
+}
+
+.il-washing-processes__feature-description,
+.il-washing-processes__lead-description {
+  max-width: 390px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(14px, 0.95vw, 17px);
+  line-height: 1.45;
+}
+
+.il-washing-processes__cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 0.8vw, 14px);
+  width: auto;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  align-self: stretch;
+}
+
+.il-washing-processes__card {
+  justify-content: center;
+  width: auto;
+  min-height: 0;
+  padding: clamp(12px, 1vw, 18px);
+  overflow: hidden;
+  border: 0;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: none;
+}
+
+.il-washing-processes__card:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.il-washing-processes__card-title {
+  font-size: clamp(17px, 1.05vw, 21px);
+  line-height: 1.1;
+}
+
+.il-washing-processes__card-description {
+  margin-top: 5px;
+  color: #182119;
+  font-size: clamp(11px, 0.72vw, 13px);
+  line-height: 1.3;
+}
+
+@media (max-width: 1199px) {
+  .il-washing-processes__groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .il-washing-processes__feature,
+  .il-washing-processes__lead {
+    aspect-ratio: auto;
+    min-height: clamp(420px, 52vw, 540px);
+  }
+
+  .il-washing-processes__cards {
+    grid-column: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .il-washing-processes__card {
+    min-height: 0;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .il-washing-processes__groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .il-washing-processes__feature,
+  .il-washing-processes__lead {
+    padding: 24px 20px;
+    border-radius: 13px;
+  }
+
+  .il-washing-processes__feature {
+    min-height: clamp(300px, 110vw, 430px);
+  }
+
+  .il-washing-processes__lead {
+    display: flex;
+    min-height: 0;
+    padding-top: clamp(180px, 58vw, 240px);
+    gap: 22px;
+  }
+
+  .il-washing-processes__cards {
+    grid-column: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+  }
+
+  .il-washing-processes__card {
+    min-height: 116px;
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .il-washing-processes__card-title {
+    font-size: clamp(16px, 4.6vw, 19px);
+  }
+
+  .il-washing-processes__card-description {
+    overflow-wrap: anywhere;
+    font-size: clamp(11px, 3.2vw, 13px);
+    line-height: 1.35;
+  }
+}
