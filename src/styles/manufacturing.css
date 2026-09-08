@@ -918,6 +918,15 @@
   pointer-events: none;
 }
 
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.78) 100%);
+  content: '';
+  pointer-events: none;
+}
+
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide.is-active {
   z-index: 1;
   opacity: 1;
@@ -936,18 +945,13 @@
 
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-overlay {
   position: absolute;
+  z-index: 2;
   right: clamp(32px, 5vw, 76px);
   bottom: 42px;
   left: clamp(72px, 9vw, 142px);
   max-width: 620px;
   padding: 20px 24px;
   color: var(--color--white);
-  background-color: var(--color--primary-gradient-end);
-  background-image: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--mfg-brand-start) 72%, var(--color--primary-gradient-end)) 0%,
-    var(--color--primary-gradient-end) 100%
-  );
 }
 
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-title {
