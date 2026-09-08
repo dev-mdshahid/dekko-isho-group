@@ -107,7 +107,6 @@ export function GrowthComboChart() {
   const gradientId = useId().replace(/:/g, '')
   const areaId = `${gradientId}-turnover-area`
   const { isRevealed, reduceMotion } = useGrowthChartReveal(viewportRef)
-  const animateSeries = isRevealed && !reduceMotion
 
   return (
     <>
@@ -126,6 +125,7 @@ export function GrowthComboChart() {
             <ComposedChart
               data={chartData}
               margin={{ top: 52, right: 36, bottom: 18, left: 36 }}
+              accessibilityLayer={false}
             >
               <defs>
                 <linearGradient id={areaId} x1="0" y1="0" x2="0" y2="1">
@@ -154,18 +154,17 @@ export function GrowthComboChart() {
                 animationDuration={180}
               />
               <Area
+                className="about-turnover-series about-turnover-area"
                 type="monotone"
                 dataKey="turnover"
                 stroke="none"
                 fill={`url(#${areaId})`}
-                isAnimationActive={animateSeries}
-                animationBegin={lineAnimationBegin}
-                animationDuration={lineAnimationDuration}
-                animationEasing="linear"
+                isAnimationActive={false}
                 legendType="none"
                 tooltipType="none"
               />
               <Line
+                className="about-turnover-series about-turnover-line"
                 type="monotone"
                 dataKey="turnover"
                 name="Annual turnover"
@@ -185,10 +184,7 @@ export function GrowthComboChart() {
                   className: 'about-turnover-active-dot',
                   strokeWidth: 3,
                 }}
-                isAnimationActive={animateSeries}
-                animationBegin={lineAnimationBegin}
-                animationDuration={lineAnimationDuration}
-                animationEasing="linear"
+                isAnimationActive={false}
               />
             </ComposedChart>
           </ResponsiveContainer>

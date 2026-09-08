@@ -1009,6 +1009,21 @@
   height: 100%;
 }
 
+.about-turnover-section--about .recharts-wrapper:focus,
+.about-turnover-section--about .recharts-wrapper:focus-visible,
+.about-turnover-section--about .recharts-surface:focus,
+.about-turnover-section--about .recharts-surface:focus-visible {
+  outline: none;
+}
+
+.about-turnover-section--about .about-turnover-series {
+  clip-path: inset(0 100% 0 0);
+}
+
+.about-turnover-section--about .about-growth-chart-viewport.is-revealed .about-turnover-series {
+  animation: about-turnover-series-reveal 1600ms linear 100ms both;
+}
+
 .about-turnover-section--about .recharts-tooltip-wrapper {
   outline: none;
 }
@@ -1075,6 +1090,12 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes about-turnover-series-reveal {
+  to {
+    clip-path: inset(0);
   }
 }
 
@@ -1172,10 +1193,16 @@
   .about-turnover-section--about .about-turnover-dot,
   .about-turnover-section--about .about-turnover-point.is-visible .about-turnover-dot,
   .about-turnover-section--about .about-turnover-value-label,
-  .about-turnover-section--about .about-turnover-point.is-visible .about-turnover-value-label {
+  .about-turnover-section--about .about-turnover-point.is-visible .about-turnover-value-label,
+  .about-turnover-section--about .about-turnover-series,
+  .about-turnover-section--about .about-growth-chart-viewport.is-revealed .about-turnover-series {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .about-turnover-section--about .about-turnover-series {
+    clip-path: inset(0);
   }
 }
 
