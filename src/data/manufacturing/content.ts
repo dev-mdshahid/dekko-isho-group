@@ -351,7 +351,7 @@ export const manufacturingTechnology = {
   ],
 }
 
-// const productRangeImage = (file: string) => `/images/manufacturing/product-range/${file}`
+const productRangeImage2 = (file: string) => `/images/manufacturing/product-range/${file}`
 
 export const manufacturingProductRange = {
   badge: 'Versatile Manufacturing Capability',
@@ -362,50 +362,50 @@ export const manufacturingProductRange = {
     {
       id: 'formal-shirts',
       label: 'Formal Shirts',
-      // image: productRangeImage('formal-shirts.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Formal Shirts2.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'casual-shirts',
       label: 'Casual Shirts',
       // image: productRangeImage('casual-shirts.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Casual Shirts2.png'),
     },
     {
       id: 'pants',
       label: 'Pants',
-      // image: productRangeImage('pants.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Pants2.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'denim-twill-jackets',
       label: 'Denim & Twill Jackets',
-      // image: productRangeImage('denim-twill-jackets.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Denim & Twill Jackets2.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'quilted-shirts-jackets',
       label: 'Quilted Shirts & Jackets',
-      // image: productRangeImage('quilted-shirts-jackets.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Quilted Shirts & Jackets2.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'shakets',
       label: 'Shakets',
-      // image: productRangeImage('shakets.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Shakets2.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'ladies-blouse',
       label: "Ladies' Blouse",
-      // image: productRangeImage('ladies-blouse.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('Ladies_ Blouse.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'ladies-dress',
       label: "Ladies' Dress",
-      // image: productRangeImage('ladies-dress.png'),
-      image: 'https://placehold.co/600x400/red/white',
+      image: productRangeImage2('ladies-dress.png'),
+      // image: 'https://placehold.co/600x400/red/white',
     },
   ],
 }
