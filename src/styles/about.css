@@ -1009,11 +1009,12 @@
   height: 100%;
 }
 
-.about-turnover-section--about .recharts-wrapper:focus,
-.about-turnover-section--about .recharts-wrapper:focus-visible,
-.about-turnover-section--about .recharts-surface:focus,
-.about-turnover-section--about .recharts-surface:focus-visible {
-  outline: none;
+.about-turnover-section--about .about-growth-chart-viewport:focus,
+.about-turnover-section--about .about-growth-chart-viewport:focus-visible,
+.about-turnover-section--about .about-growth-chart-viewport *:focus,
+.about-turnover-section--about .about-growth-chart-viewport *:focus-visible {
+  outline: none !important;
+  box-shadow: none;
 }
 
 .about-turnover-section--about .about-turnover-series {
