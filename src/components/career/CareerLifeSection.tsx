@@ -1,6 +1,4 @@
 import {
-  useCallback,
-  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -17,139 +15,9 @@ export function CareerLifeSection() {
 
   const { title, subtitle, cards } = careerLifeAt
 
-  useMomentumCarousel(viewportRef, trackRef)
-
-  /**
-   * Find which card is currently closest
-   * to the center of the carousel.
-   *
-   * This keeps the controller dots synced
-   * when the user drags / scrolls manually.
-   */
-  const updateActiveCard = useCallback(() => {
-    const viewport = viewportRef.current
-    const track = trackRef.current
-
-    if (!viewport || !track) return
-
-    const cardElements = Array.from(
-      track.querySelectorAll<HTMLElement>('.career-life-card'),
-    )
-
-    if (!cardElements.length) return
-
-    const viewportRect = viewport.getBoundingClientRect()
-    const viewportCenter =
-      viewportRect.left + viewportRect.width / 2
-
-    let closestIndex = 0
-    let closestDistance = Number.POSITIVE_INFINITY
-
-    cardElements.forEach((card, index) => {
-      const cardRect = card.getBoundingClientRect()
-      const cardCenter =
-        cardRect.left + cardRect.width / 2
-
-      const distance = Math.abs(
-        viewportCenter - cardCenter,
-      )
-
-      if (distance < closestDistance) {
-        closestDistance = distance
-        closestIndex = index
-      }
-    })
-
-    setActiveIndex(closestIndex)
-  }, [])
-
-  /**
-   * Keep active controller synced
-   * with native / momentum scrolling.
-   */
-  useEffect(() => {
-    const viewport = viewportRef.current
-
-    if (!viewport) return
-
-    let animationFrame: number | null = null
-
-    const handleScroll = () => {
-      if (animationFrame !== null) {
-        cancelAnimationFrame(animationFrame)
-      }
-
-      animationFrame = requestAnimationFrame(() => {
-        updateActiveCard()
-      })
-    }
-
-    viewport.addEventListener('scroll', handleScroll, {
-      passive: true,
-    })
-
-    window.addEventListener('resize', handleScroll)
-
-    // Set the correct initial active card.
-    updateActiveCard()
-
-    return () => {
-      viewport.removeEventListener(
-        'scroll',
-        handleScroll,
-      )
-
-      window.removeEventListener(
-        'resize',
-        handleScroll,
-      )
-
-      if (animationFrame !== null) {
-        cancelAnimationFrame(animationFrame)
-      }
-    }
-  }, [updateActiveCard])
-
-  /**
-   * Scroll to a specific card
-   * when a controller dot is clicked.
-   */
-  const goToCard = useCallback(
-    (index: number) => {
-      const viewport = viewportRef.current
-      const track = trackRef.current
-
-      if (!viewport || !track) return
-
-      const cardElements = Array.from(
-        track.querySelectorAll<HTMLElement>(
-          '.career-life-card',
-        ),
-      )
-
-      const targetCard = cardElements[index]
-
-      if (!targetCard) return
-
-      /**
-       * Position target card roughly
-       * in the center of the viewport.
-       */
-      const targetLeft =
-        targetCard.offsetLeft -
-        (viewport.clientWidth -
-          targetCard.offsetWidth) /
-        2
-
-      viewport.scrollTo({
-        left: Math.max(0, targetLeft),
-        behavior: 'smooth',
-      })
-
-      setActiveIndex(index)
-    },
-    [],
-  )
+  const { goToIndex } = useMomentumCarousel(viewportRef, trackRef, {
+    onActiveIndexChange: setActiveIndex,
+  })
 
   return (
     <section
@@ -255,7 +123,7 @@ export function CareerLifeSection() {
                 aria-label={`Go to ${card.title}`}
                 className={`career-life-carousel-control${isActive ? ' is-active' : ''
                   }`}
-                onClick={() => goToCard(index)}
+                onClick={() => goToIndex(index)}
               />
             )
           })}

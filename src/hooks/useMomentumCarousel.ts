@@ -1,9 +1,15 @@
-import { type RefObject, useEffect } from 'react'
+import { type RefObject, useCallback, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 type MomentumCarouselOptions = {
   /** Extra end padding so the last card can align with the start gutter. */
   endPadding?: number
+  /** Reports the card currently represented by the carousel position. */
+  onActiveIndexChange?: (index: number) => void
+}
+
+type MomentumCarouselController = {
+  goToIndex: (index: number) => void
 }
 
 const DRAG_THRESHOLD_PX = 6
@@ -24,8 +30,10 @@ function clamp(value: number, min: number, max: number) {
 export function useMomentumCarousel(
   viewportRef: RefObject<HTMLElement | null>,
   trackRef: RefObject<HTMLElement | null>,
-  { endPadding = 0 }: MomentumCarouselOptions = {},
-) {
+  { endPadding = 0, onActiveIndexChange }: MomentumCarouselOptions = {},
+): MomentumCarouselController {
+  const goToIndexRef = useRef<(index: number) => void>(() => undefined)
+
   useEffect(() => {
     const viewport = viewportRef.current
     const track = trackRef.current
@@ -44,8 +52,47 @@ export function useMomentumCarousel(
     let settleTween: gsap.core.Tween | null = null
     let inertiaFrame = 0
     let resizeObserver: ResizeObserver | null = null
+    let lastReportedIndex = -1
+    let navigationTargetIndex: number | null = null
 
     const cards = () => Array.from(track.children) as HTMLElement[]
+
+    const reportActiveIndex = (forcedIndex?: number) => {
+      const items = cards()
+      if (items.length === 0) return
+
+      let activeIndex = forcedIndex
+
+      if (activeIndex === undefined) {
+        const viewportRect = viewport.getBoundingClientRect()
+        const viewportCenter = viewportRect.left + viewportRect.width / 2
+        let closestDistance = Number.POSITIVE_INFINITY
+        activeIndex = 0
+
+        items.forEach((card, index) => {
+          const cardRect = card.getBoundingClientRect()
+          const cardCenter = cardRect.left + cardRect.width / 2
+          const distance = Math.abs(viewportCenter - cardCenter)
+
+          if (distance < closestDistance) {
+            closestDistance = distance
+            activeIndex = index
+          }
+        })
+      }
+
+      if (activeIndex === lastReportedIndex) return
+      lastReportedIndex = activeIndex
+      onActiveIndexChange?.(activeIndex)
+    }
+
+    const centeredOffset = (card: HTMLElement) => {
+      return clamp(
+        card.offsetLeft - (viewport.clientWidth - card.offsetWidth) / 2,
+        0,
+        maxOffset,
+      )
+    }
 
     const measure = () => {
       const styles = getComputedStyle(viewport)
@@ -65,28 +112,44 @@ export function useMomentumCarousel(
     }
 
     const applyOffset = (value: number, withTransition: boolean) => {
-      offset = value
       settleTween?.kill()
       settleTween = null
 
       if (withTransition && !prefersReducedMotion()) {
-        settleTween = gsap.to(track, {
-          x: -offset,
+        const position = { value: offset }
+
+        settleTween = gsap.to(position, {
+          value,
           duration: SETTLE_DURATION,
           ease: 'power3.out',
           overwrite: true,
+          onUpdate: () => {
+            offset = position.value
+            gsap.set(track, { x: -offset })
+            reportActiveIndex(navigationTargetIndex ?? undefined)
+          },
+          onComplete: () => {
+            offset = value
+            gsap.set(track, { x: -offset })
+            navigationTargetIndex = null
+            reportActiveIndex()
+            settleTween = null
+          },
         })
         return
       }
 
+      offset = value
       gsap.set(track, { x: -offset })
+      navigationTargetIndex = null
+      reportActiveIndex()
     }
 
     const nearestSnapOffset = (from: number, direction: number) => {
       const items = cards()
       if (items.length === 0) return 0
 
-      const positions = items.map((card) => card.offsetLeft)
+      const positions = items.map(centeredOffset)
       let best = positions[0] ?? 0
       let bestDistance = Math.abs(from - best)
 
@@ -134,6 +197,7 @@ export function useMomentumCarousel(
       const tick = () => {
         offset = clamp(offset + currentVelocity * 16, 0, maxOffset)
         gsap.set(track, { x: -offset })
+        reportActiveIndex()
         currentVelocity *= FRICTION
 
         const atEdge =
@@ -204,6 +268,7 @@ export function useMomentumCarousel(
       stopInertia()
       settleTween?.kill()
       settleTween = null
+      navigationTargetIndex = null
 
       isPointerDown = true
       isDragging = false
@@ -230,7 +295,7 @@ export function useMomentumCarousel(
       if (items.length === 0) return
 
       const currentIndex = items.reduce((closest, card, index) => {
-        return Math.abs(card.offsetLeft - offset) < Math.abs(items[closest]!.offsetLeft - offset)
+        return Math.abs(centeredOffset(card) - offset) < Math.abs(centeredOffset(items[closest]!) - offset)
           ? index
           : closest
       }, 0)
@@ -238,18 +303,34 @@ export function useMomentumCarousel(
       if (event.key === 'ArrowRight') {
         event.preventDefault()
         const next = Math.min(items.length - 1, currentIndex + 1)
-        applyOffset(clamp(items[next]!.offsetLeft, 0, maxOffset), true)
+        goToIndexRef.current(next)
       } else if (event.key === 'ArrowLeft') {
         event.preventDefault()
         const prev = Math.max(0, currentIndex - 1)
-        applyOffset(clamp(items[prev]!.offsetLeft, 0, maxOffset), true)
+        goToIndexRef.current(prev)
       } else if (event.key === 'Home') {
         event.preventDefault()
-        applyOffset(0, true)
+        goToIndexRef.current(0)
       } else if (event.key === 'End') {
         event.preventDefault()
-        applyOffset(maxOffset, true)
+        goToIndexRef.current(items.length - 1)
       }
+    }
+
+    goToIndexRef.current = (requestedIndex: number) => {
+      const items = cards()
+      if (items.length === 0) return
+
+      const index = clamp(Math.round(requestedIndex), 0, items.length - 1)
+      const targetCard = items[index]
+      if (!targetCard) return
+
+      stopInertia()
+      settleTween?.kill()
+      settleTween = null
+      navigationTargetIndex = index
+      reportActiveIndex(index)
+      applyOffset(centeredOffset(targetCard), true)
     }
 
     measure()
@@ -272,7 +353,14 @@ export function useMomentumCarousel(
       document.removeEventListener('pointerup', endPointer)
       document.removeEventListener('pointercancel', endPointer)
       viewport.classList.remove('is-dragging')
+      goToIndexRef.current = () => undefined
       gsap.set(track, { clearProps: 'transform' })
     }
-  }, [viewportRef, trackRef, endPadding])
+  }, [viewportRef, trackRef, endPadding, onActiveIndexChange])
+
+  const goToIndex = useCallback((index: number) => {
+    goToIndexRef.current(index)
+  }, [])
+
+  return { goToIndex }
 }
