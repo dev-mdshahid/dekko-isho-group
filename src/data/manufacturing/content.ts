@@ -725,7 +725,7 @@ export const manufacturingOperation = {
       title: 'Every Great Product Starts with the Right Materials.',
       description:
         'A well-managed material warehouse forms the foundation of efficient manufacturing. Through accurate inventory management, complete material traceability, barcode-enabled storage systems, and comprehensive fabric and trim inspections, we ensure uninterrupted production and consistent quality from the very beginning.',
-      image: 'https://placehold.co/600x400/red/white',
+      image: '/images/manufacturing/Material-Management2.png',
       imageAlt: 'Material management warehouse',
     },
     {
@@ -745,7 +745,7 @@ export const manufacturingOperation = {
       title: 'Accelerating Product Development.',
       description:
         'Fast sample development enables faster buying decisions. Our three dedicated Salesman Sample (SMS) production lines support rapid prototype development, fit validation, buyer presentations, and pre-production approvals, helping customers shorten development timelines and accelerate speed to market.',
-      image: 'https://placehold.co/600x400/red/white',
+      image: '/images/manufacturing/Salesman-Sample-Development2.png',
       imageAlt: 'Salesman sample development',
     },
   ],
