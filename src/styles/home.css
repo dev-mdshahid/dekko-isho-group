@@ -91,8 +91,13 @@
   padding-bottom: 0;
 }
 
+.hero-section .company-logos-list,
+.hero-section .company-logos-track {
+  gap: 12px;
+}
+
 .hero-section .company-logos-item {
-  width: 352px;
+  width: 240px;
   height: 192px;
 }
 
@@ -120,7 +125,7 @@
   }
 
   .hero-section .company-logos-item {
-    width: 280px;
+    width: 200px;
     height: 152px;
   }
 }
