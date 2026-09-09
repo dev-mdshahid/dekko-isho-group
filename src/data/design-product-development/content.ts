@@ -124,7 +124,7 @@ export const designProductDevelopmentCapabilities = {
     },
     {
       id: 'exploring-global-inspiration',
-      image: `https://placehold.co/600x400/red/white`,
+      image: `${CAPABILITY_IMAGE_BASE}/Exploring-Global-Inspiration.png`,
       imageAlt: 'Laptop displaying 3D fashion avatar and digital sampling software',
       title: 'Exploring Global Inspiration',
       description: 'Drawing inspiration from global trends and cultural influences.',

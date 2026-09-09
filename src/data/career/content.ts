@@ -287,7 +287,7 @@ export const careerLifeAt = {
       title: 'Learning and Development',
       description:
         'We believe in nurturing talent and fostering growth. Our comprehensive learning and development programs empower employees to reach their full potential.',
-      image: 'https://placehold.co/600x400/red/white',
+      image: `/images/career/Learning-and-Development.png`,
       imageAlt: 'Employees participating in a training session',
     },
     {
@@ -295,7 +295,7 @@ export const careerLifeAt = {
       title: 'Investing in People',
       description:
         'We prioritize the well-being and growth of our employees. Through mentorship, coaching, and career advancement opportunities, we invest in our people for long-term success.',
-      image: 'https://placehold.co/600x400/red/white',
+      image: '/images/career/Investing-in-People.png',
       imageAlt: 'Employees engaged in a mentorship program',
     },
   ] satisfies CareerLifeCard[],
