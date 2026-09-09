@@ -151,7 +151,7 @@ export const designProductDevelopmentDigital = {
   items: [
     {
       id: 'trend-forecasting',
-      icon: `${CAPABILITY_IMAGE_BASE}/icon-trend-forecasting.svg`,
+      // icon: `${CAPABILITY_IMAGE_BASE}/icon-trend-forecasting.svg`,
       image: `${CAPABILITY_IMAGE_BASE}/trend-forecasting.png`,
       imageAlt: 'Trend forecasting digital workspace placeholder',
       title: 'Trend Forecasting',
@@ -159,7 +159,7 @@ export const designProductDevelopmentDigital = {
     },
     {
       id: '3d-visualization',
-      icon: `${CAPABILITY_IMAGE_BASE}/icon-3d-visualization.svg`,
+      // icon: `${CAPABILITY_IMAGE_BASE}/icon-3d-visualization.svg`,
       image: `${CAPABILITY_IMAGE_BASE}/3D-visualization.png`,
       imageAlt: '3D garment visualization placeholder',
       title: '3D Visualization',
@@ -167,7 +167,7 @@ export const designProductDevelopmentDigital = {
     },
     {
       id: 'fabric-pattern',
-      icon: `${CAPABILITY_IMAGE_BASE}/icon-fabric-pattern.svg`,
+      // icon: `${CAPABILITY_IMAGE_BASE}/icon-fabric-pattern.svg`,
       image: `${CAPABILITY_IMAGE_BASE}/fabric-and-pattern.png`,
       imageAlt: 'Digital fabric and pattern development placeholder',
       title: 'Fabric & Pattern',
@@ -175,7 +175,7 @@ export const designProductDevelopmentDigital = {
     },
     {
       id: 'ai-assisted-workflows',
-      icon: `${CAPABILITY_IMAGE_BASE}/icon-ai-workflows.svg`,
+      // icon: `${CAPABILITY_IMAGE_BASE}/icon-ai-workflows.svg`,
       image: `${CAPABILITY_IMAGE_BASE}/ai-assisted-workflows.png`,
       imageAlt: 'AI-assisted product development workflow placeholder',
       title: 'AI-assisted Workflows',

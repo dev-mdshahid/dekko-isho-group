@@ -308,9 +308,9 @@ export function SplitFeatureListSection({
               </div>
 
               {/*
-                Carousel controller moved from
-                the LEFT text section to the
-                BOTTOM CENTER of the carousel.
+                Carousel controller sits at the
+                bottom-left of the carousel, aligned
+                with the slide title and description.
               */}
               {hasMultipleSlides ? (
                 <div

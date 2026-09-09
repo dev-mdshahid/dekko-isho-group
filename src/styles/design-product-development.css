@@ -1149,6 +1149,8 @@
 
 /* Digital Product Development — opt-in image carousel */
 .design-product-development-page .dpd-digital-section.split-feature-list-section--carousel {
+  --dpd-carousel-content-left: clamp(56px, 5vw, 88px);
+
   padding: 0;
   overflow: hidden;
 }
@@ -1172,9 +1174,12 @@
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-dots {
+  left: var(--dpd-carousel-content-left);
   display: flex;
   gap: 9px;
   align-items: center;
+  justify-content: flex-start;
+  transform: none;
   margin-top: 28px;
   padding: 7px 9px;
   border-radius: 999px;
@@ -1263,12 +1268,12 @@
   z-index: 2;
   right: clamp(32px, 5vw, 76px);
   bottom: 42px;
-  left: clamp(72px, 9vw, 142px);
+  left: var(--dpd-carousel-content-left);
   display: flex;
   gap: 20px;
-  align-items: center;
+  align-items: flex-start;
   max-width: 620px;
-  padding: 20px 24px;
+  padding: 20px 24px 20px 0;
   color: var(--color--white);
 }
 
@@ -1328,6 +1333,10 @@
 }
 
 @media screen and (max-width: 991px) {
+  .design-product-development-page .dpd-digital-section.split-feature-list-section--carousel {
+    --dpd-carousel-content-left: 48px;
+  }
+
   .design-product-development-page
     .dpd-digital-section.split-feature-list-section--carousel
     .split-feature-list-layout {
@@ -1362,6 +1371,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .design-product-development-page .dpd-digital-section.split-feature-list-section--carousel {
+    --dpd-carousel-content-left: var(--_layout---container-gutter);
+  }
+
   .design-product-development-page
     .dpd-digital-section.split-feature-list-section--carousel
     .split-feature-list-layout {
@@ -1388,9 +1401,9 @@
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
     right: var(--_layout---container-gutter);
     bottom: 24px;
-    left: var(--_layout---container-gutter);
+    left: var(--dpd-carousel-content-left);
     align-items: flex-start;
-    padding: 16px;
+    padding: 16px 16px 16px 0;
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-title {
