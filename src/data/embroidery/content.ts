@@ -173,7 +173,7 @@ export const embroideryProductionNetwork = {
       imageAlt: 'Finished embroidered garments at Globus Embroidery',
       monthlyCapacity: '350,000',
       monthlyCapacityLabel: 'Production capacity',
-      monthlyCapacityUnit: 'PCS/month',
+      monthlyCapacityUnit: 'units/month',
       productionLines: '6',
       productionLinesLabel: 'Machines',
     },

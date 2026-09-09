@@ -305,7 +305,7 @@ export const manufacturingAutomation = {
     {
       id: 'moisture-machine',
       label: 'Moisture Machine',
-      image: 'https://placehold.co/600x400/red/white',
+      image: automationImage('moisture-machine.png'),
       imageAlt: 'Moisture machine for fabric treatment',
     },
   ],
