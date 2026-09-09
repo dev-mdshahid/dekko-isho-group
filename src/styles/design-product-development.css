@@ -1220,7 +1220,7 @@
   overflow: hidden;
   clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
   touch-action: pan-y;
-  background: #8d1111;
+  background: #111820;
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport:focus-visible {
@@ -1233,7 +1233,7 @@
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(2%);
+  transform: scale(1.02);
   transition: opacity 600ms ease, transform 600ms ease, visibility 600ms;
   pointer-events: none;
 }
@@ -1251,7 +1251,7 @@
   z-index: 1;
   opacity: 1;
   visibility: visible;
-  transform: translateX(0);
+  transform: scale(1);
   pointer-events: auto;
 }
 
