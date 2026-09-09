@@ -1672,7 +1672,7 @@
   height: 48px;
   object-fit: contain;
   object-position: left center;
-  margin: 0 0 16px;
+  /* margin: 0 0 16px; */
 }
 
 .about-journey-section .about-journey-entry-stack--right .about-journey-logo {

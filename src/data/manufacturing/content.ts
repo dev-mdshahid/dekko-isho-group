@@ -404,7 +404,7 @@ export const manufacturingProductRange = {
     {
       id: 'ladies-dress',
       label: "Ladies' Dress",
-      image: productRangeImage2('ladies-dress.png'),
+      image: productRangeImage2('ladies-dress2.png'),
       // image: 'https://placehold.co/600x400/red/white',
     },
   ],
