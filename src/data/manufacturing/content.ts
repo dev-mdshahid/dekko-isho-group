@@ -827,8 +827,6 @@ export const manufacturingClients: {
       partnerLabel: 'International Partners',
       description: "A growing export footprint serving global consumers' evolving demands.",
       logos: [
-        manufacturingClientLogo('Camel Active.png', 'Camel Active'),
-        manufacturingClientLogo('Mark_s.png', "Mark's"),
       ],
     },
   ],

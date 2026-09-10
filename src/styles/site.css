@@ -12825,8 +12825,33 @@ a.about-info-box:hover {
 }
 
 .company-logos-marquee {
+  width: 100%;
   overflow: hidden;
   position: relative;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+}
+
+.company-logos-marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.company-logos-marquee:focus-visible {
+  outline: 3px solid rgba(8, 120, 249, 0.35);
+  outline-offset: 3px;
 }
 
 .company-logos-list {
@@ -12866,12 +12891,14 @@ a.about-info-box:hover {
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  filter: grayscale(100%) contrast(1.08);
+  opacity: 0.82;
+  transition: filter 0.25s ease, opacity 0.25s ease;
 }
 
 .company-logos-item:hover .company-logos-image {
   filter: grayscale(0%);
+  opacity: 1;
 }
 
 @media screen and (max-width: 991px) {
@@ -12899,6 +12926,11 @@ a.about-info-box:hover {
     padding-top: 2rem;
   }
 
+  .company-logos-marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  }
+
   .company-logos-list {
     gap: 1rem;
   }
@@ -12911,6 +12943,12 @@ a.about-info-box:hover {
 
   .company-logos-track {
     gap: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .company-logos-image {
+    transition: none;
   }
 }
 
