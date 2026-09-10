@@ -1359,6 +1359,20 @@
   width: 100%;
   overflow: hidden;
   scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
 }
 
 .manufacturing-page .mfg-client-marquee-viewport::-webkit-scrollbar { display: none; }
@@ -1456,6 +1470,10 @@
   }
   .manufacturing-page .mfg-clients-tab { padding: .5rem .95rem; font-size: .875rem; }
   .manufacturing-page .mfg-client-marquee { min-height: 6rem; }
+  .manufacturing-page .mfg-client-marquee-viewport {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  }
   .manufacturing-page .mfg-client-marquee-item { width: 9.5rem; height: 5.5rem; padding: .5rem .85rem; }
 }
 
