@@ -1181,7 +1181,7 @@
   justify-content: flex-start;
   transform: none;
   margin-top: 28px;
-  padding: 7px 9px;
+  padding: 7px 0px;
   border-radius: 999px;
   background: var(--color--white);
 }
