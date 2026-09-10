@@ -138,7 +138,7 @@ export const designProductDevelopmentStudio = {
   title: 'Creativity Backed by Expertise.',
   description:
     'Our Design Studio brings together fashion designers, textile specialists, product developers, and technical experts who turn concepts into commercially successful products through creativity, technical excellence, and manufacturing knowledge.',
-  image: `${CAPABILITY_IMAGE_BASE}/creativity-backed-by-expertise.png`,
+  image: `${CAPABILITY_IMAGE_BASE}/Better-Products-Are-Built-Together-4.png`,
   imageAlt: 'Design Studio team collaborating at a communal desk',
 }
 

@@ -155,13 +155,13 @@ export const industrialLaundryAdvancedFinishing = {
     {
       id: 'hand-scraping-destroy',
       title: 'Hand Scraping & Destroy',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/hand-scraping-destroy2.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/Hand-Scraping-&-Destroy.png`,
       imageAlt: 'Worker applying hand scraping and destroy effects',
     },
     {
       id: 'laser-finishing',
       title: 'Laser Finishing',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/laser-finishing.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/laser-finishing2.png`,
       imageAlt: 'Laser finishing process on denim fabric',
     },
     {
