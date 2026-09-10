@@ -1347,7 +1347,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 6.8rem;
+  min-height: 7.5rem;
 }
 
 .manufacturing-page .mfg-client-marquee-viewport {
@@ -1372,33 +1372,39 @@
 
 .manufacturing-page .mfg-client-marquee-viewport::-webkit-scrollbar { display: none; }
 .manufacturing-page .mfg-client-marquee-track,
-.manufacturing-page .mfg-client-marquee-list { display: flex; align-items: center; width: max-content; }
+.manufacturing-page .mfg-client-marquee-list {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 1.5rem;
+}
 .manufacturing-page .mfg-client-marquee-item {
   display: grid;
   place-items: center;
-  width: clamp(10.5rem, 14vw, 14rem);
-  height: 6.25rem;
-  padding: .5rem 1rem;
+  flex: 0 0 13rem;
+  width: 13rem;
+  height: 7rem;
+  padding: .25rem .5rem;
+  box-sizing: border-box;
   overflow: hidden;
 }
 
 .manufacturing-page .mfg-client-marquee-image {
   display: block;
   width: 100%;
-  height: auto;
-  max-width: none;
-  max-height: none;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   filter: grayscale(1) contrast(1.08);
   opacity: .82;
-  transform: scale(1.75);
-  transition: filter .25s ease, opacity .25s ease, transform .25s ease;
+  transform: scale(1.35);
+  transition: filter .25s ease, opacity .25s ease;
 }
 
 .manufacturing-page .mfg-client-marquee-item:hover .mfg-client-marquee-image {
   filter: grayscale(0);
   opacity: 1;
-  transform: scale(1.85);
 }
 
 @media screen and (max-width: 1100px) {
@@ -1465,12 +1471,19 @@
     scrollbar-width: none;
   }
   .manufacturing-page .mfg-clients-tab { padding: .5rem .95rem; font-size: .875rem; }
-  .manufacturing-page .mfg-client-marquee { min-height: 6rem; }
+  .manufacturing-page .mfg-client-marquee { min-height: 6.75rem; }
   .manufacturing-page .mfg-client-marquee-viewport {
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
   }
-  .manufacturing-page .mfg-client-marquee-item { width: 9.5rem; height: 5.5rem; padding: .5rem .85rem; }
+  .manufacturing-page .mfg-client-marquee-track,
+  .manufacturing-page .mfg-client-marquee-list { gap: 1rem; }
+  .manufacturing-page .mfg-client-marquee-item {
+    flex-basis: 10.5rem;
+    width: 10.5rem;
+    height: 6.25rem;
+    padding: .25rem .5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
