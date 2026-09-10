@@ -45,6 +45,20 @@
   z-index: 0;
 }
 
+.split-feature-list-section--carousel .split-feature-list-carousel-slide::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    rgba(0, 0, 0, 0.42) 60%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  content: '';
+  pointer-events: none;
+}
+
 /* ── About-style solution page hero (title + CTA + expanding viewport video) ── */
 .solution-page-hero.about-hero-section .about-hero-inner {
   padding-bottom: 200px;

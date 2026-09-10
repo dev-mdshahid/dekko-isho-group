@@ -923,15 +923,6 @@
   pointer-events: none;
 }
 
-.manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide::after {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.78) 100%);
-  content: '';
-  pointer-events: none;
-}
-
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide.is-active {
   z-index: 1;
   opacity: 1;
