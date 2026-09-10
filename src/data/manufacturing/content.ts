@@ -751,31 +751,85 @@ export const manufacturingOperation = {
   ],
 }
 
-export const manufacturingClients = {
+const MANUFACTURING_CLIENTS_PATH = '/images/dekko-clients/v2'
+
+export type ManufacturingClientLogo = { src: string; alt: string }
+export type ManufacturingClientRegionId = 'europe' | 'north-america' | 'international'
+export type ManufacturingClientRegion = {
+  id: ManufacturingClientRegionId
+  accent: string
+  title: string
+  partnerLabel: string
+  description: string
+  logos: ManufacturingClientLogo[]
+}
+
+function manufacturingClientLogo(filename: string, alt: string): ManufacturingClientLogo {
+  return { src: `${MANUFACTURING_CLIENTS_PATH}/${encodeURIComponent(filename)}`, alt }
+}
+
+export const manufacturingClients: {
+  id: string
+  badge: string
+  title: string
+  description: string
+  yearsOfTrust: string
+  regions: ManufacturingClientRegion[]
+} = {
   id: 'mfg-clients',
   badge: 'Global Business Footprint',
   title: 'Trusted by Global Fashion Brands.',
   description:
     'Dekko ISHO proudly partners with leading fashion brands and retailers across Europe, North America, and other international markets — long-term partnerships built on trust, quality, reliability, and responsible manufacturing.',
+  yearsOfTrust: '20+',
   regions: [
     {
       id: 'europe',
-      accent: '#F3215D',
+      accent: '#D9154B',
       title: 'Europe',
+      partnerLabel: 'European Partners',
       description:
         'Long-standing partnerships with European brands and retailers across key markets.',
+      logos: [
+        manufacturingClientLogo('Zara.png', 'Zara'),
+        manufacturingClientLogo('Inditex.png', 'Inditex'),
+        manufacturingClientLogo('Bestseller.png', 'Bestseller'),
+        manufacturingClientLogo('Celio.png', 'Celio'),
+        manufacturingClientLogo('Kiabi.png', 'Kiabi'),
+        manufacturingClientLogo('Lindex.png', 'Lindex'),
+        manufacturingClientLogo('LPP.png', 'LPP'),
+        manufacturingClientLogo('peek-cloppenburg.png', 'Peek & Cloppenburg'),
+        manufacturingClientLogo('Tom Tailor.png', 'Tom Tailor'),
+        manufacturingClientLogo('Varner.png', 'Varner'),
+      ],
     },
     {
       id: 'north-america',
-      accent: '#449BFF',
+      accent: '#086BD8',
       title: 'North America',
+      partnerLabel: 'North American Partners',
       description: 'Trusted manufacturing partner to leading North American fashion brands.',
+      logos: [
+        manufacturingClientLogo('Ralph Lauren.png', 'Ralph Lauren'),
+        manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
+        manufacturingClientLogo('Levi_s.png', "Levi's"),
+        manufacturingClientLogo('Calvin Klein_s.png', 'Calvin Klein'),
+        manufacturingClientLogo('Carhartt.png', 'Carhartt'),
+        manufacturingClientLogo('Haggar.png', 'Haggar'),
+        manufacturingClientLogo('Kohl_s.png', "Kohl's"),
+        manufacturingClientLogo('Kontoor.png', 'Kontoor'),
+      ],
     },
     {
       id: 'international',
-      accent: '#14B253',
+      accent: '#087F42',
       title: 'International Markets',
+      partnerLabel: 'International Partners',
       description: "A growing export footprint serving global consumers' evolving demands.",
+      logos: [
+        manufacturingClientLogo('Camel Active.png', 'Camel Active'),
+        manufacturingClientLogo('Mark_s.png', "Mark's"),
+      ],
     },
   ],
 }
