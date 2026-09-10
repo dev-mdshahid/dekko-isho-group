@@ -1134,10 +1134,10 @@
 .manufacturing-page .mfg-clients-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   margin-bottom: clamp(3rem, 5vw, 4.75rem);
-  text-align: center;
+  text-align: left;
 }
 
 .manufacturing-page .mfg-clients-header .pre-section-title-wrap {
@@ -1156,29 +1156,32 @@
 }
 
 .manufacturing-page .mfg-clients-title {
-  margin: 1.75rem auto 1.25rem;
-  max-width: 46rem;
+  /* margin: 1.75rem 0 1.25rem; */
+  width: 100%;
+  max-width: 100%;
   font-size: clamp(3rem, 5vw, 58px);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color--neutral-night);
-  text-align: center;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .manufacturing-page .mfg-clients-description {
-  margin: 0 auto;
-  max-width: 48rem;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
   font-size: clamp(1.05rem, 1.7vw, 18px);
   font-weight: 400;
   line-height: 1.55;
   color: var(--color--neutral-outer-space);
-  text-align: center;
+  text-align: left;
 }
 
 .manufacturing-page .mfg-clients-stats {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   margin-top: 2.5rem;
 }
@@ -1190,6 +1193,10 @@
   min-width: 14.5rem;
   padding: 0 2rem;
   text-align: left;
+}
+
+.manufacturing-page .mfg-clients-stat:first-child {
+  padding-left: 0;
 }
 
 .manufacturing-page .mfg-clients-stat + .mfg-clients-stat {
@@ -1429,6 +1436,7 @@
   .manufacturing-page .mfg-clients-title {
     margin-top: 1.25rem;
     font-size: clamp(2.25rem, 11vw, 3.25rem);
+    white-space: normal;
   }
   .manufacturing-page .mfg-clients-description { font-size: 1rem; }
   .manufacturing-page .mfg-clients-stats {
