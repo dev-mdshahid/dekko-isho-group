@@ -1284,7 +1284,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .65rem;
   min-height: 2.55rem;
   padding: .55rem 1.25rem;
   color: #1d293f;
@@ -1298,22 +1297,11 @@
   transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease;
 }
 
-.manufacturing-page .mfg-clients-tab > span {
-  width: .75rem;
-  height: .75rem;
-  background: var(--mfg-region-accent);
-  border-radius: 50%;
-}
-
 .manufacturing-page .mfg-clients-tab[aria-selected='true'] {
   color: #fff;
-  background: var(--mfg-region-accent);
-  border-color: var(--mfg-region-accent);
-  box-shadow: 0 .5rem 1.25rem color-mix(in srgb, var(--mfg-region-accent) 24%, transparent);
-}
-
-.manufacturing-page .mfg-clients-tab[aria-selected='true'] > span {
-  background: #fff;
+  background: #2595d5;
+  border-color: #2595d5;
+  box-shadow: 0 .5rem 1.25rem rgba(37, 149, 213, .24);
 }
 
 .manufacturing-page .mfg-clients-tab:hover { transform: translateY(-1px); }

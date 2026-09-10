@@ -1,5 +1,5 @@
 import { Globe2, Tag, UsersRound } from 'lucide-react'
-import { useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import { manufacturingClients, type ManufacturingClientRegionId } from '../../data/manufacturing/content'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
@@ -7,7 +7,7 @@ import { ManufacturingLogoMarquee } from './ManufacturingLogoMarquee'
 
 export function ManufacturingClientsSection() {
   const { id, badge, title, description, regions, yearsOfTrust } = manufacturingClients
-  const [activeRegionId, setActiveRegionId] = useState<ManufacturingClientRegionId>('europe')
+  const [activeRegionId, setActiveRegionId] = useState<ManufacturingClientRegionId>('north-america')
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
   const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0]
   const partnerCount = new Set(regions.flatMap((region) => region.logos.map((logo) => logo.alt))).size
@@ -78,18 +78,17 @@ export function ManufacturingClientsSection() {
                     aria-controls="mfg-clients-region-panel"
                     tabIndex={isActive ? 0 : -1}
                     className="mfg-clients-tab"
-                    style={{ '--mfg-region-accent': region.accent } as CSSProperties}
                     onClick={() => selectRegion(region.id, index)}
                     onKeyDown={(event) => handleTabKeyDown(event, index)}
                   >
-                    <span aria-hidden="true" />{region.title}
+                    {region.title}
                   </button>
                 )
               })}
             </div>
 
             <div className="mfg-clients-region-count" aria-hidden="true">
-              <strong>{activeRegion.logos.length}</strong>
+              <strong>{activeRegion.logos.length+"+"}</strong>
               <span>{activeRegion.partnerLabel}</span>
             </div>
           </div>
