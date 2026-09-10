@@ -39,8 +39,12 @@ export function ManufacturingClientsSection() {
       <div className="mfg-clients-container">
         <FadeIn id="mfg-clients-header" className="mfg-clients-header" variant="slide-in-bottom">
           <PreSectionTitle title={badge} />
-          <h2 className="mfg-clients-title">{title}</h2>
-          <p className="mfg-clients-description">{description}</p>
+          <h2 className="journey-roadmap-title mfg-clients-title">{title}</h2>
+          {description ? (
+            <p className="journey-roadmap-description mfg-clients-description">
+              {description}
+            </p>
+          ) : null}
 
           <div className="mfg-clients-stats" aria-label="Partnership summary">
             {summaryStats.map(({ value, label, icon: Icon }) => (
