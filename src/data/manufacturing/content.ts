@@ -336,7 +336,7 @@ export const manufacturingTechnology = {
     },
     {
       id: 'gpro',
-      image: productRangeImage('GPRO.png'),
+      image: productRangeImage('GPRO2.png'),
       imageAlt: 'GPRO production monitoring technology placeholder',
       title: 'GPRO',
       description: 'Production Monitoring',
