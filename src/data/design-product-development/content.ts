@@ -138,7 +138,7 @@ export const designProductDevelopmentStudio = {
   title: 'Creativity Backed by Expertise.',
   description:
     'Our Design Studio brings together fashion designers, textile specialists, product developers, and technical experts who turn concepts into commercially successful products through creativity, technical excellence, and manufacturing knowledge.',
-  image: `${CAPABILITY_IMAGE_BASE}/Better-Products-Are-Built-Together-4.png`,
+  image: `${CAPABILITY_IMAGE_BASE}/creativity-backed-by-expertise.png`,
   imageAlt: 'Design Studio team collaborating at a communal desk',
 }
 
@@ -550,7 +550,7 @@ export const designProductDevelopmentGallery = {
     {
       id: 'studio-collaboration',
       size: 'center' as const,
-      src: `/images/design-product-development/better-products-are-built-together-2.png`,
+      src: `/images/design-product-development/Better-Products-Are-Built-Together-4.png`,
       alt: 'Designers collaborating over fabric swatches and documents at a studio table',
     },
     {
