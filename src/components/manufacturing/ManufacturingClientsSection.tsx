@@ -4,6 +4,7 @@ import { manufacturingClients, type ManufacturingClientRegionId } from '../../da
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { ManufacturingLogoMarquee } from './ManufacturingLogoMarquee'
+import { ManufacturingClientsMap } from './ManufacturingClientsMap'
 
 export function ManufacturingClientsSection() {
   const { id, badge, title, description, regions, yearsOfTrust } = manufacturingClients
@@ -38,22 +39,29 @@ export function ManufacturingClientsSection() {
     <section id={id} className="mfg-clients-section">
       <div className="mfg-clients-container">
         <FadeIn id="mfg-clients-header" className="mfg-clients-header" variant="slide-in-bottom">
-          <PreSectionTitle title={badge} />
-          <h2 className="journey-roadmap-title mfg-clients-title">{title}</h2>
-          {description ? (
-            <p className="journey-roadmap-description mfg-clients-description">
-              {description}
-            </p>
-          ) : null}
+          <div className="mfg-clients-header-copy">
+            <PreSectionTitle title={badge} />
+            <h2 className="journey-roadmap-title mfg-clients-title">{title}</h2>
+            {description ? (
+              <p className="journey-roadmap-description mfg-clients-description">
+                {description}
+              </p>
+            ) : null}
 
-          <div className="mfg-clients-stats" aria-label="Partnership summary">
-            {summaryStats.map(({ value, label, icon: Icon }) => (
-              <div key={label} className="mfg-clients-stat">
-                <span className="mfg-clients-stat-icon"><Icon aria-hidden="true" /></span>
-                <span className="mfg-clients-stat-copy"><strong>{value}</strong><span>{label}</span></span>
-              </div>
-            ))}
+            <div className="mfg-clients-stats" aria-label="Partnership summary">
+              {summaryStats.map(({ value, label, icon: Icon }) => (
+                <div key={label} className="mfg-clients-stat">
+                  <span className="mfg-clients-stat-icon"><Icon aria-hidden="true" /></span>
+                  <span className="mfg-clients-stat-copy"><strong>{value}</strong><span>{label}</span></span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <ManufacturingClientsMap
+            activeRegionId={activeRegion.id}
+            onRegionSelect={setActiveRegionId}
+          />
         </FadeIn>
 
         <FadeIn id="mfg-clients-panel" className="mfg-clients-panel" delay={40} variant="slide-in-bottom">
@@ -88,7 +96,7 @@ export function ManufacturingClientsSection() {
             </div>
 
             <div className="mfg-clients-region-count" aria-hidden="true">
-              <strong>{activeRegion.logos.length+"+"}</strong>
+              <strong>{activeRegion.logos.length}+</strong>
               <span>{activeRegion.partnerLabel}</span>
             </div>
           </div>

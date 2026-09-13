@@ -13,8 +13,9 @@ const AUTO_SCROLL_SPEED = 34
 export function ManufacturingLogoMarquee({ logos, regionId }: ManufacturingLogoMarqueeProps) {
   const viewportRef = useRef<HTMLDivElement>(null)
   const isPausedRef = useRef(false)
+  const hasLogos = logos.length > 0
   const visibleLogos = Array.from(
-    { length: Math.max(logos.length, 8) },
+    { length: hasLogos ? Math.max(logos.length, 8) : 0 },
     (_, index) => ({ ...logos[index % logos.length], originalIndex: index % logos.length }),
   )
 
@@ -45,7 +46,15 @@ export function ManufacturingLogoMarquee({ logos, regionId }: ManufacturingLogoM
     requestAnimationFrame(resetPosition)
     animationFrame = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationFrame)
-  }, [logos, regionId])
+  }, [hasLogos, logos, regionId])
+
+  if (!hasLogos) {
+    return (
+      <div className="mfg-client-marquee mfg-client-marquee-empty" role="status">
+        Partner portfolio coming soon.
+      </div>
+    )
+  }
 
   return (
     <div
