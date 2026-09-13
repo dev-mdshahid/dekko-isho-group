@@ -29,9 +29,9 @@ export function ManufacturingClientsSection() {
   }
 
   const summaryStats = [
-    { value: `${partnerCount}+`, label: 'Global Partners', icon: '/images/dekko-clients/tags/asset-1.svg' },
-    { value: String(regions.length), label: 'Key Regions', icon: '/images/dekko-clients/tags/asset-2.svg' },
-    { value: yearsOfTrust, label: 'Years of Trust', icon: '/images/dekko-clients/tags/asset-3.svg' },
+    { value: `${partnerCount}+`, label: ['Global', 'Partners'], icon: '/images/dekko-clients/tags/asset-1.svg' },
+    { value: String(regions.length), label: ['Key', 'Regions'], icon: '/images/dekko-clients/tags/asset-2.svg' },
+    { value: yearsOfTrust, label: ['Years', 'of Trust'], icon: '/images/dekko-clients/tags/asset-3.svg' },
   ]
 
   return (
@@ -48,12 +48,15 @@ export function ManufacturingClientsSection() {
             ) : null}
 
             <div className="mfg-clients-stats" aria-label="Partnership summary">
-              {summaryStats.map(({ value, label, icon: Icon }) => (
-                <div key={label} className="mfg-clients-stat">
+              {summaryStats.map(({ value, label, icon }) => (
+                <div key={label.join('-')} className="mfg-clients-stat">
                   <span className="mfg-clients-stat-icon" aria-hidden="true">
-                    <img src={Icon} alt="" />
+                    <img src={icon} alt="" />
                   </span>
-                  <span className="mfg-clients-stat-copy"><strong>{value}</strong><span>{label}</span></span>
+                  <strong className="mfg-clients-stat-value">{value}</strong>
+                  <span className="mfg-clients-stat-label">
+                    {label.map((line) => <span key={line}>{line}</span>)}
+                  </span>
                 </div>
               ))}
             </div>
