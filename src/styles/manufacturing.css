@@ -1381,8 +1381,8 @@
 .manufacturing-page .mfg-client-marquee-item {
   display: grid;
   place-items: center;
-  flex: 0 0 13rem;
-  width: 13rem;
+  flex: 0 0 15rem;
+  width: 15rem;
   height: 7rem;
   padding: .25rem .5rem;
   box-sizing: border-box;
@@ -1396,9 +1396,10 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  object-position: center;
   filter: grayscale(1) contrast(1.08);
   opacity: .82;
-  transform: scale(1.35);
+  transform: translateY(-1rem);
   transition: filter .25s ease, opacity .25s ease;
 }
 
@@ -1479,11 +1480,12 @@
   .manufacturing-page .mfg-client-marquee-track,
   .manufacturing-page .mfg-client-marquee-list { gap: 1rem; }
   .manufacturing-page .mfg-client-marquee-item {
-    flex-basis: 10.5rem;
-    width: 10.5rem;
+    flex-basis: 12rem;
+    width: 12rem;
     height: 6.25rem;
     padding: .25rem .5rem;
   }
+  .manufacturing-page .mfg-client-marquee-image { transform: translateY(-.75rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
