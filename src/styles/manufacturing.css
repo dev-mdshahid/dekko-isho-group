@@ -1272,7 +1272,13 @@
   transition: fill .22s ease, opacity .22s ease, filter .22s ease;
 }
 
-.manufacturing-page .mfg-map-region { cursor: pointer; outline: none; }
+.manufacturing-page .mfg-map-region,
+.manufacturing-page .mfg-map-region:focus,
+.manufacturing-page .mfg-map-region:focus-visible {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+.manufacturing-page .mfg-map-region { cursor: pointer; }
 .manufacturing-page .mfg-map-region:hover .mfg-map-country { fill: #bcc7d8; }
 .manufacturing-page .mfg-map-region[data-active='true'] .mfg-map-country {
   fill: var(--mfg-brand-start);

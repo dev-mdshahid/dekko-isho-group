@@ -90,6 +90,8 @@ export function ManufacturingClientsMap({
                 tabIndex={0}
                 aria-label={`Select ${region.title}`}
                 aria-pressed={activeRegionId === region.id}
+                style={{ outline: 'none' }}
+                onMouseDown={(event) => event.preventDefault()}
                 onClick={() => onRegionSelect(region.id)}
                 onKeyDown={(event) => handleRegionKeyDown(event, region.id)}
               >
