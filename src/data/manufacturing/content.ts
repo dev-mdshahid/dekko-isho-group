@@ -755,6 +755,8 @@ const MANUFACTURING_CLIENTS_PATH = '/images/dekko-clients/v2'
 
 export type ManufacturingClientLogo = { src: string; alt: string }
 export type ManufacturingClientRegionId = 'europe' | 'north-america' | 'international'
+export type ManufacturingMapCoordinates = [longitude: number, latitude: number]
+export type ManufacturingMapOffset = [x: number, y: number]
 export type ManufacturingClientRegion = {
   id: ManufacturingClientRegionId
   accent: string
@@ -762,6 +764,16 @@ export type ManufacturingClientRegion = {
   partnerLabel: string
   description: string
   logos: ManufacturingClientLogo[]
+  map: {
+    /** UN M49 country identifiers used by the local world-atlas topology. */
+    countryCodes: readonly string[]
+    includeUnassignedCountries?: boolean
+    marker: {
+      coordinates: ManufacturingMapCoordinates
+      labelOffset: ManufacturingMapOffset
+      labelWidth: number
+    }
+  }
 }
 
 function manufacturingClientLogo(filename: string, alt: string): ManufacturingClientLogo {
@@ -789,6 +801,17 @@ export const manufacturingClients: {
       title: 'North America',
       partnerLabel: 'North American Partners',
       description: 'Trusted manufacturing partner to leading North American fashion brands.',
+      map: {
+        countryCodes: [
+          '044', '084', '124', '188', '192', '214', '222', '304', '320', '332', '340',
+          '388', '484', '558', '591', '630', '780', '840',
+        ],
+        marker: {
+          coordinates: [-102, 43],
+          labelOffset: [15, -17],
+          labelWidth: 142,
+        },
+      },
       logos: [
         manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
         manufacturingClientLogo('Levi_s.png', "Levi's"),
@@ -807,6 +830,19 @@ export const manufacturingClients: {
       partnerLabel: 'European Partners',
       description:
         'Long-standing partnerships with European brands and retailers across key markets.',
+      map: {
+        countryCodes: [
+          '008', '040', '056', '070', '100', '112', '191', '196', '203', '208', '233',
+          '246', '250', '276', '300', '348', '352', '372', '380', '428', '440', '442',
+          '498', '499', '528', '578', '616', '620', '642', '688', '703', '705', '724',
+          '752', '756', '804', '807', '826',
+        ],
+        marker: {
+          coordinates: [12, 52],
+          labelOffset: [15, -17],
+          labelWidth: 83,
+        },
+      },
       logos: [
         manufacturingClientLogo('Kiabi.png', 'Kiabi'),
         manufacturingClientLogo('Bestseller.png', 'Bestseller'),
@@ -828,6 +864,15 @@ export const manufacturingClients: {
       title: 'International Markets',
       partnerLabel: 'International Partners',
       description: "A growing export footprint serving global consumers' evolving demands.",
+      map: {
+        countryCodes: [],
+        includeUnassignedCountries: true,
+        marker: {
+          coordinates: [105, 8],
+          labelOffset: [-190, -17],
+          labelWidth: 176,
+        },
+      },
       logos: [
       ],
     },

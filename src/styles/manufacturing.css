@@ -1133,7 +1133,7 @@
 
 .manufacturing-page .mfg-clients-header {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, .9fr) minmax(30rem, 1.1fr);
   align-items: center;
   gap: clamp(2rem, 4vw, 4rem);
   width: 100%;
@@ -1186,14 +1186,14 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 1.75rem;
+  gap: clamp(1.5rem, 2.4vw, 2.25rem);
   margin-top: 2.5rem;
 }
 
 .manufacturing-page .mfg-clients-stat {
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: .65rem;
   min-width: 0;
   padding: 0;
   text-align: left;
@@ -1206,33 +1206,36 @@
 .manufacturing-page .mfg-clients-stat-icon {
   display: grid;
   place-items: center;
-  flex: 0 0 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  color: #0878f9;
-  background: #eef5ff;
-  border: 1px solid #d5e3f7;
+  flex: 0 0 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #f4f8fd;
+  border: 1px solid #cfe0f2;
   border-radius: 50%;
+  box-sizing: border-box;
 }
 
-.manufacturing-page .mfg-clients-stat-icon svg {
-  width: 1.15rem;
-  height: 1.15rem;
-  stroke-width: 2;
+.manufacturing-page .mfg-clients-stat-icon img {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  object-fit: contain;
 }
 
 .manufacturing-page .mfg-clients-stat-copy {
   display: flex;
   flex-direction: column;
-  color: #66738d;
-  font-size: 1rem;
-  line-height: 1.35;
+  color: #536b91;
+  font-size: .9rem;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
 .manufacturing-page .mfg-clients-stat-copy strong {
   color: var(--color--neutral-night);
-  font-size: 1.15rem;
-  line-height: 1.15;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
 }
 
 .manufacturing-page .mfg-clients-panel {
@@ -1251,59 +1254,65 @@
   padding: 0 2.75rem 1.5rem;
 }
 
-.manufacturing-page .mfg-clients-map-wrap { min-width: 0; }
+.manufacturing-page .mfg-clients-map-wrap {
+  min-width: 0;
+  aspect-ratio: 980 / 460;
+}
 
 .manufacturing-page .mfg-clients-map {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
+  overflow: hidden;
 }
 
-.manufacturing-page .mfg-map-neutral path,
-.manufacturing-page .mfg-map-region path {
-  fill: #cbd2e0;
-  stroke: var(--color--neutral-seasalt);
-  stroke-width: 1.5;
+.manufacturing-page .mfg-map-country {
+  fill: #d5ddea;
+  stroke: none;
+  transition: fill .22s ease, opacity .22s ease, filter .22s ease;
 }
 
 .manufacturing-page .mfg-map-region { cursor: pointer; outline: none; }
-.manufacturing-page .mfg-map-region path { transition: fill .22s ease, stroke .22s ease; }
-.manufacturing-page .mfg-map-region:hover path { fill: #b9c2d4; }
-.manufacturing-page .mfg-map-region[data-active='true'] path { fill: #2595d5; }
-.manufacturing-page .mfg-map-region:focus-visible path { stroke: #2595d5; stroke-width: 6; }
+.manufacturing-page .mfg-map-region:hover .mfg-map-country { fill: #bcc7d8; }
+.manufacturing-page .mfg-map-region[data-active='true'] .mfg-map-country {
+  fill: var(--mfg-brand-start);
+}
+.manufacturing-page .mfg-map-region:focus-visible .mfg-map-country {
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--mfg-brand-start) 65%, transparent));
+}
 
 .manufacturing-page .mfg-map-pin-ring {
   fill: none;
-  stroke: #2595d5;
-  stroke-width: 7;
-  opacity: 0;
-  transition: opacity .22s ease;
+  stroke: var(--mfg-brand-start);
+  stroke-width: 5;
+  opacity: .22;
+  transition: opacity .22s ease, stroke .22s ease;
 }
 
 .manufacturing-page .mfg-map-pin-dot {
-  fill: #aeb8ca;
+  fill: var(--mfg-brand-start);
   stroke: #fff;
-  stroke-width: 3;
+  stroke-width: 2.5;
   filter: drop-shadow(0 2px 4px rgba(20, 23, 31, .18));
   transition: fill .22s ease;
 }
 
-.manufacturing-page .mfg-map-pins g[data-active='true'] .mfg-map-pin-ring { opacity: .2; }
-.manufacturing-page .mfg-map-pins g[data-active='true'] .mfg-map-pin-dot { fill: #2595d5; }
-.manufacturing-page .mfg-map-pins,
+.manufacturing-page .mfg-map-active-marker,
 .manufacturing-page .mfg-map-active-label { pointer-events: none; }
 
 .manufacturing-page .mfg-map-active-label rect {
   fill: #fff;
-  stroke: rgba(37, 149, 213, .18);
+  stroke: color-mix(in srgb, var(--mfg-brand-start) 18%, transparent);
   filter: drop-shadow(0 3px 8px rgba(20, 23, 31, .14));
 }
+
+.manufacturing-page .mfg-map-active-label circle { fill: var(--mfg-brand-start); }
 
 .manufacturing-page .mfg-map-active-label text {
   fill: var(--color--neutral-night);
   font-size: 13.5px;
   font-weight: 600;
+  dominant-baseline: auto;
 }
 
 .manufacturing-page .mfg-clients-region-copy h3 {
@@ -1354,8 +1363,8 @@
 
 .manufacturing-page .mfg-clients-tab[aria-selected='true'] {
   color: #fff;
-  background: #2595d5;
-  border-color: #2595d5;
+  background: var(--mfg-brand-start);
+  border-color: var(--mfg-brand-start);
   box-shadow: 0 .5rem 1.25rem rgba(37, 149, 213, .24);
 }
 
@@ -1503,10 +1512,10 @@
     justify-content: flex-start;
     scrollbar-width: none;
   }
-  .manufacturing-page .mfg-clients-stat { min-width: 12.5rem; padding: 0 1rem; gap: .75rem; }
+  .manufacturing-page .mfg-clients-stat { min-width: 11.5rem; padding: 0 1rem; gap: .65rem; }
   .manufacturing-page .mfg-clients-stat:first-child { padding-left: 0; }
-  .manufacturing-page .mfg-clients-stat-icon { flex-basis: 3.25rem; width: 3.25rem; height: 3.25rem; }
-  .manufacturing-page .mfg-clients-stat-icon svg { width: 1.4rem; height: 1.4rem; }
+  .manufacturing-page .mfg-clients-stat-icon { flex-basis: 2.75rem; width: 2.75rem; height: 2.75rem; }
+  .manufacturing-page .mfg-clients-stat-icon img { width: 1.5rem; height: 1.5rem; }
   .manufacturing-page .mfg-clients-stat-copy { font-size: .875rem; }
   .manufacturing-page .mfg-clients-stat-copy strong { font-size: 1.3rem; }
   .manufacturing-page .mfg-clients-panel { padding: 1.5rem .75rem .75rem; border-radius: .875rem; }
@@ -1519,6 +1528,7 @@
     width: min(100%, 34rem);
     margin-inline: auto;
   }
+  .manufacturing-page .mfg-map-active-label text { font-size: 12.5px; }
   .manufacturing-page .mfg-clients-region-copy h3 { font-size: 1.65rem; }
   .manufacturing-page .mfg-clients-region-count {
     grid-column: 1;
@@ -1567,7 +1577,7 @@
 @media (prefers-reduced-motion: reduce) {
   .manufacturing-page .mfg-clients-tab,
   .manufacturing-page .mfg-client-marquee-image,
-  .manufacturing-page .mfg-map-region path,
+  .manufacturing-page .mfg-map-country,
   .manufacturing-page .mfg-map-pin-ring,
   .manufacturing-page .mfg-map-pin-dot { transition: none; }
 }

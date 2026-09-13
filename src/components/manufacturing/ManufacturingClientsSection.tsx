@@ -1,4 +1,3 @@
-import { Globe2, Tag, UsersRound } from 'lucide-react'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { manufacturingClients, type ManufacturingClientRegionId } from '../../data/manufacturing/content'
 import { FadeIn } from '../ui/FadeIn'
@@ -30,9 +29,9 @@ export function ManufacturingClientsSection() {
   }
 
   const summaryStats = [
-    { value: `${partnerCount}+`, label: 'Global Partners', icon: Tag },
-    { value: String(regions.length), label: 'Key Regions', icon: Globe2 },
-    { value: yearsOfTrust, label: 'Years of Trust', icon: UsersRound },
+    { value: `${partnerCount}+`, label: 'Global Partners', icon: '/images/dekko-clients/tags/asset-1.svg' },
+    { value: String(regions.length), label: 'Key Regions', icon: '/images/dekko-clients/tags/asset-2.svg' },
+    { value: yearsOfTrust, label: 'Years of Trust', icon: '/images/dekko-clients/tags/asset-3.svg' },
   ]
 
   return (
@@ -51,7 +50,9 @@ export function ManufacturingClientsSection() {
             <div className="mfg-clients-stats" aria-label="Partnership summary">
               {summaryStats.map(({ value, label, icon: Icon }) => (
                 <div key={label} className="mfg-clients-stat">
-                  <span className="mfg-clients-stat-icon"><Icon aria-hidden="true" /></span>
+                  <span className="mfg-clients-stat-icon" aria-hidden="true">
+                    <img src={Icon} alt="" />
+                  </span>
                   <span className="mfg-clients-stat-copy"><strong>{value}</strong><span>{label}</span></span>
                 </div>
               ))}
