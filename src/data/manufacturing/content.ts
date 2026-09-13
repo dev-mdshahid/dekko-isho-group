@@ -795,6 +795,8 @@ export const manufacturingClients: {
         manufacturingClientLogo('Mark_s.png', "Mark's"),
         manufacturingClientLogo('Ralph Lauren.png', 'Ralph Lauren'),
         manufacturingClientLogo('Kohl_s.png', "Kohl's"),
+        manufacturingClientLogo('Lee.png', "Lee"),
+        manufacturingClientLogo('Wrangler.png', "Wrangler"),
         manufacturingClientLogo('J.Crew.png', "J.Crew"),
       ],
     },
