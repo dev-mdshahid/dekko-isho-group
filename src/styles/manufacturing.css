@@ -1269,8 +1269,10 @@
 
 .manufacturing-page .mfg-map-country {
   fill: #d5ddea;
-  stroke: none;
-  transition: fill .22s ease, opacity .22s ease, filter .22s ease;
+  stroke: #d5ddea !important;
+  stroke-width: .65px !important;
+  stroke-linejoin: round;
+  transition: fill .22s ease, stroke .22s ease, opacity .22s ease, filter .22s ease;
 }
 
 .manufacturing-page .mfg-map-region,
@@ -1280,9 +1282,13 @@
   -webkit-tap-highlight-color: transparent;
 }
 .manufacturing-page .mfg-map-region { cursor: pointer; }
-.manufacturing-page .mfg-map-region:hover .mfg-map-country { fill: #bcc7d8; }
+.manufacturing-page .mfg-map-region:hover .mfg-map-country {
+  fill: #bcc7d8;
+  stroke: #bcc7d8 !important;
+}
 .manufacturing-page .mfg-map-region[data-active='true'] .mfg-map-country {
   fill: var(--mfg-brand-start);
+  stroke: var(--mfg-brand-start) !important;
 }
 .manufacturing-page .mfg-map-region:focus-visible .mfg-map-country {
   filter: drop-shadow(0 0 3px color-mix(in srgb, var(--mfg-brand-start) 65%, transparent));

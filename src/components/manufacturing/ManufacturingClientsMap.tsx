@@ -100,6 +100,7 @@ export function ManufacturingClientsMap({
                     key={geography.rsmKey}
                     geography={geography}
                     className="mfg-map-country"
+                    style={{ outline: 'none' }}
                     tabIndex={-1}
                     focusable="false"
                     aria-hidden="true"
