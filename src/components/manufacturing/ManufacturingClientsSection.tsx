@@ -99,10 +99,12 @@ export function ManufacturingClientsSection() {
               })}
             </div>
 
-            <div className="mfg-clients-region-count" aria-hidden="true">
-              <strong>{activeRegion.logos.length}+</strong>
-              <span>{activeRegion.partnerLabel}</span>
-            </div>
+            {activeRegion.logos.length > 0 && (
+              <div className="mfg-clients-region-count" aria-hidden="true">
+                <strong>{activeRegion.logos.length}+</strong>
+                <span>{activeRegion.partnerLabel}</span>
+              </div>
+            )}
           </div>
 
           <div
