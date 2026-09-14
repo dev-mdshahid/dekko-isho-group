@@ -1184,9 +1184,9 @@
 
 .manufacturing-page .mfg-clients-stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, max-content);
   align-items: center;
-  gap: clamp(.75rem, 1.25vw, 1.25rem);
+  column-gap: clamp(1.25rem, 2.25vw, 2.5rem);
   width: 100%;
   margin-top: 2.5rem;
 }
@@ -1249,7 +1249,7 @@
 
 .manufacturing-page .mfg-clients-panel-top {
   display: grid;
-  grid-template-columns: minmax(13rem, 1fr) auto minmax(18rem, .85fr);
+  grid-template-columns: minmax(13rem, 1fr) auto minmax(15rem, .7fr);
   align-items: center;
   gap: clamp(1rem, 2vw, 2rem);
   padding: 0 2.75rem 1.5rem;
@@ -1392,25 +1392,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(.6rem, 1vw, 1rem);
-  min-width: 18rem;
+  gap: clamp(.55rem, .8vw, .8rem);
+  min-width: 15rem;
+  padding-left: clamp(1.25rem, 2vw, 2rem);
+  border-left: 1px solid #dce5f0;
   color: var(--color--neutral-night);
 }
 
 .manufacturing-page .mfg-clients-region-count strong {
   flex: 0 0 auto;
   color: var(--color--neutral-night);
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(2.75rem, 3.5vw, 3.75rem);
   font-weight: 700;
   line-height: .9;
   letter-spacing: 0.045em;
 }
 
 .manufacturing-page .mfg-clients-region-count span {
-  flex: 0 0 12ch;
-  width: 12ch;
+  flex: 0 0 11ch;
+  width: 11ch;
   color: var(--color--neutral-night);
-  font-size: clamp(1.6rem, 2.15vw, 2.15rem);
+  font-size: clamp(1.25rem, 1.55vw, 1.55rem);
   font-weight: 400;
   line-height: 1.08;
   overflow-wrap: normal;
@@ -1578,6 +1580,8 @@
     gap: clamp(.6rem, 3vw, 1rem);
     min-width: 0;
     max-width: 100%;
+    padding-left: 0;
+    border-left: 0;
   }
   .manufacturing-page .mfg-clients-region-count strong { font-size: clamp(2.75rem, 14vw, 3.75rem); }
   .manufacturing-page .mfg-clients-region-count span {
