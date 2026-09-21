@@ -4,7 +4,7 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export function AboutTopExecutivesSection() {
   return (
-    <section className="about-top-executives-section about-top-executives-section--about section-spacing">
+    <section id='about-top-executives-section' className="about-top-executives-section about-top-executives-section--about section-spacing">
       <div className="container about-top-executives-container">
         <FadeIn id="about-top-executives-header" className="about-top-executives-header">
           <PreSectionTitle title="Top Executives" />

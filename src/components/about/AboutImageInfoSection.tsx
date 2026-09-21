@@ -34,7 +34,7 @@ export function AboutImageInfoSection() {
                     deep tech.
                   </p>
                   <div className="about-hero-button">
-                    <ButtonArrow to="#team-section" label="Meet Leadership" />
+                    <ButtonArrow to="#about-top-executives-section" label="Meet Leadership" />
                   </div>
                 </div>
               </FadeIn>

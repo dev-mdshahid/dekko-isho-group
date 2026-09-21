@@ -10,15 +10,11 @@ const ABOUT_SLIDES = [
     alt: 'Colleagues walking through a modern open-plan office at Dekko Isho Group',
   },
   {
-    src: '/images/about/about-slider/about-slide-02.png',
-    alt: 'DIVC team presenting startup portfolio in a modern venture capital office',
-  },
-  {
     src: '/images/about/about-slider/about-slide-03.png',
     alt: 'Ecovia sustainable packaging products displayed on a wooden surface',
   },
   {
-    src: '/images/about/about-slider/about-slide-04.png',
+    src: '/images/about/about-slider/about-slide-07.png',
     alt: 'Garment manufacturing team working at industrial sewing stations',
   },
   {
