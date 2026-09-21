@@ -7,7 +7,7 @@ export type SolutionCtaContent = {
   heading: string
   description: string
   buttonLabel: string
-  buttonHref: string
+  buttonHref?: string
 }
 
 type SolutionCtaSectionProps = {
@@ -31,9 +31,11 @@ export function SolutionCtaSection({ idPrefix, content }: SolutionCtaSectionProp
             <h2 className="solution-cta-heading">{heading}</h2>
             <p className="solution-cta-description">{description}</p>
           </div>
-          <div className="solution-cta-action">
-            <ButtonArrow to={buttonHref} label={buttonLabel} variant="button-white-bg" />
-          </div>
+          {buttonHref && (
+            <div className="solution-cta-action">
+              <ButtonArrow to={buttonHref} label={buttonLabel} variant="button-white-bg" />
+            </div>
+          )}
         </div>
       </div>
       <SectionLines border="grey" />

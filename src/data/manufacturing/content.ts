@@ -644,7 +644,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'dekko-fashions',
       title: 'Dekko Fashions Ltd.',
-      image: mfgProductNetworkImage('dekko-fashions.png'),
+      image: mfgProductNetworkImage('DFL-Card-Image.png'),
       imageAlt: 'Fashion display mannequins in red and white looks',
       productionLines: '10',
       monthlyCapacity: '3,00,000',
@@ -656,7 +656,7 @@ export const manufacturingProductionNetwork = {
     {
       id: 'agami-fashions',
       title: 'Agami Fashions Ltd.',
-      image: mfgProductNetworkImage('agami-fashions.jpg'),
+      image: mfgProductNetworkImage('AFL-Card-Image.png'),
       imageAlt: 'Lifestyle fashion portrait in a forest setting',
       productionLines: '08',
       monthlyCapacity: '300,000',
@@ -1079,10 +1079,10 @@ export const manufacturingJourneyRoadmap = {
 }
 
 export const manufacturingCta = {
-  badge: "Let's Connect",
+  badge: null,
   heading: "And Build What's Next, Together",
   description:
     "Get in touch with us. Start the conversation by telling us about your ideas & let's get down to work together.",
   buttonLabel: 'Send us a message',
-  buttonHref: '/contact',
+  buttonHref: null,
 }
