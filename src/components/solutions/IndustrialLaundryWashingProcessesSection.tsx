@@ -2,7 +2,7 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { SectionLines } from '../ui/SectionDecor'
 
-const PLACEHOLDER_IMAGE = 'https://placehold.co/600x400/red/white'
+// const PLACEHOLDER_IMAGE = 'https://placehold.co/600x400/red/white'
 
 type WashingProcessItem = {
   id: string

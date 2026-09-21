@@ -18,26 +18,26 @@ function ServiceTitle({ title }: { title: string }) {
   )
 }
 
-function ServiceCardAction({ className }: { className?: string }) {
-  return (
-    <span className={className ? `service-card-action ${className}` : 'service-card-action'} aria-hidden="true">
-      <span className="button-icon-bg service-card-action__icon">
-        <img
-          src={legacyImage('button-icon.svg')}
-          loading="lazy"
-          alt=""
-          className="button-icon"
-        />
-        <img
-          src={legacyImage('button-icon.svg')}
-          loading="lazy"
-          alt=""
-          className="button-icon-hover"
-        />
-      </span>
-    </span>
-  )
-}
+// function ServiceCardAction({ className }: { className?: string }) {
+//   return (
+//     <span className={className ? `service-card-action ${className}` : 'service-card-action'} aria-hidden="true">
+//       <span className="button-icon-bg service-card-action__icon">
+//         <img
+//           src={legacyImage('button-icon.svg')}
+//           loading="lazy"
+//           alt=""
+//           className="button-icon"
+//         />
+//         <img
+//           src={legacyImage('button-icon.svg')}
+//           loading="lazy"
+//           alt=""
+//           className="button-icon-hover"
+//         />
+//       </span>
+//     </span>
+//   )
+// }
 
 function ServiceFeatureItem({ label }: { label: string }) {
   return (

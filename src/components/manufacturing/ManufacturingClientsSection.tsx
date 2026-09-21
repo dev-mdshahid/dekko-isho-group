@@ -10,7 +10,7 @@ export function ManufacturingClientsSection() {
   const [activeRegionId, setActiveRegionId] = useState<ManufacturingClientRegionId>('north-america')
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
   const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0]
-  const partnerCount = new Set(regions.flatMap((region) => region.logos.map((logo) => logo.alt))).size
+  // const partnerCount = new Set(regions.flatMap((region) => region.logos.map((logo) => logo.alt))).size
 
   const selectRegion = (regionId: ManufacturingClientRegionId, index: number) => {
     setActiveRegionId(regionId)
