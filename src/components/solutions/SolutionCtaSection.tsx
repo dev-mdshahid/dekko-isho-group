@@ -3,7 +3,7 @@ import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { SectionLines } from '../ui/SectionDecor'
 
 export type SolutionCtaContent = {
-  badge: string
+  badge: string | null
   heading: string
   description: string
   buttonLabel: string
@@ -27,7 +27,7 @@ export function SolutionCtaSection({ idPrefix, content }: SolutionCtaSectionProp
           data-solution-animate="cta-card"
         >
           <div className="solution-cta-content">
-            <PreSectionTitle title={badge} variant="bg-dark" />
+            {badge && <PreSectionTitle title={badge} variant="bg-dark" />}
             <h2 className="solution-cta-heading">{heading}</h2>
             <p className="solution-cta-description">{description}</p>
           </div>

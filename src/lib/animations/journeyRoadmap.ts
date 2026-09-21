@@ -15,16 +15,21 @@ gsap.registerPlugin(ScrollTrigger)
  * For each stage: path advances → node lands → brief hold → next.
  * At the top→bottom turn, a longer breath marks the handoff.
  */
-const ARRIVE = 0.72
-const HOLD = 0.16
-const TURN_BREATH = 0.48
-const TURN_ARRIVE = 1
-const DOT_IN = 0.5
-const LABEL_IN = 0.44
-const LABEL_LAG = 0.1
-const GHOST_IN = 0.55
-const PULSE = 0.22
-const MOBILE_CONNECTOR_IN = 0.68
+const TIMING_SCALE = 0.8
+const scaledTiming = (seconds: number) => seconds * TIMING_SCALE
+
+const ARRIVE = scaledTiming(0.72)
+const HOLD = scaledTiming(0.16)
+const TURN_BREATH = scaledTiming(0.48)
+const TURN_ARRIVE = scaledTiming(1)
+const DOT_IN = scaledTiming(0.5)
+const LABEL_IN = scaledTiming(0.44)
+const LABEL_LAG = scaledTiming(0.1)
+const ICON_LABEL_LAG = scaledTiming(0.06)
+const FINALE_LABEL_EXTENSION = scaledTiming(0.08)
+const GHOST_IN = scaledTiming(0.55)
+const PULSE = scaledTiming(0.22)
+const MOBILE_CONNECTOR_IN = scaledTiming(0.68)
 const NEXT_NODE_REVEAL_PROGRESS = 0.65
 
 /** Desktop flow: top row L→R, then bottom row R→L (follows the U-turn path). */
@@ -135,10 +140,10 @@ function revealNode(
       {
         opacity: 1,
         y: 0,
-        duration: isFinale ? LABEL_IN + 0.08 : LABEL_IN,
+        duration: isFinale ? LABEL_IN + FINALE_LABEL_EXTENSION : LABEL_IN,
         ease: 'power3.out',
       },
-      at + LABEL_LAG + (icon ? 0.06 : 0),
+      at + LABEL_LAG + (icon ? ICON_LABEL_LAG : 0),
     )
   }
 }
