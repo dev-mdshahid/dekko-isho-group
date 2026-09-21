@@ -48,14 +48,14 @@ export const FOOTER_BUSINESS_LINKS = [
 ] as const
 
 export const footerContact = {
-  address: 'Corporate HQ, Dhaka - The Forum, West Tower, Tejgaon Gulshan Link Road.',
+  address: 'Corporate HQ, The Forum, West Tower, Level: 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.',
   phone: {
     href: 'tel:+8809606101010',
     label: '+880 9606-101010',
   },
   email: {
-    href: 'mailto:info@dekkoisho.com',
-    label: 'info@dekkoisho.com',
+    href: 'mailto:connect@dekkoisho.com',
+    label: 'connect@dekkoisho.com',
   },
 } as const
 
