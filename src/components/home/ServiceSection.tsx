@@ -156,7 +156,7 @@ export function ServiceSection() {
                           <div className="service-content-wrap">
                             <div className="service-name-wrapper">
                               <ServiceTitle title={speciality.title} />
-                              <ServiceCardAction />
+                              {/* <ServiceCardAction /> */}
                             </div>
                             <ServiceFeatures
                               features={speciality.features}
