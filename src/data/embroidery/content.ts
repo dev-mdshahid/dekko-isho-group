@@ -94,7 +94,7 @@ export const embroideryProductionCapacity = {
   stats: [
     {
       id: 'monthly-capacity',
-      value: '5,03,50,000',
+      value: '2,200,000,000',
       label: 'Stitches/Day',
       variant: 'blue',
     },
@@ -169,7 +169,7 @@ export const embroideryProductionNetwork = {
     {
       id: 'globus',
       title: 'Globus Embroidery',
-      image: '/images/embroidery/globus-embroidery.png',
+      image: '/images/embroidery/globus_embroidery2.png',
       imageAlt: 'Finished embroidered garments at Globus Embroidery',
       monthlyCapacity: '350,000',
       monthlyCapacityLabel: 'Production capacity',
@@ -204,12 +204,12 @@ export const embroideryWhyItMatters = {
 }
 
 export const embroideryCta = {
-  badge: 'Get in Touch',
-  heading: "And Build What's Next, Together",
+  badge: null,
+  heading: "Let’s Explore What’s Next, Together",
   description:
     'Get in touch with us to find out how our high quality embroidery and production network can help your brand grow.',
   buttonLabel: 'Shoot us a line',
-  buttonHref: '/contact',
+  buttonHref: null,
 }
 
 /** @deprecated Not used on the current embroidery page design. */
