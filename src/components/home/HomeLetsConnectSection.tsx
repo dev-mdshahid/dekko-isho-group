@@ -9,8 +9,12 @@ const RECEPTION_IMAGE = '/images/dekko-reception-desk.png'
 const MINT_ACCENT = '#5ABE8C'
 
 const CORPORATE_HQ_LINES = [
-  'Corporate HQ, Dhaka - The Forum, West Tower,',
-  'Tejgaon Gulshan Link Road.',
+  'Corporate HQ, The Forum, West Tower, Level: 16-19, 187, 188/B,',
+  'Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.',
+] as const
+
+const CORPORATE_HQ_LINES_LONDON = [
+  '94 Harley Street, London W1G 7HX',
 ] as const
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
@@ -90,7 +94,7 @@ export function HomeLetsConnectSection() {
                 <div className="page-contact-details home-contact-details">
                   <div className="page-contact-details-col">
                     <div className="page-contact-block">
-                      <div className="page-contact-label">Contact us</div>
+                      <div className="page-contact-label">Contact</div>
                       <div className="page-contact-lines">
                         <a href={contactPhone.href} className="page-contact-text-link">
                           {contactPhone.label}
@@ -104,10 +108,20 @@ export function HomeLetsConnectSection() {
 
                   <div className="page-contact-details-col">
                     <div className="page-contact-block">
-                      <div className="page-contact-label">Find us</div>
+                      <div className="page-contact-label">Address</div>
                       <div className="page-contact-locations">
                         <div className="page-contact-location">
                           {CORPORATE_HQ_LINES.map((line) => (
+                            <div key={line} className="page-contact-location-line">
+                              {line}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="page-contact-label">London Display Center</div>
+                      <div className="page-contact-locations">
+                        <div className="page-contact-location">
+                          {CORPORATE_HQ_LINES_LONDON.map((line) => (
                             <div key={line} className="page-contact-location-line">
                               {line}
                             </div>

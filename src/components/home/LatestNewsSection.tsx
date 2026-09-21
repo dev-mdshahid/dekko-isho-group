@@ -97,7 +97,7 @@ export function LatestNewsSection() {
         <div className="latest-news-header">
           <FadeIn id="latest-news-header-text" className="latest-news-header-text">
             <h2 id="latest-news-heading" className="latest-news-title">
-              Latest News
+              Explore the latest updates
             </h2>
             <p className="latest-news-subtitle">
               Explore the latest announcements, investments, partnerships and media coverage from
