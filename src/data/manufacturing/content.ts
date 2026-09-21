@@ -763,7 +763,7 @@ export const manufacturingOperation = {
   ],
 }
 
-const MANUFACTURING_CLIENTS_PATH = '/images/dekko-clients/v2'
+const MANUFACTURING_CLIENTS_PATH = '/images/dekko-clients/v3'
 
 export type ManufacturingClientLogo = { src: string; alt: string }
 export type ManufacturingClientRegionId = 'europe' | 'north-america' | 'international'
@@ -805,7 +805,7 @@ export const manufacturingClients: {
   title: 'Trusted by Global Fashion Brands.',
   description:
     'Dekko ISHO proudly partners with leading fashion brands and retailers across Europe, North America, and other international markets — long-term partnerships built on trust, quality, reliability, and responsible manufacturing.',
-  yearsOfTrust: '20+',
+  yearsOfTrust: '40+',
   regions: [
     {
       id: 'north-america',
@@ -825,14 +825,16 @@ export const manufacturingClients: {
         },
       },
       logos: [
+        manufacturingClientLogo('Ralph Lauren.png', 'RALPH LAUREN'),
         manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
-        manufacturingClientLogo('Levi_s.png', "Levi's"),
+        manufacturingClientLogo('Kohl_s.png', 'KOHLS'),
+        manufacturingClientLogo('Lee.png', "Levis"),
         manufacturingClientLogo('Mark_s.png', "Mark's"),
-        manufacturingClientLogo('Ralph Lauren.png', 'Ralph Lauren'),
-        manufacturingClientLogo('Kohl_s.png', "Kohl's"),
-        manufacturingClientLogo('Lee.png', "Lee"),
-        manufacturingClientLogo('Wrangler.png', "Wrangler"),
+        manufacturingClientLogo('SportChek.png', 'SportChek'),
         manufacturingClientLogo('J.Crew.png', "J.Crew"),
+        manufacturingClientLogo('Helly Hansen.png', "Helly Hensen AS"),
+        manufacturingClientLogo('Musto.png', "Musto"),
+        manufacturingClientLogo('Target.png', "Target USA"),
       ],
     },
     {
@@ -856,38 +858,39 @@ export const manufacturingClients: {
         },
       },
       logos: [
-        manufacturingClientLogo('Kiabi.png', 'Kiabi'),
-        manufacturingClientLogo('Bestseller.png', 'Bestseller'),
+        manufacturingClientLogo('jack_jones.png', 'Jack & Jones'),
+        manufacturingClientLogo('Selected.png', "Selected homme"),
         manufacturingClientLogo('Inditex.png', 'Inditex'),
-        manufacturingClientLogo('Carhartt.png', 'Carhartt'),
-        manufacturingClientLogo('Varner.png', 'Varner'),
+        manufacturingClientLogo('Kiabi.png', 'Kiabi'),
+        manufacturingClientLogo('Zara.png', 'Zara'),
         manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
-        manufacturingClientLogo('Lindex.png', 'Lindex'),
-        manufacturingClientLogo('peek-cloppenburg.png', 'Peek & Cloppenburg'),
-        manufacturingClientLogo('Camel Active.png', 'Camel Active'),
-        manufacturingClientLogo('LPP.png', 'LPP'),
+        manufacturingClientLogo('Varner.png', 'VARNER'),
         manufacturingClientLogo('Celio.png', 'Celio'),
-        manufacturingClientLogo('Tom Tailor.png', 'Tom Tailor'),
+        manufacturingClientLogo('Lindex.png', 'Lindex'),
+        manufacturingClientLogo('Tom Tailor.png', 'TOM TAILOR'),
+        manufacturingClientLogo('Carhartt.png', 'Carhartt'),
+        manufacturingClientLogo('LPP.png', 'LPP'),
+        manufacturingClientLogo('Camel Active.png', 'Camel'),
       ],
     },
-    {
-      id: 'international',
-      accent: '#087F42',
-      title: 'International Markets',
-      partnerLabel: 'International Partners',
-      description: "A growing export footprint serving global consumers' evolving demands.",
-      map: {
-        countryCodes: [],
-        includeUnassignedCountries: true,
-        marker: {
-          coordinates: [105, 8],
-          labelOffset: [-190, -17],
-          labelWidth: 176,
-        },
-      },
-      logos: [
-      ],
-    },
+    // {
+    //   id: 'international',
+    //   accent: '#087F42',
+    //   title: 'Other International Markets',
+    //   partnerLabel: 'International Partners',
+    //   description: "A growing export footprint serving global consumers' evolving demands.",
+    //   map: {
+    //     countryCodes: [],
+    //     includeUnassignedCountries: true,
+    //     marker: {
+    //       coordinates: [105, 8],
+    //       labelOffset: [-190, -17],
+    //       labelWidth: 176,
+    //     },
+    //   },
+    //   logos: [
+    //   ],
+    // },
   ],
 }
 

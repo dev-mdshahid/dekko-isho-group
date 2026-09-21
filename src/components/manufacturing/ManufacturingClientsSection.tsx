@@ -29,8 +29,10 @@ export function ManufacturingClientsSection() {
   }
 
   const summaryStats = [
-    { value: `${partnerCount}+`, label: ['Global', 'Partners'], icon: '/images/dekko-clients/tags/asset-1.svg' },
-    { value: String(regions.length), label: ['Key', 'Regions'], icon: '/images/dekko-clients/tags/asset-2.svg' },
+    { value: `20+`, label: ['Global', 'Partners'], icon: '/images/dekko-clients/tags/asset-1.svg' },
+    { value: `8+`, label: ['North American', 'Partners'], icon: '/images/dekko-clients/tags/north_america.svg' },
+    { value: `12+`, label: ['European', 'Partners'], icon: '/images/dekko-clients/tags/europe_map_icon.svg' },
+    // { value: String(regions.length), label: ['Key', 'Regions'], icon: '/images/dekko-clients/tags/asset-2.svg' },
     { value: yearsOfTrust, label: ['Years', 'of Trust'], icon: '/images/dekko-clients/tags/asset-3.svg' },
   ]
 
