@@ -71,7 +71,7 @@ export function IndustrialLaundryWashingProcessesSection({
             >
               <img
                 className="il-washing-processes__visual-image"
-                src={PLACEHOLDER_IMAGE}
+                src={"/images/industrial-laundry/garment_dyeing.png"}
                 alt=""
               />
               <div className="il-washing-processes__visual-overlay" />
@@ -94,7 +94,7 @@ export function IndustrialLaundryWashingProcessesSection({
             >
               <img
                 className="il-washing-processes__visual-image"
-                src={PLACEHOLDER_IMAGE}
+                src={"/images/industrial-laundry/denim_wash.png"}
                 alt=""
               />
               <div className="il-washing-processes__visual-overlay" />

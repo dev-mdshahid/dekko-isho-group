@@ -167,13 +167,13 @@ export const industrialLaundryAdvancedFinishing = {
     {
       id: 'conveyor-dryers',
       title: 'Conveyor Dryers',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor-dryers2.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor_dryers3.png`,
       imageAlt: 'Garments moving through conveyor dryer line',
     },
     {
       id: 'sanforizing',
       title: 'Research & Development',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/sanforizing.jpg`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/research_and_development2.png`,
       imageAlt: 'Sanforizing process area in laundry facility',
     },
     {
@@ -188,12 +188,12 @@ export const industrialLaundryAdvancedFinishing = {
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/jeanologia-ozone -washing.png`,
       imageAlt: 'ozone-wash',
     },
-    {
-      id: 'repairing',
-      title: 'Repairing',
-      image: 'https://placehold.co/600x400/red/white',
-      imageAlt: 'repairing',
-    },
+    // {
+    //   id: 'repairing',
+    //   title: 'Repairing',
+    //   image: 'https://placehold.co/600x400/red/white',
+    //   imageAlt: 'repairing',
+    // },
   ],
 }
 
@@ -307,7 +307,7 @@ export const industrialLaundryLaboratory = {
   title: 'Modern Washing Laboratory',
   description:
     'Our modern washing laboratory supports every stage of product development through comprehensive testing and validation. From color consistency to fabric performance, every wash recipe is evaluated before transitioning to bulk production.',
-  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/modern-washing-laboratory.png`,
+  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/modern_washing_laboratory_banner.png`,
   imageAlt: 'Technician inspecting fabric samples in a light-controlled washing laboratory',
   items: [
     {
@@ -342,7 +342,7 @@ export const industrialLaundryQualityAssurance = {
     'Quality assurance is embedded throughout our washing operations, from garment receiving to final inspection. Through rigorous process controls and systematic quality checks, we ensure every garment consistently meets customer specifications and international quality standards.',
   highlightTitle: '100% QC Inspection Process',
   highlightDetail: 'In-Process Quality Control • Final Inspection',
-  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/quality-assurance.jpg`,
+  image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/quality_assurance_og2.png`,
   imageAlt: 'Quality control team inspecting garments in a laboratory',
 }
 
@@ -393,7 +393,7 @@ export const industrialLaundryEnvironmentalManagement = {
     },
     {
       id: 'effluent-treatment',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/env-effluent-treatment.png`,
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/etp_card.png`,
       imageAlt: 'Effluent treatment bio-tower aeration tank',
       title: 'Effluent Treatment Plant',
       description:
@@ -407,21 +407,21 @@ export const industrialLaundryEnvironmentalManagement = {
       description:
         'Processes all domestic wastewater on-site, ensuring hygienic and eco-friendly treatment to minimize environmental impact and comply with local standards.',
     },
-    {
-      id: 'water-efficiency',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/water-efficiency.jpg`,
-      imageAlt: 'Industrial water pumps and piping for water efficiency systems',
-      title: 'Water Efficiency',
-      description:
-        'Advanced water efficiency measures, including recycling and optimized usage, to significantly reduce water consumption while maintaining high-quality garment finishes.',
-    },
+    // {
+    //   id: 'water-efficiency',
+    //   image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/water-efficiency.jpg`,
+    //   imageAlt: 'Industrial water pumps and piping for water efficiency systems',
+    //   title: 'Water Efficiency',
+    //   description:
+    //     'Advanced water efficiency measures, including recycling and optimized usage, to significantly reduce water consumption while maintaining high-quality garment finishes.',
+    // },
     {
       id: 'biomass-broile',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/Biomass-Boiler.png`,
       title: 'Biomass Boiler',
       imageAlt: 'biomass-broile',
       description:
-        '---',
+        'Uses renewable biomass fuel as an alternative energy source, supporting cleaner energy adoption while reducing reliance on conventional fossil fuels in manufacturing operations.',
     },
   ],
 }
@@ -465,12 +465,12 @@ export const industrialLaundryWhyItMatters = {
 }
 
 export const industrialLaundryCta = {
-  badge: "Let's Connect",
-  heading: "And Build What's Next, Together",
+  badge: null,
+  heading: "Let’s Explore What’s Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or upcoming projects. We will be back to you with solutions.',
   buttonLabel: 'Contact us now',
-  buttonHref: '/contact',
+  buttonHref: null,
 }
 
 /** @deprecated Not used on the current laundry page design. */
