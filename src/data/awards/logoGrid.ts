@@ -5,7 +5,7 @@ export type AwardLogo = {
 }
 
 const logoSrc = (assetNumber: number) =>
-  `/images/awards/logos/Asset%20${assetNumber}Logo.png`
+  `/images/awards/logos2/Asset%20${assetNumber}Logo.png`
 
 export const awardsGridContent = {
   tag: 'Global Certifications',
