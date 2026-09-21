@@ -51,8 +51,8 @@ export function parseCapacityCountValue(value: string): {
   const rawSuffix = match[2]
   let suffix = ''
   if (rawSuffix) {
-    if (/^million$/i.test(rawSuffix)) suffix = ' Million'
-    else if (/^m$/i.test(rawSuffix)) suffix = ' M'
+    if (/^million$/i.test(rawSuffix)) suffix = ' Million+'
+    else if (/^m$/i.test(rawSuffix)) suffix = ' Million+'
     else suffix = rawSuffix
   }
 

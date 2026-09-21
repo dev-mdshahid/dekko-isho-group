@@ -15,7 +15,7 @@ export function ManufacturingAutomationSection() {
         <div className="mfg-automation-main">
           <FadeIn id="mfg-automation-header" className="mfg-automation-header">
             <div className="mfg-automation-title-row">
-              <span className="mfg-automation-accent" aria-hidden="true" />
+              {/* <span className="mfg-automation-accent" aria-hidden="true" /> */}
               <h2 className="section-title mfg-automation-title">
                 Integrating{' '}
                 <span className="mfg-capacity-title-accent mfg-capacity-title-accent--amaranth">

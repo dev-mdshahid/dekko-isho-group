@@ -440,6 +440,7 @@
   border: 1px solid #d7dde5;
   border-radius: 8px;
   background-color: #fff;
+  background-image: linear-gradient(135deg, #fff 0%, #cfdee6 100%);
   color: var(--color--dark);
   box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
   font-family: var(--_typography---font-family--heading);
@@ -627,9 +628,9 @@
 
 .manufacturing-page .mfg-automation-accent {
   flex: none;
-  width: 2px;
+  /* width: 2px; */
   border-radius: 1px;
-  background-color: var(--color--secondary-amaranth);
+  /* background-color: var(--color--secondary-amaranth); */
 }
 
 .manufacturing-page .mfg-automation-title {
