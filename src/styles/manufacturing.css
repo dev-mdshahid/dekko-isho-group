@@ -1257,6 +1257,7 @@
 }
 
 .manufacturing-page .mfg-clients-map-wrap {
+  --mfg-clients-map-accent: #5abe8c;
   min-width: 0;
   aspect-ratio: 980 / 460;
 }
@@ -1288,23 +1289,23 @@
   stroke: #bcc7d8 !important;
 }
 .manufacturing-page .mfg-map-region[data-active='true'] .mfg-map-country {
-  fill: var(--mfg-brand-start);
-  stroke: var(--mfg-brand-start) !important;
+  fill: var(--mfg-clients-map-accent);
+  stroke: var(--mfg-clients-map-accent) !important;
 }
 .manufacturing-page .mfg-map-region:focus-visible .mfg-map-country {
-  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--mfg-brand-start) 65%, transparent));
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--mfg-clients-map-accent) 65%, transparent));
 }
 
 .manufacturing-page .mfg-map-pin-ring {
   fill: none;
-  stroke: var(--mfg-brand-start);
+  stroke: var(--mfg-clients-map-accent);
   stroke-width: 5;
   opacity: .22;
   transition: opacity .22s ease, stroke .22s ease;
 }
 
 .manufacturing-page .mfg-map-pin-dot {
-  fill: var(--mfg-brand-start);
+  fill: var(--mfg-clients-map-accent);
   stroke: #fff;
   stroke-width: 2.5;
   filter: drop-shadow(0 2px 4px rgba(20, 23, 31, .18));
@@ -1316,11 +1317,11 @@
 
 .manufacturing-page .mfg-map-active-label rect {
   fill: #fff;
-  stroke: color-mix(in srgb, var(--mfg-brand-start) 18%, transparent);
+  stroke: color-mix(in srgb, var(--mfg-clients-map-accent) 18%, transparent);
   filter: drop-shadow(0 3px 8px rgba(20, 23, 31, .14));
 }
 
-.manufacturing-page .mfg-map-active-label circle { fill: var(--mfg-brand-start); }
+.manufacturing-page .mfg-map-active-label circle { fill: var(--mfg-clients-map-accent); }
 
 .manufacturing-page .mfg-map-active-label text {
   fill: var(--color--neutral-night);
