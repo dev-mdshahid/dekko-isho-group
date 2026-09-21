@@ -69,7 +69,7 @@ export function AboutOverviewSection() {
                         </div>
                       </div>
                       <div className="service-three-button">
-                        <ButtonArrow to="/" label="View all capabilities" />
+                        {/* <ButtonArrow to="/" label="View all capabilities" /> */}
                       </div>
                     </div>
                   </FadeIn>
