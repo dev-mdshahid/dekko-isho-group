@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
 import { legacyImage } from '../../lib/assets'
-import { ButtonArrow } from '../ui/ButtonArrow'
-import { FadeIn } from '../ui/FadeIn'
+// import { ButtonArrow } from '../ui/ButtonArrow'
+// import { FadeIn } from '../ui/FadeIn'
 import { PageHeroSection, type PageHeroTitleWord } from '../ui/PageHeroSection'
 
 export type SolutionPageHeroContent = {
@@ -27,8 +27,8 @@ export function SolutionPageHeroSection({
   badge,
   titleLines,
   subtitle,
-  ctaLabel,
-  ctaHref,
+  // ctaLabel,
+  // ctaHref,
   video,
   videoAlt,
 }: SolutionPageHeroSectionProps) {

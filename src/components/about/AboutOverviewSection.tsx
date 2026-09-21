@@ -1,5 +1,5 @@
 import { aboutOverviewStory, capabilityStats } from '../../data/about/capabilities'
-import { ButtonArrow } from '../ui/ButtonArrow'
+// import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
