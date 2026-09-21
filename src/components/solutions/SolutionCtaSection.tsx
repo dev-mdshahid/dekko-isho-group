@@ -7,7 +7,7 @@ export type SolutionCtaContent = {
   heading: string
   description: string
   buttonLabel: string
-  buttonHref?: string
+  buttonHref?: string | null
 }
 
 type SolutionCtaSectionProps = {
