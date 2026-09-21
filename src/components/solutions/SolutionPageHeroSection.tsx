@@ -52,11 +52,11 @@ export function SolutionPageHeroSection({
       badge={badge}
       titleLines={titleLines}
       subtitle={subtitle}
-      actions={
-        <FadeIn id={`${idPrefix}-hero-cta`} className="solution-page-hero-button">
-          <ButtonArrow to={ctaHref} label={ctaLabel} />
-        </FadeIn>
-      }
+      // actions={
+      //   <FadeIn id={`${idPrefix}-hero-cta`} className="solution-page-hero-button">
+      //     <ButtonArrow to={ctaHref} label={ctaLabel} />
+      //   </FadeIn>
+      // }
     >
       <div className="solution-page-hero-media" ref={sectionRef}>
         <div className="solution-page-hero-media-stage">

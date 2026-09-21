@@ -145,7 +145,7 @@ export const designProductDevelopmentStudio = {
 export const designProductDevelopmentDigital = {
   id: 'dpd-digital',
   badge: 'Smarter Design. Faster Decisions.',
-  title: 'Digital Product\nDevelopment',
+  title: 'Digitalizing Product\nDevelopment',
   description:
     'Using AI-assisted workflows, WGSN, Browzwear, CLO 3D, Textronic, and CAD software, we improve fit accuracy, reduce physical sampling, shorten lead times, and enable faster collaboration.',
   items: [
@@ -253,16 +253,16 @@ export const designProductDevelopmentServices = {
 export const designProductDevelopmentGlobalNetwork = {
   id: 'dpd-global-network',
   badge: 'Global Design Network',
-  title: 'Close to the Market, Wherever You Are.',
+  title: 'Close to the Market, Connected Worldwide.',
   description: 'We translate global fashion insights into market-ready collections.',
   image: `${CAPABILITY_IMAGE_BASE}/london-office.jpg`,
   imageAlt: 'Neutral-toned textured fabrics and knits hanging in a design studio',
   items: [
     {
-      id: 'london-showroom',
+      id: 'london-display-center',
       number: '01',
       accent: '#F3215D',
-      title: 'London Showroom',
+      title: 'London Display Center',
       description:
         'A dedicated space to explore collections, review samples, and collaborate with our design team in person.',
     },
@@ -537,7 +537,7 @@ export const designProductDevelopmentPresence = {
 export const designProductDevelopmentGallery = {
   id: 'dpd-gallery',
   badge: 'Co-Creation & Partnership',
-  title: 'Better Products Are Built Together.',
+  title: 'Better Products Are Crafted Together.',
   description:
     'Our designers, fabric specialists, and product developers work closely with customers throughout every stage of the development journey — from trend exploration and material selection to prototyping, fit refinement, and final approval.',
   images: [
