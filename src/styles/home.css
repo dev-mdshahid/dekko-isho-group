@@ -638,33 +638,6 @@
   }
 }
 
-.hero-title-caret {
-  display: inline-block;
-  vertical-align: -0.06em;
-  width: 0.055em;
-  height: 0.82em;
-  margin-left: 0.04em;
-  border-radius: 0.04em;
-  background-color: var(--color--primary);
-  opacity: 1;
-  pointer-events: none;
-}
-
-.hero-title-caret.is-blinking {
-  animation: hero-caret-blink 1.05s ease-in-out infinite;
-}
-
-@keyframes hero-caret-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.15;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   [data-home-animate='hero-tagline-line'] {
     transform: scaleX(0);

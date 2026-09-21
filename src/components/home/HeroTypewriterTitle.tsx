@@ -49,12 +49,10 @@ function HeroTypewriterLine({
   line,
   tokens,
   visibleCount,
-  showCaret,
 }: {
   line: HeroTitleLine
   tokens: HeroCharToken[]
   visibleCount: number
-  showCaret: boolean
 }) {
   const maskClassName = [
     'hero-title-line-mask',
@@ -67,15 +65,13 @@ function HeroTypewriterLine({
     <span className={maskClassName}>
       <span className="hero-title-line">
         {renderCharGroups(groupVisibleChars(tokens, visibleCount))}
-        {showCaret ? <span className="hero-title-caret is-blinking" aria-hidden="true" /> : null}
       </span>
     </span>
   )
 }
 
 export function HeroTypewriterTitle() {
-  const { lines, lineTokens, visibleCounts, activeLine, isComplete, isTyping } =
-    useHeroTypewriter()
+  const { lines, lineTokens, visibleCounts } = useHeroTypewriter()
 
   return (
     <h1 className="hero-title" aria-label={HERO_TITLE_ARIA}>
@@ -85,10 +81,6 @@ export function HeroTypewriterTitle() {
           line={line}
           tokens={lineTokens[lineIndex]!}
           visibleCount={visibleCounts[lineIndex] ?? 0}
-          showCaret={
-            (isTyping && lineIndex === activeLine) ||
-            (isComplete && lineIndex === lines.length - 1)
-          }
         />
       ))}
     </h1>
