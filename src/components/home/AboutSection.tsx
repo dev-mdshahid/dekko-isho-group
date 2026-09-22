@@ -1,4 +1,13 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type TransitionEvent } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+  type FocusEvent,
+  type TransitionEvent,
+} from 'react'
 import { Link } from 'react-router-dom'
 
 import { solutionPath } from '../../data/solutions/solutions'
@@ -329,82 +338,181 @@ function getVisibleCardCount(viewportWidth: number) {
   return 3
 }
 
+type CarouselDirection = -1 | 1
+
+type CarouselState = {
+  trackIndex: number
+  visibleCount: number
+  phase: 'idle' | 'moving' | 'resetting'
+  queue: CarouselDirection[]
+  suppressTransition: boolean
+  interactionVersion: number
+}
+
+type CarouselAction =
+  | { type: 'MOVE'; direction: CarouselDirection; manual: boolean; instant: boolean }
+  | { type: 'TRANSITION_END' }
+  | { type: 'RESET_COMPLETE' }
+  | { type: 'LAYOUT_CHANGE'; visibleCount: number }
+  | { type: 'SETTLE' }
+
+const initialCarouselState: CarouselState = {
+  trackIndex: 3,
+  visibleCount: 3,
+  phase: 'idle',
+  queue: [],
+  suppressTransition: false,
+  interactionVersion: 0,
+}
+
+function wrapLogicalIndex(index: number) {
+  return ((index % industries.length) + industries.length) % industries.length
+}
+
+function startQueuedMove(state: CarouselState, trackIndex: number): CarouselState {
+  const [direction, ...queue] = state.queue
+  if (direction === undefined) {
+    return { ...state, trackIndex, queue, phase: 'idle', suppressTransition: false }
+  }
+
+  return {
+    ...state,
+    trackIndex: trackIndex + direction,
+    queue,
+    phase: 'moving',
+    suppressTransition: false,
+  }
+}
+
+function carouselReducer(state: CarouselState, action: CarouselAction): CarouselState {
+  switch (action.type) {
+    case 'MOVE': {
+      const interactionVersion = state.interactionVersion + (action.manual ? 1 : 0)
+
+      if (action.instant) {
+        const logicalIndex = wrapLogicalIndex(
+          state.trackIndex - state.visibleCount + action.direction,
+        )
+        return {
+          ...state,
+          trackIndex: state.visibleCount + logicalIndex,
+          interactionVersion,
+        }
+      }
+
+      if (state.phase !== 'idle') {
+        if (!action.manual) return state
+        return {
+          ...state,
+          queue: [...state.queue, action.direction],
+          interactionVersion,
+        }
+      }
+
+      return {
+        ...state,
+        trackIndex: state.trackIndex + action.direction,
+        phase: 'moving',
+        interactionVersion,
+      }
+    }
+
+    case 'TRANSITION_END': {
+      if (state.phase !== 'moving') return state
+
+      const firstOriginalIndex = state.visibleCount
+      const afterLastOriginalIndex = firstOriginalIndex + industries.length
+      let normalizedIndex = state.trackIndex
+
+      if (state.trackIndex < firstOriginalIndex) {
+        normalizedIndex += industries.length
+      } else if (state.trackIndex >= afterLastOriginalIndex) {
+        normalizedIndex -= industries.length
+      }
+
+      if (normalizedIndex !== state.trackIndex) {
+        return {
+          ...state,
+          trackIndex: normalizedIndex,
+          phase: 'resetting',
+          suppressTransition: true,
+        }
+      }
+
+      return startQueuedMove(state, normalizedIndex)
+    }
+
+    case 'RESET_COMPLETE':
+      if (state.phase !== 'resetting') return state
+      return startQueuedMove(state, state.trackIndex)
+
+    case 'LAYOUT_CHANGE': {
+      if (action.visibleCount === state.visibleCount) return state
+      const logicalIndex = wrapLogicalIndex(state.trackIndex - state.visibleCount)
+      return {
+        ...state,
+        visibleCount: action.visibleCount,
+        trackIndex: action.visibleCount + logicalIndex,
+        phase: 'resetting',
+        queue: [],
+        suppressTransition: true,
+      }
+    }
+
+    case 'SETTLE': {
+      const logicalIndex = wrapLogicalIndex(state.trackIndex - state.visibleCount)
+      return {
+        ...state,
+        trackIndex: state.visibleCount + logicalIndex,
+        phase: 'idle',
+        queue: [],
+        suppressTransition: false,
+      }
+    }
+  }
+}
+
 export function AboutSection() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const wrapFrameRef = useRef<number | null>(null)
   const hasAdvancedRef = useRef(false)
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [carouselState, dispatchCarousel] = useReducer(carouselReducer, initialCarouselState)
   const [slideStep, setSlideStep] = useState(0)
-  const [visibleCount, setVisibleCount] = useState(3)
   const [isPaused, setIsPaused] = useState(false)
-  const [isInView, setIsInView] = useState(false)
+  const [isInView, setIsInView] = useState(() => typeof IntersectionObserver === 'undefined')
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-  const [suppressTransition, setSuppressTransition] = useState(false)
 
   const loopedIndustries = useMemo(
-    () => [...industries, ...industries.slice(0, visibleCount)],
-    [visibleCount],
+    () => [
+      ...industries.slice(-carouselState.visibleCount),
+      ...industries,
+      ...industries.slice(0, carouselState.visibleCount),
+    ],
+    [carouselState.visibleCount],
   )
 
-  const snapWithoutTransition = useCallback((index: number) => {
-    if (wrapFrameRef.current !== null) {
-      window.cancelAnimationFrame(wrapFrameRef.current)
-    }
-
-    setSuppressTransition(true)
-    setActiveIndex(index)
-
-    wrapFrameRef.current = window.requestAnimationFrame(() => {
-      wrapFrameRef.current = window.requestAnimationFrame(() => {
-        setSuppressTransition(false)
-        wrapFrameRef.current = null
-      })
-    })
-  }, [])
-
   const goToPrevious = useCallback(() => {
-    if (activeIndex === 0) {
-      if (wrapFrameRef.current !== null) {
-        window.cancelAnimationFrame(wrapFrameRef.current)
-      }
-
-      setSuppressTransition(true)
-      setActiveIndex(industries.length)
-
-      wrapFrameRef.current = window.requestAnimationFrame(() => {
-        wrapFrameRef.current = window.requestAnimationFrame(() => {
-          setSuppressTransition(false)
-          setActiveIndex(industries.length - 1)
-          wrapFrameRef.current = null
-        })
-      })
-      return
-    }
-
-    setActiveIndex((current) => current - 1)
-  }, [activeIndex])
+    dispatchCarousel({ type: 'MOVE', direction: -1, manual: true, instant: prefersReducedMotion })
+  }, [prefersReducedMotion])
 
   const goToNext = useCallback(() => {
-    setActiveIndex((current) => (current >= industries.length ? current : current + 1))
-  }, [])
+    dispatchCarousel({ type: 'MOVE', direction: 1, manual: true, instant: prefersReducedMotion })
+  }, [prefersReducedMotion])
 
   const handleTrackTransitionEnd = useCallback(
     (event: TransitionEvent<HTMLDivElement>) => {
       if (event.target !== trackRef.current) return
       if (event.propertyName !== 'transform') return
-      if (activeIndex < industries.length) return
-
-      snapWithoutTransition(0)
+      dispatchCarousel({ type: 'TRANSITION_END' })
     },
-    [activeIndex, snapWithoutTransition],
+    [],
   )
 
   useEffect(() => {
     if (!prefersReducedMotion) return
-    if (activeIndex < industries.length) return
-    setActiveIndex(0)
-  }, [activeIndex, prefersReducedMotion])
+    dispatchCarousel({ type: 'SETTLE' })
+  }, [prefersReducedMotion])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -421,7 +529,7 @@ export function AboutSection() {
 
     const updateLayout = () => {
       const nextVisibleCount = getVisibleCardCount(viewport.clientWidth)
-      setVisibleCount(nextVisibleCount)
+      dispatchCarousel({ type: 'LAYOUT_CHANGE', visibleCount: nextVisibleCount })
 
       const card = trackRef.current?.querySelector<HTMLElement>('.about-business-card')
       if (!card) return
@@ -438,17 +546,32 @@ export function AboutSection() {
   }, [])
 
   useEffect(() => {
-    setActiveIndex((current) => Math.min(current, industries.length))
-  }, [visibleCount])
+    if (carouselState.phase !== 'resetting') return
+
+    if (wrapFrameRef.current !== null) {
+      window.cancelAnimationFrame(wrapFrameRef.current)
+    }
+
+    wrapFrameRef.current = window.requestAnimationFrame(() => {
+      wrapFrameRef.current = window.requestAnimationFrame(() => {
+        dispatchCarousel({ type: 'RESET_COMPLETE' })
+        wrapFrameRef.current = null
+      })
+    })
+
+    return () => {
+      if (wrapFrameRef.current !== null) {
+        window.cancelAnimationFrame(wrapFrameRef.current)
+        wrapFrameRef.current = null
+      }
+    }
+  }, [carouselState.phase, carouselState.trackIndex, carouselState.visibleCount])
 
   useEffect(() => {
     const viewport = viewportRef.current
     if (!viewport) return
 
-    if (typeof IntersectionObserver === 'undefined') {
-      setIsInView(true)
-      return
-    }
+    if (typeof IntersectionObserver === 'undefined') return
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -464,33 +587,32 @@ export function AboutSection() {
   }, [])
 
   useEffect(() => {
-    if (!isInView || isPaused || prefersReducedMotion || industries.length <= 1) return
+    if (
+      !isInView ||
+      isPaused ||
+      prefersReducedMotion ||
+      carouselState.phase !== 'idle' ||
+      carouselState.queue.length > 0 ||
+      industries.length <= 1
+    ) return
 
-    const advance = () =>
-      setActiveIndex((current) => (current >= industries.length ? current : current + 1))
-
-    let intervalId = 0
-    // Free-running so the silent wrap-around snap doesn't restart the cadence.
-    const startCadence = () => {
-      intervalId = window.setInterval(advance, CAROUSEL_INTERVAL_MS)
-    }
-
-    let leadInId = 0
-    if (hasAdvancedRef.current) {
-      startCadence()
-    } else {
-      leadInId = window.setTimeout(() => {
-        hasAdvancedRef.current = true
-        advance()
-        startCadence()
-      }, CAROUSEL_LEAD_IN_MS)
-    }
+    const delay = hasAdvancedRef.current ? CAROUSEL_INTERVAL_MS : CAROUSEL_LEAD_IN_MS
+    const timeoutId = window.setTimeout(() => {
+      hasAdvancedRef.current = true
+      dispatchCarousel({ type: 'MOVE', direction: 1, manual: false, instant: false })
+    }, delay)
 
     return () => {
-      window.clearTimeout(leadInId)
-      window.clearInterval(intervalId)
+      window.clearTimeout(timeoutId)
     }
-  }, [isInView, isPaused, prefersReducedMotion])
+  }, [
+    carouselState.interactionVersion,
+    carouselState.phase,
+    carouselState.queue.length,
+    isInView,
+    isPaused,
+    prefersReducedMotion,
+  ])
 
   useEffect(() => {
     return () => {
@@ -502,10 +624,14 @@ export function AboutSection() {
 
   const pauseCarousel = useCallback(() => setIsPaused(true), [])
   const resumeCarousel = useCallback(() => setIsPaused(false), [])
+  const handleCarouselBlur = useCallback((event: FocusEvent<HTMLDivElement>) => {
+    if (event.currentTarget.contains(event.relatedTarget)) return
+    setIsPaused(false)
+  }, [])
 
   const trackMotionClass = [
     prefersReducedMotion ? 'is-reduced-motion' : '',
-    suppressTransition ? 'is-suppressing-transition' : '',
+    carouselState.suppressTransition ? 'is-suppressing-transition' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -528,21 +654,26 @@ export function AboutSection() {
             </FadeIn>
           </div>
 
-          <div className="about-carousel" data-home-animate="about-carousel">
+          <div
+            className="about-carousel"
+            data-home-animate="about-carousel"
+            onMouseEnter={pauseCarousel}
+            onMouseLeave={resumeCarousel}
+            onFocusCapture={pauseCarousel}
+            onBlurCapture={handleCarouselBlur}
+          >
             <div
               ref={viewportRef}
               className="about-scroll-viewport about-carousel-viewport"
-              onMouseEnter={pauseCarousel}
-              onMouseLeave={resumeCarousel}
-              onFocusCapture={pauseCarousel}
-              onBlurCapture={resumeCarousel}
             >
               <div
                 ref={trackRef}
                 className={`about-info-inner is-scroll about-carousel-track${trackMotionClass ? ` ${trackMotionClass}` : ''}`}
                 style={
                   slideStep
-                    ? { transform: `translate3d(-${activeIndex * slideStep}px, 0, 0)` }
+                    ? {
+                        transform: `translate3d(-${carouselState.trackIndex * slideStep}px, 0, 0)`,
+                      }
                     : undefined
                 }
                 onTransitionEnd={handleTrackTransitionEnd}
