@@ -130,6 +130,24 @@
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hero-inner {
+    /* Keep the title centered without letting the bottom content overlap it. */
+    min-height: max(100svh, 52rem);
+  }
+
+  .hero-title-area {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-bottom {
+    margin-top: auto;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .hero-inner {
     min-height: auto;
