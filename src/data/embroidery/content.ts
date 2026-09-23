@@ -95,7 +95,7 @@ export const embroideryProductionCapacity = {
     {
       id: 'monthly-capacity',
       value: '2,200,000,000',
-      label: 'Stitches/Day',
+      label: 'Stitches/Month',
       variant: 'blue',
     },
     {
@@ -209,7 +209,7 @@ export const embroideryCta = {
   description:
     'Get in touch with us to find out how our high quality embroidery and production network can help your brand grow.',
   buttonLabel: 'Shoot us a line',
-  buttonHref: null,
+  buttonHref: '/contact',
 }
 
 /** @deprecated Not used on the current embroidery page design. */

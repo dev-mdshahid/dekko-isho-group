@@ -129,6 +129,10 @@ export function SolutionProductionNetworkSection({
                                 {unit.productionLines}
                               </span>
                             </p>
+                            <p className="">
+                              <span className="solution-network-card-stat-number">
+                              </span>
+                            </p>
                           </div>
                         ) : null}
                       </div>
