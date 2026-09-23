@@ -197,34 +197,43 @@ export const careerOpenPositions = {
 export const careerEmployeeVoices = {
   badge: 'Employee Voices',
   headline:
-    '"Our strength is our people. From the precision in our laundry facilities to the intelligence in our software, excellence is driven by the individuals who call Dekko ISHO home."',
+    `"At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives and everyday contributions reflect the culture, ambition and diversity of our Group"`,
   testimonials: [
     {
       id: 'career-voice-01',
-      name: 'Rafiq Islam',
-      role: 'Production Lead',
+      name: 'Md. Nizam Uddin',
+      role: 'Executive, Procurement',
       quote:
-        'The exposure to global manufacturing standards here has completely changed my perspective on quality and scale.',
-      avatar: '/images/employees/rafiq-islam.jpg',
-      avatarAlt: 'Portrait of Rafiq Islam',
+        'The positive and supportive work culture has been a key part of my experience at Dekko ISHO Group. I look forward to contributing more and being part of what’s ahead.',
+      avatar: '/images/employees/md_nizam_uddin.png',
+      avatarAlt: 'Md. Nizam Uddin',
     },
     {
       id: 'career-voice-02',
-      name: 'Sarah Ahmed',
-      role: 'UX Designer',
+      name: 'Mst. Mohsina Aktar',
+      role: 'Executive, Accounts & Finance',
       quote:
-        'Working in the technology vertical allows us to build solutions that literally move the needle for thousands of employees.',
-      avatar: '/images/employees/sarah-ahmed.jpg',
-      avatarAlt: 'Portrait of Sarah Ahmed',
+        'Dekko ISHO is my first step into corporate life and every experience here continues to inspire me professionally and personally.',
+      avatar: '/images/employees/mst_mohsina_aktar.png',
+      avatarAlt: 'Portrait of Mst. Mohsina Aktar',
     },
     {
       id: 'career-voice-03',
-      name: 'Tanvir Hasan',
-      role: 'Sustainability Analyst',
+      name: 'Safa Akter Noon',
+      role: 'Coordinator, Sustainability',
       quote:
-        'Being at a group that actually invests in solar and wastewater reuse is what makes this work truly meaningful.',
-      avatar: '/images/employees/tanvir-hasan.jpg',
-      avatarAlt: 'Portrait of Tanvir Hasan',
+        'The transition from academics to the professional world seemed challenging at first, but the inspiring environment turned it into a journey of learning and growth.​',
+      avatar: '/images/employees/safa_akter_noon.png',
+      avatarAlt: 'Portrait of Safa Akter Noon',
+    },
+    {
+      id: 'career-voice-04',
+      name: 'Md. Shahed Anwar',
+      role: 'Senior Executive, Procurement',
+      quote:
+        ' From the very first day, I felt welcomed and supported at every step and I continue to be inspired by this truly supportive and collaborative culture.',
+      avatar: '/images/employees/md_shahed_anwar.png',
+      avatarAlt: 'Portrait of Md. Shahed Anwar',
     },
   ] satisfies CareerTestimonial[],
 }
