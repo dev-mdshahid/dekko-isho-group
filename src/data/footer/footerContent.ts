@@ -16,32 +16,32 @@ export const footerBusinessLinks = [
 
 export const FOOTER_BUSINESS_LINKS = [
   {
-    to: '/isho-ltd',
+    to: 'https://www.isho.com',
     label: 'ISHO',
     showExternalIcon: true,
   },
   {
-    to: 'https://www.di.vc/',
+    to: 'https://www.di.vc',
     label: 'DIVC',
     showExternalIcon: true,
   },
   {
-    to: '/dekko-isho',
+    to: 'https://www.ditech.co',
     label: 'DITECH',
     showExternalIcon: true,
   },
   {
-    to: '/klubhaus',
+    to: 'https://klubhaus.com.bd',
     label: 'Klubhaus',
     showExternalIcon: true,
   },
   {
-    to: '/izakaya',
+    to: 'https://izakaya.com.bd',
     label: 'IZAKAYA',
     showExternalIcon: true,
   },
   {
-    to: 'https://www.ecoviaglobal.com/',
+    to: 'https://www.ecoviaglobal.com',
     label: 'Ecovia',
     showExternalIcon: true,
   },
