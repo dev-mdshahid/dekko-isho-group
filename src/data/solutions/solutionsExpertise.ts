@@ -31,7 +31,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'integrated-manufacturing',
     label: 'Integrated Manufacturing',
-    tag: 'At Scale',
+    tag: 'TO SCALE',
     title: 'Integrated Manufacturing',
     description:
       'End-to-end apparel manufacturing with cutting, sewing, finishing and quality control under one roof.',
@@ -48,7 +48,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'industrial-laundry',
     label: 'Industrial Laundry',
-    tag: 'Sustainable Finish',
+    tag: 'From Comprehensive Wash',
     title: 'Industrial Laundry',
     description:
       'Advanced garment washing and finishing with controlled recipes, consistency and bulk production scale.',
@@ -65,7 +65,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
   {
     id: 'embroidery',
     label: 'Embroidery',
-    tag: 'Detail Craft',
+    tag: 'To Detailed Craft',
     title: 'Embroidery',
     description:
       'In-house embroidery capability with quality control, defect management and production-ready finishing.',

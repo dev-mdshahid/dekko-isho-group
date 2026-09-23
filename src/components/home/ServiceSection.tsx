@@ -113,14 +113,14 @@ export function ServiceSection() {
                   </p>
                 </FadeIn>
               </div>
-              <FadeIn
+              {/* <FadeIn
                 id="w-node-e23adfcb-92aa-cd61-ca12-ef84ce0764ac-ae320c59"
                 variant="slide-in-bottom"
                 delay={340}
                 className="section-button-wrap"
               >
                 <ButtonArrow to="#About-Section" label="Explore all capabilities" />
-              </FadeIn>
+              </FadeIn> */}
             </div>
           </div>
           <div className="service-info">
@@ -132,7 +132,7 @@ export function ServiceSection() {
                 className={`service-list-wrapper ${speciality.wrapperClass} w-dyn-list`}
               >
                 {/* Visual card chrome — scaled by cover-cascade; sticky wrapper stays untransformed. */}
-                <div className="service-card-panel">
+                <div className="service-card-panel" style={{ backgroundColor: speciality.backgroundColor }}>
                   <div role="list" className="service-list w-dyn-items">
                     <div role="listitem" className="service-list-item w-dyn-item">
                       <Link

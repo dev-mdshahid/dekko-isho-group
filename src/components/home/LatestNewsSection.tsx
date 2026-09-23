@@ -99,10 +99,10 @@ export function LatestNewsSection() {
             <h2 id="latest-news-heading" className="latest-news-title">
               Explore the latest updates
             </h2>
-            <p className="latest-news-subtitle">
+            {/* <p className="latest-news-subtitle">
               Explore the latest announcements, investments, partnerships and media coverage from
               Dekko ISHO Group.
-            </p>
+            </p> */}
           </FadeIn>
           <FadeIn id="latest-news-header-button" delay={80} className="latest-news-header-button">
             <ButtonArrow to="/press" label="All News" />
