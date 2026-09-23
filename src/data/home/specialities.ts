@@ -104,7 +104,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     ],
     wrapperClass: 'four',
 
-    backgroundColor: '#5abe8c',
+    backgroundColor: '#F2FCF6',
 
     title: 'Responsibility in Every Step',
     icon: '/images/specialities/responsibility-icon.png',
@@ -132,7 +132,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     ],
     wrapperClass: 'five',
 
-    backgroundColor: '#1b3f6f',
+    backgroundColor: '#FFF5F5',
 
     title: 'Digitalization in Every Process',
     icon: '/images/specialities/intelligence-icon.png',

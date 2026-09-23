@@ -5,7 +5,7 @@ import { HeroVideo } from './HeroVideo'
 
 export function HeroSection() {
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={{ paddingTop: '6rem' }} aria-label="Hero section">
       <div className="hero-inner">
         <div className="container-full hero-title-area">
           <HeroTypewriterTitle />

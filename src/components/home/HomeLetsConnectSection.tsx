@@ -8,14 +8,14 @@ const RECEPTION_IMAGE = '/images/dekko-reception-desk.png'
 
 const MINT_ACCENT = '#5ABE8C'
 
-const CORPORATE_HQ_LINES = [
-  'Corporate HQ, The Forum, West Tower, Level: 16-19, 187, 188/B,',
-  'Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.',
-] as const
+// const CORPORATE_HQ_LINES = [
+//   'Corporate HQ, The Forum, West Tower, Level: 16-19, 187, 188/B,',
+//   'Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.',
+// ] as const
 
-const CORPORATE_HQ_LINES_LONDON = [
-  '94 Harley Street, London W1G 7HX',
-] as const
+// const CORPORATE_HQ_LINES_LONDON = [
+//   '94 Harley Street, London W1G 7HX',
+// ] as const
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -81,15 +81,15 @@ export function HomeLetsConnectSection() {
                 </div>
 
                 <FadeIn id="home-contact-image" variant="slide-in-bottom" delay={200} className="page-contact-visual home-contact-visual">
-                <img
-                  src={RECEPTION_IMAGE}
-                  loading="lazy"
-                  decoding="async"
-                  alt="Dekko ISHO Group reception desk"
-                  className="page-contact-visual-image"
-                  data-home-animate="contact-visual"
-                />
-              </FadeIn>
+                  <img
+                    src={RECEPTION_IMAGE}
+                    loading="lazy"
+                    decoding="async"
+                    alt="Dekko ISHO Group reception desk"
+                    className="page-contact-visual-image"
+                    data-home-animate="contact-visual"
+                  />
+                </FadeIn>
 
                 <div className="page-contact-details home-contact-details">
                   <div className="page-contact-details-col">
@@ -111,21 +111,15 @@ export function HomeLetsConnectSection() {
                       <div className="page-contact-label">Address</div>
                       <div className="page-contact-locations">
                         <div className="page-contact-location">
-                          {CORPORATE_HQ_LINES.map((line) => (
-                            <div key={line} className="page-contact-location-line">
-                              {line}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="page-contact-label">London Display Center</div>
-                      <div className="page-contact-locations">
-                        <div className="page-contact-location">
-                          {CORPORATE_HQ_LINES_LONDON.map((line) => (
-                            <div key={line} className="page-contact-location-line">
-                              {line}
-                            </div>
-                          ))}
+                          <strong style={{ color: '#000'}}>Corporate HQ</strong>
+                          <p className="page-contact-location-line">
+                            <span>The Forum, West Tower, Level: 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.</span>
+                          </p>
+
+                          <strong style={{ color: '#000'}}>London Display Center</strong>
+                          <p className="page-contact-location-line">
+                            <span>94 Harley Street, London W1G 7HX</span>
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -133,7 +127,7 @@ export function HomeLetsConnectSection() {
                 </div>
               </FadeIn>
 
-              
+
             </div>
 
             <div className="page-contact-right home-contact-right">
