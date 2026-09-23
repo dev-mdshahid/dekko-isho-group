@@ -14,7 +14,7 @@ export function AboutTurnoverSection() {
           <FadeIn id="about-turnover-header" className="about-turnover-header">
             <PreSectionTitle title="Business Growth" />
             <h2 id="about-turnover-section-title" className="about-turnover-section-title">
-              Consistent Growth, Built to Last
+              Crafting Excellence at Scale
             </h2>
             <p className="about-turnover-description">
               Our annual turnover reflects the strength of our diversified businesses and our

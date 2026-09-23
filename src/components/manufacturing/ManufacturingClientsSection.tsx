@@ -29,9 +29,9 @@ export function ManufacturingClientsSection() {
   }
 
   const summaryStats = [
-    { value: `20+`, label: ['Global', 'Partners'], icon: '/images/dekko-clients/tags/asset-1.svg' },
-    { value: `8+`, label: ['North American', 'Partners'], icon: '/images/dekko-clients/tags/north_america.svg' },
-    { value: `12+`, label: ['European', 'Partners'], icon: '/images/dekko-clients/tags/europe_map_icon.svg' },
+    { value: `26+`, label: ['Global', 'Partners'], icon: '/images/dekko-clients/tags/asset-1.svg' },
+    { value: `11+`, label: ['North American', 'Partners'], icon: '/images/dekko-clients/tags/north_america.svg' },
+    { value: `15+`, label: ['European', 'Partners'], icon: '/images/dekko-clients/tags/europe_map_icon.svg' },
     // { value: String(regions.length), label: ['Key', 'Regions'], icon: '/images/dekko-clients/tags/asset-2.svg' },
     { value: yearsOfTrust, label: ['Years', 'of Trust'], icon: '/images/dekko-clients/tags/asset-3.svg' },
   ]
@@ -79,7 +79,7 @@ export function ManufacturingClientsSection() {
             </div>
 
             <div className="mfg-clients-tabs" role="tablist" aria-label="Client markets">
-              {regions.map((region, index) => {
+              {regions.filter((region) => region.id !== 'international').map((region, index) => {
                 const isActive = region.id === activeRegion.id
                 return (
                   <button

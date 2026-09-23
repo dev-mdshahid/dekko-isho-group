@@ -197,19 +197,19 @@ export const MANUFACTURING_CAPACITY = {
   stats: [
     {
       id: 'total-capacity',
-      value: '3.5 Million',
+      value: '3.5+ Million',
       label: 'Total Capacity (units)',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5 Million',
+      value: '2.5+ Million',
       label: 'Woven Tops (units)',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0 M',
+      value: '1.0+ Million',
       label: 'Woven Bottoms (units)',
       variant: 'navy',
     },
@@ -249,7 +249,7 @@ export const manufacturingEcosystem = {
   title: 'Everything Connected.\nEvery Process Optimized.',
   description:
     'Our vertically integrated manufacturing ecosystem connects every stage of production—from sourcing and product development to manufacturing, quality assurance, and logistics. By bringing every function together under one coordinated platform, we enhance collaboration, improve visibility, and deliver greater efficiency throughout the manufacturing journey.',
-  image: '/images/manufacturing/ecosystem-connected2.png',
+  image: '/images/manufacturing/manufacturing_ecosystem.png',
   imageAlt: 'Interior view of a large apparel manufacturing floor',
 }
 
@@ -828,7 +828,7 @@ export const manufacturingClients: {
         manufacturingClientLogo('Ralph Lauren.png', 'RALPH LAUREN'),
         manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
         manufacturingClientLogo('Kohl_s.png', 'KOHLS'),
-        manufacturingClientLogo('Lee.png', "Levis"),
+        manufacturingClientLogo('Levi_s.png', "Levis"),
         manufacturingClientLogo('Mark_s.png', "Mark's"),
         manufacturingClientLogo('SportChek.png', 'SportChek'),
         manufacturingClientLogo('J.Crew.png', "J.Crew"),
@@ -871,26 +871,28 @@ export const manufacturingClients: {
         manufacturingClientLogo('Carhartt.png', 'Carhartt'),
         manufacturingClientLogo('LPP.png', 'LPP'),
         manufacturingClientLogo('Camel Active.png', 'Camel'),
+        manufacturingClientLogo('Voice.png', 'Voice'),
+        manufacturingClientLogo('Springfield.png', 'Springfield'),
       ],
     },
-    // {
-    //   id: 'international',
-    //   accent: '#087F42',
-    //   title: 'Other International Markets',
-    //   partnerLabel: 'International Partners',
-    //   description: "A growing export footprint serving global consumers' evolving demands.",
-    //   map: {
-    //     countryCodes: [],
-    //     includeUnassignedCountries: true,
-    //     marker: {
-    //       coordinates: [105, 8],
-    //       labelOffset: [-190, -17],
-    //       labelWidth: 176,
-    //     },
-    //   },
-    //   logos: [
-    //   ],
-    // },
+    {
+      id: 'international',
+      accent: '#087F42',
+      title: 'Other International Markets',
+      partnerLabel: 'International Partners',
+      description: "A growing export footprint serving global consumers' evolving demands.",
+      map: {
+        countryCodes: [],
+        includeUnassignedCountries: true,
+        marker: {
+          coordinates: [105, 8],
+          labelOffset: [-190, -17],
+          labelWidth: 176,
+        },
+      },
+      logos: [
+      ],
+    },
   ],
 }
 
@@ -1084,5 +1086,5 @@ export const manufacturingCta = {
   description:
     "Get in touch with us. Start the conversation by telling us about your ideas & let's get down to work together.",
   buttonLabel: 'Send us a message',
-  buttonHref: null,
+  buttonHref: '/contact',
 }

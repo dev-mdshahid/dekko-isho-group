@@ -68,11 +68,12 @@ export function ManufacturingClientsMap({
       >
         <title id="mfg-clients-map-title">Global client markets</title>
         <desc id="mfg-clients-map-description">
-          Select North America, Europe, or International Markets to view clients in that region.
+          Select North America or Europe to view clients in that region.
         </desc>
 
         <Geographies geography={worldMap}>
           {({ geographies }) => regions.map((region) => {
+            const isInteractive = region.id !== 'international'
             const regionGeographies = geographies.filter((geography) => {
               const countryCode = getCountryCode(geography.id)
               if (!countryCode) return region.map.includeUnassignedCountries
@@ -86,14 +87,17 @@ export function ManufacturingClientsMap({
                 className="mfg-map-region"
                 data-region={region.id}
                 data-active={activeRegionId === region.id}
-                role="button"
-                tabIndex={0}
-                aria-label={`Select ${region.title}`}
-                aria-pressed={activeRegionId === region.id}
+                data-interactive={isInteractive}
+                role={isInteractive ? 'button' : undefined}
+                tabIndex={isInteractive ? 0 : -1}
+                aria-label={isInteractive ? `Select ${region.title}` : undefined}
+                aria-pressed={isInteractive ? activeRegionId === region.id : undefined}
                 style={{ outline: 'none' }}
-                onMouseDown={(event) => event.preventDefault()}
-                onClick={() => onRegionSelect(region.id)}
-                onKeyDown={(event) => handleRegionKeyDown(event, region.id)}
+                onMouseDown={isInteractive ? (event) => event.preventDefault() : undefined}
+                onClick={isInteractive ? () => onRegionSelect(region.id) : undefined}
+                onKeyDown={isInteractive
+                  ? (event) => handleRegionKeyDown(event, region.id)
+                  : undefined}
               >
                 {regionGeographies.map((geography) => (
                   <Geography
