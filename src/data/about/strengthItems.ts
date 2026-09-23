@@ -98,7 +98,7 @@ export const strengthItems: StrengthItem[] = [
     title: 'Global Market Presence',
     description:
       'Long-standing partnerships with leading international brands, global design support, overseas representation, and a strong understanding of global fashion markets.',
-    image: '/images/strength/global-market.jpg',
+    image: '/images/strength/global_market_presence.png',
     imageAlt: 'Professionals gathered at an international partner seminar',
   },
   {
