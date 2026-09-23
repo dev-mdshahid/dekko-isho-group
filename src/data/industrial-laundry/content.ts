@@ -470,7 +470,7 @@ export const industrialLaundryCta = {
   description:
     'Get in touch with our team for partnership, sourcing, careers or upcoming projects. We will be back to you with solutions.',
   buttonLabel: 'Contact us now',
-  buttonHref: null,
+  buttonHref: '/contact',
 }
 
 /** @deprecated Not used on the current laundry page design. */
