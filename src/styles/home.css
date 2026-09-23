@@ -651,7 +651,7 @@
     vertical-align: baseline;
   }
 
-  .hero-title-line-mask--inline + .hero-title-line-mask--inline {
+  .hero-title-line-mask--inline+.hero-title-line-mask--inline {
     margin-left: 0.28em;
   }
 }
@@ -720,11 +720,9 @@
   width: min(160%, 2000px);
   height: 110%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--color--primary) 12%, transparent) 0%,
-    transparent 82%
-  );
+  background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--color--primary) 12%, transparent) 0%,
+      transparent 82%);
   pointer-events: none;
 }
 
@@ -965,3 +963,131 @@
   gap: 2rem;
 }
 
+.company-logos-section-v2 {
+  --logo-gap: 128px;
+  --logo-scale: 1;
+  --marquee-duration: 60s;
+
+  width: 100%;
+  min-width: 0;
+  padding-block: 32px;
+}
+
+.company-logos-section-v2,
+.company-logos-section-v2 * {
+  box-sizing: border-box;
+}
+
+.company-logos-section-v2__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.company-logos-section-v2__viewport:focus-visible {
+  outline: 2px solid #737373;
+  outline-offset: -2px;
+}
+
+.company-logos-section-v2__track {
+  display: flex;
+  width: max-content;
+  animation: company-logos-v2-scroll var(--marquee-duration) linear infinite;
+  will-change: transform;
+}
+
+.company-logos-section-v2__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--logo-gap);
+
+  list-style: none;
+  margin: 0;
+
+  /*
+   * The trailing gap matches the internal gaps.
+   * Both copies therefore have exactly the same width.
+   */
+  padding: 0 var(--logo-gap) 0 0;
+}
+
+.company-logos-section-v2__item {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(var(--logo-width) * var(--logo-scale));
+}
+
+.company-logos-section-v2__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+/* Pause for mouse and keyboard users. */
+.company-logos-section-v2__viewport:hover .company-logos-section-v2__track,
+.company-logos-section-v2__viewport:focus-within .company-logos-section-v2__track {
+  animation-play-state: paused;
+}
+
+.company-logos-section-v2__viewport {
+  --fade-width: clamp(32px, 6vw, 100px);
+
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0,
+      #000 var(--fade-width),
+      #000 calc(100% - var(--fade-width)),
+      transparent 100%);
+
+  mask-image: linear-gradient(to right,
+      transparent 0,
+      #000 var(--fade-width),
+      #000 calc(100% - var(--fade-width)),
+      transparent 100%);
+}
+
+@keyframes company-logos-v2-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .company-logos-section-v2 {
+    --logo-gap: 40px;
+    --logo-scale: 0.85;
+
+    padding-block: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-logos-section-v2 {
+    --logo-gap: 32px;
+    --logo-scale: 0.75;
+  }
+}
+
+/* Allow manual scrolling when the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .company-logos-section-v2__viewport {
+    overflow-x: auto;
+  }
+
+  .company-logos-section-v2__track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .company-logos-section-v2__group[aria-hidden="true"] {
+    display: none;
+  }
+}

@@ -1,31 +1,73 @@
+import type { CSSProperties } from "react";
+
+const logos = [
+  { file: "jack_and_jones.png", name: "Jack & Jones", width: 163 },
+  { file: "selected.png", name: "Selected", width: 124 },
+  { file: "kiabi.png", name: "Kiabi", width: 117 },
+  { file: "zara.png", name: "Zara", width: 82 },
+  { file: "tommy_hilfiger.png", name: "Tommy Hilfiger", width: 240 },
+  { file: "varner.png", name: "Varner", width: 143 },
+  { file: "celio.png", name: "Celio", width: 118 },
+  { file: "lindex.png", name: "Lindex", width: 100 },
+  { file: "tom_tailor.png", name: "Tom Tailor", width: 179 },
+  { file: "carhartt.png", name: "Carhartt", width: 140 },
+  { file: "camel_active.png", name: "Camel Active", width: 120 },
+  { file: "voice.png", name: "Voice", width: 100 },
+  { file: "spring_field.png", name: "Spring Field", width: 162 },
+  { file: "ralph_lauren.png", name: "Ralph Lauren", width: 203 },
+  { file: "kohls.png", name: "Kohl's", width: 126 },
+  { file: "levis.png", name: "Levi's", width: 78 },
+  { file: "marks.png", name: "Mark's", width: 124 },
+  { file: "sport_chek.png", name: "Sport Chek", width: 101 },
+  { file: "j_crew.png", name: "J. Crew", width: 104 },
+  { file: "helly_hansen.png", name: "Helly Hansen", width: 63 },
+  { file: "musto.png", name: "Musto", width: 108 },
+  { file: "target.png", name: "Target", width: 54 },
+];
 
 const CompanyLogosSectionV2 = () => {
-  return (
-    <div className="company-logos-section-v2">
-        <img src="/images/dekko-clients/v5/jack_and_jones.png" alt="Jack & Jones" />
-        <img src="/images/dekko-clients/v5/selected.png" alt="Selected" />
-        <img src="/images/dekko-clients/v5/kiabi.png" alt="Kiabi" />
-        <img src="/images/dekko-clients/v5/zara.png" alt="Zara" />
-        <img src="/images/dekko-clients/v5/tommy_hilfiger.png" alt="Tommy Hilfiger" />
-        <img src="/images/dekko-clients/v5/varner.png" alt="Varner" />
-        <img src="/images/dekko-clients/v5/celio.png" alt="Celio" />
-        <img src="/images/dekko-clients/v5/lindex.png" alt="Lindex" />
-        <img src="/images/dekko-clients/v5/tom_tailor.png" alt="Tom Tailor" />
-        <img src="/images/dekko-clients/v5/carhartt.png" alt="Carhartt" />
-        <img src="/images/dekko-clients/v5/camel_active.png" alt="Camel Active" />
-        <img src="/images/dekko-clients/v5/voice.png" alt="Voice" />
-        <img src="/images/dekko-clients/v5/spring_field.png" alt="Spring Field" />
-        <img src="/images/dekko-clients/v5/ralph_lauren.png" alt="Ralph Lauren" />
-        <img src="/images/dekko-clients/v5/kohls.png" alt="Kohl's" />
-        <img src="/images/dekko-clients/v5/levis.png" alt="Levi's" />
-        <img src="/images/dekko-clients/v5/marks.png" alt="Mark's" />
-        <img src="/images/dekko-clients/v5/sport_chek.png" alt="Sport Chek" />
-        <img src="/images/dekko-clients/v5/j_crew.png" alt="J. Crew" />
-        <img src="/images/dekko-clients/v5/helly_hansen.png" alt="Helly Hansen" />
-        <img src="/images/dekko-clients/v5/musto.png" alt="Musto" />
-        <img src="/images/dekko-clients/v5/target.png" alt="Target" />
-    </div>
-  )
-}
+  const renderLogos = (duplicate: boolean) =>
+    logos.map(({ file, name, width }) => (
+      <li
+        key={file}
+        className="company-logos-section-v2__item"
+        style={{ "--logo-width": `${width}px` } as CSSProperties}
+      >
+        <img
+          src={`/images/dekko-clients/v5/${file}`}
+          alt={duplicate ? "" : name}
+          draggable={false}
+        />
+      </li>
+    ));
 
-export default CompanyLogosSectionV2
+  return (
+    <section
+      className="company-logos-section-v2"
+      aria-label="Our clients"
+    >
+      <div
+        className="company-logos-section-v2__viewport"
+        tabIndex={0}
+        role="region"
+        aria-label="Client logos. Focus or hover to pause scrolling."
+      >
+        <div className="company-logos-section-v2__track">
+          <ul className="company-logos-section-v2__group">
+            {renderLogos(false)}
+          </ul>
+
+          {/* Identical copy makes the animation loop seamlessly. */}
+          <ul
+            className="company-logos-section-v2__group"
+            aria-hidden="true"
+          >
+            {renderLogos(true)}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CompanyLogosSectionV2;
