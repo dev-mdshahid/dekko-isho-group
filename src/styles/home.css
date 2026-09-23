@@ -960,3 +960,8 @@
   }
 }
 
+.company-logos-section-v2 {
+  display: flex;
+  gap: 2rem;
+}
+

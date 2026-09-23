@@ -1,5 +1,5 @@
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
-import { CompanyLogosSection } from './CompanyLogosSection'
+import CompanyLogosSectionV2 from './CompanyLogosSectionV2'
 import { HeroTypewriterTitle } from './HeroTypewriterTitle'
 import { HeroVideo } from './HeroVideo'
 
@@ -30,7 +30,7 @@ export function HeroSection() {
             </div>
           </div>
           <div data-home-animate="hero-logos">
-            <CompanyLogosSection />
+            <CompanyLogosSectionV2 />
           </div>
         </div>
       </div>
