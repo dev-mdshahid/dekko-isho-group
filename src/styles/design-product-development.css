@@ -1228,6 +1228,10 @@
   outline-offset: -6px;
 }
 
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport.is-clickable {
+  cursor: pointer;
+}
+
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide {
   position: absolute;
   inset: 0;
@@ -1244,6 +1248,34 @@
   visibility: visible;
   transform: scale(1);
   pointer-events: auto;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-entering--forward {
+  animation: dpd-carousel-slide-in 600ms ease both;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-entering--backward {
+  animation: dpd-carousel-slide-in-reverse 600ms ease both;
+}
+
+@keyframes dpd-carousel-slide-in {
+  from {
+    transform: translateX(100%) scale(1.02);
+  }
+
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes dpd-carousel-slide-in-reverse {
+  from {
+    transform: translateX(-100%) scale(1.02);
+  }
+
+  to {
+    transform: translateX(0) scale(1);
+  }
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-image {
@@ -1410,6 +1442,10 @@
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide,
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-dot {
     transition: none;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-entering {
+    animation: none;
   }
 }
 

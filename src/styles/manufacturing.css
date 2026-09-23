@@ -914,6 +914,10 @@
   outline-offset: -6px;
 }
 
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport.is-clickable {
+  cursor: pointer;
+}
+
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide {
   position: absolute;
   inset: 0;
@@ -930,6 +934,34 @@
   visibility: visible;
   transform: scale(1);
   pointer-events: auto;
+}
+
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide.is-entering--forward {
+  animation: mfg-carousel-slide-in 600ms ease both;
+}
+
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide.is-entering--backward {
+  animation: mfg-carousel-slide-in-reverse 600ms ease both;
+}
+
+@keyframes mfg-carousel-slide-in {
+  from {
+    transform: translateX(100%) scale(1.02);
+  }
+
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes mfg-carousel-slide-in-reverse {
+  from {
+    transform: translateX(-100%) scale(1.02);
+  }
+
+  to {
+    transform: translateX(0) scale(1);
+  }
 }
 
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-image {
@@ -1115,6 +1147,10 @@
   .manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide,
   .manufacturing-page .mfg-technology-section .split-feature-list-carousel-dot {
     transition: none;
+  }
+
+  .manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide.is-entering {
+    animation: none;
   }
 }
 

@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import type { KeyboardEvent, PointerEvent } from 'react'
+import type {
+  KeyboardEvent,
+  MouseEvent,
+  PointerEvent,
+} from 'react'
 
 import { FadeIn } from './FadeIn'
 import { PreSectionTitle } from './PreSectionTitle'
@@ -8,6 +12,7 @@ import { SectionLines } from './SectionDecor'
 const CAROUSEL_INTERVAL_MS = 4200
 const SWIPE_THRESHOLD_PX = 45
 const FALLBACK_IMAGE = 'https://placehold.co/600x400/red/white'
+type SlideDirection = 'forward' | 'backward'
 
 export type SplitFeatureListItem = {
   id: string
@@ -41,8 +46,11 @@ export function SplitFeatureListSection({
   const [isPaused, setIsPaused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
+  const [slideDirection, setSlideDirection] =
+    useState<SlideDirection>('forward')
 
   const pointerStartX = useRef<number | null>(null)
+  const suppressNextClick = useRef(false)
 
   const hasIcons = items.some((item) => Boolean(item.icon))
   const isCarousel = variant === 'carousel' && items.length > 0
@@ -54,13 +62,16 @@ export function SplitFeatureListSection({
     (index: number) => {
       if (!items.length) return
 
+      setSlideDirection(
+        index >= activeIndex ? 'forward' : 'backward',
+      )
       setActiveIndex(
         ((index % items.length) + items.length) % items.length,
       )
 
       setAutoplayKey((key) => key + 1)
     },
-    [items.length],
+    [activeIndex, items.length],
   )
 
   const goPrevious = useCallback(() => {
@@ -101,6 +112,7 @@ export function SplitFeatureListSection({
     }
 
     const interval = window.setInterval(() => {
+      setSlideDirection('forward')
       setActiveIndex(
         (index) => (index + 1) % items.length,
       )
@@ -134,6 +146,7 @@ export function SplitFeatureListSection({
   ) => {
     if (!event.isPrimary) return
 
+    suppressNextClick.current = false
     pointerStartX.current = event.clientX
   }
 
@@ -156,11 +169,34 @@ export function SplitFeatureListSection({
       return
     }
 
+    suppressNextClick.current = true
+
     if (distance > 0) {
       goPrevious()
     } else {
       goNext()
     }
+  }
+
+  const handleCarouselClick = (
+    event: MouseEvent<HTMLDivElement>,
+  ) => {
+    if (!hasMultipleSlides) return
+
+    if (suppressNextClick.current) {
+      suppressNextClick.current = false
+      return
+    }
+
+    if (
+      (event.target as HTMLElement).closest(
+        '.split-feature-list-carousel-dots',
+      )
+    ) {
+      return
+    }
+
+    goNext()
   }
 
   const sectionClassName = [
@@ -211,7 +247,11 @@ export function SplitFeatureListSection({
               */}
               <div className="split-feature-list-carousel-frame">
                 <div
-                  className="split-feature-list-carousel-viewport"
+                  className={`split-feature-list-carousel-viewport${
+                    hasMultipleSlides
+                      ? ' is-clickable'
+                      : ''
+                  }`}
                   role="region"
                   aria-roledescription="carousel"
                   aria-label="Digital product development capabilities"
@@ -241,8 +281,10 @@ export function SplitFeatureListSection({
                   }}
                   onPointerDown={handlePointerDown}
                   onPointerUp={handlePointerUp}
+                  onClick={handleCarouselClick}
                   onPointerCancel={() => {
                     pointerStartX.current = null
+                    suppressNextClick.current = false
                   }}
                 >
                   {items.map((item, index) => (
@@ -251,7 +293,7 @@ export function SplitFeatureListSection({
                       id={`${baseId}-slide-${item.id}`}
                       className={`split-feature-list-carousel-slide${
                         index === activeIndex
-                          ? ' is-active'
+                          ? ` is-active is-entering is-entering--${slideDirection}`
                           : ''
                       }`}
                       role="group"
@@ -337,7 +379,10 @@ export function SplitFeatureListSection({
                           ? ' is-active'
                           : ''
                       }`}
-                      onClick={() => goTo(index)}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        goTo(index)
+                      }}
                     />
                   ))}
                 </div>
