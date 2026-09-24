@@ -763,9 +763,9 @@ export const manufacturingOperation = {
   ],
 }
 
-const MANUFACTURING_CLIENTS_PATH = '/images/dekko-clients/v3'
+const MANUFACTURING_CLIENTS_PATH = '/images/dekko-clients/v5'
 
-export type ManufacturingClientLogo = { src: string; alt: string }
+export type ManufacturingClientLogo = { src: string; alt: string; width: number }
 export type ManufacturingClientRegionId = 'europe' | 'north-america' | 'international'
 export type ManufacturingMapCoordinates = [longitude: number, latitude: number]
 export type ManufacturingMapOffset = [x: number, y: number]
@@ -788,8 +788,8 @@ export type ManufacturingClientRegion = {
   }
 }
 
-function manufacturingClientLogo(filename: string, alt: string): ManufacturingClientLogo {
-  return { src: `${MANUFACTURING_CLIENTS_PATH}/${encodeURIComponent(filename)}`, alt }
+function manufacturingClientLogo(filename: string, alt: string, width: number): ManufacturingClientLogo {
+  return { src: `${MANUFACTURING_CLIENTS_PATH}/${encodeURIComponent(filename)}`, alt, width }
 }
 
 export const manufacturingClients: {
@@ -825,16 +825,16 @@ export const manufacturingClients: {
         },
       },
       logos: [
-        manufacturingClientLogo('Ralph Lauren.png', 'RALPH LAUREN'),
-        manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
-        manufacturingClientLogo('Kohl_s.png', 'KOHLS'),
-        manufacturingClientLogo('Levi_s.png', "Levis"),
-        manufacturingClientLogo('Mark_s.png', "Mark's"),
-        manufacturingClientLogo('SportChek.png', 'SportChek'),
-        manufacturingClientLogo('J.Crew.png', "J.Crew"),
-        manufacturingClientLogo('Helly Hansen.png', "Helly Hensen AS"),
-        manufacturingClientLogo('Musto.png', "Musto"),
-        manufacturingClientLogo('Target.png', "Target USA"),
+        manufacturingClientLogo('ralph_lauren.png', 'RALPH LAUREN', 203),
+        manufacturingClientLogo('tommy_hilfiger.png', 'Tommy Hilfiger', 240),
+        manufacturingClientLogo('kohls.png', 'KOHLS', 126),
+        manufacturingClientLogo('levis.png', "Levis", 78),
+        manufacturingClientLogo('marks.png', "Mark's", 124),
+        manufacturingClientLogo('sport_chek.png', 'SportChek', 101),
+        manufacturingClientLogo('j_crew.png', "J.Crew", 104),
+        manufacturingClientLogo('helly_hansen.png', "Helly Hensen AS", 63),
+        manufacturingClientLogo('musto.png', "Musto", 108),
+        manufacturingClientLogo('target.png', "Target USA", 54),
       ],
     },
     {
@@ -858,21 +858,20 @@ export const manufacturingClients: {
         },
       },
       logos: [
-        manufacturingClientLogo('jack_jones.png', 'Jack & Jones'),
-        manufacturingClientLogo('Selected.png', "Selected homme"),
-        manufacturingClientLogo('Inditex.png', 'Inditex'),
-        manufacturingClientLogo('Kiabi.png', 'Kiabi'),
-        manufacturingClientLogo('Zara.png', 'Zara'),
-        manufacturingClientLogo('Tommy Hilfiger.png', 'Tommy Hilfiger'),
-        manufacturingClientLogo('Varner.png', 'VARNER'),
-        manufacturingClientLogo('Celio.png', 'Celio'),
-        manufacturingClientLogo('Lindex.png', 'Lindex'),
-        manufacturingClientLogo('Tom Tailor.png', 'TOM TAILOR'),
-        manufacturingClientLogo('Carhartt.png', 'Carhartt'),
-        manufacturingClientLogo('LPP.png', 'LPP'),
-        manufacturingClientLogo('Camel Active.png', 'Camel'),
-        manufacturingClientLogo('Voice.png', 'Voice'),
-        manufacturingClientLogo('Springfield.png', 'Springfield'),
+        manufacturingClientLogo('jack_and_jones.png', 'Jack & Jones', 163),
+        manufacturingClientLogo('selected.png', "Selected homme", 124),
+        manufacturingClientLogo('kiabi.png', 'Kiabi', 117),
+        manufacturingClientLogo('zara.png', 'Zara', 82),
+        manufacturingClientLogo('tommy_hilfiger.png', 'Tommy Hilfiger', 240),
+        manufacturingClientLogo('varner.png', 'VARNER', 143),
+        manufacturingClientLogo('celio.png', 'Celio', 118),
+        manufacturingClientLogo('lindex.png', 'Lindex', 100),
+        manufacturingClientLogo('tom_tailor.png', 'TOM TAILOR', 179),
+        manufacturingClientLogo('carhartt.png', 'Carhartt', 140),
+        manufacturingClientLogo('lpp.png', 'LPP', 70),
+        manufacturingClientLogo('camel_active.png', 'Camel', 120),
+        manufacturingClientLogo('voice.png', 'Voice', 100),
+        manufacturingClientLogo('spring_field.png', 'Springfield', 162),
       ],
     },
     {
