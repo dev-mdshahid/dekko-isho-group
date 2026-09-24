@@ -249,7 +249,7 @@ export const manufacturingEcosystem = {
   title: 'Everything Connected.\nEvery Process Optimized.',
   description:
     'Our vertically integrated manufacturing ecosystem connects every stage of production—from sourcing and product development to manufacturing, quality assurance, and logistics. By bringing every function together under one coordinated platform, we enhance collaboration, improve visibility, and deliver greater efficiency throughout the manufacturing journey.',
-  image: '/images/manufacturing/manufacturing_ecosystem.png',
+  image: '/images/manufacturing/manufacturing_ecosystem2.png',
   imageAlt: 'Interior view of a large apparel manufacturing floor',
 }
 
