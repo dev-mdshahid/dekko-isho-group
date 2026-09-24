@@ -13737,7 +13737,7 @@ a.about-info-box:hover {
 
 /* Awards & certifications page */
 
-/* ── Mobile navigation (max-width: 991px only) ──────────────────────────── */
+/* ── Mobile navigation (max-width: 1338px only) ─────────────────────────── */
 
 /* Hidden on desktop; shown inside the mobile media query below. */
 .mobile-nav-toggle {
@@ -13751,7 +13751,7 @@ a.about-info-box:hover {
   display: none !important;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1338px) {
   .mobile-nav-root {
     --mobile-nav-divider: rgba(0, 0, 0, .035);
     --mobile-nav-divider-nested: rgba(0, 0, 0, .02);
@@ -14614,7 +14614,7 @@ html.lenis body {
    MOBILE CONTACT + SOCIAL ROW
 ======================================== */
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1338px) {
   .mobile-nav-contact {
     display: flex;
 
