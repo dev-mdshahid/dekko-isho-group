@@ -1522,6 +1522,8 @@
   display: flex;
   flex: 0 0 auto;
   align-items: center;
+  /* Reserve room for the tallest logo so region changes keep the row stable. */
+  min-height: calc(72px * var(--logo-scale));
   gap: var(--logo-gap);
   list-style: none;
   margin: 0;
@@ -1540,6 +1542,7 @@
   align-items: center;
   justify-content: center;
   width: calc(var(--logo-width) * var(--logo-scale));
+  margin: 0;
 }
 
 .manufacturing-page .mfg-client-marquee-image {
