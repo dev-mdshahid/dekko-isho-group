@@ -11,7 +11,7 @@ const logos = [
   { file: "lindex.png", name: "Lindex", width: 100 },
   { file: "tom_tailor.png", name: "Tom Tailor", width: 179 },
   { file: "carhartt.png", name: "Carhartt", width: 140 },
-  { file: "lpp.png", name: "LPP", width: 140 },
+  { file: "lpp.png", name: "LPP", width: 63 },
   { file: "camel_active.png", name: "Camel Active", width: 120 },
   { file: "voice.png", name: "Voice", width: 100 },
   { file: "spring_field.png", name: "Spring Field", width: 162 },
