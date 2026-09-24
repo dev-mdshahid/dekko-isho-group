@@ -20,4 +20,4 @@ export function useMediaQuery(query: string): boolean {
   return matches
 }
 
-export const MOBILE_NAV_QUERY = '(max-width: 1338px)'
+export const MOBILE_NAV_QUERY = '(max-width: 1355px)'
