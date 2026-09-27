@@ -9,10 +9,29 @@ import { FadeIn } from './FadeIn'
 import { PreSectionTitle } from './PreSectionTitle'
 import { SectionLines } from './SectionDecor'
 
-const CAROUSEL_INTERVAL_MS = 4200
+const CAROUSEL_INTERVAL_MS = 2000
 const SWIPE_THRESHOLD_PX = 45
 const FALLBACK_IMAGE = 'https://placehold.co/600x400/red/white'
 type SlideDirection = 'forward' | 'backward'
+
+function SlideshowArrowIcon({ direction }: { direction: 'previous' | 'next' }) {
+  return (
+    <svg
+      className="split-feature-list-carousel-arrow-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d={direction === 'previous' ? 'M14.5 5.5 7.5 12l7 6.5' : 'M9.5 5.5 16.5 12l-7 6.5'}
+        stroke="#fff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
 
 export type SplitFeatureListItem = {
   id: string
@@ -43,7 +62,8 @@ export function SplitFeatureListSection({
   variant = 'list',
 }: SplitFeatureListSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isFocusWithin, setIsFocusWithin] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
   const [slideDirection, setSlideDirection] =
@@ -55,6 +75,7 @@ export function SplitFeatureListSection({
   const hasIcons = items.some((item) => Boolean(item.icon))
   const isCarousel = variant === 'carousel' && items.length > 0
   const hasMultipleSlides = isCarousel && items.length > 1
+  const isPaused = isHovered || isFocusWithin
 
   const baseId = id ?? 'split-feature'
 
@@ -260,13 +281,13 @@ export function SplitFeatureListSection({
                   tabIndex={0}
                   onKeyDown={handleKeyDown}
                   onMouseEnter={() =>
-                    setIsPaused(true)
+                    setIsHovered(true)
                   }
                   onMouseLeave={() =>
-                    setIsPaused(false)
+                    setIsHovered(false)
                   }
                   onFocusCapture={() =>
-                    setIsPaused(true)
+                    setIsFocusWithin(true)
                   }
                   onBlurCapture={(event) => {
                     if (
@@ -277,7 +298,7 @@ export function SplitFeatureListSection({
                       return
                     }
 
-                    setIsPaused(false)
+                    setIsFocusWithin(false)
                   }}
                   onPointerDown={handlePointerDown}
                   onPointerUp={handlePointerUp}
@@ -346,6 +367,38 @@ export function SplitFeatureListSection({
                       </div>
                     </article>
                   ))}
+                  {hasMultipleSlides ? (
+                    <div
+                      className="split-feature-list-carousel-nav"
+                      onPointerDown={(event) => event.stopPropagation()}
+                      onPointerUp={(event) => event.stopPropagation()}
+                    >
+                      <button
+                        type="button"
+                        className="split-feature-list-carousel-arrow"
+                        aria-label="Previous slide"
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          goPrevious()
+                          if (event.detail > 0) event.currentTarget.blur()
+                        }}
+                      >
+                        <SlideshowArrowIcon direction="previous" />
+                      </button>
+                      <button
+                        type="button"
+                        className="split-feature-list-carousel-arrow"
+                        aria-label="Next slide"
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          goNext()
+                          if (event.detail > 0) event.currentTarget.blur()
+                        }}
+                      >
+                        <SlideshowArrowIcon direction="next" />
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
               </div>
 
