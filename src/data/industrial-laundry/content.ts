@@ -170,12 +170,12 @@ export const industrialLaundryAdvancedFinishing = {
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/conveyor_dryers3.png`,
       imageAlt: 'Garments moving through conveyor dryer line',
     },
-    {
-      id: 'sanforizing',
-      title: 'Research & Development',
-      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/research_and_development2.png`,
-      imageAlt: 'Sanforizing process area in laundry facility',
-    },
+    // {
+    //   id: 'sanforizing',
+    //   title: 'Research & Development',
+    //   image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/research_and_development2.png`,
+    //   imageAlt: 'Sanforizing process area in laundry facility',
+    // },
     {
       id: 'curing-chamber-machine',
       title: 'Curing Chamber',
