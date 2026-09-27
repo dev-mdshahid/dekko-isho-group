@@ -14,7 +14,7 @@ export function ManufacturingOperationSection() {
           variant="slide-in-bottom"
         >
           <PreSectionTitle title={badge} />
-          <h2 className="mfg-operation-title" style={{marginBottom: 0}}>{"Materials, Quality, and Sampling –"}</h2>
+          <h2 className="mfg-operation-title" style={{marginBottom: 0}}>{"Materials, Quality, & Sampling –"}</h2>
           <h2 className="mfg-operation-title">{"Managed End to End."}</h2>
           <p className="mfg-operation-description">{description}</p>
         </FadeIn>
