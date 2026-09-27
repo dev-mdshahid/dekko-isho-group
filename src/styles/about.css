@@ -172,13 +172,29 @@
     0 1px 3px rgb(11 31 51 / 12%);
   color: var(--color--primary-gradient-end, #1b3f6f);
   cursor: pointer;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
   transition:
+    opacity 0.22s ease,
     background-color 0.22s ease,
     border-color 0.22s ease,
     box-shadow 0.22s ease,
     color 0.22s ease,
     transform 0.22s ease;
+}
+
+.image-info-about .about-image-slideshow:hover .about-image-slideshow__arrow,
+.image-info-about .about-image-slideshow:focus-within .about-image-slideshow__arrow,
+.image-info-about .about-image-slideshow__arrow:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (hover: none) {
+  .image-info-about .about-image-slideshow__arrow {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .image-info-about .about-image-slideshow__arrow:hover {

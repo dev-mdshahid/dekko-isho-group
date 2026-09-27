@@ -35,25 +35,6 @@ type TransitionState = {
   direction: SlideDirection
 }
 
-function SlideshowArrowIcon({ direction }: { direction: 'previous' | 'next' }) {
-  return (
-    <svg
-      className="about-image-slideshow__arrow-icon"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d={direction === 'previous' ? 'M14.5 5.5 7.5 12l7 6.5' : 'M9.5 5.5 16.5 12l-7 6.5'}
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 export function AboutImageSlideshow() {
   const mediaRef = useRef<HTMLImageElement>(null)
   const outgoingRef = useRef<HTMLImageElement>(null)
@@ -313,18 +294,54 @@ export function AboutImageSlideshow() {
         <button
           type="button"
           className="about-image-slideshow__arrow about-image-slideshow__arrow--previous"
-          onClick={goToPrevious}
+          onClick={(event) => {
+            goToPrevious()
+            if (event.detail > 0) event.currentTarget.blur()
+          }}
           aria-label="Previous slide"
         >
-          <SlideshowArrowIcon direction="previous" />
+          <svg
+            className="about-image-slideshow__arrow-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="m15 18-6-6 6-6"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
         <button
           type="button"
           className="about-image-slideshow__arrow about-image-slideshow__arrow--next"
-          onClick={() => goToNext()}
+          onClick={(event) => {
+            goToNext()
+            if (event.detail > 0) event.currentTarget.blur()
+          }}
           aria-label="Next slide"
         >
-          <SlideshowArrowIcon direction="next" />
+          <svg
+            className="about-image-slideshow__arrow-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="m9 18 6-6-6-6"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
       </div>
     </div>
