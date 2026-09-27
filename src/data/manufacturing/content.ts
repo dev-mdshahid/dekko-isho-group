@@ -160,19 +160,19 @@ export const manufacturingCapacity = {
   stats: [
     {
       id: 'total-capacity',
-      value: '3.5 Million',
+      value: '3.5 Million+',
       label: 'Total Capacity (units)',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5 Million',
+      value: '2.5 Million+',
       label: 'Woven Tops (units)',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0 M',
+      value: '1.0 Million+',
       label: 'Woven Bottoms (units)',
       variant: 'navy',
     },
@@ -197,19 +197,19 @@ export const MANUFACTURING_CAPACITY = {
   stats: [
     {
       id: 'total-capacity',
-      value: '3.5+ Million',
+      value: '3.5 Million+',
       label: 'Total Capacity (units)',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5+ Million',
+      value: '2.5 Million+',
       label: 'Woven Tops (units)',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0+ Million',
+      value: '1.0 Million+',
       label: 'Woven Bottoms (units)',
       variant: 'navy',
     },
