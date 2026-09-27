@@ -10,10 +10,12 @@ type Props = {
 
 export function CareerHeroCarousel({ images }: Props) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isFocused, setIsFocused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
   const hasMultiple = images.length > 1
+  const isPaused = isHovered || isFocused
 
   const advance = useCallback(() => {
     setActiveIndex((index) => (index + 1) % images.length)
@@ -71,12 +73,12 @@ export function CareerHeroCarousel({ images }: Props) {
       role="region"
       aria-roledescription="carousel"
       aria-label="Life at Dekko Isho"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocusCapture={() => setIsFocused(true)}
       onBlurCapture={(event) => {
         if (event.currentTarget.contains(event.relatedTarget as Node | null)) return
-        setIsPaused(false)
+        setIsFocused(false)
       }}
     >
       {images.map((image, index) => (
@@ -96,12 +98,15 @@ export function CareerHeroCarousel({ images }: Props) {
         type="button"
         className="career-hero-carousel__arrow career-hero-carousel__arrow--prev"
         aria-label="Previous image"
-        onClick={goPrev}
+        onClick={(event) => {
+          goPrev()
+          if (event.detail > 0) event.currentTarget.blur()
+        }}
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
-            d="M15 18l-6-6 6-6"
-            stroke="currentColor"
+            d="m15 18-6-6 6-6"
+            stroke="#ffffff"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -112,12 +117,15 @@ export function CareerHeroCarousel({ images }: Props) {
         type="button"
         className="career-hero-carousel__arrow career-hero-carousel__arrow--next"
         aria-label="Next image"
-        onClick={goNext}
+        onClick={(event) => {
+          goNext()
+          if (event.detail > 0) event.currentTarget.blur()
+        }}
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
-            d="M9 18l6-6-6-6"
-            stroke="currentColor"
+            d="m9 18 6-6-6-6"
+            stroke="#ffffff"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -134,7 +142,10 @@ export function CareerHeroCarousel({ images }: Props) {
             aria-selected={index === activeIndex}
             aria-label={`Show image ${index + 1} of ${images.length}`}
             className={`career-hero-carousel__dot${index === activeIndex ? ' is-active' : ''}`}
-            onClick={() => goTo(index)}
+            onClick={(event) => {
+              goTo(index)
+              if (event.detail > 0) event.currentTarget.blur()
+            }}
           />
         ))}
       </div>
