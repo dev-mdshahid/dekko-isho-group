@@ -13395,7 +13395,7 @@ a.about-info-box:hover {
 .page-contact-form-title {
   color: var(--color--primary);
   font-family: var(--_typography---font-family--heading);
-  font-size: var(--_typography---body--body-sm);
+  font-size: var(--_typography---h4--h4);
   font-weight: var(--_typography---body--font-weight-600);
   line-height: 1.3em;
   letter-spacing: var(--_typography---body--letter-spacing);
