@@ -83,7 +83,7 @@ export function ContactSection() {
                 </p>
               </FadeIn>
 
-              <FadeIn
+              {/* <FadeIn
                 id="51462de8-daa5-0e47-b122-e655531d26e6"
                 delay={150}
                 className="page-contact-details"
@@ -187,7 +187,88 @@ export function ContactSection() {
                     </div>
                   </div>
                 </div>
-              </FadeIn>
+              </FadeIn> */}
+              <div className="page-contact-details home-contact-details">
+                <div className="page-contact-details-col">
+                  <div className="page-contact-block">
+                    <div className="page-contact-label">Contact</div>
+                    <div className="page-contact-lines">
+                      <a href={contactPhone.href} className="page-contact-text-link">
+                        {contactPhone.label}
+                      </a>
+                      <a href={contactEmail.href} className="page-contact-text-link">
+                        {contactEmail.label}
+                      </a>
+                    </div>
+                  </div>
+                  <div className="page-contact-block">
+                    <div className="page-contact-label">
+                      Social network
+                    </div>
+
+                    <div
+                      className="page-contact-socials"
+                      aria-label="Social network"
+                    >
+                      {socialLinks.map((social) => {
+                        const brand =
+                          contactSocialBrands.get(
+                            social.href,
+                          )
+
+                        return (
+                          <a
+                            key={social.href}
+                            href={social.href}
+                            className="page-contact-social-link"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={social.label}
+                            style={
+                              brand
+                                ? ({
+                                  '--page-contact-social-brand':
+                                    brand.brandColor,
+                                } as CSSProperties)
+                                : undefined
+                            }
+                          >
+                            {brand ? (
+                              <span
+                                className="page-contact-social-icon"
+                                aria-hidden="true"
+                              >
+                                {brand.icon}
+                              </span>
+                            ) : (
+                              social.label
+                            )}
+                          </a>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="page-contact-details-col">
+                  <div className="page-contact-block">
+                    <div className="page-contact-label">Address</div>
+                    <div className="page-contact-locations">
+                      <div className="page-contact-location">
+                        <strong style={{ color: '#000' }}>Corporate HQ</strong>
+                        <p className="page-contact-location-line">
+                          <span>The Forum, West Tower, Level: 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.</span>
+                        </p>
+
+                        <strong style={{ color: '#000' }}>London Display Center</strong>
+                        <p className="page-contact-location-line">
+                          <span>94 Harley Street, London W1G 7HX</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="page-contact-right">
