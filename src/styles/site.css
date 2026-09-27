@@ -14117,6 +14117,11 @@ a.about-info-box:hover {
   max-width: 78%;
 }
 
+.capacity-stat-circle:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
 .capacity-stat-value {
   font-size: clamp(1.125rem, 2.8vw, 2.5rem);
   font-weight: 700;
