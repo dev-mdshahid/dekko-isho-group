@@ -62,10 +62,10 @@ export function EmbroideryContent() {
       />
 
       {/* 5. Technical Development */}
-      <SplitFeatureListSection
+      {/* <SplitFeatureListSection
         className="il-research-section"
         {...embroideryTechnicalDevelopment}
-      />
+      /> */}
 
       {/* 6. Quality Assurance / QC Process */}
       <SplitContentSection
