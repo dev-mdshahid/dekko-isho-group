@@ -6,23 +6,23 @@ const TRANSITION_DURATION = 0.65
 
 const ABOUT_SLIDES = [
   {
-    src: 'https://placehold.co/600x400/FF0000/FFFFFF/png?text=Image Required',
+    src: '/images/about/about-slider/about-slide-10.png',
     alt: 'Colleagues walking through a modern open-plan office at Dekko Isho Group',
   },
   {
-    src: '/images/about/about-slider/about-slide-08.png',
+    src: '/images/about/about-slider/about-slide-11.png',
     alt: 'Ecovia sustainable packaging products displayed on a wooden surface',
   },
   {
-    src: '/images/about/about-slider/about-slide-07.png',
+    src: '/images/about/about-slider/about-slide-12.png',
     alt: 'Garment manufacturing team working at industrial sewing stations',
   },
   {
-    src: '/images/about/about-slider/about-slide-06.png',
+    src: '/images/about/about-slider/about-slide-13.png',
     alt: 'Craftsperson assembling furniture frames in a woodworking workshop',
   },
   {
-    src: '/images/about/about-slider/about-slide-09.png',
+    src: '/images/about/about-slider/about-slide-14.png',
     alt: 'Craftsperson assembling furniture frames in a woodworking workshop',
   },
 ] as const
