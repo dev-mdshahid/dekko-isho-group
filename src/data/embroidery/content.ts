@@ -94,7 +94,7 @@ export const embroideryProductionCapacity = {
   stats: [
     {
       id: 'monthly-capacity',
-      value: '2,200,000,000',
+      value: '2200 Million',
       label: 'Stitches/Month',
       variant: 'blue',
     },
