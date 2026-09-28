@@ -986,6 +986,7 @@
 .career-voice-card {
   display: flex;
   flex-flow: column;
+  gap: 40px;
   padding: 32px;
   border: none;
   border-radius: 8px;
@@ -1007,7 +1008,7 @@
   flex-flow: row;
   align-items: center;
   gap: 12px;
-  margin-top: 40px;
+  margin-top: auto;
 }
 
 .career-voice-avatar {
