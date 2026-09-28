@@ -14,21 +14,23 @@ export function CareerEmployeeVoicesSection() {
 
           <div className="career-voices-grid">
             {careerEmployeeVoices.testimonials.map((item, index) => (
-              <FadeIn key={item.id} id={item.id} className="career-voice-card" delay={index * 80}>
-                <p className="career-voice-quote">{item.quote}</p>
-                <div className="career-voice-author">
-                  <img
-                    src={item.avatar}
-                    alt={item.avatarAlt}
-                    className="career-voice-avatar"
-                    width={36}
-                    height={36}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="career-voice-author-text">
-                    <h3 className="career-voice-name">{item.name}</h3>
-                    <p className="career-voice-role">{item.role}</p>
+              <FadeIn key={item.id} id={item.id} className="career-voice-card-wrapper" delay={index * 80}>
+                <div className="career-voice-card">
+                  <p className="career-voice-quote">{item.quote}</p>
+                  <div className="career-voice-author">
+                    <img
+                      src={item.avatar}
+                      alt={item.avatarAlt}
+                      className="career-voice-avatar"
+                      width={36}
+                      height={36}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="career-voice-author-text">
+                      <h3 className="career-voice-name">{item.name}</h3>
+                      <p className="career-voice-role">{item.role}</p>
+                    </div>
                   </div>
                 </div>
               </FadeIn>
