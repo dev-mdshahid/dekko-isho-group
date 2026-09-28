@@ -244,6 +244,8 @@ export type CareerLifeCard = {
   description: string
   image: string
   imageAlt: string
+  /** Subject position when the photo fills its portrait card. */
+  imagePosition?: string
 }
 
 export const careerLifeAt = {
@@ -257,6 +259,7 @@ export const careerLifeAt = {
       description:
         'From leadership development and technical training to mentorship and cross-functional exposure, we invest in helping our people grow throughout their careers.',
       image: '/images/career/life-learning-never-stops.png',
+      imagePosition: '32% center',
       imageAlt: 'Team members sharing knowledge in a collaborative learning session',
     },
     {
@@ -265,6 +268,7 @@ export const careerLifeAt = {
       description:
         'Behind every milestone are people who make it possible. We recognize dedication, celebrate achievements, and appreciate every contribution that helps us move forward together.',
       image: '/images/career/life-honoring-every-contribution.jpg',
+      imagePosition: '22% center',
       imageAlt: 'Colleagues celebrating recognition at an awards night',
     },
     {
@@ -273,6 +277,7 @@ export const careerLifeAt = {
       description:
         'Our impact extends beyond business goals. Through community initiatives and shared responsibility, we nurture a culture where purpose guides how we grow.',
       image: '/images/career/life-purpose-beyond-performance.png',
+      imagePosition: 'center',
       imageAlt: 'A young community member holding a seedling plant',
     },
     {
@@ -281,6 +286,7 @@ export const careerLifeAt = {
       description:
         'Diverse voices strengthen how we work. We create space for collaboration, dialogue, and shared problem-solving across roles and experiences.',
       image: '/images/career/life-one-team-many-perspectives.png',
+      imagePosition: '25% center',
       imageAlt: 'Employees engaged in a problem-solving workshop together',
     },
     {
@@ -289,6 +295,7 @@ export const careerLifeAt = {
       description:
         'From celebrations to everyday connections, the moments we share build trust, camaraderie, and a workplace that feels like home.',
       image: '/images/career/life-moments-that-bring-us-together.jpg',
+      imagePosition: 'center',
       imageAlt: 'Team members celebrating together at a sports tournament',
     },
     {
@@ -297,6 +304,7 @@ export const careerLifeAt = {
       description:
         'We believe in nurturing talent and fostering growth. Our comprehensive learning and development programs empower employees to reach their full potential.',
       image: `/images/career/Learning-and-Development.png`,
+      imagePosition: 'center',
       imageAlt: 'Employees participating in a training session',
     },
     {
@@ -305,6 +313,7 @@ export const careerLifeAt = {
       description:
         'We prioritize the well-being and growth of our employees. Through mentorship, coaching, and career advancement opportunities, we invest in our people for long-term success.',
       image: '/images/career/Investing-in-People.png',
+      imagePosition: 'center',
       imageAlt: 'Employees engaged in a mentorship program',
     },
   ] satisfies CareerLifeCard[],
