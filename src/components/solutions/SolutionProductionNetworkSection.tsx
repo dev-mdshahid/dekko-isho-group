@@ -107,7 +107,7 @@ export function SolutionProductionNetworkSection({
                             <span className="solution-network-card-stat-label">
                               {unit.monthlyCapacityLabel ?? 'Production capacity'}
                             </span>
-                            <p className="solution-network-card-stat-value">
+                            <p className="solution-network-card-stat-value" style={{ display: 'flex', flexDirection: 'column' }}>
                               <span className="solution-network-card-stat-number">
                                 {unit.monthlyCapacity}
                               </span>

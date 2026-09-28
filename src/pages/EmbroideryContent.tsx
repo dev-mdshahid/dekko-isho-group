@@ -10,7 +10,6 @@ import {
   // SolutionWhyItMattersSection,
 } from '../components/solutions'
 import { SplitContentSection } from '../components/ui/SplitContentSection'
-import { SplitFeatureListSection } from '../components/ui/SplitFeatureListSection'
 import {
   embroideryCapabilities,
   embroideryCta,
@@ -18,7 +17,6 @@ import {
   embroideryProductionCapacity,
   embroideryProductionNetwork,
   embroideryQualityAssurance,
-  embroideryTechnicalDevelopment,
   embroideryTechnology,
   // embroideryWhyItMatters,
 } from '../data/embroidery/content'
