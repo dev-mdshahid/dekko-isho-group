@@ -279,11 +279,11 @@ export function ContactSection() {
               >
                 <div className="page-contact-form-intro">
                   <h4 className="page-contact-form-title">
-                    Send Us a Message
+                    Let’s Start a Conversation
                   </h4>
                   <p className="page-contact-form-description">
                     Define your goals and identify areas
-                    where Dekko Isho can add value to your
+                    where Dekko ISHO can add value to your
                     business.
                   </p>
                 </div>
@@ -400,13 +400,13 @@ export function ContactSection() {
                           <div className="button-text">
                             {status === 'submitting'
                               ? 'Please wait...'
-                              : 'Submit'}
+                              : 'Submit Your Inquiry'}
                           </div>
 
                           <div className="button-hover-text">
                             {status === 'submitting'
                               ? 'Please wait...'
-                              : 'Submit'}
+                              : 'Submit Your Inquiry'}
                           </div>
                         </div>
                       </div>
