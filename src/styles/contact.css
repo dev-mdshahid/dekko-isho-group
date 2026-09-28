@@ -441,6 +441,10 @@
   gap: clamp(2.5rem, 5vw, 4rem);
 }
 
+.page-contact-section--modern .page-contact-details-col--compact {
+  gap: 16px;
+}
+
 .page-contact-section--modern .page-contact-block {
   gap: 1.15rem;
 }
