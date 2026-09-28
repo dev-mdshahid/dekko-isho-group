@@ -20,7 +20,7 @@ import {
   industrialLaundryHero,
   industrialLaundryLaboratory,
   industrialLaundryQualityAssurance,
-  industrialLaundryResearchDevelopment,
+  industrialLaundryResearchDevelopmentV2,
   industrialLaundrySustainableTech,
   industrialLaundryWashingProcessesV2,
   industrialLaundryWaterStewardship,
@@ -67,7 +67,8 @@ export function IndustrialLaundryContent() {
       {/* 5. Research & Development */}
       <SplitFeatureListSection
         className="il-research-section"
-        {...industrialLaundryResearchDevelopment}
+        variant="carousel"
+        {...industrialLaundryResearchDevelopmentV2}
       />
 
       {/* 6. Modern Washing Laboratory */}

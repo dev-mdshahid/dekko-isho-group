@@ -275,7 +275,7 @@ export function SplitFeatureListSection({
                   }`}
                   role="region"
                   aria-roledescription="carousel"
-                  aria-label="Digital product development capabilities"
+                  aria-label={`${title} capabilities`}
                   aria-live="polite"
                   aria-atomic="true"
                   tabIndex={0}
@@ -411,7 +411,7 @@ export function SplitFeatureListSection({
                 <div
                   className="split-feature-list-carousel-dots"
                   role="tablist"
-                  aria-label="Digital product development slides"
+                  aria-label={`${title} slides`}
                 >
                   {items.map((item, index) => (
                     <button

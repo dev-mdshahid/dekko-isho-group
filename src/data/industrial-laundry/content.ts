@@ -302,6 +302,30 @@ export const industrialLaundryResearchDevelopment = {
   ],
 }
 
+export const industrialLaundryResearchDevelopmentV2 = {
+  id: 'il-research-development2',
+  badge: 'Technical Development',
+  title: 'Research & Development',
+  description:
+    'Our dedicated R&D team continuously develops and refines wash recipes, explores innovative finishing techniques, and optimizes production processes to meet evolving customer requirements and fashion trends.',
+  items: [
+    {
+      id: 'wash-recipe',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/research-and-development-slider/wash_recipe_development.png`,
+      imageAlt: 'Laundry technicians reviewing denim in the R&D machine area',
+      title: 'Wash Recipe Development',
+      description: 'Innovative wash formulas crafted for consistent quality and vibrant finishes.',
+    },
+    {
+      id: 'sample-development',
+      image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/research-and-development-slider/sample_development.png`,
+      imageAlt: 'Washing laboratory equipment used for sample testing and validation',
+      title: 'Sample Development',
+      description: '3D sample previews speed up design approvals and reduce physical samples.',
+    }
+  ],
+}
+
 export const industrialLaundryLaboratory = {
   id: 'il-laboratory',
   title: 'Modern Washing Laboratory',
