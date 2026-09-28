@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import type { CareerHeroCarouselSlide } from '../../data/career/content'
 
-const SLIDE_INTERVAL_MS = 4200
+const SLIDE_INTERVAL_MS = 2500
 
 type Props = {
   images: CareerHeroCarouselSlide[]
