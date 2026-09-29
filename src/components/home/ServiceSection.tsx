@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { serviceSpecialities, type ServiceFeatureGroup } from '../../data/home/specialities'
 // import { legacyImage } from '../../lib/assets'
-import { ButtonArrow } from '../ui/ButtonArrow'
+// import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
