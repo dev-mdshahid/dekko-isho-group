@@ -438,7 +438,7 @@
 }
 
 .page-contact-section--modern .page-contact-details-col {
-  gap: clamp(2.5rem, 5vw, 4rem);
+  gap: 1rem;
 }
 
 .page-contact-section--modern .page-contact-details-col--compact {
