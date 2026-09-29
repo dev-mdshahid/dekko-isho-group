@@ -26,6 +26,7 @@ import { RoxyPaintsPage } from './pages/RoxyPaintsPage'
 import { SolutionPage } from './pages/SolutionPage'
 import { SprintexPage } from './pages/SprintexPage'
 import { NotFoundPage } from './pages/NotFoundPage'
+import NewsPage from './pages/NewsPage'
 
 function BlogRedirect() {
   const { slug } = useParams()
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
       { path: '/about', element: <AboutPage /> },
       { path: '/contact', element: <ContactPage /> },
       { path: '/gallery', element: <GalleryPage /> },
+      { path: '/news', element: <NewsPage /> },
       { path: '/press', element: <PressPage /> },
       { path: '/press/:slug', element: <PressDetailPage /> },
       { path: '/awards', element: <AwardsPage /> },

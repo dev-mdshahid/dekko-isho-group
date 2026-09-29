@@ -1,0 +1,83 @@
+.news-page-section {
+  background-color: var(--color--gray-4);
+  background-image: url('/images/backgrounds/half-logo-bg.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.news-page-container {
+  max-width: 1520px;
+}
+
+.news-page-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.news-page-title {
+  margin: 0;
+  color: var(--color--dark);
+  font-family: var(--_typography---font-family--heading);
+  font-size: clamp(2rem, 4vw, 3.625rem);
+  font-weight: var(--_typography---h2--font-weight-600);
+  line-height: 1.1;
+}
+
+.news-page-filter {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.news-page-filter label {
+  color: var(--color--neutral-outer-space);
+  font-family: var(--_typography---font-family--body);
+  font-size: 0.875rem;
+  font-weight: var(--_typography---body--font-weight-500);
+}
+
+.news-page-filter select {
+  min-width: 9.5rem;
+  height: 3.125rem;
+  padding: 0.5rem 2.25rem 0.5rem 1rem;
+  border: 1px solid var(--color--gray-3);
+  border-radius: var(--border-radius--form-input);
+  background-color: var(--color--white);
+  color: var(--color--neutral-outer-space);
+  font: inherit;
+  cursor: pointer;
+}
+
+.news-page-filter select:focus-visible {
+  outline: 2px solid var(--color--primary-1);
+  outline-offset: 2px;
+}
+
+.news-page-empty {
+  padding: 3rem 0;
+  color: var(--color--neutral-outer-space);
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .news-page-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .news-page-filter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .news-page-filter select {
+    width: 100%;
+  }
+}

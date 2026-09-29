@@ -139,6 +139,10 @@ export const dekkoBusinessNav: NavLink[] = [
 
 export const mediaNavLinks: NavLink[] = [
   {
+    to: '/news',
+    label: 'News',
+  },
+  {
     to: '/press',
     label: 'Press',
   },

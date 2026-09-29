@@ -4,6 +4,7 @@ type Props = PropsWithChildren<{
   id?: string
   className?: string
   style?: CSSProperties
+  as?: 'div' | 'article'
   /** Milliseconds — matches legacy Webflow slideInBottom stagger. */
   delay?: number
   /** Webflow IX2 preset replicated in React. */
@@ -11,9 +12,11 @@ type Props = PropsWithChildren<{
 }>
 
 /** Wrapper for scroll-reveal animations via `useInViewAnimation` / `useFooterAnimations`. */
-export function FadeIn({ className, style, delay, variant = 'default', children }: Props) {
+export function FadeIn({ className, style, delay, variant = 'default', as = 'div', children }: Props) {
+  const Element = as
+
   return (
-    <div
+    <Element
       data-fade-in
       data-fade-delay={delay}
       data-fade-variant={variant === 'slide-in-bottom' ? variant : undefined}
@@ -21,6 +24,6 @@ export function FadeIn({ className, style, delay, variant = 'default', children 
       style={style}
     >
       {children}
-    </div>
+    </Element>
   )
 }
