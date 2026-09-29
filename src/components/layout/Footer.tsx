@@ -157,7 +157,15 @@ export function Footer() {
                 >
                   <h2 className="footer-title">Contact Info.</h2>
                   <div className="footer-contact-item">
-                    <div className="footer-address">{footerContact.address}</div>
+                    {/* <div className="footer-address">{footerContact.address}</div> */}
+                    <div className="footer-address">
+                      <strong>Corporate HQ</strong>
+                      <p>The Forum, West Tower, Level: 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.</p>
+                    </div>
+                    <div className="footer-address">
+                      <strong>London Display Center</strong>
+                      <p>94 Harley Street, London W1G 7HX</p>
+                    </div>
                     <a href={footerContact.phone.href} className="footer-link">
                       {footerContact.phone.label}
                     </a>
