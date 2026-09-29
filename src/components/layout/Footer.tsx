@@ -150,6 +150,21 @@ export function Footer() {
                   </div>
                 </FadeIn>
                 <FadeIn
+                  id="footer-business-links"
+                  className="footer-link-item"
+                  variant="slide-in-bottom"
+                  delay={450}
+                >
+                  <h2 className="footer-title">Other Businesses</h2>
+                  <div className="footer-links">
+                    {FOOTER_BUSINESS_LINKS.map((link) => (
+                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </FadeIn>
+                <FadeIn
                   id="64c645f9-8fac-49b8-f082-3f384284032e"
                   className="footer-contact-list"
                   variant="slide-in-bottom"
@@ -172,21 +187,6 @@ export function Footer() {
                     <a href={footerContact.email.href} className="footer-link">
                       {footerContact.email.label}
                     </a>
-                  </div>
-                </FadeIn>
-                <FadeIn
-                  id="footer-business-links"
-                  className="footer-link-item"
-                  variant="slide-in-bottom"
-                  delay={450}
-                >
-                  <h2 className="footer-title">Other Businesses</h2>
-                  <div className="footer-links">
-                    {FOOTER_BUSINESS_LINKS.map((link) => (
-                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
-                        {link.label}
-                      </Link>
-                    ))}
                   </div>
                 </FadeIn>
               </div>
