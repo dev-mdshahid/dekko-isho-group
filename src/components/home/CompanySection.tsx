@@ -40,7 +40,7 @@ export function CompanySection() {
 
       const bgY = clamp(distance * 0.72, -260, 260)
 
-      const awardsY = clamp(distance * -0.055, -45, 45)
+      const awardsY = clamp(distance * -0.14, -110, 110)
 
       const contentY = clamp(distance * -0.018, -14, 14)
 
