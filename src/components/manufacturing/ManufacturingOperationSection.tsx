@@ -3,7 +3,7 @@ import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
 export function ManufacturingOperationSection() {
-  const { badge, title, description, cards } = manufacturingOperation
+  const { badge, description, cards } = manufacturingOperation
 
   return (
     <section className="mfg-operation-section">
