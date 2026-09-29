@@ -13,7 +13,7 @@ export const designProductDevelopmentHero = {
     'At Dekko ISHO Design Studio, we transform ideas into market-ready collections through creativity, material innovation, and advanced product development. Our designers, product developers, fabric specialists, and technical experts collaborate with global brands to create products that are trend-driven, commercially relevant, and production-ready.',
   ctaLabel: 'Explore Our Capabilities',
   ctaHref: '#dpd-capabilities',
-  video: '/videos/Design Studio Page_ DRL Design Studio Pan Shot.mp4',
+  video: '/videos/combine_video.mp4',
   videoAlt: 'Design Studio and Product Development at Dekko ISHO',
 }
 
