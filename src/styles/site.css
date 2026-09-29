@@ -14123,10 +14123,20 @@ a.about-info-box:hover {
 }
 
 .capacity-stat-value {
+  position: relative;
   font-size: clamp(1.125rem, 2.8vw, 2.5rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
+}
+
+.capacity-stat-value-final {
+  opacity: 0;
+}
+
+.capacity-stat-value-animated {
+  position: absolute;
+  inset: 0;
 }
 
 .capacity-stat-label {
