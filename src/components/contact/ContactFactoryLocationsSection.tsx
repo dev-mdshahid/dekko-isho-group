@@ -32,6 +32,7 @@ export function ContactFactoryLocationsSection() {
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
                     className="page-contact-factory-map"
+                    style={{ paddingBottom: "12px"}}
                   />
                 </div>
               </div>
