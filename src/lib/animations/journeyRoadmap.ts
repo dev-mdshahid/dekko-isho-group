@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger)
  * For each stage: path advances → node lands → brief hold → next.
  * At the top→bottom turn, a longer breath marks the handoff.
  */
-const TIMING_SCALE = 0.65
+const TIMING_SCALE = 0.65 / 1.4 // Run 40% faster than the previous pacing.
 const scaledTiming = (seconds: number) => seconds * TIMING_SCALE
 
 const ARRIVE = scaledTiming(0.72)
