@@ -39,23 +39,23 @@ function StrengthCard({
         onBlur={() => setIsFlipped(false)}
       >
         <div className="about-strength-card-face about-strength-card-face--front">
-          <div className="about-strength-card-top">
-            <h3 className="about-strength-card-title">
-              <span className="about-strength-card-title-line">{titleLine1}</span>
-              <span className="about-strength-card-title-line">{titleLine2}</span>
-            </h3>
-          </div>
           <img
             src={item.image}
             loading="lazy"
             alt={item.imageAlt}
             className="about-strength-card-image"
           />
+          <div className="about-strength-card-top">
+            <h3 className="about-strength-card-title">
+              <span className="about-strength-card-title-line">{titleLine1}</span>
+              <span className="about-strength-card-title-line">{titleLine2}</span>
+            </h3>
+          </div>
         </div>
 
         <div className="about-strength-card-face about-strength-card-face--back" aria-hidden="true">
           <h3 className="about-strength-card-title about-strength-card-title--back">
-            {item.title}
+            {/* {item.title+"TT"} */}
           </h3>
           <p className="about-strength-card-description">{item.description}</p>
         </div>
