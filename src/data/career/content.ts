@@ -33,7 +33,7 @@ export type CareerTestimonial = {
 }
 
 export const careerHero = {
-  badge: 'Live the Experience.',
+  badge: 'Live the Experience',
   titleLine1: 'Growing Together,',
   titleLine2: 'Every Day.',
 }
