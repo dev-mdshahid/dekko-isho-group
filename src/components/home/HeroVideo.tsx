@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import { setupHeroVideoExpand } from '../../lib/animations/home/video'
 
-const HERO_VIDEO = '/videos/hero-video-2.mp4'
+const HERO_VIDEO = '/videos/Home Page_ Teaser Footage Loop.mp4'
 const HERO_VIDEO_ID = 'home-hero-video'
 
 function PauseIcon() {

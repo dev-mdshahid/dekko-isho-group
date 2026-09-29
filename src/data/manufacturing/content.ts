@@ -7,7 +7,7 @@ export const manufacturingHero = {
     'At Dekko ISHO, we provide end-to-end apparel manufacturing solutions through a fully integrated ecosystem that connects material sourcing, product development, manufacturing, quality assurance, and packing. Supported by advanced technology, skilled people, and modern production facilities, we help global fashion brands improve speed to market, ensure consistent quality, and build more resilient supply chains.',
   ctaLabel: 'Learn More',
   ctaHref: '#mfg-capacity',
-  video: '/videos/manufacturing-hero.mp4',
+  video: '/videos/Integrated Manufacturing Page_ Drone Footage Inside DGL Factory.mp4',
   videoAlt: 'Apparel manufacturing facility aerial view',
 }
 

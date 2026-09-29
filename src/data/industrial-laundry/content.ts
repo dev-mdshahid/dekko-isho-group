@@ -6,7 +6,7 @@ export const industrialLaundryHero = {
     'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements – from garment and enzyme washes to specialized denim treatments and dyeing.',
   ctaLabel: 'Learn More',
   ctaHref: '#il-washing-processes',
-  video: '/videos/industrial-laundry-hero.mp4',
+  video: '/videos/Industrial Laundry Page_ Drone Footage Inside AWL Factory.mp4',
   videoAlt: 'Industrial laundry facility with large washing machines',
 }
 

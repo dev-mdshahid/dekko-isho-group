@@ -6,7 +6,7 @@ export const embroideryHero = {
     'Our integrated embroidery facility combines advanced machinery, skilled craftsmanship, and efficient processes to create high-quality embroidery solutions with precision and consistency. From intricate designs to large-scale production, we deliver reliable embroidery capabilities tailored to the needs of global fashion brands.',
   ctaLabel: 'Learn More',
   ctaHref: '#embroidery-capabilities',
-  video: '/images/embroidery/embroidery-hero.mp4',
+  video: '/images/embroidery/Embroidery Unit Page_ DGL Embroidery inside Drone Shoot.mp4',
   videoAlt: 'Industrial embroidery machine stitching a floral pattern on fabric',
 }
 
