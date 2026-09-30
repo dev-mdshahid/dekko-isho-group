@@ -1027,9 +1027,9 @@
   user-select: none;
 }
 
-/* Pause for mouse and keyboard users. */
+/* Pause on hover or keyboard focus. */
 .company-logos-section-v2__viewport:hover .company-logos-section-v2__track,
-.company-logos-section-v2__viewport:focus-within .company-logos-section-v2__track {
+.company-logos-section-v2__viewport:focus-visible .company-logos-section-v2__track {
   animation-play-state: paused;
 }
 
