@@ -35,15 +35,15 @@ export const pressPosts: PressPost[] = [
   },
   {
     slug: 'signing-ceremony-of-dekko-isho-group-markopolo-ai',
-    title: 'Signing Ceremony of DEKKO ISHO Group & Markopolo.AI',
+    title: 'Signing Ceremony of Dekko ISHO Group & Markopolo.AI',
     category: 'Technology',
     date: 'August 10, 2021',
     excerpt:
-      'A Signing Ceremony was held between DEKKO ISHO Group & Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16.',
+      'A Signing Ceremony was held between Dekko ISHO Group & Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16.',
     image: '/images/press/markopolo-banner.png',
     imageAlt: 'Signing ceremony banner for Dekko ISHO Group and Markopolo.ai',
     content: `
-      <p>A Signing Ceremony was held between DEKKO ISHO Group &amp; Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16 (Old).</p>
+      <p>A Signing Ceremony was held between Dekko ISHO Group &amp; Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16 (Old).</p>
       <p>The ceremony marked a strategic partnership between Dekko ISHO Group and Markopolo.ai, bringing together one of Bangladesh&rsquo;s leading conglomerates and a deep tech startup providing cloud-based digital advertising automation for businesses worldwide.</p>
     `,
   },
