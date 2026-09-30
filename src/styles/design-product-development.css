@@ -1175,6 +1175,7 @@
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-dots {
   left: var(--dpd-carousel-content-left);
+  bottom: var(--dpd-carousel-content-left);
   display: flex;
   gap: 9px;
   align-items: center;
@@ -1291,7 +1292,7 @@
   position: absolute;
   z-index: 2;
   right: var(--dpd-carousel-content-left);
-  bottom: 42px;
+  bottom: calc(var(--dpd-carousel-content-left) + 22px);
   left: var(--dpd-carousel-content-left);
   display: flex;
   gap: 20px;
@@ -1381,7 +1382,7 @@
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
     right: 54px;
-    bottom: 28px;
+    bottom: calc(var(--dpd-carousel-content-left) + 22px);
     left: 54px;
     gap: 14px;
     padding: 16px 18px;
@@ -1424,7 +1425,7 @@
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
     right: var(--_layout---container-gutter);
-    bottom: 24px;
+    bottom: calc(var(--dpd-carousel-content-left) + 22px);
     left: var(--dpd-carousel-content-left);
     align-items: flex-start;
     padding: 16px 16px 16px 0;
