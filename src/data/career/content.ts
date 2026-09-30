@@ -136,7 +136,7 @@ export const careerWhy = {
 }
 
 export const careerStats: CareerStat[] = [
-  { id: 'career-stat-employees', value: '10,000+', countTarget: 10000, suffix: '+', label: 'EMPLOYEES WORLDWIDE' },
+  { id: 'career-stat-employees', value: '10K+', countTarget: 10000, suffix: '+', label: 'EMPLOYEES WORLDWIDE' },
   { id: 'career-stat-verticals', value: '4', countTarget: 4, label: 'BUSINESS VERTICALS' },
   { id: 'career-stat-years', value: '30+', countTarget: 30, suffix: '+', label: 'YEARS OF EXCELLENCE' },
   { id: 'career-stat-countries', value: '20+', countTarget: 20, suffix: '+', label: 'COUNTRIES SERVED' },
@@ -327,7 +327,7 @@ export const careerGrowthTogether = {
   stats: [
     {
       id: 'people',
-      value: '20,000+',
+      value: '20K+',
       label: 'People Growing Together',
       variant: 'blue',
     },

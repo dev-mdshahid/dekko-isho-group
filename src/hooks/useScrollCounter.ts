@@ -4,11 +4,25 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const COUNTER_BOUND_ATTR = 'data-counter-bound'
 
+export function formatCompactNumber(value: number) {
+  const absoluteValue = Math.abs(value)
+  const units = [
+    { threshold: 1_000_000_000, suffix: 'B' },
+    { threshold: 1_000_000, suffix: 'M' },
+    { threshold: 1_000, suffix: 'K' },
+  ]
+  const unit = units.find(({ threshold }) => absoluteValue >= threshold)
+  if (!unit) return String(value)
+
+  const compactValue = value / unit.threshold
+  return `${compactValue.toFixed(2).replace(/\.?(0+)$/, '')}${unit.suffix}`
+}
+
 function formatCountValue(val: number, decimals: number, suffix: string) {
   if (decimals > 0) {
     return `${val.toFixed(decimals)}${suffix}`
   }
-  return `${Math.floor(val).toLocaleString()}${suffix}`
+  return `${formatCompactNumber(Math.floor(val))}${suffix}`
 }
 
 function initScrollCounters(root: ParentNode = document) {

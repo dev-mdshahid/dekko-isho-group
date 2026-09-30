@@ -94,7 +94,7 @@ export const embroideryProductionCapacity = {
   stats: [
     {
       id: 'monthly-capacity',
-      value: '2.2 Billion',
+      value: '2.2B',
       label: 'Stitches/Month',
       variant: 'blue',
     },
@@ -160,7 +160,7 @@ export const embroideryProductionNetwork = {
       title: 'DGL Embroidery Unit',
       image: '/images/embroidery/network-dgl.png',
       imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
-      monthlyCapacity: '50,00,000',
+      monthlyCapacity: '5M',
       monthlyCapacityLabel: 'Stitching capacity',
       monthlyCapacityUnit: 'Stitches/day',
       productionLines: '9',
@@ -171,7 +171,7 @@ export const embroideryProductionNetwork = {
       title: 'Globus Embroidery',
       image: '/images/embroidery/globus_embroidery2.png',
       imageAlt: 'Finished embroidered garments at Globus Embroidery',
-      monthlyCapacity: '350,000',
+      monthlyCapacity: '350K',
       monthlyCapacityLabel: 'Production capacity',
       monthlyCapacityUnit: 'units/month',
       productionLines: '6',
@@ -281,7 +281,7 @@ export const embroideryCapacity = {
       items: [
         '09 total machines – Barudan and Maya',
         '86 team members',
-        '50 million stitches per day capacity',
+        '5M stitches per day capacity',
         'In-house printing, embroidery, and finishing',
       ],
     },
@@ -291,7 +291,7 @@ export const embroideryCapacity = {
       items: [
         '06 total machines',
         '56 team members',
-        '350,000 pieces capacity at average 1,000 stitches',
+        '350K pieces capacity at average 1K stitches',
       ],
     },
     {
@@ -299,7 +299,7 @@ export const embroideryCapacity = {
       title: 'Sprintex Enterprise',
       items: [
         'Digital inkjet printing for voile, viscose, twill, and more',
-        '936,000 yards yearly production capacity',
+        '936K yards yearly production capacity',
         '1 production line, 15 team members',
       ],
     },

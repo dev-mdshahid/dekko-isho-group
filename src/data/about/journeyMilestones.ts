@@ -75,7 +75,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     entries: [
       {
         title: 'Globus Garments Ltd.',
-        description: '19 production lines. 300,000 garments produced per month.',
+        description: '19 production lines. 300K garments produced per month.',
       },
     ],
   },

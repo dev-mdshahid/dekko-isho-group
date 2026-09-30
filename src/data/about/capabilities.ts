@@ -4,7 +4,7 @@ export type CapabilityStat = {
 }
 
 export const capabilityStats: CapabilityStat[] = [
-  { value: '18,000+', label: 'Skilled People' },
+  { value: '18K+', label: 'Skilled People' },
   { value: '70+', label: 'Years of Experience' },
   { value: '7', label: 'Business Verticals' },
   { value: '11', label: 'Factories' },

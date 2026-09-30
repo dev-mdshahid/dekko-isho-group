@@ -211,7 +211,7 @@ export const industrialLaundryExpertise = {
       logoAlt: 'Jeanologia — The Science of Finishing',
       title: 'OZONE Technology',
       description:
-        'Around 70 thousand pieces of denim washing capacity supported by modern laundry setup and technical expertise.',
+        'Around 70K pieces of denim washing capacity supported by modern laundry setup and technical expertise.',
     },
     {
       id: 'nano-bubble',
@@ -258,7 +258,7 @@ export const industrialLaundryWaterStewardship = {
   stats: [
     {
       id: 'total-capacity',
-      value: '3.5 M+',
+      value: '3.5M+',
       label: 'Total Capacity (units)',
       variant: 'blue',
     },

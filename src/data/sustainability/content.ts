@@ -549,7 +549,7 @@ export const pillar01 = {
     {
       id: 'irec',
       type: 'stat',
-      value: '13,421',
+      value: '13.42K',
       suffix: ' MWh',
       labelLines: ['I-REC purchased', 'for 2025'],
     },
@@ -748,7 +748,7 @@ export const pillar02 = {
       number: '04',
       title: 'Community Impact',
       description:
-        'Nutrition, education, healthcare and disaster support — 510 family food packages, 150,000 vegetable seeds, and aid for single mothers and children.',
+        'Nutrition, education, healthcare and disaster support — 510 family food packages, 150K vegetable seeds, and aid for single mothers and children.',
       image: pillar2Image('community-care.png'),
       imageAlt: 'Community members receiving relief supplies',
     },

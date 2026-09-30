@@ -16,7 +16,7 @@ export function ProductSection() {
                 <div className="inner-number like-score">
                   <div className="numbers-counts">
                     <div data-target="50,000" className="count">
-                      50,000
+                      50K
                     </div>
                   </div>
                   <div className="counter-symbol text-primary">
