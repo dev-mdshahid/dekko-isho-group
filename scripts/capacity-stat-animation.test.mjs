@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
   formatCapacityCount,
+  formatCapacityCountNumber,
   parseCapacityCountValue,
   scrambleCapacityText,
 } from '../src/lib/capacityStatAnimation.ts'
@@ -14,6 +15,9 @@ test('capacity formats preserve their numeric precision, grouping, and suffix', 
     ['71%', 71, 0, '%', '0%'],
     ['3.5 Million+', 3.5, 1, ' Million+', '0.0 Million+'],
     ['2200 Million', 2200, 0, ' Million', '0 Million'],
+    ['2.2 Billion', 2.2, 1, ' Billion', '0.0 Billion'],
+    ['1.3 Billion+', 1.3, 1, ' Billion+', '0.0 Billion+'],
+    ['2.2 B', 2.2, 1, ' B', '0.0 B'],
     ['3.5 M', 3.5, 1, ' M', '0.0 M'],
     ['1.0 Million+', 1, 1, ' Million+', '0.0 Million+'],
     [' 2,200.00 million + ', 2200, 2, ' million + ', ' 0.00 million + '],
@@ -31,6 +35,7 @@ test('capacity formats preserve their numeric precision, grouping, and suffix', 
   }
   assert.equal(formatCapacityCount(1234.5, parseCapacityCountValue('20,000.00+')), '1,234.50+')
   assert.equal(formatCapacityCount(1234, parseCapacityCountValue('2200 Million')), '1234 Million')
+  assert.equal(formatCapacityCountNumber(1.3, parseCapacityCountValue('1.3 Billion+')), '1.3')
 })
 
 test('text, empty values, and malformed numbers do not become misleading counts', () => {

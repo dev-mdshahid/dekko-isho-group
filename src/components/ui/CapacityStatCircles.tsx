@@ -1,5 +1,9 @@
 import { type CSSProperties, useRef } from 'react'
 import { useCapacityStatAnimation } from '../../hooks/useCapacityStatAnimation'
+import {
+  formatCapacityCountNumber,
+  parseCapacityCountValue,
+} from '../../lib/capacityStatAnimation'
 
 // Preserve the existing parser import path for callers.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -40,14 +44,31 @@ const DEFAULT_GRID_LAYOUT: Record<string, CapacityStatLayout> = {
 
 function AnimatedCapacityValue({ value }: { value: string }) {
   const valueRef = useRef<HTMLSpanElement>(null)
-  useCapacityStatAnimation(valueRef, value)
+  const counted = parseCapacityCountValue(value)
+  const className = [
+    'capacity-stat-value',
+    counted ? 'capacity-stat-value--count' : 'capacity-stat-value--text',
+  ].join(' ')
+  useCapacityStatAnimation(valueRef, value, counted ? 'number' : 'full')
 
   return (
-    <div className="capacity-stat-value">
+    <div className={className}>
       <span className="capacity-stat-value-final">{value}</span>
-      <span ref={valueRef} className="capacity-stat-value-animated" aria-hidden="true">
-        {value}
-      </span>
+      {counted ? (
+        <span className="capacity-stat-value-animated capacity-stat-value-animated--count" aria-hidden="true">
+          <span className="capacity-stat-value-prefix">{counted.prefix}</span>
+          <span ref={valueRef} className="capacity-stat-value-number">
+            {formatCapacityCountNumber(counted.target, counted)}
+          </span>
+          <span className="capacity-stat-value-suffix">
+            {counted.suffix}
+          </span>
+        </span>
+      ) : (
+        <span ref={valueRef} className="capacity-stat-value-animated" aria-hidden="true">
+          {value}
+        </span>
+      )}
     </div>
   )
 }
