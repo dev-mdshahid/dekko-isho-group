@@ -259,7 +259,8 @@
   margin-bottom: 1.25rem;
 }
 
-.solution-page .mfg-capacity-left .pre-section-title-square {
+.manufacturing-page .mfg-capacity-left .pre-section-title-square {
+  flex: 0 0 auto;
   margin-bottom: 0;
   background-color: var(--mfg-brand-start);
   background-image: var(--mfg-brand-gradient);
