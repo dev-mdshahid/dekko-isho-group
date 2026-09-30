@@ -68,7 +68,7 @@ const industries: IndustryItem[] = [
     variant: 'business',
     logo: ISHO_LOGO,
     logoId: 'isho',
-    href: '/isho-ltd',
+    href: 'https://www.isho.com',
   },
   {
     type: 'image',
@@ -86,7 +86,7 @@ const industries: IndustryItem[] = [
     variant: 'business',
     logo: DITECH_LOGO,
     logoId: 'ditech',
-    href: '/dekko-isho',
+    href: 'https://www.ditech.co',
   },
   {
     type: 'image',
@@ -95,7 +95,7 @@ const industries: IndustryItem[] = [
     variant: 'business',
     logo: KLUBHAUS_LOGO,
     logoId: 'klubhaus',
-    href: '/klubhaus',
+    href: 'https://klubhaus.com.bd',
   },
   {
     type: 'image',
@@ -104,7 +104,7 @@ const industries: IndustryItem[] = [
     variant: 'business',
     logo: IZAKAYA_LOGO,
     logoId: 'izakaya',
-    href: '/izakaya',
+    href: 'https://izakaya.com.bd',
   },
   {
     type: 'image',
@@ -113,7 +113,7 @@ const industries: IndustryItem[] = [
     variant: 'business',
     logo: ECOVIA_LOGO,
     logoId: 'ecovia',
-    href: 'https://www.ecoviaglobal.com/',
+    href: 'https://www.ecoviaglobal.com',
   },
   // {
   //   type: 'text',
