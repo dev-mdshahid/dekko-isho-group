@@ -20,7 +20,7 @@ export function PressDetailPage() {
 
   return (
     <SiteLayout>
-      <PageMeta title={`${post.title} | Dekko Isho Group`} />
+      <PageMeta title={`${post.title} | Dekko ISHO Group`} />
       <PressDetailContent slug={slug} />
     </SiteLayout>
   )

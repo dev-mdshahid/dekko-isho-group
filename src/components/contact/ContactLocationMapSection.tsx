@@ -33,7 +33,7 @@ export function ContactLocationMapSection() {
           <div className="page-contact-map-overlay-content">
             <div className="page-contact-map-overlay-text">
               <h3 className="page-contact-map-overlay-title">
-                Dekko Isho Group
+                Dekko ISHO Group
               </h3>
 
               <p className="page-contact-map-overlay-address">
@@ -72,7 +72,7 @@ export function ContactLocationMapSection() {
               aria-hidden="true"
             />
 
-            <span>Dekko Isho Group</span>
+            <span>Dekko ISHO Group</span>
           </div>
         </div>
 

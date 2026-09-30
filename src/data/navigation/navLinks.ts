@@ -4,6 +4,7 @@ export type NavLink = {
   to: string
   label: string
   showExternalIcon?: boolean
+  shouldOpenInNewTab?: boolean
 }
 
 export type NavLinkGroup = {
@@ -109,6 +110,7 @@ export const dekkoBusinessNav: NavLink[] = [
     to: 'https://www.isho.com',
     label: 'ISHO',
     showExternalIcon: true,
+    shouldOpenInNewTab: true,
   },
   {
     to: 'https://www.di.vc',
@@ -119,21 +121,25 @@ export const dekkoBusinessNav: NavLink[] = [
     to: 'https://www.ditech.co',
     label: 'DITECH',
     showExternalIcon: true,
+    shouldOpenInNewTab: true,
   },
   {
     to: 'https://klubhaus.com.bd',
     label: 'Klubhaus',
     showExternalIcon: true,
+    shouldOpenInNewTab: true,
   },
   {
     to: 'https://izakaya.com.bd',
     label: 'IZAKAYA',
     showExternalIcon: true,
+    shouldOpenInNewTab: true,
   },
   {
     to: 'https://www.ecoviaglobal.com',
     label: 'Ecovia',
     showExternalIcon: true,
+    shouldOpenInNewTab: true,
   },
 ]
 

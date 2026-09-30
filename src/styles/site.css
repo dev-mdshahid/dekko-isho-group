@@ -14130,6 +14130,10 @@ a.about-info-box:hover {
   letter-spacing: -0.02em;
 }
 
+.capacity-stat-value--text {
+  white-space: nowrap;
+}
+
 .capacity-stat-value-final {
   opacity: 0;
 }
@@ -14137,6 +14141,13 @@ a.about-info-box:hover {
 .capacity-stat-value-animated {
   position: absolute;
   inset: 0;
+}
+
+.capacity-stat-value-animated--count {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .capacity-stat-label {

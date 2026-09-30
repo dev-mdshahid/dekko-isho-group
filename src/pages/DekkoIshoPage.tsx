@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { DekkoIshoContent } from './DekkoIshoContent'
 
-const DEKKO_ISHO_TITLE = 'Dekko ISHO Technologies Ltd. | Dekko Isho Group'
+const DEKKO_ISHO_TITLE = 'Dekko ISHO Technologies Ltd. | Dekko ISHO Group'
 
 export function DekkoIshoPage() {
   useWebflowClasses()

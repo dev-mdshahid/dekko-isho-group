@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { IzakayaContent } from './IzakayaContent'
 
-const IZAKAYA_TITLE = 'IZAKAYA | Dekko Isho Group'
+const IZAKAYA_TITLE = 'IZAKAYA | Dekko ISHO Group'
 
 export function IzakayaPage() {
   useWebflowClasses()

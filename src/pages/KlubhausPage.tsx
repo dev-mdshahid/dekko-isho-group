@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { KlubhausContent } from './KlubhausContent'
 
-const KLUBHAUS_TITLE = 'Klubhaus | Dekko Isho Group'
+const KLUBHAUS_TITLE = 'Klubhaus | Dekko ISHO Group'
 
 export function KlubhausPage() {
   useWebflowClasses()

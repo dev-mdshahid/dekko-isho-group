@@ -3,7 +3,7 @@ import { ButtonArrow } from '../components/ui/ButtonArrow'
 import { SiteLayout } from '../layouts/SiteLayout'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 
-const NOT_FOUND_TITLE = 'Page Not Found | Dekko Isho Group'
+const NOT_FOUND_TITLE = 'Page Not Found | Dekko ISHO Group'
 
 export function NotFoundPage() {
   useWebflowClasses()

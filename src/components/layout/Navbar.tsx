@@ -245,16 +245,30 @@ function NavDropdown({ id, label, links, isOpen, onToggle, onClose }: NavDropdow
           <div className="dropdown-link-list">
             <div className="grid-dropdown">
               <div>
-                {links.map((link) => (
-                  <Link
-                    key={link.to + link.label}
-                    to={link.to}
-                    className={`dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
-                    onClick={onClose}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {links.map((link) => {
+                  if (link.shouldOpenInNewTab) {
+                    return <a
+                      key={link.to + link.label}
+                      href={link.to}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
+                      onClick={onClose}
+                    >
+                      {link.label}
+                    </a>
+                  }
+                  return (
+                    <Link
+                      key={link.to + link.label}
+                      to={link.to}
+                      className={`dropdown-link${isNavLinkActive(pathname, link.to) ? ' w--current' : ''}`}
+                      onClick={onClose}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -307,16 +321,32 @@ function MobileNavDropdown({ id, label, links, isOpen, onToggle, onNavigate }: M
         hidden={!isOpen}
       >
         <div className="mobile-nav-accordion-panel-inner">
-          {links.map((link) => (
-            <Link
-              key={link.to + link.label}
-              to={link.to}
-              className={`mobile-nav-sublink${isNavLinkActive(pathname, link.to) ? ' is-current' : ''}`}
-              onClick={onNavigate}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            if (link.shouldOpenInNewTab) {
+              return (
+                <a
+                  key={link.to + link.label}
+                  href={link.to}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`mobile-nav-sublink${isNavLinkActive(pathname, link.to) ? ' is-current' : ''}`}
+                  onClick={onNavigate}
+                >
+                  {link.label}
+                </a>
+              )
+            }
+            return (
+              <Link
+                key={link.to + link.label}
+                to={link.to}
+                className={`mobile-nav-sublink${isNavLinkActive(pathname, link.to) ? ' is-current' : ''}`}
+                onClick={onNavigate}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
         </div>
       </div>
     </div>

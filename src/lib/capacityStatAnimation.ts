@@ -8,7 +8,7 @@ export type CapacityCountValue = {
 
 /** Recognize a single number with an optional capacity suffix, preserving its formatting. */
 export function parseCapacityCountValue(value: string): CapacityCountValue | null {
-  const match = value.match(/^(\s*)((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)(\s*(?:(?:Million|M)\s*\+?|%|\+)?\s*)$/i)
+  const match = value.match(/^(\s*)((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)(\s*(?:(?:Billion|Million|B|M)\s*\+?|%|\+)?\s*)$/i)
   if (!match) return null
 
   const numeric = match[2].replace(/,/g, '')
@@ -25,7 +25,7 @@ export function parseCapacityCountValue(value: string): CapacityCountValue | nul
   }
 }
 
-export function formatCapacityCount(value: number, format: CapacityCountValue): string {
+export function formatCapacityCountNumber(value: number, format: CapacityCountValue): string {
   const numeric = format.decimals > 0
     ? value.toFixed(format.decimals)
     : String(Math.floor(value))
@@ -34,7 +34,11 @@ export function formatCapacityCount(value: number, format: CapacityCountValue): 
     ? integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     : integer
 
-  return `${format.prefix}${groupedInteger}${fraction === undefined ? '' : `.${fraction}`}${format.suffix}`
+  return `${groupedInteger}${fraction === undefined ? '' : `.${fraction}`}`
+}
+
+export function formatCapacityCount(value: number, format: CapacityCountValue): string {
+  return `${format.prefix}${formatCapacityCountNumber(value, format)}${format.suffix}`
 }
 
 /** Resolve letters from left to right without scrambling whitespace, punctuation, or digits. */

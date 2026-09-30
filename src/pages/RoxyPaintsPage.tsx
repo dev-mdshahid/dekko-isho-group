@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { RoxyPaintsContent } from './RoxyPaintsContent'
 
-const ROXY_PAINTS_TITLE = 'Roxy Paints Ltd. | Dekko Isho Group'
+const ROXY_PAINTS_TITLE = 'Roxy Paints Ltd. | Dekko ISHO Group'
 
 export function RoxyPaintsPage() {
   useWebflowClasses()

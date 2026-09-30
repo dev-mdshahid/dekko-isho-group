@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { SprintexContent } from './SprintexContent'
 
-const SPRINTEX_TITLE = 'Sprintex Enterprise | Dekko Isho Group'
+const SPRINTEX_TITLE = 'Sprintex Enterprise | Dekko ISHO Group'
 
 export function SprintexPage() {
   useWebflowClasses()

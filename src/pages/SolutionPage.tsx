@@ -20,7 +20,7 @@ export function SolutionPage() {
 
   return (
     <SiteLayout>
-      <PageMeta title={`${solution.title} | Dekko Isho Group`} />
+      <PageMeta title={`${solution.title} | Dekko ISHO Group`} />
       <SolutionContent solution={solution} />
     </SiteLayout>
   )

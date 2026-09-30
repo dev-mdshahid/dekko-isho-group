@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { GlobusGarmentsContent } from './GlobusGarmentsContent'
 
-const GLOBUS_GARMENTS_TITLE = 'Globus Garments Ltd. | Dekko Isho Group'
+const GLOBUS_GARMENTS_TITLE = 'Globus Garments Ltd. | Dekko ISHO Group'
 
 export function GlobusGarmentsPage() {
   useWebflowClasses()

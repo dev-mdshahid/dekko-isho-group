@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { ContactContent } from './ContactContent'
 
-const CONTACT_TITLE = 'Contact | Dekko Isho Group'
+const CONTACT_TITLE = 'Contact | Dekko ISHO Group'
 
 export function ContactPage() {
   useWebflowClasses()

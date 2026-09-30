@@ -51,7 +51,7 @@ const CompanyLogosSectionV2 = () => {
         className="company-logos-section-v2__viewport"
         tabIndex={0}
         role="region"
-        aria-label="Client logos. Focus or hover to pause scrolling."
+        aria-label="Client logos. Hover or use keyboard focus to pause scrolling."
       >
         <div className="company-logos-section-v2__track">
           <ul className="company-logos-section-v2__group">

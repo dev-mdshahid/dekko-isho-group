@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { SustainabilityContent } from './SustainabilityContent'
 
-const SUSTAINABILITY_TITLE = 'Sustainability | Dekko Isho Group'
+const SUSTAINABILITY_TITLE = 'Sustainability | Dekko ISHO Group'
 
 export function SustainabilityPage() {
   useWebflowClasses()

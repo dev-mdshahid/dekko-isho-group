@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { AwardsContent } from './AwardsContent'
 
-const AWARDS_TITLE = 'Awards & Certifications | Dekko Isho Group'
+const AWARDS_TITLE = 'Awards & Certifications | Dekko ISHO Group'
 
 export function AwardsPage() {
   useWebflowClasses()

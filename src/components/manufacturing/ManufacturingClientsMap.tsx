@@ -62,7 +62,7 @@ export function ManufacturingClientsMap({
         width={MAP_WIDTH}
         height={MAP_HEIGHT}
         projection="geoEqualEarth"
-        projectionConfig={{ center: [0, 3], scale: 171 }}
+        projectionConfig={{ center: [0, 3], scale: 200 }}
         role="group"
         aria-labelledby="mfg-clients-map-title mfg-clients-map-description"
       >
