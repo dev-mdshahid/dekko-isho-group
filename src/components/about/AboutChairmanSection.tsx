@@ -2,7 +2,8 @@ import { chairmanParagraphs, chairmanQuote } from '../../data/about/chairmanNote
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
-const CHAIRMAN_SECTION_BG = '/images/about/chairman-section-bg2.png'
+const CHAIRMAN_SECTION_ABSTRACT = '/images/about/about-section-abstract.png';
+const CHAIRMAN_SECTION_Chairman_IMAGE = '/images/about/about-section-chairman-image.png';
 const ABOUT_SECTION_BG = '/images/about/about-section-bg.jpg'
 
 export function AboutChairmanSection() {
@@ -28,9 +29,16 @@ export function AboutChairmanSection() {
         aria-hidden="true"
       >
         <img
-          src={CHAIRMAN_SECTION_BG}
+          src={CHAIRMAN_SECTION_Chairman_IMAGE}
           alt=""
-          className="about-chairman-visual-image"
+          className="about-chairman-visual-image about-chairman-visual-portrait"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={CHAIRMAN_SECTION_ABSTRACT}
+          alt=""
+          className="about-chairman-visual-image about-chairman-visual-abstract"
           loading="lazy"
           decoding="async"
         />
