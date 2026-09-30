@@ -2393,6 +2393,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: #f3f3f1;
   height: 90svh;
   background-image: radial-gradient(ellipse 55% 45% at 0% 0%,
