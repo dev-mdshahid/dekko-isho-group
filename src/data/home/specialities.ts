@@ -39,7 +39,7 @@ export const serviceSpecialities: ServiceSpeciality[] = [
     featureLabel: '',
     features: [
       'High-quality woven and denim garments, including bottoms, tops, outerwear, and accessories for men, women, and children.',
-      '3.5 million pieces/month',
+      '3.5M pieces/month',
       '18,000+ Skilled People',
     ],
     to: solutionPath('manufacturing'),

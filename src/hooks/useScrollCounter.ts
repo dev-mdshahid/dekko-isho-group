@@ -4,11 +4,26 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const COUNTER_BOUND_ATTR = 'data-counter-bound'
 
-function formatCountValue(val: number, decimals: number, suffix: string) {
+export function formatCompactNumber(value: number) {
+  const absoluteValue = Math.abs(value)
+  const units = [
+    { threshold: 1_000_000_000, suffix: 'B' },
+    { threshold: 1_000_000, suffix: 'M' },
+    { threshold: 1_000, suffix: 'K' },
+  ]
+  const unit = units.find(({ threshold }) => absoluteValue >= threshold)
+  if (!unit) return String(value)
+
+  const compactValue = value / unit.threshold
+  return `${compactValue.toFixed(2).replace(/\.?(0+)$/, '')}${unit.suffix}`
+}
+
+function formatCountValue(val: number, decimals: number, suffix: string, compact: boolean) {
   if (decimals > 0) {
     return `${val.toFixed(decimals)}${suffix}`
   }
-  return `${Math.floor(val).toLocaleString()}${suffix}`
+  const formatted = compact ? formatCompactNumber(Math.floor(val)) : Math.floor(val).toLocaleString()
+  return `${formatted}${suffix}`
 }
 
 function initScrollCounters(root: ParentNode = document) {
@@ -30,6 +45,7 @@ function initScrollCounters(root: ParentNode = document) {
         ? Number.parseInt(decimalsAttr, 10) || 0
         : 0
     const suffix = el.getAttribute('data-suffix') || ''
+    const compact = el.getAttribute('data-compact') !== 'false'
 
     const customDuration = el.getAttribute('data-duration')
     const duration =
@@ -51,7 +67,7 @@ function initScrollCounters(root: ParentNode = document) {
 
     if (!triggerEl) return
 
-    el.textContent = formatCountValue(0, decimals, suffix)
+    el.textContent = formatCountValue(0, decimals, suffix, compact)
 
     const obj = { val: 0 }
     const tween = gsap.to(obj, {
@@ -61,10 +77,10 @@ function initScrollCounters(root: ParentNode = document) {
       delay,
       paused: true,
       onUpdate: () => {
-        el.textContent = formatCountValue(obj.val, decimals, suffix)
+          el.textContent = formatCountValue(obj.val, decimals, suffix, compact)
       },
       onComplete: () => {
-        el.textContent = formatCountValue(target, decimals, suffix)
+        el.textContent = formatCountValue(target, decimals, suffix, compact)
       },
     })
 

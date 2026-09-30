@@ -203,7 +203,7 @@ export const designProductDevelopmentMaterials = {
       imageAlt: 'Fabric swatches hanging on racks in the material sourcing room',
       title: 'Global Fabric Sourcing & Innovation',
       description:
-        "We don't simply source fabrics – we discover materials that inspire the next generation of fashion. Our Fabric Sourcing & Innovation Team explores global textile fairs and sourcing destinations to identify emerging materials and enrich our Fabric Library with commercially relevant innovations.",
+        "We don’t simply source fabrics—we discover materials that inspire the next generation of fashion. Our Fabric Sourcing & Innovation Team explores global textile fairs and sourcing destinations to identify emerging materials and enrich our Fabric Library with commercially relevant innovations.",
     },
   ],
 }
@@ -213,7 +213,7 @@ export const designProductDevelopmentServices = {
   badge: 'Our Services',
   title: 'Pre-Production Quality Assurance — Key Highlights',
   description:
-    'Structured QA checkpoints before bulk production help protect fit, construction and finish — reducing rework and keeping timelines on track.',
+    'Structured QA checkpoints before bulk production help protect fit, construction, and finish—reducing rework and keeping timelines on track.',
   image: '/images/design%20and%20product/design%20and%20dev.png',
   imageAlt: 'Design and product development quality inspection',
   steps: [
@@ -222,7 +222,7 @@ export const designProductDevelopmentServices = {
       number: '01',
       title: 'Raw Material Selection & Inspection',
       items: [
-        'Inspect fabric quality, color and composition.',
+        'Inspect fabric quality, color, and composition.',
         'Check technical data sheet standards.',
         'Review supplier certifications and audits.',
       ],
@@ -232,7 +232,7 @@ export const designProductDevelopmentServices = {
       number: '02',
       title: 'Approved Sample Creation',
       items: [
-        'Finalize design, pattern and specification.',
+        'Finalize design, pattern, and specification.',
         'Develop prototype for approval.',
         'Set quality and reject criteria.',
       ],
@@ -539,7 +539,7 @@ export const designProductDevelopmentGallery = {
   badge: 'Co-Creation & Partnership',
   title: 'Better Products Are Crafted Together.',
   description:
-    'Our designers, fabric specialists, and product developers work closely with customers throughout every stage of the development journey — from trend exploration and material selection to prototyping, fit refinement, and final approval.',
+    'Our designers, fabric specialists, and product developers work closely with customers throughout every stage of the development journey—from trend exploration and material selection to prototyping, fit refinement, and final approval.',
   images: [
     {
       id: 'digital-design',

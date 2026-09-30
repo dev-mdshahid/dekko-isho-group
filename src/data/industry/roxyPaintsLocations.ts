@@ -5,7 +5,7 @@ export const roxyPaintsLocations: IndustryLocationProps = {
   badge: 'Paints & Coatings',
   title: 'Visit Roxy Paints Ltd.',
   description:
-    "Connect with Roxy Paints Ltd., one of Bangladesh's pioneering paint manufacturers, for interior, exterior, enamel, marine, industrial paint, primer, and coating solutions across residential, commercial, and industrial projects.",
+    "Connect with Roxy Paints Ltd., one of Bangladesh’s pioneering paint manufacturers, for interior, exterior, enamel, marine, industrial paint, primer, and coating solutions across residential, commercial, and industrial projects.",
   locations: [
     {
       id: 'head-office',

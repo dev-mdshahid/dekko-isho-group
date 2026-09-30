@@ -94,7 +94,7 @@ export const embroideryProductionCapacity = {
   stats: [
     {
       id: 'monthly-capacity',
-      value: '2.2 Billion',
+      value: '2.2B',
       label: 'Stitches/Month',
       variant: 'blue',
     },
@@ -160,9 +160,9 @@ export const embroideryProductionNetwork = {
       title: 'DGL Embroidery Unit',
       image: '/images/embroidery/network-dgl.png',
       imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
-      monthlyCapacity: '50,00,000',
+      monthlyCapacity: '50M+',
       monthlyCapacityLabel: 'Stitching capacity',
-      monthlyCapacityUnit: 'Stitches/day',
+      monthlyCapacityUnit: 'Stitches/Month',
       productionLines: '9',
       productionLinesLabel: 'Machines',
     },
@@ -171,9 +171,9 @@ export const embroideryProductionNetwork = {
       title: 'Globus Embroidery',
       image: '/images/embroidery/globus_embroidery2.png',
       imageAlt: 'Finished embroidered garments at Globus Embroidery',
-      monthlyCapacity: '350,000',
+      monthlyCapacity: '350K',
       monthlyCapacityLabel: 'Production capacity',
-      monthlyCapacityUnit: 'units/month',
+      monthlyCapacityUnit: 'Units/Month',
       productionLines: '6',
       productionLinesLabel: 'Machines',
     },
@@ -217,7 +217,7 @@ export const embroiderySpotlight = {
   badge: 'Applied Decoration',
   title: 'From Approved Artwork to Embroidered Bulk.',
   description:
-    "Globus Embroidery Ltd., a sister concern of Dekko ISHO Group, extends the group's decoration capacity alongside the DGL unit. Together with Sprintex Enterprise's digital textile printing, decoration stays inside the group – from logos and badges to prints on voile, viscose, and twill.",
+    "Globus Embroidery Ltd., a sister concern of Dekko ISHO Group, extends the group’s decoration capacity alongside the DGL unit. Together with Sprintex Enterprise’s digital textile printing, decoration stays inside the group—from logos and badges to prints on voile, viscose, and twill.",
   image: '/images/embroidery/embroidery-machines.jpg',
   imageAlt: 'Industrial embroidery machines in a production facility',
 }
@@ -227,7 +227,7 @@ export const embroideryQuality = {
   badge: 'Embroidery QA Process',
   title: 'Quality Control Before a Single Panel Moves.',
   description:
-    'Every embroidered panel passes through in-process quality control – from the placement standard set before bulk to a 100% check before panels reach the production floor.',
+    'Every embroidered panel passes through in-process quality control—from the placement standard set before bulk to a 100% check before panels reach the production floor.',
   items: [
     {
       id: 'placement',
@@ -252,7 +252,7 @@ export const embroideryQuality = {
       number: '03',
       title: '100% Panel Check',
       description:
-        'Every embroidered panel is checked — 100% inspection — before it is sent onward to the production floor.',
+        'Every embroidered panel is checked—100% inspection—before it is sent onward to the production floor.',
       image: '/images/embroidery/qa-process/panel-check.png',
       imageAlt: '100% panel inspection before production floor',
     },
@@ -279,9 +279,9 @@ export const embroideryCapacity = {
       id: 'dgl',
       title: 'DGL Embroidery Unit',
       items: [
-        '09 total machines – Barudan and Maya',
+        '09 total machines—Barudan and Maya',
         '86 team members',
-        '50 million stitches per day capacity',
+        '5M stitches per day capacity',
         'In-house printing, embroidery, and finishing',
       ],
     },
@@ -291,7 +291,7 @@ export const embroideryCapacity = {
       items: [
         '06 total machines',
         '56 team members',
-        '350,000 pieces capacity at average 1,000 stitches',
+        '350K pieces capacity at average 1K stitches',
       ],
     },
     {
@@ -299,7 +299,7 @@ export const embroideryCapacity = {
       title: 'Sprintex Enterprise',
       items: [
         'Digital inkjet printing for voile, viscose, twill, and more',
-        '936,000 yards yearly production capacity',
+        '936K yards yearly production capacity',
         '1 production line, 15 team members',
       ],
     },

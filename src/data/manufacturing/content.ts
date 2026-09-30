@@ -134,7 +134,7 @@ export const manufacturingCuttingPreparation = {
       number: '05',
       title: 'Fusing Stage',
       description:
-        'Fusing is applied where required to strengthen garment components such as collars, cuffs, plackets, waistbands and other structured areas. Temperature, pressure and timing are monitored to ensure bonding quality and long-term product durability.',
+        'Fusing is applied where required to strengthen garment components such as collars, cuffs, plackets, waistbands, and other structured areas. Temperature, pressure, and timing are monitored to ensure bonding quality and long-term product durability.',
       image: '/images/manufacturing/cutting/05-fusing.png',
       imageAlt: 'Industrial fusing machine on the production floor',
     },
@@ -143,7 +143,7 @@ export const manufacturingCuttingPreparation = {
       number: '06',
       title: 'Cut-Part Bundling',
       description:
-        'Cut components are numbered, bundled and prepared for line input with clear identification. This improves traceability, reduces mixing risk and allows sewing teams to begin assembly with organized production inputs.',
+        'Cut components are numbered, bundled, and prepared for line input with clear identification. This improves traceability, reduces mixing risk, and allows sewing teams to begin assembly with organized production inputs.',
       image: '/images/manufacturing/cutting/06-bundling.png',
       imageAlt: 'Cut-part bundling equipment',
     },
@@ -160,19 +160,19 @@ export const manufacturingCapacity = {
   stats: [
     {
       id: 'total-capacity',
-      value: '3.5 M+',
+      value: '3.5M+',
       label: 'Total Capacity (units)',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5 M+',
+      value: '2.5M+',
       label: 'Woven Tops (units)',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0 M+',
+      value: '1M+',
       label: 'Woven Bottoms (units)',
       variant: 'navy',
     },
@@ -197,19 +197,19 @@ export const MANUFACTURING_CAPACITY = {
   stats: [
     {
       id: 'total-capacity',
-      value: '3.5 M+',
+      value: '3.5M+',
       label: 'Total Capacity (units)',
       variant: 'blue',
     },
     {
       id: 'woven-tops',
-      value: '2.5 M+',
+      value: '2.5M+',
       label: 'Woven Tops (units)',
       variant: 'sky',
     },
     {
       id: 'woven-bottoms',
-      value: '1.0 M+',
+      value: '1M+',
       label: 'Woven Bottoms (units)',
       variant: 'navy',
     },
@@ -492,7 +492,7 @@ export const manufacturingCapacityDetails = {
       number: '06',
       title: 'Versatile Manufacturing Capability',
       description:
-        'Capable of producing a wide range of products, including both formal and casual shirts, pants, ladies\' blouses, dresses, denim and twill jackets, shackets, quilted shirts and jackets.',
+        'Capable of producing a wide range of products, including both formal and casual shirts, pants, ladies’ blouses, dresses, denim and twill jackets, shackets, quilted shirts, and jackets.',
     },
   ],
 }
@@ -501,13 +501,13 @@ export const manufacturingQuality = {
   badge: 'Quality & Compliance',
   title: 'Built on Standards You Can Trust',
   description:
-    'Every facility operates under internationally recognised certifications — from social compliance to environmental management.',
+    'Every facility operates under internationally recognized certifications — from social compliance to environmental management.',
   items: [
     {
       id: 'q1',
       number: '01',
       title: 'Social Compliance',
-      description: 'BSCI, WRAP and ethical audit programmes across all manufacturing units.',
+      description: 'BSCI, WRAP and ethical audit programs across all manufacturing units.',
       image: '/images/about/compliance.jpg',
       imageAlt: 'Social compliance audit',
     },
@@ -523,7 +523,7 @@ export const manufacturingQuality = {
       id: 'q3',
       number: '03',
       title: 'Product Testing',
-      description: 'In-house and third-party lab testing for colour fastness, shrinkage and safety.',
+      description: 'In-house and third-party lab testing for color fastness, shrinkage and safety.',
       image: '/images/about/design.jpg',
       imageAlt: 'Product testing laboratory',
     },
@@ -547,7 +547,7 @@ export const manufacturingQuality = {
       id: 'q6',
       number: '06',
       title: 'Chemical Management',
-      description: 'Restricted substances lists, chemical inventory and MRSL compliance programmes.',
+      description: 'Restricted substances lists, chemical inventory and MRSL compliance programs.',
       image: '/images/about/laundry.jpg',
       imageAlt: 'Chemical management in laundry',
     },
@@ -622,8 +622,8 @@ export const manufacturingProductionNetwork = {
       image: mfgProductNetworkImage('network-dgl.png'),
       imageAlt: 'Colorful garments hanging on production racks',
       productionLines: '46',
-      monthlyCapacity: '14,40,000',
-      manpower: '6,800',
+      monthlyCapacity: '1.44M',
+      manpower: '6.8K',
       products:
         'Formal and Casual shirt, Casual bottom for both men & Ladies. (60% capacity for tops and 40% for bottom)',
       higgFfm: '83%',
@@ -635,9 +635,9 @@ export const manufacturingProductionNetwork = {
       image: mfgProductNetworkImage('network-drl.png'),
       imageAlt: 'Readywear garments on studio hanging system',
       productionLines: '24',
-      monthlyCapacity: '7,50,000',
-      manpower: '3,150',
-      products: "70% men's casual, 20% ladies' and 10% kids'",
+      monthlyCapacity: '750K',
+      manpower: '3.15K',
+      products: "70% men’s casual, 20% ladies’, and 10% kids’",
       higgFfm: '75%',
       rscProgress: '100%',
     },
@@ -647,9 +647,9 @@ export const manufacturingProductionNetwork = {
       image: mfgProductNetworkImage('DFL-Card-Image.png'),
       imageAlt: 'Fashion display mannequins in red and white looks',
       productionLines: '10',
-      monthlyCapacity: '3,00,000',
-      manpower: '1,450',
-      products: "80% men's & Ladies' casual products, 15% formal men's, 5% kids'",
+      monthlyCapacity: '300K',
+      manpower: '1.45K',
+      products: "80% men’s & ladies’ casual products, 15% formal men’s, 5% kids’",
       higgFfm: '68%',
       rscProgress: '100%',
     },
@@ -659,8 +659,8 @@ export const manufacturingProductionNetwork = {
       image: mfgProductNetworkImage('AFL-Card-Image.png'),
       imageAlt: 'Lifestyle fashion portrait in a forest setting',
       productionLines: '08',
-      monthlyCapacity: '300,000',
-      manpower: '1,200(AP.)',
+      monthlyCapacity: '300K',
+      manpower: '1.2K (AP.)',
       products: '70% bottom for Kids, Men & Ladies, 30% Jackets and overshirts',
       higgFfm: '81%',
       rscProgress: '97%',
@@ -676,7 +676,7 @@ export const manufacturingFactories = {
       id: 'knitwears',
       title: 'Dekko Isho Knitwears Ltd.',
       description:
-        'Dedicated knitwear facility with circular and flat knitting lines, dyeing and finishing — serving leading global brands.',
+        'Dedicated knitwear facility with circular and flat knitting lines, dyeing, and finishing—serving leading global brands.',
       image: '/images/skyview-company.png',
       imageAlt: 'Dekko Isho Knitwears factory interior',
       href: '/contact',
@@ -685,7 +685,7 @@ export const manufacturingFactories = {
       id: 'garments',
       title: 'Dekko Isho Garments Ltd.',
       description:
-        'High-volume woven garment production with cutting, sewing, washing and export-ready finishing under one roof.',
+        'High-volume woven garment production with cutting, sewing, washing, and export-ready finishing under one roof.',
       image: '/images/corporate-building.png',
       imageAlt: 'Dekko Isho Garments factory',
       href: '/contact',
@@ -910,7 +910,7 @@ export const manufacturingJourney = {
   badge: 'Manufacturing Journey',
   title: 'From Sourcing to Packing.',
   description:
-    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
+    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality—with complete visibility and control from raw materials to final shipment.',
   stages: [
     {
       id: 'material-sourcing',
@@ -997,7 +997,7 @@ export const manufacturingJourneyRoadmap = {
   badge: 'Manufacturing Journey',
   title: 'From Sourcing to Packing.',
   description:
-    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
+    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality—with complete visibility and control from raw materials to final shipment.',
   stages: [
     {
       id: 'material-sourcing',

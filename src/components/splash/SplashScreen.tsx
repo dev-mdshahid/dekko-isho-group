@@ -310,7 +310,7 @@ export function SplashScreen() {
       role="status"
       aria-live="polite"
       aria-busy={isActive}
-      aria-label="Loading Dekko Isho Group"
+      aria-label="Loading Dekko ISHO Group"
     >
       <div
         ref={backdropRef}
@@ -329,7 +329,7 @@ export function SplashScreen() {
           <img
             ref={logoRef}
             src={LOGO_SRC}
-            alt="Dekko Isho Group"
+            alt="Dekko ISHO Group"
             className="splash-logo"
             width={320}
             height={128}

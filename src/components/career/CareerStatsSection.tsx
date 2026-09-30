@@ -1,7 +1,7 @@
 import { Fragment, useRef } from 'react'
 
 import { careerStats } from '../../data/career/content'
-import { useScrollCounter } from '../../hooks/useScrollCounter'
+import { formatCompactNumber, useScrollCounter } from '../../hooks/useScrollCounter'
 import { FadeIn } from '../ui/FadeIn'
 
 export function CareerStatsSection() {
@@ -16,7 +16,10 @@ export function CareerStatsSection() {
             {careerStats.map((stat, index) => {
               const numericTarget =
                 (stat.countTarget ?? Number.parseInt(stat.value.replace(/\D/g, ''), 10)) || 0
-              const formattedTarget = numericTarget.toLocaleString()
+              const usesCompanyEmployeeFormat = stat.id === 'career-stat-employees'
+              const formattedTarget = usesCompanyEmployeeFormat
+                ? numericTarget.toLocaleString()
+                : formatCompactNumber(numericTarget)
 
               return (
                 <Fragment key={stat.id}>
@@ -40,6 +43,7 @@ export function CareerStatsSection() {
                             data-scroll-trigger="#career-stats-grid"
                             data-scroll-start="top bottom"
                             data-delay={String(index * 0.1)}
+                            data-compact={usesCompanyEmployeeFormat ? 'false' : undefined}
                           >
                             0
                           </span>

@@ -46,7 +46,7 @@ export type CareerHeroCarouselSlide = {
 export const careerBanner = {
   headline: 'A Workplace Built for Excellence.',
   description:
-    "At Dekko ISHO Group, work is more than what we do—it's how we learn, collaborate, innovate, and grow together. Every day brings new opportunities to create meaningful impact while building a career you'll be proud of.",
+    "At Dekko ISHO Group, work is more than what we do—it’s how we learn, collaborate, innovate, and grow together. Every day brings new opportunities to create meaningful impact while building a career you’ll be proud of.",
   ctaLabel: 'Explore Opportunities',
   ctaHref: '#open-positions',
   watermark: 'SINCE 1953',
@@ -99,8 +99,8 @@ export const careerWorkplace = {
   badge: 'Our Culture',
   title: 'More Than a Workplace',
   description: [
-    "Because careers aren't built by titles alone. They're built by people who inspire you, challenges that push you forward, and a culture that helps you become your best.",
-    "Here, you'll find opportunities to learn continuously, collaborate across businesses, celebrate achievements, and create lasting impact.",
+    "Because careers aren’t built by titles alone. They’re built by people who inspire you, challenges that push you forward, and a culture that helps you become your best.",
+    "Here, you’ll find opportunities to learn continuously, collaborate across businesses, celebrate achievements, and create lasting impact.",
   ],
   image: '/images/career/more-than-a-workplace.png',
   imageAlt:
@@ -136,9 +136,9 @@ export const careerWhy = {
 }
 
 export const careerStats: CareerStat[] = [
-  { id: 'career-stat-employees', value: '10,000+', countTarget: 10000, suffix: '+', label: 'EMPLOYEES WORLDWIDE' },
+  { id: 'career-stat-employees', value: '18,000+', countTarget: 18000, suffix: '+', label: 'EMPLOYEES WORLDWIDE' },
   { id: 'career-stat-verticals', value: '4', countTarget: 4, label: 'BUSINESS VERTICALS' },
-  { id: 'career-stat-years', value: '30+', countTarget: 30, suffix: '+', label: 'YEARS OF EXCELLENCE' },
+  { id: 'career-stat-years', value: '70+', countTarget: 70, suffix: '+', label: 'YEARS OF EXCELLENCE' },
   { id: 'career-stat-countries', value: '20+', countTarget: 20, suffix: '+', label: 'COUNTRIES SERVED' },
 ]
 
@@ -197,7 +197,7 @@ export const careerOpenPositions = {
 export const careerEmployeeVoices = {
   badge: 'Employee Voices',
   headline:
-    `"At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives and everyday contributions reflect the culture, ambition and diversity of our Group"`,
+    `"At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives, and everyday contributions reflect the culture, ambition, and diversity of our Group"`,
   testimonials: [
     {
       id: 'career-voice-01',
@@ -327,7 +327,7 @@ export const careerGrowthTogether = {
   stats: [
     {
       id: 'people',
-      value: '20,000+',
+      value: '18,000+',
       label: 'People Growing Together',
       variant: 'blue',
     },
@@ -367,7 +367,7 @@ export const careerGrowthTogether = {
 export const careerApplyCta = {
   badge: 'Career',
   heading: 'Ready to Grow with Us?',
-  description: "Send us your profile and let's start a conversation about your future.",
+  description: "Send us your profile and let’s start a conversation about your future.",
   buttonLabel: 'Apply Now',
   buttonHref: '/contact',
 }

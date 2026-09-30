@@ -7,7 +7,7 @@ const TRANSITION_DURATION = 0.65
 const ABOUT_SLIDES = [
   {
     src: '/images/about/about-slider/about-slide-10.png',
-    alt: 'Colleagues walking through a modern open-plan office at Dekko Isho Group',
+    alt: 'Colleagues walking through a modern open-plan office at Dekko ISHO Group',
   },
   {
     src: '/images/about/about-slider/about-slide-11.png',
@@ -236,7 +236,7 @@ export function AboutImageSlideshow() {
       className="about-image-slideshow"
       role="region"
       aria-roledescription="carousel"
-      aria-label="About Dekko Isho Group"
+      aria-label="About Dekko ISHO Group"
       aria-live="polite"
       tabIndex={0}
       onKeyDown={handleKeyDown}

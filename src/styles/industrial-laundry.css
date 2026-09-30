@@ -217,6 +217,7 @@
 
 .industrial-laundry-page .il-research-section.split-feature-list-section--carousel {
   --il-carousel-content-left: clamp(56px, 5vw, 88px);
+  --il-carousel-content-bottom: clamp(36px, 4vw, 52px);
 
   padding: 0;
   overflow: hidden;
@@ -324,7 +325,7 @@
   position: absolute;
   z-index: 2;
   right: clamp(32px, 5vw, 76px);
-  bottom: 42px;
+  bottom: calc(var(--il-carousel-content-bottom) + 26px);
   left: var(--il-carousel-content-left);
   max-width: 620px;
   padding: 20px 24px 20px 0;
@@ -351,6 +352,7 @@
 
 .industrial-laundry-page .il-research-section .split-feature-list-carousel-dots {
   left: var(--il-carousel-content-left);
+  bottom: var(--il-carousel-content-bottom);
   display: flex;
   gap: 9px;
   align-items: center;
@@ -400,6 +402,7 @@
 
   .industrial-laundry-page .il-research-section.split-feature-list-section--carousel {
     --il-carousel-content-left: 48px;
+    --il-carousel-content-bottom: 32px;
 
     padding: 0;
   }
@@ -425,7 +428,7 @@
 
   .industrial-laundry-page .il-research-section .split-feature-list-carousel-overlay {
     right: 24px;
-    bottom: 28px;
+    bottom: calc(var(--il-carousel-content-bottom) + 24px);
     left: var(--il-carousel-content-left);
     padding: 16px 18px 16px 0;
   }
@@ -470,6 +473,7 @@
 
   .industrial-laundry-page .il-research-section.split-feature-list-section--carousel {
     --il-carousel-content-left: var(--_layout---container-gutter);
+    --il-carousel-content-bottom: 24px;
 
     padding: 0;
   }
@@ -500,7 +504,7 @@
 
   .industrial-laundry-page .il-research-section .split-feature-list-carousel-overlay {
     right: var(--_layout---container-gutter);
-    bottom: 24px;
+    bottom: calc(var(--il-carousel-content-bottom) + 24px);
     left: var(--il-carousel-content-left);
     padding: 16px 16px 16px 0;
   }

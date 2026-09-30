@@ -26,7 +26,7 @@ export function ContactLocationMapSection() {
   return (
     <section
       className="page-contact-map-section"
-      aria-label="Dekko Isho Group location map"
+      aria-label="Dekko ISHO Group location map"
     >
       <div className="page-contact-map-wrap">
         <div className="page-contact-map-overlay">
@@ -55,7 +55,7 @@ export function ContactLocationMapSection() {
               target="_blank"
               rel="noreferrer"
               className="page-contact-map-overlay-action"
-              aria-label="Open Dekko Isho Group location in Google Maps"
+              aria-label="Open Dekko ISHO Group location in Google Maps"
             >
               <ExternalLink
                 className="page-contact-map-overlay-action-icon"
@@ -77,7 +77,7 @@ export function ContactLocationMapSection() {
         </div>
 
         <iframe
-          title="Dekko Isho Group location map"
+          title="Dekko ISHO Group location map"
           src={getContactMapEmbedUrl()}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

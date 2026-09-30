@@ -647,7 +647,7 @@ export function AboutSection() {
               </h2>
             </FadeIn>
             <FadeIn id="017b83dc-7656-67a6-b23e-69b6032ef810" variant="slide-in-bottom" delay={150} className="about-description">
-              <p>Six industries. One vision. We don't follow the future, we craft it.</p>
+              <p>Six industries. One vision. We don’t follow the future, we craft it.</p>
             </FadeIn>
             <FadeIn id="5a23ee6f-035d-2255-fd4f-73aa8e89689a" variant="slide-in-bottom" delay={300} className="about-button-wrap">
               <ButtonArrow to="/about" label="Learn more about us" />

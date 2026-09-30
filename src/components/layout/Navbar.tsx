@@ -520,7 +520,7 @@ export function Navbar() {
               ref={logoRef}
               src="/dekko-logo.svg"
               loading="eager"
-              alt="Dekko Isho Group"
+              alt="Dekko ISHO Group"
               className="logo"
               data-splash-logo-target=""
               style={{ width: 'auto', height: isMobileNav ? '50px' : '64px', objectFit: 'contain' }}

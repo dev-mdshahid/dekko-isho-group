@@ -81,7 +81,7 @@ export function AwardsHeroSection() {
             <img
               ref={imageRef}
               src={AWARDS_BANNER}
-              alt="Dekko Isho Group team at an awards ceremony"
+              alt="Dekko ISHO Group team at an awards ceremony"
               className="awards-hero-banner-image"
               width={1920}
               height={1080}

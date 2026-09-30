@@ -101,7 +101,7 @@ export function NavSocialCycle() {
       target="_blank"
       rel="noreferrer"
       className="nav-social-cycle"
-      aria-label={`Dekko Isho Group on ${active.label}`}
+      aria-label={`Dekko ISHO Group on ${active.label}`}
       style={{ '--nav-cycle-brand': active.brandColor } as CSSProperties}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}

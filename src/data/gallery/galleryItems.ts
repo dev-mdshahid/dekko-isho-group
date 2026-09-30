@@ -15,7 +15,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 'industrial-complex-aerial',
     src: `${GALLERY_BASE}/dc4447a7d89a5e89fb2432d30d4fb57780a2cd68.png`,
-    alt: 'Aerial view of industrial complex with solar-panelled roofs',
+    alt: 'Aerial view of industrial complex with solar-paneled roofs',
   },
   {
     id: 'retail-store-interior',

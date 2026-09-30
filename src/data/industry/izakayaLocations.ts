@@ -5,7 +5,7 @@ export const izakayaLocations: IndustryLocationProps = {
   badge: 'Restaurants',
   title: 'Visit IZAKAYA Across Dhaka.',
   description:
-    "Experience IZAKAYA's Japanese-inspired dining across Dhaka, where sushi, ramen, small plates, and fusion flavors come together in a warm, modern restaurant atmosphere.",
+    "Experience IZAKAYA’s Japanese-inspired dining across Dhaka, where sushi, ramen, small plates, and fusion flavors come together in a warm, modern restaurant atmosphere.",
   locations: [
     {
       id: 'dhanmondi',

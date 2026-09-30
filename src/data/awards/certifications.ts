@@ -9,7 +9,7 @@ export type Certification = {
 const awardDocument = (file: string) => `/documents/awards/${file}`
 
 export const awardsHeroDescriptionParts = [
-  'We communicate our safety, social and environmental measures externally in a credible and transparent way.',
+  'We communicate our safety, social, and environmental measures externally in a credible and transparent way.',
   'Our certifications reflect our unwavering commitment to safety, sustainability and transparency—across every fiber, process and partnership.',
 ] as const
 

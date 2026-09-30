@@ -28,7 +28,7 @@ export const journeyMilestones: JourneyMilestone[] = [
       {
         title: 'Roxy Paints Ltd.',
         description:
-          "Three young entrepreneurs invest in a new idea. Bangladesh's first color paint manufacturer is born — and a 70-year legacy of innovation begins.",
+          "Three young entrepreneurs invest in a new idea. Bangladesh’s first color paint manufacturer is born—and a 70-year legacy of innovation begins.",
         companyLogo: "/images/about/company-logo/roxy-paints3.svg",
       },
     ],
@@ -41,7 +41,7 @@ export const journeyMilestones: JourneyMilestone[] = [
       {
         title: 'Dekko Garments Ltd. (Old Factory)',
         description:
-          'Our apparel manufacturing journey started with just 3 production lines — eventually expanding to over 130+.',
+          'Our apparel manufacturing journey started with just 3 production lines—eventually expanding to over 130+.',
       },
     ],
   },
@@ -53,7 +53,7 @@ export const journeyMilestones: JourneyMilestone[] = [
       {
         title: 'Dekko Fashions Ltd.',
         description:
-          'Formerly Dekko Apparels Ltd. — a 100% export-oriented woven garments concern.',
+          'Formerly Dekko Apparels Ltd.—a 100% export-oriented woven garments concern.',
       },
     ],
   },
@@ -75,7 +75,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     entries: [
       {
         title: 'Globus Garments Ltd.',
-        description: '19 production lines. 300,000 garments produced per month.',
+        description: '19 production lines. 300K garments produced per month.',
       },
     ],
   },
@@ -116,12 +116,12 @@ export const journeyMilestones: JourneyMilestone[] = [
       {
         title: 'Globus Embroidery',
         description:
-          'A state-of-the-art embroidery facility delivering precision, quality and versatility.',
+          'A state-of-the-art embroidery facility delivering precision, quality, and versatility.',
       },
       {
         title: 'IZAKAYA',
         description:
-          'Contemporary Japanese dining — authentic flavors with a modern culinary experience.',
+          'Contemporary Japanese dining—authentic flavors with a modern culinary experience.',
         companyLogo: "/images/about/company-logo/izakaya3.svg",
       },
       {

@@ -25,7 +25,7 @@ export const strategySection = {
   titleHighlight: 'Sustainability',
   titleSuffix: 'Goals — 2030',
   description:
-    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility and exemplary governance — extending beyond our own operations to our entire value chain.',
+    'Our strategy is built on driving measurable, long-term impact across environmental stewardship, social responsibility, and exemplary governance—extending beyond our own operations to our entire value chain.',
   backgroundImage: '/images/sustainability/goals/sdg-section-bg.png',
 }
 
@@ -380,11 +380,11 @@ export const pillar01FocusAreas: FocusAreaCard[] = [
   },
   {
     id: 'grey-water',
-    title: 'Grey Water Treatment Plant',
+    title: 'Gray Water Treatment Plant',
     images: [
       {
         src: pillar1Image('8. Grey Water Treatment Plant', '8.-Grey-Water-Treatment-Plant.png'),
-        alt: 'Grey water treatment plant equipment and storage',
+        alt: 'Gray water treatment plant equipment and storage',
       },
     ],
   },
@@ -474,14 +474,14 @@ export const pillar01 = {
   badge: 'Pillar 01',
   title: 'Environmental Excellence',
   description:
-    'The Earth is our only home. We account for every environment-related impact and take proper measures to mitigate it – powering efficiency and driving the transition to clean energy.',
+    'The Earth is our only home. We account for every environment-related impact and take proper measures to mitigate it—powering efficiency and driving the transition to clean energy.',
   initiatives: [
     {
       id: 'energy',
       number: '01',
       title: 'Energy Management & Climate Action',
       description:
-        'Tracking and refining energy use across operations - solar, I-REC and efficiency on the path to 80% clean energy by 2030.',
+        'Tracking and refining energy use across operations—solar, I-REC, and efficiency on the path to 80% clean energy by 2030.',
       metricValue: '1.76 MWp',
       metricLabel: 'Solar capacity installed',
       image: pillar1Image('energy-management.png'),
@@ -507,14 +507,14 @@ export const pillar01 = {
       metricValue: '766k m³',
       metricLabel: 'withdrawal tracked (2025)',
       image: pillar1Image('water-stewardship.jpg'),
-      imageAlt: 'Flowing water representing water stewardship programmes',
+      imageAlt: 'Flowing water representing water stewardship programs',
     },
     {
       id: 'effluent',
       number: '04',
       title: 'Effluent & Wastewater Management',
       description:
-        'Reducing pollution and maximising water reuse with advanced treatment to protect surrounding communities.',
+        'Reducing pollution and maximizing water reuse with advanced treatment to protect surrounding communities.',
       metricValue: '130 m³/hr',
       metricLabel: 'ETP capacity & ZLD by 2030',
       image: pillar1Image('wastewater-management.jpg'),
@@ -525,7 +525,7 @@ export const pillar01 = {
       number: '05',
       title: 'Waste Management & Circularity',
       description:
-        'A circular system where resources are reused and repurposed – textiles, paper, lube oil and e-waste, via certified partners.',
+        'A circular system where resources are reused and repurposed—textiles, paper, lube oil, and e-waste, via certified partners.',
       metricValue: '650T',
       metricLabel: 'Textile waste recycled',
       image: pillar1Image('waste-management.jpg'),
@@ -536,7 +536,7 @@ export const pillar01 = {
       number: '06',
       title: 'Energy Management & Climate Action',
       description:
-        'System-driven control aligned to global standards – 88% Higg FEM, digital tracking via BHive & CleanChain, zero compromise.',
+        'System-driven control aligned to global standards—88% Higg FEM, digital tracking via BHive & CleanChain, zero compromise.',
       metricValue: '100%',
       metricLabel: 'ZDHC Level 3 compliant',
       image: pillar1Image('energy-management-2.png'),
@@ -549,7 +549,7 @@ export const pillar01 = {
     {
       id: 'irec',
       type: 'stat',
-      value: '13,421',
+      value: '13.42K',
       suffix: ' MWh',
       labelLines: ['I-REC purchased', 'for 2025'],
     },
@@ -714,14 +714,14 @@ export const pillar02 = {
   badge: 'Pillar 02',
   title: 'Social Empowerment',
   description:
-    'We place our people at the centre of everything we do – nurturing wellbeing, safety and growth, then extending that responsibility outward through CSR for the communities where we operate.',
+    'We place our people at the center of everything we do—nurturing wellbeing, safety, and growth, then extending that responsibility outward through CSR for the communities where we operate.',
   cards: [
     {
       id: 'employees',
       number: '01',
       title: 'Employee Support & Inclusion',
       description:
-        'Meaningful benefits and continuous support – performance & festival bonuses, maternity benefits, loan facilities and the Aastha fair-price shop.',
+        'Meaningful benefits and continuous support—performance & festival bonuses, maternity benefits, loan facilities, and the Aastha fair-price shop.',
       image: pillar2Image('empowering-employees.jpg'),
       imageAlt: 'Employees gathered outside the Aastha fair-price shop',
     },
@@ -732,7 +732,7 @@ export const pillar02 = {
       description:
         'Childcare facilities, nutritional support for children & pregnant employees, on-site medical care, free eye-test campaigns and celebration days.',
       image: pillar2Image('employee-wellness.jpg'),
-      imageAlt: 'Children at an employee wellness programme',
+      imageAlt: 'Children at an employee wellness program',
     },
     {
       id: 'upskilling',
@@ -748,7 +748,7 @@ export const pillar02 = {
       number: '04',
       title: 'Community Impact',
       description:
-        'Nutrition, education, healthcare and disaster support — 510 family food packages, 150,000 vegetable seeds, and aid for single mothers and children.',
+        'Nutrition, education, healthcare, and disaster support—510 family food packages, 150K vegetable seeds, and aid for single mothers and children.',
       image: pillar2Image('community-care.png'),
       imageAlt: 'Community members receiving relief supplies',
     },
@@ -825,13 +825,13 @@ export const pillar03 = {
   badge: 'Pillar 03',
   title: 'Material Sustainability',
   description:
-    'Responsible sourcing, environmental stewardship and full supply-chain transparency – every garment powered by verified, end-to-end traceable data, from fibre to retail.',
+    'Responsible sourcing, environmental stewardship, and full supply-chain transparency—every garment powered by verified, end-to-end traceable data, from fiber to retail.',
   image: '/images/sustainability/pillar-3/sustainability-pillar03-cover.png',
   imageAlt:
     'Watercolor illustration of green trees blending into a sustainable manufacturing facility',
   sustainablePercentage: 81,
   sustainableLabel:
-    'of our material mix is now sustainably sourced – up across cotton, flax and circular fibres.',
+    'of our material mix is now sustainably sourced—up across cotton, flax, and circular fibers.',
   materialsChartTitle: 'Top 5 Sustainable Materials Uptake',
   materials: [
     { id: 'bci', name: 'BCI Cotton', percentage: 37 },
@@ -908,7 +908,7 @@ export const pillar04 = {
   badge: 'Pillar 04',
   title: 'Governance',
   description:
-    'Ethics, compliance and accountability embedded into daily operations – governing how we work with people, partners and the planet.',
+    'Ethics, compliance, and accountability embedded into daily operations—governing how we work with people, partners, and the planet.',
   heroImage: pillar4Image('pillar-4-cover.png'),
   heroImageAlt: 'Team member presenting anti-corruption collective action frameworks',
   topics: [
@@ -978,7 +978,7 @@ export const pillar05 = {
       coverImage: '/images/sustainability/pillar-5/sustainability-report-2024.png',
       title: 'Sustainability Report 2024',
       description:
-        'Our first transparent view of the journey toward responsible and sustainable operations – structured disclosures and comprehensive data across E, S & G.',
+        'Our first transparent view of the journey toward responsible and sustainable operations—structured disclosures and comprehensive data across E, S & G.',
       variant: 'light' as const,
       pdfHref: '/documents/sustainability/sustainability-report-2024.pdf',
     },
@@ -987,7 +987,7 @@ export const pillar05 = {
       coverImage: '/images/sustainability/pillar-5/sustainability-report-2025.png',
       title: 'Sustainability Report 2025',
       description:
-        'Progress against our ESG Strategy 2030 – energy transition, circularity, social impact and the deepening of supply-chain traceability.',
+        'Progress against our ESG Strategy 2030—energy transition, circularity, social impact, and the deepening of supply-chain traceability.',
       variant: 'dark' as const,
       pdfHref: '/sustainability-report-2025',
     },

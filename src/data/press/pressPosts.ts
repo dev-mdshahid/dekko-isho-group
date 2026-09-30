@@ -29,21 +29,21 @@ export const pressPosts: PressPost[] = [
       <p>The key vision of Fashol is creating value for the agri ecosystem of Bangladesh. Their business provides higher profit margins &amp; on time payments to the farmers, doorstep delivery for customers, hygienic vegetables &amp; fruits, &amp; hassle-free business for the retailers, and additionally traceable and safe food for the consumers.</p>
       <p>&ldquo;Agri sector is one of the biggest economic drivers of our country. That being said, the whole ecosystem is still working as it was 150 years ago. We need to put more resources and talents in this sector to get this whole ecosystem ready for the next technological era.&rdquo; said Sakib Hossain, CEO and Founder of the venture. &ldquo;We have been fortunate to get the chance to work with such a remarkable team and the partnership we have received from Dekko ISHO Group. This took us a big stride forward to fulfill our ultimate vision with Dekko ISHO.&rdquo; he added.</p>
       <blockquote><p>&ldquo;We want to bring the power of technology in the agri eco-system.&rdquo;</p><p>&mdash; Sakib Hossain, Founder &amp; CEO, Fashol Dotcom Ltd.</p></blockquote>
-      <p>Fashol Dotcom started their journey in October 2020, and have successfully distributed around 1.5 million kgs of vegetables and fruits among retailers.</p>
-      <p>The signing ceremony took place on 16th October, which is observed worldwide as World Food Day 2021, which was also celebrated by the company through the distribution of lunch meals to 2000 less fortunate individuals, while Fashol provided grocery packs for 500 individuals. This initiative was undertaken in partnership with the non-profit organization Bidyanondo Foundation.</p>
+      <p>Fashol Dotcom started their journey in October 2020, and have successfully distributed around 1.5M kgs of vegetables and fruits among retailers.</p>
+      <p>The signing ceremony took place on 16th October, which is observed worldwide as World Food Day 2021, which was also celebrated by the company through the distribution of lunch meals to 2K less fortunate individuals, while Fashol provided grocery packs for 500 individuals. This initiative was undertaken in partnership with the non-profit organization Bidyanondo Foundation.</p>
     `,
   },
   {
     slug: 'signing-ceremony-of-dekko-isho-group-markopolo-ai',
-    title: 'Signing Ceremony of DEKKO ISHO Group & Markopolo.AI',
+    title: 'Signing Ceremony of Dekko ISHO Group & Markopolo.AI',
     category: 'Technology',
     date: 'August 10, 2021',
     excerpt:
-      'A Signing Ceremony was held between DEKKO ISHO Group & Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16.',
+      'A Signing Ceremony was held between Dekko ISHO Group & Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16.',
     image: '/images/press/markopolo-banner.png',
     imageAlt: 'Signing ceremony banner for Dekko ISHO Group and Markopolo.ai',
     content: `
-      <p>A Signing Ceremony was held between DEKKO ISHO Group &amp; Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16 (Old).</p>
+      <p>A Signing Ceremony was held between Dekko ISHO Group &amp; Markopolo.Ai at Dekko ISHO Corporate Office, Suvastu Zenim Plaza, House no.37, Road 16 (Old).</p>
       <p>The ceremony marked a strategic partnership between Dekko ISHO Group and Markopolo.ai, bringing together one of Bangladesh&rsquo;s leading conglomerates and a deep tech startup providing cloud-based digital advertising automation for businesses worldwide.</p>
     `,
   },

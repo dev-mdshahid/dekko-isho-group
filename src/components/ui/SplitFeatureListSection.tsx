@@ -62,7 +62,6 @@ export function SplitFeatureListSection({
   variant = 'list',
 }: SplitFeatureListSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
   const [isFocusWithin, setIsFocusWithin] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
@@ -75,7 +74,6 @@ export function SplitFeatureListSection({
   const hasIcons = items.some((item) => Boolean(item.icon))
   const isCarousel = variant === 'carousel' && items.length > 0
   const hasMultipleSlides = isCarousel && items.length > 1
-  const isPaused = isHovered || isFocusWithin
 
   const baseId = id ?? 'split-feature'
 
@@ -126,7 +124,7 @@ export function SplitFeatureListSection({
   useEffect(() => {
     if (
       !hasMultipleSlides ||
-      isPaused ||
+      isFocusWithin ||
       prefersReducedMotion
     ) {
       return
@@ -145,7 +143,7 @@ export function SplitFeatureListSection({
   }, [
     autoplayKey,
     hasMultipleSlides,
-    isPaused,
+    isFocusWithin,
     items.length,
     prefersReducedMotion,
   ])
@@ -280,12 +278,6 @@ export function SplitFeatureListSection({
                   aria-atomic="true"
                   tabIndex={0}
                   onKeyDown={handleKeyDown}
-                  onMouseEnter={() =>
-                    setIsHovered(true)
-                  }
-                  onMouseLeave={() =>
-                    setIsHovered(false)
-                  }
                   onFocusCapture={() =>
                     setIsFocusWithin(true)
                   }

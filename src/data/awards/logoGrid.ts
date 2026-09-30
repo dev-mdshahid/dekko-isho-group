@@ -11,7 +11,7 @@ export const awardsGridContent = {
   tag: 'Global Certifications',
   title: 'Certified for Responsible Excellence',
   description:
-    'Our certifications reflect our unwavering commitment to safety, sustainability and transparency across every fiber, process and partnership.',
+    'Our certifications reflect our unwavering commitment to safety, sustainability, and transparency across every fiber, process, and partnership.',
 } as const
 
 export const awardLogos: AwardLogo[] = [

@@ -7,7 +7,7 @@ export const sprintexFeatureGallery: IndustryFeatureGalleryProps = {
   badge: 'Machine Features',
   title: 'Advanced Printing Technology Built for Speed, Precision, and Efficiency.',
   descriptions: [
-    'Sprintex operates with 24-hour printing production, high-precision industrial print heads, variable drop size, higher ink concentration for greater economy, intelligent output, and ink consumption management — delivering consistent quality across custom textile runs.',
+    'Sprintex operates with 24-hour printing production, high-precision industrial print heads, variable drop size, higher ink concentration for greater economy, intelligent output, and ink consumption management—delivering consistent quality across custom textile runs.',
   ],
   primaryImage: {
     src: `${SPRINTEX_IMAGE_BASE}/sprintex-1.jpg`,
