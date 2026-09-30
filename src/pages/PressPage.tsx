@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { PressContent } from './PressContent'
 
-const PRESS_TITLE = 'Press | Dekko Isho Group'
+const PRESS_TITLE = 'Press | Dekko ISHO Group'
 
 export function PressPage() {
   useWebflowClasses()

@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { CareerContent } from './CareerContent'
 
-const CAREER_TITLE = 'Career | Dekko Isho Group'
+const CAREER_TITLE = 'Career | Dekko ISHO Group'
 
 export function CareerPage() {
   useWebflowClasses()

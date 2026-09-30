@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { AgamiFashionsContent } from './AgamiFashionsContent'
 
-const AGAMI_FASHIONS_TITLE = 'Agami Fashions Ltd. | Dekko Isho Group'
+const AGAMI_FASHIONS_TITLE = 'Agami Fashions Ltd. | Dekko ISHO Group'
 
 export function AgamiFashionsPage() {
   useWebflowClasses()

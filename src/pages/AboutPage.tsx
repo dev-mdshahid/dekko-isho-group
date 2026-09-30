@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { AboutContent } from './AboutContent'
 
-const ABOUT_TITLE = 'About | Dekko Isho Group'
+const ABOUT_TITLE = 'About | Dekko ISHO Group'
 
 export function AboutPage() {
   useWebflowClasses()

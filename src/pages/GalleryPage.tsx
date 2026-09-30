@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { GalleryContent } from './GalleryContent'
 
-const GALLERY_TITLE = 'Gallery | Dekko Isho Group'
+const GALLERY_TITLE = 'Gallery | Dekko ISHO Group'
 
 export function GalleryPage() {
   useWebflowClasses()

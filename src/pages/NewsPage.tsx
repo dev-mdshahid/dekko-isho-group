@@ -4,7 +4,7 @@ import { SiteLayout } from '../layouts/SiteLayout'
 import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 
-const NEWS_TITLE = 'News | Dekko Isho Group'
+const NEWS_TITLE = 'News | Dekko ISHO Group'
 
 const NewsPage = () => {
   useWebflowClasses()
