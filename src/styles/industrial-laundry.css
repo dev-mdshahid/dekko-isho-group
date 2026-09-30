@@ -270,8 +270,10 @@
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.02);
-  transition: opacity 600ms ease, transform 600ms ease, visibility 600ms;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transition: opacity 600ms ease, visibility 600ms;
+  will-change: transform, opacity;
   pointer-events: none;
 }
 
@@ -279,7 +281,7 @@
   z-index: 1;
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  transform: translate3d(0, 0, 0);
   pointer-events: auto;
 }
 
@@ -293,21 +295,21 @@
 
 @keyframes il-carousel-slide-in {
   from {
-    transform: translateX(100%) scale(1.02);
+    transform: translate3d(100%, 0, 0);
   }
 
   to {
-    transform: translateX(0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes il-carousel-slide-in-reverse {
   from {
-    transform: translateX(-100%) scale(1.02);
+    transform: translate3d(-100%, 0, 0);
   }
 
   to {
-    transform: translateX(0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
 }
 
