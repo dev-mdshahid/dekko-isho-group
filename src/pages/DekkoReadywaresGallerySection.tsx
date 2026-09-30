@@ -15,7 +15,7 @@ export function DekkoReadywaresGallerySection() {
             Visual Production Journey from Sample to Packed Garment.
           </h2>
           <p className="dekko-readywares-gallery-description">
-            Image-focused sections make the page stronger by showing the readywear process, product
+            Image-focused sections make the page stronger by showing the readywears process, product
             categories, garment handling, quality checking, and production floor atmosphere.
           </p>
         </FadeIn>
