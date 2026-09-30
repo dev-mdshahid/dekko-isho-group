@@ -4,7 +4,7 @@ export const complianceSustainabilityHero = {
     [{ text: 'Sustainability' }],
   ],
   subtitle:
-    'Responsible operations, verified standards and continuous improvement across every Dekko ISHO facility — from social compliance to environmental stewardship.',
+    'Responsible operations, verified standards, and continuous improvement across every Dekko ISHO facility—from social compliance to environmental stewardship.',
   ctaLabel: 'Learn More',
   ctaHref: '#cs-initiatives',
   video: '/videos/compliance-sustainability-hero.mp4',
@@ -46,7 +46,7 @@ export const complianceSustainabilitySafety = {
   badge: 'Health & Safety',
   title: 'Safe Factories, Prepared Teams, and Protected Workers',
   aside:
-    'Training, supervision and facility standards help ensure teams are prepared for daily production while maintaining safe, compliant working environments.',
+    'Training, supervision, and facility standards help ensure teams are prepared for daily production while maintaining safe, compliant working environments.',
   imageSrc: '/images/compliance-sustainability/safety-section.png',
   imageAlt: 'Worker inspecting safety equipment in an industrial facility',
   imageNumber: '01',
@@ -61,7 +61,7 @@ export const complianceSustainabilityRisk = {
       accent: '#f5c518',
       title: 'Risk Analysis',
       description:
-        'Identification and assessment of operational, chemical and supply-chain risks before they affect production or compliance standing.',
+        'Identification and assessment of operational, chemical, and supply-chain risks before they affect production or compliance standing.',
     },
     {
       id: 'compliance-reviews',

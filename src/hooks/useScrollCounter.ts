@@ -18,11 +18,12 @@ export function formatCompactNumber(value: number) {
   return `${compactValue.toFixed(2).replace(/\.?(0+)$/, '')}${unit.suffix}`
 }
 
-function formatCountValue(val: number, decimals: number, suffix: string) {
+function formatCountValue(val: number, decimals: number, suffix: string, compact: boolean) {
   if (decimals > 0) {
     return `${val.toFixed(decimals)}${suffix}`
   }
-  return `${formatCompactNumber(Math.floor(val))}${suffix}`
+  const formatted = compact ? formatCompactNumber(Math.floor(val)) : Math.floor(val).toLocaleString()
+  return `${formatted}${suffix}`
 }
 
 function initScrollCounters(root: ParentNode = document) {
@@ -44,6 +45,7 @@ function initScrollCounters(root: ParentNode = document) {
         ? Number.parseInt(decimalsAttr, 10) || 0
         : 0
     const suffix = el.getAttribute('data-suffix') || ''
+    const compact = el.getAttribute('data-compact') !== 'false'
 
     const customDuration = el.getAttribute('data-duration')
     const duration =
@@ -65,7 +67,7 @@ function initScrollCounters(root: ParentNode = document) {
 
     if (!triggerEl) return
 
-    el.textContent = formatCountValue(0, decimals, suffix)
+    el.textContent = formatCountValue(0, decimals, suffix, compact)
 
     const obj = { val: 0 }
     const tween = gsap.to(obj, {
@@ -75,10 +77,10 @@ function initScrollCounters(root: ParentNode = document) {
       delay,
       paused: true,
       onUpdate: () => {
-        el.textContent = formatCountValue(obj.val, decimals, suffix)
+          el.textContent = formatCountValue(obj.val, decimals, suffix, compact)
       },
       onComplete: () => {
-        el.textContent = formatCountValue(target, decimals, suffix)
+        el.textContent = formatCountValue(target, decimals, suffix, compact)
       },
     })
 

@@ -13,7 +13,7 @@ export const leadershipMembers: LeadershipMember[] = [
     name: 'Shahid Hossain',
     title: 'Chairman',
     description:
-      'Began contributing during his Masters at Dhaka University and was instrumental in establishing the Group from the very beginning. His creativity, drive and obsessive attention to detail have led the Group to industry prominence.',
+      'Began contributing during his Masters at Dhaka University and was instrumental in establishing the Group from the very beginning. His creativity, drive, and obsessive attention to detail have led the Group to industry prominence.',
     image: '/images/shahid-hossain.png',
     imageAlt: 'Shahid Hossain, Chairman of Dekko ISHO Group',
   },

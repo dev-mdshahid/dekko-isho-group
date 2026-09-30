@@ -5,7 +5,7 @@ export const sprintexLocations: IndustryLocationProps = {
   badge: 'Digital Printing',
   title: 'Connect with Sprintex Enterprise.',
   description:
-    'Reach Sprintex Enterprise for digital textile printing solutions across voile, viscose, twill, and more — from custom designs to large-scale production support for apparel and textile partners.',
+    'Reach Sprintex Enterprise for digital textile printing solutions across voile, viscose, twill, and more—from custom designs to large-scale production support for apparel and textile partners.',
   locations: [
     {
       id: 'corporate-office',

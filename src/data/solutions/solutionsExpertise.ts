@@ -34,7 +34,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     tag: 'TO SCALE',
     title: 'Integrated Manufacturing',
     description:
-      'End-to-end apparel manufacturing with cutting, sewing, finishing and quality control under one roof.',
+      'End-to-end apparel manufacturing with cutting, sewing, finishing, and quality control under one roof.',
     image: `${SOLUTIONS_IMAGES}/integrated-manufacturing.png`,
     imageAlt: 'Garment worker operating an industrial sewing machine',
     features: [
@@ -51,7 +51,7 @@ export const solutionsExpertiseTabs: SolutionsExpertiseTab[] = [
     tag: 'From Comprehensive Wash',
     title: 'Industrial Laundry',
     description:
-      'Advanced garment washing and finishing with controlled recipes, consistency and bulk production scale.',
+      'Advanced garment washing and finishing with controlled recipes, consistency, and bulk production scale.',
     image: `${SOLUTIONS_IMAGES}/industrial-laundry.png`,
     imageAlt: 'Industrial laundry machines in a washing facility',
     features: [

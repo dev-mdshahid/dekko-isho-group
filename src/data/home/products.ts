@@ -34,7 +34,7 @@ export const homeProducts: Product[] = [
     specs: [
       { label: 'Material', value: 'ABS, Polycarbonate, Nylon' },
       { label: 'Capability', value: 'Injection Molding' },
-      { label: 'Size Range', value: 'Varies – custom moldable' },
+      { label: 'Size Range', value: 'Varies—custom moldable' },
     ],
   },
   {

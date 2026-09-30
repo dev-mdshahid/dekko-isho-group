@@ -3,7 +3,7 @@ import type { CapacityStat } from '../../components/ui/CapacityStatCircles'
 export const industrialLaundryHero = {
   titleLines: [[{ text: 'Washing' }]],
   subtitle:
-    'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements – from garment and enzyme washes to specialized denim treatments and dyeing.',
+    'Our washing facility delivers a comprehensive range of garment finishing solutions tailored to diverse fabrics, fashion trends, and customer requirements—from garment and enzyme washes to specialized denim treatments and dyeing.',
   ctaLabel: 'Learn More',
   ctaHref: '#il-washing-processes',
   video: '/videos/Industrial Laundry Page_ Drone Footage Inside AWL Factory.mp4',
@@ -225,7 +225,7 @@ export const industrialLaundryExpertise = {
       logo: '/images/industrial-laundry/tupesa-logo.png',
       logoAlt: 'Tupesa — Maquinaria Textil',
       title: 'High-Performance Dryers',
-      description: 'Fast, consistent and energy-efficient drying at industrial scale.',
+      description: 'Fast, consistent, and energy-efficient drying at industrial scale.',
     },
   ],
 }
@@ -405,7 +405,7 @@ export const industrialLaundryEnvironmentalManagement = {
   badge: 'Responsible Manufacturing',
   title: 'Environmental & Chemical Management',
   description:
-    'Our commitment to chemical stewardship and environmental management ensures responsible operations across every washing process — from safe chemical handling to advanced water treatment and efficiency systems.',
+    'Our commitment to chemical stewardship and environmental management ensures responsible operations across every washing process—from safe chemical handling to advanced water treatment and efficiency systems.',
   items: [
     {
       id: 'chemical-stewardship',

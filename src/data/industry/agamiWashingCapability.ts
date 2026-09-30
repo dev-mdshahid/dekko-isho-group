@@ -33,7 +33,7 @@ export const agamiWashingCapabilityProcesses: AgamiWashingCapabilityProcess[] = 
     number: '02',
     title: 'Dry Process',
     description:
-      'Dry process detailing adds visual character, texture and used-look expression through scraping, grinding, whisker, tacking, wrinkle and localized treatment techniques.',
+      'Dry process detailing adds visual character, texture, and used-look expression through scraping, grinding, whisker, tacking, wrinkle, and localized treatment techniques.',
     imageSrc: `${AGAMI_WASHING_IMAGE_BASE}/washing-capability-2.png`,
     imageAlt: 'Industrial dry process finishing equipment',
     tags: ['Grinding', 'Hand Whisker', 'Scraping', 'Crinkle'],

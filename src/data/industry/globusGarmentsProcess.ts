@@ -38,7 +38,7 @@ export const globusGarmentsProcessItems: GlobusGarmentsProcessItem[] = [
     id: 'washing',
     icon: globusGarmentsProcessIcons.washing,
     title: 'Washing & Finishing',
-    description: 'Garment wash, pressing and finishing — enzyme, dark, mid and light wash.',
+    description: 'Garment wash, pressing, and finishing—enzyme, dark, mid, and light wash.',
   },
   {
     id: 'inspection',
@@ -50,6 +50,6 @@ export const globusGarmentsProcessItems: GlobusGarmentsProcessItem[] = [
     id: 'packing',
     icon: globusGarmentsProcessIcons.packing,
     title: 'Packing & Shipment',
-    description: 'Final QC, packing and export dispatch readiness on schedule.',
+    description: 'Final QC, packing, and export dispatch readiness on schedule.',
   },
 ]

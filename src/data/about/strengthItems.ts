@@ -88,7 +88,7 @@ export const strengthItems: StrengthItem[] = [
     number: '09',
     title: 'People-Centric Culture',
     description:
-      'Over 20K team members supported through healthcare, childcare, training, employee welfare, diversity, inclusion, and community development programs.',
+      'Over 18,000 team members supported through healthcare, childcare, training, employee welfare, diversity, inclusion, and community development programs.',
     image: '/images/strength/people-centric.png',
     imageAlt: 'Children in uniforms standing in front of a colorful community mural',
   },

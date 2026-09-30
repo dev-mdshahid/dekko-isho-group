@@ -35,7 +35,7 @@ export const latestNewsItems: LatestNewsItem[] = [
     title: 'BUTEX Career Club Visits LEED-Certified Dekko Garments in Gazipur',
     description:
       'On August 30, 2025, members of the BUTEX Career Club visited Dekko Garments Ltd., a LEED-certified green factory located in Mawna, Gazipur. The initia...',
-    date: 'July 24, 2025',
+    date: 'September 1, 2025',
     href: 'https://www.textiletoday.com.bd/butex-career-club-visits-leed-certified-dekko-garments-in-gazipur',
   },
   {

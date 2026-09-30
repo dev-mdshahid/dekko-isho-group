@@ -11,7 +11,7 @@ export const homeTestimonials: Testimonial[] = [
     tab: 'Tab 1',
     image: 'testimonial-images-1_1testimonial-images-1.png',
     quote:
-      "The team's dedication and innovative approach transformed our ideas into reality. Every stage of the project was handled with care and expertise.",
+      "The team’s dedication and innovative approach transformed our ideas into reality. Every stage of the project was handled with care and expertise.",
     name: 'Emily carter',
     title: 'Product Designer',
   },

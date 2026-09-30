@@ -1,7 +1,7 @@
 export const technologyIntegrationHero = {
   titleLines: [[{ text: 'Technology' }, { text: 'Integration' }]],
   subtitle:
-    'Connect factory systems, business platforms and data workflows into one reliable technology stack built for scale, visibility and operational control.',
+    'Connect factory systems, business platforms, and data workflows into one reliable technology stack built for scale, visibility, and operational control.',
   ctaLabel: 'Get free quote',
   ctaHref: '#ti-intro',
   video: '/videos/technology-integration-hero.mp4',
@@ -13,7 +13,7 @@ export const technologyIntegrationIntro = {
   badge: 'Digital Backbone',
   title: 'Integrated Technology for Smarter, Faster, and More Resilient Businesses.',
   description:
-    'Technology Integration covers the seamless flow and management of digital assets across departments, locations, and partners — providing shared intelligence to improve production, quality control, supply management, HR, and business reporting. By connecting factories, systems, warehouses, and teams, Dekko ISHO transforms individual point solutions into one resilient digital backbone that helps the business operate with greater visibility, efficiency, and confidence.',
+    'Technology Integration covers the seamless flow and management of digital assets across departments, locations, and partners—providing shared intelligence to improve production, quality control, supply management, HR, and business reporting. By connecting factories, systems, warehouses, and teams, Dekko ISHO transforms individual point solutions into one resilient digital backbone that helps the business operate with greater visibility, efficiency, and confidence.',
   features: [
     {
       id: 'connected',
@@ -42,7 +42,7 @@ export const technologyIntegrationIntro = {
 export const technologyIntegrationDashboard = {
   title: 'From Factory Floor to Digital Dashboard',
   description:
-    'Live production signals, quality checkpoints and planning data flow into centralized views — giving teams one source of truth from line to leadership.',
+    'Live production signals, quality checkpoints, and planning data flow into centralized views—giving teams one source of truth from line to leadership.',
   image: '/images/technology-integration/dashboard-systems.png',
   imageAlt: 'Server and digital infrastructure',
   imageLabel: 'Digital',
@@ -52,7 +52,7 @@ export const technologyIntegrationUnified = {
   badge: 'Our Approach',
   title: 'A Unified Approach Across Data, Automation, Cloud, and Security.',
   description:
-    'Every integration is planned around business outcomes — with architecture, governance and support designed for long-term reliability.',
+    'Every integration is planned around business outcomes—with architecture, governance, and support designed for long-term reliability.',
   items: [
     {
       id: 'data',
@@ -68,7 +68,7 @@ export const technologyIntegrationUnified = {
       accent: '#a855f7',
       title: 'Connected Intelligence',
       description:
-        'Integrated systems that share information across departments, facilities and partner networks in real time.',
+        'Integrated systems that share information across departments, facilities, and partner networks in real time.',
     },
     {
       id: 'cloud',
@@ -166,7 +166,7 @@ export const technologyIntegrationPartners = {
       name: 'Automation',
       logo: '/images/technology-integration/partners/automation.png',
       description:
-        'Continuous adaptation to automation ensures every process stays optimized, integrated and consistently efficient.',
+        'Continuous adaptation to automation ensures every process stays optimized, integrated, and consistently efficient.',
     },
     {
       id: 'gpro',

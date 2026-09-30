@@ -7,7 +7,7 @@ export const dekkoIshoFeatureGallery: IndustryFeatureGalleryProps = {
   badge: 'Cybersecurity Solutions',
   title: 'Risk-Aware Protection for Modern Enterprise Environments.',
   descriptions: [
-    'DITECH focuses on infrastructure security, network security, risk management, cloud security, cybersecurity services, and managed support — helping organizations keep business continuity and operational confidence.',
+    'DITECH focuses on infrastructure security, network security, risk management, cloud security, cybersecurity services, and managed support—helping organizations keep business continuity and operational confidence.',
   ],
   primaryImage: {
     src: `${DEKKO_ISHO_IMAGE_BASE}/dekko-isho-1.png`,

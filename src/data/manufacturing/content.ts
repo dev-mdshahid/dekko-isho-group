@@ -134,7 +134,7 @@ export const manufacturingCuttingPreparation = {
       number: '05',
       title: 'Fusing Stage',
       description:
-        'Fusing is applied where required to strengthen garment components such as collars, cuffs, plackets, waistbands and other structured areas. Temperature, pressure and timing are monitored to ensure bonding quality and long-term product durability.',
+        'Fusing is applied where required to strengthen garment components such as collars, cuffs, plackets, waistbands, and other structured areas. Temperature, pressure, and timing are monitored to ensure bonding quality and long-term product durability.',
       image: '/images/manufacturing/cutting/05-fusing.png',
       imageAlt: 'Industrial fusing machine on the production floor',
     },
@@ -143,7 +143,7 @@ export const manufacturingCuttingPreparation = {
       number: '06',
       title: 'Cut-Part Bundling',
       description:
-        'Cut components are numbered, bundled and prepared for line input with clear identification. This improves traceability, reduces mixing risk and allows sewing teams to begin assembly with organized production inputs.',
+        'Cut components are numbered, bundled, and prepared for line input with clear identification. This improves traceability, reduces mixing risk, and allows sewing teams to begin assembly with organized production inputs.',
       image: '/images/manufacturing/cutting/06-bundling.png',
       imageAlt: 'Cut-part bundling equipment',
     },
@@ -492,7 +492,7 @@ export const manufacturingCapacityDetails = {
       number: '06',
       title: 'Versatile Manufacturing Capability',
       description:
-        'Capable of producing a wide range of products, including both formal and casual shirts, pants, ladies\' blouses, dresses, denim and twill jackets, shackets, quilted shirts and jackets.',
+        'Capable of producing a wide range of products, including both formal and casual shirts, pants, ladies’ blouses, dresses, denim and twill jackets, shackets, quilted shirts, and jackets.',
     },
   ],
 }
@@ -637,7 +637,7 @@ export const manufacturingProductionNetwork = {
       productionLines: '24',
       monthlyCapacity: '750K',
       manpower: '3.15K',
-      products: "70% men's casual, 20% ladies' and 10% kids'",
+      products: "70% men’s casual, 20% ladies’, and 10% kids’",
       higgFfm: '75%',
       rscProgress: '100%',
     },
@@ -649,7 +649,7 @@ export const manufacturingProductionNetwork = {
       productionLines: '10',
       monthlyCapacity: '300K',
       manpower: '1.45K',
-      products: "80% men's & Ladies' casual products, 15% formal men's, 5% kids'",
+      products: "80% men’s & ladies’ casual products, 15% formal men’s, 5% kids’",
       higgFfm: '68%',
       rscProgress: '100%',
     },
@@ -676,7 +676,7 @@ export const manufacturingFactories = {
       id: 'knitwears',
       title: 'Dekko Isho Knitwears Ltd.',
       description:
-        'Dedicated knitwear facility with circular and flat knitting lines, dyeing and finishing — serving leading global brands.',
+        'Dedicated knitwear facility with circular and flat knitting lines, dyeing, and finishing—serving leading global brands.',
       image: '/images/skyview-company.png',
       imageAlt: 'Dekko Isho Knitwears factory interior',
       href: '/contact',
@@ -685,7 +685,7 @@ export const manufacturingFactories = {
       id: 'garments',
       title: 'Dekko Isho Garments Ltd.',
       description:
-        'High-volume woven garment production with cutting, sewing, washing and export-ready finishing under one roof.',
+        'High-volume woven garment production with cutting, sewing, washing, and export-ready finishing under one roof.',
       image: '/images/corporate-building.png',
       imageAlt: 'Dekko Isho Garments factory',
       href: '/contact',
@@ -910,7 +910,7 @@ export const manufacturingJourney = {
   badge: 'Manufacturing Journey',
   title: 'From Sourcing to Packing.',
   description:
-    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
+    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality—with complete visibility and control from raw materials to final shipment.',
   stages: [
     {
       id: 'material-sourcing',
@@ -997,7 +997,7 @@ export const manufacturingJourneyRoadmap = {
   badge: 'Manufacturing Journey',
   title: 'From Sourcing to Packing.',
   description:
-    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality — with complete visibility and control from raw materials to final shipment.',
+    'Every garment follows a carefully managed manufacturing journey designed to ensure efficiency, consistency, and uncompromising quality—with complete visibility and control from raw materials to final shipment.',
   stages: [
     {
       id: 'material-sourcing',
