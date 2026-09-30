@@ -2572,6 +2572,284 @@
   }
 }
 
+/* Keep the desktop overlay between 991px and 1435px: portrait stays visible, abstract stays on the bottom */
+@media screen and (min-width: 1355px) and (max-width: 1435px) {
+
+  .about-chairman-section--about {
+    height: 700px;
+  }
+
+  .about-chairman-section--about .about-chairman-container {
+    order: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual {
+    position: absolute;
+    inset: 0;
+    order: 0;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-portrait {
+    left: 55%;
+    width: 46%;
+    height: 650px;
+    object-position: left bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-message {
+    width: min(100%, 48rem);
+    max-width: 64%;
+  }
+
+  .about-chairman-section--about .about-chairman-label {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-chairman-section--about .about-chairman-quote {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.125rem, 1.65vw, 1.4rem);
+    line-height: 1.35;
+  }
+
+  .about-chairman-section--about .about-chairman-body {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-chairman-section--about .about-chairman-paragraph {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .about-chairman-section--about .about-chairman-name {
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  }
+
+  .about-chairman-section--about .about-chairman-role {
+    font-size: 0.9375rem;
+  }
+}
+
+@media screen and (min-width: 1262px) and (max-width: 1355px) {
+
+  .about-chairman-section--about {
+    height: 600px;
+  }
+  .about-chairman-section--about .about-chairman-container {
+    order: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual {
+    position: absolute;
+    inset: 0;
+    order: 0;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-abstract {
+    left: 0;
+    right: auto;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-portrait {
+    left: 58%;
+    right: auto;
+    bottom: 0;
+    width: 40%;
+    height: 560px;
+    max-width: none;
+    object-fit: contain;
+    object-position: left bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-message {
+    width: min(100%, 45rem);
+    max-width: 60%;
+  }
+
+  .about-chairman-section--about .about-chairman-label {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-chairman-section--about .about-chairman-quote {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.125rem, 1.65vw, 1.4rem);
+    line-height: 1.35;
+  }
+
+  .about-chairman-section--about .about-chairman-body {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-chairman-section--about .about-chairman-paragraph {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .about-chairman-section--about .about-chairman-name {
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  }
+
+  .about-chairman-section--about .about-chairman-role {
+    font-size: 0.9375rem;
+  }
+}
+
+@media screen and (min-width: 1061px) and (max-width: 1262px) {
+  .about-chairman-section--about {
+    height: 550px;
+  }
+  .about-chairman-section--about .about-chairman-container {
+    order: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual {
+    position: absolute;
+    inset: 0;
+    order: 0;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-abstract {
+    left: 0;
+    right: auto;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-portrait {
+    left: 60%;
+    right: auto;
+    bottom: 0;
+    width: 40%;
+    height: 500px;
+    max-width: none;
+    object-fit: contain;
+    object-position: left bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-message {
+    width: min(100%, 45rem);
+    max-width: 60%;
+  }
+
+  .about-chairman-section--about .about-chairman-label {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-chairman-section--about .about-chairman-quote {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.125rem, 1.65vw, 1.4rem);
+    line-height: 1.35;
+  }
+
+  .about-chairman-section--about .about-chairman-body {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-chairman-section--about .about-chairman-paragraph {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .about-chairman-section--about .about-chairman-name {
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  }
+
+  .about-chairman-section--about .about-chairman-role {
+    font-size: 0.9375rem;
+  }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1061px) {
+  .about-chairman-section--about {
+    height: 500px;
+  }
+  .about-chairman-section--about .about-chairman-container {
+    order: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual {
+    position: absolute;
+    inset: 0;
+    order: 0;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-abstract {
+    left: 0;
+    right: auto;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-portrait {
+    left: 60%;
+    right: auto;
+    bottom: 0;
+    width: 40%;
+    height: 460px;
+    max-width: none;
+    object-fit: contain;
+    object-position: left bottom;
+  }
+
+  .about-chairman-section--about .about-chairman-message {
+    width: min(100%, 42rem);
+    max-width: 60%;
+  }
+
+  .about-chairman-section--about .about-chairman-label {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-chairman-section--about .about-chairman-quote {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.125rem, 1.65vw, 1.4rem);
+    line-height: 1.35;
+  }
+
+  .about-chairman-section--about .about-chairman-body {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-chairman-section--about .about-chairman-paragraph {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .about-chairman-section--about .about-chairman-name {
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  }
+
+  .about-chairman-section--about .about-chairman-role {
+    font-size: 0.9375rem;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .about-chairman-section--about.section-spacing {
     padding-top: 3rem;
