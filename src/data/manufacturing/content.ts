@@ -501,13 +501,13 @@ export const manufacturingQuality = {
   badge: 'Quality & Compliance',
   title: 'Built on Standards You Can Trust',
   description:
-    'Every facility operates under internationally recognised certifications — from social compliance to environmental management.',
+    'Every facility operates under internationally recognized certifications — from social compliance to environmental management.',
   items: [
     {
       id: 'q1',
       number: '01',
       title: 'Social Compliance',
-      description: 'BSCI, WRAP and ethical audit programmes across all manufacturing units.',
+      description: 'BSCI, WRAP and ethical audit programs across all manufacturing units.',
       image: '/images/about/compliance.jpg',
       imageAlt: 'Social compliance audit',
     },
@@ -523,7 +523,7 @@ export const manufacturingQuality = {
       id: 'q3',
       number: '03',
       title: 'Product Testing',
-      description: 'In-house and third-party lab testing for colour fastness, shrinkage and safety.',
+      description: 'In-house and third-party lab testing for color fastness, shrinkage and safety.',
       image: '/images/about/design.jpg',
       imageAlt: 'Product testing laboratory',
     },
@@ -547,7 +547,7 @@ export const manufacturingQuality = {
       id: 'q6',
       number: '06',
       title: 'Chemical Management',
-      description: 'Restricted substances lists, chemical inventory and MRSL compliance programmes.',
+      description: 'Restricted substances lists, chemical inventory and MRSL compliance programs.',
       image: '/images/about/laundry.jpg',
       imageAlt: 'Chemical management in laundry',
     },

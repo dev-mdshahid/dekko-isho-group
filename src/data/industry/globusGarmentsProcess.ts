@@ -26,7 +26,7 @@ export const globusGarmentsProcessItems: GlobusGarmentsProcessItem[] = [
     id: 'cutting',
     icon: globusGarmentsProcessIcons.cutting,
     title: 'Cutting',
-    description: 'Spreading and cutting set to marker plans for efficient fabric utilisation.',
+    description: 'Spreading and cutting set to marker plans for efficient fabric utilization.',
   },
   {
     id: 'sewing',

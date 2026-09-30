@@ -38,7 +38,7 @@ export const globusGarmentsResponsibilityItems: GlobusGarmentsResponsibilityItem
     icon: globusGarmentsResponsibilityIcons.water,
     title: 'Water Stewardship',
     description:
-      'A 1 m\u00B3/hr rainwater harvesting system and 5 m\u00B3/hr grey-water treatment, working toward a 40% reduction in water use.',
+      'A 1 m\u00B3/hr rainwater harvesting system and 5 m\u00B3/hr gray-water treatment, working toward a 40% reduction in water use.',
   },
   {
     id: 'traceability',

@@ -20,7 +20,7 @@ export const roxyPaintsFeatureGallery: IndustryFeatureGalleryProps = {
     },
     {
       src: `${ROXY_PAINTS_IMAGE_BASE}/roxy-paints-3.jpg`,
-      alt: 'Room with light blue-grey textured wall paint and teal armchair',
+      alt: 'Room with light blue-gray textured wall paint and teal armchair',
     },
   ],
 }

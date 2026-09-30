@@ -380,11 +380,11 @@ export const pillar01FocusAreas: FocusAreaCard[] = [
   },
   {
     id: 'grey-water',
-    title: 'Grey Water Treatment Plant',
+    title: 'Gray Water Treatment Plant',
     images: [
       {
         src: pillar1Image('8. Grey Water Treatment Plant', '8.-Grey-Water-Treatment-Plant.png'),
-        alt: 'Grey water treatment plant equipment and storage',
+        alt: 'Gray water treatment plant equipment and storage',
       },
     ],
   },
@@ -507,14 +507,14 @@ export const pillar01 = {
       metricValue: '766k m³',
       metricLabel: 'withdrawal tracked (2025)',
       image: pillar1Image('water-stewardship.jpg'),
-      imageAlt: 'Flowing water representing water stewardship programmes',
+      imageAlt: 'Flowing water representing water stewardship programs',
     },
     {
       id: 'effluent',
       number: '04',
       title: 'Effluent & Wastewater Management',
       description:
-        'Reducing pollution and maximising water reuse with advanced treatment to protect surrounding communities.',
+        'Reducing pollution and maximizing water reuse with advanced treatment to protect surrounding communities.',
       metricValue: '130 m³/hr',
       metricLabel: 'ETP capacity & ZLD by 2030',
       image: pillar1Image('wastewater-management.jpg'),
@@ -714,7 +714,7 @@ export const pillar02 = {
   badge: 'Pillar 02',
   title: 'Social Empowerment',
   description:
-    'We place our people at the centre of everything we do – nurturing wellbeing, safety and growth, then extending that responsibility outward through CSR for the communities where we operate.',
+    'We place our people at the center of everything we do – nurturing wellbeing, safety and growth, then extending that responsibility outward through CSR for the communities where we operate.',
   cards: [
     {
       id: 'employees',
@@ -732,7 +732,7 @@ export const pillar02 = {
       description:
         'Childcare facilities, nutritional support for children & pregnant employees, on-site medical care, free eye-test campaigns and celebration days.',
       image: pillar2Image('employee-wellness.jpg'),
-      imageAlt: 'Children at an employee wellness programme',
+      imageAlt: 'Children at an employee wellness program',
     },
     {
       id: 'upskilling',
@@ -825,13 +825,13 @@ export const pillar03 = {
   badge: 'Pillar 03',
   title: 'Material Sustainability',
   description:
-    'Responsible sourcing, environmental stewardship and full supply-chain transparency – every garment powered by verified, end-to-end traceable data, from fibre to retail.',
+    'Responsible sourcing, environmental stewardship and full supply-chain transparency – every garment powered by verified, end-to-end traceable data, from fiber to retail.',
   image: '/images/sustainability/pillar-3/sustainability-pillar03-cover.png',
   imageAlt:
     'Watercolor illustration of green trees blending into a sustainable manufacturing facility',
   sustainablePercentage: 81,
   sustainableLabel:
-    'of our material mix is now sustainably sourced – up across cotton, flax and circular fibres.',
+    'of our material mix is now sustainably sourced – up across cotton, flax and circular fibers.',
   materialsChartTitle: 'Top 5 Sustainable Materials Uptake',
   materials: [
     { id: 'bci', name: 'BCI Cotton', percentage: 37 },
