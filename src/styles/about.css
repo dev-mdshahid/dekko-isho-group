@@ -2395,7 +2395,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: #f3f3f1;
-  height: 85svh;
+  height: 800px;
   background-image: radial-gradient(ellipse 55% 45% at 0% 0%,
       color-mix(in srgb, var(--color--primary) 18%, transparent),
       transparent 70%);
@@ -2431,7 +2431,7 @@
   right: auto;
   bottom: 0;
   width: 50%;
-  height: 80svh;
+  height: 750px;
   max-width: none;
   object-fit: contain;
   object-position: left bottom;
