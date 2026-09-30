@@ -158,9 +158,9 @@ export function Footer() {
                   <h2 className="footer-title">Other Businesses</h2>
                   <div className="footer-links">
                     {FOOTER_BUSINESS_LINKS.map((link) => (
-                      <Link key={link.to} to={link.to} className={footerLinkClass(pathname, link.to)}>
+                      <a key={link.to} href={link.to} target="_blank" rel="noreferrer" className={footerLinkClass(pathname, link.to)}>
                         {link.label}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </FadeIn>
