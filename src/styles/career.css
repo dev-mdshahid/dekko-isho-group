@@ -1727,17 +1727,40 @@
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 767px) {
   .career-page .mfg-capacity-cluster .capacity-stat-circles {
-    --capacity-circle-size: clamp(6.75rem, 30vw, 8.5rem);
+    --capacity-circle-gap: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--capacity-circle-gap);
+    width: min(100%, 28rem);
+    max-width: 100%;
+    aspect-ratio: auto;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-circle {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 1;
   }
 
   .career-page .mfg-capacity-cluster .capacity-stat-value {
-    font-size: clamp(0.75rem, 10cqi, 1.0625rem);
+    font-size: clamp(1rem, 4.8vw, 1.375rem);
   }
 
   .career-page .mfg-capacity-cluster .capacity-stat-label {
-    font-size: clamp(0.5rem, 5cqi, 0.6875rem);
+    font-size: clamp(0.6875rem, 3vw, 0.875rem);
+  }
+
+  .career-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+    max-width: 86%;
+    gap: 0.35rem;
   }
 }
 
