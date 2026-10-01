@@ -437,6 +437,19 @@
   /* width: min(100%, 36rem); */
 }
 
+.page-contact-section--modern .page-contact-details--split {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 16px;
+}
+
+.page-contact-section--modern .page-contact-details-top,
+.page-contact-section--modern .page-contact-locations--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 3vw, 3.25rem);
+  align-items: start;
+}
+
 .page-contact-section--modern .page-contact-details-col {
   gap: 1rem;
 }
@@ -678,6 +691,12 @@
   }
 
   .page-contact-section--modern .page-contact-details {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .page-contact-section--modern .page-contact-details-top,
+  .page-contact-section--modern .page-contact-locations--split {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
