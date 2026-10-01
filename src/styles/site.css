@@ -15516,7 +15516,8 @@ html.lenis body {
 
 @media (max-width: 1100px) {
   .company-section {
-    min-height: 850px;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
 
@@ -15524,26 +15525,57 @@ html.lenis body {
     width:
       calc(100% - 64px);
 
-    min-height: 850px;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
 
   .company-section-content {
-    top: 11%;
+    top: 16%;
 
     width: 55%;
   }
 
 
   .company-section-awards {
-    right: -28%;
-    bottom: -1%;
-    width: 95vw;
+    bottom: -3%;
   }
 
 
   .company-section-scroll {
     display: none;
+  }
+}
+
+
+/* Below 1640px the awards cluster was shifted past the section edge and clipped. */
+
+@media (max-width: 1700px) and (min-width: 1576px) {
+  .company-section-awards {
+    right: -160px;
+    width: min(75vw, 100%);
+  }
+}
+
+@media (max-width: 1576px) and (min-width: 1420px) {
+  .company-section-awards {
+    right: -85px;
+    width: min(70vw, 100%);
+  }
+
+}
+
+@media (max-width: 1420px) and (min-width: 991px) {
+  .company-section-awards {
+    right: -60px;
+    width: min(78vw, 100%);
+  }
+}
+
+@media (max-width: 991px) and (min-width: 767px) {
+  .company-section-awards {
+    right: -60px;
+    width: min(80vw, 100%);
   }
 }
 
@@ -15593,7 +15625,7 @@ html.lenis body {
     flex-direction: column;
 
     padding:
-      62px 20px 0;
+      62px 20px 62px;
 
     box-sizing: border-box;
   }
@@ -15650,25 +15682,50 @@ html.lenis body {
 
 
   /*
-   * Awards remain visually weighted to the right.
+   * Awards follow the copy. The source file is square and empty
+   * until ~55% down, so the frame only shows the trophies.
    */
   .company-section-awards {
     position: relative;
+    z-index: 4;
 
     right: auto;
     bottom: auto;
+    left: auto;
+
+    width: 78%;
+    max-width: 78%;
+    height: 0;
+
+    margin: 62px 0 0 auto;
+    /* 78% width × 0.36 trophy crop, as a share of the row. */
+    padding-bottom: 28.1%;
 
     align-self: flex-end;
-
-    width: 133%;
-
-    margin-top: 28px;
-    margin-right: -35%;
-    margin-bottom: -2%;
+    overflow: hidden;
   }
 
 
   .company-section-awards-parallax {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transform: none;
+  }
+
+
+  .company-section-awards-image {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+
+    object-fit: cover;
+    object-position: center 81%;
+
     transform: none;
   }
 
@@ -15688,7 +15745,7 @@ html.lenis body {
    SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .company-section-inner {
     padding:
       54px 18px 0;
@@ -15702,7 +15759,7 @@ html.lenis body {
 
     margin-top: 20px;
   }
-}
+} */
 
 
 /* =========================================================
