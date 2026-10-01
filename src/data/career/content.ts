@@ -369,5 +369,5 @@ export const careerApplyCta = {
   heading: 'Ready to Grow with Us?',
   description: "Send us your profile and let’s start a conversation about your future.",
   buttonLabel: 'Apply Now',
-  buttonHref: '/contact',
+  buttonHref: '#open-positions',
 }
