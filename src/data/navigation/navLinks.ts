@@ -49,18 +49,18 @@ export const businessNavGroups: NavLinkGroup[] = [
         to: '/dekko-fashions',
         label: 'Dekko Fashions Ltd.',
       },
-      {
-        to: '/globus-garments',
-        label: 'Globus Garments Ltd.',
-      },
-      {
-        to: '/agami-fashions',
-        label: 'Agami Fashions Ltd.',
-      },
-      {
-        to: '/agami-washing',
-        label: 'Agami Washing Ltd.',
-      },
+      // {
+      //   to: '/globus-garments',
+      //   label: 'Globus Garments Ltd.',
+      // },
+      // {
+      //   to: '/agami-fashions',
+      //   label: 'Agami Fashions Ltd.',
+      // },
+      // {
+      //   to: '/agami-washing',
+      //   label: 'Agami Washing Ltd.',
+      // },
     ],
   },
   {
