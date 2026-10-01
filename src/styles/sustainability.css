@@ -2885,8 +2885,8 @@
 
 .sustain-affiliations-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 60px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -2899,13 +2899,62 @@
   justify-content: center;
   width: 100%;
   min-width: 0;
+  height: 150px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
 }
 
 .sustain-affiliations-image {
   display: block;
   width: 100%;
-  max-height: 72px;
+  height: 90px;
+  
+  max-width: 155px;
   object-fit: contain;
+  object-position: center;
+}
+
+.sustain-affiliations-item--reverse-resources,
+.sustain-affiliations-item--jr-recycling,
+.sustain-affiliations-item--lub-ref {
+  padding: 22px 12px;
+}
+
+.sustain-affiliations-item--base-papers .sustain-affiliations-image,
+.sustain-affiliations-item--eri .sustain-affiliations-image {
+  height: 62px;
+  max-width: 108px;
+}
+
+@media (max-width: 1199px) {
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .sustain-affiliations-item {
+    height: 125px;
+    padding: 18px;
+  }
+
+  .sustain-affiliations-image {
+    height: 72px;
+    max-width: 130px;
+  }
+}
+
+@media (max-width: 479px) {
+  .sustain-affiliations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ── CTA section ── */
@@ -3161,11 +3210,6 @@
     margin-bottom: 3rem;
     font-size: 1rem;
     line-height: 1.5;
-  }
-
-  .sustain-affiliations-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
   }
 
   .sustain-cta-card {
@@ -3634,15 +3678,6 @@
   .sustain-affiliations-description {
     margin-bottom: 2.5rem;
     font-size: 0.9375rem;
-  }
-
-  .sustain-affiliations-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-
-  .sustain-affiliations-image {
-    max-height: 56px;
   }
 
   /* Shared pillar spacing */
