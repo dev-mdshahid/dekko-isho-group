@@ -1081,7 +1081,7 @@ export const manufacturingJourneyRoadmap = {
 
 export const manufacturingCta = {
   badge: null,
-  heading: "And Build What's Next, Together",
+  heading: "Let's Explore What's Next, Together",
   description:
     "Get in touch with us. Start the conversation by telling us about your ideas & let's get down to work together.",
   buttonLabel: 'Send us a message',
