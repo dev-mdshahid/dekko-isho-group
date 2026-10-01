@@ -33,6 +33,7 @@
 
 .home-contact-section .page-contact-description {
   color: var(--_color---body-text);
+  font-size: 20px;
   max-width: none;
   width: 100%;
 }
@@ -192,6 +193,10 @@
     min-height: auto;
   }
 
+  .home-contact-section .page-contact-description {
+    font-size: 18px;
+  }
+
   .home-contact-section .page-contact-details {
     grid-template-columns: 1fr;
     grid-row-gap: 1.5rem;
@@ -224,7 +229,7 @@
   }
 
   .home-contact-section .page-contact-description {
-    font-size: 0.9375rem;
+    font-size: 16px;
     line-height: 1.5;
   }
 
@@ -427,7 +432,7 @@
 .page-contact-section--modern .page-contact-description {
   color: var(--color--dark);
   max-width: 34rem;
-  font-size: 1rem;
+  font-size: 20px;
   line-height: 1.75;
 }
 
@@ -713,6 +718,7 @@
 
   .page-contact-section--modern .page-contact-description {
     max-width: 44rem;
+    font-size: 18px;
   }
 
   .page-contact-section--modern .page-contact-form-card {
@@ -732,6 +738,11 @@
 
   .page-contact-section--modern .page-contact-title {
     font-size: clamp(2.65rem, 13vw, 3.75rem);
+  }
+
+  .page-contact-section--modern .page-contact-description {
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .page-contact-section--modern .page-contact-details {
