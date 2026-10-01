@@ -445,6 +445,11 @@
 
 /* About page — overview section */
 
+.about-three-section .about-three-main.section-spacing {
+  padding-top: calc(var(--_layout---spacing--section-spacing) * 0.6);
+  padding-bottom: calc(var(--_layout---spacing--section-spacing) * 0.6);
+}
+
 .about-three-section .about-three-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
