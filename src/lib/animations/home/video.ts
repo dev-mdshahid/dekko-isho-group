@@ -68,7 +68,7 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
 
   mm.add('(max-width: 991px) and (prefers-reduced-motion: no-preference)', () => {
     gsap.set(scaler, {
-      width: `${MOBILE_INITIAL_RATIO * 100}%`,
+      width: () => window.innerWidth * MOBILE_INITIAL_RATIO,
       marginLeft: 'auto',
       marginRight: 'auto',
       borderRadius: '0.75rem',
@@ -84,7 +84,11 @@ export function setupHeroVideoExpand({ section, stage, scaler, media }: HeroVide
       },
     })
 
-    expandTween.to(scaler, { width: '100%', borderRadius: '0rem', ease: 'none' }, 0)
+    expandTween.to(
+      scaler,
+      { width: () => window.innerWidth, borderRadius: '0rem', ease: 'none' },
+      0,
+    )
 
     cleanups.push(() => {
       expandTween.scrollTrigger?.kill()

@@ -166,7 +166,7 @@
 
   .awards-hero-banner-section {
     margin-top: 3rem;
-    padding-inline: var(--_layout---container-full-gutter);
+    padding-inline: 0;
     min-height: auto;
   }
 
@@ -219,7 +219,7 @@
 
   .awards-hero-banner-section {
     margin-top: 2.5rem;
-    padding-inline: 1.25rem;
+    padding-inline: 0;
   }
 
   .awards-hero-banner-scaler {
