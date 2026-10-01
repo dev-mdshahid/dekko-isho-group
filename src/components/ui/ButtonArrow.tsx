@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
-import { legacyImage } from '../../lib/assets'
+import { ButtonIcon } from './ButtonIcon'
 
 type Variant = 'base' | 'button-primary-bg' | 'button-white-bg' | 'button-nav-contact'
 
@@ -22,12 +22,6 @@ function getIconBgClass(variant: Variant): string {
   }
 }
 
-function getIconSrc(variant: Variant): string {
-  return variant === 'button-nav-contact'
-    ? legacyImage('button-icon-primary.svg')
-    : legacyImage('button-icon.svg')
-}
-
 type Props = PropsWithChildren<{
   to: string
   label: string
@@ -38,7 +32,7 @@ type Props = PropsWithChildren<{
 export function ButtonArrow({ to, label, variant = 'base', className }: Props) {
   const classes = className ?? variantClass[variant]
   const iconBgClass = getIconBgClass(variant)
-  const iconSrc = getIconSrc(variant)
+  const iconVariant = variant === 'button-nav-contact' ? 'primary' : 'light'
 
   const inner = (
     <div className="button-primary-inner">
@@ -49,15 +43,14 @@ export function ButtonArrow({ to, label, variant = 'base', className }: Props) {
         </div>
       </div>
       <div className={iconBgClass}>
-        <img src={iconSrc} loading="eager" alt="Arrow" className="button-icon" />
-        <img src={iconSrc} loading="lazy" alt="Arrow" className="button-icon-hover" />
+        <ButtonIcon variant={iconVariant} className="button-icon" />
+        <ButtonIcon variant={iconVariant} className="button-icon-hover" />
       </div>
     </div>
   )
 
   const isFileLink =
     to.startsWith('http') ||
-    to.startsWith('/legacy/') ||
     to.startsWith('/docs/') ||
     to.startsWith('/documents/') ||
     /\.(pdf|zip|docx?)$/i.test(to)
@@ -66,7 +59,7 @@ export function ButtonArrow({ to, label, variant = 'base', className }: Props) {
     const anchorProps: AnchorHTMLAttributes<HTMLAnchorElement> = {
       href: to,
       className: classes,
-      ...(to.startsWith('http') || to.startsWith('/legacy/') || /\.pdf$/i.test(to)
+      ...(to.startsWith('http') || /\.pdf$/i.test(to)
         ? { target: '_blank', rel: 'noreferrer' }
         : {}),
     }

@@ -637,7 +637,7 @@ figcaption {
 .checkbox.w--redirected-checked {
   border: 1px solid var(--color--primary-1);
   background-color: var(--color--primary-1);
-  background-image: url('/legacy/images/check-white.svg');
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
   background-position: 50%;
   background-size: auto;
   border-radius: 3px;
@@ -1025,29 +1025,6 @@ figcaption {
   flex-wrap: wrap;
   align-items: center;
   display: flex;
-}
-
-.more-templates {
-  z-index: 1000;
-  grid-column-gap: 6px;
-  grid-row-gap: 6px;
-  border-radius: var(--border-radius--md);
-  background-color: var(--color--white\<deleted\|variable-a4e71267-2f22-1ae2-e737-032f0caf700b\>);
-  color: var(--color--grey-1);
-  border: 1px solid #0000001a;
-  align-items: center;
-  padding: 1px 10px 1px 2px;
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  display: flex;
-  position: fixed;
-  inset: auto 30px 30px auto;
-}
-
-.more-templates:hover {
-  color: var(--color--grey-1);
 }
 
 .container-small {
@@ -2342,7 +2319,7 @@ figcaption {
   border: 1px solid var(--color--transparent);
   border-radius: var(--border-radius--sm);
   background-color: var(--color--white);
-  background-image: url('/legacy/images/button-dark-arrow.svg');
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5H11M11 5L7 1M11 5L7 9' stroke='%230C0C0C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 12px 10px;
@@ -2854,10 +2831,6 @@ figcaption {
   text-decoration: underline;
   -webkit-text-decoration-color: var(--color--primary-2);
   text-decoration-color: var(--color--primary-2);
-  background-image: url('/legacy/images/Vector.svg');
-  background-position: 100%;
-  background-repeat: no-repeat;
-  background-size: auto;
   justify-content: flex-start;
   align-items: center;
   padding-right: 2rem;
@@ -2874,7 +2847,6 @@ figcaption {
   color: var(--color--white);
   -webkit-text-decoration-color: var(--color--white);
   text-decoration-color: var(--color--white);
-  background-image: url('/legacy/images/Download-icon.svg');
 }
 
 .download-link.text-white:hover {
@@ -2885,10 +2857,6 @@ figcaption {
 .download-link.text-dark {
   -webkit-text-decoration-color: var(--color--grey-1);
   text-decoration-color: var(--color--grey-1);
-  background-image: url('/legacy/images/Download-Icon-Dark.svg');
-  background-position: 100%;
-  background-repeat: no-repeat;
-  background-size: auto;
 }
 
 .download-link.text-dark:hover {
@@ -3477,10 +3445,6 @@ a.about-info-box:hover {
 .cta-info-wrapper {
   border-radius: var(--border-radius--sm);
   background-color: var(--color--dark);
-  background-image: url('/legacy/images/CTA-BG_1CTA BG.webp');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: auto;
   flex-flow: column;
   justify-content: center;
   width: 1078px;
@@ -3894,10 +3858,6 @@ a.about-info-box:hover {
 }
 
 .why-choose-info {
-  background-image: url('/legacy/images/Why-choose-image.webp');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
   padding-top: 9.375rem;
   padding-bottom: 9.375rem;
@@ -4312,10 +4272,10 @@ a.about-info-box:hover {
 
 .about-image-info {
   border-radius: var(--border-radius--sm);
-  background-image: linear-gradient(180deg, var(--color--transparent), var(--color--dark)), url('/legacy/images/about.webp');
-  background-position: 0 0, 50%;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
+  background-image: linear-gradient(180deg, var(--color--transparent), var(--color--dark));
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   flex-flow: column;
   justify-content: flex-end;
   align-items: center;
@@ -4643,10 +4603,10 @@ a.about-info-box:hover {
 }
 
 .cta-section {
-  background-image: linear-gradient(#151515d9, #151515d9), url('/legacy/images/CTA-bg-2.webp');
-  background-position: 0 0, 50%;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
+  background-image: linear-gradient(#151515d9, #151515d9);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-top: 12.5rem;
   padding-bottom: 12.5rem;
   overflow: hidden;
@@ -5265,10 +5225,7 @@ a.about-info-box:hover {
 }
 
 .product-two-section {
-  background-image: linear-gradient(#15151599, #15151599), url('/legacy/images/Product-BG-Image_1Product BG Image.webp');
-  background-position: 0 0, 50%;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
+  background-image: linear-gradient(#15151599, #15151599);
   position: relative;
   overflow: hidden;
 }
@@ -7824,10 +7781,7 @@ a.about-info-box:hover {
 
 .cta-more-info {
   border-radius: var(--border-radius--sm);
-  background-image: linear-gradient(103deg, var(--color--grey-1) 20%, #1919194d), url('/legacy/images/CTA-Image_1CTA Image.webp');
-  background-position: 0 0, 50%;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
+  background-image: linear-gradient(103deg, var(--color--grey-1) 20%, #1919194d);
   flex-flow: column;
   justify-content: space-between;
   align-items: stretch;
@@ -8211,10 +8165,6 @@ a.about-info-box:hover {
 }
 
 .hero-two-bg-image {
-  background-image: url('/legacy/images/Hero-Image-2.webp');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: auto;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -8358,10 +8308,6 @@ a.about-info-box:hover {
   border-radius: var(--border-radius--sm);
   opacity: .04;
   object-fit: cover;
-  background-image: url('/legacy/images/bg-noice.gif');
-  background-position: 50%;
-  background-repeat: repeat;
-  background-size: auto;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -8532,10 +8478,6 @@ a.about-info-box:hover {
 
 .bg-gradient {
   filter: blur(30px);
-  background-image: url('/legacy/images/002_1002.avif');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
   height: 260px;
   position: absolute;
@@ -10472,11 +10414,6 @@ a.about-info-box:hover {
 
   .subscribe-wrap {
     width: 430px;
-  }
-
-  .more-templates {
-    bottom: 10px;
-    right: 10px;
   }
 
   .privacy-section {

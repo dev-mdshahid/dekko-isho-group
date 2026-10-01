@@ -17,7 +17,7 @@ export const homeIndustries: Industry[] = [
     description:
       'Certified aerospace components built for mission-critical performance and full traceability.',
     image: '3930.jpg',
-    imageSrcSet: '/legacy/images/3930-p-500.jpg 500w, /legacy/images/3930.jpg 533w',
+    imageSrcSet: '',
     icon: 'Industry-icon.svg',
     features: [
       'Full material traceability',
@@ -32,7 +32,7 @@ export const homeIndustries: Industry[] = [
     description:
       'Precision automotive components engineered for peak performance and complete reliability.',
     image: '3-3.jpg',
-    imageSrcSet: '/legacy/images/3-3-p-500.jpg 500w, /legacy/images/3-3.jpg 533w',
+    imageSrcSet: '',
     icon: 'Automotive.svg',
     features: ['Precision engine parts', 'Reliable transmission components', 'Durable structural elements'],
   },
@@ -43,7 +43,7 @@ export const homeIndustries: Industry[] = [
     description:
       'High-precision medical devices for safer, more effective patient care and diagnostics.',
     image: '3-1.jpg',
-    imageSrcSet: '/legacy/images/3-1-p-500.jpg 500w, /legacy/images/3-1.jpg 533w',
+    imageSrcSet: '',
     icon: 'Medical-devices.svg',
     features: ['Enhanced Patient Care', 'Safety and Reliability', 'Operational Efficiency'],
   },
@@ -53,7 +53,7 @@ export const homeIndustries: Industry[] = [
     name: 'Energy & Power',
     description: 'Innovative energy systems delivering reliable, efficient, and sustainable performance.',
     image: '3-2.jpg',
-    imageSrcSet: '/legacy/images/3-2-p-500.jpg 500w, /legacy/images/3-2.jpg 533w',
+    imageSrcSet: '',
     icon: 'Energy--Power.svg',
     features: ['Reliable Energy Supply', 'Efficiency Optimization', 'Sustainability Focused'],
   },
@@ -64,7 +64,7 @@ export const homeIndustries: Industry[] = [
     description:
       'High-performance industrial machinery designed for productivity, durability, and efficient operations.',
     image: '2_12.webp',
-    imageSrcSet: '/legacy/images/2_1-p-500.webp 500w, /legacy/images/2_12.webp 533w',
+    imageSrcSet: '',
     icon: 'Industrial-equipment.svg',
     features: ['Enhanced Productivity', 'Durable and Reliable', 'Versatile Applications'],
   },

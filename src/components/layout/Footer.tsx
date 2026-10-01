@@ -9,7 +9,7 @@ import {
 import { solutionPath, FOOTER_SOLUTIONS_LINKS } from '../../data/solutions/solutions'
 import { useFooterAnimations } from '../../hooks/useFooterAnimations'
 import { submitSubscribeForm } from '../../lib/forms'
-import { legacyImage } from '../../lib/assets'
+import { FooterSocialIcon } from './FooterSocialIcon'
 import { FadeIn } from '../ui/FadeIn'
 
 const HOME_PAGE_ID = '6a26a196936d1b3aae320c59'
@@ -216,12 +216,24 @@ export function Footer() {
                   rel="noreferrer"
                   className="footer-social-link w-inline-block"
                 >
-                  <img
-                    src={social.icon.startsWith('/') ? social.icon : legacyImage(social.icon)}
-                    loading="eager"
-                    alt=""
-                    className="footer-social-icon"
-                  />
+                  {social.label === 'Youtube' ? (
+                    <img
+                      src={social.icon}
+                      loading="eager"
+                      alt=""
+                      className="footer-social-icon"
+                    />
+                  ) : (
+                    <FooterSocialIcon
+                      name={
+                        social.label === 'Facebook'
+                          ? 'facebook'
+                          : social.label === 'LinkedIn'
+                            ? 'linkedin'
+                            : 'twitter'
+                      }
+                    />
+                  )}
                   <div>{social.label}</div>
                 </a>
               ))}
@@ -229,7 +241,7 @@ export function Footer() {
           </div>
           <div className="footer-logo-info">
             <img
-              src={legacyImage('footer-dekko-isho-logo.svg')}
+              src="/dekko-logo.svg"
               loading="lazy"
               data-w-id="65ddfbf8-98dc-79d4-6020-0e2cf17451cf"
               data-fade-in

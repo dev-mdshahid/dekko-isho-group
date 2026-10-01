@@ -1,25 +1,15 @@
 import { Link } from 'react-router-dom'
 
 import type { LatestNewsItem } from '../../data/home/latestNews'
-import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
+import { ButtonIcon } from '../ui/ButtonIcon'
 import { newsDateToIso } from './newsDate'
 
 function NewsCardAction({ href, label }: { href: string; label: string }) {
   const inner = (
     <span className="button-icon-bg latest-news-card-action__icon" aria-hidden="true">
-      <img
-        src={legacyImage('button-icon.svg')}
-        loading="lazy"
-        alt=""
-        className="button-icon"
-      />
-      <img
-        src={legacyImage('button-icon.svg')}
-        loading="lazy"
-        alt=""
-        className="button-icon-hover"
-      />
+      <ButtonIcon className="button-icon" />
+      <ButtonIcon className="button-icon-hover" />
     </span>
   )
 

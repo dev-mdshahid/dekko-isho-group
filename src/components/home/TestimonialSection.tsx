@@ -1,5 +1,4 @@
 import { homeTestimonials } from '../../data/home/testimonials'
-import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
@@ -32,7 +31,7 @@ export function TestimonialSection() {
                       data-w-tab={item.tab}
                       className={`testimonial-tabs-link w-inline-block w-tab-link${index === 0 ? ' w--current' : ''}`}
                     >
-                      <img loading="lazy" src={legacyImage(item.image)} alt="Testimonial Image" className="testimonial-image" />
+                      <img loading="lazy" src={''} alt="Testimonial Image" className="testimonial-image" />
                     </a>
                   ))}
                 </div>
@@ -47,7 +46,7 @@ export function TestimonialSection() {
                         <div className="testimonial-info-inner">
                           <img
                             loading="lazy"
-                            src={legacyImage('Testimonial-Star.svg')}
+                            src={''}
                             alt="Testimonial Star"
                             className="testimonial-star"
                           />
@@ -68,16 +67,16 @@ export function TestimonialSection() {
               <FadeIn id="3c0ff7e9-dac1-81ef-d189-54acdf24a6e9" variant="slide-in-bottom" delay={200} className="testimonial-inner">
                 <div className="testimonial-image-wrap">
                   <img
-                    src={legacyImage('01.webp')}
+                    src={''}
                     loading="lazy"
                     sizes="100vw"
-                    srcSet="/legacy/images/01-p-500.webp 500w, /legacy/images/01.webp 524w"
+                    srcSet=""
                     alt="Testimonial Info  Image "
                     className="testimonial-info-image"
                   />
                   <div className="testimonial-layout">
                     <div className="logo-info-text">// 2005-2K25 //</div>
-                    <img src={legacyImage('Brand-White.svg')} loading="lazy" alt="Logo  Image" className="logo-image" />
+                    <img src={''} loading="lazy" alt="Logo  Image" className="logo-image" />
                   </div>
                 </div>
                 <div className="testimonial-counter-wrapper">
@@ -112,9 +111,9 @@ export function TestimonialSection() {
                 </div>
               </FadeIn>
               <FadeIn id="875f79ed-bce3-0f38-c930-0a98b0b95d77" variant="slide-in-bottom" delay={350} className="support-info-wrap">
-                <img src={legacyImage('shadow.png')} loading="lazy" alt="Box Shadow" className="box-shadow" />
+                <img src={''} loading="lazy" alt="Box Shadow" className="box-shadow" />
                 <div className="support-info-inner">
-                  <img src={legacyImage('Icon.svg')} loading="lazy" alt="Support Icon" className="support-icon" />
+                  <img src={''} loading="lazy" alt="Support Icon" className="support-icon" />
                   <div>
                     <h3 className="support-title">Need Help Choosing the Right Product?</h3>
                     <p className="support-description">
