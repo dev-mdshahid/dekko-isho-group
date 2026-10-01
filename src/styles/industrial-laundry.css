@@ -21,6 +21,14 @@
   background-image: var(--solution-brand-gradient);
 }
 
+/* Match Advanced Finishing (section above). Shared capacity spacing stays 10rem elsewhere. */
+@media screen and (min-width: 992px) {
+  .industrial-laundry-page .mfg-capacity-section .service-step-main.section-spacing {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
 /* ── Production Capacity section deltas ── */
 .industrial-laundry-page .mfg-capacity-left .pre-section-title-wrap {
   margin-bottom: 16px;
