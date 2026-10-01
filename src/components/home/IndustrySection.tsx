@@ -1,5 +1,4 @@
 import { homeIndustries, industryBackgrounds } from '../../data/home/industries'
-import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
@@ -46,7 +45,7 @@ export function IndustrySection() {
                         sizes="100vw"
                         srcSet={industry.imageSrcSet}
                         alt="Industry Image"
-                        src={legacyImage(industry.image)}
+                        src={''}
                         loading="lazy"
                         className="industry-image"
                       />
@@ -55,7 +54,7 @@ export function IndustrySection() {
                       <div className="industry-icon-box">
                         <img
                           loading="lazy"
-                          src={legacyImage(industry.icon)}
+                          src={''}
                           alt="Industry Icon"
                           className="industry-icon"
                         />
@@ -67,7 +66,7 @@ export function IndustrySection() {
                           <div key={feature} className="industry-list-item">
                             <img
                               loading="lazy"
-                              src={legacyImage('list-icon.svg')}
+                              src={''}
                               alt="Industry List Icon"
                               className="industry-list-icon"
                             />
@@ -86,7 +85,7 @@ export function IndustrySection() {
       {industryBackgrounds.map((bg) => (
         <img
           key={bg.id}
-          src={legacyImage(bg.image)}
+          src={''}
           loading="lazy"
           data-w-id={bg.id}
           data-fade-in

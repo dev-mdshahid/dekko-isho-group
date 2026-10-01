@@ -25,7 +25,6 @@ export function useLegacyLinkInterceptor(containerRef: React.RefObject<HTMLEleme
       if (href.startsWith('#')) return
 
       if (
-        href.startsWith('/legacy/') ||
         href.startsWith('/documents/') ||
         href.startsWith('/docs/') ||
         target.hasAttribute('target') ||

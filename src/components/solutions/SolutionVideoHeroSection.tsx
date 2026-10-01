@@ -1,5 +1,5 @@
-import { legacyImage } from '../../lib/assets'
 import { ButtonArrow } from '../ui/ButtonArrow'
+import { PauseIcon, PlayIcon } from '../ui/ButtonIcon'
 import { FadeIn } from '../ui/FadeIn'
 
 export type SolutionVideoHeroContent = {
@@ -68,20 +68,10 @@ export function SolutionVideoHeroSection({
               className="w-backgroundvideo-backgroundvideoplaypausebutton video-button w-background-video--control solution-hero-video-control"
             >
               <span className="play-state">
-                <img
-                  src={legacyImage('video-Icon-Puse.svg')}
-                  loading="lazy"
-                  alt="Pause video"
-                  className="video-button-image"
-                />
+                <PauseIcon />
               </span>
               <span hidden className="pause-state">
-                <img
-                  loading="lazy"
-                  alt="Play video"
-                  src={legacyImage('Video-Icon-Play.svg')}
-                  className="video-button-image"
-                />
+                <PlayIcon />
               </span>
             </button>
           </div>

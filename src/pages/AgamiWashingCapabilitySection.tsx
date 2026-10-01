@@ -6,7 +6,6 @@ import {
   agamiWashingCapabilityIntro,
   agamiWashingCapabilityProcesses,
 } from '../data/industry/agamiWashingCapability'
-import { legacyImage } from '../lib/assets'
 
 export function AgamiWashingCapabilitySection() {
   return (
@@ -56,20 +55,6 @@ export function AgamiWashingCapabilitySection() {
 
         <FadeIn id="agami-washing-capability-cta" className="agami-washing-capability-cta" delay={80}>
           <div className="agami-washing-capability-cta-left">
-            <div className="agami-washing-capability-cta-avatars">
-              <img
-                src={legacyImage('testimonial-images-3_1testimonial-images-3.png')}
-                loading="lazy"
-                alt=""
-                className="agami-washing-capability-cta-avatar"
-              />
-              <img
-                src={legacyImage('testimonial-images-1_1testimonial-images-1.png')}
-                loading="lazy"
-                alt=""
-                className="agami-washing-capability-cta-avatar agami-washing-capability-cta-avatar--overlap"
-              />
-            </div>
             <div className="agami-washing-capability-cta-copy">
               <h3 className="agami-washing-capability-cta-title">{agamiWashingCapabilityCta.title}</h3>
               <p className="agami-washing-capability-cta-description">

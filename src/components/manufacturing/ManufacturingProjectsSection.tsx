@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { manufacturingProjects } from '../../data/manufacturing/content'
 import { useHorizontalScroll } from '../../hooks/useHorizontalScroll'
-import { legacyImage } from '../../lib/assets'
+import { ButtonIcon } from '../ui/ButtonIcon'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 
@@ -34,12 +34,7 @@ export function ManufacturingProjectsSection() {
                     className="service-image-inner"
                   />
                   <div className="service-hover">
-                    <img
-                      src={legacyImage('button-icon.svg')}
-                      loading="lazy"
-                      alt=""
-                      className="feature-icon"
-                    />
+                      <ButtonIcon className="feature-icon" />
                   </div>
                 </div>
                 <div className="service-content">

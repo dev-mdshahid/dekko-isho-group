@@ -1,12 +1,11 @@
 import { clientLogos, whyChooseItems } from '../../data/home/clients'
-import { legacyImage } from '../../lib/assets'
 
 function ClientMarqueeList() {
   return (
     <div className="client-marquee-list">
       {clientLogos.map((logo) => (
         <div key={logo} className="client-marquee-item">
-          <img src={legacyImage(logo)} loading="lazy" alt="Client Image" className="client-image" />
+          <img src={''} loading="lazy" alt="Client Image" className="client-image" />
         </div>
       ))}
     </div>
@@ -43,7 +42,7 @@ export function WhyChooseSection() {
                   data-fade-delay={100 + index * 90}
                 >
                   <img
-                    src={legacyImage('list-icon.svg')}
+                    src={''}
                     loading="lazy"
                     alt="Why Choose Item Icon"
                     className="why-choose-item-icon"
@@ -61,7 +60,7 @@ export function WhyChooseSection() {
               <div className="avatar one">
                 <div className="avatar-box">
                   <img
-                    src={legacyImage('Client-images-4_1Client-images-4.webp')}
+                    src={''}
                     loading="lazy"
                     alt="Avatar Image"
                     className="avatar-image"
@@ -69,7 +68,7 @@ export function WhyChooseSection() {
                 </div>
                 <div className="avatar-box one">
                   <img
-                    src={legacyImage('Client-images-3_1Client-images-3.webp')}
+                    src={''}
                     loading="lazy"
                     alt="Avatar Image"
                     className="avatar-image"
@@ -77,7 +76,7 @@ export function WhyChooseSection() {
                 </div>
                 <div className="avatar-box one">
                   <img
-                    src={legacyImage('Client-images-1_1Client-images-1.webp')}
+                    src={''}
                     loading="lazy"
                     alt="Avatar Image"
                     className="avatar-image"
@@ -85,7 +84,7 @@ export function WhyChooseSection() {
                 </div>
                 <div className="avatar-box one">
                   <img
-                    src={legacyImage('Client-images-2_1Client-images-2.webp')}
+                    src={''}
                     loading="lazy"
                     alt="Avatar Image"
                     className="avatar-image"
@@ -93,7 +92,7 @@ export function WhyChooseSection() {
                 </div>
               </div>
               <div className="rating-info">
-                <img src={legacyImage('Star.svg')} loading="lazy" alt="Star" className="rating-image" />
+                <img src={''} loading="lazy" alt="Star" className="rating-image" />
                 <div className="rating-text">Happy clients worldwide</div>
               </div>
             </div>

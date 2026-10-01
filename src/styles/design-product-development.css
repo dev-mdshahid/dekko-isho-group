@@ -1422,6 +1422,14 @@
     margin-inline: calc(var(--_layout---container-gutter) * -1);
   }
 
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-frame {
+    clip-path: none;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-nav {
+    padding-inline: 12px;
+  }
+
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport {
     height: auto;
     min-height: clamp(340px, 75vw, 500px);
@@ -1433,7 +1441,12 @@
     bottom: calc(var(--dpd-carousel-content-bottom) + 24px);
     left: var(--dpd-carousel-content-left);
     align-items: flex-start;
-    padding: 16px 16px 16px 0;
+    padding: 16px 0;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-dots {
+    left: var(--dpd-carousel-content-left);
+    padding: 0;
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-title {
@@ -2894,14 +2907,13 @@
   }
 
   .design-product-development-page .solution-cta-action {
-    justify-self: stretch;
-    align-self: stretch;
+    justify-self: start;
+    align-self: start;
   }
 
   .design-product-development-page .solution-cta-action .primary-button {
-    width: 100%;
-    max-width: 20rem;
-    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
   }
 
   .design-product-development-page .dpd-solutions-banner-card {
@@ -3005,10 +3017,6 @@
 
   .design-product-development-page .solution-cta-heading {
     font-size: 1.75rem;
-  }
-
-  .design-product-development-page .solution-cta-action .primary-button {
-    max-width: none;
   }
 
   .design-product-development-page .dpd-presence-gallery-grid {

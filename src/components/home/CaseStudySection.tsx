@@ -1,4 +1,3 @@
-import { legacyImage } from '../../lib/assets'
 
 export function CaseStudySection() {
   return (
@@ -44,12 +43,12 @@ export function CaseStudySection() {
                                             <div className="button-hover-text">View detail</div>
                                           </div>
                                         </div>
-                                        <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                                        <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                                       </div>
                                     </a>
                                   </div>
                                 </div>
-                              </div><img src={legacyImage('shadow.png')} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
+                              </div><img src={''} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
                             </div>
                             <div className="case-study-info-right">
                               <a data-w-id="8acda32a-e4ec-bc3a-243e-32b1eadb1dc1" href="#" className="case-study-link w-inline-block">
@@ -91,12 +90,12 @@ export function CaseStudySection() {
                                             <div className="button-hover-text">View detail</div>
                                           </div>
                                         </div>
-                                        <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                                        <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                                       </div>
                                     </a>
                                   </div>
                                 </div>
-                              </div><img src={legacyImage('shadow.png')} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
+                              </div><img src={''} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
                             </div>
                             <div className="case-study-info-right">
                               <a data-w-id="6bffbb23-d411-347f-db2d-076268f89e48" href="#" className="case-study-link w-inline-block">
@@ -138,12 +137,12 @@ export function CaseStudySection() {
                                             <div className="button-hover-text">View detail</div>
                                           </div>
                                         </div>
-                                        <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                                        <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                                       </div>
                                     </a>
                                   </div>
                                 </div>
-                              </div><img src={legacyImage('shadow.png')} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
+                              </div><img src={''} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
                             </div>
                             <div className="case-study-info-right">
                               <a data-w-id="e41d84f7-eb50-c101-59a2-4cd8c62f3064" href="#" className="case-study-link w-inline-block">
@@ -185,12 +184,12 @@ export function CaseStudySection() {
                                             <div className="button-hover-text">View detail</div>
                                           </div>
                                         </div>
-                                        <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                                        <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                                       </div>
                                     </a>
                                   </div>
                                 </div>
-                              </div><img src={legacyImage('shadow.png')} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
+                              </div><img src={''} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
                             </div>
                             <div className="case-study-info-right">
                               <a data-w-id="29aa1c23-697a-a5b6-b178-a0342072fe9f" href="#" className="case-study-link w-inline-block">
@@ -232,12 +231,12 @@ export function CaseStudySection() {
                                             <div className="button-hover-text">View detail</div>
                                           </div>
                                         </div>
-                                        <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                                        <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                                       </div>
                                     </a>
                                   </div>
                                 </div>
-                              </div><img src={legacyImage('shadow.png')} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
+                              </div><img src={''} loading="lazy" alt="Case Study Box Shadow" className="case-study-box-shadow" />
                             </div>
                             <div className="case-study-info-right">
                               <a data-w-id="2f849f1b-3676-ed33-20c8-0819c11eb78c" href="#" className="case-study-link w-inline-block">
@@ -255,15 +254,15 @@ export function CaseStudySection() {
                     </div>
                   </div>
                 </div>
-                <div className="slider-arrow-left _01 w-slider-arrow-left"><img src={legacyImage('testimonial-Slide-Arrow-2.svg')} loading="lazy" alt="Slide Arrow" className="slide-arrow" /></div>
-                <div className="slider-arrow-right _02 w-slider-arrow-right"><img src={legacyImage('testimonial-Slide-Arrow-1.svg')} loading="lazy" alt="Slide Arrow" className="slide-arrow" /></div>
+                <div className="slider-arrow-left _01 w-slider-arrow-left"><img src={''} loading="lazy" alt="Slide Arrow" className="slide-arrow" /></div>
+                <div className="slider-arrow-right _02 w-slider-arrow-right"><img src={''} loading="lazy" alt="Slide Arrow" className="slide-arrow" /></div>
                 <div className="slide-nav w-slider-nav w-round w-num"></div>
               </div>
               <div className="info-help-wrap">
                 <div data-w-id="6db9d72d-320a-8c44-bd97-18e1a89657ba" data-fade-in className="w-layout-grid grid-help-line">
                   <div className="help-info-left">
                     <div className="help-info-inner">
-                      <div className="help-line-image-wrap"><img src={legacyImage('testimonial-images-3_1testimonial-images-3.png')} loading="lazy" alt="Help Line Image" className="help-line-image" /><img src={legacyImage('testimonial-images-1_1testimonial-images-1.png')} loading="lazy" alt="Help Line Image" className="help-line-image one" /></div>
+                      <div className="help-line-image-wrap"><img src={''} loading="lazy" alt="Help Line Image" className="help-line-image" /><img src={''} loading="lazy" alt="Help Line Image" className="help-line-image one" /></div>
                       <div className="help-line-content-wrap">
                         <h3 className="help-line-title">Need Some Help?</h3>
                         <div className="help-line-text">We’re here to provide support and assistance.</div>
@@ -279,7 +278,7 @@ export function CaseStudySection() {
                             <div className="button-hover-text">Contact us now</div>
                           </div>
                         </div>
-                        <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                        <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                       </div>
                     </a>
                   </div>

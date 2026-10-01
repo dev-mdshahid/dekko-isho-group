@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react'
 
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
-import { legacyImage } from '../../lib/assets'
-// import { ButtonArrow } from '../ui/ButtonArrow'
-// import { FadeIn } from '../ui/FadeIn'
 import { PageHeroSection, type PageHeroTitleWord } from '../ui/PageHeroSection'
+import { PauseIcon, PlayIcon } from '../ui/ButtonIcon'
 
 export type SolutionPageHeroContent = {
   badge?: string
@@ -90,20 +88,10 @@ export function SolutionPageHeroSection({
                   className="w-backgroundvideo-backgroundvideoplaypausebutton video-button w-background-video--control solution-page-hero-video-control"
                 >
                   <span className="play-state">
-                    <img
-                      src={legacyImage('video-Icon-Puse.svg')}
-                      loading="lazy"
-                      alt="Pause video"
-                      className="video-button-image"
-                    />
+                    <PauseIcon />
                   </span>
                   <span hidden className="pause-state">
-                    <img
-                      loading="lazy"
-                      alt="Play video"
-                      src={legacyImage('Video-Icon-Play.svg')}
-                      className="video-button-image"
-                    />
+                    <PlayIcon />
                   </span>
                 </button>
               </div>

@@ -679,6 +679,12 @@
 
   .page-contact-section--modern .page-contact-details {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .page-contact-section--modern .page-contact-details-col,
+  .page-contact-section--modern .page-contact-details-col--compact {
+    gap: 2.5rem;
   }
 
   .page-contact-section--modern .page-contact-form-card {

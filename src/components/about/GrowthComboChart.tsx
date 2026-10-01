@@ -124,7 +124,7 @@ export function GrowthComboChart() {
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={chartData}
-              margin={{ top: 52, right: 36, bottom: 18, left: 36 }}
+              margin={{ top: 52, right: 24, bottom: 18, left: 24 }}
               accessibilityLayer={false}
             >
               <defs>

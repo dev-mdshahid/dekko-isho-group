@@ -33,7 +33,7 @@ export function PageHeroSection({
 
   return (
     <section className={sectionClassName} ref={sectionRef}>
-      <div className="about-hero-inner" style={{ paddingBottom: "6rem"}}>
+      <div className="about-hero-inner">
         <div className="container-full">
           <div className="about-hero-title-wrap">
             {badge ? <PreSectionTitle title={badge} /> : null}
