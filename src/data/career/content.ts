@@ -197,7 +197,7 @@ export const careerOpenPositions = {
 export const careerEmployeeVoices = {
   badge: 'Employee Voices',
   headline:
-    `"At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives, and everyday contributions reflect the culture, ambition, and diversity of our Group"`,
+    `At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives, and everyday contributions reflect the culture, ambition, and diversity of our Group.`,
   testimonials: [
     {
       id: 'career-voice-01',
