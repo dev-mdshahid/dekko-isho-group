@@ -463,6 +463,10 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .image-info-career .career-image-right {
+    order: -1;
+  }
+
   .image-info-career .career-image-right,
   .image-info-career .about-info-right {
     width: 100%;
