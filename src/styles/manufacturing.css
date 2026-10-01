@@ -722,7 +722,11 @@
   }
 
   .manufacturing-page .mfg-automation-card-footer {
-    padding: 30px;
+    padding: 20px;
+  }
+
+  .manufacturing-page .mfg-automation-card-label {
+    font-size: 18px;
   }
 }
 
@@ -2371,15 +2375,6 @@
     justify-self: center;
   }
 
-  .manufacturing-page .mfg-capacity-cluster .capacity-stat-circles {
-    justify-content: flex-start;
-    margin-inline: 0;
-  }
-
-  .manufacturing-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
-    justify-self: start;
-  }
-
   .solution-page .mfg-capacity-cluster .capacity-stat-value {
     font-size: clamp(1.25rem, 5.5vw, 1.5rem);
   }
@@ -3500,5 +3495,66 @@
   .manufacturing-page .mfg-operation-card-image-wrapper,
   .manufacturing-page .mfg-product-range-card {
     height: 12.5rem;
+  }
+}
+
+/* Manufacturing capacity circles: one scaled row on small screens. */
+@media screen and (max-width: 991px) {
+  .manufacturing-page.solution-page .mfg-capacity-cluster {
+    margin-top: 0;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-icon-pills {
+    margin-top: 3.5rem;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-gap: 0.625rem;
+    --capacity-circle-size: calc((100% - (2 * var(--capacity-circle-gap))) / 3);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--capacity-circle-gap);
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle {
+    flex: 0 0 var(--capacity-circle-size);
+    width: var(--capacity-circle-size);
+    min-width: 0;
+    max-width: var(--capacity-circle-size);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-left: 0;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
+    grid-column: auto;
+    justify-self: auto;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(1rem, 4.5vw, 1.375rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-label {
+    white-space: pre-line;
+    font-size: clamp(0.625rem, 2.55vw, 0.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+    max-width: 88%;
+    gap: 0.4rem;
+    padding: 0.1rem 0.2rem 0.15rem;
   }
 }
