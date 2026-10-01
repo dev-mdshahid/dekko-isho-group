@@ -4,7 +4,7 @@ import { useScrollCounter } from '../hooks/useScrollCounter'
 import { useWebflowClasses } from '../hooks/useWebflowClasses'
 import { DekkoReadywaresContent } from './DekkoReadywaresContent'
 
-const DEKKO_READYWARES_TITLE = 'Dekko Readywares Ltd. | Dekko ISHO Group'
+const DEKKO_READYWARES_TITLE = 'Dekko Readywears Ltd. | Dekko ISHO Group'
 
 export function DekkoReadywaresPage() {
   useWebflowClasses()

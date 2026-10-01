@@ -45,7 +45,7 @@ export const externalAffiliations = {
     {
       id: 'jr-recycling',
       src: '/images/awards/affilications/jr-recycling.png',
-      alt: 'JR Recycling Solutions LTD.',
+      alt: 'JR Recycling Solutions Ltd.',
     },
     {
       id: 'lub-ref',
@@ -60,7 +60,7 @@ export const externalAffiliations = {
     {
       id: 'base-papers',
       src: '/images/awards/affilications/base-papers.png',
-      alt: 'BASE PAPERS LTD',
+      alt: 'BASE PAPERS Ltd.',
     },
     {
       id: 'eri',

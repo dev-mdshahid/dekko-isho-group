@@ -19,13 +19,13 @@ export function DekkoGarmentsFeaturedSection() {
             decoding="async"
             width={1320}
             height={692}
-            alt="Aerial view of Dekko Garments Ltd facility with solar panel rooftops"
+            alt="Aerial view of Dekko Garments Ltd. facility with solar panel rooftops"
             className="dekko-garments-featured-photo"
           />
           <div className="dekko-garments-featured-overlay" aria-hidden="true" />
           <div className="dekko-garments-featured-caption">
             <span className="dekko-garments-featured-caption-label">Featured Image</span>
-            <span className="dekko-garments-featured-caption-title">Dekko Garments Ltd</span>
+            <span className="dekko-garments-featured-caption-title">Dekko Garments Ltd.</span>
           </div>
         </FadeIn>
       </div>

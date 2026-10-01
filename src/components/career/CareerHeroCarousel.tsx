@@ -72,7 +72,7 @@ export function CareerHeroCarousel({ images }: Props) {
       className="career-hero-carousel"
       role="region"
       aria-roledescription="carousel"
-      aria-label="Life at Dekko Isho"
+      aria-label="Life at Dekko ISHO"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onFocusCapture={() => setIsFocused(true)}

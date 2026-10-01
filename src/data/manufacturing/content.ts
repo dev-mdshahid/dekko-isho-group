@@ -633,7 +633,7 @@ export const manufacturingProductionNetwork = {
       id: 'dekko-readywears',
       title: 'Dekko Readywears Ltd.',
       image: mfgProductNetworkImage('network-drl.png'),
-      imageAlt: 'Readywear garments on studio hanging system',
+      imageAlt: 'Readywears garments on studio hanging system',
       productionLines: '24',
       monthlyCapacity: '750K',
       manpower: '3.15K',
@@ -674,20 +674,20 @@ export const manufacturingFactories = {
   factories: [
     {
       id: 'knitwears',
-      title: 'Dekko Isho Knitwears Ltd.',
+      title: 'Dekko ISHO Knitwears Ltd.',
       description:
         'Dedicated knitwear facility with circular and flat knitting lines, dyeing, and finishing—serving leading global brands.',
       image: '/images/skyview-company.png',
-      imageAlt: 'Dekko Isho Knitwears factory interior',
+      imageAlt: 'Dekko ISHO Knitwears factory interior',
       href: '/contact',
     },
     {
       id: 'garments',
-      title: 'Dekko Isho Garments Ltd.',
+      title: 'Dekko ISHO Garments Ltd.',
       description:
         'High-volume woven garment production with cutting, sewing, washing, and export-ready finishing under one roof.',
       image: '/images/corporate-building.png',
-      imageAlt: 'Dekko Isho Garments factory',
+      imageAlt: 'Dekko ISHO Garments factory',
       href: '/contact',
     },
   ],

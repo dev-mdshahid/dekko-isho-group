@@ -17,12 +17,12 @@ export const pressPosts: PressPost[] = [
     category: 'Agri-tech startup',
     date: 'October 16, 2021',
     excerpt:
-      'Dekko ISHO Technologies Ltd. (DITECH), a concern of leading conglomerate Dekko ISHO Group, has signed a monetary and strategic capital investment agreement with Fashol Dotcom Limited.',
+      'Dekko ISHO Technologies Ltd. (DITECH), a concern of leading conglomerate Dekko ISHO Group, has signed a monetary and strategic capital investment agreement with Fashol Dotcom Ltd.',
     image: '/images/press/fashol.jpg',
     imageAlt: 'Dekko ISHO invested in Fashol signing ceremony',
     featured: true,
     content: `
-      <p>Dekko ISHO Technologies Ltd. (DITECH), a concern of leading conglomerate Dekko ISHO Group, has signed a monetary and strategic capital investment agreement with Fashol Dotcom Limited, a B2B startup aiming to change the country&rsquo;s age-old perishable supply chain using technology, data, and efficient logistics.</p>
+      <p>Dekko ISHO Technologies Ltd. (DITECH), a concern of leading conglomerate Dekko ISHO Group, has signed a monetary and strategic capital investment agreement with Fashol Dotcom Ltd., a B2B startup aiming to change the country&rsquo;s age-old perishable supply chain using technology, data, and efficient logistics.</p>
       <p>The ceremony took place at Dekko ISHO&rsquo;s corporate office and was attended by the Managing Director of DITECH, Mr. Prottoy Hossain, and Fashol Dotcom&rsquo;s Founder &amp; CEO Mr. Sakib Hossain as well as the co-founder Mr. Mamunur Rashid.</p>
       <p>&ldquo;Lack of food security is unfortunately one of the biggest global crises of our times, and Fashol has the potential to have an immense positive impact on this issue, nationally, and hopefully someday, globally as well.&rdquo; said Prottoy Hossain. He added &ldquo;We are proud to be a part and an enabler of their endeavors, and hope to work together for a long time in our efforts to create a better world&rdquo;.</p>
       <blockquote><p>&ldquo;Lack of food security is unfortunately one of the biggest global crises of our times, and Fashol has the potential to have an immense positive impact on this issue, nationally, and hopefully someday, globally as well.&rdquo;</p><p>&mdash; Prottoy Hossain, Director, Dekko ISHO Group</p></blockquote>

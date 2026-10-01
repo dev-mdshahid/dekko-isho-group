@@ -43,7 +43,7 @@ export const businessNavGroups: NavLinkGroup[] = [
       },
       {
         to: '/dekko-readywares',
-        label: 'Dekko Readywear Ltd.',
+        label: 'Dekko Readywears Ltd.',
       },
       {
         to: '/dekko-fashions',
@@ -69,7 +69,7 @@ export const businessNavGroups: NavLinkGroup[] = [
     links: [
       {
         to: '/isho-ltd',
-        label: 'ISHO Limited',
+        label: 'ISHO Ltd.',
         showExternalIcon: true,
       },
       {
@@ -94,7 +94,7 @@ export const businessNavGroups: NavLinkGroup[] = [
       },
       {
         to: 'https://www.ecoviaglobal.com/',
-        label: 'Ecovia Limited',
+        label: 'Ecovia Ltd.',
         showExternalIcon: true,
       },
     ],

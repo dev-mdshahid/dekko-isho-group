@@ -502,7 +502,7 @@ export const industrialLaundrySpotlight = {
   badge: 'Creative Capability',
   title: 'From Idea Reference to Sample-Ready Fashion Development.',
   description:
-    'Agami Washing Ltd, a sister concern of Dekko ISHO Group, started its journey in 2015 at Gazipur. It is a fully compliance and green model factory. The company accomplished all parameters set by Accord and Alliance.',
+    'Agami Washing Ltd., a sister concern of Dekko ISHO Group, started its journey in 2015 at Gazipur. It is a fully compliance and green model factory. The company accomplished all parameters set by Accord and Alliance.',
   image: '/images/industrial-laundry/development-section.png',
   imageAlt: 'Industrial washing machines in a laundry facility',
   imageLabel: 'Design',

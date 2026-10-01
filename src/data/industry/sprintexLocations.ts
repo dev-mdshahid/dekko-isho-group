@@ -11,7 +11,7 @@ export const sprintexLocations: IndustryLocationProps = {
       id: 'corporate-office',
       number: '01',
       title: 'Corporate Office',
-      subtitle: 'Suvastu Zenin Plaza, House #37 (4th Floor), Road #16 (Old #27), Dhanmondi R/A, Dhaka-1209, Bangladesh',
+      subtitle: 'Suvastu Zenim Plaza, House #37 (4th Floor), Road #16 (Old #27), Dhanmondi R/A, Dhaka-1209, Bangladesh',
     },
     {
       id: 'printing-factory',

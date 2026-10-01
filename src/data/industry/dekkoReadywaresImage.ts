@@ -5,7 +5,7 @@ export const dekkoReadywaresImage: IndustryImageSectionProps = {
   title: 'Designed Around Speed, Precision, and Everyday Wearability.',
   aside: 'Showcasing the Readywears through real images of sampling.',
   imageSrc: '/images/dekko-readywares-img.png',
-  imageAlt: 'Ready-to-wear garments hanging in the Dekko Readywares sampling area',
+  imageAlt: 'Ready-to-wear garments hanging in the Dekko Readywears sampling area',
   imageNumber: '01',
-  imageLabel: 'Ready wears',
+  imageLabel: 'Readywears',
 }
