@@ -439,7 +439,7 @@
 
 .page-contact-section--modern .page-contact-details--split {
   grid-template-columns: minmax(0, 1fr);
-  row-gap: 16px;
+  row-gap: 2.5rem;
 }
 
 .page-contact-section--modern .page-contact-details-top,
@@ -695,10 +695,14 @@
     gap: 2.5rem;
   }
 
+  .page-contact-section--modern .page-contact-details.page-contact-details--split {
+    gap: 16px;
+  }
+
   .page-contact-section--modern .page-contact-details-top,
   .page-contact-section--modern .page-contact-locations--split {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 16px;
   }
 
   .page-contact-section--modern .page-contact-details-col,

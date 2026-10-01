@@ -230,7 +230,7 @@ export const MANUFACTURING_CAPACITY = {
     },
     {
       icon: "/images/manufacturing/manufacturing-capacity/3-dedicated-salesman-sample-lines.svg",
-      label: 'Dedicated Salesman Samples (SMS) Line',
+      label: 'Dedicated Salesman Sample (SMS) Lines',
     },
     {
       icon: "/images/manufacturing/manufacturing-capacity/quality-control-at-every-stage.svg",
@@ -286,7 +286,7 @@ export const manufacturingAutomation = {
     },
     {
       id: 'auto-collar-cuff',
-      label: 'Auto Collar & Cuff Make Machine',
+      label: 'Auto Collar & Cuff Making Machine',
       image: automationImage('auto_collar_cuff_make_machine2.png'),
       imageAlt: 'Auto collar and cuff make machine',
     },
@@ -391,7 +391,7 @@ export const manufacturingProductRange = {
     },
     {
       id: 'shakets',
-      label: 'Shakets',
+      label: 'Shackets',
       image: productRangeImage2('Shakets2.png'),
       // image: 'https://placehold.co/600x400/red/white',
     },
@@ -409,13 +409,13 @@ export const manufacturingProductRange = {
     },
     {
       id: 'cap',
-      label: "Cap",
+      label: "Caps",
       image: productRangeImage2('cap.png'),
       // image: 'https://placehold.co/600x400/red/white',
     },
     {
       id: 'jacket',
-      label: "Jacket",
+      label: "Jackets",
       image: productRangeImage2('jacket.png'),
       // image: 'https://placehold.co/600x400/red/white',
     },
@@ -614,7 +614,7 @@ export const manufacturingProductionNetwork = {
   badge: 'Verified Scale',
   title: 'Production Network',
   description:
-    'Our production units ensure better efficiency with their capacity, immense product mix, and compliance standards.',
+    'Our production units ensure better efficiency with their capacity, diverse product mix, and compliance standards.',
   units: [
     {
       id: 'dekko-garments',
@@ -1083,7 +1083,7 @@ export const manufacturingCta = {
   badge: null,
   heading: "Let's Explore What's Next, Together",
   description:
-    "Get in touch with us. Start the conversation by telling us about your ideas & let's get down to work together.",
+    "Get in touch with us. Start the conversation by telling us about your ideas, and let's get to work together.",
   buttonLabel: 'Send us a message',
   buttonHref: '/contact',
 }

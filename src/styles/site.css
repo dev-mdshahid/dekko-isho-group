@@ -1803,6 +1803,7 @@ figcaption {
 .primary-button._404-button-primary {
   border-bottom-left-radius: var(--border-radius--lg);
   border-bottom-right-radius: var(--border-radius--sm);
+  text-transform: none;
 }
 
 .button-icon {

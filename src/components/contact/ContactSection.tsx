@@ -203,7 +203,7 @@ export function ContactSection() {
                   </div>
                   <div className="page-contact-block">
                     <div className="page-contact-label" style={{ color: "#2595d5"}}>
-                      Social network
+                      Social Network
                     </div>
 
                     <div
@@ -316,7 +316,7 @@ export function ContactSection() {
                       maxLength={256}
                       name="name"
                       data-name="name"
-                      placeholder="Full name"
+                      placeholder="Full Name *"
                       type="text"
                       id="contact-name"
                       required
@@ -337,7 +337,7 @@ export function ContactSection() {
                         maxLength={256}
                         name="email-address"
                         data-name="email address"
-                        placeholder="Email"
+                        placeholder="Email *"
                         type="email"
                         id="email-address"
                         required
@@ -373,7 +373,7 @@ export function ContactSection() {
                     </label>
 
                     <textarea
-                      placeholder="Message"
+                      placeholder="Message *"
                       maxLength={5000}
                       id="message"
                       name="message"
