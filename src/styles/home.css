@@ -530,36 +530,6 @@
   margin-top: var(--gap--gap-9);
 }
 
-.about-section .about-carousel-arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
-  border: 1px solid var(--color--gray-4);
-  border-radius: var(--border-radius--xl);
-  background-color: var(--color--white);
-  padding: 14px 12px;
-  color: var(--color--dark);
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.about-section .about-carousel-arrow:hover:not(:disabled) {
-  background-color: var(--color--gray-5);
-}
-
-.about-section .about-carousel-arrow:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.about-section .about-carousel-arrow__icon {
-  width: auto;
-  height: 10px;
-  display: block;
-}
-
 @media screen and (max-width: 991px) {
   .about-section .about-section-heading {
     font-size: clamp(1.625rem, 5vw, 2.5rem);

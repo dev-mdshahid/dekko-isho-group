@@ -279,50 +279,7 @@
   position: absolute;
   top: 50%;
   z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.12));
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  color: var(--color--white);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 10px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  transform: translateY(-50%);
-  opacity: 0;
-  pointer-events: none;
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  transition:
-    opacity 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.image-info-career .career-hero-carousel:hover .career-hero-carousel__arrow,
-.image-info-career .career-hero-carousel:focus-within .career-hero-carousel__arrow,
-.image-info-career .career-hero-carousel__arrow:focus-visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.image-info-career .career-hero-carousel__arrow:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 14px rgba(0, 0, 0, 0.2);
-}
-
-.image-info-career .career-hero-carousel__arrow:focus-visible {
-  outline: 2px solid var(--color--white);
-  outline-offset: 3px;
-}
-
-@media (hover: none) {
-  .image-info-career .career-hero-carousel__arrow {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  translate: 0 -50%;
 }
 
 .image-info-career .career-hero-carousel__arrow--prev {
@@ -371,8 +328,7 @@
 @media (prefers-reduced-motion: reduce) {
 
   .image-info-career .career-hero-carousel__image,
-  .image-info-career .career-hero-carousel__dot,
-  .image-info-career .career-hero-carousel__arrow {
+  .image-info-career .career-hero-carousel__dot {
     transition: none;
   }
 }
