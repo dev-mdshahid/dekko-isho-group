@@ -54,7 +54,10 @@ export function CareerOpenPositionsSection() {
                   <h3 className="career-position-title">{job.title}</h3>
                   <span className="career-position-location">{job.location}</span>
                   <span className="career-position-type">{job.employmentType}</span>
-                  <CareerPositionArrow />
+                  <span className="career-position-apply">
+                    Apply Now
+                    <CareerPositionArrow />
+                  </span>
                 </a>
               </FadeIn>
             ))}

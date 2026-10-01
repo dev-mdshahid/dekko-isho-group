@@ -722,7 +722,11 @@
   }
 
   .manufacturing-page .mfg-automation-card-footer {
-    padding: 30px;
+    padding: 20px;
+  }
+
+  .manufacturing-page .mfg-automation-card-label {
+    font-size: 18px;
   }
 }
 
@@ -1688,78 +1692,109 @@
   }
 
   .manufacturing-page .mfg-clients-header {
-    gap: 1.75rem;
-    margin-bottom: 2rem;
+    gap: 3rem;
+    margin-bottom: 3rem;
   }
 
   .manufacturing-page .mfg-clients-header-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
     max-width: 100%;
   }
 
+  .manufacturing-page .mfg-clients-header .pre-section-title-wrap {
+    margin-bottom: 0;
+  }
+
   .manufacturing-page .mfg-clients-title {
-    margin-top: 1rem;
+    margin: 0;
     font-size: clamp(2rem, 9vw, 2.75rem);
     line-height: 1.08;
   }
 
   .manufacturing-page .mfg-clients-description {
     max-width: 100%;
+    margin: 0;
     font-size: .95rem;
     line-height: 1.55;
   }
 
   .manufacturing-page .mfg-clients-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: .75rem;
-    margin-top: 1.5rem;
+    grid-template-columns: max-content max-content;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    margin-top: 0;
   }
 
   .manufacturing-page .mfg-clients-stat {
-    width: 100%;
-    min-height: 5.25rem;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    min-height: 0;
     gap: .55rem;
-    padding: .7rem .65rem;
-    background: rgba(255, 255, 255, .72);
-    border: 1px solid #dce5f0;
-    border-radius: .75rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .manufacturing-page .mfg-clients-stat:last-child {
-    grid-column: 1 / -1;
+    grid-column: auto;
   }
 
   .manufacturing-page .mfg-clients-stat-icon {
-    flex-basis: 2.35rem;
+    flex: 0 0 2.35rem;
     width: 2.35rem;
     height: 2.35rem;
+    margin-bottom: 0;
   }
 
   .manufacturing-page .mfg-clients-stat-icon img {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.2rem;
+    height: 1.2rem;
   }
 
   .manufacturing-page .mfg-clients-stat-value {
-    min-width: 2.45rem;
-    font-size: clamp(1.45rem, 7vw, 2rem);
-    letter-spacing: .025em;
+    flex: 0 0 auto;
+    min-width: 2.35rem;
+    font-size: 1.35rem;
+    line-height: .9;
+    letter-spacing: .04em;
   }
 
   .manufacturing-page .mfg-clients-stat-label {
     min-width: 0;
-    font-size: clamp(.72rem, 3vw, .85rem);
-    line-height: 1.14;
+    color: var(--color--neutral-night);
+    font-size: .72rem;
+    font-weight: 400;
+    line-height: 1.12;
     white-space: normal;
   }
 
   .manufacturing-page .mfg-clients-map-wrap {
-    width: 100%;
-    max-width: 34rem;
-    aspect-ratio: 980 / 460;
-    margin-inline: auto;
+    position: relative;
+    width: calc(100% + .75rem);
+    max-width: none;
+    height: 15.5rem;
+    aspect-ratio: auto;
+    margin-inline: -.375rem;
     overflow: hidden;
+  }
+
+  .manufacturing-page .mfg-clients-map {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    width: 128%;
+    max-width: none;
+    height: auto;
+    transform: translate(-50%, -50%);
   }
 
   .manufacturing-page .mfg-clients-panel {
@@ -1769,17 +1804,24 @@
   }
 
   .manufacturing-page .mfg-clients-panel-top {
-    gap: 1rem;
-    padding: 0 .25rem 1rem;
+    gap: 1.5rem;
+    padding: 0 .25rem 1.25rem;
+  }
+
+  .manufacturing-page .mfg-clients-region-copy {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
   }
 
   .manufacturing-page .mfg-clients-region-copy h3 {
-    margin-top: .15rem;
+    margin: 0;
     font-size: 1.45rem;
   }
 
   .manufacturing-page .mfg-clients-region-copy p {
     max-width: 100%;
+    margin: 0;
     font-size: .92rem;
     line-height: 1.5;
   }
@@ -1846,33 +1888,36 @@
   }
 
   .manufacturing-page .mfg-clients-stats {
-    gap: .65rem;
+    column-gap: 1.35rem;
+    row-gap: 2rem;
   }
 
   .manufacturing-page .mfg-clients-stat {
-    min-height: 4.85rem;
     gap: .45rem;
-    padding: .62rem .55rem;
   }
 
   .manufacturing-page .mfg-clients-stat-icon {
-    flex-basis: 2rem;
-    width: 2rem;
-    height: 2rem;
+    flex-basis: 2.05rem;
+    width: 2.05rem;
+    height: 2.05rem;
   }
 
   .manufacturing-page .mfg-clients-stat-icon img {
-    width: 1.08rem;
-    height: 1.08rem;
+    width: 1.05rem;
+    height: 1.05rem;
   }
 
   .manufacturing-page .mfg-clients-stat-value {
-    min-width: 2.1rem;
-    font-size: clamp(1.25rem, 7vw, 1.7rem);
+    min-width: 2.05rem;
+    font-size: 1.2rem;
   }
 
   .manufacturing-page .mfg-clients-stat-label {
-    font-size: clamp(.66rem, 3vw, .78rem);
+    font-size: .66rem;
+  }
+
+  .manufacturing-page .mfg-clients-map-wrap {
+    height: 13.75rem;
   }
 
   .manufacturing-page .mfg-clients-panel {
@@ -3491,5 +3536,66 @@
   .manufacturing-page .mfg-operation-card-image-wrapper,
   .manufacturing-page .mfg-product-range-card {
     height: 12.5rem;
+  }
+}
+
+/* Manufacturing capacity circles: one scaled row on small screens. */
+@media screen and (max-width: 991px) {
+  .manufacturing-page.solution-page .mfg-capacity-cluster {
+    margin-top: 0;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-icon-pills {
+    margin-top: 3.5rem;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circles {
+    --capacity-circle-gap: 0.625rem;
+    --capacity-circle-size: calc((100% - (2 * var(--capacity-circle-gap))) / 3);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--capacity-circle-gap);
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle {
+    flex: 0 0 var(--capacity-circle-size);
+    width: var(--capacity-circle-size);
+    min-width: 0;
+    max-width: var(--capacity-circle-size);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-left: 0;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
+    grid-column: auto;
+    justify-self: auto;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-value {
+    font-size: clamp(1rem, 4.5vw, 1.375rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-label {
+    white-space: pre-line;
+    font-size: clamp(0.625rem, 2.55vw, 0.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+    max-width: 88%;
+    gap: 0.4rem;
+    padding: 0.1rem 0.2rem 0.15rem;
   }
 }

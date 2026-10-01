@@ -61,7 +61,14 @@
 
 /* ── About-style solution page hero (title + CTA + expanding viewport video) ── */
 .solution-page-hero.about-hero-section .about-hero-inner {
-  padding-bottom: 200px;
+  /* Same visible gap above the badge and below the copy. Top padding includes the fixed navbar. */
+  padding-bottom: calc(200px - 64px - 2.25rem);
+}
+
+@media screen and (max-width: 1355px) {
+  .solution-page-hero.about-hero-section .about-hero-inner {
+    padding-bottom: calc(200px - 50px - 2.25rem);
+  }
 }
 
 .solution-page-hero-button {
@@ -126,7 +133,7 @@
 @media screen and (max-width: 991px) {
   .solution-page-hero.about-hero-section .about-hero-inner {
     padding-top: 7.5rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: calc(7.5rem - 50px - 1.876rem);
   }
 
   .solution-page-hero .about-hero-title-wrap {
@@ -175,7 +182,7 @@
 @media screen and (max-width: 767px) {
   .solution-page-hero.about-hero-section .about-hero-inner {
     padding-top: 6.5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: calc(6.5rem - 50px - 1.25rem);
   }
 
   .solution-page-hero .about-hero-title-wrap {

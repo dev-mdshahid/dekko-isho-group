@@ -2629,15 +2629,12 @@
   border-radius: 8px;
   overflow: hidden;
   flex: none;
-  height: 460px;
 }
 
 .sustain-report-banner-image {
   display: block;
   width: 100%;
-  height: 460px;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
 }
 
 .sustain-report-body {
