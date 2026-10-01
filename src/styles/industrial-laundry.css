@@ -504,6 +504,14 @@
     margin-inline: calc(var(--_layout---container-gutter) * -1);
   }
 
+  .industrial-laundry-page .il-research-section .split-feature-list-carousel-frame {
+    clip-path: none;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-carousel-nav {
+    padding-inline: 12px;
+  }
+
   .industrial-laundry-page .il-research-section .split-feature-list-carousel-viewport {
     height: auto;
     min-height: clamp(340px, 75vw, 500px);
@@ -514,7 +522,21 @@
     right: var(--_layout---container-gutter);
     bottom: calc(var(--il-carousel-content-bottom) + 24px);
     left: var(--il-carousel-content-left);
-    padding: 16px 16px 16px 0;
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-carousel-dots {
+    left: var(--il-carousel-content-left);
+    padding: 0;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-carousel-title {
+    font-size: 1.25rem;
+  }
+
+  .industrial-laundry-page .il-research-section .split-feature-list-carousel-description {
+    font-size: 0.9375rem;
   }
 }
 
@@ -1429,7 +1451,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .industrial-laundry-page .split-feature-list-section.il-research-section {
+  .industrial-laundry-page .split-feature-list-section.il-research-section:not(.split-feature-list-section--carousel) {
     padding: 3.5rem 0;
   }
 

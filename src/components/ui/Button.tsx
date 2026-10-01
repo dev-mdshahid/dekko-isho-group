@@ -52,7 +52,6 @@ export function Button({
 
     const isFileLink =
         to.startsWith('http') ||
-        to.startsWith('/legacy/') ||
         to.startsWith('/docs/') ||
         to.startsWith('/documents/') ||
         /\.(pdf|zip|docx?)$/i.test(to)
@@ -62,7 +61,6 @@ export function Button({
             href: to,
             className: classes,
             ...(to.startsWith('http') ||
-                to.startsWith('/legacy/') ||
                 /\.pdf$/i.test(to)
                 ? {
                     target: '_blank',

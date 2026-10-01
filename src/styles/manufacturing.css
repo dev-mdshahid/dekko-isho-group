@@ -1140,6 +1140,14 @@
     margin-inline: calc(var(--_layout---container-gutter) * -1);
   }
 
+  .manufacturing-page .mfg-technology-section .split-feature-list-carousel-frame {
+    clip-path: none;
+  }
+
+  .manufacturing-page .mfg-technology-section .split-feature-list-carousel-nav {
+    padding-inline: 12px;
+  }
+
   .manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport {
     height: auto;
     min-height: clamp(340px, 75vw, 500px);
@@ -1150,7 +1158,21 @@
     right: var(--_layout---container-gutter);
     bottom: calc(var(--mfg-carousel-content-bottom) + 24px);
     left: var(--mfg-carousel-content-left);
-    padding: 16px 16px 16px 0;
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+
+  .manufacturing-page .mfg-technology-section .split-feature-list-carousel-dots {
+    left: var(--mfg-carousel-content-left);
+    padding: 0;
+  }
+
+  .manufacturing-page .mfg-technology-section .split-feature-list-carousel-title {
+    font-size: 1.25rem;
+  }
+
+  .manufacturing-page .mfg-technology-section .split-feature-list-carousel-description {
+    font-size: 0.9375rem;
   }
 }
 
@@ -3282,7 +3304,7 @@
   }
 
   /* Technology */
-  .manufacturing-page .split-feature-list-section.mfg-technology-section {
+  .manufacturing-page .split-feature-list-section.mfg-technology-section:not(.split-feature-list-section--carousel) {
     padding: 3.5rem 0;
   }
 

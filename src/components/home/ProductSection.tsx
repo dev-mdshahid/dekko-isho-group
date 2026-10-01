@@ -1,5 +1,4 @@
 import { homeProducts } from '../../data/home/products'
-import { legacyImage } from '../../lib/assets'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { SectionLines } from '../ui/SectionDecor'
@@ -29,7 +28,7 @@ export function ProductSection() {
               </div>
             </FadeIn>
             <img
-              src={legacyImage('Products-Icon.svg')}
+              src={''}
               loading="lazy"
               data-w-id="af52d740-e50f-ce19-4cc3-814bbe0cdac6"
               data-fade-in
@@ -46,7 +45,7 @@ export function ProductSection() {
                   <h3 className="product-name">{product.name}</h3>
                   <div className="product-image-wrapper">
                     <img
-                      src={legacyImage(product.image)}
+                      src={''}
                       loading="lazy"
                       sizes="100vw"
                       srcSet={product.imageSrcSet}

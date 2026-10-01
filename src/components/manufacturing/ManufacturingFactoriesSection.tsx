@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { manufacturingFactories } from '../../data/manufacturing/content'
-import { legacyImage } from '../../lib/assets'
+import { ButtonIcon } from '../ui/ButtonIcon'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
 import { SectionLines } from '../ui/SectionDecor'
@@ -30,12 +30,7 @@ export function ManufacturingFactoriesSection() {
                       className="service-image-inner"
                     />
                     <div className="service-hover">
-                      <img
-                        src={legacyImage('button-icon.svg')}
-                        loading="lazy"
-                        alt=""
-                        className="feature-icon"
-                      />
+                      <ButtonIcon className="feature-icon" />
                     </div>
                   </div>
                   <div className="service-content">

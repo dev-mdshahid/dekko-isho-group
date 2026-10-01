@@ -18,7 +18,7 @@ export const homeProducts: Product[] = [
     name: 'Aluminum gear housing',
     description: 'Precision CNC machined aluminum housings for gear systems and machinery.',
     image: 'Product-Image-3.webp',
-    imageSrcSet: '/legacy/images/Product-Image-3-p-500.webp 500w, /legacy/images/Product-Image-3.webp 525w',
+    imageSrcSet: '',
     specs: [
       { label: 'Material', value: 'Aluminum 6061 / 7075' },
       { label: 'Capability', value: 'CNC Machining' },
@@ -30,7 +30,7 @@ export const homeProducts: Product[] = [
     name: 'Custom plastic enclosures',
     description: 'Injection molded enclosures for electronics and telecom applications.',
     image: 'Product-Image-2.png',
-    imageSrcSet: '/legacy/images/Product-Image-2-p-500.png 500w, /legacy/images/Product-Image-2.png 525w',
+    imageSrcSet: '',
     specs: [
       { label: 'Material', value: 'ABS, Polycarbonate, Nylon' },
       { label: 'Capability', value: 'Injection Molding' },
@@ -42,7 +42,7 @@ export const homeProducts: Product[] = [
     name: 'Electrical control panels',
     description: 'Weather-resistant control panels for industrial automation systems.',
     image: 'Product-Image-1.webp',
-    imageSrcSet: '/legacy/images/Product-Image-1-p-500.webp 500w, /legacy/images/Product-Image-1.webp 525w',
+    imageSrcSet: '',
     specs: [
       { label: 'Material', value: 'Mild Steel, Stainless Steel' },
       { label: 'Capability', value: 'Sheet Metal Fabrication & Assembly' },
@@ -54,7 +54,7 @@ export const homeProducts: Product[] = [
     name: 'Precision Shaft Assemblies',
     description: 'High-precision steel shafts for automotive and industrial equipment.',
     image: 'Product-Image-4.webp',
-    imageSrcSet: '/legacy/images/Product-Image-4-p-500.webp 500w, /legacy/images/Product-Image-4.webp 525w',
+    imageSrcSet: '',
     specs: [
       { label: 'Material', value: 'Alloy Steel, Stainless Steel' },
       { label: 'Capability', value: 'Turning & Grinding' },

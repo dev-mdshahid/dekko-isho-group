@@ -1,4 +1,3 @@
-import { legacyImage } from '../../lib/assets'
 
 export function BlogSection() {
   return (
@@ -23,7 +22,7 @@ export function BlogSection() {
                           <div className="button-hover-text">view all blog</div>
                         </div>
                       </div>
-                      <div className="button-icon-bg"><img src={legacyImage('button-icon.svg')} loading="eager" alt="Arrow" className="button-icon" /><img src={legacyImage('button-icon.svg')} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
+                      <div className="button-icon-bg"><img src={''} loading="eager" alt="Arrow" className="button-icon" /><img src={''} loading="lazy" alt="Arrow" className="button-icon-hover" /></div>
                     </div>
                   </a>
                 </div>

@@ -1,12 +1,11 @@
 import { clientLogos } from '../../data/home/clients'
-import { legacyImage } from '../../lib/assets'
 
 function ClientMarqueeList() {
   return (
     <div className="client-marquee-list">
       {clientLogos.map((logo) => (
         <div key={logo} className="client-marquee-item bg-white">
-          <img src={legacyImage(logo)} loading="lazy" alt="Client Image" className="client-image" />
+          <img src={''} loading="lazy" alt="Client Image" className="client-image" />
         </div>
       ))}
     </div>

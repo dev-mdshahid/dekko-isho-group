@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { serviceSpecialities, type ServiceFeatureGroup } from '../../data/home/specialities'
-// import { legacyImage } from '../../lib/assets'
 // import { ButtonArrow } from '../ui/ButtonArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { PreSectionTitle } from '../ui/PreSectionTitle'
@@ -23,13 +22,13 @@ function ServiceTitle({ title }: { title: string }) {
 //     <span className={className ? `service-card-action ${className}` : 'service-card-action'} aria-hidden="true">
 //       <span className="button-icon-bg service-card-action__icon">
 //         <img
-//           src={legacyImage('button-icon.svg')}
+//           src={''}
 //           loading="lazy"
 //           alt=""
 //           className="button-icon"
 //         />
 //         <img
-//           src={legacyImage('button-icon.svg')}
+//           src={''}
 //           loading="lazy"
 //           alt=""
 //           className="button-icon-hover"

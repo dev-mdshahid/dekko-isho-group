@@ -6,7 +6,7 @@ import {
   contactPhone,
   socialLinks,
 } from '../../data/contact/contactInfo'
-import { legacyImage } from '../../lib/assets'
+import { ButtonIcon } from '../ui/ButtonIcon'
 import { navSocialBrands } from '../layout/NavSocialCycle'
 import { FadeIn } from '../ui/FadeIn'
 
@@ -412,25 +412,8 @@ export function ContactSection() {
                       </div>
 
                       <div className="button-icon-bg">
-                        <img
-                          src={legacyImage(
-                            'button-icon.svg',
-                          )}
-                          loading="eager"
-                          alt=""
-                          aria-hidden="true"
-                          className="button-icon"
-                        />
-
-                        <img
-                          src={legacyImage(
-                            'button-icon.svg',
-                          )}
-                          loading="lazy"
-                          alt=""
-                          aria-hidden="true"
-                          className="button-icon-hover"
-                        />
+                        <ButtonIcon className="button-icon" />
+                        <ButtonIcon className="button-icon-hover" />
                       </div>
                     </div>
                   </button>
