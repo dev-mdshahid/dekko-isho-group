@@ -116,6 +116,7 @@ export const dekkoBusinessNav: NavLink[] = [
     to: 'https://www.di.vc',
     label: 'DIVC',
     showExternalIcon: true,
+    shouldOpenInNewTab: true,
   },
   {
     to: 'https://www.ditech.co',
