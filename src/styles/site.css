@@ -3246,11 +3246,12 @@ a.about-info-box:hover {
   }
 }
 
-/* Sticky stack / cover-cascade scale is desktop-only; never leave scaled cards on mobile. */
+/*
+ * A transform on the sticky wrapper (even translateY(0) left by a tween) breaks
+ * stacking. Cover-cascade scale stays on the panel; this only guards the wrapper.
+ */
 @media screen and (max-width: 991px) {
-
-  .service-section [data-home-animate='service-card'],
-  .service-section [data-home-animate='service-card'] .service-card-panel {
+  .service-section [data-home-animate='service-card'] {
     transform: none !important;
     will-change: auto;
   }
@@ -12357,7 +12358,33 @@ a.about-info-box:hover {
 
 @media screen and (max-width: 991px) {
   .service-section {
-    overflow-x: clip;
+    /* clip would make this a scroll container and stop the cards from sticking */
+    overflow: visible;
+  }
+
+  /* The shared 991px sheet sets these wrappers to static. Keep the home stack sticky. */
+  .service-section .service-list-wrapper {
+    position: sticky;
+  }
+
+  /*
+   * Desktop peeks by 100px. These cards are much taller once they stack in a
+   * column, so a short lip keeps the active card's title and copy on screen.
+   */
+  .service-section .service-list-wrapper.two {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 1.25rem);
+  }
+
+  .service-section .service-list-wrapper.three {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 2.5rem);
+  }
+
+  .service-section .service-list-wrapper.four {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 3.75rem);
+  }
+
+  .service-section .service-list-wrapper.five {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 5rem);
   }
 
   .service-section-gradient-spacer {

@@ -30,38 +30,17 @@ function getCardPanel(card: HTMLElement): HTMLElement {
 function clearCardScales(cards: NodeListOf<HTMLElement> | HTMLElement[]) {
   cards.forEach((card) => {
     gsap.set(card, { clearProps: 'transform,scale' })
-    gsap.set(getCardPanel(card), { clearProps: 'transform,scale' })
+    gsap.set(getCardPanel(card), { clearProps: 'opacity,transform,scale' })
   })
 }
 
-function setupRevealAnimations(cards: NodeListOf<HTMLElement>) {
-  const triggers: ScrollTrigger[] = []
-  const tweens: gsap.core.Tween[] = []
-
+/** Desktop feature tweens leave opacity/transform inline; clear them when that mode ends. */
+function clearFeatureMotion(cards: NodeListOf<HTMLElement> | HTMLElement[]) {
   cards.forEach((card) => {
-    const tween = gsap.fromTo(
-      card,
-      { opacity: 0, y: 64 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.0,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 88%',
-          toggleActions: 'restart reset restart reset',
-        },
-      },
-    )
-    if (tween.scrollTrigger) triggers.push(tween.scrollTrigger)
-    tweens.push(tween)
+    const features = card.querySelectorAll<HTMLElement>('.feature-item-inner')
+    if (!features.length) return
+    gsap.set(features, { clearProps: 'opacity,transform,visibility' })
   })
-
-  return () => {
-    triggers.forEach((t) => t.kill())
-    tweens.forEach((t) => t.kill())
-  }
 }
 
 function setupFeatureReveals(cards: NodeListOf<HTMLElement>) {
@@ -95,6 +74,7 @@ function setupFeatureReveals(cards: NodeListOf<HTMLElement>) {
   return () => {
     triggers.forEach((t) => t.kill())
     tweens.forEach((t) => t.kill())
+    clearFeatureMotion(cards)
   }
 }
 
@@ -198,13 +178,15 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
   const applyMode = () => {
     modeCleanup()
     clearCardScales(cards)
+    clearFeatureMotion(cards)
 
     const reduced = prefersReducedMotion() || motionMq.matches
     const mobile = mobileMq.matches
 
-    // Sticky stack (and cover cascade) only runs on desktop with motion allowed.
+    // Cover-cascade scale stays desktop-only. On small screens the cards stick,
+    // so a leave/reset fade would hide a card that is still pinned on screen.
     if (reduced || mobile) {
-      modeCleanup = setupRevealAnimations(cards)
+      modeCleanup = () => {}
       return
     }
 
@@ -231,5 +213,6 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     motionMq.removeEventListener('change', onModeChange)
     modeCleanup()
     clearCardScales(cards)
+    clearFeatureMotion(cards)
   }
 }
