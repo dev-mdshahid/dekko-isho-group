@@ -11,8 +11,6 @@ const COVERED_SCALE = 0.94
 /** Minimum scrub distance (px) so short cards never invert start/end. */
 const MIN_COVER_SCRUB_PX = 80
 
-const MOBILE_MQ = '(max-width: 991px)'
-
 function getStickyTopPx(el: HTMLElement): number {
   const parsed = Number.parseFloat(getComputedStyle(el).top)
   return Number.isFinite(parsed) ? parsed : 0
@@ -39,8 +37,9 @@ function setupRevealAnimations(cards: NodeListOf<HTMLElement>) {
   const tweens: gsap.core.Tween[] = []
 
   cards.forEach((card) => {
+    const panel = getCardPanel(card)
     const tween = gsap.fromTo(
-      card,
+      panel,
       { opacity: 0, y: 64 },
       {
         opacity: 1,
@@ -48,7 +47,7 @@ function setupRevealAnimations(cards: NodeListOf<HTMLElement>) {
         duration: 1.0,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: card,
+          trigger: panel,
           start: 'top 88%',
           toggleActions: 'restart reset restart reset',
         },
@@ -190,7 +189,6 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
   const cards = section.querySelectorAll<HTMLElement>('[data-home-animate="service-card"]')
   if (!cards.length) return () => {}
 
-  const mobileMq = window.matchMedia(MOBILE_MQ)
   const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
 
   let modeCleanup: AnimationCleanup = () => {}
@@ -200,10 +198,10 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     clearCardScales(cards)
 
     const reduced = prefersReducedMotion() || motionMq.matches
-    const mobile = mobileMq.matches
 
-    // Sticky stack (and cover cascade) only runs on desktop with motion allowed.
-    if (reduced || mobile) {
+    // Cover cascade scales the panel only. A y-transform on the sticky
+    // wrapper would cancel the stack, so reduced motion fades the panel.
+    if (reduced) {
       modeCleanup = setupRevealAnimations(cards)
       return
     }
@@ -223,11 +221,9 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     ScrollTrigger.refresh()
   }
 
-  mobileMq.addEventListener('change', onModeChange)
   motionMq.addEventListener('change', onModeChange)
 
   return () => {
-    mobileMq.removeEventListener('change', onModeChange)
     motionMq.removeEventListener('change', onModeChange)
     modeCleanup()
     clearCardScales(cards)
