@@ -128,32 +128,6 @@
     font-size: 1rem;
     line-height: 1.65;
   }
-
-  .embroidery-page .mfg-capacity-cta {
-    margin-bottom: 0.5rem;
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-circles {
-    --capacity-circle-size: clamp(8.5rem, 38vw, 10.5rem);
-    display: grid;
-    grid-template-columns: repeat(2, var(--capacity-circle-size));
-    justify-content: center;
-    justify-items: center;
-    gap: 0.75rem 1rem;
-    width: fit-content;
-    max-width: 100%;
-    margin-inline: auto;
-    flex-wrap: unset;
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-circle {
-    margin-left: 0 !important;
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -164,24 +138,6 @@
 
   .embroidery-page .mfg-capacity-title {
     font-size: clamp(1.75rem, 7.5vw, 2.125rem);
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-circles {
-    --capacity-circle-size: clamp(7.75rem, 40vw, 9.5rem);
-    gap: 0.625rem 0.75rem;
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-value {
-    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-label {
-    font-size: clamp(0.6875rem, 2.8vw, 0.875rem);
-  }
-
-  .embroidery-page .mfg-capacity-cluster .capacity-stat-circle-inner {
-    max-width: 88%;
-    gap: 6px;
   }
 }
 

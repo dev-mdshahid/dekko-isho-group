@@ -3561,9 +3561,11 @@
   }
 }
 
-/* Manufacturing capacity circles: one scaled row on small screens. */
+/* Capacity circles (manufacturing, embroidery, industrial laundry): one scaled row on small screens. */
 @media screen and (max-width: 991px) {
-  .manufacturing-page.solution-page .mfg-capacity-cluster {
+  .manufacturing-page.solution-page .mfg-capacity-cluster,
+  .embroidery-page.solution-page .mfg-capacity-cluster,
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster {
     margin-top: 0;
   }
 
@@ -3571,7 +3573,9 @@
     margin-top: 3.5rem;
   }
 
-  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circles {
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circles,
+  .embroidery-page.solution-page .mfg-capacity-cluster .capacity-stat-circles,
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster .capacity-stat-circles {
     --capacity-circle-gap: 0.625rem;
     --capacity-circle-size: calc((100% - (2 * var(--capacity-circle-gap))) / 3);
     display: flex;
@@ -3586,7 +3590,9 @@
     height: auto;
   }
 
-  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle {
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle,
+  .embroidery-page.solution-page .mfg-capacity-cluster .capacity-stat-circle,
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster .capacity-stat-circle {
     flex: 0 0 var(--capacity-circle-size);
     width: var(--capacity-circle-size);
     min-width: 0;
@@ -3596,18 +3602,24 @@
     margin-left: 0;
   }
 
-  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3),
+  .embroidery-page.solution-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3),
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
     grid-column: auto;
     justify-self: auto;
   }
 
-  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-value {
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-value,
+  .embroidery-page.solution-page .mfg-capacity-cluster .capacity-stat-value,
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster .capacity-stat-value {
     font-size: clamp(1rem, 4.5vw, 1.375rem);
     line-height: 1;
     letter-spacing: -0.03em;
   }
 
-  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-label {
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-label,
+  .embroidery-page.solution-page .mfg-capacity-cluster .capacity-stat-label,
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster .capacity-stat-label {
     white-space: pre-line;
     font-size: clamp(0.625rem, 2.55vw, 0.75rem);
     font-weight: 600;
@@ -3615,7 +3627,9 @@
     letter-spacing: -0.02em;
   }
 
-  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle-inner {
+  .manufacturing-page.solution-page .mfg-capacity-cluster .capacity-stat-circle-inner,
+  .embroidery-page.solution-page .mfg-capacity-cluster .capacity-stat-circle-inner,
+  .industrial-laundry-page.solution-page .mfg-capacity-cluster .capacity-stat-circle-inner {
     max-width: 88%;
     gap: 0.4rem;
     padding: 0.1rem 0.2rem 0.15rem;
