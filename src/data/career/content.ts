@@ -53,7 +53,7 @@ export const careerBanner = {
   heroCarousel: [
     {
       src: '/images/career/hero-carousel-03.png',
-      alt: 'Award ceremony celebrating team excellence at Dekko Isho',
+      alt: 'Award ceremony celebrating team excellence at Dekko ISHO',
     },
     {
       src: '/images/career/hero-carousel-04.png',
@@ -61,7 +61,7 @@ export const careerBanner = {
     },
     {
       src: '/images/career/hero-carousel-01.png',
-      alt: 'Dekko Isho team members together at a workplace gathering',
+      alt: 'Dekko ISHO team members together at a workplace gathering',
     },
     {
       src: '/images/career/hero-carousel-02.png',
@@ -77,19 +77,19 @@ export const careerBanner = {
     },
     {
       src: '/images/career/hero-carousel-07.png',
-      alt: 'Workplace moment capturing the Dekko Isho community',
+      alt: 'Workplace moment capturing the Dekko ISHO community',
     },
     {
       src: '/images/career/hero-carousel-08.png',
-      alt: 'Women colleagues representing the Dekko Isho workforce',
+      alt: 'Women colleagues representing the Dekko ISHO workforce',
     },
     {
       src: '/images/career/hero-carousel-09.jpg',
-      alt: 'Day-to-day life across Dekko Isho operations',
+      alt: 'Day-to-day life across Dekko ISHO operations',
     },
     {
       src: '/images/career/hero-carousel-10.png',
-      alt: 'Team members shaping the future at Dekko Isho',
+      alt: 'Team members shaping the future at Dekko ISHO',
     },
   ] satisfies CareerHeroCarouselSlide[],
 }
@@ -104,11 +104,11 @@ export const careerWorkplace = {
   ],
   image: '/images/career/more-than-a-workplace.png',
   imageAlt:
-    'Dekko Isho team members gathered at a company exhibition booth discussing opportunities',
+    'Dekko ISHO team members gathered at a company exhibition booth discussing opportunities',
 }
 
 export const careerWhy = {
-  badge: 'Why Dekko Isho',
+  badge: 'Why Dekko ISHO',
   heading: 'More Than Just a Job.',
   items: [
     {
@@ -213,7 +213,7 @@ export const careerEmployeeVoices = {
       name: 'Mst. Mohsina Aktar',
       role: 'Executive, Accounts & Finance',
       quote:
-        'Dekko ISHO is my first step into corporate life and every experience here continues to inspire me professionally and personally.',
+        'Dekko ISHO is my first step into corporate life, and every experience here continues to inspire me professionally and personally.',
       avatar: '/images/employees/mst_mohsina_aktar.png',
       avatarAlt: 'Portrait of Mst. Mohsina Aktar',
     },

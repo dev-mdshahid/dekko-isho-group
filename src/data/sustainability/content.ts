@@ -360,11 +360,11 @@ export const pillar01FocusAreas: FocusAreaCard[] = [
   },
   {
     id: 'stp',
-    title: 'Sewerage Treatment Plan (STP)',
+    title: 'Sewage Treatment Plant (STP)',
     images: [
       {
         src: pillar1Image('6. Sewerage Treatment Plan (STP)', '6.-Sewerage-Treatment-Plan-(STP).png'),
-        alt: 'Sewerage treatment plant water sample testing',
+        alt: 'Sewage treatment plant water sample testing',
       },
     ],
   },
@@ -654,7 +654,7 @@ export const performanceSnapshot = {
       ],
       footer: [
         { title: 'Base Paper Ltd.', text: 'Paper recycling initiative' },
-        { title: 'Lub-rref BD Ltd.', text: 'Lube Oil recycling initiative' },
+        { title: 'Lub-rref BD Ltd.', text: 'Lube oil recycling initiative' },
         { title: 'JR Recycling', text: 'E-waste recycling initiative' },
         { title: 'By 2026', text: 'Thread cone & plastic recycling' },
       ],
@@ -665,7 +665,7 @@ export const performanceSnapshot = {
       category: 'Water',
       title: 'Water Management',
       description:
-        'Reduction, treatment and reuse across the entire production footprint. With Rainwater Harvesting & Push taps & Awareness across all units',
+        'Reduction, treatment and reuse across the entire production footprint, with rainwater harvesting, push taps and awareness programs across all units.',
       statsColumns: 2,
       stats: [
         {
@@ -969,7 +969,7 @@ export const pillar05 = {
   badge: 'Pillar 05',
   title: 'ESG Disclosure',
   description:
-    'In accordance with Global Reporting Initiative (GRI) standards, our sustainability reports communicate our goals, progress, challenges and impact across every ESG area.',
+    'In accordance with the Global Reporting Initiative (GRI) Standards, our sustainability reports communicate our goals, progress, challenges and impact across every ESG area.',
   heroImage: '/images/sustainability/pillar-5/pillar-5-cover.png',
   heroImageAlt: 'A tree-lined pathway surrounded by lush bamboo and tropical greenery',
   reports: [

@@ -454,8 +454,38 @@
   gap: 1rem;
 }
 
+.page-contact-section--modern .page-contact-left {
+  container-type: inline-size;
+}
+
+.page-contact-section--modern .home-contact-details {
+  grid-template-columns: max-content max-content minmax(0, 1fr);
+  column-gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+@container (max-width: 560px) {
+  .page-contact-section--modern .home-contact-details {
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 1.5rem;
+    row-gap: 2.5rem;
+  }
+
+  .page-contact-section--modern .home-contact-details > .page-contact-details-col:not(.page-contact-details-col--compact) {
+    grid-column: 1 / -1;
+  }
+
+  .page-contact-section--modern .home-contact-details .page-contact-socials {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
 .page-contact-section--modern .page-contact-details-col--compact {
-  gap: 16px;
+  display: contents;
+}
+
+.page-contact-section--modern .page-contact-details-col--compact .page-contact-text-link {
+  white-space: nowrap;
 }
 
 .page-contact-section--modern .page-contact-block {

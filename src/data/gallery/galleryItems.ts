@@ -10,7 +10,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 'dekko-garments-building',
     src: `${GALLERY_BASE}/d096aef6dde3603820514ac8d2e4df5bd980aa52.png`,
-    alt: 'Exterior of Dekko Garments Ltd building with wave-shaped awning',
+    alt: 'Exterior of Dekko Garments Ltd. building with wave-shaped awning',
   },
   {
     id: 'industrial-complex-aerial',
