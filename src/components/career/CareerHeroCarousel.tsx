@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import type { CareerHeroCarouselSlide } from '../../data/career/content'
+import { CarouselArrow } from '../ui/CarouselArrow'
 
 const SLIDE_INTERVAL_MS = 2500
 
@@ -69,7 +70,7 @@ export function CareerHeroCarousel({ images }: Props) {
 
   return (
     <div
-      className="career-hero-carousel"
+      className="career-hero-carousel carousel-arrow-host"
       role="region"
       aria-roledescription="carousel"
       aria-label="Life at Dekko ISHO"
@@ -94,44 +95,18 @@ export function CareerHeroCarousel({ images }: Props) {
         />
       ))}
 
-      <button
-        type="button"
+      <CarouselArrow
+        direction="previous"
+        label="Previous image"
         className="career-hero-carousel__arrow career-hero-carousel__arrow--prev"
-        aria-label="Previous image"
-        onClick={(event) => {
-          goPrev()
-          if (event.detail > 0) event.currentTarget.blur()
-        }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="m15 18-6-6 6-6"
-            stroke="#ffffff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-      <button
-        type="button"
+        onClick={goPrev}
+      />
+      <CarouselArrow
+        direction="next"
+        label="Next image"
         className="career-hero-carousel__arrow career-hero-carousel__arrow--next"
-        aria-label="Next image"
-        onClick={(event) => {
-          goNext()
-          if (event.detail > 0) event.currentTarget.blur()
-        }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="m9 18 6-6-6-6"
-            stroke="#ffffff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+        onClick={goNext}
+      />
 
       <div className="career-hero-carousel__dots" role="tablist" aria-label="Carousel slides">
         {images.map((image, index) => (

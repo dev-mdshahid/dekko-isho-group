@@ -10,8 +10,6 @@ const MAX_TILT = 3.5
 export function initAboutAnimations(scope: ParentNode): AnimationCleanup {
   const carousel = scope.querySelector<HTMLElement>('[data-home-animate="about-carousel"]')
   const cards = scope.querySelectorAll<HTMLElement>('[data-home-animate="about-card"]')
-  const arrows = scope.querySelectorAll<HTMLElement>('.about-carousel-arrow')
-
   const cleanups: (() => void)[] = []
 
   if (carousel && !prefersReducedMotion()) {
@@ -99,25 +97,6 @@ export function initAboutAnimations(scope: ParentNode): AnimationCleanup {
       })
     })
   }
-
-  arrows.forEach((arrow) => {
-    const onEnter = () => {
-      if (prefersReducedMotion()) return
-      gsap.to(arrow, { scale: 1.05, duration: 0.35, ease: 'power3.out' })
-    }
-    const onLeave = () => {
-      gsap.to(arrow, { scale: 1, duration: 0.4, ease: 'power3.out' })
-    }
-
-    arrow.addEventListener('mouseenter', onEnter)
-    arrow.addEventListener('mouseleave', onLeave)
-
-    cleanups.push(() => {
-      arrow.removeEventListener('mouseenter', onEnter)
-      arrow.removeEventListener('mouseleave', onLeave)
-      gsap.killTweensOf(arrow)
-    })
-  })
 
   return () => {
     cleanups.forEach((fn) => fn())
