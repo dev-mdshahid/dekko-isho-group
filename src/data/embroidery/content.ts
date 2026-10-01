@@ -53,7 +53,7 @@ export const embroideryTechnology = {
   badge: 'Advanced Embroidery Technology',
   title: 'Technology That Stitches with Precision',
   description:
-    'Powered by industry-leading Barudan and Maya embroidery machines, our facility delivers high-speed, high-precision embroidery with exceptional consistency across both development and bulk production.',
+    'Powered by industry-leading embroidery machines, our facility delivers high-speed, high-precision embroidery with exceptional consistency across both development and bulk production.',
   items: [
     {
       id: 'barudan',
@@ -95,7 +95,7 @@ export const embroideryProductionCapacity = {
     {
       id: 'monthly-capacity',
       value: '2.2B',
-      label: 'Stitches/Month',
+      label: 'Stitches/month',
       variant: 'blue',
     },
     {
@@ -162,7 +162,7 @@ export const embroideryProductionNetwork = {
       imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
       monthlyCapacity: '50M+',
       monthlyCapacityLabel: 'Stitching capacity',
-      monthlyCapacityUnit: 'Stitches/Month',
+      monthlyCapacityUnit: 'Stitches/month',
       productionLines: '9',
       productionLinesLabel: 'Machines',
     },
@@ -173,7 +173,7 @@ export const embroideryProductionNetwork = {
       imageAlt: 'Finished embroidered garments at Globus Embroidery',
       monthlyCapacity: '350K',
       monthlyCapacityLabel: 'Production capacity',
-      monthlyCapacityUnit: 'Units/Month',
+      monthlyCapacityUnit: 'Units/month',
       productionLines: '6',
       productionLinesLabel: 'Machines',
     },

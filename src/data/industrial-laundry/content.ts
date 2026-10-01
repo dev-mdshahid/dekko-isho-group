@@ -135,7 +135,7 @@ export const industrialLaundryWashingProcessesV2 = {
 
 export const industrialLaundryAdvancedFinishing = {
   id: 'il-advanced-finishing',
-  badge: 'Comprehensive Washing Capabilities',
+  badge: 'Finishing Capabilities',
   title: 'Advanced Finishing Capabilities',
   description:
     'Our integrated finishing facility combines advanced technologies with skilled craftsmanship to create distinctive fashion effects and premium garment finishes. Dedicated process areas and specialized equipment ensure precision, efficiency, and consistency across every production run.',
@@ -339,7 +339,7 @@ export const industrialLaundryLaboratory = {
       number: '01',
       accent: '#F3215D',
       title: 'Shade & Color Matching',
-      description: 'Color consistency verified against approved standards before bulk.',
+      description: 'Color consistency verified against approved standards before bulk production.',
     },
     {
       id: 'performance',
@@ -353,7 +353,7 @@ export const industrialLaundryLaboratory = {
       number: '03',
       accent: '#14B253',
       title: 'Physical & Chemical Parameter Testing',
-      description: 'Dimensional stability confirmed before production transition.',
+      description: 'Physical properties and chemical parameters tested to meet buyer and regulatory requirements.',
     },
   ],
 }
@@ -379,7 +379,7 @@ export const industrialLaundrySustainableTech = {
     {
       id: 'eflow',
       number: '01',
-      title: 'eFlow Technology',
+      title: 'e-Flow Technology',
       image: `${INDUSTRIAL_LAUNDRY_IMAGE_BASE}/tech-eflow.png`,
       imageAlt: 'Jeanologia e-Flow K Lab washing technology equipment',
     },
@@ -492,7 +492,7 @@ export const industrialLaundryCta = {
   badge: null,
   heading: "Let’s Explore What’s Next, Together",
   description:
-    'Get in touch with our team for partnership, sourcing, careers or upcoming projects. We will be back to you with solutions.',
+    'Get in touch with our team for partnership, sourcing, careers or upcoming projects. We will get back to you with solutions.',
   buttonLabel: 'Contact us now',
   buttonHref: '/contact',
 }

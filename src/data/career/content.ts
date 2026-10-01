@@ -197,7 +197,7 @@ export const careerOpenPositions = {
 export const careerEmployeeVoices = {
   badge: 'Employee Voices',
   headline:
-    `"At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives, and everyday contributions reflect the culture, ambition, and diversity of our Group"`,
+    `"At Dekko ISHO, our journey is shaped by the people who bring it to life. Their experiences, perspectives, and everyday contributions reflect the culture, ambition, and diversity of our Group."`,
   testimonials: [
     {
       id: 'career-voice-01',
@@ -213,7 +213,7 @@ export const careerEmployeeVoices = {
       name: 'Mst. Mohsina Aktar',
       role: 'Executive, Accounts & Finance',
       quote:
-        'Dekko ISHO is my first step into corporate life and every experience here continues to inspire me professionally and personally.',
+        'Dekko ISHO is my first step into corporate life, and every experience here continues to inspire me professionally and personally.',
       avatar: '/images/employees/mst_mohsina_aktar.png',
       avatarAlt: 'Portrait of Mst. Mohsina Aktar',
     },
