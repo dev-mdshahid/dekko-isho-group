@@ -3614,6 +3614,25 @@
   }
 }
 
+/* About page — hide the hairline along the bottom of the video frame. */
+.about-content .video-section .hero-video {
+  overflow: hidden;
+  line-height: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.about-content .video-section .hero-video-media,
+.about-content .video-section .hero-video.hero-video--ready .hero-video-media {
+  display: block;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  vertical-align: top;
+  margin-bottom: -2px;
+}
+
 /* About page — video section (full-bleed on mobile) */
 
 @media screen and (max-width: 767px) {
@@ -3637,8 +3656,9 @@
   .about-content .video-section .hero-video.hero-video--ready .hero-video-media {
     position: absolute;
     inset: 0;
+    bottom: -2px;
     width: 100%;
-    height: 100%;
+    height: calc(100% + 2px);
     max-width: none;
     object-fit: cover;
     object-position: center;
