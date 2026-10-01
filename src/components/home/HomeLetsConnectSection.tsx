@@ -151,7 +151,7 @@ export function HomeLetsConnectSection() {
                 >
                   <div className="page-contact-field" data-home-animate="contact-field">
                     <label htmlFor="home-contact-name" className="page-contact-field-label">
-                      Name
+                      Name *
                     </label>
                     <input
                       className="page-contact-input w-input"
@@ -196,7 +196,7 @@ export function HomeLetsConnectSection() {
 
                   <div className="page-contact-field" data-home-animate="contact-field">
                     <label htmlFor="home-contact-message" className="page-contact-field-label">
-                      Message
+                      Message *
                     </label>
                     <textarea
                       placeholder=""

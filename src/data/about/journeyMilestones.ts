@@ -85,7 +85,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     era: 2,
     entries: [
       {
-        title: 'Agami Fashions',
+        title: 'Agami Fashions Ltd.',
         description:
           'An export-oriented woven garments factory based in Chandra, Gazipur.',
       },
@@ -190,7 +190,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     era: 3,
     entries: [
       {
-        title: 'Dekko Garments Limited (Unit 2)',
+        title: 'Dekko Garments Ltd. (Unit 2)',
         description: 'The next chapter of sustainable, large-scale apparel manufacturing.',
       },
     ],

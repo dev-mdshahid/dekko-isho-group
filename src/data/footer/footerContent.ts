@@ -72,12 +72,12 @@ export const footerSocialLinks = [
   },
   {
     href: 'https://x.com/dekkoisho',
-    label: 'Twitter',
+    label: 'X',
     icon: 'twitter-x.svg',
   },
   {
     href: 'https://www.youtube.com/@dekkoishogroup9251',
-    label: 'Youtube',
+    label: 'YouTube',
     icon: '/youtube-logo.svg',
   },
 ] as const

@@ -170,7 +170,7 @@ export function Footer() {
                   variant="slide-in-bottom"
                   delay={350}
                 >
-                  <h2 className="footer-title">Contact Info.</h2>
+                  <h2 className="footer-title">Contact Info</h2>
                   <div className="footer-contact-item">
                     {/* <div className="footer-address">{footerContact.address}</div> */}
                     <div className="footer-address">
@@ -216,7 +216,7 @@ export function Footer() {
                   rel="noreferrer"
                   className="footer-social-link w-inline-block"
                 >
-                  {social.label === 'Youtube' ? (
+                  {social.label === 'YouTube' ? (
                     <img
                       src={social.icon}
                       loading="eager"
