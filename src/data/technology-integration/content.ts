@@ -179,7 +179,7 @@ export const technologyIntegrationPartners = {
 
 export const technologyIntegrationCta = {
   badge: "Let's Connect",
-  heading: "And Build What's Next, Together",
+  heading: "Let's Explore What's Next, Together",
   description:
     'Get in touch with our team for partnership, sourcing, careers or general inquiries. We will get back to you with answers.',
   buttonLabel: 'Schedule consultation',

@@ -188,8 +188,8 @@ export function ContactSection() {
                   </div>
                 </div>
               </FadeIn> */}
-              <div className="page-contact-details home-contact-details">
-                <div className="page-contact-details-col page-contact-details-col--compact">
+              <div className="page-contact-details home-contact-details page-contact-details--split">
+                <div className="page-contact-details-top">
                   <div className="page-contact-block">
                     <div className="page-contact-label" style={{ color: "#2595d5"}}>Contact</div>
                     <div className="page-contact-lines">
@@ -250,21 +250,20 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                <div className="page-contact-details-col">
-                  <div className="page-contact-block">
-                    <div className="page-contact-label" style={{ color: "#2595d5"}}>Address</div>
-                    <div className="page-contact-locations">
-                      <div className="page-contact-location">
-                        <span style={{ fontWeight: 'bold', fontSize: '15.2px' }}>Corporate HQ</span>
-                        <p className="page-contact-location-line">
-                          <span>The Forum, West Tower, Level: 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.</span>
-                        </p>
-
-                        <strong style={{ fontWeight: 'bold', fontSize: '15.2px' }}>London Display Center</strong>
-                        <p className="page-contact-location-line">
-                          <span>94 Harley Street, London W1G 7HX</span>
-                        </p>
-                      </div>
+                <div className="page-contact-block">
+                  <div className="page-contact-label" style={{ color: "#2595d5"}}>Address</div>
+                  <div className="page-contact-locations page-contact-locations--split">
+                    <div className="page-contact-location">
+                      <span style={{ fontWeight: 'bold', fontSize: '15.2px' }}>Corporate HQ</span>
+                      <p className="page-contact-location-line">
+                        <span>The Forum, West Tower, Level: 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka: 1208, Bangladesh.</span>
+                      </p>
+                    </div>
+                    <div className="page-contact-location">
+                      <strong style={{ fontWeight: 'bold', fontSize: '15.2px' }}>London Display Center</strong>
+                      <p className="page-contact-location-line">
+                        <span>94 Harley Street, London W1G 7HX</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -309,7 +308,7 @@ export function ContactSection() {
                       htmlFor="contact-name"
                       className="page-contact-field-label"
                     >
-                      Full name
+                      Full Name *
                     </label>
 
                     <input
@@ -330,7 +329,7 @@ export function ContactSection() {
                         htmlFor="email-address"
                         className="page-contact-field-label"
                       >
-                        Email
+                        Email *
                       </label>
 
                       <input
@@ -370,7 +369,7 @@ export function ContactSection() {
                       htmlFor="message"
                       className="page-contact-field-label"
                     >
-                      Message
+                      Message *
                     </label>
 
                     <textarea

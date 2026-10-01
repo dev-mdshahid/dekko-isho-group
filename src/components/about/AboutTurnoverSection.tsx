@@ -34,7 +34,7 @@ export function AboutTurnoverSection() {
             <GrowthComboChart />
 
             <p className="about-turnover-caption">
-              Total Business Turnover in Millions (M)
+              Total Business Turnover (USD, Millions)
             </p>
           </div>
         </div>

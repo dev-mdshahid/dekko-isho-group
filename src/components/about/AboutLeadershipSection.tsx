@@ -10,7 +10,7 @@ export function AboutLeadershipSection() {
           <PreSectionTitle title="Leadership" />
           <h2 className="about-leadership-title">
             The People Setting the{' '}
-            <span className="about-leadership-title-accent">Direction</span>.
+            <span className="about-leadership-title-accent">Direction</span>
           </h2>
         </FadeIn>
 

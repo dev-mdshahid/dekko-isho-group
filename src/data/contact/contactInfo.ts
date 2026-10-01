@@ -1,6 +1,6 @@
 export const contactPhone = {
   href: 'tel:+8809606101010',
-  label: '+8809606101010',
+  label: '+880 9606-101010',
 } as const
 
 export const contactEmail = {
@@ -12,7 +12,7 @@ export const socialLinks = [
   { href: 'https://www.facebook.com/share/1HoDreUv8S/', label: 'facebook.com/share/1HoDreUv8S' },
   { href: 'https://x.com/dekkoisho', label: 'x.com/dekkoisho' },
   { href: 'https://www.linkedin.com/company/dekkoishogroup/', label: 'linkedin.com/company/dekkoishogroup' },
-  { href: 'https://www.youtube.com/@dekkoishogroup9251', label: 'Youtube' },
+  { href: 'https://www.youtube.com/@dekkoishogroup9251', label: 'YouTube' },
 ] as const
 
 export type OfficeLocation = {

@@ -85,7 +85,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     era: 2,
     entries: [
       {
-        title: 'Agami Fashions',
+        title: 'Agami Fashions Ltd.',
         description:
           'An export-oriented woven garments factory based in Chandra, Gazipur.',
       },

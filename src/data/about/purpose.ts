@@ -12,7 +12,7 @@ export type AboutCoreValue = {
 export const aboutCoreValues: AboutCoreValue[] = [
   {
     label: 'Simplicity',
-    description: 'Making complex solutions clear, practical, and accessible',
+    description: 'Making complex solutions clear, practical, and accessible.',
   },
   {
     label: 'Integrity',
