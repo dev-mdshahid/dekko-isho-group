@@ -497,6 +497,11 @@
     pointer-events: auto;
   }
 
+  .awards-honors-section .s-item:hover .s-cap,
+  .awards-honors-section .s-item:focus-visible .s-cap {
+    transform: none;
+  }
+
   .awards-honors-section .s-cap h4 {
     font-size: 13px;
   }
