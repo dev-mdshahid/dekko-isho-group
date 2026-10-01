@@ -43,15 +43,22 @@ function clearFeatureMotion(cards: NodeListOf<HTMLElement> | HTMLElement[]) {
   })
 }
 
-function setupFeatureReveals(cards: NodeListOf<HTMLElement>) {
+/** Sticky cards stay painted after their layout box has scrolled past. Use the visual box. */
+function cardIsOnScreen(card: HTMLElement) {
+  const rect = card.getBoundingClientRect()
+  return rect.bottom > 0 && rect.top < window.innerHeight
+}
+
+function setupFeatureReveals(section: HTMLElement, cards: NodeListOf<HTMLElement>) {
   const triggers: ScrollTrigger[] = []
   const tweens: gsap.core.Tween[] = []
+  const syncs: Array<() => void> = []
 
   cards.forEach((card) => {
     const features = card.querySelectorAll<HTMLElement>('.feature-item-inner')
     if (!features.length) return
 
-    const featureTween = gsap.fromTo(
+    const tween = gsap.fromTo(
       features,
       { opacity: 0, y: 24 },
       {
@@ -60,16 +67,44 @@ function setupFeatureReveals(cards: NodeListOf<HTMLElement>) {
         duration: 0.7,
         ease: 'power2.out',
         stagger: 0.08,
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 75%',
-          toggleActions: 'restart reset restart reset',
-        },
+        paused: true,
       },
     )
-    if (featureTween.scrollTrigger) triggers.push(featureTween.scrollTrigger)
-    tweens.push(featureTween)
+    tweens.push(tween)
+
+    let onScreen = false
+
+    const sync = () => {
+      const visible = cardIsOnScreen(card)
+      if (visible && !onScreen) {
+        onScreen = true
+        tween.restart()
+      } else if (!visible && onScreen) {
+        // Fully off screen: reset so the entrance can play again on the way back.
+        onScreen = false
+        tween.pause(0)
+        gsap.set(features, { opacity: 0, y: 24 })
+      }
+    }
+
+    syncs.push(sync)
   })
+
+  const syncAll = () => syncs.forEach((sync) => sync())
+
+  const trigger = ScrollTrigger.create({
+    trigger: section,
+    start: 'top bottom',
+    end: 'bottom top',
+    onEnter: syncAll,
+    onEnterBack: syncAll,
+    onLeave: syncAll,
+    onLeaveBack: syncAll,
+    onUpdate: syncAll,
+    onRefresh: syncAll,
+  })
+  triggers.push(trigger)
+  syncs.forEach((sync) => sync())
 
   return () => {
     triggers.forEach((t) => t.kill())
@@ -191,7 +226,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     }
 
     const scaleCleanup = setupCoverCascadeScale(cards)
-    const featureCleanup = setupFeatureReveals(cards)
+    const featureCleanup = setupFeatureReveals(section, cards)
     modeCleanup = () => {
       scaleCleanup()
       featureCleanup()
