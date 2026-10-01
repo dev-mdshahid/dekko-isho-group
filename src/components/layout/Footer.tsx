@@ -241,7 +241,7 @@ export function Footer() {
           </div>
           <div className="footer-logo-info">
             <img
-              src="/dekko-logo.svg"
+              src="/footer-dekko-isho-logo.svg"
               loading="lazy"
               data-w-id="65ddfbf8-98dc-79d4-6020-0e2cf17451cf"
               data-fade-in
