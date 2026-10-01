@@ -1693,21 +1693,14 @@
 
 .about-journey-section .about-journey-logo {
   display: block;
-  width: 160px;
-  height: 48px;
-  object-fit: contain;
-  object-position: left center;
-  /* margin: 0 0 16px; */
+  width: auto;
+  height: auto;
+  max-width: 160px;
+  margin: 0 0 16px;
 }
 
 .about-journey-section .about-journey-entry-stack--right .about-journey-logo {
   margin-left: auto;
-  object-position: right center;
-}
-
-.about-journey-section .about-journey-entry-stack--right .about-journey-logo {
-  margin-left: auto;
-  object-position: right center;
 }
 
 .about-journey-section .about-journey-entry-stack .about-journey-card:nth-of-type(1) {
@@ -1901,9 +1894,8 @@
   }
 
   .about-journey-section .about-journey-logo {
-    width: min(100%, 160px);
-    height: 42px;
-    margin-bottom: 16px;
+    max-width: 100%;
+    margin-bottom: 14px;
   }
 
   .about-journey-section .about-journey-entry-stack .about-journey-card:nth-of-type(2) {
@@ -1922,6 +1914,10 @@
   .about-journey-section .about-journey-row--left .about-journey-entry-stack--right {
     text-align: left;
     align-items: flex-start;
+  }
+
+  .about-journey-section .about-journey-entry-stack--right .about-journey-logo {
+    margin-left: 0;
   }
 
   .about-journey-section .about-journey-year--desktop {
@@ -1962,9 +1958,7 @@
   }
 
   .about-journey-section .about-journey-logo {
-    width: min(100%, 140px);
-    height: 38px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .about-journey-section .about-journey-item-title {
