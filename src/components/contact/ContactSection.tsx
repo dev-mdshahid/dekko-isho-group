@@ -399,13 +399,13 @@ export function ContactSection() {
                           <div className="button-text">
                             {status === 'submitting'
                               ? 'Please wait...'
-                              : 'Send'}
+                              : 'Submit Your Inquiry'}
                           </div>
 
                           <div className="button-hover-text">
                             {status === 'submitting'
                               ? 'Please wait...'
-                              : 'Send'}
+                              : 'Submit Your Inquiry'}
                           </div>
                         </div>
                       </div>
