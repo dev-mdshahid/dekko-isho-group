@@ -3246,13 +3246,32 @@ a.about-info-box:hover {
   }
 }
 
-/* Sticky stack / cover-cascade scale is desktop-only; never leave scaled cards on mobile. */
+/*
+ * Below 992px the shared layout forces `.service-list-wrapper { position: static }`,
+ * which drops the cover stack. Restore sticky only for this section.
+ * Phone steps are tighter so five cards still pin inside a short viewport.
+ */
 @media screen and (max-width: 991px) {
+  .service-section .service-list-wrapper {
+    position: sticky;
+  }
+}
 
-  .service-section [data-home-animate='service-card'],
-  .service-section [data-home-animate='service-card'] .service-card-panel {
-    transform: none !important;
-    will-change: auto;
+@media screen and (max-width: 767px) {
+  .service-section .service-list-wrapper.two {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 56px);
+  }
+
+  .service-section .service-list-wrapper.three {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 112px);
+  }
+
+  .service-section .service-list-wrapper.four {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 168px);
+  }
+
+  .service-section .service-list-wrapper.five {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 224px);
   }
 }
 
@@ -12357,7 +12376,8 @@ a.about-info-box:hover {
 
 @media screen and (max-width: 991px) {
   .service-section {
-    overflow-x: clip;
+    /* Clip would become the sticky containing box and the cards would not pin. */
+    overflow: visible;
   }
 
   .service-section-gradient-spacer {
