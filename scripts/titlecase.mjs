@@ -18,7 +18,7 @@ const MINOR = new Set([
 const SKIP = new Set([
   'Lub-rref BD Ltd.',
   'Good Health and Well-being',
-  'Fashion Is Constantly Evolving and So Are We',
+  'Fashion Is Constantly Evolving, and So Are We',
 ])
 
 const LETTER = /[A-Za-z]/

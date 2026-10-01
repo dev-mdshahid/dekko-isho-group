@@ -21,7 +21,7 @@ export function NotFoundPage() {
           <div className="_404-button">
             <ButtonArrow
               to="/"
-              label="Back To Home"
+              label="Back to Home"
               className="primary-button _404-button-primary w-inline-block"
             />
           </div>

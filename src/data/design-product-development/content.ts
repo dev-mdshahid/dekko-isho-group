@@ -1,5 +1,5 @@
 export const designProductDevelopmentHero = {
-  badge: 'Fashion Is Constantly Evolving and So Are We',
+  badge: 'Fashion Is Constantly Evolving, and So Are We',
   titleLines: [
     [
       { text: 'Design' },
