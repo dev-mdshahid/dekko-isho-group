@@ -933,11 +933,27 @@
   white-space: nowrap;
 }
 
+.career-position-apply {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.5rem;
+  margin-left: auto;
+  color: var(--color--primary-2);
+  font-family: var(--_typography---font-family--body);
+  font-size: var(--base-font-size--base-small);
+  font-weight: var(--_typography---body--font-weight-600);
+  line-height: 1.2;
+  letter-spacing: var(--_typography---body--letter-spacing);
+  white-space: nowrap;
+  flex: none;
+}
+
 .career-position-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color--primary-2);
+  color: inherit;
   flex: none;
   transition: transform 0.3s ease;
 }
