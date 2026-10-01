@@ -2371,6 +2371,15 @@
     justify-self: center;
   }
 
+  .manufacturing-page .mfg-capacity-cluster .capacity-stat-circles {
+    justify-content: flex-start;
+    margin-inline: 0;
+  }
+
+  .manufacturing-page .mfg-capacity-cluster .capacity-stat-circle:nth-child(3) {
+    justify-self: start;
+  }
+
   .solution-page .mfg-capacity-cluster .capacity-stat-value {
     font-size: clamp(1.25rem, 5.5vw, 1.5rem);
   }
