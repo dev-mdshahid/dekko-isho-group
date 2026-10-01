@@ -450,12 +450,14 @@
   padding-bottom: calc(var(--_layout---spacing--section-spacing) * 0.6);
 }
 
+/* Columns mirror .grid-about-five-content so the title lines up with "Our Story". */
 .about-three-section .about-three-header {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
   grid-template-rows: auto;
   align-items: center;
-  gap: var(--gap--gap-5);
+  column-gap: var(--gap--gap-11);
+  row-gap: var(--gap--gap-5);
 }
 
 .about-three-section .about-three-header-badge {
@@ -474,7 +476,7 @@
   font-size: 58px;
   font-weight: var(--_typography---h2--font-weight-600);
   line-height: 1.1;
-  text-align: center;
+  text-align: left;
   color: var(--color--dark);
   white-space: nowrap;
 }
@@ -769,6 +771,11 @@
   .about-three-section .about-three-title {
     font-size: clamp(2rem, 6vw, 3.625rem);
     white-space: normal;
+  }
+
+  .about-three-section .about-three-header {
+    grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1fr);
+    column-gap: var(--gap--gap-8);
   }
 
   .about-three-section .grid-about-five-content {
