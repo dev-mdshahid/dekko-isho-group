@@ -369,8 +369,8 @@
 .about-three-section .about-three-header {
   display: grid;
   grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
-  grid-template-rows: auto;
-  align-items: center;
+  grid-template-rows: auto auto;
+  align-items: start;
   column-gap: var(--gap--gap-11);
   row-gap: var(--gap--gap-5);
   min-width: 0;
@@ -378,14 +378,14 @@
 }
 
 .about-three-section .about-three-header-badge {
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 1;
   justify-self: start;
 }
 
 .about-three-section .about-three-title {
   grid-column: 2;
-  grid-row: 1;
+  grid-row: 2;
   width: 100%;
   min-width: 0;
   max-width: 100%;
@@ -435,7 +435,6 @@
     grid-template-columns: var(--about-overview-image-col) minmax(0, 1fr);
     grid-column-gap: var(--gap--gap-9);
   }
-
   .about-three-section .about-story-info-inner {
     width: 100%;
     max-width: 42rem;
