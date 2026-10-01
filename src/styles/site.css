@@ -13897,11 +13897,14 @@ a.about-info-box:hover {
 
   .mobile-nav-accordion-trigger {
     align-items: center;
+    appearance: none;
+    -webkit-appearance: none;
     background: none;
     border: 0;
+    color: var(--color--dark);
     cursor: pointer;
     display: flex;
-    font-family: inherit;
+    font-family: var(--_typography---font-family--heading);
     gap: .75rem;
     justify-content: space-between;
     width: 100%;
@@ -13919,10 +13922,6 @@ a.about-info-box:hover {
     display: block;
     height: 100%;
     width: 100%;
-  }
-
-  .mobile-nav-accordion.is-open>.mobile-nav-accordion-trigger {
-    color: var(--color--primary-1);
   }
 
   .mobile-nav-accordion.is-open>.mobile-nav-accordion-trigger .mobile-nav-chevron {
