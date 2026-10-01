@@ -70,7 +70,7 @@ export function CertificationsSection({
             <FadeIn id="sustain-affiliations-logos" delay={160}>
               <ul className="sustain-affiliations-grid">
                 {affiliations.logos.map((logo) => (
-                  <li key={logo.id} className="sustain-affiliations-item">
+                  <li key={logo.id} className={`sustain-affiliations-item sustain-affiliations-item--${logo.id}`}>
                     <img
                       src={logo.src}
                       alt={logo.alt}
