@@ -203,7 +203,7 @@ export function ContactSection() {
                   </div>
                   <div className="page-contact-block">
                     <div className="page-contact-label" style={{ color: "#2595d5"}}>
-                      Social network
+                      Social Network
                     </div>
 
                     <div
