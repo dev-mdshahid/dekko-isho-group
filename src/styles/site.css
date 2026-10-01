@@ -15642,8 +15642,8 @@ html.lenis body {
     height: 0;
 
     margin: 62px 0 0 auto;
-    /* 78% width × 0.36 trophy crop, as a share of the row. */
-    padding-bottom: 28.1%;
+    /* 78% width × 0.39 trophy window, tall enough for the glass awards and K. */
+    padding-bottom: 30.4%;
 
     align-self: flex-end;
     overflow: hidden;
@@ -15668,18 +15668,9 @@ html.lenis body {
     max-height: none;
 
     object-fit: cover;
-    object-position: center 81%;
+    object-position: center 84%;
 
     transform: none;
-  }
-
-
-  /* Source PNG is square with ~half transparent headroom; crop to the cluster. */
-  .company-section-awards-image {
-    aspect-ratio: 1.9 / 1;
-
-    object-fit: cover;
-    object-position: center bottom;
   }
 
 
