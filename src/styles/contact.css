@@ -439,7 +439,7 @@
 
 .page-contact-section--modern .page-contact-details--split {
   grid-template-columns: minmax(0, 1fr);
-  row-gap: 16px;
+  row-gap: 2.5rem;
 }
 
 .page-contact-section--modern .page-contact-details-top,
