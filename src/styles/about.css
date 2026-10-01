@@ -450,12 +450,16 @@
   padding-bottom: calc(var(--_layout---spacing--section-spacing) * 0.6);
 }
 
+/* Columns mirror .grid-about-five-content so the title lines up with "Our Story". */
 .about-three-section .about-three-header {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
   grid-template-rows: auto;
   align-items: center;
-  gap: var(--gap--gap-5);
+  column-gap: var(--gap--gap-11);
+  row-gap: var(--gap--gap-5);
+  min-width: 0;
+  container-type: inline-size;
 }
 
 .about-three-section .about-three-header-badge {
@@ -467,16 +471,19 @@
 .about-three-section .about-three-title {
   grid-column: 2;
   grid-row: 1;
-  width: auto;
-  max-width: none;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   margin-bottom: 0;
   font-family: var(--_typography---font-family--heading);
-  font-size: 58px;
+  font-size: clamp(1.75rem, 3.2vw, 3.625rem);
+  font-size: clamp(1.75rem, 4.4cqi, 3.625rem);
   font-weight: var(--_typography---h2--font-weight-600);
   line-height: 1.1;
-  text-align: center;
+  text-align: left;
   color: var(--color--dark);
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 /*
@@ -767,12 +774,17 @@
 
 @media screen and (max-width: 991px) {
   .about-three-section .about-three-title {
-    font-size: clamp(2rem, 6vw, 3.625rem);
+    font-size: clamp(1.75rem, 5.5cqi, 2.75rem);
     white-space: normal;
   }
 
+  .about-three-section .about-three-header {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    column-gap: var(--gap--gap-8);
+  }
+
   .about-three-section .grid-about-five-content {
-    grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
     grid-column-gap: var(--gap--gap-8);
     grid-row-gap: var(--gap--gap-8);
     align-items: center;
