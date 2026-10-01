@@ -15680,6 +15680,15 @@ html.lenis body {
   }
 
 
+  /* Source PNG is square with ~half transparent headroom; crop to the cluster. */
+  .company-section-awards-image {
+    aspect-ratio: 1.9 / 1;
+
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+
   .company-section-depth {
     display: none;
   }
