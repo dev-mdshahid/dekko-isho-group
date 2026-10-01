@@ -95,7 +95,7 @@ export const embroideryProductionCapacity = {
     {
       id: 'monthly-capacity',
       value: '2.2B',
-      label: 'Stitches/Month',
+      label: 'Stitches/month',
       variant: 'blue',
     },
     {
@@ -162,7 +162,7 @@ export const embroideryProductionNetwork = {
       imageAlt: 'Garments on hangers at the DGL Embroidery Unit',
       monthlyCapacity: '50M+',
       monthlyCapacityLabel: 'Stitching capacity',
-      monthlyCapacityUnit: 'Stitches/Month',
+      monthlyCapacityUnit: 'Stitches/month',
       productionLines: '9',
       productionLinesLabel: 'Machines',
     },
