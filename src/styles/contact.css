@@ -480,6 +480,20 @@
   }
 }
 
+.page-contact-section--modern .home-contact-details.page-contact-details--split {
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 0;
+  row-gap: 2.5rem;
+}
+
+@container (max-width: 560px) {
+  .page-contact-section--modern .home-contact-details.page-contact-details--split {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: 2.5rem;
+  }
+}
+
 .page-contact-section--modern .page-contact-details-col--compact {
   display: contents;
 }
