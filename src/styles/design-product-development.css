@@ -2907,14 +2907,13 @@
   }
 
   .design-product-development-page .solution-cta-action {
-    justify-self: stretch;
-    align-self: stretch;
+    justify-self: start;
+    align-self: start;
   }
 
   .design-product-development-page .solution-cta-action .primary-button {
-    width: 100%;
-    max-width: 20rem;
-    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
   }
 
   .design-product-development-page .dpd-solutions-banner-card {
@@ -3018,10 +3017,6 @@
 
   .design-product-development-page .solution-cta-heading {
     font-size: 1.75rem;
-  }
-
-  .design-product-development-page .solution-cta-action .primary-button {
-    max-width: none;
   }
 
   .design-product-development-page .dpd-presence-gallery-grid {
