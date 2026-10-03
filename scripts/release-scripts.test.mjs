@@ -92,6 +92,10 @@ describe('API check', () => {
   it('accepts a complete production env', () => {
     assert.deepEqual(checkApi(api).errors, [])
   })
+  it('accepts Backblaze bucket names with capitals, like the DMS bucket', () => {
+    assert.deepEqual(keys({ ...api, B2_BUCKET_NAME: 'Dekko-Document-Management-System' }), [])
+    assert.deepEqual(keys({ ...api, B2_BUCKET_NAME: 'bad_name!' }), ['B2_BUCKET_NAME'])
+  })
   it('catches wrong-shaped credentials', () => {
     assert.deepEqual(keys({ ...api, OPENAI_API_KEY: 'abc', MAIL_APP_PASSWORD: 'tooshort', FILE_SIGNING_SECRET: 'dev-only-signing-secret', B2_KEY_ID: 'xyz' }).sort(), [
       'B2_KEY_ID',

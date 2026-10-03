@@ -166,7 +166,7 @@ export function checkApi(env, { baseDir = ROOT } = {}) {
   r.require(env, 'B2_KEY_ID', rules.pattern(/^[0-9a-f]{25}$/, 'a 25-character Backblaze application key id'))
   r.require(env, 'B2_APPLICATION_KEY', rules.pattern(/^[0-9A-Za-z+/]{31}$/, 'a 31-character Backblaze application key'))
   r.require(env, 'B2_BUCKET_ID', rules.pattern(/^[0-9a-f]{24}$/, 'a 24-character Backblaze bucket id'))
-  r.require(env, 'B2_BUCKET_NAME', rules.pattern(/^[a-z0-9-]{6,63}$/, 'a Backblaze bucket name'))
+  r.require(env, 'B2_BUCKET_NAME', rules.pattern(/^[A-Za-z0-9-]{6,63}$/, 'a Backblaze bucket name'))
   r.optional(env, 'B2_PREFIX', rules.pattern(/^[a-z0-9._/-]+\/$/i, 'a folder ending in /'))
   r.require(env, 'FILE_SIGNING_SECRET', (v) =>
     v === 'dev-only-signing-secret' || /^test-/.test(v) ? 'is a development value' : v.length < 64 ? 'must be at least 64 characters' : null,
