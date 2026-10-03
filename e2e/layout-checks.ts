@@ -133,6 +133,17 @@ export async function findLayoutProblems(page: Page): Promise<Finding[]> {
 }
 
 export async function expectCleanLayout(page: Page, label: string) {
+  // Measure the settled layout, not a frame in the middle of a transition (e.g. a rotating dropdown arrow).
+  await page
+    .waitForFunction(
+      () =>
+        document
+          .getAnimations()
+          .every((a) => a.playState !== 'running' || a.effect?.getComputedTiming().iterations === Infinity),
+      undefined,
+      { timeout: 3000 },
+    )
+    .catch(() => undefined)
   const problems = await findLayoutProblems(page)
   expect(problems, `${label}:\n${problems.map((p) => `  • ${p.what} — ${p.where}`).join('\n')}`).toEqual([])
 }
