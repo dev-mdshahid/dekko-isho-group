@@ -53,7 +53,7 @@ export function PressListSection() {
   const topRowPosts = getTopRowPosts()
   const bottomRowPosts = getBottomRowPosts()
   const bottomRowClass =
-    bottomRowPosts.length < 3 ? 'blog-list-one _01 _two-col' : 'blog-list-one _01'
+    bottomRowPosts.length === 2 ? 'blog-list-one _01 _two-col' : 'blog-list-one _01'
 
   return (
     <section className="blog-inner-section section-spacing">

@@ -166,7 +166,7 @@
 
   .awards-hero-banner-section {
     margin-top: 3rem;
-    padding-inline: var(--_layout---container-full-gutter);
+    padding-inline: 0;
     min-height: auto;
   }
 
@@ -187,7 +187,7 @@
 @media screen and (max-width: 767px) {
   .awards-hero-section {
     padding-top: 6.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0;
   }
 
   .awards-hero-wrap {
@@ -219,7 +219,7 @@
 
   .awards-hero-banner-section {
     margin-top: 2.5rem;
-    padding-inline: 1.25rem;
+    padding-inline: 0;
   }
 
   .awards-hero-banner-scaler {
@@ -495,6 +495,11 @@
     opacity: 1;
     transform: none;
     pointer-events: auto;
+  }
+
+  .awards-honors-section .s-item:hover .s-cap,
+  .awards-honors-section .s-item:focus-visible .s-cap {
+    transform: none;
   }
 
   .awards-honors-section .s-cap h4 {

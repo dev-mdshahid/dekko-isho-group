@@ -25,3 +25,4 @@ dist-ssr
 .env
 js/firebase-config.js
 .DS_Store
+# sync

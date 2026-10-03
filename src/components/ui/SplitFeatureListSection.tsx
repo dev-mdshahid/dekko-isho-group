@@ -5,6 +5,7 @@ import type {
   PointerEvent,
 } from 'react'
 
+import { CarouselArrow } from './CarouselArrow'
 import { FadeIn } from './FadeIn'
 import { PreSectionTitle } from './PreSectionTitle'
 import { SectionLines } from './SectionDecor'
@@ -13,25 +14,6 @@ const CAROUSEL_INTERVAL_MS = 2000
 const SWIPE_THRESHOLD_PX = 45
 const FALLBACK_IMAGE = 'https://placehold.co/600x400/red/white'
 type SlideDirection = 'forward' | 'backward'
-
-function SlideshowArrowIcon({ direction }: { direction: 'previous' | 'next' }) {
-  return (
-    <svg
-      className="split-feature-list-carousel-arrow-icon"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d={direction === 'previous' ? 'M14.5 5.5 7.5 12l7 6.5' : 'M9.5 5.5 16.5 12l-7 6.5'}
-        stroke="#fff"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
 
 export type SplitFeatureListItem = {
   id: string
@@ -266,7 +248,7 @@ export function SplitFeatureListSection({
               */}
               <div className="split-feature-list-carousel-frame">
                 <div
-                  className={`split-feature-list-carousel-viewport${
+                  className={`split-feature-list-carousel-viewport carousel-arrow-host${
                     hasMultipleSlides
                       ? ' is-clickable'
                       : ''
@@ -365,30 +347,20 @@ export function SplitFeatureListSection({
                       onPointerDown={(event) => event.stopPropagation()}
                       onPointerUp={(event) => event.stopPropagation()}
                     >
-                      <button
-                        type="button"
-                        className="split-feature-list-carousel-arrow"
-                        aria-label="Previous slide"
+                      <CarouselArrow
+                        direction="previous"
                         onClick={(event) => {
                           event.stopPropagation()
                           goPrevious()
-                          if (event.detail > 0) event.currentTarget.blur()
                         }}
-                      >
-                        <SlideshowArrowIcon direction="previous" />
-                      </button>
-                      <button
-                        type="button"
-                        className="split-feature-list-carousel-arrow"
-                        aria-label="Next slide"
+                      />
+                      <CarouselArrow
+                        direction="next"
                         onClick={(event) => {
                           event.stopPropagation()
                           goNext()
-                          if (event.detail > 0) event.currentTarget.blur()
                         }}
-                      >
-                        <SlideshowArrowIcon direction="next" />
-                      </button>
+                      />
                     </div>
                   ) : null}
                 </div>

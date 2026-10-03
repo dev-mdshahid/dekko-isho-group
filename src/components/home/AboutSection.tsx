@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import { solutionPath } from '../../data/solutions/solutions'
 import { resetScrollPosition } from '../../lib/resetRouteScroll'
 import { ButtonArrow } from '../ui/ButtonArrow'
+import { CarouselArrow } from '../ui/CarouselArrow'
 import { FadeIn } from '../ui/FadeIn'
 import { NoiseOverlay, SectionLines } from '../ui/SectionDecor'
 
@@ -282,54 +283,6 @@ function IndustryImageCircle({ src, alt, variant = 'default', logo, logoId, href
   }
 
   return <div className="about-image-box about-image-placeholder" role="img" aria-label={alt} />
-}
-
-function CarouselArrowIcon({ direction }: { direction: 'left' | 'right' }) {
-  return (
-    <svg
-      className="about-carousel-arrow__icon"
-      viewBox="0 0 16 12"
-      fill="none"
-      aria-hidden="true"
-    >
-      {direction === 'left' ? (
-        <path
-          d="M1.57496 6.22461L6.57496 1.22461M1.57496 6.22461L6.57496 11.2246M1.57496 6.22461H14.425"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      ) : (
-        <path
-          d="M14.425 6.22461L9.42501 1.22461M14.425 6.22461L9.42501 11.2246M14.425 6.22461H1.57501"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      )}
-    </svg>
-  )
-}
-
-function AboutCarouselArrow({
-  direction,
-  onClick,
-}: {
-  direction: 'left' | 'right'
-  onClick: () => void
-}) {
-  return (
-    <button
-      type="button"
-      className={`about-carousel-arrow about-carousel-arrow--${direction}`}
-      onClick={onClick}
-      aria-label={direction === 'left' ? 'Previous card' : 'Next card'}
-    >
-      <CarouselArrowIcon direction={direction} />
-    </button>
-  )
 }
 
 function getVisibleCardCount(viewportWidth: number) {
@@ -688,8 +641,18 @@ export function AboutSection() {
               </div>
             </div>
             <div className="about-carousel-nav">
-              <AboutCarouselArrow direction="left" onClick={goToPrevious} />
-              <AboutCarouselArrow direction="right" onClick={goToNext} />
+              <CarouselArrow
+                direction="previous"
+                label="Previous card"
+                surface="light"
+                onClick={goToPrevious}
+              />
+              <CarouselArrow
+                direction="next"
+                label="Next card"
+                surface="light"
+                onClick={goToNext}
+              />
             </div>
           </div>
         </div>

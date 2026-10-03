@@ -1430,7 +1430,6 @@
   gap: 20px;
   position: relative;
   z-index: 1;
-  margin-bottom: 3.75rem;
 }
 
 .sustain-focus-card-wrap {
@@ -1797,6 +1796,7 @@
 .sustain-progress-section {
   position: relative;
   z-index: 1;
+  padding-top: 6.25rem;
   overflow: hidden;
   color: var(--color--neutral-night);
   font-family: var(--_typography---font-family--body);
@@ -3111,7 +3111,6 @@
 
   .sustain-focus-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-bottom: 2.5rem;
   }
 
   .sustain-snapshot-header {
@@ -3381,7 +3380,6 @@
   .sustain-focus-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin-bottom: 2rem;
   }
 
   .sustain-initiative-card {

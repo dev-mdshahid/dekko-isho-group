@@ -36,7 +36,7 @@ export function AboutOverviewSection() {
               <div className="about-three-header-badge">
                 <PreSectionTitle title="Overview" />
               </div>
-              <h2 className="section-title about-three-title title-center">
+              <h2 className="section-title about-three-title">
                 From Foundation to <span className="text-linear-gradient">Future</span>
               </h2>
             </FadeIn>

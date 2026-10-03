@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { gsap } from 'gsap'
 
+import { CarouselArrow } from '../ui/CarouselArrow'
+
 const SLIDE_INTERVAL_MS = 3000
 const TRANSITION_DURATION = 0.65
 
@@ -233,7 +235,7 @@ export function AboutImageSlideshow() {
 
   return (
     <div
-      className="about-image-slideshow"
+      className="about-image-slideshow carousel-arrow-host"
       role="region"
       aria-roledescription="carousel"
       aria-label="About Dekko ISHO Group"
@@ -291,58 +293,8 @@ export function AboutImageSlideshow() {
       )}
 
       <div className="about-image-slideshow__nav">
-        <button
-          type="button"
-          className="about-image-slideshow__arrow about-image-slideshow__arrow--previous"
-          onClick={(event) => {
-            goToPrevious()
-            if (event.detail > 0) event.currentTarget.blur()
-          }}
-          aria-label="Previous slide"
-        >
-          <svg
-            className="about-image-slideshow__arrow-icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="m15 18-6-6 6-6"
-              stroke="#ffffff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-        <button
-          type="button"
-          className="about-image-slideshow__arrow about-image-slideshow__arrow--next"
-          onClick={(event) => {
-            goToNext()
-            if (event.detail > 0) event.currentTarget.blur()
-          }}
-          aria-label="Next slide"
-        >
-          <svg
-            className="about-image-slideshow__arrow-icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-              stroke="#ffffff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+        <CarouselArrow direction="previous" onClick={() => goToPrevious()} />
+        <CarouselArrow direction="next" onClick={() => goToNext()} />
       </div>
     </div>
   )
