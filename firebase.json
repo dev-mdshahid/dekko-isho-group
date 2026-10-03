@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "apps/web/dist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -20,12 +20,67 @@
     ],
     "rewrites": [
       {
+        "source": "/hr/admin/**",
+        "destination": "/hr/admin/index.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
     ],
     "cleanUrls": true,
     "trailingSlash": false,
-    "headers": []
+    "headers": [
+      {
+        "source": "/hr/admin/**",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "DENY"
+          }
+        ]
+      },
+      {
+        "source": "/hr/admin/assets/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8085,
+      "websocketPort": 9160
+    },
+    "hub": {
+      "port": 4410
+    },
+    "logging": {
+      "port": 4510
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4420
+    },
+    "singleProjectMode": true
   }
 }

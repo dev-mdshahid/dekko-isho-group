@@ -1,0 +1,14 @@
+# Append to /etc/caddy/Caddyfile on the RPA droplet, then:
+#   caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
+hr.dekkoai.online {
+	encode gzip zstd
+	request_body {
+		max_size 12MB
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+	reverse_proxy 127.0.0.1:8794
+}

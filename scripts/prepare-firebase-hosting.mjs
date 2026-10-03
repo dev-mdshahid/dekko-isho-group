@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 const root = process.cwd()
-const envPath = resolve(root, '.env')
+const envPath = resolve(root, 'apps/web/.env')
 const firebasePath = resolve(root, 'firebase.json')
 
 function parseEnv(contents) {
@@ -39,7 +39,7 @@ const rawUrl = env.SUSTAINABILITY_REPORT_2025_URL
 
 if (!rawUrl) {
   console.error(
-    'Missing SUSTAINABILITY_REPORT_2025_URL in .env.\n' +
+    'Missing SUSTAINABILITY_REPORT_2025_URL in apps/web/.env.\n' +
       'Upload the PDF to Google Drive, set sharing to "Anyone with the link", then add:\n' +
       'SUSTAINABILITY_REPORT_2025_URL=https://drive.google.com/file/d/YOUR_FILE_ID/view'
   )
@@ -49,7 +49,7 @@ if (!rawUrl) {
 const driveUrl = normalizeDriveUrl(rawUrl)
 const firebaseConfig = JSON.parse(readFileSync(firebasePath, 'utf8'))
 
-firebaseConfig.hosting.redirects = [
+const managed = [
   {
     source: '/sustainibility-report-2025',
     destination: '/sustainability-report-2025',
@@ -60,6 +60,11 @@ firebaseConfig.hosting.redirects = [
     destination: driveUrl,
     type: 302,
   },
+]
+const managedSources = new Set(managed.map((r) => r.source))
+firebaseConfig.hosting.redirects = [
+  ...managed,
+  ...(firebaseConfig.hosting.redirects ?? []).filter((rule) => !managedSources.has(rule.source)),
 ]
 
 firebaseConfig.hosting.rewrites = firebaseConfig.hosting.rewrites.filter(

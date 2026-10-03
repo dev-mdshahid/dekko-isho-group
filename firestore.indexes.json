@@ -1,0 +1,38 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "applications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "jobId", "order": "ASCENDING" },
+        { "fieldPath": "submittedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "applications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "candidateId", "order": "ASCENDING" },
+        { "fieldPath": "submittedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "uploads",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    { "collectionGroup": "cvExtractions", "fieldPath": "rawText", "indexes": [] },
+    { "collectionGroup": "cvExtractions", "fieldPath": "profile", "indexes": [] },
+    { "collectionGroup": "applications", "fieldPath": "profile", "indexes": [] },
+    { "collectionGroup": "applications", "fieldPath": "answers", "indexes": [] },
+    { "collectionGroup": "candidates", "fieldPath": "latestProfile", "indexes": [] },
+    { "collectionGroup": "jobs", "fieldPath": "descriptionHtml", "indexes": [] },
+    { "collectionGroup": "jobs", "fieldPath": "descriptionJson", "indexes": [] },
+    { "collectionGroup": "formVersions", "fieldPath": "schema", "indexes": [] }
+  ]
+}

@@ -26,3 +26,29 @@ dist-ssr
 js/firebase-config.js
 .DS_Store
 # sync
+
+# API email previews and local file storage
+apps/api/.email-previews
+apps/api/.storage
+
+# Monorepo
+apps/*/dist
+apps/*/.env
+packages/*/dist
+.emulator-data
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.vite/
+
+# Tests
+apps/api/.storage-test
+coverage/
+**/coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# e2e production builds
+apps/web/dist-e2e/
+apps/hr-admin/dist-e2e/
