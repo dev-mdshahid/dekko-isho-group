@@ -410,9 +410,10 @@ textarea {
   }
   .col-6,
   .col-9 {
-    grid-column: span 6;
+    grid-column: span 4;
   }
-  .col-18 {
+  .col-18,
+  .grid-24 > .stack {
     grid-column: span 12;
   }
 }

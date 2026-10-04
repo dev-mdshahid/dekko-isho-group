@@ -15,11 +15,11 @@ let applicationId: string
 
 const as = (who: { token: string }) => bearer(who.token)
 
-async function apply(jobId: string, formVersionId: string, email: string) {
+async function apply(jobId: string, formVersionId: string, email: string, phone = '01711223344') {
   const { body: cv } = await request(app).post('/api/public/cv').field('jobId', jobId).attach('file', cvPdf, 'cv.pdf').expect(200)
   const res = await request(app)
     .post('/api/public/applications')
-    .send({ jobId, formVersionId, uploadId: cv.uploadId, answers: { fullName: 'Rahim Uddin Ahmed', email, phone: '01711223344', experienceYears: 6, consent: true } })
+    .send({ jobId, formVersionId, uploadId: cv.uploadId, answers: { fullName: 'Rahim Uddin Ahmed', email, phone, experienceYears: 6, consent: true } })
     .expect(201)
   return res.body as { applicationId: string; referenceId: string }
 }
@@ -262,5 +262,42 @@ describe('CV bank and applications', () => {
     expect(actions).toEqual(expect.arrayContaining(['job.create', 'application.status', 'application.cv.view', 'cvbank.export', 'template.create', 'user.invite']))
     const stored = await firestore().collection('auditLog').count().get()
     expect(stored.data().count).toBe(res.body.entries.length)
+  })
+})
+
+describe('removing an application', () => {
+  it('lets editors permanently remove an application and everything attached to it', async () => {
+    const job = await publishedJob(ids, { title: 'Pattern Maker', departmentId: ids.manufacturing })
+    const { applicationId: id } = await apply(job.id, job.formVersionId, 'removed.candidate@example.com')
+    await request(app).post(`/api/hr/applications/${id}/notes`).set(as(recruiter)).send({ body: 'Note to be removed' }).expect(201)
+    const { candidateId, uploadId } = (await firestore().collection('applications').doc(id).get()).data() as { candidateId: string; uploadId: string }
+    expect(jobStore.get(job.id)?.applicationsCount).toBe(1)
+
+    await request(app).delete(`/api/hr/applications/${id}`).set(as(viewer)).expect(403)
+    await request(app).delete(`/api/hr/applications/${id}`).set(as(recruiter)).expect(204)
+    await request(app).delete(`/api/hr/applications/${id}`).set(as(recruiter)).expect(404)
+
+    await request(app).get(`/api/hr/applications/${id}`).set(as(viewer)).expect(404)
+    const bank = await request(app).get('/api/hr/cv-bank').set(as(viewer)).expect(200)
+    expect(bank.body.rows.map((r: { applicationId: string }) => r.applicationId)).not.toContain(id)
+    expect(bank.body.rows.map((r: { applicationId: string }) => r.applicationId)).toContain(applicationId)
+
+    expect((await firestore().collection('applications').doc(id).collection('notes').get()).empty).toBe(true)
+    // Same phone as the first applicant, so they share a candidate that must survive without this application.
+    const candidate = await firestore().collection('candidates').doc(candidateId).get()
+    expect(candidate.get('applicationIds')).toEqual([applicationId])
+    expect((await firestore().collection('uploads').doc(uploadId).get()).exists).toBe(false)
+    expect(jobStore.get(job.id)).toMatchObject({ applicationsCount: 0, newApplicationsCount: 0 })
+
+    const audit = await request(app).get('/api/hr/audit').set(as(admin)).expect(200)
+    expect(audit.body.entries.map((e: { action: string }) => e.action)).toContain('application.delete')
+  })
+
+  it('removes the candidate too when it was their only application', async () => {
+    const job = await publishedJob(ids, { title: 'Cutting Master', departmentId: ids.manufacturing })
+    const { applicationId: id } = await apply(job.id, job.formVersionId, 'solo.candidate@example.com', '01899887766')
+    const { candidateId } = (await firestore().collection('applications').doc(id).get()).data() as { candidateId: string }
+    await request(app).delete(`/api/hr/applications/${id}`).set(as(admin)).expect(204)
+    expect((await firestore().collection('candidates').doc(candidateId).get()).exists).toBe(false)
   })
 })
