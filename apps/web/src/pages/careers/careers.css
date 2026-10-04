@@ -1660,6 +1660,15 @@
   padding: 0.5rem 0;
 }
 
+.apply-success:focus {
+  outline: none;
+}
+
+.apply-success:focus-visible {
+  outline: 2px solid var(--color--primary);
+  outline-offset: 2px;
+}
+
 .apply-success-icon {
   color: var(--color--secondary-mint);
 }

@@ -4,7 +4,7 @@ import { type DragEvent, type FormEvent, useEffect, useRef, useState } from 'rea
 import { Link } from 'react-router-dom'
 import { ApiError } from '../../lib/api'
 import { submitApplication, uploadCv, type PublicJobDetail } from '../../lib/careersApi'
-import { scrollToElement } from '../../lib/smoothScroll'
+import { getLenis, scrollToElement } from '../../lib/smoothScroll'
 import { TURNSTILE_SITE_KEY } from '../../lib/turnstile'
 import { fieldDomId } from './formConfig'
 import { FormFieldInput } from './FormFields'
@@ -66,7 +66,28 @@ export function ApplicationForm({ job, talentPool = false }: Props) {
   useEffect(() => () => uploadAbort.current?.(), [])
 
   useEffect(() => {
-    if (result && rootRef.current) scrollToElement(rootRef.current, { offset: -160, immediate: true })
+    if (!result || !rootRef.current) return
+
+    let cancelled = false
+    // Form → success collapses page height; wait for layout, then refresh Lenis
+    // before scrolling so we don't land past the new content (footer).
+    const frame = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (cancelled || !rootRef.current) return
+        getLenis()?.resize()
+        const target =
+          document.getElementById('apply-title') ??
+          document.getElementById('apply') ??
+          rootRef.current
+        scrollToElement(target, { offset: -110, immediate: true })
+        rootRef.current.focus({ preventScroll: true })
+      })
+    })
+
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(frame)
+    }
   }, [result])
 
   const cvField = fields.find((f) => f.type === 'cv')
@@ -223,9 +244,11 @@ export function ApplicationForm({ job, talentPool = false }: Props) {
     }
   }
 
+  const busy = cv.status === 'uploading' || cv.status === 'reading'
+
   if (result) {
     return (
-      <div className="apply-success" ref={rootRef} role="status">
+      <div className="apply-success" ref={rootRef} role="status" tabIndex={-1}>
         <CheckCircle2 className="apply-success-icon" size={48} aria-hidden="true" />
         <h3 className="apply-success-title">
           {talentPool ? 'Your CV is in' : 'Application sent'}
@@ -247,8 +270,6 @@ export function ApplicationForm({ job, talentPool = false }: Props) {
       </div>
     )
   }
-
-  const busy = cv.status === 'uploading' || cv.status === 'reading'
 
   function renderCv(field: FormField) {
     return (
