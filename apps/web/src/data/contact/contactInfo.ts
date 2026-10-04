@@ -4,8 +4,8 @@ export const contactPhone = {
 } as const
 
 export const contactEmail = {
-  href: 'mailto:connect@dekkoisho.com',
-  label: 'connect@dekkoisho.com',
+  href: 'mailto:info@dekkoisho.com',
+  label: 'info@dekkoisho.com',
 } as const
 
 export const socialLinks = [

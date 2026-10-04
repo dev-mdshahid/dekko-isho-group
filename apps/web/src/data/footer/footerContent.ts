@@ -54,8 +54,8 @@ export const footerContact = {
     label: '+880 9606-101010',
   },
   email: {
-    href: 'mailto:connect@dekkoisho.com',
-    label: 'connect@dekkoisho.com',
+    href: 'mailto:info@dekkoisho.com',
+    label: 'info@dekkoisho.com',
   },
 } as const
 
