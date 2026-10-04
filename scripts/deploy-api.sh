@@ -57,9 +57,13 @@ else
   pm2 save
 fi
 
-sleep 3
 PORT="$(grep -E '^PORT=' apps/api/.env | cut -d= -f2 || true)"
-HEALTH="$(curl -fsS "http://127.0.0.1:${PORT:-8794}/api/health" || true)"
+HEALTH=""
+for _ in $(seq 1 30); do
+  sleep 1
+  HEALTH="$(curl -fsS "http://127.0.0.1:${PORT:-8794}/api/health" 2>/dev/null || true)"
+  [ -n "$HEALTH" ] && break
+done
 if [ -z "$HEALTH" ]; then
   echo "✗ Health check failed — check: pm2 logs dekkoisho-website-api --lines 50" >&2
   exit 1
