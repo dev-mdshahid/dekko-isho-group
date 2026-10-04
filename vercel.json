@@ -1,0 +1,59 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm install",
+  "buildCommand": "npm run build:hosting",
+  "outputDirectory": "apps/web/dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/sustainibility-report-2025",
+      "destination": "/sustainability-report-2025",
+      "statusCode": 301
+    },
+    {
+      "source": "/sustainability-report-2025",
+      "destination": "https://drive.google.com/file/d/1iRRvXVsUhUD1fBJLE5HQHmEGoZvuUw4l/view",
+      "statusCode": 302
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/hr/admin/:path*",
+      "destination": "/hr/admin/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/hr/admin/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    },
+    {
+      "source": "/hr/admin/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
