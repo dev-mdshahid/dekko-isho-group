@@ -22,7 +22,7 @@ import { logger } from '../lib/logger.js'
 import { toE164 } from '../lib/phone.js'
 import { safeFileName, storage, storageKeys } from '../lib/storage.js'
 import { normaliseProfile } from './cv/extract.js'
-import { applicationsForCandidate, indexApplication, patchIndex, searchCvBank, type ApplicationDoc } from './cvbank.js'
+import { applicationsForCandidate, indexApplication, patchIndex, removeFromIndex, searchCvBank, type ApplicationDoc } from './cvbank.js'
 import { bumpApplications, jobStore } from './jobs.js'
 import { lookups } from './lookups.js'
 import { mailCtx, sendMail } from './mail.js'
@@ -307,6 +307,58 @@ export async function cvDownloadUrl(id: string, attachmentKey?: string) {
   const ext = file.key.split('.').pop()
   const name = attachmentKey ? file.originalName : `${safeFileName(a.fullName)}-${a.referenceId}.${ext}`
   return { url: await storage().signedUrl(file.key, 300, name), contentType: file.contentType, name }
+}
+
+/** Permanently removes an application, its notes, CV files, and CV-bank index entry. */
+export async function deleteApplication(id: string) {
+  const ref = db().collection('applications').doc(id)
+  const snap = await ref.get()
+  if (!snap.exists) throw notFound('Application not found')
+  const a = snap.data() as ApplicationDoc
+
+  const notes = await ref.collection('notes').get()
+  const uploadIds = new Set<string>([a.uploadId])
+  for (const value of Object.values(a.answers)) {
+    if (value && typeof value === 'object' && 'uploadId' in value && typeof (value as FileRef).uploadId === 'string') {
+      uploadIds.add((value as FileRef).uploadId)
+    }
+  }
+
+  const files = [a.cvFile, ...Object.values(a.attachments ?? {})]
+  await Promise.all(
+    files.map((file) =>
+      storage()
+        .delete(file.key, file.fileId)
+        .catch((err) => logger.warn({ err, key: file.key, applicationId: id }, 'application file delete failed')),
+    ),
+  )
+
+  const batch = db().batch()
+  for (const note of notes.docs) batch.delete(note.ref)
+  for (const uploadId of uploadIds) {
+    batch.delete(db().collection('uploads').doc(uploadId))
+    batch.delete(db().collection('cvExtractions').doc(uploadId))
+  }
+
+  const candidateRef = db().collection('candidates').doc(a.candidateId)
+  const candidateSnap = await candidateRef.get()
+  if (candidateSnap.exists) {
+    const remaining = ((candidateSnap.get('applicationIds') as string[] | undefined) ?? []).filter((x) => x !== id)
+    if (remaining.length === 0) batch.delete(candidateRef)
+    else {
+      batch.update(candidateRef, {
+        applicationIds: FieldValue.arrayRemove(id),
+        updatedAt: nowIso(),
+      })
+    }
+  }
+
+  batch.delete(ref)
+  await batch.commit()
+
+  removeFromIndex(id)
+  bumpApplications(a.jobId, { total: -1, fresh: a.status === 'new' ? -1 : 0 })
+  logger.info({ applicationId: id, referenceId: a.referenceId, jobId: a.jobId }, 'application deleted')
 }
 
 export async function getCandidate(id: string) {

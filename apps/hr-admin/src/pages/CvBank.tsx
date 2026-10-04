@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Download, FileSearch, Search, SlidersHorizontal, X } from 'lucide-react'
+import { Download, FileSearch, Search, SlidersHorizontal, Trash2, X } from 'lucide-react'
 import {
   APPLICATION_STATUSES,
   APPLICATION_STATUS_LABELS,
   EDUCATION_LEVELS,
   type CustomFieldDefinition,
   type CvBankResponse,
+  type CvBankRow,
   type Job,
   type LookupItem,
 } from '@dekko-isho/shared'
 import { AppStatusBadge, Button, Empty, ErrorNote, Field, Input, Select, SkeletonRows, useUi } from '../components/ui'
-import { apiDownload } from '../lib/api'
+import { api, apiDownload } from '../lib/api'
 import { formatDate, plural } from '../lib/format'
 import { useSession } from '../lib/session'
 import { useApi } from '../lib/useApi'
@@ -34,11 +35,11 @@ export default function CvBankPage() {
   const [params, setParams] = useSearchParams()
   const navigate = useNavigate()
   const { can } = useSession()
-  const { toast } = useUi()
+  const { toast, confirm } = useUi()
   const get = (k: (typeof FILTER_KEYS)[number]) => params.get(k) ?? ''
 
   const query = Object.fromEntries(FILTER_KEYS.map((k) => [k, params.get(k) ?? undefined]))
-  const { data, error, loading } = useApi<CvBankResponse>('/api/hr/cv-bank', query)
+  const { data, error, loading, reload, setData } = useApi<CvBankResponse>('/api/hr/cv-bank', query)
   const settings = useApi<Settings>('/api/hr/settings')
   const jobs = useApi<{ jobs: JobRow[] }>('/api/hr/jobs')
   const tags = useApi<{ tags: string[] }>('/api/hr/cv-bank/tags')
@@ -95,6 +96,32 @@ export default function CvBankPage() {
   const exportCsv = async () => {
     try {
       await apiDownload('/api/hr/cv-bank/export', query, 'cv-bank.csv')
+    } catch (err) {
+      toast((err as Error).message, 'error')
+    }
+  }
+
+  const removeCv = async (row: CvBankRow) => {
+    const ok = await confirm({
+      title: `Remove ${row.fullName}?`,
+      body: 'This permanently deletes their application, CV file, and notes. This can’t be undone.',
+      confirmLabel: 'Remove',
+      danger: true,
+    })
+    if (!ok) return
+    try {
+      await api(`/api/hr/applications/${row.applicationId}`, { method: 'DELETE' })
+      toast(`${row.fullName} removed`)
+      setData((prev) =>
+        prev
+          ? {
+              ...prev,
+              total: Math.max(0, prev.total - 1),
+              rows: prev.rows.filter((r) => r.applicationId !== row.applicationId),
+            }
+          : prev,
+      )
+      reload()
     } catch (err) {
       toast((err as Error).message, 'error')
     }
@@ -342,6 +369,7 @@ export default function CvBankPage() {
                       <th>Education</th>
                       <th>Stage</th>
                       <th>Applied</th>
+                      {can('edit') ? <th className="table-actions">Action</th> : null}
                     </tr>
                   </thead>
                   <tbody>
@@ -362,7 +390,22 @@ export default function CvBankPage() {
                           <AppStatusBadge status={r.status} />
                           {r.tags.length ? <div className="t-sub truncate" style={{ marginTop: 4 }}>{r.tags.join(', ')}</div> : null}
                         </td>
-                        <td className="small muted num">{formatDate(r.submittedAt)}</td>
+                        <td className="small muted num" style={{ whiteSpace: 'nowrap' }}>{formatDate(r.submittedAt)}</td>
+                        {can('edit') ? (
+                          <td className="table-actions" onClick={(e) => e.stopPropagation()}>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              icon
+                              className="btn-danger-quiet"
+                              aria-label={`Remove ${r.fullName}`}
+                              title="Remove CV"
+                              onClick={() => void removeCv(r)}
+                            >
+                              <Trash2 size={15} />
+                            </Button>
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>

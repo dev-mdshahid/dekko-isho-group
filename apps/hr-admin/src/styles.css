@@ -243,7 +243,7 @@ textarea {
 }
 .page {
   padding: 28px 32px 48px;
-  max-width: 1320px;
+  max-width: 1680px;
   width: 100%;
   margin: 0 auto;
 }
@@ -374,6 +374,24 @@ textarea {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
+.grid-24 {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+.col-6 {
+  grid-column: span 6;
+  min-width: 0;
+}
+.col-9 {
+  grid-column: span 9;
+  min-width: 0;
+}
+.col-18 {
+  grid-column: span 18;
+  min-width: 0;
+}
 .split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
@@ -387,6 +405,16 @@ textarea {
   .grid-4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .grid-24 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .col-6,
+  .col-9 {
+    grid-column: span 6;
+  }
+  .col-18 {
+    grid-column: span 12;
+  }
 }
 @media (max-width: 640px) {
   .grid-2,
@@ -394,9 +422,18 @@ textarea {
   .grid-4 {
     grid-template-columns: minmax(0, 1fr);
   }
+  .grid-24 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .col-6,
+  .col-9,
+  .col-18 {
+    grid-column: auto;
+  }
 }
 
 .stat {
+  height: 100%;
   padding: 18px 20px;
 }
 .stat-label {
@@ -468,6 +505,14 @@ textarea {
 }
 .btn-ghost:hover {
   background: var(--line-2);
+  border-color: transparent;
+}
+.btn-ghost.btn-danger-quiet {
+  color: var(--muted);
+}
+.btn-ghost.btn-danger-quiet:hover {
+  color: var(--red);
+  background: #fef2f2;
   border-color: transparent;
 }
 .btn-sm {
@@ -707,13 +752,13 @@ button.chip {
   font-size: 12px;
   font-weight: 600;
   color: var(--muted);
-  padding: 10px 14px;
+  padding: 10px 20px;
   border-bottom: 1px solid var(--line);
   background: #fafbfc;
   white-space: nowrap;
 }
 .table td {
-  padding: 12px 14px;
+  padding: 12px 20px;
   border-bottom: 1px solid var(--line-2);
   vertical-align: middle;
 }
@@ -733,6 +778,11 @@ button.chip {
 .table .t-sub {
   color: var(--muted);
   font-size: 12.5px;
+}
+.table .table-actions {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .pagination {

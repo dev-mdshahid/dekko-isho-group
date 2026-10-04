@@ -26,6 +26,7 @@ import { adminOnly, anyStaff, canEdit } from '../middleware/auth.js'
 import {
   addNote,
   cvDownloadUrl,
+  deleteApplication,
   exportCvBankCsv,
   getApplication,
   getCandidate,
@@ -376,6 +377,16 @@ hrRouter.patch(
     const result = await updateApplication(param(req, 'id'), patch, { uid: req.staff!.uid, name: req.staff!.name })
     if (patch.status) await audit(req, 'application.status', param(req, 'id'), { status: patch.status })
     res.json({ status: result.status, tags: result.tags })
+  }),
+)
+
+hrRouter.delete(
+  '/applications/:id',
+  canEdit,
+  ah(async (req, res) => {
+    await deleteApplication(param(req, 'id'))
+    await audit(req, 'application.delete', param(req, 'id'))
+    res.status(204).end()
   }),
 )
 

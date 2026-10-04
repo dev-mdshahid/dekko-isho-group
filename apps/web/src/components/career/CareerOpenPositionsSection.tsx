@@ -151,10 +151,11 @@ export function CareerOpenPositionsSection() {
                 <h3 className="career-future-role-question">{futureRole.question}</h3>
                 <p className="career-future-role-description">{futureRole.description}</p>
               </div>
-              <Link to={futureRole.href} className="career-future-role-link">
-                {futureRole.linkLabel}
-                <CareerPositionArrow />
-              </Link>
+              <ButtonArrow
+                to={futureRole.href}
+                label={futureRole.linkLabel}
+                variant="button-primary-bg"
+              />
             </FadeIn>
           )}
         </div>

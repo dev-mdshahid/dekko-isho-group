@@ -12,7 +12,11 @@ vi.mock('../../lib/careersApi', async (original) => ({
   uploadCv: (...args: unknown[]) => uploadCv(...args),
   submitApplication: (...args: unknown[]) => submitApplication(...args),
 }))
-vi.mock('../../lib/smoothScroll', () => ({ scrollToElement: vi.fn() }))
+const scrollToElement = vi.fn()
+vi.mock('../../lib/smoothScroll', () => ({
+  scrollToElement: (...args: unknown[]) => scrollToElement(...args),
+  getLenis: () => null,
+}))
 
 const { ApplicationForm } = await import('./ApplicationForm')
 
@@ -41,6 +45,7 @@ const cvInput = () => document.getElementById('apply-field-cv') as HTMLInputElem
 beforeEach(() => {
   uploadCv.mockReset()
   submitApplication.mockReset()
+  scrollToElement.mockReset()
 })
 
 describe('ApplicationForm', () => {
@@ -77,6 +82,7 @@ describe('ApplicationForm', () => {
     expect(submitApplication).toHaveBeenCalledWith(
       expect.objectContaining({ jobId: 'job-1', formVersionId: 'form-v1', uploadId: 'u1', answers: expect.objectContaining({ fullName: 'Rahim Ahmed', experienceYears: 6, consent: true }) }),
     )
+    await waitFor(() => expect(scrollToElement).toHaveBeenCalled())
   })
 
   it('highlights missing fields and asks for the CV first', async () => {

@@ -38,15 +38,20 @@ export default function DashboardPage() {
 
       <ErrorNote error={error} />
 
-      <div className="grid-4" style={{ marginBottom: 20 }}>
-        <Stat label="Live circulars" value={data?.jobs.published} hint={data ? `${data.jobs.scheduled} scheduled · ${data.jobs.draft} drafts` : ''} />
-        <Stat label="New applications" value={data?.applications.byStatus.new ?? (data ? 0 : undefined)} hint="Waiting for review" />
-        <Stat label="Received this week" value={data?.applications.last7} hint="Last 7 days" />
-        <Stat label="CVs in the bank" value={data?.applications.total} hint={data ? `${data.applications.byStatus.shortlisted ?? 0} shortlisted` : ''} />
+      <div className="grid-24" style={{ marginBottom: 20 }}>
+        <div className="col-9">
+          <Stat label="Live circulars" value={data?.jobs.published} hint={data ? `${data.jobs.scheduled} scheduled · ${data.jobs.draft} drafts` : ''} />
+        </div>
+        <div className="col-9">
+          <Stat label="New applications" value={data?.applications.byStatus.new ?? (data ? 0 : undefined)} hint="Waiting for review" />
+        </div>
+        <div className="col-6">
+          <Stat label="CVs in the bank" value={data?.applications.total} hint={data ? `${data.applications.byStatus.shortlisted ?? 0} shortlisted` : ''} />
+        </div>
       </div>
 
-      <div className="split">
-        <section className="card">
+      <div className="grid-24">
+        <section className="card col-18">
           <div className="card-head">
             <h2>Latest applications</h2>
             <Link to="/cv-bank" className="small">
@@ -84,7 +89,7 @@ export default function DashboardPage() {
           )}
         </section>
 
-        <div className="stack">
+        <div className="stack col-6">
           <section className="card">
             <div className="card-head">
               <h2>Most active circulars</h2>
