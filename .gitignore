@@ -52,3 +52,5 @@ blob-report/
 # e2e production builds
 apps/web/dist-e2e/
 apps/hr-admin/dist-e2e/
+
+.firebase/

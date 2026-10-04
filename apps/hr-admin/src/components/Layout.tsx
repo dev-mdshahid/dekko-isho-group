@@ -22,7 +22,7 @@ export function Layout() {
       <aside className="sidebar" aria-label="Main navigation">
         <div className="sidebar-logo">
           <img src={logoWhite} alt="Dekko ISHO Group" />
-          <span>HR Portal</span>
+          <span>Web Application Job Portal</span>
         </div>
         <nav className="nav">
           <NavLink to="/" end>
