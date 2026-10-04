@@ -23,7 +23,7 @@ export const brand = {
       'The Forum, West Tower, Level 16-19, 187, 188/B, Bir Uttam Shawkat Sarak, Tejgaon, Dhaka 1208, Bangladesh',
     phone: '+880 9606-101010',
     phoneHref: 'tel:+8809606101010',
-    email: 'connect@dekkoisho.com',
+    email: 'info@dekkoisho.com',
   },
   social: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/dekkoishogroup/' },

@@ -68,7 +68,7 @@ export const config = {
 
   mail: {
     enabled: Boolean(env.MAIL_USER && env.MAIL_APP_PASSWORD) && !bool(env.MAIL_DISABLED),
-    contactInbox: env.CONTACT_INBOX || 'connect@dekkoisho.com',
+    contactInbox: env.CONTACT_INBOX || 'info@dekkoisho.com',
   },
 
   cvParseConcurrency: Number(env.CV_PARSE_CONCURRENCY || 2),
