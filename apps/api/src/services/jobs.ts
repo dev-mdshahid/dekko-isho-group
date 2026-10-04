@@ -208,7 +208,7 @@ export async function deleteJob(id: string) {
 export function bumpApplications(jobId: string, delta: { total?: number; fresh?: number }) {
   const job = jobs.get(jobId)
   if (!job) return
-  const total = delta.total ?? 0
+  const total = Math.max(-job.applicationsCount, delta.total ?? 0)
   const fresh = Math.max(-job.newApplicationsCount, delta.fresh ?? 0)
   job.applicationsCount += total
   job.newApplicationsCount += fresh
