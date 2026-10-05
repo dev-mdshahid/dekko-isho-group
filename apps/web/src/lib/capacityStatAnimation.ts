@@ -25,9 +25,21 @@ export function parseCapacityCountValue(value: string): CapacityCountValue | nul
   }
 }
 
+/**
+ * Whole-number targets under 10 (e.g. "1M+") only have one integer step with
+ * Math.floor, so they look stuck at 0. Use one decimal during the tween so they
+ * count like "3.5M+" / "2.5M+" (0.1, 0.2, …), then snap back to an integer at the end.
+ */
+function resolveCapacityCountDecimals(value: number, format: CapacityCountValue): number {
+  if (format.decimals > 0) return format.decimals
+  if (format.target > 0 && format.target < 10 && value < format.target) return 1
+  return 0
+}
+
 export function formatCapacityCountNumber(value: number, format: CapacityCountValue): string {
-  const numeric = format.decimals > 0
-    ? value.toFixed(format.decimals)
+  const decimals = resolveCapacityCountDecimals(value, format)
+  const numeric = decimals > 0
+    ? value.toFixed(decimals)
     : String(Math.floor(value))
   const [integer, fraction] = numeric.split('.')
   const groupedInteger = format.grouped
