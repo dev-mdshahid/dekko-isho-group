@@ -773,7 +773,7 @@ export type ManufacturingClientRegion = {
   id: ManufacturingClientRegionId
   accent: string
   title: string
-  partnerLabel: string
+  partnerLabel: string[]
   description: string
   logos: ManufacturingClientLogo[]
   map: {
@@ -811,7 +811,7 @@ export const manufacturingClients: {
       id: 'north-america',
       accent: '#086BD8',
       title: 'North America',
-      partnerLabel: 'North American Partners',
+      partnerLabel: ['North American', 'Partners'],
       description: 'Trusted manufacturing partner to leading North American fashion brands.',
       map: {
         countryCodes: [
@@ -841,7 +841,7 @@ export const manufacturingClients: {
       id: 'europe',
       accent: '#D9154B',
       title: 'Europe',
-      partnerLabel: 'European Partners',
+      partnerLabel: ['European', 'Partners'],
       description:
         'Long-standing partnerships with European brands and retailers across key markets.',
       map: {
@@ -878,7 +878,7 @@ export const manufacturingClients: {
       id: 'international',
       accent: '#087F42',
       title: 'Other International Markets',
-      partnerLabel: 'International Partners',
+      partnerLabel: ['International', 'Partners'],
       description: "A growing export footprint serving global consumers' evolving demands.",
       map: {
         countryCodes: [],
