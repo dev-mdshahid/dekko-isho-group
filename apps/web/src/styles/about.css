@@ -2394,7 +2394,7 @@
   /* Wider copy column; portrait is smaller and further right */
   width: min(100%, 48rem);
   max-width: 64%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 8rem;
 }
 
 .about-chairman-section--about .about-chairman-label {
@@ -2440,6 +2440,9 @@
   gap: 0.35rem;
   width: 100%;
   margin-top: auto;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 3;
 }
 
 .about-chairman-section--about .about-chairman-name {
