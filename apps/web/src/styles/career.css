@@ -1643,7 +1643,8 @@
   flex: 0 0 auto;
   height: clamp(440px, calc(var(--career-life-card-width) * 1.5), 720px);
   width: var(--career-life-card-width);
-  background-color: #202124;
+  /* background-color: #202124; */
+  /* border: 1px solid #efefef; */
   border-radius: 1.5rem;
   overflow: hidden;
   container-type: size;
