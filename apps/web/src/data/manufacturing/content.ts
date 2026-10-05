@@ -665,6 +665,18 @@ export const manufacturingProductionNetwork = {
       higgFfm: '81%',
       rscProgress: '97%',
     },
+    {
+      id: 'globus-garments',
+      title: 'Globus Garments Ltd.',
+      image: mfgProductNetworkImage('GGL-Card-Image.png'),
+      imageAlt: 'Lifestyle fashion portrait in a forest setting',
+      productionLines: '19',
+      monthlyCapacity: '730K',
+      manpower: '2.25K (AP.)',
+      products: '80% mens',
+      higgFfm: '85%',
+      rscProgress: '100%',
+    },
   ],
 }
 
