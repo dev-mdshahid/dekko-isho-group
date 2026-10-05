@@ -168,7 +168,7 @@ export function Footer() {
                   variant="slide-in-bottom"
                   delay={450}
                 >
-                  <h2 className="footer-title">Other Businesses</h2>
+                  <h2 className="footer-title">SBUs</h2>
                   <div className="footer-links">
                     {FOOTER_BUSINESS_LINKS.map((link) => (
                       <a key={link.to} href={link.to} target="_blank" rel="noreferrer" className={footerLinkClass(pathname, link.to)}>

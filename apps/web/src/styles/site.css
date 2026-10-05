@@ -8682,7 +8682,7 @@ a.about-info-box:hover {
   .grid-footer-menu {
     grid-column-gap: var(--gap--gap-12);
     grid-row-gap: var(--gap--gap-12);
-    grid-template-columns: .75fr 1.1fr 1.2fr 1fr;
+    grid-template-columns: .75fr 1.1fr 1.2fr 1.35fr;
   }
 
   .grid-footer {

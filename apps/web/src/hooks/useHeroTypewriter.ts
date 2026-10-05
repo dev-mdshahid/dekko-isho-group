@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
+import { useSplashOptional } from '../context/SplashContext'
 import {
   flattenHeroLine,
   HERO_TITLE_LINES,
@@ -36,6 +37,11 @@ function getCharInterval(
 }
 
 export function useHeroTypewriter() {
+  const splash = useSplashOptional()
+  // Wait until the splash logo is fully gone (or was skipped).
+  const splashDone =
+    !splash || splash.phase === 'complete' || splash.phase === 'skipped'
+
   const lineTokens = useMemo(
     () => HERO_TITLE_LINES.map((line) => flattenHeroLine(line)),
     [],
@@ -54,6 +60,7 @@ export function useHeroTypewriter() {
 
   useEffect(() => {
     if (prefersReducedMotion()) return
+    if (!splashDone) return
 
     let lineIndex = 0
     let charIndex = 0
@@ -120,7 +127,7 @@ export function useHeroTypewriter() {
       cancelled = true
       cancelAnimationFrame(raf)
     }
-  }, [lineLengths, lineTokens])
+  }, [lineLengths, lineTokens, splashDone])
 
   return {
     lines: HERO_TITLE_LINES,
