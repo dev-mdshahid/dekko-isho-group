@@ -11,6 +11,7 @@ import { PreSectionTitle } from './PreSectionTitle'
 import { SectionLines } from './SectionDecor'
 
 const CAROUSEL_INTERVAL_MS = 2000
+const CAROUSEL_SLIDE_MS = 600
 const SWIPE_THRESHOLD_PX = 45
 const FALLBACK_IMAGE = 'https://placehold.co/600x400/red/white'
 type SlideDirection = 'forward' | 'backward'
@@ -44,6 +45,7 @@ export function SplitFeatureListSection({
   variant = 'list',
 }: SplitFeatureListSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [isFocusWithin, setIsFocusWithin] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
@@ -52,6 +54,9 @@ export function SplitFeatureListSection({
 
   const pointerStartX = useRef<number | null>(null)
   const suppressNextClick = useRef(false)
+  const activeIndexRef = useRef(0)
+
+  activeIndexRef.current = activeIndex
 
   const hasIcons = items.some((item) => Boolean(item.icon))
   const isCarousel = variant === 'carousel' && items.length > 0
@@ -63,25 +68,49 @@ export function SplitFeatureListSection({
     (index: number) => {
       if (!items.length) return
 
-      setSlideDirection(
-        index >= activeIndex ? 'forward' : 'backward',
-      )
-      setActiveIndex(
-        ((index % items.length) + items.length) % items.length,
-      )
+      const nextIndex =
+        ((index % items.length) + items.length) % items.length
+      const currentIndex = activeIndexRef.current
 
+      if (nextIndex === currentIndex) return
+
+      setSlideDirection(
+        index >= currentIndex ? 'forward' : 'backward',
+      )
+      setPreviousIndex(currentIndex)
+      setActiveIndex(nextIndex)
       setAutoplayKey((key) => key + 1)
     },
-    [activeIndex, items.length],
+    [items.length],
   )
 
   const goPrevious = useCallback(() => {
-    goTo(activeIndex - 1)
-  }, [activeIndex, goTo])
+    goTo(activeIndexRef.current - 1)
+  }, [goTo])
 
   const goNext = useCallback(() => {
-    goTo(activeIndex + 1)
-  }, [activeIndex, goTo])
+    goTo(activeIndexRef.current + 1)
+  }, [goTo])
+
+  useEffect(() => {
+    if (previousIndex === null || prefersReducedMotion) {
+      return
+    }
+
+    const timeout = window.setTimeout(() => {
+      setPreviousIndex(null)
+    }, CAROUSEL_SLIDE_MS)
+
+    return () => {
+      window.clearTimeout(timeout)
+    }
+  }, [activeIndex, previousIndex, prefersReducedMotion])
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setPreviousIndex(null)
+    }
+  }, [prefersReducedMotion])
 
   useEffect(() => {
     if (!isCarousel) return
@@ -113,10 +142,10 @@ export function SplitFeatureListSection({
     }
 
     const interval = window.setInterval(() => {
+      const currentIndex = activeIndexRef.current
       setSlideDirection('forward')
-      setActiveIndex(
-        (index) => (index + 1) % items.length,
-      )
+      setPreviousIndex(currentIndex)
+      setActiveIndex((index) => (index + 1) % items.length)
     }, CAROUSEL_INTERVAL_MS)
 
     return () => {
@@ -282,13 +311,24 @@ export function SplitFeatureListSection({
                     suppressNextClick.current = false
                   }}
                 >
-                  {items.map((item, index) => (
+                  {items.map((item, index) => {
+                    const isActive = index === activeIndex
+                    const isExiting =
+                      previousIndex !== null &&
+                      index === previousIndex &&
+                      !prefersReducedMotion
+
+                    return (
                     <article
                       key={item.id}
                       id={`${baseId}-slide-${item.id}`}
                       className={`split-feature-list-carousel-slide${
-                        index === activeIndex
+                        isActive
                           ? ` is-active is-entering is-entering--${slideDirection}`
+                          : ''
+                      }${
+                        isExiting
+                          ? ` is-exiting is-exiting--${slideDirection}`
                           : ''
                       }`}
                       role="group"
@@ -297,7 +337,7 @@ export function SplitFeatureListSection({
                         items.length
                       }`}
                       aria-hidden={
-                        index !== activeIndex
+                        !isActive && !isExiting
                       }
                     >
                       <img
@@ -340,7 +380,8 @@ export function SplitFeatureListSection({
                         </div>
                       </div>
                     </article>
-                  ))}
+                    )
+                  })}
                   {hasMultipleSlides ? (
                     <div
                       className="split-feature-list-carousel-nav"
