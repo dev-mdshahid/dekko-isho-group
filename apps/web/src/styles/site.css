@@ -9285,12 +9285,8 @@ a.about-info-box:hover {
     padding-top: 5rem;
   }
 
-  .button-icon,
   .logo {
     width: auto;
-  }
-
-  .logo {
     height: 50px;
   }
 
@@ -9364,10 +9360,6 @@ a.about-info-box:hover {
   .dropdown-list-inner {
     margin-left: 1.25rem;
     margin-right: 1.25rem;
-  }
-
-  .button-icon-hover {
-    width: auto;
   }
 
   .nav-link-text {
@@ -10526,7 +10518,33 @@ a.about-info-box:hover {
   }
 
   .button-text-wrap {
-    padding-left: 1.25rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1.125rem;
+  }
+
+  .button-text,
+  .button-hover-text {
+    font-size: 0.875rem;
+  }
+
+  .button-icon-bg {
+    width: 32px;
+    height: 32px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .button-icon,
+  .button-icon-hover {
+    width: 11px;
+    height: 11px;
+  }
+
+  .button-primary-inner {
+    grid-column-gap: var(--gap--gap-5);
+    grid-row-gap: var(--gap--gap-5);
   }
 
   .footer-contact-list {
@@ -11388,7 +11406,23 @@ a.about-info-box:hover {
   }
 
   .button-text-wrap {
-    padding-left: .938rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.938rem;
+  }
+
+  .button-icon-bg {
+    width: 28px;
+    height: 28px;
+    margin-top: 0.188rem;
+    margin-bottom: 0.188rem;
+    margin-right: 0.188rem;
+  }
+
+  .button-icon,
+  .button-icon-hover {
+    width: 10px;
+    height: 10px;
   }
 
   .button-primary-inner {
