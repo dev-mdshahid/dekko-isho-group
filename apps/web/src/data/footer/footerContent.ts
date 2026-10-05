@@ -72,7 +72,7 @@ export const footerSocialLinks = [
   },
   {
     href: 'https://x.com/dekkoisho',
-    label: 'X',
+    label: 'Twitter',
     icon: 'twitter-x.svg',
   },
   {
