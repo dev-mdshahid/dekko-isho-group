@@ -5,7 +5,6 @@ import {
   formatCapacityCount,
   formatCapacityCountNumber,
   parseCapacityCountValue,
-  scrambleCapacityText,
 } from '../lib/capacityStatAnimation'
 
 type CapacityStatAnimationTarget = 'full' | 'number'
@@ -25,42 +24,35 @@ export function useCapacityStatAnimation(
     const finalText = counted && target === 'number'
       ? formatCapacityCountNumber(counted.target, counted)
       : value
-    const formatCount = (count: number) => counted && target === 'number'
-      ? formatCapacityCountNumber(count, counted)
-      : counted
-        ? formatCapacityCount(count, counted)
-        : value
 
     element.textContent = finalText
-    if (motionPreference.matches) return
+
+    // Only animate numeric values (count-up). Plain text stays static — no letter scramble.
+    if (!counted || motionPreference.matches) return
+
+    const formatCount = (count: number) => target === 'number'
+      ? formatCapacityCountNumber(count, counted)
+      : formatCapacityCount(count, counted)
 
     gsap.registerPlugin(ScrollTrigger)
     const state = { progress: 0 }
     let started = false
     let finished = false
-    let lastScrambleTime = -Infinity
 
     const finish = () => {
       finished = true
       element.textContent = finalText
     }
 
-    if (counted) element.textContent = formatCount(0)
+    element.textContent = formatCount(0)
 
     const tween = gsap.to(state, {
       progress: 1,
-      duration: counted ? 1.8 : 0.9,
-      ease: counted ? 'power2.out' : 'none',
+      duration: 1.8,
+      ease: 'power2.out',
       paused: true,
       onUpdate: () => {
-        if (counted) {
-          element.textContent = formatCount(state.progress * counted.target)
-        } else {
-          const now = performance.now()
-          if (now - lastScrambleTime < 1000 / 30) return
-          lastScrambleTime = now
-          element.textContent = scrambleCapacityText(value, state.progress)
-        }
+        element.textContent = formatCount(state.progress * counted.target)
       },
       onComplete: finish,
     })
@@ -68,10 +60,6 @@ export function useCapacityStatAnimation(
     const play = () => {
       if (started || finished) return
       started = true
-      if (!counted) {
-        element.textContent = scrambleCapacityText(value, 0)
-        lastScrambleTime = performance.now()
-      }
       tween.play()
     }
 

@@ -52,16 +52,3 @@ export function formatCapacityCountNumber(value: number, format: CapacityCountVa
 export function formatCapacityCount(value: number, format: CapacityCountValue): string {
   return `${format.prefix}${formatCapacityCountNumber(value, format)}${format.suffix}`
 }
-
-/** Resolve letters from left to right without scrambling whitespace, punctuation, or digits. */
-export function scrambleCapacityText(value: string, progress: number): string {
-  const letters = [...value].filter((character) => /[a-z]/i.test(character)).length
-  const resolved = Math.floor(Math.max(0, Math.min(1, progress)) * letters)
-  let index = 0
-
-  return [...value].map((character) => {
-    if (!/[a-z]/i.test(character) || index++ < resolved) return character
-    const start = character === character.toUpperCase() ? 65 : 97
-    return String.fromCharCode(start + Math.floor(Math.random() * 26))
-  }).join('')
-}
