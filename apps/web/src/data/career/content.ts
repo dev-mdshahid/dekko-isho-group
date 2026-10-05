@@ -267,7 +267,7 @@ export const careerLifeAt = {
       description:
         'From celebrations to everyday connections, the moments we share build trust, camaraderie, and a workplace that feels like home.',
       image: '/images/career/life-moments-that-bring-us-together.jpg',
-      imagePosition: 'center',
+      imagePosition: '74% center',
       imageAlt: 'Team members celebrating together at a sports tournament',
     },
     {
