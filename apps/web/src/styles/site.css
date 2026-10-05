@@ -15595,7 +15595,7 @@ html.lenis body {
     flex-direction: column;
 
     padding:
-      62px 20px 62px;
+      62px 20px 0;
 
     box-sizing: border-box;
   }
@@ -15652,8 +15652,9 @@ html.lenis body {
 
 
   /*
-   * Awards follow the copy. The source file is square and empty
-   * until ~55% down, so the frame only shows the trophies.
+   * Awards sit at the bottom of the mobile section (no extra bottom padding).
+   * The source file is square and empty until ~55% down,
+   * so the frame only shows the trophies.
    */
   .company-section-awards {
     position: relative;
@@ -15663,15 +15664,15 @@ html.lenis body {
     bottom: auto;
     left: auto;
 
-    width: 78%;
-    max-width: 78%;
+    width: 100%;
+    max-width: 100%;
     height: 0;
 
-    margin: 62px 0 0 auto;
-    /* 78% width × 0.39 trophy window, tall enough for the glass awards and K. */
-    padding-bottom: 30.4%;
+    margin: 40px auto 0;
+    /* 100% width × 0.39 trophy window, tall enough for the glass awards and K. */
+    padding-bottom: 39%;
 
-    align-self: flex-end;
+    align-self: center;
     overflow: hidden;
   }
 
