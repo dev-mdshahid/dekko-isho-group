@@ -673,7 +673,7 @@ export const manufacturingProductionNetwork = {
       productionLines: '19',
       monthlyCapacity: '730K',
       manpower: '2.25K (AP.)',
-      products: '80% Men’s Shirts 10% Ladies’ Blouse & Dress Products 10% Kids’ Products',
+      products: '80% Men’s Shirts 10% Ladies’ Blouse & Dress Products 10% Kids’ Product',
       higgFfm: '85%',
       rscProgress: '100%',
     },
