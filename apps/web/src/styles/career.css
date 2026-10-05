@@ -482,7 +482,7 @@
 
   .image-info-career .about-info-right {
     min-height: auto;
-    padding-bottom: calc(var(--career-marquee-font-size) * 0.5);
+    padding-bottom: calc(var(--career-marquee-font-size) * 0.5 + var(--gap--gap-5));
   }
 
   .image-info-career .about-hero-text-marquee .marquee-text {
@@ -491,7 +491,7 @@
   }
 
   .image-info-career .about-hero-content {
-    padding: 1.75rem 1.25rem 1.25rem;
+    padding: 1.75rem 1.25rem var(--gap--gap-5);
   }
 
   .image-info-career .about-image,

@@ -327,7 +327,7 @@
 
   .image-info-about .about-info-right {
     min-height: auto;
-    padding-bottom: calc(var(--about-marquee-font-size) * 0.6);
+    padding-bottom: calc(var(--about-marquee-font-size) * 0.5 + var(--gap--gap-5));
   }
 
   .image-info-about .about-hero-text-marquee .marquee-text {
@@ -335,7 +335,7 @@
   }
 
   .image-info-about .about-hero-content {
-    padding: 1.75rem 1.25rem 1.25rem;
+    padding: 1.75rem 1.25rem var(--gap--gap-5);
   }
 
   .image-info-about .about-image-slideshow {
