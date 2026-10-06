@@ -2315,6 +2315,11 @@ figcaption {
   color: var(--color--gray-3);
 }
 
+.footer-address strong {
+  display: inline-block;
+  margin-bottom: 0.35em;
+}
+
 .footer-contact-item {
   grid-column-gap: var(--gap--gap-5);
   grid-row-gap: var(--gap--gap-5);
