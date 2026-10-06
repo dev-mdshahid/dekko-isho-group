@@ -295,7 +295,7 @@
   }
 
   .image-info-about .about-hero-content {
-    padding: 2rem 1.25rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 
   .image-info-about .about-hero-description {
@@ -350,7 +350,7 @@
   }
 
   .image-info-about .about-hero-content {
-    padding: 1.75rem 1.25rem var(--gap--gap-5);
+    padding: 1.75rem 1.25rem;
   }
 
   .image-info-about .about-image-slideshow {
