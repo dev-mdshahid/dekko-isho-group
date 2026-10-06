@@ -3288,11 +3288,13 @@
 
   .solution-page .mfg-capacity-icon-pills {
     grid-template-columns: 1fr;
+    justify-content: stretch;
     margin-top: 1.75rem;
     gap: 0.625rem;
   }
 
   .solution-page .mfg-capacity-icon-pill {
+    max-width: none;
     min-height: 5.75rem;
     padding: 1rem;
   }
