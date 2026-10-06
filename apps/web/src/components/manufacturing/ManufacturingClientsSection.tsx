@@ -78,41 +78,43 @@ export function ManufacturingClientsSection() {
               <p>{activeRegion.description}</p>
             </div>
 
-            <div className="mfg-clients-tabs" role="tablist" aria-label="Client markets">
-              {regions.filter((region) => region.id !== 'international').map((region, index) => {
-                const isActive = region.id === activeRegion.id
-                return (
-                  <button
-                    key={region.id}
-                    ref={(element) => { tabRefs.current[index] = element }}
-                    id={`mfg-clients-tab-${region.id}`}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls="mfg-clients-region-panel"
-                    tabIndex={isActive ? 0 : -1}
-                    className="mfg-clients-tab"
-                    onClick={() => selectRegion(region.id, index)}
-                    onKeyDown={(event) => handleTabKeyDown(event, index)}
-                  >
-                    {region.title}
-                  </button>
-                )
-              })}
-            </div>
-
-            {activeRegion.logos.length > 0 && (
-              <div className="mfg-clients-region-count" aria-hidden="true">
-                <strong className="mfg-clients-stat-value">
-                  {activeRegion.logos.length}+
-                </strong>
-                <span className="mfg-clients-stat-label">
-                  {activeRegion.partnerLabel.map((line) => (
-                    <span key={line}>{line}</span>
-                  ))}
-                </span>
+            <div className="mfg-clients-panel-actions">
+              <div className="mfg-clients-tabs" role="tablist" aria-label="Client markets">
+                {regions.filter((region) => region.id !== 'international').map((region, index) => {
+                  const isActive = region.id === activeRegion.id
+                  return (
+                    <button
+                      key={region.id}
+                      ref={(element) => { tabRefs.current[index] = element }}
+                      id={`mfg-clients-tab-${region.id}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-controls="mfg-clients-region-panel"
+                      tabIndex={isActive ? 0 : -1}
+                      className="mfg-clients-tab"
+                      onClick={() => selectRegion(region.id, index)}
+                      onKeyDown={(event) => handleTabKeyDown(event, index)}
+                    >
+                      {region.title}
+                    </button>
+                  )
+                })}
               </div>
-            )}
+
+              {activeRegion.logos.length > 0 && (
+                <div className="mfg-clients-region-count" aria-hidden="true">
+                  <strong className="mfg-clients-stat-value">
+                    {activeRegion.logos.length}+
+                  </strong>
+                  <span className="mfg-clients-stat-label">
+                    {activeRegion.partnerLabel.map((line) => (
+                      <span key={line}>{line}</span>
+                    ))}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
 
           <div

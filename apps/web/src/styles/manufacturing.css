@@ -1408,10 +1408,19 @@
 
 .manufacturing-page .mfg-clients-panel-top {
   display: grid;
-  grid-template-columns: minmax(13rem, 1fr) auto minmax(15rem, .7fr);
+  grid-template-columns: minmax(13rem, 1fr) auto;
   align-items: center;
   gap: clamp(1rem, 2vw, 2rem);
   padding: 0 2.75rem 1.5rem;
+}
+
+.manufacturing-page .mfg-clients-panel-actions {
+  --mfg-clients-divider-gap: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+  min-width: 0;
 }
 
 .manufacturing-page .mfg-clients-map-wrap {
@@ -1513,7 +1522,8 @@
 
 .manufacturing-page .mfg-clients-tabs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: .75rem;
 }
 
@@ -1551,10 +1561,11 @@
 .manufacturing-page .mfg-clients-region-count {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(.35rem, .55vw, .6rem);
-  min-width: 15rem;
-  padding-left: clamp(1.25rem, 2vw, 2rem);
+  min-width: 0;
+  margin-left: var(--mfg-clients-divider-gap);
+  padding-left: var(--mfg-clients-divider-gap);
   border-left: 1px solid #dce5f0;
   color: var(--color--neutral-night);
 }
@@ -1653,20 +1664,9 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .manufacturing-page .mfg-clients-panel-top {
-    grid-template-columns: 1fr auto;
-  }
-
-  .manufacturing-page .mfg-clients-tabs {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-start;
-  }
-
-  .manufacturing-page .mfg-clients-region-count {
-    grid-column: 2;
-    grid-row: 1;
-    min-width: min(20rem, 42vw);
+  .manufacturing-page .mfg-clients-panel-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }
 
@@ -1703,20 +1703,23 @@
   }
   .manufacturing-page .mfg-map-active-label text { font-size: 12.5px; }
   .manufacturing-page .mfg-clients-region-copy h3 { font-size: 1.65rem; }
+  .manufacturing-page .mfg-clients-panel-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
   .manufacturing-page .mfg-clients-region-count {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: start;
     justify-content: flex-start;
     gap: clamp(.6rem, 3vw, 1rem);
     min-width: 0;
     max-width: 100%;
+    margin-left: 0;
     padding-left: 0;
     border-left: 0;
   }
   .manufacturing-page .mfg-clients-tabs {
-    grid-column: 1;
-    grid-row: 3;
     justify-content: flex-start;
     width: 100%;
     padding-bottom: .3rem;
