@@ -11,7 +11,7 @@ import {
 import { prefersReducedMotion } from '../../lib/animations/prefersReducedMotion'
 
 /** Matches Aceternity TypewriterEffectSmooth (no package). */
-const REVEAL_DURATION = 2.8
+const REVEAL_DURATION = 2.0
 const REVEAL_DELAY = 0.35
 
 function HeroTitleWords({ part }: { part: HeroTitlePart }) {

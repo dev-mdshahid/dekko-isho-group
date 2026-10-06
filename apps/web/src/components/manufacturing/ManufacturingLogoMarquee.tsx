@@ -1,5 +1,6 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, Key } from 'react'
 import type { ManufacturingClientLogo, ManufacturingClientRegionId } from '../../data/manufacturing/content'
+import LogoLoop, { type LogoItem } from '../ui/LogoLoop'
 
 export interface ManufacturingLogoMarqueeProps {
   logos: ManufacturingClientLogo[]
@@ -7,7 +8,23 @@ export interface ManufacturingLogoMarqueeProps {
   regionLabel: string
 }
 
-const COPY_COUNT = 2
+const renderLogoItem = (item: LogoItem, _key: Key) => {
+  if (!('src' in item) || item.width == null) return null
+
+  return (
+    <span
+      className="mfg-client-marquee-item"
+      style={{ '--logo-width': `${item.width}px` } as CSSProperties}
+    >
+      <img
+        src={item.src}
+        alt={item.alt ?? ''}
+        className="mfg-client-marquee-image"
+        draggable={false}
+      />
+    </span>
+  )
+}
 
 export function ManufacturingLogoMarquee({ logos, regionId, regionLabel }: ManufacturingLogoMarqueeProps) {
   if (logos.length === 0) {
@@ -26,28 +43,17 @@ export function ManufacturingLogoMarquee({ logos, regionId, regionLabel }: Manuf
         role="region"
         aria-label={`${regionLabel} client logos. Focus or hover to pause scrolling.`}
       >
-        <div key={regionId} className="mfg-client-marquee-track">
-          {Array.from({ length: COPY_COUNT }, (_, copyIndex) => (
-            <ul key={copyIndex} className="mfg-client-marquee-list" aria-hidden={copyIndex === 0 ? undefined : true}>
-              {logos.map((logo) => (
-                <li
-                  key={logo.src}
-                  style={{ '--logo-width': `${logo.width}px` } as CSSProperties}
-                  className="mfg-client-marquee-item"
-                >
-                  <img
-                    src={logo.src}
-                    alt={copyIndex === 0 ? logo.alt : ''}
-                    className="mfg-client-marquee-image"
-                    draggable={false}
-                    loading="eager"
-                    decoding="async"
-                  />
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
+        <LogoLoop
+          key={regionId}
+          logos={logos}
+          speed={50}
+          direction="left"
+          gap={128}
+          hoverSpeed={0}
+          ariaLabel={`${regionLabel} client logos`}
+          className="mfg-client-marquee-loop"
+          renderItem={renderLogoItem}
+        />
       </div>
     </div>
   )

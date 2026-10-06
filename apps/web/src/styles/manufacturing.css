@@ -1585,29 +1585,16 @@
   );
 }
 
-.manufacturing-page .mfg-client-marquee-track {
-  display: flex;
-  width: max-content;
-  animation: mfg-client-marquee-scroll var(--marquee-duration) linear infinite;
-  will-change: transform;
+/* LogoLoop (same motion as hero CompanyLogosSectionV2) */
+.manufacturing-page .mfg-client-marquee-loop {
+  /* Preserve responsive --logo-gap over LogoLoop's inline default. */
+  --logoloop-gap: var(--logo-gap) !important;
 }
 
-.manufacturing-page .mfg-client-marquee-list {
-  display: flex;
-  flex: 0 0 auto;
+.manufacturing-page .mfg-client-marquee-loop .logoloop__list {
   align-items: center;
   /* Reserve room for the tallest logo so region changes keep the row stable. */
   min-height: calc(72px * var(--logo-scale));
-  gap: var(--logo-gap);
-  list-style: none;
-  margin: 0;
-  /* Preserve the same gap between the two identical groups. */
-  padding: 0 var(--logo-gap) 0 0;
-}
-
-@keyframes mfg-client-marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 .manufacturing-page .mfg-client-marquee-item {
@@ -1619,16 +1606,12 @@
   margin: 0;
 }
 
+.manufacturing-page .mfg-client-marquee-loop .logoloop__item img,
 .manufacturing-page .mfg-client-marquee-image {
   display: block;
   width: 100%;
   height: auto;
   user-select: none;
-}
-
-.manufacturing-page .mfg-client-marquee-viewport:hover .mfg-client-marquee-track,
-.manufacturing-page .mfg-client-marquee-viewport:focus-within .mfg-client-marquee-track {
-  animation-play-state: paused;
 }
 
 .manufacturing-page .mfg-client-marquee-empty {
@@ -1974,12 +1957,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .manufacturing-page .mfg-client-marquee-viewport { overflow-x: auto; }
-  .manufacturing-page .mfg-client-marquee-track {
-    animation: none;
-    transform: none;
+  .manufacturing-page .mfg-client-marquee-loop .logoloop__track {
+    transform: none !important;
     will-change: auto;
   }
-  .manufacturing-page .mfg-client-marquee-list[aria-hidden="true"] { display: none; }
+  .manufacturing-page .mfg-client-marquee-loop .logoloop__list[aria-hidden="true"] { display: none; }
 
   .manufacturing-page .mfg-clients-tab,
   .manufacturing-page .mfg-map-country,
