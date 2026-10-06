@@ -47,7 +47,7 @@ const CompanyLogosSectionV2 = () => {
         className="company-logos-section-v2__viewport"
         tabIndex={0}
         role="region"
-        aria-label="Client logos. Hover or use keyboard focus to pause scrolling."
+        aria-label="Client logos. Drag left or right to browse. Hover or use keyboard focus to pause scrolling."
       >
         <LogoLoop
           logos={logos}
@@ -55,6 +55,7 @@ const CompanyLogosSectionV2 = () => {
           direction="left"
           gap={128}
           hoverSpeed={0}
+          draggable
           ariaLabel="Our clients"
           className="company-logos-section-v2__loop"
           renderItem={renderLogoItem}

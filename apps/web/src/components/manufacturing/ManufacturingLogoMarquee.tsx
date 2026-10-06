@@ -41,7 +41,7 @@ export function ManufacturingLogoMarquee({ logos, regionId, regionLabel }: Manuf
         className="mfg-client-marquee-viewport"
         tabIndex={0}
         role="region"
-        aria-label={`${regionLabel} client logos. Focus or hover to pause scrolling.`}
+        aria-label={`${regionLabel} client logos. Drag left or right to browse. Focus or hover to pause scrolling.`}
       >
         <LogoLoop
           key={regionId}
@@ -50,6 +50,7 @@ export function ManufacturingLogoMarquee({ logos, regionId, regionLabel }: Manuf
           direction="left"
           gap={128}
           hoverSpeed={0}
+          draggable
           ariaLabel={`${regionLabel} client logos`}
           className="mfg-client-marquee-loop"
           renderItem={renderLogoItem}

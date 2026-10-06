@@ -7,12 +7,14 @@ import {
   memo,
   type CSSProperties,
   type Key,
+  type MutableRefObject,
   type ReactNode,
   type RefObject,
 } from 'react'
 import './LogoLoop.css'
 
 const ANIMATION_CONFIG = { SMOOTH_TAU: 0.25, MIN_COPIES: 2, COPY_HEADROOM: 2 }
+const DRAG_THRESHOLD_PX = 4
 
 export type LogoNodeItem = {
   node: ReactNode
@@ -47,6 +49,8 @@ export type LogoLoopProps = {
   fadeOutColor?: string
   scaleOnHover?: boolean
   renderItem?: (item: LogoItem, key: Key) => ReactNode
+  /** When true, pointer drag scrubs the loop left/right (horizontal only). */
+  draggable?: boolean
   ariaLabel?: string
   className?: string
   style?: CSSProperties
@@ -116,6 +120,9 @@ const useImageLoader = (
   }, [onLoad, seqRef, ...dependencies])
 }
 
+const wrapOffset = (value: number, seqSize: number) =>
+  seqSize > 0 ? ((value % seqSize) + seqSize) % seqSize : value
+
 const useAnimationLoop = (
   trackRef: RefObject<HTMLDivElement | null>,
   targetVelocity: number,
@@ -124,10 +131,11 @@ const useAnimationLoop = (
   isHovered: boolean,
   hoverSpeed: number | undefined,
   isVertical: boolean,
+  offsetRef: MutableRefObject<number>,
+  isDraggingRef: RefObject<boolean>,
 ) => {
   const rafRef = useRef<number | null>(null)
   const lastTimestampRef = useRef<number | null>(null)
-  const offsetRef = useRef(0)
   const velocityRef = useRef(0)
 
   useEffect(() => {
@@ -137,7 +145,7 @@ const useAnimationLoop = (
     const seqSize = isVertical ? seqHeight : seqWidth
 
     if (seqSize > 0) {
-      offsetRef.current = ((offsetRef.current % seqSize) + seqSize) % seqSize
+      offsetRef.current = wrapOffset(offsetRef.current, seqSize)
       const transformValue = isVertical
         ? `translate3d(0, ${-offsetRef.current}px, 0)`
         : `translate3d(${-offsetRef.current}px, 0, 0)`
@@ -152,16 +160,23 @@ const useAnimationLoop = (
       const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000
       lastTimestampRef.current = timestamp
 
-      const target = isHovered && hoverSpeed !== undefined ? hoverSpeed : targetVelocity
+      if (!isDraggingRef.current) {
+        const target = isHovered && hoverSpeed !== undefined ? hoverSpeed : targetVelocity
 
-      const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU)
-      velocityRef.current += (target - velocityRef.current) * easingFactor
+        const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU)
+        velocityRef.current += (target - velocityRef.current) * easingFactor
+
+        if (seqSize > 0) {
+          offsetRef.current = wrapOffset(
+            offsetRef.current + velocityRef.current * deltaTime,
+            seqSize,
+          )
+        }
+      } else {
+        velocityRef.current = 0
+      }
 
       if (seqSize > 0) {
-        let nextOffset = offsetRef.current + velocityRef.current * deltaTime
-        nextOffset = ((nextOffset % seqSize) + seqSize) % seqSize
-        offsetRef.current = nextOffset
-
         const transformValue = isVertical
           ? `translate3d(0, ${-offsetRef.current}px, 0)`
           : `translate3d(${-offsetRef.current}px, 0, 0)`
@@ -180,7 +195,17 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null
     }
-  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef])
+  }, [
+    targetVelocity,
+    seqWidth,
+    seqHeight,
+    isHovered,
+    hoverSpeed,
+    isVertical,
+    trackRef,
+    offsetRef,
+    isDraggingRef,
+  ])
 }
 
 export const LogoLoop = memo(function LogoLoop({
@@ -196,6 +221,7 @@ export const LogoLoop = memo(function LogoLoop({
   fadeOutColor,
   scaleOnHover = false,
   renderItem,
+  draggable = false,
   ariaLabel = 'Partner logos',
   className,
   style,
@@ -203,6 +229,8 @@ export const LogoLoop = memo(function LogoLoop({
   const containerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const seqRef = useRef<HTMLUListElement>(null)
+  const offsetRef = useRef(0)
+  const isDraggingRef = useRef(false)
 
   const [seqWidth, setSeqWidth] = useState(0)
   const [seqHeight, setSeqHeight] = useState(0)
@@ -217,6 +245,7 @@ export const LogoLoop = memo(function LogoLoop({
   }, [hoverSpeed, pauseOnHover])
 
   const isVertical = direction === 'up' || direction === 'down'
+  const canDrag = draggable && !isVertical
 
   const targetVelocity = useMemo(() => {
     const magnitude = Math.abs(speed)
@@ -267,7 +296,90 @@ export const LogoLoop = memo(function LogoLoop({
     isHovered,
     effectiveHoverSpeed,
     isVertical,
+    offsetRef,
+    isDraggingRef,
   )
+
+  useEffect(() => {
+    if (!canDrag) return
+
+    const container = containerRef.current
+    if (!container) return
+
+    let activePointerId: number | null = null
+    let isPointerDown = false
+    let isDragging = false
+    let startX = 0
+    let startOffset = 0
+
+    const endPointer = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+
+      if (isDragging) {
+        if (container.hasPointerCapture(event.pointerId)) {
+          container.releasePointerCapture(event.pointerId)
+        }
+        container.classList.remove('is-dragging')
+      }
+
+      isPointerDown = false
+      isDragging = false
+      isDraggingRef.current = false
+      activePointerId = null
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      const deltaX = event.clientX - startX
+
+      if (!isDragging) {
+        if (Math.abs(deltaX) <= DRAG_THRESHOLD_PX) return
+        isDragging = true
+        isDraggingRef.current = true
+        container.classList.add('is-dragging')
+        container.setPointerCapture(event.pointerId)
+      }
+
+      event.preventDefault()
+      offsetRef.current = wrapOffset(startOffset - deltaX, seqWidth)
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0 || seqWidth <= 0) return
+
+      isPointerDown = true
+      isDragging = false
+      activePointerId = event.pointerId
+      startX = event.clientX
+      startOffset = offsetRef.current
+
+      document.addEventListener('pointermove', onPointerMove)
+      document.addEventListener('pointerup', endPointer)
+      document.addEventListener('pointercancel', endPointer)
+    }
+
+    const onDragStart = (event: DragEvent) => {
+      event.preventDefault()
+    }
+
+    container.addEventListener('pointerdown', onPointerDown)
+    container.addEventListener('dragstart', onDragStart)
+
+    return () => {
+      container.removeEventListener('pointerdown', onPointerDown)
+      container.removeEventListener('dragstart', onDragStart)
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+      container.classList.remove('is-dragging')
+      isDraggingRef.current = false
+    }
+  }, [canDrag, seqWidth])
 
   const cssVariables = useMemo(
     () =>
@@ -286,11 +398,12 @@ export const LogoLoop = memo(function LogoLoop({
         isVertical ? 'logoloop--vertical' : 'logoloop--horizontal',
         fadeOut && 'logoloop--fade',
         scaleOnHover && 'logoloop--scale-hover',
+        canDrag && 'logoloop--draggable',
         className,
       ]
         .filter(Boolean)
         .join(' '),
-    [isVertical, fadeOut, scaleOnHover, className],
+    [isVertical, fadeOut, scaleOnHover, canDrag, className],
   )
 
   const handleMouseEnter = useCallback(() => {
