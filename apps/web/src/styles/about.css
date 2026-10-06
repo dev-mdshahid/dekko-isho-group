@@ -2588,6 +2588,12 @@
   }
 }
 
+@media screen and (min-width: 992px) and (max-width: 1355px) {
+  .about-chairman-section--about.section-spacing {
+    padding-bottom: 6rem;
+  }
+}
+
 @media screen and (min-width: 1262px) and (max-width: 1355px) {
   .about-chairman-section--about {
     height: 600px;

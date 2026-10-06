@@ -3254,28 +3254,29 @@ a.about-info-box:hover {
   width: 100%;
 }
 
+/* Stack offsets match stacking-card demo (i * 25px peek under each card). */
 .service-list-wrapper.one {
   top: calc(var(--navbar-height) + var(--service-sticky-gap));
   z-index: 1;
 }
 
 .service-list-wrapper.two {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 25px);
   z-index: 2;
 }
 
 .service-list-wrapper.three {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 200px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 50px);
   z-index: 3;
 }
 
 .service-list-wrapper.four {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 300px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 75px);
   z-index: 4;
 }
 
 .service-list-wrapper.five {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 400px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
   z-index: 5;
 }
 
@@ -12118,12 +12119,13 @@ a.about-info-box:hover {
   border-radius: 0;
   transform: scale(1);
   transform-origin: center center;
-  transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  /* Scroll-driven zoom is applied by GSAP; keep hover off so it doesn't fight scrub. */
+  will-change: transform;
 }
 
-@media (hover: hover) {
-  .service-section .service-info-link:hover .service-image {
-    transform: scale(1.05);
+@media (prefers-reduced-motion: reduce) {
+  .service-section .service-image {
+    will-change: auto;
   }
 }
 
