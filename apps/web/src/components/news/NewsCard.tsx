@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 
 import type { LatestNewsItem } from '../../data/home/latestNews'
@@ -5,43 +6,32 @@ import { FadeIn } from '../ui/FadeIn'
 import { ButtonIcon } from '../ui/ButtonIcon'
 import { newsDateToIso } from './newsDate'
 
-function NewsCardAction({ href, label }: { href: string; label: string }) {
-  const inner = (
-    <span className="button-icon-bg latest-news-card-action__icon" aria-hidden="true">
-      <ButtonIcon className="button-icon" />
-      <ButtonIcon className="button-icon-hover" />
-    </span>
-  )
+const cardLinkStyle: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  height: '100%',
+  color: 'inherit',
+  textDecoration: 'none',
+}
 
-  if (href.startsWith('http')) {
-    return (
-      <a
-        href={href}
-        className="latest-news-card-action"
-        aria-label={label}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {inner}
-      </a>
-    )
-  }
-
+function NewsCardAction() {
   return (
-    <Link to={href} className="latest-news-card-action" aria-label={label}>
-      {inner}
-    </Link>
+    <span className="latest-news-card-action" aria-hidden="true">
+      <span className="button-icon-bg latest-news-card-action__icon">
+        <ButtonIcon className="button-icon" />
+        <ButtonIcon className="button-icon-hover" />
+      </span>
+    </span>
   )
 }
 
 export function NewsCard({ item, index }: { item: LatestNewsItem; index: number }) {
-  return (
-    <FadeIn
-      as="article"
-      id={`latest-news-card-${item.id}`}
-      delay={index * 80}
-      className="latest-news-card"
-    >
+  const label = `Read: ${item.title}`
+  const isExternal = item.href.startsWith('http')
+
+  const content = (
+    <>
       <div className="latest-news-card-portal">
         <img
           src={item.portalLogo}
@@ -68,9 +58,34 @@ export function NewsCard({ item, index }: { item: LatestNewsItem; index: number 
           <time className="latest-news-card-date" dateTime={newsDateToIso(item.date)}>
             {item.date}
           </time>
-          <NewsCardAction href={item.href} label={`Read: ${item.title}`} />
+          <NewsCardAction />
         </div>
       </div>
+    </>
+  )
+
+  return (
+    <FadeIn
+      as="article"
+      id={`latest-news-card-${item.id}`}
+      delay={index * 80}
+      className="latest-news-card"
+    >
+      {isExternal ? (
+        <a
+          href={item.href}
+          aria-label={label}
+          target="_blank"
+          rel="noreferrer"
+          style={cardLinkStyle}
+        >
+          {content}
+        </a>
+      ) : (
+        <Link to={item.href} aria-label={label} style={cardLinkStyle}>
+          {content}
+        </Link>
+      )}
     </FadeIn>
   )
 }
