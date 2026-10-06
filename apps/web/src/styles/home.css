@@ -615,22 +615,46 @@
 
 /* Home — animation hooks */
 
+.hero-title-smooth-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
 .hero-title-line-mask {
   display: block;
   position: relative;
   width: fit-content;
   max-width: 100%;
-  margin-inline: auto;
-  overflow: visible;
+  overflow: hidden;
+}
+
+.hero-title[data-hero-typewriter='smooth'] .hero-title-line-mask {
+  width: 0;
+}
+
+.hero-title[data-hero-typewriter='smooth'] .hero-title-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title[data-hero-typewriter='smooth'] .hero-title-line-mask {
+    width: fit-content;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .hero-title-line-mask--inline {
-    display: inline-block;
+  .hero-title-smooth-row--inline {
+    display: inline-flex;
     vertical-align: baseline;
+    margin-inline: 0;
   }
 
-  .hero-title-line-mask--inline+.hero-title-line-mask--inline {
+  .hero-title-smooth-row--inline + .hero-title-smooth-row--inline {
     margin-left: 0.28em;
   }
 }
