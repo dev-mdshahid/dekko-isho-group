@@ -3219,28 +3219,16 @@ a.about-info-box:hover {
 }
 
 /*
- * Cover-cascade scales `.service-card-panel` (the painted card), never the sticky
- * wrapper. Sticky keeps an opaque page fill so side gaps cannot tunnel through
- * to deeper siblings when a panel shrinks.
+ * Cards stay full width. A scale on the panel shrinks later cards and pulls
+ * their rounded tops inward, so the stack corners no longer line up.
  */
 .service-section [data-home-animate='service-card'] {
   background-color: var(--color--white);
 }
 
-.service-section [data-home-animate='service-card'] .service-card-panel {
-  transform-origin: center top;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-section [data-home-animate='service-card'] .service-card-panel {
-    will-change: auto;
-  }
-}
-
 /*
  * A transform on the sticky wrapper (even translateY(0) left by a tween) breaks
- * stacking. Cover-cascade scale stays on the panel; this only guards the wrapper.
+ * stacking. This only guards the wrapper.
  */
 @media screen and (max-width: 991px) {
   .service-section [data-home-animate='service-card'] {
@@ -12087,9 +12075,20 @@ a.about-info-box:hover {
   overflow: visible;
 }
 
+/*
+ * Shared gap before the next card. Padding (not a full viewport) keeps every
+ * card the same distance apart, shorter than the original h-screen track.
+ * The next card still rises and pins 25px lower.
+ */
+.service-section .service-list-wrapper {
+  padding-bottom: clamp(1.25rem, 4vh, 2.25rem);
+}
+
 .service-section .service-card-panel {
   width: 100%;
   position: relative;
+  border-radius: 8px;
+  overflow: hidden;
   background-color: var(--color--white);
 }
 
@@ -12098,6 +12097,7 @@ a.about-info-box:hover {
   content: '';
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: url('/images/backgrounds/card-texture-bg.jpg') center / cover no-repeat;
   opacity: 0.4;
   pointer-events: none;
