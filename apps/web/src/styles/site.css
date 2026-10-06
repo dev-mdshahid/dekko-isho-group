@@ -15551,9 +15551,15 @@ html.lenis body {
     min-height: auto;
 
     display: block;
+
+    overflow: hidden;
   }
 
 
+  /*
+   * Same studio asset as desktop, but clipped to the section
+   * so the dark plate edges never spill past the viewport.
+   */
   .company-section-background {
     inset: 0;
   }
@@ -15562,34 +15568,45 @@ html.lenis body {
   .company-section-background-image {
     transform: none;
 
+    object-fit: cover;
     object-position: center bottom;
 
-    opacity: 0.7;
+    /* Keep the same studio asset, but don’t let it show through
+       the gap above the cropped trophy window. */
+    opacity: 0.28;
+
+    will-change: auto;
   }
 
 
+  /*
+   * Solid light wash so the studio plate / PNG empty top
+   * never reads as a separate “background band”.
+   */
   .company-section-atmosphere {
-    background:
-      linear-gradient(180deg,
-        rgba(248, 248, 246, 1) 0%,
-        rgba(248, 248, 246, 0.98) 28%,
-        rgba(248, 248, 246, 0.84) 52%,
-        rgba(248, 248, 246, 0.28) 78%,
-        rgba(248, 248, 246, 0.06) 100%);
+    background: rgba(248, 248, 246, 0.94);
+  }
+
+
+  .company-section::after {
+    display: none;
   }
 
 
   .company-section-inner {
     width: 100%;
+    max-width: 100%;
     min-height: auto;
 
     display: flex;
     flex-direction: column;
 
     padding:
-      62px 20px 0;
+      62px 16px 0;
 
     box-sizing: border-box;
+
+    overflow: hidden;
   }
 
 
@@ -15600,6 +15617,7 @@ html.lenis body {
     left: auto;
 
     width: 100%;
+    max-width: 100%;
 
     z-index: 10;
   }
@@ -15639,9 +15657,10 @@ html.lenis body {
 
 
   /*
-   * Awards sit at the bottom of the mobile section (no extra bottom padding).
-   * The source file is square and empty until ~55% down,
-   * so the frame only shows the trophies.
+   * PNG is square with empty space on top — crop to the trophy
+   * window only (no scale). Bleed into the inner side padding
+   * so the cluster uses that space, but stay inside the section
+   * clip (no page overflow).
    */
   .company-section-awards {
     position: relative;
@@ -15651,15 +15670,16 @@ html.lenis body {
     bottom: auto;
     left: auto;
 
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% + 65px);
+    max-width: none;
     height: 0;
 
-    margin: 40px auto 0;
-    /* 100% width × 0.39 trophy window, tall enough for the glass awards and K. */
-    padding-bottom: 39%;
+    margin: 24px -34px 0;
 
-    align-self: center;
+    /* Slightly taller window so the wider frame still shows full trophies. */
+    padding-bottom: 46%;
+
+    align-self: stretch;
     overflow: hidden;
   }
 
@@ -15671,20 +15691,31 @@ html.lenis body {
     width: 100%;
     height: 100%;
 
+    overflow: hidden;
+
     transform: none;
+
+    will-change: auto;
   }
 
 
   .company-section-awards-image {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+
     width: 100%;
     height: 100%;
     max-width: none;
     max-height: none;
 
     object-fit: cover;
-    object-position: center 84%;
+    object-position: center 86%;
 
     transform: none;
+
+    filter: none;
   }
 
 
