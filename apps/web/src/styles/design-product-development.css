@@ -29,6 +29,24 @@
 /* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
 
 /*
+ * DPD-only mobile hero: keep inset → expand-on-scroll, but land full-bleed
+ * (no side padding) and drop the shared mobile border-radius. Height unchanged.
+ */
+@media screen and (max-width: 991px) {
+  .design-product-development-page .solution-page-hero-media {
+    padding-inline: 0;
+  }
+
+  .design-product-development-page .solution-page-hero-media-scaler {
+    border-radius: 0;
+  }
+
+  .design-product-development-page .solution-page-hero-video {
+    border-radius: 0;
+  }
+}
+
+/*
  * Shared 1520px content width for all non-hero sections.
  * Individual containers keep their own margin/padding; this only unifies max-width.
  */

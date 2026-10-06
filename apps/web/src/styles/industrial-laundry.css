@@ -15,6 +15,24 @@
   background-image: var(--il-brand-gradient);
 }
 
+/*
+ * Industrial Laundry-only mobile hero: keep inset → expand-on-scroll, but land full-bleed
+ * (no side padding) and drop the shared mobile border-radius. Height unchanged.
+ */
+@media screen and (max-width: 991px) {
+  .industrial-laundry-page .solution-page-hero-media {
+    padding-inline: 0;
+  }
+
+  .industrial-laundry-page .solution-page-hero-media-scaler {
+    border-radius: 0;
+  }
+
+  .industrial-laundry-page .solution-page-hero-video {
+    border-radius: 0;
+  }
+}
+
 /* Match shared PreSectionTitle styling used by other IL sections */
 .industrial-laundry-page .mfg-capacity-left .pre-section-title-square {
   background-color: var(--solution-brand-start);
