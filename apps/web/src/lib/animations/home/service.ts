@@ -8,6 +8,12 @@ gsap.registerPlugin(ScrollTrigger)
 const IMAGE_SCALE_FROM = 2
 const IMAGE_SCALE_TO = 1
 
+/** Per-card shrink — targetScale = 1 - (length - i) * SCALE_STEP */
+const SCALE_STEP = 0.05
+
+/** Progress window start per index — range [i * 0.25, 1]. */
+const RANGE_STEP = 0.25
+
 /**
  * The painted card unit (tint + content). Sticky `.service-list-wrapper` must
  * never receive a transform — that breaks sticky stacking and makes the whole
@@ -113,21 +119,46 @@ function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t
 }
 
+function progressInRange(progress: number, rangeStart: number) {
+  if (progress <= rangeStart) return 0
+  if (rangeStart >= 1) return progress >= 1 ? 1 : 0
+  return Math.min(1, Math.max(0, (progress - rangeStart) / (1 - rangeStart)))
+}
+
 /**
- * Cards stay the same width so the 8px corners line up in the stack.
- * Scaling each panel made later cards narrower, so the rounded tops
- * stepped inward and looked broken. Only the photo zooms.
+ * Stack width shrinks with scroll (origin top) while the photo zooms.
  * Sticky wrappers stay untransformed so stacking is preserved.
  */
-function setupStackingScale(cards: NodeListOf<HTMLElement>) {
+function setupStackingScale(container: HTMLElement, cards: NodeListOf<HTMLElement>) {
   const triggers: ScrollTrigger[] = []
   const cardList = Array.from(cards)
+  const n = cardList.length
 
   cardList.forEach((card) => {
-    gsap.set(getCardPanel(card), { clearProps: 'transform,scale' })
+    gsap.set(getCardPanel(card), { scale: 1, transformOrigin: 'center top' })
     const image = getCardImage(card)
     if (image) gsap.set(image, { scale: IMAGE_SCALE_FROM, transformOrigin: 'center center' })
   })
+
+  const stackTrigger = ScrollTrigger.create({
+    trigger: container,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.15,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      const progress = self.progress
+      cardList.forEach((card, i) => {
+        const targetScale = 1 - (n - i) * SCALE_STEP
+        const t = progressInRange(progress, i * RANGE_STEP)
+        gsap.set(getCardPanel(card), {
+          scale: lerp(1, targetScale, t),
+          force3D: true,
+        })
+      })
+    },
+  })
+  triggers.push(stackTrigger)
 
   cardList.forEach((card) => {
     const image = getCardImage(card)
@@ -162,6 +193,8 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
   const cards = section.querySelectorAll<HTMLElement>('[data-home-animate="service-card"]')
   if (!cards.length) return () => {}
 
+  const stackContainer = section.querySelector<HTMLElement>('.service-info') ?? section
+
   const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
 
   let modeCleanup: AnimationCleanup = () => {}
@@ -177,7 +210,7 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
       return
     }
 
-    const scaleCleanup = setupStackingScale(cards)
+    const scaleCleanup = setupStackingScale(stackContainer, cards)
     const featureCleanup = setupFeatureReveals(section, cards)
     modeCleanup = () => {
       scaleCleanup()

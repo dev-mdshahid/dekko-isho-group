@@ -3219,11 +3219,15 @@ a.about-info-box:hover {
 }
 
 /*
- * Cards stay full width. A scale on the panel shrinks later cards and pulls
- * their rounded tops inward, so the stack corners no longer line up.
+ * Width shrink stays on the painted panel (origin top). Never transform the
+ * sticky wrapper — that breaks the stack.
  */
 .service-section [data-home-animate='service-card'] {
   background-color: var(--color--white);
+}
+
+.service-section [data-home-animate='service-card'] .service-card-panel {
+  transform-origin: center top;
 }
 
 /*
