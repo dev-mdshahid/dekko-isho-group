@@ -12541,9 +12541,10 @@ a.about-info-box:hover {
     width: 100%;
   }
 
-  /* Keep the same stacked-card chrome as web; only tighten type/spacing. */
+  /* Keep the same stacked-card chrome as web; only tighten type/spacing.
+     Top padding stays above the 25px stack lip so the peek is card color, not the photo. */
   .service-section .service-info-link {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
     padding-bottom: 1.5rem;
     padding-inline: 20px;
   }
@@ -12551,6 +12552,10 @@ a.about-info-box:hover {
   .service-section .service-name {
     font-size: 20px;
     line-height: 1.25;
+  }
+
+  .service-section .feature-item {
+    font-size: 14px;
   }
 
   .service-section .service-feature-text {
@@ -12570,7 +12575,7 @@ a.about-info-box:hover {
   .service-section .service-info-link {
     grid-column-gap: var(--gap--gap-4);
     grid-row-gap: var(--gap--gap-4);
-    padding-top: 1.25rem;
+    padding-top: 2.5rem;
     padding-bottom: 1.25rem;
   }
 
