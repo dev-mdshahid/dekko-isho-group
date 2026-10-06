@@ -14,63 +14,97 @@ export function CompanySection() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
     let rafId: number | null = null
+    let targetX = 0
+    let currentX = 0
+    let isHovering = false
 
     const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
 
-    const updateParallax = () => {
+    const resetParallax = () => {
+      section.style.setProperty('--company-bg-x', '0px')
+      section.style.setProperty('--company-awards-x', '0px')
+    }
+
+    const applyParallax = (normalizedX: number) => {
+      if (prefersReducedMotion.matches || window.innerWidth < 768) {
+        resetParallax()
+        return
+      }
+
+      // Opposite directions create depth between background and cluster.
+      const bgX = clamp(normalizedX * -36, -36, 36)
+      const awardsX = clamp(normalizedX * 22, -22, 22)
+
+      section.style.setProperty('--company-bg-x', `${bgX}px`)
+      section.style.setProperty('--company-awards-x', `${awardsX}px`)
+    }
+
+    const tick = () => {
       rafId = null
 
-      if (
-        prefersReducedMotion.matches ||
-        window.innerWidth < 768
-      ) {
-        section.style.setProperty('--company-bg-y', '0px')
-        section.style.setProperty('--company-awards-y', '0px')
-        section.style.setProperty('--company-content-y', '0px')
+      // Ease toward the cursor so the motion feels soft, not snappy.
+      currentX += (targetX - currentX) * 0.12
+
+      if (Math.abs(targetX - currentX) < 0.001) {
+        currentX = targetX
+      }
+
+      applyParallax(currentX)
+
+      if (isHovering || Math.abs(targetX - currentX) >= 0.001) {
+        rafId = window.requestAnimationFrame(tick)
+      }
+    }
+
+    const requestTick = () => {
+      if (rafId !== null) return
+      rafId = window.requestAnimationFrame(tick)
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (prefersReducedMotion.matches || window.innerWidth < 768) {
+        targetX = 0
+        currentX = 0
+        resetParallax()
         return
       }
 
       const rect = section.getBoundingClientRect()
+      if (rect.width <= 0) return
 
-      const viewportCenter = window.innerHeight / 2
-      const sectionCenter = rect.top + rect.height / 2
+      // -1 at left edge, 0 at center, 1 at right edge.
+      const normalizedX = clamp(((event.clientX - rect.left) / rect.width) * 2 - 1, -1, 1)
 
-      const distance = viewportCenter - sectionCenter
-
-
-      const bgY = clamp(distance * 0.72, -260, 260)
-
-      const awardsY = clamp(distance * -0.14, -110, 110)
-
-      const contentY = clamp(distance * -0.018, -14, 14)
-
-      section.style.setProperty('--company-bg-y', `${bgY}px`)
-
-
-      section.style.setProperty('--company-awards-y', `${awardsY}px`)
-      section.style.setProperty('--company-content-y', `${contentY}px`)
+      isHovering = true
+      targetX = normalizedX
+      requestTick()
     }
 
-    const requestUpdate = () => {
-      if (rafId !== null) return
-
-      rafId = window.requestAnimationFrame(updateParallax)
+    const onPointerLeave = () => {
+      isHovering = false
+      targetX = 0
+      requestTick()
     }
 
-    updateParallax()
+    const onResize = () => {
+      if (prefersReducedMotion.matches || window.innerWidth < 768) {
+        isHovering = false
+        targetX = 0
+        currentX = 0
+        resetParallax()
+      }
+    }
 
-    window.addEventListener('scroll', requestUpdate, { passive: true })
-
-    window.addEventListener('resize', requestUpdate)
-
-    prefersReducedMotion.addEventListener?.('change', requestUpdate)
+    section.addEventListener('pointermove', onPointerMove)
+    section.addEventListener('pointerleave', onPointerLeave)
+    window.addEventListener('resize', onResize)
+    prefersReducedMotion.addEventListener?.('change', onResize)
 
     return () => {
-      window.removeEventListener('scroll', requestUpdate)
-
-      window.removeEventListener('resize', requestUpdate)
-
-      prefersReducedMotion.removeEventListener?.('change', requestUpdate)
+      section.removeEventListener('pointermove', onPointerMove)
+      section.removeEventListener('pointerleave', onPointerLeave)
+      window.removeEventListener('resize', onResize)
+      prefersReducedMotion.removeEventListener?.('change', onResize)
 
       if (rafId !== null) {
         window.cancelAnimationFrame(rafId)
@@ -103,44 +137,41 @@ export function CompanySection() {
       />
 
       <div className="company-section-inner">
-        {/* Content */}
+        {/* Content — static; no parallax */}
         <FadeIn
           id="company-section-content"
           variant="slide-in-bottom"
           className="company-section-content"
         >
-          <div className="company-section-content-parallax">
-
-            <h2 className="company-section-title section-title">
-              <span className="company-section-title-line">
-                The Relentless{' '}
-                <span className="company-section-accent company-section-accent--pursuit">
-                  Pursuit
-                </span>
+          <h2 className="company-section-title section-title">
+            <span className="company-section-title-line">
+              The Relentless{' '}
+              <span className="company-section-accent company-section-accent--pursuit">
+                Pursuit
               </span>
+            </span>
 
-              <span className="company-section-title-line">
-                of Making a{' '}
-                <span className="company-section-accent company-section-accent--difference">
-                  Difference
-                </span>
+            <span className="company-section-title-line">
+              of Making a{' '}
+              <span className="company-section-accent company-section-accent--difference">
+                Difference
               </span>
-            </h2>
+            </span>
+          </h2>
 
-            <p className="company-section-description">
-              Driven by purpose and powered by
-              progress, we continue to raise the
-              bar in creating value for people,
-              partners, and the planet.
-            </p>
+          <p className="company-section-description">
+            Driven by purpose and powered by
+            progress, we continue to raise the
+            bar in creating value for people,
+            partners, and the planet.
+          </p>
 
-            <div className="company-section-button">
-              <ButtonArrow
-                to="/awards"
-                label="Explore Achievements"
-                variant="button-white-bg"
-              />
-            </div>
+          <div className="company-section-button">
+            <ButtonArrow
+              to="/awards"
+              label="Explore Achievements"
+              variant="button-white-bg"
+            />
           </div>
         </FadeIn>
 

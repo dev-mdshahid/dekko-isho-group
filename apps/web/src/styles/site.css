@@ -15004,9 +15004,8 @@ html.lenis body {
 ========================================================= */
 
 .company-section {
-  --company-bg-y: 0px;
-  --company-awards-y: 0px;
-  --company-content-y: 0px;
+  --company-bg-x: 0px;
+  --company-awards-x: 0px;
 
   position: relative;
 
@@ -15050,8 +15049,8 @@ html.lenis body {
   object-position: center center;
 
   transform:
-    translate3d(0,
-      var(--company-bg-y),
+    translate3d(var(--company-bg-x),
+      0,
       0) scale(1.08);
 
   transform-origin: center;
@@ -15151,16 +15150,6 @@ html.lenis body {
 
   width: min(610px,
       41vw);
-}
-
-
-.company-section-content-parallax {
-  transform:
-    translate3d(0,
-      var(--company-content-y),
-      0);
-
-  will-change: transform;
 }
 
 
@@ -15284,8 +15273,8 @@ html.lenis body {
   width: 100%;
 
   transform:
-    translate3d(0,
-      var(--company-awards-y),
+    translate3d(var(--company-awards-x),
+      0,
       0);
 
   transform-origin:
@@ -15616,11 +15605,6 @@ html.lenis body {
   }
 
 
-  .company-section-content-parallax {
-    transform: none;
-  }
-
-
   .company-section-eyebrow {
     margin-bottom: 18px;
 
@@ -15743,8 +15727,7 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
 
   .company-section-background-image,
-  .company-section-awards-parallax,
-  .company-section-content-parallax {
+  .company-section-awards-parallax {
     transform: none !important;
 
     will-change: auto;
