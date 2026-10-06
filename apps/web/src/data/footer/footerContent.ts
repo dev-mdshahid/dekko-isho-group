@@ -5,7 +5,7 @@ export const footerMainLinks = [
   { to: '/sustainability', label: 'Sustainability' },
   { to: '/awards', label: 'Recognition' },
   { to: '/career', label: 'Career' },
-  { to: '/press', label: 'Blog' },
+  // { to: '/press', label: 'Blog' },
 ] as const
 
 export const footerBusinessLinks = [
