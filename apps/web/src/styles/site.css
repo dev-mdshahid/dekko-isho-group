@@ -12223,6 +12223,10 @@ a.about-info-box:hover {
     grid-column: 1;
   }
 
+  .service-section .service-image-main:has(> .service-image-wrap:only-child) {
+    padding-left: 20px;
+  }
+
   .service-section .service-name-wrapper .service-card-action {
     position: absolute;
     top: 2.5rem;
@@ -12368,23 +12372,32 @@ a.about-info-box:hover {
   }
 
   /*
-   * Desktop peeks by 100px. These cards are much taller once they stack in a
-   * column, so a short lip keeps the active card's title and copy on screen.
+   * Same peek rhythm as desktop (i * 25px), so mobile matches the web stack.
    */
   .service-section .service-list-wrapper.two {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 1.25rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 25px);
   }
 
   .service-section .service-list-wrapper.three {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 2.5rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 50px);
   }
 
   .service-section .service-list-wrapper.four {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 3.75rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 75px);
   }
 
   .service-section .service-list-wrapper.five {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 5rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
+  }
+
+  /* Match desktop: list chrome out of the box tree so the panel fills the sticky area. */
+  .service-section .service-list,
+  .service-section .service-list-item {
+    display: contents;
+  }
+
+  .service-section .service-card-divider {
+    display: none;
   }
 
   .service-section-gradient-spacer {
@@ -12410,13 +12423,50 @@ a.about-info-box:hover {
     white-space: normal;
   }
 
-  .service-section .service-image-main {
-    grid-column-gap: 24px;
-    grid-template-columns: 48px minmax(0, 1fr);
+  .service-section .service-info-link {
+    grid-template-columns: 1fr;
+    padding-inline: 20px;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .service-section .service-info-inner {
+    display: flex;
+    flex-flow: column;
+    gap: var(--gap--gap-10);
+  }
+
+  .service-section .service-image-main,
+  .service-section .service-image-wrap {
+    width: 100%;
   }
 
   .service-section .service-image-main:has(> .service-image-wrap:only-child) {
     grid-template-columns: minmax(0, 1fr);
+    padding-left: 0;
+  }
+
+  .service-section .service-image-wrap {
+    aspect-ratio: 530 / 300;
+    border-radius: var(--border-radius--sm);
+  }
+
+  .service-section .service-content-wrap {
+    width: 100%;
+  }
+
+  .service-section .service-name-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: var(--gap--gap-4);
+    margin-bottom: .625rem;
+  }
+
+  .service-section .service-name {
+    flex: 1;
+    font-size: 24px;
+    line-height: 1.25;
   }
 
   .service-section .service-icon {
@@ -12436,42 +12486,9 @@ a.about-info-box:hover {
     align-self: flex-start;
   }
 
-  .service-section .service-arrow-desktop {
-    display: none;
-  }
-
+  .service-section .service-arrow-desktop,
   .service-section .service-arrow-mobile {
     display: none;
-  }
-
-  .service-section .service-info-link {
-    grid-template-columns: 1fr;
-  }
-
-  .service-section .service-info-inner {
-    display: flex;
-    flex-flow: column;
-  }
-
-  .service-section .service-image-main,
-  .service-section .service-image-wrap {
-    width: 100%;
-  }
-
-  .service-section .service-content-wrap {
-    width: 100%;
-  }
-
-  .service-section .service-name-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    column-gap: var(--gap--gap-4);
-    margin-bottom: .625rem;
-  }
-
-  .service-section .service-name {
-    flex: 1;
   }
 
   .service-section .cta-info-wrapper {
@@ -12524,71 +12541,16 @@ a.about-info-box:hover {
     width: 100%;
   }
 
-
+  /* Keep the same stacked-card chrome as web; only tighten type/spacing. */
   .service-section .service-info-link {
-    display: flex;
-    flex-flow: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 1.25rem 20px;
-    margin-bottom: 0;
-    border: 0;
-    border-radius: 0;
-    overflow: visible;
-    background-color: transparent;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-inline: 20px;
   }
 
-  .service-section .service-card-divider {
-    display: block;
-    border-bottom: 1px solid var(--color--gray-4);
-    width: 100%;
-  }
-
-  .service-section .service-info-inner {
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-  }
-
-  .service-section .service-image-main {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .service-section .service-image-wrap {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    border-radius: calc(var(--border-radius--sm) - 2px);
-  }
-
-  .service-section .service-content-wrap {
-    width: 100%;
-    padding-bottom: 0.25rem;
-  }
-
-  .service-section .service-name-wrapper {
-    align-items: center;
-    margin-bottom: 0.625rem;
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-
-  .service-section .service-name-wrapper .service-name {
+  .service-section .service-name {
     font-size: 20px;
     line-height: 1.25;
-    padding-right: 0.5rem;
-  }
-
-  .service-section .service-name-wrapper .service-card-action {
-    position: static;
-  }
-
-  .service-section .service-card-action__icon {
-    width: 2.25rem;
-    height: 2.25rem;
-    margin: 0;
   }
 
   .service-section .service-feature-text {
@@ -12597,10 +12559,6 @@ a.about-info-box:hover {
 
   .service-section .service-feature-group .service-feature-text {
     margin-bottom: 0.75rem;
-  }
-
-  .service-section .service-feature-list {
-    padding-bottom: 1rem;
   }
 
   .service-section .cta-text br {

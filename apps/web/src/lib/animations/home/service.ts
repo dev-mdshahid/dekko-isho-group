@@ -17,8 +17,6 @@ const RANGE_STEP = 0.25
 const IMAGE_SCALE_FROM = 2
 const IMAGE_SCALE_TO = 1
 
-const MOBILE_MQ = '(max-width: 991px)'
-
 /**
  * The painted card unit (tint + content). Sticky `.service-list-wrapper` must
  * never receive a transform — that breaks sticky stacking and makes the whole
@@ -205,7 +203,6 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
   const stackContainer =
     section.querySelector<HTMLElement>('.service-info') ?? section
 
-  const mobileMq = window.matchMedia(MOBILE_MQ)
   const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
 
   let modeCleanup: AnimationCleanup = () => {}
@@ -215,12 +212,8 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     clearCardScales(cards)
     clearFeatureMotion(cards)
 
-    const reduced = prefersReducedMotion() || motionMq.matches
-    const mobile = mobileMq.matches
-
-    // Stack scale stays desktop-only. On small screens the cards stick,
-    // so a leave/reset fade would hide a card that is still pinned on screen.
-    if (reduced || mobile) {
+    // Same sticky stack + panel scale on desktop and mobile; only skip for reduced motion.
+    if (prefersReducedMotion() || motionMq.matches) {
       modeCleanup = () => {}
       return
     }
@@ -240,11 +233,9 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
     ScrollTrigger.refresh()
   }
 
-  mobileMq.addEventListener('change', onModeChange)
   motionMq.addEventListener('change', onModeChange)
 
   return () => {
-    mobileMq.removeEventListener('change', onModeChange)
     motionMq.removeEventListener('change', onModeChange)
     modeCleanup()
     clearCardScales(cards)
