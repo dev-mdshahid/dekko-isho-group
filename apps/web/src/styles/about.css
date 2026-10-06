@@ -117,6 +117,21 @@
   height: 590px;
   overflow: hidden;
   background-color: #d9e4ee;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.image-info-about .about-image-slideshow,
+.image-info-about .about-image-slideshow * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.image-info-about .about-image-slideshow.is-dragging {
+  cursor: grabbing;
 }
 
 .image-info-about .about-image-slideshow:focus {

@@ -5,6 +5,8 @@ import { CarouselArrow } from '../ui/CarouselArrow'
 
 const SLIDE_INTERVAL_MS = 3000
 const TRANSITION_DURATION = 0.65
+const SWIPE_THRESHOLD_PX = 45
+const DRAG_THRESHOLD_PX = 8
 
 const ABOUT_SLIDES = [
   {
@@ -38,6 +40,7 @@ type TransitionState = {
 }
 
 export function AboutImageSlideshow() {
+  const rootRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLImageElement>(null)
   const outgoingRef = useRef<HTMLImageElement>(null)
   const incomingRef = useRef<HTMLImageElement>(null)
@@ -144,6 +147,105 @@ export function AboutImageSlideshow() {
     [goToNext, goToPrevious],
   )
 
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root || slideCount <= 1) return
+
+    let activePointerId: number | null = null
+    let isPointerDown = false
+    let isDragging = false
+    let startX = 0
+
+    const endPointer = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+
+      const deltaX = event.clientX - startX
+
+      if (isDragging) {
+        if (root.hasPointerCapture(event.pointerId)) {
+          root.releasePointerCapture(event.pointerId)
+        }
+        root.classList.remove('is-dragging')
+
+        if (Math.abs(deltaX) >= SWIPE_THRESHOLD_PX) {
+          if (deltaX > 0) {
+            goToPrevious()
+          } else {
+            goToNext()
+          }
+        }
+      }
+
+      isPointerDown = false
+      isDragging = false
+      activePointerId = null
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      const deltaX = event.clientX - startX
+
+      if (!isDragging) {
+        if (Math.abs(deltaX) <= DRAG_THRESHOLD_PX) return
+        if (isTransitioningRef.current) {
+          isPointerDown = false
+          activePointerId = null
+          document.removeEventListener('pointermove', onPointerMove)
+          document.removeEventListener('pointerup', endPointer)
+          document.removeEventListener('pointercancel', endPointer)
+          return
+        }
+        isDragging = true
+        root.classList.add('is-dragging')
+        root.setPointerCapture(event.pointerId)
+        window.getSelection()?.removeAllRanges()
+      }
+
+      event.preventDefault()
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0 || isTransitioningRef.current) return
+      if ((event.target as HTMLElement).closest('.about-image-slideshow__nav')) return
+
+      isPointerDown = true
+      isDragging = false
+      activePointerId = event.pointerId
+      startX = event.clientX
+
+      document.addEventListener('pointermove', onPointerMove)
+      document.addEventListener('pointerup', endPointer)
+      document.addEventListener('pointercancel', endPointer)
+    }
+
+    const onDragStart = (event: DragEvent) => {
+      event.preventDefault()
+    }
+
+    const onSelectStart = (event: Event) => {
+      event.preventDefault()
+    }
+
+    root.addEventListener('pointerdown', onPointerDown)
+    root.addEventListener('dragstart', onDragStart)
+    root.addEventListener('selectstart', onSelectStart)
+
+    return () => {
+      root.removeEventListener('pointerdown', onPointerDown)
+      root.removeEventListener('dragstart', onDragStart)
+      root.removeEventListener('selectstart', onSelectStart)
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+      root.classList.remove('is-dragging')
+    }
+  }, [goToNext, goToPrevious, slideCount])
+
   useLayoutEffect(() => {
     if (!transitionState) return
 
@@ -235,10 +337,11 @@ export function AboutImageSlideshow() {
 
   return (
     <div
+      ref={rootRef}
       className="about-image-slideshow carousel-arrow-host"
       role="region"
       aria-roledescription="carousel"
-      aria-label="About Dekko ISHO Group"
+      aria-label="About Dekko ISHO Group. Drag left or right to browse."
       aria-live="polite"
       tabIndex={0}
       onKeyDown={handleKeyDown}
