@@ -13,6 +13,7 @@
 /*
  * Embroidery-only mobile hero: keep inset → expand-on-scroll, but land full-bleed
  * (no side padding) and drop the shared mobile border-radius. Height unchanged.
+ * Slight top crop hides baked-in black letterbox on the source video.
  */
 @media screen and (max-width: 991px) {
   .embroidery-page .solution-page-hero-media {
@@ -25,6 +26,12 @@
 
   .embroidery-page .solution-page-hero-video {
     border-radius: 0;
+    overflow: hidden;
+  }
+
+  .embroidery-page .solution-page-hero-video-media {
+    transform: scale(1.1);
+    transform-origin: center 70%;
   }
 }
 
