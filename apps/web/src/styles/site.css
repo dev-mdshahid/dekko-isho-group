@@ -14162,6 +14162,11 @@ a.about-info-box:hover {
   white-space: nowrap;
 }
 
+.capacity-stat-value-letter {
+  display: inline-block;
+  transform-origin: center bottom;
+}
+
 .capacity-stat-label {
   font-size: clamp(0.625rem, 1.05vw, 0.9375rem);
   font-weight: 500;

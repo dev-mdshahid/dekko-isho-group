@@ -52,3 +52,37 @@ export function formatCapacityCountNumber(value: number, format: CapacityCountVa
 export function formatCapacityCount(value: number, format: CapacityCountValue): string {
   return `${format.prefix}${formatCapacityCountNumber(value, format)}${format.suffix}`
 }
+
+const LETTER_PATTERN = /[a-zA-Z]/
+
+function randomLetter(char: string): string {
+  if (char === char.toUpperCase() && char !== char.toLowerCase()) {
+    return String.fromCharCode(65 + Math.floor(Math.random() * 26))
+  }
+  if (char === char.toLowerCase()) {
+    return String.fromCharCode(97 + Math.floor(Math.random() * 26))
+  }
+  return char
+}
+
+/** Left-to-right “decoder” reveal; unresolved letters flicker with random same-case glyphs. */
+export function scrambleCapacityText(value: string, progress: number): string {
+  if (!value || progress >= 1) return value
+
+  const resolvedCount = Math.floor(
+    Math.max(0, Math.min(1, progress)) * [...value].filter((char) => LETTER_PATTERN.test(char)).length,
+  )
+  let seenLetters = 0
+
+  return [...value]
+    .map((char) => {
+      if (!LETTER_PATTERN.test(char)) return char
+      if (seenLetters < resolvedCount) {
+        seenLetters += 1
+        return char
+      }
+      seenLetters += 1
+      return randomLetter(char)
+    })
+    .join('')
+}

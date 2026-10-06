@@ -9,6 +9,18 @@ import {
 
 type CapacityStatAnimationTarget = 'full' | 'number'
 
+function buildTextLetters(element: HTMLSpanElement, value: string) {
+  element.replaceChildren(
+    ...[...value].map((char) => {
+      const letter = document.createElement('span')
+      letter.className = 'capacity-stat-value-letter'
+      letter.textContent = char === ' ' ? '\u00A0' : char
+      return letter
+    }),
+  )
+  return element.querySelectorAll<HTMLSpanElement>('.capacity-stat-value-letter')
+}
+
 export function useCapacityStatAnimation(
   valueRef: RefObject<HTMLSpanElement | null>,
   value: string,
@@ -25,37 +37,53 @@ export function useCapacityStatAnimation(
       ? formatCapacityCountNumber(counted.target, counted)
       : value
 
-    element.textContent = finalText
-
-    // Only animate numeric values (count-up). Plain text stays static — no letter scramble.
-    if (!counted || motionPreference.matches) return
-
-    const formatCount = (count: number) => target === 'number'
-      ? formatCapacityCountNumber(count, counted)
-      : formatCapacityCount(count, counted)
+    if (motionPreference.matches) {
+      element.textContent = finalText
+      return
+    }
 
     gsap.registerPlugin(ScrollTrigger)
     const state = { progress: 0 }
     let started = false
     let finished = false
+    let tween: gsap.core.Tween | gsap.core.Timeline
 
     const finish = () => {
       finished = true
       element.textContent = finalText
     }
 
-    element.textContent = formatCount(0)
+    if (counted) {
+      const formatCount = (count: number) => target === 'number'
+        ? formatCapacityCountNumber(count, counted)
+        : formatCapacityCount(count, counted)
 
-    const tween = gsap.to(state, {
-      progress: 1,
-      duration: 1.8,
-      ease: 'power2.out',
-      paused: true,
-      onUpdate: () => {
-        element.textContent = formatCount(state.progress * counted.target)
-      },
-      onComplete: finish,
-    })
+      element.textContent = formatCount(0)
+
+      tween = gsap.to(state, {
+        progress: 1,
+        duration: 1.8,
+        ease: 'power2.out',
+        paused: true,
+        onUpdate: () => {
+          element.textContent = formatCount(state.progress * counted.target)
+        },
+        onComplete: finish,
+      })
+    } else {
+      const letters = buildTextLetters(element, value)
+      gsap.set(letters, { opacity: 0, scale: 0.72 })
+
+      tween = gsap.to(letters, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.55,
+        stagger: 0.045,
+        ease: 'power2.out',
+        paused: true,
+        onComplete: finish,
+      })
+    }
 
     const play = () => {
       if (started || finished) return
