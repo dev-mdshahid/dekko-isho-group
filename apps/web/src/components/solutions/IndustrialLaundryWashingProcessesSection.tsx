@@ -8,6 +8,7 @@ import { SectionLines } from '../ui/SectionDecor'
 // const PLACEHOLDER_IMAGE = 'https://placehold.co/600x400/red/white'
 
 const CARDS_AUTOPLAY_MS = 3500
+const CARDS_LOOP_COPIES = 2
 
 type WashingProcessItem = {
   id: string
@@ -32,6 +33,23 @@ type IndustrialLaundryWashingProcessesSectionProps = {
   content: IndustrialLaundryWashingProcessesContent
 }
 
+function getCardsStep(viewport: HTMLElement) {
+  const cards = viewport.querySelectorAll<HTMLElement>('.il-washing-processes__card')
+  if (cards.length < 2) return 0
+
+  const track = viewport.querySelector<HTMLElement>('.il-washing-processes__cards')
+  const styles = getComputedStyle(track ?? viewport)
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0
+  return cards[0].offsetWidth + gap
+}
+
+function getCardsGroupWidth(viewport: HTMLElement, itemCount: number) {
+  const cards = viewport.querySelectorAll<HTMLElement>('.il-washing-processes__card')
+  if (itemCount < 1 || cards.length < itemCount * 2) return 0
+
+  return cards[itemCount].offsetLeft - cards[0].offsetLeft
+}
+
 export function IndustrialLaundryWashingProcessesSection({
   idPrefix,
   content,
@@ -39,56 +57,85 @@ export function IndustrialLaundryWashingProcessesSection({
   const cardsScrollRef = useRef<HTMLDivElement>(null)
   const [isPaused, setIsPaused] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isCarousel, setIsCarousel] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const { id, badge, title, description, items } = content
   const featuredItem = items.find((item) => item.featured) ?? items[0]
   const secondaryItems = items.filter((item) => item !== featuredItem)
   const leadItem = secondaryItems[0]
   const cardItems = secondaryItems.slice(1)
+  const loopCopies = isCarousel && cardItems.length > 1 ? CARDS_LOOP_COPIES : 1
 
   useHorizontalScroll(cardsScrollRef, { enableWheel: false })
 
   useEffect(() => {
     const mobileQuery = window.matchMedia('(max-width: 767px)')
+    const carouselQuery = window.matchMedia('(max-width: 1199px)')
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     const updateMobile = () => setIsMobile(mobileQuery.matches)
+    const updateCarousel = () => setIsCarousel(carouselQuery.matches)
     const updateMotion = () => setPrefersReducedMotion(motionQuery.matches)
     updateMobile()
+    updateCarousel()
     updateMotion()
     mobileQuery.addEventListener('change', updateMobile)
+    carouselQuery.addEventListener('change', updateCarousel)
     motionQuery.addEventListener('change', updateMotion)
     return () => {
       mobileQuery.removeEventListener('change', updateMobile)
+      carouselQuery.removeEventListener('change', updateCarousel)
       motionQuery.removeEventListener('change', updateMotion)
     }
   }, [])
 
   useEffect(() => {
-    if (!isMobile || cardItems.length < 2 || isPaused || prefersReducedMotion) return
+    if (!isCarousel || cardItems.length < 2) return
 
     const viewport = cardsScrollRef.current
     if (!viewport) return
 
-    const timer = window.setInterval(() => {
-      const cards = viewport.querySelectorAll<HTMLElement>('.il-washing-processes__card')
-      if (cards.length < 2) return
+    let ignoreWrap = false
 
-      const maxScroll = viewport.scrollWidth - viewport.clientWidth
-      if (maxScroll <= 0) return
+    const maintainLoop = () => {
+      if (ignoreWrap) return
+      const groupWidth = getCardsGroupWidth(viewport, cardItems.length)
+      if (!groupWidth) return
+      if (viewport.scrollLeft >= groupWidth) {
+        viewport.scrollLeft -= groupWidth
+      }
+    }
 
-      const cardWidth = cards[0].offsetWidth
-      const styles = getComputedStyle(viewport)
-      const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0
-      const step = cardWidth + gap
-      const nextLeft = viewport.scrollLeft + step
-      const target =
-        nextLeft >= maxScroll - 2 ? 0 : Math.min(nextLeft, maxScroll)
+    const onScrollEnd = () => {
+      ignoreWrap = false
+      maintainLoop()
+    }
 
-      viewport.scrollTo({ left: target, behavior: 'smooth' })
-    }, CARDS_AUTOPLAY_MS)
+    viewport.addEventListener('scroll', maintainLoop, { passive: true })
+    viewport.addEventListener('scrollend', onScrollEnd)
 
-    return () => window.clearInterval(timer)
-  }, [cardItems.length, isMobile, isPaused, prefersReducedMotion])
+    const timer =
+      isMobile && !isPaused && !prefersReducedMotion
+        ? window.setInterval(() => {
+            const step = getCardsStep(viewport)
+            if (step <= 0) return
+            if (viewport.scrollWidth <= viewport.clientWidth) return
+
+            ignoreWrap = true
+            viewport.scrollBy({ left: step, behavior: 'smooth' })
+
+            window.setTimeout(() => {
+              ignoreWrap = false
+              maintainLoop()
+            }, 450)
+          }, CARDS_AUTOPLAY_MS)
+        : 0
+
+    return () => {
+      viewport.removeEventListener('scroll', maintainLoop)
+      viewport.removeEventListener('scrollend', onScrollEnd)
+      if (timer) window.clearInterval(timer)
+    }
+  }, [cardItems.length, isCarousel, isMobile, isPaused, prefersReducedMotion])
 
   return (
     <section
@@ -181,21 +228,28 @@ export function IndustrialLaundryWashingProcessesSection({
                   onBlur={() => setIsPaused(false)}
                 >
                   <div className="il-washing-processes__cards">
-                    {cardItems.map((item) => (
-                      <article
-                        key={item.id}
-                        id={`${idPrefix}-washing-process-${item.id}`}
-                        className="il-washing-processes__card"
-                        data-solution-animate="card"
-                      >
-                        <h3 className="il-washing-processes__card-title">
-                          {item.title}
-                        </h3>
-                        <p className="il-washing-processes__card-description">
-                          {item.description}
-                        </p>
-                      </article>
-                    ))}
+                    {Array.from({ length: loopCopies }, (_, copyIndex) =>
+                      cardItems.map((item) => (
+                        <article
+                          key={`${copyIndex}-${item.id}`}
+                          id={
+                            copyIndex === 0
+                              ? `${idPrefix}-washing-process-${item.id}`
+                              : undefined
+                          }
+                          className="il-washing-processes__card"
+                          data-solution-animate="card"
+                          aria-hidden={copyIndex > 0 ? true : undefined}
+                        >
+                          <h3 className="il-washing-processes__card-title">
+                            {item.title}
+                          </h3>
+                          <p className="il-washing-processes__card-description">
+                            {item.description}
+                          </p>
+                        </article>
+                      )),
+                    )}
                   </div>
                 </div>
               )}
