@@ -491,10 +491,28 @@
 
 .about-section .about-scroll-viewport.about-carousel-viewport {
   overflow: hidden;
-  cursor: default;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
   /* Room for hover tilt + image scale so cards are never clipped */
   padding: 1.25rem;
   margin-block: 0;
+}
+
+.about-section .about-scroll-viewport.about-carousel-viewport,
+.about-section .about-scroll-viewport.about-carousel-viewport * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.about-section .about-scroll-viewport.about-carousel-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.about-section .about-scroll-viewport.about-carousel-viewport.is-dragging .about-carousel-track {
+  transition: none;
 }
 
 .about-section .about-carousel-track {

@@ -21,6 +21,8 @@ const ABOUT_CARD_GAP = 40
 const CAROUSEL_INTERVAL_MS = 2000
 // Shorter lead-in so the carousel shows it moves soon after it comes into view.
 const CAROUSEL_LEAD_IN_MS = 300
+const CAROUSEL_DRAG_THRESHOLD_PX = 8
+const CAROUSEL_SWIPE_MIN_PX = 48
 
 const INDUSTRY_DESCRIPTION =
   'Innovation to advance fashion sustainably. Customer satisfaction through true partnership.'
@@ -430,11 +432,17 @@ export function AboutSection() {
   const trackRef = useRef<HTMLDivElement>(null)
   const wrapFrameRef = useRef<number | null>(null)
   const hasAdvancedRef = useRef(false)
+  const suppressClickRef = useRef(false)
+  const phaseRef = useRef<CarouselState['phase']>('idle')
   const [carouselState, dispatchCarousel] = useReducer(carouselReducer, initialCarouselState)
   const [slideStep, setSlideStep] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [isInView, setIsInView] = useState(() => typeof IntersectionObserver === 'undefined')
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  phaseRef.current = carouselState.phase
 
   const loopedIndustries = useMemo(
     () => [
@@ -543,6 +551,7 @@ export function AboutSection() {
     if (
       !isInView ||
       isPaused ||
+      isDragging ||
       prefersReducedMotion ||
       carouselState.phase !== 'idle' ||
       carouselState.queue.length > 0 ||
@@ -562,10 +571,150 @@ export function AboutSection() {
     carouselState.interactionVersion,
     carouselState.phase,
     carouselState.queue.length,
+    isDragging,
     isInView,
     isPaused,
     prefersReducedMotion,
   ])
+
+  useEffect(() => {
+    const viewport = viewportRef.current
+    if (!viewport || slideStep <= 0) return
+
+    let activePointerId: number | null = null
+    let isPointerDown = false
+    let dragging = false
+    let startX = 0
+    let settleFrame = 0
+
+    const swipeThreshold = Math.max(CAROUSEL_SWIPE_MIN_PX, slideStep * 0.2)
+
+    const endPointer = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+
+      const deltaX = event.clientX - startX
+
+      if (dragging) {
+        if (viewport.hasPointerCapture(event.pointerId)) {
+          viewport.releasePointerCapture(event.pointerId)
+        }
+        viewport.classList.remove('is-dragging')
+        suppressClickRef.current = true
+
+        const direction: CarouselDirection | 0 =
+          deltaX <= -swipeThreshold ? 1 : deltaX >= swipeThreshold ? -1 : 0
+
+        if (direction !== 0 && phaseRef.current === 'idle') {
+          // Keep the dragged position continuous when the index advances, then
+          // ease only the remaining distance to the next snap point.
+          setDragOffset(deltaX + direction * slideStep)
+          dispatchCarousel({
+            type: 'MOVE',
+            direction,
+            manual: true,
+            instant: prefersReducedMotion,
+          })
+
+          if (prefersReducedMotion) {
+            setIsDragging(false)
+            setDragOffset(0)
+          } else {
+            settleFrame = window.requestAnimationFrame(() => {
+              settleFrame = window.requestAnimationFrame(() => {
+                setIsDragging(false)
+                setDragOffset(0)
+                settleFrame = 0
+              })
+            })
+          }
+        } else {
+          setIsDragging(false)
+          setDragOffset(0)
+        }
+      }
+
+      isPointerDown = false
+      dragging = false
+      activePointerId = null
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      const deltaX = event.clientX - startX
+
+      if (!dragging) {
+        if (Math.abs(deltaX) <= CAROUSEL_DRAG_THRESHOLD_PX) return
+        if (phaseRef.current !== 'idle') {
+          isPointerDown = false
+          activePointerId = null
+          document.removeEventListener('pointermove', onPointerMove)
+          document.removeEventListener('pointerup', endPointer)
+          document.removeEventListener('pointercancel', endPointer)
+          return
+        }
+        dragging = true
+        setIsDragging(true)
+        viewport.classList.add('is-dragging')
+        viewport.setPointerCapture(event.pointerId)
+        window.getSelection()?.removeAllRanges()
+      }
+
+      event.preventDefault()
+      setDragOffset(deltaX)
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0 || phaseRef.current !== 'idle') return
+
+      isPointerDown = true
+      dragging = false
+      activePointerId = event.pointerId
+      startX = event.clientX
+
+      document.addEventListener('pointermove', onPointerMove)
+      document.addEventListener('pointerup', endPointer)
+      document.addEventListener('pointercancel', endPointer)
+    }
+
+    const onDragStart = (event: DragEvent) => {
+      event.preventDefault()
+    }
+
+    const onSelectStart = (event: Event) => {
+      event.preventDefault()
+    }
+
+    const onClickCapture = (event: MouseEvent) => {
+      if (!suppressClickRef.current) return
+      event.preventDefault()
+      event.stopPropagation()
+      suppressClickRef.current = false
+    }
+
+    viewport.addEventListener('pointerdown', onPointerDown)
+    viewport.addEventListener('dragstart', onDragStart)
+    viewport.addEventListener('selectstart', onSelectStart)
+    viewport.addEventListener('click', onClickCapture, true)
+
+    return () => {
+      viewport.removeEventListener('pointerdown', onPointerDown)
+      viewport.removeEventListener('dragstart', onDragStart)
+      viewport.removeEventListener('selectstart', onSelectStart)
+      viewport.removeEventListener('click', onClickCapture, true)
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+      if (settleFrame !== 0) window.cancelAnimationFrame(settleFrame)
+      viewport.classList.remove('is-dragging')
+      setIsDragging(false)
+      setDragOffset(0)
+    }
+  }, [prefersReducedMotion, slideStep])
 
   useEffect(() => {
     return () => {
@@ -584,7 +733,7 @@ export function AboutSection() {
 
   const trackMotionClass = [
     prefersReducedMotion ? 'is-reduced-motion' : '',
-    carouselState.suppressTransition ? 'is-suppressing-transition' : '',
+    carouselState.suppressTransition || isDragging ? 'is-suppressing-transition' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -618,6 +767,7 @@ export function AboutSection() {
             <div
               ref={viewportRef}
               className="about-scroll-viewport about-carousel-viewport"
+              aria-label="Business cards. Drag left or right to browse."
             >
               <div
                 ref={trackRef}
@@ -625,7 +775,7 @@ export function AboutSection() {
                 style={
                   slideStep
                     ? {
-                        transform: `translate3d(-${carouselState.trackIndex * slideStep}px, 0, 0)`,
+                        transform: `translate3d(-${carouselState.trackIndex * slideStep - dragOffset}px, 0, 0)`,
                       }
                     : undefined
                 }

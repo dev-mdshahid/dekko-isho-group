@@ -229,7 +229,6 @@ export function initServiceStackAnimations(scope: ParentNode): AnimationCleanup 
 
   return () => {
     motionMq.removeEventListener('change', onModeChange)
-    modeCleanup()
     clearCardScales(cards)
     clearFeatureMotion(cards)
   }
