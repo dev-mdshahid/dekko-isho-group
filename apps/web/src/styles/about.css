@@ -2394,23 +2394,16 @@
   /* Wider copy column; portrait is smaller and further right */
   width: min(100%, 48rem);
   max-width: 64%;
-  padding-top: 4.5rem;
   padding-bottom: 8rem;
 }
 
 .about-chairman-section--about .about-chairman-label {
-  position: absolute;
-  z-index: 2;
-  top: clamp(3rem, 6vw, 5rem);
-  left: max(
-    var(--_layout---container-gutter),
-    calc(50% - (var(--_layout---container-max-width) / 2) + var(--_layout---container-gutter))
-  );
-  width: min(48rem, calc(64% - var(--_layout---container-gutter)));
-  margin: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.about-chairman-section--about .about-chairman-label--mobile {
+  display: none;
 }
 
 .about-chairman-section--about .about-chairman-quote {
@@ -2449,19 +2442,19 @@
 }
 
 .about-chairman-section--about .about-chairman-identity {
-  position: absolute;
-  z-index: 3;
-  left: max(
-    var(--_layout---container-gutter),
-    calc(50% - (var(--_layout---container-max-width) / 2) + var(--_layout---container-gutter))
-  );
-  bottom: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.35rem;
-  width: min(48rem, calc(64% - var(--_layout---container-gutter)));
-  margin: 0;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.about-chairman-section--about .about-chairman-identity--mobile {
+  display: none;
 }
 
 .about-chairman-section--about .about-chairman-name {
@@ -2662,17 +2655,22 @@
 }
 
 @media screen and (max-width: 991px) {
-  .about-chairman-section--about .about-chairman-label {
+  .about-chairman-section--about .about-chairman-label--desktop,
+  .about-chairman-section--about .about-chairman-identity--desktop {
+    display: none;
+  }
+
+  .about-chairman-section--about .about-chairman-label--mobile {
+    display: flex;
     order: 1;
     position: relative;
-    top: auto;
-    left: auto;
     z-index: 1;
     width: 100%;
     max-width: none;
     margin: 0 0 1.25rem;
     padding-inline: var(--_layout---container-gutter);
     justify-content: flex-start;
+    align-items: center;
     box-sizing: border-box;
   }
 
@@ -2719,23 +2717,26 @@
     );
   }
 
-  .about-chairman-section--about .about-chairman-identity {
+  .about-chairman-section--about .about-chairman-identity--mobile {
+    display: flex;
+    position: absolute;
     left: 0;
     right: 0;
-    bottom: -1.5rem;
+    bottom: 0.35rem;
+    z-index: 3;
     width: 100%;
     max-width: none;
-    padding: 0 var(--_layout---container-gutter);
+    margin: 0;
+    padding: 1.25rem var(--_layout---container-gutter) 0;
     box-sizing: border-box;
   }
 
   .about-chairman-section--about .about-chairman-message {
-    /* Clears identity overhang; quote margins own the visible gaps */
-    padding-top: 1.5rem;
+    padding-top: 1.75rem;
   }
 
   .about-chairman-section--about .about-chairman-quote {
-    margin-top: 1.75rem;
+    margin-top: 0;
     margin-bottom: 1.75rem;
   }
 }
@@ -2819,14 +2820,14 @@
   .about-chairman-section--about .about-chairman-message {
     max-width: 100%;
     width: 100%;
-    padding-top: 1.5rem;
+    padding-top: 1.75rem;
     padding-bottom: 0;
   }
 
   .about-chairman-section--about .about-chairman-quote {
     font-size: 1.25rem;
     line-height: 1.4;
-    margin-top: 1.75rem;
+    margin-top: 0;
     margin-bottom: 1.75rem;
     /* padding-left: 1rem; */
   }
@@ -2860,9 +2861,9 @@
     margin: 0;
   }
 
-  .about-chairman-section--about .about-chairman-identity {
-    bottom: -1.25rem;
-    padding: 0 var(--_layout---container-gutter);
+  .about-chairman-section--about .about-chairman-identity--mobile {
+    bottom: 0.25rem;
+    padding: 1rem var(--_layout---container-gutter) 0;
   }
 }
 

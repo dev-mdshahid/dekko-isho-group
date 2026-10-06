@@ -23,7 +23,8 @@ export function AboutChairmanSection() {
         />
       </div>
 
-      <div className="about-chairman-label">
+      {/* Mobile-only chip */}
+      <div className="about-chairman-label about-chairman-label--mobile">
         <PreSectionTitle title="Note from the Chairman" />
       </div>
 
@@ -49,7 +50,8 @@ export function AboutChairmanSection() {
           className="about-chairman-visual-scrim"
           aria-hidden="true"
         />
-        <div className="about-chairman-identity">
+        {/* Mobile-only name/role on image */}
+        <div className="about-chairman-identity about-chairman-identity--mobile">
           <h2 className="about-chairman-name">Shahid Hossain</h2>
           <p className="about-chairman-role">Chairman, Dekko ISHO Group</p>
         </div>
@@ -61,6 +63,10 @@ export function AboutChairmanSection() {
             id="about-chairman-message"
             className="about-chairman-message"
           >
+            <div className="about-chairman-label about-chairman-label--desktop">
+              <PreSectionTitle title="Note from the Chairman" />
+            </div>
+
             <p className="about-chairman-quote">
               &ldquo;{chairmanQuote}&rdquo;
             </p>
@@ -74,6 +80,11 @@ export function AboutChairmanSection() {
                   {paragraph}
                 </p>
               ))}
+            </div>
+
+            <div className="about-chairman-identity about-chairman-identity--desktop">
+              <h2 className="about-chairman-name">Shahid Hossain</h2>
+              <p className="about-chairman-role">Chairman, Dekko ISHO Group</p>
             </div>
           </FadeIn>
         </div>
