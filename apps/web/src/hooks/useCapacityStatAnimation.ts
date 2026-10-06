@@ -77,8 +77,8 @@ export function useCapacityStatAnimation(
       tween = gsap.to(letters, {
         opacity: 1,
         scale: 1,
-        duration: 0.55,
-        stagger: 0.045,
+        duration: 1.15,
+        stagger: 0.07,
         ease: 'power2.out',
         paused: true,
         onComplete: finish,
