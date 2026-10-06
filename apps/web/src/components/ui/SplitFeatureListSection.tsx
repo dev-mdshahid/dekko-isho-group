@@ -53,6 +53,8 @@ export function SplitFeatureListSection({
     useState<SlideDirection>('forward')
 
   const pointerStartX = useRef<number | null>(null)
+  const activePointerId = useRef<number | null>(null)
+  const isDraggingRef = useRef(false)
   const suppressNextClick = useRef(false)
   const activeIndexRef = useRef(0)
 
@@ -171,13 +173,64 @@ export function SplitFeatureListSection({
     }
   }
 
+  const resetPointerState = (
+    target?: HTMLDivElement | null,
+    pointerId?: number | null,
+  ) => {
+    if (
+      target &&
+      pointerId != null &&
+      target.hasPointerCapture(pointerId)
+    ) {
+      target.releasePointerCapture(pointerId)
+    }
+
+    target?.classList.remove('is-dragging')
+    pointerStartX.current = null
+    activePointerId.current = null
+    isDraggingRef.current = false
+  }
+
   const handlePointerDown = (
     event: PointerEvent<HTMLDivElement>,
   ) => {
-    if (!event.isPrimary) return
+    if (
+      !hasMultipleSlides ||
+      !event.isPrimary ||
+      event.button !== 0
+    ) {
+      return
+    }
 
     suppressNextClick.current = false
+    isDraggingRef.current = false
     pointerStartX.current = event.clientX
+    activePointerId.current = event.pointerId
+  }
+
+  const handlePointerMove = (
+    event: PointerEvent<HTMLDivElement>,
+  ) => {
+    if (
+      pointerStartX.current === null ||
+      activePointerId.current !== event.pointerId ||
+      !event.isPrimary
+    ) {
+      return
+    }
+
+    const distance = event.clientX - pointerStartX.current
+
+    if (!isDraggingRef.current) {
+      if (Math.abs(distance) < 8) return
+
+      isDraggingRef.current = true
+      event.currentTarget.classList.add('is-dragging')
+      event.currentTarget.setPointerCapture(event.pointerId)
+      window.getSelection()?.removeAllRanges()
+    }
+
+    event.preventDefault()
   }
 
   const handlePointerUp = (
@@ -185,17 +238,18 @@ export function SplitFeatureListSection({
   ) => {
     if (
       pointerStartX.current === null ||
+      activePointerId.current !== event.pointerId ||
       !event.isPrimary
     ) {
       return
     }
 
-    const distance =
-      event.clientX - pointerStartX.current
+    const distance = event.clientX - pointerStartX.current
+    const wasDragging = isDraggingRef.current
 
-    pointerStartX.current = null
+    resetPointerState(event.currentTarget, event.pointerId)
 
-    if (Math.abs(distance) < SWIPE_THRESHOLD_PX) {
+    if (!wasDragging || Math.abs(distance) < SWIPE_THRESHOLD_PX) {
       return
     }
 
@@ -215,6 +269,8 @@ export function SplitFeatureListSection({
 
     if (suppressNextClick.current) {
       suppressNextClick.current = false
+      event.preventDefault()
+      event.stopPropagation()
       return
     }
 
@@ -304,10 +360,14 @@ export function SplitFeatureListSection({
                     setIsFocusWithin(false)
                   }}
                   onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
                   onClick={handleCarouselClick}
-                  onPointerCancel={() => {
-                    pointerStartX.current = null
+                  onPointerCancel={(event) => {
+                    resetPointerState(
+                      event.currentTarget,
+                      event.pointerId,
+                    )
                     suppressNextClick.current = false
                   }}
                 >

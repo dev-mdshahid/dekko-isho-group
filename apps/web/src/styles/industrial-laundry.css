@@ -283,7 +283,16 @@
   /* Outer / mask only — slides stay full so they touch while shifting (no gap). */
   clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
   touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
   background: #111820;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-carousel-viewport,
+.industrial-laundry-page .il-research-section .split-feature-list-carousel-viewport * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .industrial-laundry-page .il-research-section .split-feature-list-carousel-viewport:focus-visible {
@@ -292,7 +301,11 @@
 }
 
 .industrial-laundry-page .il-research-section .split-feature-list-carousel-viewport.is-clickable {
-  cursor: pointer;
+  cursor: grab;
+}
+
+.industrial-laundry-page .il-research-section .split-feature-list-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .industrial-laundry-page .il-research-section .split-feature-list-carousel-slide {

@@ -934,7 +934,16 @@
   overflow: hidden;
   clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
   touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
   background: #111820;
+}
+
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport,
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport:focus-visible {
@@ -943,7 +952,11 @@
 }
 
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport.is-clickable {
-  cursor: pointer;
+  cursor: grab;
+}
+
+.manufacturing-page .mfg-technology-section .split-feature-list-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .manufacturing-page .mfg-technology-section .split-feature-list-carousel-slide {

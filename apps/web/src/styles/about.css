@@ -3726,6 +3726,17 @@
 
 .split-feature-list-section--carousel .split-feature-list-carousel-viewport {
   clip-path: none !important;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.split-feature-list-section--carousel .split-feature-list-carousel-viewport.is-clickable {
+  cursor: grab;
+}
+
+.split-feature-list-section--carousel .split-feature-list-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .split-feature-list-section--carousel .split-feature-list-carousel-nav {
