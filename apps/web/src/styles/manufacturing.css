@@ -1417,7 +1417,7 @@
 .manufacturing-page .mfg-clients-map-wrap {
   --mfg-clients-map-accent: #5abe8c;
   min-width: 0;
-  aspect-ratio: 980 / 460;
+  aspect-ratio: 980 / 500;
 }
 
 .manufacturing-page .mfg-clients-map {
@@ -1699,6 +1699,7 @@
   .manufacturing-page .mfg-clients-map-wrap {
     width: min(100%, 34rem);
     margin-inline: auto;
+    aspect-ratio: 720 / 520;
   }
   .manufacturing-page .mfg-map-active-label text { font-size: 12.5px; }
   .manufacturing-page .mfg-clients-region-copy h3 { font-size: 1.65rem; }
@@ -1846,23 +1847,22 @@
   }
 
   .manufacturing-page .mfg-clients-map-wrap {
-    position: relative;
-    width: calc(100% + .75rem);
+    width: 100%;
     max-width: none;
-    height: 15.5rem;
-    aspect-ratio: auto;
-    margin-inline: -.375rem;
+    height: auto;
+    aspect-ratio: 720 / 520;
+    margin-inline: 0;
     overflow: hidden;
   }
 
   .manufacturing-page .mfg-clients-map {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    width: 128%;
+    position: static;
+    top: auto;
+    left: auto;
+    width: 100%;
     max-width: none;
     height: auto;
-    transform: translate(-50%, -50%);
+    transform: none;
   }
 
   .manufacturing-page .mfg-clients-panel {
@@ -1970,10 +1970,6 @@
 
   .manufacturing-page .mfg-clients-stat-label {
     font-size: .66rem;
-  }
-
-  .manufacturing-page .mfg-clients-map-wrap {
-    height: 13.75rem;
   }
 
   .manufacturing-page .mfg-clients-panel {
