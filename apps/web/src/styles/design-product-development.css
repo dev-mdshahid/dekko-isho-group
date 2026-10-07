@@ -1153,7 +1153,7 @@
 
   .design-product-development-page .split-feature-list-title {
     margin-bottom: 0.875rem;
-    font-size: 1.75rem;
+    font-size: clamp(1.625rem, 7vw, 1.875rem);
   }
 
   .design-product-development-page .split-feature-list-item {
@@ -1506,6 +1506,12 @@
     .dpd-digital-section.split-feature-list-section--carousel
     .split-feature-list-intro {
     padding: var(--dpd-mobile-section-pad-sm) 0 32px;
+  }
+
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-title {
+    font-size: clamp(1.625rem, 7vw, 1.875rem);
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel {

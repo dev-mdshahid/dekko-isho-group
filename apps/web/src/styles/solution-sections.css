@@ -1612,7 +1612,8 @@
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  touch-action: pan-y;
+  /* Allow native horizontal swipe on mobile; mouse drag still uses JS. */
+  touch-action: pan-x pan-y;
   scrollbar-width: none;
   cursor: grab;
   padding-inline: var(--_layout---container-gutter);
@@ -1622,6 +1623,7 @@
 
 .solution-page .solution-capability-cards-scroll.is-dragging {
   cursor: grabbing;
+  touch-action: none;
 }
 
 .solution-page .solution-capability-cards-scroll.is-dragging,

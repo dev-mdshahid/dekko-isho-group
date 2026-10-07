@@ -59,6 +59,15 @@
 
   .embroidery-page .solution-capability-cards-scroll {
     padding-inline: var(--_layout---container-gutter);
+    scroll-padding-inline: var(--_layout---container-gutter);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+  }
+
+  .embroidery-page .solution-capability-cards-track {
+    gap: 1rem;
   }
 
   .embroidery-page .solution-capability-cards-card {
@@ -66,6 +75,8 @@
     min-width: min(78vw, 17.5rem);
     height: min(62vw, 300px);
     border-radius: 1.25rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .embroidery-page .solution-capability-cards-card-title {
