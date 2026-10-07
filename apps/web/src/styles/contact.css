@@ -712,6 +712,25 @@
     gap: 3.5rem;
   }
 
+  /* Mobile/tablet stack: title → form → contact details */
+  .page-contact-section--modern .page-contact-left,
+  .page-contact-section--modern .page-contact-right {
+    display: contents;
+  }
+
+  .page-contact-section--modern .page-contact-hero {
+    order: 1;
+  }
+
+  .page-contact-section--modern .page-contact-form-card {
+    order: 2;
+    min-height: auto;
+  }
+
+  .page-contact-section--modern .page-contact-details {
+    order: 3;
+  }
+
   .page-contact-section--modern .page-contact-title {
     font-size: clamp(3rem, 10vw, 4.75rem);
   }
@@ -720,15 +739,16 @@
     max-width: 44rem;
     font-size: 18px;
   }
-
-  .page-contact-section--modern .page-contact-form-card {
-    min-height: auto;
-  }
 }
 
 @media screen and (max-width: 767px) {
   .page-contact-section--modern::before {
     display: none;
+  }
+
+  /* Drop stacked section padding so only main spacing sits above the map */
+  .page-contact-section--modern {
+    padding-bottom: 0;
   }
 
   .page-contact-section--modern .page-contact-main.section-spacing {
@@ -751,13 +771,17 @@
   }
 
   .page-contact-section--modern .page-contact-details.page-contact-details--split {
-    gap: 16px;
+    gap: 40px;
   }
 
   .page-contact-section--modern .page-contact-details-top,
   .page-contact-section--modern .page-contact-locations--split {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .page-contact-section--modern .page-contact-details-top {
+    gap: 40px;
   }
 
   .page-contact-section--modern .page-contact-details-col,
