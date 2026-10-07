@@ -13770,7 +13770,8 @@ a.about-info-box:hover {
 }
 
 @media screen and (max-width: 1355px) {
-  .mobile-nav-root {
+  .mobile-nav-root,
+  .navbar.is-mobile-menu-open {
     --mobile-nav-divider: rgba(0, 0, 0, .035);
     --mobile-nav-divider-nested: rgba(0, 0, 0, .02);
   }
@@ -13918,7 +13919,15 @@ a.about-info-box:hover {
   }
 
   .mobile-nav-panel {
-    padding: 0 0 max(1.25rem, env(safe-area-inset-bottom, 0px));
+    --mobile-nav-item-pad-y: 1.2rem;
+    padding: 0;
+  }
+
+  .navbar.is-mobile-menu-open {
+    border-bottom: 1px solid var(--mobile-nav-divider);
+    box-shadow: none;
+    padding-top: 1.375rem;
+    padding-bottom: 1.75rem;
   }
 
   .mobile-nav-link {
@@ -13930,7 +13939,7 @@ a.about-info-box:hover {
     letter-spacing: -.01em;
     line-height: 1.2;
     margin: 0;
-    padding: 1rem 1.25rem;
+    padding: var(--mobile-nav-item-pad-y) 1.25rem;
     text-align: left;
     text-decoration: none;
     white-space: nowrap;
@@ -13941,7 +13950,12 @@ a.about-info-box:hover {
     border-bottom: 1px solid var(--mobile-nav-divider);
   }
 
-  .mobile-nav-panel>.mobile-nav-link:last-child {
+  /* No divider above first item or below last item (Contact follows). */
+  .mobile-nav-panel>:first-child {
+    border-top: 0;
+  }
+
+  .mobile-nav-panel>:nth-last-child(2) {
     border-bottom: 0;
   }
 
@@ -14066,11 +14080,16 @@ a.about-info-box:hover {
   }
 
   .mobile-nav-contact {
+    border-top: 1px solid var(--mobile-nav-divider);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 0;
-    padding: 1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+    /* Match menu-item vertical padding (e.g. Media) under Contact Us. */
+    padding:
+      var(--mobile-nav-item-pad-y)
+      1.25rem
+      max(var(--mobile-nav-item-pad-y), env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-contact .primary-button.nav-contact-button {
@@ -14079,9 +14098,13 @@ a.about-info-box:hover {
 }
 
 @media screen and (max-width: 479px) {
+  .mobile-nav-panel {
+    --mobile-nav-item-pad-y: 1.125rem;
+  }
+
   .mobile-nav-link {
     font-size: 1rem;
-    padding: .9375rem 1rem;
+    padding: var(--mobile-nav-item-pad-y) 1rem;
   }
 
   .mobile-nav-sublink,
@@ -14689,7 +14712,9 @@ html.lenis body {
     margin-top: 0;
 
     padding:
-      1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+      var(--mobile-nav-item-pad-y)
+      1.25rem
+      max(var(--mobile-nav-item-pad-y), env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-contact .primary-button.nav-contact-button {
@@ -14713,7 +14738,9 @@ html.lenis body {
     gap: 0.75rem;
 
     padding:
-      1rem 1rem max(1.25rem, env(safe-area-inset-bottom, 0px));
+      var(--mobile-nav-item-pad-y)
+      1rem
+      max(var(--mobile-nav-item-pad-y), env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-social {

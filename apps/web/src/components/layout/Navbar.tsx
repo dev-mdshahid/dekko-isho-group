@@ -493,7 +493,8 @@ export function Navbar() {
 
   useStickyNavbar(navRef, {
     forceSolid: openId !== null || (isMobileNav && isOpen),
-    resetKey: pathname,
+    // Remeasure when the mobile drawer opens/closes (logo-bar padding changes height).
+    resetKey: `${pathname}:${isMobileNav && isOpen ? 'menu-open' : 'menu-closed'}`,
   })
 
   function handleTopLevelNavClick() {
