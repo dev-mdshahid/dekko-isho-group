@@ -13876,7 +13876,8 @@ a.about-info-box:hover {
     padding: 0;
     pointer-events: auto;
     position: absolute;
-    top: var(--navbar-height, 5.5rem);
+    /* Overlap navbar bottom by 1px so page content cannot peek through the seam. */
+    top: calc(var(--navbar-height, 5.5rem) - 1px);
     z-index: 0;
   }
 
@@ -13888,14 +13889,14 @@ a.about-info-box:hover {
     display: block;
     height: fit-content;
     left: 0;
-    max-height: calc(100dvh - var(--navbar-height, 5.5rem));
+    max-height: calc(100dvh - var(--navbar-height, 5.5rem) + 1px);
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
     pointer-events: auto;
     position: absolute;
     right: 0;
-    top: var(--navbar-height, 5.5rem);
+    top: calc(var(--navbar-height, 5.5rem) - 1px);
     z-index: 1;
     -webkit-overflow-scrolling: touch;
   }
@@ -13924,6 +13925,8 @@ a.about-info-box:hover {
   }
 
   .navbar.is-mobile-menu-open {
+    /* Opaque so page text cannot show through under the logo bar. */
+    background-color: #fff;
     border-bottom: 1px solid var(--mobile-nav-divider);
     box-shadow: none;
     /* Extra space after logo only — keep default top padding. */
