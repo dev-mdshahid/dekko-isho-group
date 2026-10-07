@@ -509,6 +509,7 @@
 
 .about-section .about-scroll-viewport.about-carousel-viewport.is-dragging {
   cursor: grabbing;
+  touch-action: none;
 }
 
 .about-section .about-scroll-viewport.about-carousel-viewport.is-dragging .about-carousel-track {
