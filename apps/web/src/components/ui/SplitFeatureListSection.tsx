@@ -70,6 +70,14 @@ export function SplitFeatureListSection({
 
   const resolveDirection = useCallback(
     (currentIndex: number, nextIndex: number): SlideDirection => {
+      // Index-only wrap detection is ambiguous with exactly 2 slides
+      // (0→1 and 1→0 are both adjacent and wrap transitions). Prefer an
+      // explicit direction from goNext/goPrevious; fall back to index order
+      // for dot jumps.
+      if (items.length === 2) {
+        return nextIndex < currentIndex ? 'backward' : 'forward'
+      }
+
       const wrappingForward =
         currentIndex === items.length - 1 && nextIndex === 0
       const wrappingBackward =
@@ -83,7 +91,10 @@ export function SplitFeatureListSection({
   )
 
   const goTo = useCallback(
-    (index: number, options?: { fromAutoplay?: boolean }) => {
+    (
+      index: number,
+      options?: { fromAutoplay?: boolean; direction?: SlideDirection },
+    ) => {
       if (!items.length) return
 
       const nextIndex =
@@ -92,7 +103,10 @@ export function SplitFeatureListSection({
 
       if (nextIndex === currentIndex) return
 
-      setSlideDirection(resolveDirection(currentIndex, nextIndex))
+      setSlideDirection(
+        options?.direction ??
+          resolveDirection(currentIndex, nextIndex),
+      )
       // One atomic update — never clear previousIndex first (that flashed the
       // current slide alone during continuous swipes).
       if (prefersReducedMotion) {
@@ -111,11 +125,14 @@ export function SplitFeatureListSection({
   )
 
   const goPrevious = useCallback(() => {
-    goTo(activeIndexRef.current - 1)
+    goTo(activeIndexRef.current - 1, { direction: 'backward' })
   }, [goTo])
 
   const goNext = useCallback((options?: { fromAutoplay?: boolean }) => {
-    goTo(activeIndexRef.current + 1, options)
+    goTo(activeIndexRef.current + 1, {
+      ...options,
+      direction: 'forward',
+    })
   }, [goTo])
 
   useEffect(() => {
