@@ -87,6 +87,14 @@ export function useStickyNavbar(
 
     measureAll()
 
+    const resizeObserver =
+      typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => {
+            syncNavbarHeight()
+          })
+        : null
+    resizeObserver?.observe(nav)
+
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResizeOrPageshow, { passive: true })
     // Restore correct state after bfcache / back-forward navigation.
@@ -96,6 +104,7 @@ export function useStickyNavbar(
       if (frameId) {
         window.cancelAnimationFrame(frameId)
       }
+      resizeObserver?.disconnect()
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onResizeOrPageshow)
       window.removeEventListener('pageshow', onResizeOrPageshow)

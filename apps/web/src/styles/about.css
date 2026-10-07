@@ -117,6 +117,21 @@
   height: 590px;
   overflow: hidden;
   background-color: #d9e4ee;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.image-info-about .about-image-slideshow,
+.image-info-about .about-image-slideshow * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.image-info-about .about-image-slideshow.is-dragging {
+  cursor: grabbing;
 }
 
 .image-info-about .about-image-slideshow:focus {
@@ -280,7 +295,7 @@
   }
 
   .image-info-about .about-hero-content {
-    padding: 2rem 1.25rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 
   .image-info-about .about-hero-description {
@@ -327,7 +342,7 @@
 
   .image-info-about .about-info-right {
     min-height: auto;
-    padding-bottom: calc(var(--about-marquee-font-size) * 0.6);
+    padding-bottom: calc(var(--about-marquee-font-size) * 0.5 + var(--gap--gap-5));
   }
 
   .image-info-about .about-hero-text-marquee .marquee-text {
@@ -335,7 +350,7 @@
   }
 
   .image-info-about .about-hero-content {
-    padding: 1.75rem 1.25rem 1.25rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .image-info-about .about-image-slideshow {
@@ -343,7 +358,7 @@
   }
 
   .image-info-about .about-image-slideshow__nav {
-    padding-inline: 0.625rem;
+    display: none;
   }
 
   .image-info-about .about-image {
@@ -2394,12 +2409,16 @@
   /* Wider copy column; portrait is smaller and further right */
   width: min(100%, 48rem);
   max-width: 64%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 8rem;
 }
 
 .about-chairman-section--about .about-chairman-label {
   margin-bottom: 2rem;
   width: 100%;
+}
+
+.about-chairman-section--about .about-chairman-label--mobile {
+  display: none;
 }
 
 .about-chairman-section--about .about-chairman-quote {
@@ -2433,6 +2452,10 @@
   color: var(--color--neutral-outer-space);
 }
 
+.about-chairman-section--about .about-chairman-visual-scrim {
+  display: none;
+}
+
 .about-chairman-section--about .about-chairman-identity {
   display: flex;
   flex-direction: column;
@@ -2440,6 +2463,13 @@
   gap: 0.35rem;
   width: 100%;
   margin-top: auto;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.about-chairman-section--about .about-chairman-identity--mobile {
+  display: none;
 }
 
 .about-chairman-section--about .about-chairman-name {
@@ -2585,6 +2615,12 @@
   }
 }
 
+@media screen and (min-width: 992px) and (max-width: 1355px) {
+  .about-chairman-section--about.section-spacing {
+    padding-bottom: 6rem;
+  }
+}
+
 @media screen and (min-width: 1262px) and (max-width: 1355px) {
   .about-chairman-section--about {
     height: 600px;
@@ -2633,6 +2669,93 @@
   }
 }
 
+@media screen and (max-width: 991px) {
+  .about-chairman-section--about .about-chairman-label--desktop,
+  .about-chairman-section--about .about-chairman-identity--desktop {
+    display: none;
+  }
+
+  .about-chairman-section--about .about-chairman-label--mobile {
+    display: flex;
+    order: 1;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1.25rem;
+    padding-inline: var(--_layout---container-gutter);
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .about-chairman-section--about .about-chairman-visual {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .about-chairman-section--about .about-chairman-visual-portrait {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 8%,
+      rgba(0, 0, 0, 0.75) 18%,
+      #000 32%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 8%,
+      rgba(0, 0, 0, 0.75) 18%,
+      #000 32%,
+      #000 100%
+    );
+  }
+
+  .about-chairman-section--about .about-chairman-visual-scrim {
+    display: block;
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 2;
+    height: 55%;
+    pointer-events: none;
+    background: linear-gradient(
+      to top,
+      rgba(243, 243, 241, 0) 0%,
+      rgba(243, 243, 241, 0.45) 10%,
+      rgba(243, 243, 241, 0.75) 22%,
+      rgba(243, 243, 241, 0.55) 40%,
+      rgba(243, 243, 241, 0.3) 58%,
+      rgba(243, 243, 241, 0.12) 76%,
+      rgba(243, 243, 241, 0) 100%
+    );
+  }
+
+  .about-chairman-section--about .about-chairman-identity--mobile {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.35rem;
+    z-index: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 1.25rem var(--_layout---container-gutter) 0;
+    box-sizing: border-box;
+  }
+
+  .about-chairman-section--about .about-chairman-message {
+    padding-top: 1.75rem;
+  }
+
+  .about-chairman-section--about .about-chairman-quote {
+    margin-top: 0;
+    margin-bottom: 1.75rem;
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .about-chairman-section--about {
     height: auto;
@@ -2640,11 +2763,8 @@
   }
 
   .about-chairman-section--about .about-chairman-message {
+    padding-top: 1.5rem;
     padding-bottom: 0;
-  }
-
-  .about-chairman-section--about .about-chairman-container {
-    order: 1;
   }
 
   .about-chairman-section--about .about-chairman-visual {
@@ -2652,25 +2772,23 @@
     inset: auto;
     order: 2;
     width: 100%;
-    height: 500px;
+    height: 560px;
     margin-top: 0;
   }
 
+  .about-chairman-section--about .about-chairman-container {
+    order: 3;
+  }
+
   .about-chairman-section--about .about-chairman-visual-abstract {
-    left: 0;
-    right: auto;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center bottom;
+    display: none;
   }
 
   .about-chairman-section--about .about-chairman-visual-portrait {
     left: 50%;
     right: auto;
     bottom: auto;
-    width: 100%;
+    width: 110%;
     height: 100%;
     transform: translateX(-50%);
     object-position: center bottom;
@@ -2687,35 +2805,28 @@
     padding-bottom: 0;
   }
 
-  .about-chairman-section--about .about-chairman-container {
-    order: 1;
-  }
-
   .about-chairman-section--about .about-chairman-visual {
     position: relative;
     inset: auto;
     order: 2;
     width: 100%;
-    height: 380px;
+    height: 440px;
     margin: 0;
   }
 
+  .about-chairman-section--about .about-chairman-container {
+    order: 3;
+  }
+
   .about-chairman-section--about .about-chairman-visual-abstract {
-    left: 0;
-    right: auto;
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    object-fit: contain;
-    object-position: center bottom;
+    display: none;
   }
 
   .about-chairman-section--about .about-chairman-visual-portrait {
     left: 50%;
     right: auto;
-    width: 100%;
+    bottom: auto;
+    width: 110%;
     height: 100%;
     transform: translateX(-50%);
     object-position: center bottom;
@@ -2724,16 +2835,15 @@
   .about-chairman-section--about .about-chairman-message {
     max-width: 100%;
     width: 100%;
-  }
-
-  .about-chairman-section--about .about-chairman-label {
-    margin-bottom: 1.25rem;
+    padding-top: 1.75rem;
+    padding-bottom: 0;
   }
 
   .about-chairman-section--about .about-chairman-quote {
     font-size: 1.25rem;
     line-height: 1.4;
-    margin-bottom: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1.75rem;
     /* padding-left: 1rem; */
   }
 
@@ -2762,8 +2872,13 @@
     inset: auto;
     order: 2;
     width: 100%;
-    height: 300px;
+    height: 360px;
     margin: 0;
+  }
+
+  .about-chairman-section--about .about-chairman-identity--mobile {
+    bottom: 0.25rem;
+    padding: 1rem var(--_layout---container-gutter) 0;
   }
 }
 
@@ -3626,6 +3741,17 @@
 
 .split-feature-list-section--carousel .split-feature-list-carousel-viewport {
   clip-path: none !important;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.split-feature-list-section--carousel .split-feature-list-carousel-viewport.is-clickable {
+  cursor: grab;
+}
+
+.split-feature-list-section--carousel .split-feature-list-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .split-feature-list-section--carousel .split-feature-list-carousel-nav {

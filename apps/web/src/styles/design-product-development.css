@@ -29,6 +29,24 @@
 /* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
 
 /*
+ * DPD-only mobile hero: keep inset → expand-on-scroll, but land full-bleed
+ * (no side padding) and drop the shared mobile border-radius. Height unchanged.
+ */
+@media screen and (max-width: 991px) {
+  .design-product-development-page .solution-page-hero-media {
+    padding-inline: 0;
+  }
+
+  .design-product-development-page .solution-page-hero-media-scaler {
+    border-radius: 0;
+  }
+
+  .design-product-development-page .solution-page-hero-video {
+    border-radius: 0;
+  }
+}
+
+/*
  * Shared 1520px content width for all non-hero sections.
  * Individual containers keep their own margin/padding; this only unifies max-width.
  */
@@ -1135,7 +1153,7 @@
 
   .design-product-development-page .split-feature-list-title {
     margin-bottom: 0.875rem;
-    font-size: 1.75rem;
+    font-size: clamp(1.625rem, 7vw, 1.875rem);
   }
 
   .design-product-development-page .split-feature-list-item {
@@ -1151,6 +1169,9 @@
 .design-product-development-page .dpd-digital-section.split-feature-list-section--carousel {
   --dpd-carousel-content-left: clamp(56px, 5vw, 88px);
   --dpd-carousel-content-bottom: clamp(36px, 4vw, 52px);
+  /* Matching / parallelogram cut — step keeps edges joined while sliding. */
+  --dpd-slide-cut: 9%;
+  --dpd-slide-step: calc(100% - var(--dpd-slide-cut));
 
   padding: 0;
   overflow: hidden;
@@ -1182,9 +1203,10 @@
   align-items: center;
   justify-content: flex-start;
   transform: none;
-  margin-top: 28px;
+  margin: 0;
   width: max-content;
-  padding: 7px;
+  /* No left padding — first dot lines up with title/span. */
+  padding: 7px 7px 7px 0;
   border-radius: 999px;
   background: var(--color--white);
 }
@@ -1221,9 +1243,19 @@
   height: 100%;
   min-height: 560px;
   overflow: hidden;
+  /* Outer / mask only — slides stay full so they touch while shifting (no gap). */
   clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
   touch-action: pan-y;
-  background: #111820;
+  user-select: none;
+  -webkit-user-select: none;
+  background: transparent;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport,
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport:focus-visible {
@@ -1232,7 +1264,11 @@
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport.is-clickable {
-  cursor: pointer;
+  cursor: grab;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide {
@@ -1245,6 +1281,16 @@
   transition: opacity 600ms ease, visibility 600ms;
   will-change: transform, opacity;
   pointer-events: none;
+  /*
+   * Parallelogram / / — same slope on left and right so
+   * outgoing right edge joins incoming left edge (no gap).
+   */
+  clip-path: polygon(
+    var(--dpd-slide-cut) 0,
+    100% 0,
+    calc(100% - var(--dpd-slide-cut)) 100%,
+    0 100%
+  );
 }
 
 .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-active {
@@ -1263,9 +1309,26 @@
   animation: dpd-carousel-slide-in-reverse 600ms ease both;
 }
 
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-exiting {
+  z-index: 0;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  transition: none;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-exiting--forward {
+  animation: dpd-carousel-slide-out 600ms ease both;
+}
+
+.design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-exiting--backward {
+  animation: dpd-carousel-slide-out-reverse 600ms ease both;
+}
+
+/* Step = 100% - cut so / edges stay joined while shifting. */
 @keyframes dpd-carousel-slide-in {
   from {
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(var(--dpd-slide-step), 0, 0);
   }
 
   to {
@@ -1275,11 +1338,31 @@
 
 @keyframes dpd-carousel-slide-in-reverse {
   from {
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(calc(-1 * var(--dpd-slide-step)), 0, 0);
   }
 
   to {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes dpd-carousel-slide-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-1 * var(--dpd-slide-step)), 0, 0);
+  }
+}
+
+@keyframes dpd-carousel-slide-out-reverse {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(var(--dpd-slide-step), 0, 0);
   }
 }
 
@@ -1385,11 +1468,16 @@
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-overlay {
-    right: 54px;
+    right: var(--dpd-carousel-content-left);
     bottom: calc(var(--dpd-carousel-content-bottom) + 24px);
-    left: 54px;
+    left: var(--dpd-carousel-content-left);
     gap: 14px;
-    padding: 16px 18px;
+    padding: 16px 18px 16px 0;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-dots {
+    left: var(--dpd-carousel-content-left);
+    padding: 7px 7px 7px 0;
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-icon {
@@ -1403,6 +1491,8 @@
   .design-product-development-page .dpd-digital-section.split-feature-list-section--carousel {
     --dpd-carousel-content-left: var(--_layout---container-gutter);
     --dpd-carousel-content-bottom: 24px;
+    --dpd-slide-cut: 0%;
+    --dpd-slide-step: 100%;
   }
 
   .design-product-development-page
@@ -1418,6 +1508,12 @@
     padding: var(--dpd-mobile-section-pad-sm) 0 32px;
   }
 
+  .design-product-development-page
+    .dpd-digital-section.split-feature-list-section--carousel
+    .split-feature-list-title {
+    font-size: clamp(1.625rem, 7vw, 1.875rem);
+  }
+
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel {
     margin-inline: calc(var(--_layout---container-gutter) * -1);
   }
@@ -1427,12 +1523,16 @@
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-nav {
-    padding-inline: 12px;
+    display: none;
   }
 
   .design-product-development-page .dpd-digital-section .split-feature-list-carousel-viewport {
     height: auto;
     min-height: clamp(340px, 75vw, 500px);
+    clip-path: none;
+  }
+
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide {
     clip-path: none;
   }
 
@@ -1464,7 +1564,8 @@
     transition: none;
   }
 
-  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-entering {
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-entering,
+  .design-product-development-page .dpd-digital-section .split-feature-list-carousel-slide.is-exiting {
     animation: none;
   }
 }

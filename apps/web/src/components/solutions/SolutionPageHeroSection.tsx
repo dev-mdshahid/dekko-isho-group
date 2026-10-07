@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { setupImageInfoExpand } from '../../lib/animations/about/imageInfo'
 import { PageHeroSection, type PageHeroTitleWord } from '../ui/PageHeroSection'
@@ -32,6 +32,8 @@ export function SolutionPageHeroSection({
 }: SolutionPageHeroSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const scalerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(true)
   const videoId = `${idPrefix}-hero-video`
 
   useEffect(() => {
@@ -40,6 +42,31 @@ export function SolutionPageHeroSection({
     if (!section || !scaler) return
 
     return setupImageInfoExpand({ section, scaler })
+  }, [])
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+
+    const syncPlaying = () => setIsPlaying(!el.paused)
+    el.addEventListener('play', syncPlaying)
+    el.addEventListener('pause', syncPlaying)
+
+    return () => {
+      el.removeEventListener('play', syncPlaying)
+      el.removeEventListener('pause', syncPlaying)
+    }
+  }, [])
+
+  const togglePlayback = useCallback(() => {
+    const el = videoRef.current
+    if (!el) return
+
+    if (el.paused) {
+      void el.play()
+    } else {
+      el.pause()
+    }
   }, [])
 
   const sectionClassName = ['solution-page-hero', className].filter(Boolean).join(' ')
@@ -67,6 +94,7 @@ export function SolutionPageHeroSection({
               className="w-background-video w-background-video-atom solution-page-hero-video"
             >
               <video
+                ref={videoRef}
                 id={videoId}
                 autoPlay
                 loop
@@ -83,14 +111,15 @@ export function SolutionPageHeroSection({
               <div aria-live="polite">
                 <button
                   type="button"
-                  data-w-bg-video-control="true"
+                  onClick={togglePlayback}
                   aria-controls={videoId}
+                  aria-label={isPlaying ? 'Pause video' : 'Play video'}
                   className="w-backgroundvideo-backgroundvideoplaypausebutton video-button w-background-video--control solution-page-hero-video-control"
                 >
-                  <span className="play-state">
+                  <span className="play-state" hidden={!isPlaying}>
                     <PauseIcon />
                   </span>
-                  <span hidden className="pause-state">
+                  <span className="pause-state" hidden={isPlaying}>
                     <PlayIcon />
                   </span>
                 </button>

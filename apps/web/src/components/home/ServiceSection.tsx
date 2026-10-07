@@ -130,7 +130,7 @@ export function ServiceSection() {
                 data-home-animate-index={index}
                 className={`service-list-wrapper ${speciality.wrapperClass} w-dyn-list`}
               >
-                {/* Visual card chrome — scaled by cover-cascade; sticky wrapper stays untransformed. */}
+                {/* Visual card chrome — scaled by stacking progress; sticky wrapper stays untransformed. */}
                 <div className="service-card-panel" style={{ backgroundColor: speciality.backgroundColor }}>
                   <div role="list" className="service-list w-dyn-items">
                     <div role="listitem" className="service-list-item w-dyn-item">

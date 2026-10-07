@@ -37,7 +37,7 @@ export function SolutionCapabilityCardsSection({
 }: SolutionCapabilityCardsSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const { id, badge, title, titleBefore, titleAccent, titleAfter, description, items } = content
-  useHorizontalScroll(scrollRef, { enableWheel: false })
+  useHorizontalScroll(scrollRef, { enableWheel: false, preferNativeTouch: true })
 
   const hasAccentTitle = Boolean(titleBefore && titleAccent)
 

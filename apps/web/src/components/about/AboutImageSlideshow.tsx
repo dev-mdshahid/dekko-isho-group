@@ -5,6 +5,8 @@ import { CarouselArrow } from '../ui/CarouselArrow'
 
 const SLIDE_INTERVAL_MS = 3000
 const TRANSITION_DURATION = 0.65
+const SWIPE_THRESHOLD_PX = 45
+const DRAG_THRESHOLD_PX = 8
 
 const ABOUT_SLIDES = [
   {
@@ -38,14 +40,17 @@ type TransitionState = {
 }
 
 export function AboutImageSlideshow() {
+  const rootRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLImageElement>(null)
   const outgoingRef = useRef<HTMLImageElement>(null)
   const incomingRef = useRef<HTMLImageElement>(null)
   const activeIndexRef = useRef(0)
   const isTransitioningRef = useRef(false)
+  const transitionTargetRef = useRef<number | null>(null)
   const intervalRef = useRef<number | null>(null)
   const isHoveredRef = useRef(false)
   const isFocusWithinRef = useRef(false)
+  const isPointerActiveRef = useRef(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [transitionState, setTransitionState] = useState<TransitionState | null>(null)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -64,22 +69,44 @@ export function AboutImageSlideshow() {
   }, [])
 
   const syncInteractionPause = useCallback(() => {
-    setIsInteractionPaused(isHoveredRef.current || isFocusWithinRef.current)
+    setIsInteractionPaused(
+      isHoveredRef.current || isFocusWithinRef.current || isPointerActiveRef.current,
+    )
   }, [])
 
   const completeTransition = useCallback((to: number) => {
     activeIndexRef.current = to
     setActiveIndex(to)
     setTransitionState(null)
+    transitionTargetRef.current = null
     isTransitioningRef.current = false
   }, [])
 
+  /** Land on the in-flight slide immediately so the next swipe can start. */
+  const forceCompleteCurrentTransition = useCallback(() => {
+    if (!isTransitioningRef.current) return
+
+    gsap.killTweensOf(outgoingRef.current)
+    gsap.killTweensOf(incomingRef.current)
+    gsap.killTweensOf(mediaRef.current)
+
+    const to = transitionTargetRef.current ?? activeIndexRef.current
+    completeTransition(to)
+  }, [completeTransition])
+
   const transitionTo = useCallback(
     (nextIndex: number, direction: SlideDirection) => {
-      if (isTransitioningRef.current || nextIndex === activeIndexRef.current) return false
+      if (nextIndex === activeIndexRef.current && !isTransitioningRef.current) return false
+
+      if (isTransitioningRef.current) {
+        forceCompleteCurrentTransition()
+      }
+
+      if (nextIndex === activeIndexRef.current) return false
 
       const currentIndex = activeIndexRef.current
       isTransitioningRef.current = true
+      transitionTargetRef.current = nextIndex
 
       if (prefersReducedMotion) {
         gsap.to(mediaRef.current, {
@@ -89,6 +116,7 @@ export function AboutImageSlideshow() {
           onComplete: () => {
             activeIndexRef.current = nextIndex
             setActiveIndex(nextIndex)
+            transitionTargetRef.current = null
             gsap.fromTo(
               mediaRef.current,
               { opacity: 0 },
@@ -109,7 +137,7 @@ export function AboutImageSlideshow() {
       setTransitionState({ from: currentIndex, to: nextIndex, direction })
       return true
     },
-    [prefersReducedMotion],
+    [forceCompleteCurrentTransition, prefersReducedMotion],
   )
 
   const resetAutoplayTimer = useCallback(() => {
@@ -117,14 +145,22 @@ export function AboutImageSlideshow() {
   }, [])
 
   const goToPrevious = useCallback(() => {
-    const previousIndex = (activeIndexRef.current - 1 + slideCount) % slideCount
+    const base =
+      isTransitioningRef.current && transitionTargetRef.current !== null
+        ? transitionTargetRef.current
+        : activeIndexRef.current
+    const previousIndex = (base - 1 + slideCount) % slideCount
     const didStart = transitionTo(previousIndex, 'previous')
     if (didStart) resetAutoplayTimer()
   }, [resetAutoplayTimer, slideCount, transitionTo])
 
   const goToNext = useCallback(
     (options?: { fromAutoplay?: boolean }) => {
-      const nextIndex = (activeIndexRef.current + 1) % slideCount
+      const base =
+        isTransitioningRef.current && transitionTargetRef.current !== null
+          ? transitionTargetRef.current
+          : activeIndexRef.current
+      const nextIndex = (base + 1) % slideCount
       const didStart = transitionTo(nextIndex, 'next')
       if (didStart && !options?.fromAutoplay) resetAutoplayTimer()
     },
@@ -143,6 +179,102 @@ export function AboutImageSlideshow() {
     },
     [goToNext, goToPrevious],
   )
+
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root || slideCount <= 1) return
+
+    let activePointerId: number | null = null
+    let isPointerDown = false
+    let isDragging = false
+    let startX = 0
+
+    const endPointer = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+
+      const deltaX = event.clientX - startX
+
+      if (isDragging) {
+        if (root.hasPointerCapture(event.pointerId)) {
+          root.releasePointerCapture(event.pointerId)
+        }
+        root.classList.remove('is-dragging')
+
+        if (Math.abs(deltaX) >= SWIPE_THRESHOLD_PX) {
+          if (deltaX > 0) {
+            goToPrevious()
+          } else {
+            goToNext()
+          }
+        }
+      }
+
+      isPointerDown = false
+      isDragging = false
+      activePointerId = null
+      isPointerActiveRef.current = false
+      syncInteractionPause()
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isPointerDown || event.pointerId !== activePointerId) return
+
+      const deltaX = event.clientX - startX
+
+      if (!isDragging) {
+        if (Math.abs(deltaX) <= DRAG_THRESHOLD_PX) return
+        isDragging = true
+        root.classList.add('is-dragging')
+        root.setPointerCapture(event.pointerId)
+        window.getSelection()?.removeAllRanges()
+      }
+
+      event.preventDefault()
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0) return
+      if ((event.target as HTMLElement).closest('.about-image-slideshow__nav')) return
+
+      isPointerDown = true
+      isDragging = false
+      activePointerId = event.pointerId
+      startX = event.clientX
+      isPointerActiveRef.current = true
+      syncInteractionPause()
+
+      document.addEventListener('pointermove', onPointerMove)
+      document.addEventListener('pointerup', endPointer)
+      document.addEventListener('pointercancel', endPointer)
+    }
+
+    const onDragStart = (event: DragEvent) => {
+      event.preventDefault()
+    }
+
+    const onSelectStart = (event: Event) => {
+      event.preventDefault()
+    }
+
+    root.addEventListener('pointerdown', onPointerDown)
+    root.addEventListener('dragstart', onDragStart)
+    root.addEventListener('selectstart', onSelectStart)
+
+    return () => {
+      root.removeEventListener('pointerdown', onPointerDown)
+      root.removeEventListener('dragstart', onDragStart)
+      root.removeEventListener('selectstart', onSelectStart)
+      document.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerup', endPointer)
+      document.removeEventListener('pointercancel', endPointer)
+      root.classList.remove('is-dragging')
+      isPointerActiveRef.current = false
+    }
+  }, [goToNext, goToPrevious, slideCount, syncInteractionPause])
 
   useLayoutEffect(() => {
     if (!transitionState) return
@@ -235,10 +367,11 @@ export function AboutImageSlideshow() {
 
   return (
     <div
+      ref={rootRef}
       className="about-image-slideshow carousel-arrow-host"
       role="region"
       aria-roledescription="carousel"
-      aria-label="About Dekko ISHO Group"
+      aria-label="About Dekko ISHO Group. Drag left or right to browse."
       aria-live="polite"
       tabIndex={0}
       onKeyDown={handleKeyDown}

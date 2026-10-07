@@ -491,10 +491,29 @@
 
 .about-section .about-scroll-viewport.about-carousel-viewport {
   overflow: hidden;
-  cursor: default;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
   /* Room for hover tilt + image scale so cards are never clipped */
   padding: 1.25rem;
   margin-block: 0;
+}
+
+.about-section .about-scroll-viewport.about-carousel-viewport,
+.about-section .about-scroll-viewport.about-carousel-viewport * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.about-section .about-scroll-viewport.about-carousel-viewport.is-dragging {
+  cursor: grabbing;
+  touch-action: none;
+}
+
+.about-section .about-scroll-viewport.about-carousel-viewport.is-dragging .about-carousel-track {
+  transition: none;
 }
 
 .about-section .about-carousel-track {
@@ -615,22 +634,46 @@
 
 /* Home — animation hooks */
 
+.hero-title-smooth-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
 .hero-title-line-mask {
   display: block;
   position: relative;
   width: fit-content;
   max-width: 100%;
-  margin-inline: auto;
-  overflow: visible;
+  overflow: hidden;
+}
+
+.hero-title[data-hero-typewriter='smooth'] .hero-title-line-mask {
+  width: 0;
+}
+
+.hero-title[data-hero-typewriter='smooth'] .hero-title-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title[data-hero-typewriter='smooth'] .hero-title-line-mask {
+    width: fit-content;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .hero-title-line-mask--inline {
-    display: inline-block;
+  .hero-title-smooth-row--inline {
+    display: inline-flex;
     vertical-align: baseline;
+    margin-inline: 0;
   }
 
-  .hero-title-line-mask--inline+.hero-title-line-mask--inline {
+  .hero-title-smooth-row--inline + .hero-title-smooth-row--inline {
     margin-left: 0.28em;
   }
 }
@@ -938,15 +981,11 @@
 }
 
 .company-logos-section-v2 {
-  display: flex;
-  gap: 2rem;
-}
-
-.company-logos-section-v2 {
   --logo-gap: 128px;
   --logo-scale: 1;
-  --marquee-duration: 60s;
 
+  display: flex;
+  gap: 2rem;
   width: 100%;
   min-width: 0;
   padding-block: 32px;
@@ -958,62 +997,10 @@
 }
 
 .company-logos-section-v2__viewport {
+  --fade-width: clamp(32px, 6vw, 100px);
+
   width: 100%;
   overflow: hidden;
-}
-
-.company-logos-section-v2__viewport:focus-visible {
-  outline: 2px solid #737373;
-  outline-offset: -2px;
-}
-
-.company-logos-section-v2__track {
-  display: flex;
-  width: max-content;
-  animation: company-logos-v2-scroll var(--marquee-duration) linear infinite;
-  will-change: transform;
-}
-
-.company-logos-section-v2__group {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: var(--logo-gap);
-
-  list-style: none;
-  margin: 0;
-
-  /*
-   * The trailing gap matches the internal gaps.
-   * Both copies therefore have exactly the same width.
-   */
-  padding: 0 var(--logo-gap) 0 0;
-}
-
-.company-logos-section-v2__item {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-
-  width: calc(var(--logo-width) * var(--logo-scale));
-}
-
-.company-logos-section-v2__item img {
-  display: block;
-  width: 100%;
-  height: auto;
-  user-select: none;
-}
-
-/* Pause on hover or keyboard focus. */
-.company-logos-section-v2__viewport:hover .company-logos-section-v2__track,
-.company-logos-section-v2__viewport:focus-visible .company-logos-section-v2__track {
-  animation-play-state: paused;
-}
-
-.company-logos-section-v2__viewport {
-  --fade-width: clamp(32px, 6vw, 100px);
 
   -webkit-mask-image: linear-gradient(to right,
       transparent 0,
@@ -1028,14 +1015,31 @@
       transparent 100%);
 }
 
-@keyframes company-logos-v2-scroll {
-  from {
-    transform: translateX(0);
-  }
+.company-logos-section-v2__viewport:focus-visible {
+  outline: 2px solid #737373;
+  outline-offset: -2px;
+}
 
-  to {
-    transform: translateX(-50%);
-  }
+.company-logos-section-v2__loop {
+  /* Preserve existing responsive gaps over LogoLoop's inline default. */
+  --logoloop-gap: var(--logo-gap) !important;
+}
+
+.company-logos-section-v2__item {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(var(--logo-width) * var(--logo-scale));
+}
+
+.company-logos-section-v2__loop .logoloop__item img,
+.company-logos-section-v2__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
 }
 
 @media (max-width: 768px) {
@@ -1051,22 +1055,5 @@
   .company-logos-section-v2 {
     --logo-gap: 32px;
     --logo-scale: 0.75;
-  }
-}
-
-/* Allow manual scrolling when the user prefers reduced motion. */
-@media (prefers-reduced-motion: reduce) {
-  .company-logos-section-v2__viewport {
-    overflow-x: auto;
-  }
-
-  .company-logos-section-v2__track {
-    animation: none;
-    transform: none;
-    will-change: auto;
-  }
-
-  .company-logos-section-v2__group[aria-hidden="true"] {
-    display: none;
   }
 }

@@ -162,6 +162,7 @@
   .solution-page-hero .pre-section-title {
     white-space: normal;
     line-height: 1.35;
+    font-size: 0.8125rem;
   }
 
   .solution-page-hero-media {
@@ -198,6 +199,10 @@
     font-size: 0.9375rem;
     line-height: 1.6;
     padding-inline: 0;
+  }
+
+  .solution-page-hero .pre-section-title {
+    font-size: 0.75rem;
   }
 
   .solution-page-hero-button {
@@ -1607,7 +1612,8 @@
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  touch-action: pan-y;
+  /* Allow native horizontal swipe on mobile; mouse drag still uses JS. */
+  touch-action: pan-x pan-y;
   scrollbar-width: none;
   cursor: grab;
   padding-inline: var(--_layout---container-gutter);
@@ -1617,6 +1623,7 @@
 
 .solution-page .solution-capability-cards-scroll.is-dragging {
   cursor: grabbing;
+  touch-action: none;
 }
 
 .solution-page .solution-capability-cards-scroll.is-dragging,
@@ -2672,7 +2679,7 @@
   }
 
   .il-washing-processes__cards-scroll {
-    margin-top: 24px;
+    margin-top: 0;
   }
 
   .il-washing-processes__cards {
@@ -2746,6 +2753,11 @@
   object-fit: cover;
 }
 
+/* Denim Wash — frame the left side of the photo toward center */
+.il-washing-processes__lead .il-washing-processes__visual-image {
+  object-position: 12% center;
+}
+
 .il-washing-processes__visual-overlay {
   z-index: -1;
   background: linear-gradient(
@@ -2789,13 +2801,20 @@
   line-height: 1.45;
 }
 
+.il-washing-processes__cards-scroll {
+  min-width: 0;
+  height: 100%;
+  align-self: stretch;
+  overflow: visible;
+}
+
 .il-washing-processes__cards {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: repeat(4, minmax(0, 1fr));
   gap: clamp(10px, 0.8vw, 14px);
   width: auto;
-  height: auto;
+  height: 100%;
   min-height: 0;
   padding: 0;
   align-self: stretch;
@@ -2807,19 +2826,20 @@
   min-height: 0;
   padding: clamp(12px, 1vw, 18px);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: rgba(4, 14, 8, 0.58);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .il-washing-processes__card:hover {
-  border-color: rgba(255, 255, 255, 0.48);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(4, 14, 8, 0.66);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    0 8px 22px rgba(0, 0, 0, 0.12);
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .il-washing-processes__card-title {
@@ -2831,7 +2851,7 @@
 
 .il-washing-processes__card-description {
   margin-top: 5px;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.88);
   font-size: clamp(11px, 0.72vw, 13px);
   line-height: 1.3;
   overflow-wrap: anywhere;
@@ -2883,30 +2903,95 @@
 
   .il-washing-processes__lead {
     display: flex;
-    min-height: 0;
-    padding-top: clamp(180px, 58vw, 240px);
-    gap: 22px;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: clamp(340px, 115vw, 460px);
+    padding-top: clamp(80px, 28vw, 130px);
+    gap: 0;
+  }
+
+  .il-washing-processes__lead .il-washing-processes__visual-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 18, 8, 0) 18%,
+      rgba(4, 18, 8, 0.42) 42%,
+      rgba(2, 12, 4, 0.78) 68%,
+      rgba(2, 10, 4, 0.96) 100%
+    );
   }
 
   .il-washing-processes__lead-copy {
     align-self: auto;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  .il-washing-processes__lead-title,
+  .il-washing-processes__lead-description {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  .il-washing-processes__lead-title {
+    margin: 0;
+    line-height: 1.05;
+  }
+
+  .il-washing-processes__lead-description {
+    max-width: none;
+    margin: 2px 0 8px;
+    line-height: 1.35;
+  }
+
+  /* One full card at a time — no side peek/cut; gap only between slides */
+  .il-washing-processes__cards-scroll {
+    display: flex;
+    flex: 0 0 auto;
+    align-self: stretch;
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    user-select: none;
+    -webkit-user-select: none;
+    gap: 12px;
+  }
+
+  .il-washing-processes__cards-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .il-washing-processes__cards-scroll.is-dragging {
+    cursor: grabbing;
+  }
+
+  .il-washing-processes__cards-scroll:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.45);
+    outline-offset: 4px;
   }
 
   .il-washing-processes__cards {
-    grid-column: auto;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
-    grid-auto-rows: auto;
-    width: 100%;
-    height: auto;
-    gap: 10px;
+    display: contents;
   }
 
   .il-washing-processes__card {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     height: auto;
     min-height: 0;
     padding: 14px 12px;
     border-radius: 12px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .il-washing-processes__card-title {
@@ -2922,11 +3007,17 @@
 
 @media (max-width: 480px) {
   .il-washing-processes__lead {
-    padding-top: clamp(160px, 58vw, 210px);
+    min-height: clamp(320px, 125vw, 440px);
+    padding-top: clamp(70px, 26vw, 120px);
+    gap: 0;
   }
 
-  .il-washing-processes__cards {
-    grid-template-columns: minmax(0, 1fr);
+  .il-washing-processes__lead-description {
+    margin: 2px 0 6px;
+  }
+
+  .il-washing-processes__cards-scroll {
+    margin-top: 0;
   }
 
   .il-washing-processes__card {

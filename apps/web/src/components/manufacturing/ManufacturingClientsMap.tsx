@@ -6,14 +6,33 @@ import {
   manufacturingClients,
   type ManufacturingClientRegionId,
 } from '../../data/manufacturing/content'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
 
 interface ManufacturingClientsMapProps {
   activeRegionId: ManufacturingClientRegionId
   onRegionSelect: (regionId: ManufacturingClientRegionId) => void
 }
 
-const MAP_WIDTH = 980
-const MAP_HEIGHT = 460
+const MAP_LAYOUT = {
+  // Projection stays on the full canvas; viewBox only crops the SVG camera (like DevTools).
+  // Changing width/height also re-centers d3 translate and clips the top — avoid that.
+  desktop: {
+    width: 980,
+    height: 500,
+    viewBox: '0 0 880 460',
+    scale: 190,
+    center: [28, 3] as [number, number],
+  },
+  // Taller frame + higher relative scale so regions stay tappable on narrow screens.
+  mobile: {
+    width: 720,
+    height: 520,
+    viewBox: '0 0 720 520',
+    scale: 165,
+    center: [18, 8] as [number, number],
+  },
+} as const
+const MOBILE_MAP_QUERY = '(max-width: 767px)'
 const EXCLUDED_COUNTRY_CODES = new Set(['010'])
 const regions = manufacturingClients.regions
 // react-simple-maps accepts TopoJSON at runtime, though its public prop type is narrowed to GeoJSON.
@@ -44,6 +63,9 @@ export function ManufacturingClientsMap({
   activeRegionId,
   onRegionSelect,
 }: ManufacturingClientsMapProps) {
+  const isMobile = useMediaQuery(MOBILE_MAP_QUERY)
+  const mapLayout = isMobile ? MAP_LAYOUT.mobile : MAP_LAYOUT.desktop
+
   const handleRegionKeyDown = (
     event: KeyboardEvent<SVGGElement>,
     regionId: ManufacturingClientRegionId,
@@ -59,10 +81,11 @@ export function ManufacturingClientsMap({
     <div className="mfg-clients-map-wrap">
       <ComposableMap
         className="mfg-clients-map"
-        width={MAP_WIDTH}
-        height={MAP_HEIGHT}
+        width={mapLayout.width}
+        height={mapLayout.height}
+        viewBox={mapLayout.viewBox}
         projection="geoEqualEarth"
-        projectionConfig={{ center: [0, 3], scale: 200 }}
+        projectionConfig={{ center: mapLayout.center, scale: mapLayout.scale }}
         role="group"
         aria-labelledby="mfg-clients-map-title mfg-clients-map-description"
       >

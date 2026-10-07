@@ -408,11 +408,12 @@ figcaption {
   border-radius: var(--border-radius--md);
   background-color: var(--color--grey-1);
   width: 100%;
-  height: 60px;
+  height: 48px;
   color: var(--color--gray-3);
   border-color: #ffffff1a;
   margin-bottom: 0;
-  padding-right: 4rem;
+  padding-right: 3.25rem;
+  font-size: 0.9375rem;
   position: relative;
 }
 
@@ -933,6 +934,7 @@ figcaption {
 .form-subscribe {
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 .footer-link {
@@ -950,7 +952,7 @@ figcaption {
   grid-column-gap: var(--gap--gap-5);
   grid-row-gap: var(--gap--gap-5);
   grid-template-rows: auto;
-  grid-template-columns: .9fr 1.25fr 1.2fr 1fr;
+  grid-template-columns: .9fr 1.25fr .75fr 1.20fr;
   position: relative;
   overflow: hidden;
 }
@@ -979,7 +981,7 @@ figcaption {
   grid-column-gap: var(--gap--gap-9);
   grid-row-gap: var(--gap--gap-9);
   grid-template-rows: auto;
-  grid-template-columns: .5fr 1fr;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 1fr);
   grid-auto-columns: 1fr;
   align-items: stretch;
   padding-left: 3.125rem;
@@ -1023,6 +1025,7 @@ figcaption {
 .form-subscribe-wrap {
   align-items: center;
   margin-bottom: 0;
+  width: 100%;
 }
 
 .footer-social-inline {
@@ -1858,11 +1861,11 @@ figcaption {
 }
 
 .footer-subscribe-logo {
-  width: 200px;
+  width: 156px;
   max-width: 100%;
   height: auto;
   display: block;
-  margin-bottom: 1.625rem;
+  margin-bottom: 1.125rem;
 }
 
 .footer-bottom-wrap {
@@ -2312,6 +2315,11 @@ figcaption {
   color: var(--color--gray-3);
 }
 
+.footer-address strong {
+  display: inline-block;
+  margin-bottom: 0.35em;
+}
+
 .footer-contact-item {
   grid-column-gap: var(--gap--gap-5);
   grid-row-gap: var(--gap--gap-5);
@@ -2325,7 +2333,15 @@ figcaption {
 
 .subscribe-description {
   color: var(--color--gray-3);
-  margin-bottom: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.subscribe-wrap {
+  width: 100%;
+  max-width: 18.5rem;
 }
 
 .button-subscribe {
@@ -2335,13 +2351,13 @@ figcaption {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5H11M11 5L7 1M11 5L7 9' stroke='%230C0C0C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-position: 50%;
   background-repeat: no-repeat;
-  background-size: 12px 10px;
-  width: 40px;
-  height: 40px;
+  background-size: 11px 9px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   transition: background-color .3s cubic-bezier(.455, .03, .515, .955);
   position: absolute;
-  inset: 10px 10px 10px auto;
+  inset: 8px 8px 8px auto;
 }
 
 .button-subscribe:hover,
@@ -3208,9 +3224,8 @@ a.about-info-box:hover {
 }
 
 /*
- * Cover-cascade scales `.service-card-panel` (the painted card), never the sticky
- * wrapper. Sticky keeps an opaque page fill so side gaps cannot tunnel through
- * to deeper siblings when a panel shrinks.
+ * Width shrink stays on the painted panel (origin top). Never transform the
+ * sticky wrapper — that breaks the stack.
  */
 .service-section [data-home-animate='service-card'] {
   background-color: var(--color--white);
@@ -3218,18 +3233,11 @@ a.about-info-box:hover {
 
 .service-section [data-home-animate='service-card'] .service-card-panel {
   transform-origin: center top;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-section [data-home-animate='service-card'] .service-card-panel {
-    will-change: auto;
-  }
 }
 
 /*
  * A transform on the sticky wrapper (even translateY(0) left by a tween) breaks
- * stacking. Cover-cascade scale stays on the panel; this only guards the wrapper.
+ * stacking. This only guards the wrapper.
  */
 @media screen and (max-width: 991px) {
   .service-section [data-home-animate='service-card'] {
@@ -3243,28 +3251,29 @@ a.about-info-box:hover {
   width: 100%;
 }
 
+/* Stack offsets match stacking-card demo (i * 25px peek under each card). */
 .service-list-wrapper.one {
   top: calc(var(--navbar-height) + var(--service-sticky-gap));
   z-index: 1;
 }
 
 .service-list-wrapper.two {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 25px);
   z-index: 2;
 }
 
 .service-list-wrapper.three {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 200px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 50px);
   z-index: 3;
 }
 
 .service-list-wrapper.four {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 300px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 75px);
   z-index: 4;
 }
 
 .service-list-wrapper.five {
-  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 400px);
+  top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
   z-index: 5;
 }
 
@@ -8682,7 +8691,7 @@ a.about-info-box:hover {
   .grid-footer-menu {
     grid-column-gap: var(--gap--gap-12);
     grid-row-gap: var(--gap--gap-12);
-    grid-template-columns: .75fr 1.1fr 1.2fr 1fr;
+    grid-template-columns: .9fr 1.25fr .75fr 1.20fr;
   }
 
   .grid-footer {
@@ -8691,7 +8700,8 @@ a.about-info-box:hover {
   }
 
   .subscribe-wrap {
-    width: 420px;
+    max-width: 18.5rem;
+    width: 100%;
   }
 
   .grid-blog {
@@ -9121,7 +9131,7 @@ a.about-info-box:hover {
   }
 
   .grid-footer-menu {
-    grid-template-columns: .75fr 1.2fr 1fr 1fr;
+    grid-template-columns: .9fr 1.25fr .75fr 1.20fr;
   }
 
   .grid-footer {
@@ -9131,7 +9141,8 @@ a.about-info-box:hover {
   }
 
   .subscribe-wrap {
-    width: 660px;
+    max-width: 18.5rem;
+    width: 100%;
   }
 
   .privacy-section {
@@ -9272,12 +9283,8 @@ a.about-info-box:hover {
     padding-top: 5rem;
   }
 
-  .button-icon,
   .logo {
     width: auto;
-  }
-
-  .logo {
     height: 50px;
   }
 
@@ -9351,10 +9358,6 @@ a.about-info-box:hover {
   .dropdown-list-inner {
     margin-left: 1.25rem;
     margin-right: 1.25rem;
-  }
-
-  .button-icon-hover {
-    width: auto;
   }
 
   .nav-link-text {
@@ -10426,7 +10429,8 @@ a.about-info-box:hover {
   }
 
   .subscribe-wrap {
-    width: 430px;
+    max-width: 18.5rem;
+    width: 100%;
   }
 
   .privacy-section {
@@ -10512,7 +10516,33 @@ a.about-info-box:hover {
   }
 
   .button-text-wrap {
-    padding-left: 1.25rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1.125rem;
+  }
+
+  .button-text,
+  .button-hover-text {
+    font-size: 0.875rem;
+  }
+
+  .button-icon-bg {
+    width: 32px;
+    height: 32px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .button-icon,
+  .button-icon-hover {
+    width: 11px;
+    height: 11px;
+  }
+
+  .button-primary-inner {
+    grid-column-gap: var(--gap--gap-5);
+    grid-row-gap: var(--gap--gap-5);
   }
 
   .footer-contact-list {
@@ -11374,7 +11404,23 @@ a.about-info-box:hover {
   }
 
   .button-text-wrap {
-    padding-left: .938rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.938rem;
+  }
+
+  .button-icon-bg {
+    width: 28px;
+    height: 28px;
+    margin-top: 0.188rem;
+    margin-bottom: 0.188rem;
+    margin-right: 0.188rem;
+  }
+
+  .button-icon,
+  .button-icon-hover {
+    width: 10px;
+    height: 10px;
   }
 
   .button-primary-inner {
@@ -12038,9 +12084,20 @@ a.about-info-box:hover {
   overflow: visible;
 }
 
+/*
+ * Shared gap before the next card. Padding (not a full viewport) keeps every
+ * card the same distance apart, shorter than the original h-screen track.
+ * The next card still rises and pins 25px lower.
+ */
+.service-section .service-list-wrapper {
+  padding-bottom: clamp(1.25rem, 4vh, 2.25rem);
+}
+
 .service-section .service-card-panel {
   width: 100%;
   position: relative;
+  border-radius: 8px;
+  overflow: hidden;
   background-color: var(--color--white);
 }
 
@@ -12049,6 +12106,7 @@ a.about-info-box:hover {
   content: '';
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: url('/images/backgrounds/card-texture-bg.jpg') center / cover no-repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -12070,12 +12128,13 @@ a.about-info-box:hover {
   border-radius: 0;
   transform: scale(1);
   transform-origin: center center;
-  transition: transform 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  /* Scroll-driven zoom is applied by GSAP; keep hover off so it doesn't fight scrub. */
+  will-change: transform;
 }
 
-@media (hover: hover) {
-  .service-section .service-info-link:hover .service-image {
-    transform: scale(1.05);
+@media (prefers-reduced-motion: reduce) {
+  .service-section .service-image {
+    will-change: auto;
   }
 }
 
@@ -12171,6 +12230,10 @@ a.about-info-box:hover {
 
   .service-section .service-info-inner {
     grid-column: 1;
+  }
+
+  .service-section .service-image-main:has(> .service-image-wrap:only-child) {
+    padding-left: 20px;
   }
 
   .service-section .service-name-wrapper .service-card-action {
@@ -12318,23 +12381,32 @@ a.about-info-box:hover {
   }
 
   /*
-   * Desktop peeks by 100px. These cards are much taller once they stack in a
-   * column, so a short lip keeps the active card's title and copy on screen.
+   * Same peek rhythm as desktop (i * 25px), so mobile matches the web stack.
    */
   .service-section .service-list-wrapper.two {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 1.25rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 25px);
   }
 
   .service-section .service-list-wrapper.three {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 2.5rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 50px);
   }
 
   .service-section .service-list-wrapper.four {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 3.75rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 75px);
   }
 
   .service-section .service-list-wrapper.five {
-    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 5rem);
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 100px);
+  }
+
+  /* Match desktop: list chrome out of the box tree so the panel fills the sticky area. */
+  .service-section .service-list,
+  .service-section .service-list-item {
+    display: contents;
+  }
+
+  .service-section .service-card-divider {
+    display: none;
   }
 
   .service-section-gradient-spacer {
@@ -12360,13 +12432,50 @@ a.about-info-box:hover {
     white-space: normal;
   }
 
-  .service-section .service-image-main {
-    grid-column-gap: 24px;
-    grid-template-columns: 48px minmax(0, 1fr);
+  .service-section .service-info-link {
+    grid-template-columns: 1fr;
+    padding-inline: 20px;
+    padding-top: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .service-section .service-info-inner {
+    display: flex;
+    flex-flow: column;
+    gap: var(--gap--gap-10);
+  }
+
+  .service-section .service-image-main,
+  .service-section .service-image-wrap {
+    width: 100%;
   }
 
   .service-section .service-image-main:has(> .service-image-wrap:only-child) {
     grid-template-columns: minmax(0, 1fr);
+    padding-left: 0;
+  }
+
+  .service-section .service-image-wrap {
+    aspect-ratio: 530 / 300;
+    border-radius: var(--border-radius--sm);
+  }
+
+  .service-section .service-content-wrap {
+    width: 100%;
+  }
+
+  .service-section .service-name-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: var(--gap--gap-4);
+    margin-bottom: .625rem;
+  }
+
+  .service-section .service-name {
+    flex: 1;
+    font-size: 24px;
+    line-height: 1.25;
   }
 
   .service-section .service-icon {
@@ -12386,42 +12495,9 @@ a.about-info-box:hover {
     align-self: flex-start;
   }
 
-  .service-section .service-arrow-desktop {
-    display: none;
-  }
-
+  .service-section .service-arrow-desktop,
   .service-section .service-arrow-mobile {
     display: none;
-  }
-
-  .service-section .service-info-link {
-    grid-template-columns: 1fr;
-  }
-
-  .service-section .service-info-inner {
-    display: flex;
-    flex-flow: column;
-  }
-
-  .service-section .service-image-main,
-  .service-section .service-image-wrap {
-    width: 100%;
-  }
-
-  .service-section .service-content-wrap {
-    width: 100%;
-  }
-
-  .service-section .service-name-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    column-gap: var(--gap--gap-4);
-    margin-bottom: .625rem;
-  }
-
-  .service-section .service-name {
-    flex: 1;
   }
 
   .service-section .cta-info-wrapper {
@@ -12474,71 +12550,40 @@ a.about-info-box:hover {
     width: 100%;
   }
 
+  /*
+   * Mobile peek must stay under padding-top (1.25rem) even after GSAP scale
+   * shrinks the panel — otherwise previous-card photos show in the stack lips.
+   */
+  .service-section .service-list-wrapper.two {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 10px);
+  }
 
+  .service-section .service-list-wrapper.three {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 20px);
+  }
+
+  .service-section .service-list-wrapper.four {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 30px);
+  }
+
+  .service-section .service-list-wrapper.five {
+    top: calc(var(--navbar-height) + var(--service-sticky-gap) + 40px);
+  }
+
+  /* Keep the same stacked-card chrome as web; only tighten type/spacing. */
   .service-section .service-info-link {
-    display: flex;
-    flex-flow: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 1.25rem 20px;
-    margin-bottom: 0;
-    border: 0;
-    border-radius: 0;
-    overflow: visible;
-    background-color: transparent;
+    padding-top: 1.25rem;
+    padding-bottom: 1.5rem;
+    padding-inline: 20px;
   }
 
-  .service-section .service-card-divider {
-    display: block;
-    border-bottom: 1px solid var(--color--gray-4);
-    width: 100%;
-  }
-
-  .service-section .service-info-inner {
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-  }
-
-  .service-section .service-image-main {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .service-section .service-image-wrap {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    border-radius: calc(var(--border-radius--sm) - 2px);
-  }
-
-  .service-section .service-content-wrap {
-    width: 100%;
-    padding-bottom: 0.25rem;
-  }
-
-  .service-section .service-name-wrapper {
-    align-items: center;
-    margin-bottom: 0.625rem;
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-
-  .service-section .service-name-wrapper .service-name {
+  .service-section .service-name {
     font-size: 20px;
     line-height: 1.25;
-    padding-right: 0.5rem;
   }
 
-  .service-section .service-name-wrapper .service-card-action {
-    position: static;
-  }
-
-  .service-section .service-card-action__icon {
-    width: 2.25rem;
-    height: 2.25rem;
-    margin: 0;
+  .service-section .feature-item {
+    font-size: 14px;
   }
 
   .service-section .service-feature-text {
@@ -12547,10 +12592,6 @@ a.about-info-box:hover {
 
   .service-section .service-feature-group .service-feature-text {
     margin-bottom: 0.75rem;
-  }
-
-  .service-section .service-feature-list {
-    padding-bottom: 1rem;
   }
 
   .service-section .cta-text br {
@@ -13729,7 +13770,8 @@ a.about-info-box:hover {
 }
 
 @media screen and (max-width: 1355px) {
-  .mobile-nav-root {
+  .mobile-nav-root,
+  .navbar.is-mobile-menu-open {
     --mobile-nav-divider: rgba(0, 0, 0, .035);
     --mobile-nav-divider-nested: rgba(0, 0, 0, .02);
   }
@@ -13877,7 +13919,15 @@ a.about-info-box:hover {
   }
 
   .mobile-nav-panel {
-    padding: 0 0 max(1.25rem, env(safe-area-inset-bottom, 0px));
+    --mobile-nav-item-pad-y: 1.2rem;
+    padding: 0;
+  }
+
+  .navbar.is-mobile-menu-open {
+    border-bottom: 1px solid var(--mobile-nav-divider);
+    box-shadow: none;
+    /* Extra space after logo only — keep default top padding. */
+    padding-bottom: 1.75rem;
   }
 
   .mobile-nav-link {
@@ -13889,7 +13939,7 @@ a.about-info-box:hover {
     letter-spacing: -.01em;
     line-height: 1.2;
     margin: 0;
-    padding: 1rem 1.25rem;
+    padding: var(--mobile-nav-item-pad-y) 1.25rem;
     text-align: left;
     text-decoration: none;
     white-space: nowrap;
@@ -13900,7 +13950,12 @@ a.about-info-box:hover {
     border-bottom: 1px solid var(--mobile-nav-divider);
   }
 
-  .mobile-nav-panel>.mobile-nav-link:last-child {
+  /* No divider above first item or below last item (Contact follows). */
+  .mobile-nav-panel>:first-child {
+    border-top: 0;
+  }
+
+  .mobile-nav-panel>:nth-last-child(2) {
     border-bottom: 0;
   }
 
@@ -14025,11 +14080,16 @@ a.about-info-box:hover {
   }
 
   .mobile-nav-contact {
+    border-top: 1px solid var(--mobile-nav-divider);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 0;
-    padding: 1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+    /* Match menu-item vertical padding (e.g. Media) under Contact Us. */
+    padding:
+      var(--mobile-nav-item-pad-y)
+      1.25rem
+      max(var(--mobile-nav-item-pad-y), env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-contact .primary-button.nav-contact-button {
@@ -14038,9 +14098,13 @@ a.about-info-box:hover {
 }
 
 @media screen and (max-width: 479px) {
+  .mobile-nav-panel {
+    --mobile-nav-item-pad-y: 1.125rem;
+  }
+
   .mobile-nav-link {
     font-size: 1rem;
-    padding: .9375rem 1rem;
+    padding: var(--mobile-nav-item-pad-y) 1rem;
   }
 
   .mobile-nav-sublink,
@@ -14124,6 +14188,11 @@ a.about-info-box:hover {
   align-items: baseline;
   justify-content: center;
   white-space: nowrap;
+}
+
+.capacity-stat-value-letter {
+  display: inline-block;
+  transform-origin: center bottom;
 }
 
 .capacity-stat-label {
@@ -14643,7 +14712,9 @@ html.lenis body {
     margin-top: 0;
 
     padding:
-      1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+      var(--mobile-nav-item-pad-y)
+      1.25rem
+      max(var(--mobile-nav-item-pad-y), env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-contact .primary-button.nav-contact-button {
@@ -14667,7 +14738,9 @@ html.lenis body {
     gap: 0.75rem;
 
     padding:
-      1rem 1rem max(1.25rem, env(safe-area-inset-bottom, 0px));
+      var(--mobile-nav-item-pad-y)
+      1rem
+      max(var(--mobile-nav-item-pad-y), env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-nav-social {
@@ -14987,9 +15060,8 @@ html.lenis body {
 ========================================================= */
 
 .company-section {
-  --company-bg-y: 0px;
-  --company-awards-y: 0px;
-  --company-content-y: 0px;
+  --company-bg-x: 0px;
+  --company-awards-x: 0px;
 
   position: relative;
 
@@ -15033,8 +15105,8 @@ html.lenis body {
   object-position: center center;
 
   transform:
-    translate3d(0,
-      var(--company-bg-y),
+    translate3d(var(--company-bg-x),
+      0,
       0) scale(1.08);
 
   transform-origin: center;
@@ -15134,16 +15206,6 @@ html.lenis body {
 
   width: min(610px,
       41vw);
-}
-
-
-.company-section-content-parallax {
-  transform:
-    translate3d(0,
-      var(--company-content-y),
-      0);
-
-  will-change: transform;
 }
 
 
@@ -15267,8 +15329,8 @@ html.lenis body {
   width: 100%;
 
   transform:
-    translate3d(0,
-      var(--company-awards-y),
+    translate3d(var(--company-awards-x),
+      0,
       0);
 
   transform-origin:
@@ -15545,9 +15607,15 @@ html.lenis body {
     min-height: auto;
 
     display: block;
+
+    overflow: hidden;
   }
 
 
+  /*
+   * Same studio asset as desktop, but clipped to the section
+   * so the dark plate edges never spill past the viewport.
+   */
   .company-section-background {
     inset: 0;
   }
@@ -15556,34 +15624,45 @@ html.lenis body {
   .company-section-background-image {
     transform: none;
 
+    object-fit: cover;
     object-position: center bottom;
 
-    opacity: 0.7;
+    /* Keep the same studio asset, but don’t let it show through
+       the gap above the cropped trophy window. */
+    opacity: 0.28;
+
+    will-change: auto;
   }
 
 
+  /*
+   * Solid light wash so the studio plate / PNG empty top
+   * never reads as a separate “background band”.
+   */
   .company-section-atmosphere {
-    background:
-      linear-gradient(180deg,
-        rgba(248, 248, 246, 1) 0%,
-        rgba(248, 248, 246, 0.98) 28%,
-        rgba(248, 248, 246, 0.84) 52%,
-        rgba(248, 248, 246, 0.28) 78%,
-        rgba(248, 248, 246, 0.06) 100%);
+    background: rgba(248, 248, 246, 0.94);
+  }
+
+
+  .company-section::after {
+    display: none;
   }
 
 
   .company-section-inner {
     width: 100%;
+    max-width: 100%;
     min-height: auto;
 
     display: flex;
     flex-direction: column;
 
     padding:
-      62px 20px 62px;
+      62px 16px 0;
 
     box-sizing: border-box;
+
+    overflow: hidden;
   }
 
 
@@ -15594,13 +15673,9 @@ html.lenis body {
     left: auto;
 
     width: 100%;
+    max-width: 100%;
 
     z-index: 10;
-  }
-
-
-  .company-section-content-parallax {
-    transform: none;
   }
 
 
@@ -15638,8 +15713,10 @@ html.lenis body {
 
 
   /*
-   * Awards follow the copy. The source file is square and empty
-   * until ~55% down, so the frame only shows the trophies.
+   * PNG is square with empty space on top — crop to the trophy
+   * window only (no scale). Bleed into the inner side padding
+   * so the cluster uses that space, but stay inside the section
+   * clip (no page overflow).
    */
   .company-section-awards {
     position: relative;
@@ -15649,15 +15726,16 @@ html.lenis body {
     bottom: auto;
     left: auto;
 
-    width: 78%;
-    max-width: 78%;
+    width: calc(100% + 65px);
+    max-width: none;
     height: 0;
 
-    margin: 62px 0 0 auto;
-    /* 78% width × 0.39 trophy window, tall enough for the glass awards and K. */
-    padding-bottom: 30.4%;
+    margin: 24px -34px 0;
 
-    align-self: flex-end;
+    /* Slightly taller window so the wider frame still shows full trophies. */
+    padding-bottom: 46%;
+
+    align-self: stretch;
     overflow: hidden;
   }
 
@@ -15669,20 +15747,31 @@ html.lenis body {
     width: 100%;
     height: 100%;
 
+    overflow: hidden;
+
     transform: none;
+
+    will-change: auto;
   }
 
 
   .company-section-awards-image {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+
     width: 100%;
     height: 100%;
     max-width: none;
     max-height: none;
 
     object-fit: cover;
-    object-position: center 84%;
+    object-position: center 86%;
 
     transform: none;
+
+    filter: none;
   }
 
 
@@ -15725,8 +15814,7 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
 
   .company-section-background-image,
-  .company-section-awards-parallax,
-  .company-section-content-parallax {
+  .company-section-awards-parallax {
     transform: none !important;
 
     will-change: auto;

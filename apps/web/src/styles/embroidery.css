@@ -10,7 +10,30 @@
   );
 }
 
-/* Hero mobile styles live in solution-sections.css (shared across all solution pages). */
+/*
+ * Embroidery-only mobile hero: keep inset → expand-on-scroll, but land full-bleed
+ * (no side padding) and drop the shared mobile border-radius. Height unchanged.
+ * Slight top crop hides baked-in black letterbox on the source video.
+ */
+@media screen and (max-width: 991px) {
+  .embroidery-page .solution-page-hero-media {
+    padding-inline: 0;
+  }
+
+  .embroidery-page .solution-page-hero-media-scaler {
+    border-radius: 0;
+  }
+
+  .embroidery-page .solution-page-hero-video {
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .embroidery-page .solution-page-hero-video-media {
+    transform: scale(1.1);
+    transform-origin: center 70%;
+  }
+}
 
 /* ── Capabilities ── */
 @media screen and (max-width: 767px) {
@@ -36,6 +59,15 @@
 
   .embroidery-page .solution-capability-cards-scroll {
     padding-inline: var(--_layout---container-gutter);
+    scroll-padding-inline: var(--_layout---container-gutter);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+  }
+
+  .embroidery-page .solution-capability-cards-track {
+    gap: 1rem;
   }
 
   .embroidery-page .solution-capability-cards-card {
@@ -43,6 +75,8 @@
     min-width: min(78vw, 17.5rem);
     height: min(62vw, 300px);
     border-radius: 1.25rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .embroidery-page .solution-capability-cards-card-title {

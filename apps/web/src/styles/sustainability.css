@@ -1466,10 +1466,17 @@
   position: relative;
   z-index: 1;
   margin: 20px 0 0;
+  font-family: var(--_typography---font-family--heading);
   font-size: 24px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--color--black);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color--neutral-night);
+}
+
+@media screen and (max-width: 767px) {
+  .sustain-focus-card-title {
+    font-size: 18px;
+  }
 }
 
 .sustain-focus-card-media {
@@ -3228,6 +3235,13 @@
 }
 
 @media screen and (max-width: 767px) {
+  .sustain-pillar-section--environment,
+  .sustain-pillar-section--social {
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: repeat-y;
+  }
+
   .sustain-pillar-header {
     grid-template-columns: 1fr;
     row-gap: 0.75rem;
@@ -3264,6 +3278,9 @@
   .sustain-hero-section.hero-simple-section {
     padding-top: 8rem;
     padding-bottom: 0;
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: repeat-y;
   }
 
   .sustain-hero-image {
@@ -3403,6 +3420,10 @@
   }
 
   /* Snapshot */
+  .sustain-progress-section::before {
+    display: none;
+  }
+
   .sustain-snapshot-header {
     margin-bottom: 1.5rem;
     gap: 1rem;
@@ -3576,19 +3597,19 @@
 
   .sustain-governance-topic-card {
     height: auto;
-    min-height: 200px;
+    min-height: 180px;
     padding: 24px;
   }
 
   .sustain-governance-topic-content {
-    max-width: 80%;
+    max-width: calc(100% - 70px);
   }
 
   .sustain-governance-topic-icon {
-    bottom: -10px;
-    height: 160px;
+    bottom: -4px;
+    height: 100px;
     right: 0;
-    width: 160px;
+    width: 100px;
   }
 
   .sustain-governance-topic-title {

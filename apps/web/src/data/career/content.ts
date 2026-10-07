@@ -198,15 +198,15 @@ export const careerEmployeeVoices = {
       avatar: '/images/employees/safa_akter_noon.png',
       avatarAlt: 'Portrait of Safa Akter Noon',
     },
-    {
-      id: 'career-voice-04',
-      name: 'Md. Shahed Anwar',
-      role: 'Senior Executive, Procurement',
-      quote:
-        ' From the very first day, I felt welcomed and supported at every step and I continue to be inspired by this truly supportive and collaborative culture.',
-      avatar: '/images/employees/md_shahed_anwar.png',
-      avatarAlt: 'Portrait of Md. Shahed Anwar',
-    },
+    // {
+    //   id: 'career-voice-04',
+    //   name: 'Md. Shahed Anwar',
+    //   role: 'Senior Executive, Procurement',
+    //   quote:
+    //     ' From the very first day, I felt welcomed and supported at every step and I continue to be inspired by this truly supportive and collaborative culture.',
+    //   avatar: '/images/employees/md_shahed_anwar.png',
+    //   avatarAlt: 'Portrait of Md. Shahed Anwar',
+    // },
   ] satisfies CareerTestimonial[],
 }
 
@@ -267,7 +267,7 @@ export const careerLifeAt = {
       description:
         'From celebrations to everyday connections, the moments we share build trust, camaraderie, and a workplace that feels like home.',
       image: '/images/career/life-moments-that-bring-us-together.jpg',
-      imagePosition: 'center',
+      imagePosition: '74% center',
       imageAlt: 'Team members celebrating together at a sports tournament',
     },
     {

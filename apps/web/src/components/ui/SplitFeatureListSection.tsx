@@ -11,6 +11,7 @@ import { PreSectionTitle } from './PreSectionTitle'
 import { SectionLines } from './SectionDecor'
 
 const CAROUSEL_INTERVAL_MS = 2000
+const CAROUSEL_SLIDE_MS = 600
 const SWIPE_THRESHOLD_PX = 45
 const FALLBACK_IMAGE = 'https://placehold.co/600x400/red/white'
 type SlideDirection = 'forward' | 'backward'
@@ -44,14 +45,22 @@ export function SplitFeatureListSection({
   variant = 'list',
 }: SplitFeatureListSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [isFocusWithin, setIsFocusWithin] = useState(false)
+  const [isPointerActive, setIsPointerActive] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
+  const [slideEpoch, setSlideEpoch] = useState(0)
   const [slideDirection, setSlideDirection] =
     useState<SlideDirection>('forward')
 
   const pointerStartX = useRef<number | null>(null)
+  const activePointerId = useRef<number | null>(null)
+  const isDraggingRef = useRef(false)
   const suppressNextClick = useRef(false)
+  const activeIndexRef = useRef(0)
+
+  activeIndexRef.current = activeIndex
 
   const hasIcons = items.some((item) => Boolean(item.icon))
   const isCarousel = variant === 'carousel' && items.length > 0
@@ -59,29 +68,75 @@ export function SplitFeatureListSection({
 
   const baseId = id ?? 'split-feature'
 
+  const resolveDirection = useCallback(
+    (currentIndex: number, nextIndex: number): SlideDirection => {
+      const wrappingForward =
+        currentIndex === items.length - 1 && nextIndex === 0
+      const wrappingBackward =
+        currentIndex === 0 && nextIndex === items.length - 1
+
+      if (wrappingBackward) return 'backward'
+      if (wrappingForward) return 'forward'
+      return nextIndex < currentIndex ? 'backward' : 'forward'
+    },
+    [items.length],
+  )
+
   const goTo = useCallback(
-    (index: number) => {
+    (index: number, options?: { fromAutoplay?: boolean }) => {
       if (!items.length) return
 
-      setSlideDirection(
-        index >= activeIndex ? 'forward' : 'backward',
-      )
-      setActiveIndex(
-        ((index % items.length) + items.length) % items.length,
-      )
+      const nextIndex =
+        ((index % items.length) + items.length) % items.length
+      const currentIndex = activeIndexRef.current
 
-      setAutoplayKey((key) => key + 1)
+      if (nextIndex === currentIndex) return
+
+      setSlideDirection(resolveDirection(currentIndex, nextIndex))
+      // One atomic update — never clear previousIndex first (that flashed the
+      // current slide alone during continuous swipes).
+      if (prefersReducedMotion) {
+        setPreviousIndex(null)
+        setActiveIndex(nextIndex)
+      } else {
+        setPreviousIndex(currentIndex)
+        setActiveIndex(nextIndex)
+        setSlideEpoch((epoch) => epoch + 1)
+      }
+      if (!options?.fromAutoplay) {
+        setAutoplayKey((key) => key + 1)
+      }
     },
-    [activeIndex, items.length],
+    [items.length, prefersReducedMotion, resolveDirection],
   )
 
   const goPrevious = useCallback(() => {
-    goTo(activeIndex - 1)
-  }, [activeIndex, goTo])
+    goTo(activeIndexRef.current - 1)
+  }, [goTo])
 
-  const goNext = useCallback(() => {
-    goTo(activeIndex + 1)
-  }, [activeIndex, goTo])
+  const goNext = useCallback((options?: { fromAutoplay?: boolean }) => {
+    goTo(activeIndexRef.current + 1, options)
+  }, [goTo])
+
+  useEffect(() => {
+    if (previousIndex === null || prefersReducedMotion) {
+      return
+    }
+
+    const timeout = window.setTimeout(() => {
+      setPreviousIndex(null)
+    }, CAROUSEL_SLIDE_MS)
+
+    return () => {
+      window.clearTimeout(timeout)
+    }
+  }, [activeIndex, previousIndex, prefersReducedMotion])
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setPreviousIndex(null)
+    }
+  }, [prefersReducedMotion])
 
   useEffect(() => {
     if (!isCarousel) return
@@ -107,16 +162,14 @@ export function SplitFeatureListSection({
     if (
       !hasMultipleSlides ||
       isFocusWithin ||
+      isPointerActive ||
       prefersReducedMotion
     ) {
       return
     }
 
     const interval = window.setInterval(() => {
-      setSlideDirection('forward')
-      setActiveIndex(
-        (index) => (index + 1) % items.length,
-      )
+      goNext({ fromAutoplay: true })
     }, CAROUSEL_INTERVAL_MS)
 
     return () => {
@@ -124,9 +177,10 @@ export function SplitFeatureListSection({
     }
   }, [
     autoplayKey,
+    goNext,
     hasMultipleSlides,
     isFocusWithin,
-    items.length,
+    isPointerActive,
     prefersReducedMotion,
   ])
 
@@ -142,13 +196,73 @@ export function SplitFeatureListSection({
     }
   }
 
+  const resetPointerState = (
+    target?: HTMLDivElement | null,
+    pointerId?: number | null,
+  ) => {
+    if (
+      target &&
+      pointerId != null &&
+      target.hasPointerCapture(pointerId)
+    ) {
+      target.releasePointerCapture(pointerId)
+    }
+
+    target?.classList.remove('is-dragging')
+    pointerStartX.current = null
+    activePointerId.current = null
+    isDraggingRef.current = false
+  }
+
   const handlePointerDown = (
     event: PointerEvent<HTMLDivElement>,
   ) => {
-    if (!event.isPrimary) return
+    if (
+      !hasMultipleSlides ||
+      !event.isPrimary ||
+      event.button !== 0
+    ) {
+      return
+    }
+
+    if (
+      (event.target as HTMLElement).closest(
+        '.split-feature-list-carousel-nav, .split-feature-list-carousel-dots',
+      )
+    ) {
+      return
+    }
 
     suppressNextClick.current = false
+    isDraggingRef.current = false
     pointerStartX.current = event.clientX
+    activePointerId.current = event.pointerId
+    setIsPointerActive(true)
+  }
+
+  const handlePointerMove = (
+    event: PointerEvent<HTMLDivElement>,
+  ) => {
+    if (
+      pointerStartX.current === null ||
+      activePointerId.current !== event.pointerId ||
+      !event.isPrimary
+    ) {
+      return
+    }
+
+    const distance = event.clientX - pointerStartX.current
+
+    if (!isDraggingRef.current) {
+      if (Math.abs(distance) < 8) return
+
+      isDraggingRef.current = true
+      event.currentTarget.classList.add('is-dragging')
+      event.currentTarget.setPointerCapture(event.pointerId)
+      window.getSelection()?.removeAllRanges()
+    }
+
+    event.preventDefault()
   }
 
   const handlePointerUp = (
@@ -156,17 +270,19 @@ export function SplitFeatureListSection({
   ) => {
     if (
       pointerStartX.current === null ||
+      activePointerId.current !== event.pointerId ||
       !event.isPrimary
     ) {
       return
     }
 
-    const distance =
-      event.clientX - pointerStartX.current
+    const distance = event.clientX - pointerStartX.current
+    const wasDragging = isDraggingRef.current
 
-    pointerStartX.current = null
+    resetPointerState(event.currentTarget, event.pointerId)
+    setIsPointerActive(false)
 
-    if (Math.abs(distance) < SWIPE_THRESHOLD_PX) {
+    if (!wasDragging || Math.abs(distance) < SWIPE_THRESHOLD_PX) {
       return
     }
 
@@ -186,6 +302,8 @@ export function SplitFeatureListSection({
 
     if (suppressNextClick.current) {
       suppressNextClick.current = false
+      event.preventDefault()
+      event.stopPropagation()
       return
     }
 
@@ -275,20 +393,40 @@ export function SplitFeatureListSection({
                     setIsFocusWithin(false)
                   }}
                   onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
                   onClick={handleCarouselClick}
-                  onPointerCancel={() => {
-                    pointerStartX.current = null
+                  onPointerCancel={(event) => {
+                    resetPointerState(
+                      event.currentTarget,
+                      event.pointerId,
+                    )
                     suppressNextClick.current = false
+                    setIsPointerActive(false)
                   }}
                 >
-                  {items.map((item, index) => (
+                  {items.map((item, index) => {
+                    const isActive = index === activeIndex
+                    const isExiting =
+                      previousIndex !== null &&
+                      index === previousIndex &&
+                      !prefersReducedMotion
+
+                    return (
                     <article
-                      key={item.id}
+                      key={
+                        isActive || isExiting
+                          ? `${item.id}-${slideEpoch}`
+                          : item.id
+                      }
                       id={`${baseId}-slide-${item.id}`}
                       className={`split-feature-list-carousel-slide${
-                        index === activeIndex
+                        isActive
                           ? ` is-active is-entering is-entering--${slideDirection}`
+                          : ''
+                      }${
+                        isExiting
+                          ? ` is-exiting is-exiting--${slideDirection}`
                           : ''
                       }`}
                       role="group"
@@ -297,7 +435,7 @@ export function SplitFeatureListSection({
                         items.length
                       }`}
                       aria-hidden={
-                        index !== activeIndex
+                        !isActive && !isExiting
                       }
                     >
                       <img
@@ -340,7 +478,8 @@ export function SplitFeatureListSection({
                         </div>
                       </div>
                     </article>
-                  ))}
+                    )
+                  })}
                   {hasMultipleSlides ? (
                     <div
                       className="split-feature-list-carousel-nav"
