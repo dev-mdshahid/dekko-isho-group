@@ -14,9 +14,23 @@ interface ManufacturingClientsMapProps {
 }
 
 const MAP_LAYOUT = {
-  desktop: { width: 980, height: 500, scale: 200, center: [0, 3] as [number, number] },
+  // Projection stays on the full canvas; viewBox only crops the SVG camera (like DevTools).
+  // Changing width/height also re-centers d3 translate and clips the top — avoid that.
+  desktop: {
+    width: 980,
+    height: 500,
+    viewBox: '0 0 880 460',
+    scale: 190,
+    center: [28, 3] as [number, number],
+  },
   // Taller frame + higher relative scale so regions stay tappable on narrow screens.
-  mobile: { width: 720, height: 520, scale: 175, center: [0, 8] as [number, number] },
+  mobile: {
+    width: 720,
+    height: 520,
+    viewBox: '0 0 720 520',
+    scale: 165,
+    center: [18, 8] as [number, number],
+  },
 } as const
 const MOBILE_MAP_QUERY = '(max-width: 767px)'
 const EXCLUDED_COUNTRY_CODES = new Set(['010'])
@@ -69,6 +83,7 @@ export function ManufacturingClientsMap({
         className="mfg-clients-map"
         width={mapLayout.width}
         height={mapLayout.height}
+        viewBox={mapLayout.viewBox}
         projection="geoEqualEarth"
         projectionConfig={{ center: mapLayout.center, scale: mapLayout.scale }}
         role="group"
