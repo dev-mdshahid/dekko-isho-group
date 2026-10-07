@@ -24,10 +24,11 @@ const MAP_LAYOUT = {
     center: [28, 3] as [number, number],
   },
   // Taller frame + higher relative scale so regions stay tappable on narrow screens.
+  // Mobile viewBox is a tighter crop (DevTools-tuned); keep width/height for projection.
   mobile: {
     width: 720,
     height: 520,
-    viewBox: '0 0 720 520',
+    viewBox: '0 0 680 520',
     scale: 165,
     center: [18, 8] as [number, number],
   },

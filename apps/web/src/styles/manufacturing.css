@@ -1311,6 +1311,8 @@
 
 .manufacturing-page .mfg-clients-header .pre-section-title-wrap {
   margin-bottom: 10px;
+  width: fit-content;
+  max-width: 100%;
   background-color: transparent;
   border-color: var(--color--neutral-silver-night);
 }
@@ -1700,7 +1702,7 @@
 
 @media screen and (max-width: 767px) {
   .manufacturing-page .mfg-clients-section { padding: 4.5rem 0; }
-  .manufacturing-page .mfg-clients-header { margin-bottom: 2.5rem; }
+  .manufacturing-page .mfg-clients-header { margin-bottom: 1rem; }
   .manufacturing-page .mfg-clients-title {
     margin-top: 1.25rem;
     font-size: clamp(1.75rem, 8vw, 2.25rem);
@@ -1818,8 +1820,8 @@
   }
 
   .manufacturing-page .mfg-clients-header {
-    gap: 1.75rem;
-    margin-bottom: 2rem;
+    gap: .75rem;
+    margin-bottom: .75rem;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1837,6 +1839,9 @@
 
   .manufacturing-page .mfg-clients-header .pre-section-title-wrap {
     margin-bottom: 0;
+    width: fit-content;
+    max-width: 100%;
+    align-self: flex-start;
   }
 
   .manufacturing-page .mfg-clients-title {
