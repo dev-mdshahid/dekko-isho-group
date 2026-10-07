@@ -1700,6 +1700,22 @@
   }
 }
 
+/* Tablet only: stack partners copy above tabs so the row does not crush. */
+@media screen and (max-width: 896px) and (min-width: 767px) {
+  .manufacturing-page .mfg-clients-panel-top {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.25rem;
+    padding: 0 1.75rem 1.35rem;
+  }
+
+  .manufacturing-page .mfg-clients-panel-actions {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .manufacturing-page .mfg-clients-section { padding: 4.5rem 0; }
   .manufacturing-page .mfg-clients-header { margin-bottom: 1rem; }
