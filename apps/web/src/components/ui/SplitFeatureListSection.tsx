@@ -47,8 +47,10 @@ export function SplitFeatureListSection({
   const [activeIndex, setActiveIndex] = useState(0)
   const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [isFocusWithin, setIsFocusWithin] = useState(false)
+  const [isPointerActive, setIsPointerActive] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
+  const [slideEpoch, setSlideEpoch] = useState(0)
   const [slideDirection, setSlideDirection] =
     useState<SlideDirection>('forward')
 
@@ -66,8 +68,22 @@ export function SplitFeatureListSection({
 
   const baseId = id ?? 'split-feature'
 
+  const resolveDirection = useCallback(
+    (currentIndex: number, nextIndex: number): SlideDirection => {
+      const wrappingForward =
+        currentIndex === items.length - 1 && nextIndex === 0
+      const wrappingBackward =
+        currentIndex === 0 && nextIndex === items.length - 1
+
+      if (wrappingBackward) return 'backward'
+      if (wrappingForward) return 'forward'
+      return nextIndex < currentIndex ? 'backward' : 'forward'
+    },
+    [items.length],
+  )
+
   const goTo = useCallback(
-    (index: number) => {
+    (index: number, options?: { fromAutoplay?: boolean }) => {
       if (!items.length) return
 
       const nextIndex =
@@ -76,22 +92,30 @@ export function SplitFeatureListSection({
 
       if (nextIndex === currentIndex) return
 
-      setSlideDirection(
-        index >= currentIndex ? 'forward' : 'backward',
-      )
-      setPreviousIndex(currentIndex)
-      setActiveIndex(nextIndex)
-      setAutoplayKey((key) => key + 1)
+      setSlideDirection(resolveDirection(currentIndex, nextIndex))
+      // One atomic update — never clear previousIndex first (that flashed the
+      // current slide alone during continuous swipes).
+      if (prefersReducedMotion) {
+        setPreviousIndex(null)
+        setActiveIndex(nextIndex)
+      } else {
+        setPreviousIndex(currentIndex)
+        setActiveIndex(nextIndex)
+        setSlideEpoch((epoch) => epoch + 1)
+      }
+      if (!options?.fromAutoplay) {
+        setAutoplayKey((key) => key + 1)
+      }
     },
-    [items.length],
+    [items.length, prefersReducedMotion, resolveDirection],
   )
 
   const goPrevious = useCallback(() => {
     goTo(activeIndexRef.current - 1)
   }, [goTo])
 
-  const goNext = useCallback(() => {
-    goTo(activeIndexRef.current + 1)
+  const goNext = useCallback((options?: { fromAutoplay?: boolean }) => {
+    goTo(activeIndexRef.current + 1, options)
   }, [goTo])
 
   useEffect(() => {
@@ -138,16 +162,14 @@ export function SplitFeatureListSection({
     if (
       !hasMultipleSlides ||
       isFocusWithin ||
+      isPointerActive ||
       prefersReducedMotion
     ) {
       return
     }
 
     const interval = window.setInterval(() => {
-      const currentIndex = activeIndexRef.current
-      setSlideDirection('forward')
-      setPreviousIndex(currentIndex)
-      setActiveIndex((index) => (index + 1) % items.length)
+      goNext({ fromAutoplay: true })
     }, CAROUSEL_INTERVAL_MS)
 
     return () => {
@@ -155,9 +177,10 @@ export function SplitFeatureListSection({
     }
   }, [
     autoplayKey,
+    goNext,
     hasMultipleSlides,
     isFocusWithin,
-    items.length,
+    isPointerActive,
     prefersReducedMotion,
   ])
 
@@ -202,10 +225,19 @@ export function SplitFeatureListSection({
       return
     }
 
+    if (
+      (event.target as HTMLElement).closest(
+        '.split-feature-list-carousel-nav, .split-feature-list-carousel-dots',
+      )
+    ) {
+      return
+    }
+
     suppressNextClick.current = false
     isDraggingRef.current = false
     pointerStartX.current = event.clientX
     activePointerId.current = event.pointerId
+    setIsPointerActive(true)
   }
 
   const handlePointerMove = (
@@ -248,6 +280,7 @@ export function SplitFeatureListSection({
     const wasDragging = isDraggingRef.current
 
     resetPointerState(event.currentTarget, event.pointerId)
+    setIsPointerActive(false)
 
     if (!wasDragging || Math.abs(distance) < SWIPE_THRESHOLD_PX) {
       return
@@ -369,6 +402,7 @@ export function SplitFeatureListSection({
                       event.pointerId,
                     )
                     suppressNextClick.current = false
+                    setIsPointerActive(false)
                   }}
                 >
                   {items.map((item, index) => {
@@ -380,7 +414,11 @@ export function SplitFeatureListSection({
 
                     return (
                     <article
-                      key={item.id}
+                      key={
+                        isActive || isExiting
+                          ? `${item.id}-${slideEpoch}`
+                          : item.id
+                      }
                       id={`${baseId}-slide-${item.id}`}
                       className={`split-feature-list-carousel-slide${
                         isActive
