@@ -1723,7 +1723,13 @@
     clip-path: none;
   }
   .manufacturing-page .mfg-map-active-label text { font-size: 12.5px; }
-  .manufacturing-page .mfg-clients-region-copy h3 { font-size: 1.65rem; }
+  .manufacturing-page .mfg-clients-region-copy h3 {
+    font-size: 1.65rem;
+    min-height: calc(1.65rem * 1.15);
+  }
+  .manufacturing-page .mfg-clients-region-copy p {
+    min-height: calc(1em * 1.45 * 3);
+  }
   .manufacturing-page .mfg-clients-panel-actions {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
@@ -1935,7 +1941,7 @@
   }
 
   .manufacturing-page .mfg-clients-panel-top {
-    gap: 1.5rem;
+    gap: 0.5rem;
     padding: 0 .25rem 1.25rem;
   }
 
@@ -1948,6 +1954,8 @@
   .manufacturing-page .mfg-clients-region-copy h3 {
     margin: 0;
     font-size: 1.45rem;
+    line-height: 1.15;
+    min-height: calc(1.45rem * 1.15);
   }
 
   .manufacturing-page .mfg-clients-region-copy p {
@@ -1955,6 +1963,8 @@
     margin: 0;
     font-size: .92rem;
     line-height: 1.5;
+    /* Keep tab row stable when region copy wraps to fewer lines. */
+    min-height: calc(.92rem * 1.5 * 3);
   }
 
   .manufacturing-page .mfg-clients-eyebrow {
