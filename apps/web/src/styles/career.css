@@ -513,6 +513,10 @@
   .image-info-career .career-hero-carousel {
     height: clamp(12rem, 52vw, 18rem);
   }
+
+  .image-info-career .career-hero-carousel__arrow {
+    display: none;
+  }
 }
 
 /* ── Career Banner ── */

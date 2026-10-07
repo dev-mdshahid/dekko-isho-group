@@ -17,10 +17,11 @@ export function CareerHeroCarousel({ images }: Props) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
+  const [isPointerActive, setIsPointerActive] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [autoplayKey, setAutoplayKey] = useState(0)
   const hasMultiple = images.length > 1
-  const isPaused = isHovered || isFocused
+  const isPaused = isHovered || isFocused || isPointerActive
 
   activeIndexRef.current = activeIndex
 
@@ -95,6 +96,7 @@ export function CareerHeroCarousel({ images }: Props) {
       isPointerDown = false
       isDragging = false
       activePointerId = null
+      setIsPointerActive(false)
     }
 
     const onPointerMove = (event: PointerEvent) => {
@@ -127,6 +129,7 @@ export function CareerHeroCarousel({ images }: Props) {
       isDragging = false
       activePointerId = event.pointerId
       startX = event.clientX
+      setIsPointerActive(true)
 
       document.addEventListener('pointermove', onPointerMove)
       document.addEventListener('pointerup', endPointer)
@@ -153,6 +156,7 @@ export function CareerHeroCarousel({ images }: Props) {
       document.removeEventListener('pointerup', endPointer)
       document.removeEventListener('pointercancel', endPointer)
       root.classList.remove('is-dragging')
+      setIsPointerActive(false)
     }
   }, [goNext, goPrev, hasMultiple])
 
