@@ -46,9 +46,11 @@ export function AboutImageSlideshow() {
   const incomingRef = useRef<HTMLImageElement>(null)
   const activeIndexRef = useRef(0)
   const isTransitioningRef = useRef(false)
+  const transitionTargetRef = useRef<number | null>(null)
   const intervalRef = useRef<number | null>(null)
   const isHoveredRef = useRef(false)
   const isFocusWithinRef = useRef(false)
+  const isPointerActiveRef = useRef(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [transitionState, setTransitionState] = useState<TransitionState | null>(null)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -67,22 +69,44 @@ export function AboutImageSlideshow() {
   }, [])
 
   const syncInteractionPause = useCallback(() => {
-    setIsInteractionPaused(isHoveredRef.current || isFocusWithinRef.current)
+    setIsInteractionPaused(
+      isHoveredRef.current || isFocusWithinRef.current || isPointerActiveRef.current,
+    )
   }, [])
 
   const completeTransition = useCallback((to: number) => {
     activeIndexRef.current = to
     setActiveIndex(to)
     setTransitionState(null)
+    transitionTargetRef.current = null
     isTransitioningRef.current = false
   }, [])
 
+  /** Land on the in-flight slide immediately so the next swipe can start. */
+  const forceCompleteCurrentTransition = useCallback(() => {
+    if (!isTransitioningRef.current) return
+
+    gsap.killTweensOf(outgoingRef.current)
+    gsap.killTweensOf(incomingRef.current)
+    gsap.killTweensOf(mediaRef.current)
+
+    const to = transitionTargetRef.current ?? activeIndexRef.current
+    completeTransition(to)
+  }, [completeTransition])
+
   const transitionTo = useCallback(
     (nextIndex: number, direction: SlideDirection) => {
-      if (isTransitioningRef.current || nextIndex === activeIndexRef.current) return false
+      if (nextIndex === activeIndexRef.current && !isTransitioningRef.current) return false
+
+      if (isTransitioningRef.current) {
+        forceCompleteCurrentTransition()
+      }
+
+      if (nextIndex === activeIndexRef.current) return false
 
       const currentIndex = activeIndexRef.current
       isTransitioningRef.current = true
+      transitionTargetRef.current = nextIndex
 
       if (prefersReducedMotion) {
         gsap.to(mediaRef.current, {
@@ -92,6 +116,7 @@ export function AboutImageSlideshow() {
           onComplete: () => {
             activeIndexRef.current = nextIndex
             setActiveIndex(nextIndex)
+            transitionTargetRef.current = null
             gsap.fromTo(
               mediaRef.current,
               { opacity: 0 },
@@ -112,7 +137,7 @@ export function AboutImageSlideshow() {
       setTransitionState({ from: currentIndex, to: nextIndex, direction })
       return true
     },
-    [prefersReducedMotion],
+    [forceCompleteCurrentTransition, prefersReducedMotion],
   )
 
   const resetAutoplayTimer = useCallback(() => {
@@ -120,14 +145,22 @@ export function AboutImageSlideshow() {
   }, [])
 
   const goToPrevious = useCallback(() => {
-    const previousIndex = (activeIndexRef.current - 1 + slideCount) % slideCount
+    const base =
+      isTransitioningRef.current && transitionTargetRef.current !== null
+        ? transitionTargetRef.current
+        : activeIndexRef.current
+    const previousIndex = (base - 1 + slideCount) % slideCount
     const didStart = transitionTo(previousIndex, 'previous')
     if (didStart) resetAutoplayTimer()
   }, [resetAutoplayTimer, slideCount, transitionTo])
 
   const goToNext = useCallback(
     (options?: { fromAutoplay?: boolean }) => {
-      const nextIndex = (activeIndexRef.current + 1) % slideCount
+      const base =
+        isTransitioningRef.current && transitionTargetRef.current !== null
+          ? transitionTargetRef.current
+          : activeIndexRef.current
+      const nextIndex = (base + 1) % slideCount
       const didStart = transitionTo(nextIndex, 'next')
       if (didStart && !options?.fromAutoplay) resetAutoplayTimer()
     },
@@ -183,6 +216,8 @@ export function AboutImageSlideshow() {
       isPointerDown = false
       isDragging = false
       activePointerId = null
+      isPointerActiveRef.current = false
+      syncInteractionPause()
     }
 
     const onPointerMove = (event: PointerEvent) => {
@@ -192,14 +227,6 @@ export function AboutImageSlideshow() {
 
       if (!isDragging) {
         if (Math.abs(deltaX) <= DRAG_THRESHOLD_PX) return
-        if (isTransitioningRef.current) {
-          isPointerDown = false
-          activePointerId = null
-          document.removeEventListener('pointermove', onPointerMove)
-          document.removeEventListener('pointerup', endPointer)
-          document.removeEventListener('pointercancel', endPointer)
-          return
-        }
         isDragging = true
         root.classList.add('is-dragging')
         root.setPointerCapture(event.pointerId)
@@ -210,13 +237,15 @@ export function AboutImageSlideshow() {
     }
 
     const onPointerDown = (event: PointerEvent) => {
-      if (event.button !== 0 || isTransitioningRef.current) return
+      if (event.button !== 0) return
       if ((event.target as HTMLElement).closest('.about-image-slideshow__nav')) return
 
       isPointerDown = true
       isDragging = false
       activePointerId = event.pointerId
       startX = event.clientX
+      isPointerActiveRef.current = true
+      syncInteractionPause()
 
       document.addEventListener('pointermove', onPointerMove)
       document.addEventListener('pointerup', endPointer)
@@ -243,8 +272,9 @@ export function AboutImageSlideshow() {
       document.removeEventListener('pointerup', endPointer)
       document.removeEventListener('pointercancel', endPointer)
       root.classList.remove('is-dragging')
+      isPointerActiveRef.current = false
     }
-  }, [goToNext, goToPrevious, slideCount])
+  }, [goToNext, goToPrevious, slideCount, syncInteractionPause])
 
   useLayoutEffect(() => {
     if (!transitionState) return

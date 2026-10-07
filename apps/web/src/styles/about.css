@@ -358,7 +358,7 @@
   }
 
   .image-info-about .about-image-slideshow__nav {
-    padding-inline: 0.625rem;
+    display: none;
   }
 
   .image-info-about .about-image {
