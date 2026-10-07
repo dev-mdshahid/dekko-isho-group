@@ -241,6 +241,13 @@
     padding: 1.25rem;
   }
 
+  .home-contact-section .page-contact-submit {
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: .625rem 1.125rem;
+  }
+
   .home-contact-section .page-contact-text-link,
   .home-contact-section .page-contact-location-line {
     font-size: 1rem;
