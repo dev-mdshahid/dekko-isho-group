@@ -1466,10 +1466,17 @@
   position: relative;
   z-index: 1;
   margin: 20px 0 0;
+  font-family: var(--_typography---font-family--heading);
   font-size: 24px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--color--black);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color--neutral-night);
+}
+
+@media screen and (max-width: 767px) {
+  .sustain-focus-card-title {
+    font-size: 18px;
+  }
 }
 
 .sustain-focus-card-media {
